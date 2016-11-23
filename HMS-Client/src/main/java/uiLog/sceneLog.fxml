@@ -18,7 +18,7 @@
             <children>
             <ImageView pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../graphics/icon.png" />
+                  <Image url="@../../../../graphics/icon.png" />
                </image>
                <VBox.margin>
                   <Insets left="80.0" top="40.0" />
@@ -115,7 +115,7 @@
          <children>
             <ImageView fx:id="imgHotel01" fitHeight="323.0" fitWidth="490.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../graphics/hotel01.JPG" />
+                  <Image url="@../../../../graphics/hotel01.JPG" />
                </image>
                <HBox.margin>
                   <Insets left="60.0" top="110.0" />
@@ -126,8 +126,16 @@
                   <Insets left="-485.0" top="110.0" />
                </HBox.margin>
                <image>
-                  <Image url="@../../../graphics/hotel02.jpg" />
+                  <Image url="@../../../../graphics/hotel02.jpg" />
                </image>
+            </ImageView>
+            <ImageView fx:id="imgHotel03" fitHeight="360.0" fitWidth="484.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../graphics/hotel03.JPG" />
+               </image>
+               <HBox.margin>
+                  <Insets left="-477.0" top="110.0" />
+               </HBox.margin>
             </ImageView>
             <Label fx:id="labelNextPic" onMouseClicked="#setNextPic" style="-fx-background-image: url(&quot;graphics\ahead.png&quot;);" text="Label">
                <HBox.margin>
