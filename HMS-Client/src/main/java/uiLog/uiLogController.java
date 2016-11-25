@@ -18,17 +18,33 @@ import java.io.IOException;
  */
 public class uiLogController {
 
-    @FXML
-    private Label labelNextPic;
+    int count = 0;
+
     @FXML
     private ImageView imgHotel01;
     @FXML
     private ImageView imgHotel02;
+    @FXML
+    private ImageView imgHotel03;
 
     @FXML
     public void setNextPic(){
-        imgHotel01.setVisible(false);
-        imgHotel02.setVisible(true);
+        count++;
+        if(count % 3 == 0){
+            imgHotel01.setVisible(true);
+            imgHotel02.setVisible(false);
+            imgHotel03.setVisible(false);
+        }
+        else if(count % 3 == 1){
+            imgHotel01.setVisible(false);
+            imgHotel02.setVisible(true);
+            imgHotel03.setVisible(false);
+        }
+        else if(count % 3 == 2){
+            imgHotel01.setVisible(false);
+            imgHotel02.setVisible(false);
+            imgHotel03.setVisible(true);
+        }
     }
     public Button buttonRegister;
     public void gotoRegister1() throws IOException {
