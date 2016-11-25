@@ -8,7 +8,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="618.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uiLog.uiRegister1Controller">
    <children>
       <Label layoutX="304.0" layoutY="252.0" text="账号：">
@@ -51,5 +50,10 @@
             <Image url="@../../../../graphics/reg1.png" />
          </image>
       </ImageView>
+      <Button fx:id="buttonReturn" layoutX="528.0" layoutY="451.0" mnemonicParsing="false" onAction="#returnToLog" text="返回">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
