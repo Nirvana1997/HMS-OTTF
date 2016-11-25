@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="618.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.logui.uiRegister3Controller">
+   <children>
+      <ImageView fitHeight="83.0" fitWidth="185.0" layoutX="393.0" layoutY="83.0">
+         <image>
+            <Image url="@../../../../../graphics/step3.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="buttonNext" layoutX="672.0" layoutY="468.0" mnemonicParsing="false"  text="开始旅程！">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="200.0" fitWidth="400.0" layoutX="300.0" layoutY="217.0">
+         <image>
+            <Image url="@../../../../../graphics/注册成功.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

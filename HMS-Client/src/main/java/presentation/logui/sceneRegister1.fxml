@@ -25,29 +25,29 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <TextField layoutX="386.0" layoutY="246.0">
+      <TextField fx:id="textUserID" layoutX="386.0" layoutY="246.0">
          <font>
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextField layoutX="386.0" layoutY="347.0">
+      <TextField fx:id="textConfirm" layoutX="386.0" layoutY="347.0">
          <font>
             <Font size="18.0" />
          </font>
       </TextField>
-      <TextField layoutX="386.0" layoutY="294.0">
+      <TextField fx:id="textPassword" layoutX="386.0" layoutY="294.0">
          <font>
             <Font size="18.0" />
          </font>
       </TextField>
-      <Button layoutX="628.0" layoutY="451.0" mnemonicParsing="false" text="下一步">
+      <Button fx:id="buttonNext" layoutX="628.0" layoutY="451.0" mnemonicParsing="false" onAction="#goToRegister2" text="下一步">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <ImageView fitHeight="300.0" fitWidth="400.0" layoutX="268.0" layoutY="-18.0">
+      <ImageView fitHeight="83.0" fitWidth="185.0" layoutX="393.0" layoutY="83.0">
          <image>
-            <Image url="@../../../../../graphics/reg1.png" />
+            <Image url="@../../../../../graphics/step1.png" />
          </image>
       </ImageView>
       <Button fx:id="buttonReturn" layoutX="528.0" layoutY="451.0" mnemonicParsing="false" onAction="#returnToLog" text="返回">
