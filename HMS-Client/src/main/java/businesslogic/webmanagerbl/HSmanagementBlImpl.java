@@ -27,7 +27,7 @@ public class HSmanagementBlImpl implements HSmanagementBlService{
     public HotelsalerInfoVO getHotelsalerInfo(String hotelsalerID) throws RemoteException{
 		if(logDataService.getAccountType(hotelsalerID).equals(AccountType.hotelsaler)) {
             HotelsalerInfoPO po = hotelsalerDataService.getHotelsalerInfo(hotelsalerID);
-            HotelsalerInfoVO vo = new HotelsalerInfoVO(po.getHotelID(),po.getHotelname(),po.getContactNumber());
+            HotelsalerInfoVO vo = new HotelsalerInfoVO(po.getHotelID(),po.getHotelname());
             return vo;
         }else {
             return null;
@@ -36,7 +36,7 @@ public class HSmanagementBlImpl implements HSmanagementBlService{
 
 	public ResultMessage setHotelsalerInfo(HotelsalerInfoVO vo) throws RemoteException{
         if(logDataService.getAccountType(vo.getHotelID()).equals(AccountType.hotelsaler)) {
-            HotelsalerInfoPO po = new HotelsalerInfoPO(vo.getHotelID(),vo.getHotelname(),vo.getContactNumber());
+            HotelsalerInfoPO po = new HotelsalerInfoPO(vo.getHotelID(),vo.getHotelname(),null);
             return ResultMessage.Correct;
         }else {
             return ResultMessage.NotExist;
@@ -45,7 +45,7 @@ public class HSmanagementBlImpl implements HSmanagementBlService{
 
 	public boolean addHotelsalerInfo(HotelsalerInfoVO vo, String password) throws RemoteException{
         if(logDataService.hasExisted(vo.getHotelID()).equals(ResultMessage.NotExist)) {
-            HotelsalerInfoPO po = new HotelsalerInfoPO(vo.getHotelID(),vo.getHotelname(),vo.getContactNumber());
+            HotelsalerInfoPO po = new HotelsalerInfoPO(vo.getHotelID(),vo.getHotelname(),null);
             AccountPO accountPO = new AccountPO(vo.getHotelID(),password,AccountType.hotelsaler);
             logDataService.addAccount(accountPO);
             hotelsalerDataService.addHotelsalerInfo(po);

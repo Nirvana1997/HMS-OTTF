@@ -44,7 +44,7 @@ public void testGetHotelsalerInfo() throws Exception {
 */ 
 @Test
 public void testSetHotelsalerInfo() throws Exception {
-    HotelsalerInfoVO vo = new HotelsalerInfoVO("151250175","梓航小酒店","123456");
+    HotelsalerInfoVO vo = new HotelsalerInfoVO("151250175","梓航小酒店");
     Assert.assertEquals(ResultMessage.Correct, hSmanagementBlService.setHotelsalerInfo(vo));
 }
 
@@ -55,7 +55,7 @@ public void testSetHotelsalerInfo() throws Exception {
 */ 
 @Test
 public void testAddHotelsalerInfo() throws Exception {
-    HotelsalerInfoVO vo = new HotelsalerInfoVO("151250063","萱萱大酒店","123456");
+    HotelsalerInfoVO vo = new HotelsalerInfoVO("151250063","萱萱大酒店");
     Assert.assertEquals(true,hSmanagementBlService.addHotelsalerInfo(vo,"1234"));
 }
 

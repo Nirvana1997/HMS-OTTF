@@ -1,15 +1,14 @@
 package businesslogic.userbl;
 
-import java.time.Instant;
-import java.util.ArrayList;
-import java.util.Date;
-
 import businesslogicservice.userblservice.HotelOrderBlService;
 import enumData.*;
 import vo.CommentVO;
 import vo.ConditionVO;
 import vo.HotelinfoVO;
 import vo.OrderVO;
+
+import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * 用户:预订酒店类
@@ -33,7 +32,7 @@ public class HotelOrderBlImpl implements HotelOrderBlService{
      * @return
      */
 	public ArrayList<HotelinfoVO> searchHotel(Address address,ConditionVO vo){
-		hotelInfoList.add(new HotelinfoVO("0001", "仙林大酒店", null, null, null, null, null, null, null, 0, 0, null, null));
+		hotelInfoList.add(new HotelinfoVO("0001", "仙林大酒店", null, null, null,null, null, null, null, null, 0, 0, null, null));
 		return hotelInfoList;
 	}
 
@@ -44,7 +43,7 @@ public class HotelOrderBlImpl implements HotelOrderBlService{
      * @return
      */
 	public ArrayList<HotelinfoVO> readHotel(Address address,ConditionVO vo){
-		hotelInfoList.add(new HotelinfoVO("001","喋喋大酒店", TradeArea.Xianlin,Address.DieDie, "仙林大道",new ArrayList<RoomType>(),
+		hotelInfoList.add(new HotelinfoVO("001","喋喋大酒店", TradeArea.Xianlin,Address.DieDie, "仙林大道",null,new ArrayList<RoomType>(),
 				new ArrayList<Integer>(),"贼好","贼棒",3,3,new ArrayList<String>(),new ArrayList<String>()));
 		return hotelInfoList;
 
@@ -67,7 +66,7 @@ public class HotelOrderBlImpl implements HotelOrderBlService{
      */
 	public ArrayList<OrderVO> readOrder(String userID){
 		if(userID=="01") {
-			orderList.add(new OrderVO("11",OrderState.executing,"123","1", Date.from(Instant.now()),"1"));
+			orderList.add(new OrderVO("11",OrderState.executing,"123","1",new Date(2016,11,11),"1"));
 			return orderList;
 		}
 		return null;

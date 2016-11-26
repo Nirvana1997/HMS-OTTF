@@ -10,7 +10,7 @@
 //import businesslogic.hotelinfobl.HotelinfoblImpl;
 //import businesslogic.hotelroombl.Hotelroombl_stub;
 //import businesslogic.hotelsalerbl.HotelsalerblImpl;
-//import businesslogic.logbl.LogBlServiceImpl;
+//import businesslogic.logbl.Login;
 //import businesslogic.orderbl.OrderBl_stub;
 //import businesslogic.promotionbl.PromotionBl_stub;
 //import businesslogic.userbl.HotelOrderBl_stub;
@@ -62,7 +62,7 @@
 //	LogBlService log;
 //
 //	public void isCorrect(AccountVO vo){
-//		log = new LogBlServiceImpl();
+//		log = new Login();
 //		System.out.println("----------修改酒店信息----------");
 //		System.out.println(log.isCorrect(vo));
 //	}

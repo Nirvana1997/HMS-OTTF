@@ -2,9 +2,22 @@ package vo;
 
 import enumData.AccountType;
 
+/**
+ * 帐号信息VO
+ * @author qzh
+ */
 public class AccountVO {
+    /**
+     * 帐号ID
+     */
 	String accountID;
+    /**
+     * 密码
+     */
 	String password;
+    /**
+     * 帐号类型
+     */
 	AccountType type;
 	
 	public AccountVO(String accountID, String password, AccountType type) {

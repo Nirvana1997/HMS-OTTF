@@ -1,6 +1,5 @@
 package businesslogic.logbl;
 
-import businesslogicservice.logblservice.LogBlService;
 import data_stub.logdata.LogDataImpl_stub;
 import dataservice.logdataservice.LogDataService;
 import enumData.AccountType;
@@ -10,13 +9,13 @@ import vo.AccountVO;
 import java.rmi.RemoteException;
 
 /**
- * 登录逻辑实现
+ * 登录模块
  */
-public class LogBlServiceImpl implements LogBlService{
+public class Login {
 
 	LogDataService logDataService;
 
-	public LogBlServiceImpl() throws RemoteException {
+	public Login() throws RemoteException {
 //		logDataService = RemoteHelper.getInstance().getLogDataService();
 		logDataService = new LogDataImpl_stub();
 	}
@@ -51,18 +50,5 @@ public class LogBlServiceImpl implements LogBlService{
         }
 	}
 
-    /**
-     * 添加用户
-     * @param vo 用户信息
-     * @return
-     * @throws RemoteException
-     */
-	public ResultMessage addAccount(AccountVO vo)throws RemoteException {
-		if(logDataService.hasExisted(vo.getAccountID()).equals(ResultMessage.NotExist))
-		    //TODO
-            return ResultMessage.Correct;
-        return ResultMessage.HasExist;
-	}
-	
-	
+
 }

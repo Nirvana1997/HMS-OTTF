@@ -3,12 +3,10 @@ package vo;
 public class HotelsalerInfoVO {
 	String hotelID;
 	String hotelname;
-	String contactNumber;
-	
-	public HotelsalerInfoVO(String hotelID, String hotelname, String contactNumber) {
+
+	public HotelsalerInfoVO(String hotelID, String hotelname) {
 		this.hotelID = hotelID;
 		this.hotelname = hotelname;
-		this.contactNumber = contactNumber;
 	}
 	
 	public String getHotelID() {
@@ -22,11 +20,5 @@ public class HotelsalerInfoVO {
 	}
 	public void setHotelname(String hotelname) {
 		this.hotelname = hotelname;
-	}
-	public String getContactNumber() {
-		return contactNumber;
-	}
-	public void setContactNumber(String contactNumber) {
-		this.contactNumber = contactNumber;
 	}
 }

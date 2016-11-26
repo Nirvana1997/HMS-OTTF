@@ -12,6 +12,7 @@ public class HotelinfoPO {
 	TradeArea tradeArea;
 	Address address;
 	String detailAddress;
+	String contactNumber;
 	ArrayList<RoomType> roomTypes;
 	ArrayList<Integer> prices;
 	String introduction;
@@ -21,7 +22,7 @@ public class HotelinfoPO {
 	ArrayList<String> userIDs;
 	ArrayList<String> comments;
 	public HotelinfoPO(String hotelID, String hotelname, TradeArea tradeArea,
-                       Address address, String detailAddress,
+                       Address address, String detailAddress,String contactNumber,
                        ArrayList<RoomType> roomTypes, ArrayList<Integer> prices,
                        String introduction, String service, int star, int grade,
                        ArrayList<String> userIDs, ArrayList<String> comments) {
@@ -31,6 +32,7 @@ public class HotelinfoPO {
 		this.tradeArea = tradeArea;
 		this.address = address;
 		this.detailAddress = detailAddress;
+		this.contactNumber = contactNumber;
 		this.roomTypes = roomTypes;
 		this.prices = prices;
 		this.introduction = introduction;
@@ -117,6 +119,12 @@ public class HotelinfoPO {
 	}
 	public ArrayList<String> getComments() {
 		return comments;
+	}
+	public String getContactNumber() {
+		return contactNumber;
+	}
+	public void setContactNumber(String contactNumber) {
+		this.contactNumber = contactNumber;
 	}
 	public void setComments(ArrayList<String> comments) {
 		this.comments = comments;
