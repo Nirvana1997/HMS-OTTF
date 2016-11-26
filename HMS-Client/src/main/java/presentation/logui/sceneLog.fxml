@@ -34,7 +34,7 @@
                                 <Insets left="30.0" />
                             </HBox.margin>
                         </Label>
-                  <TextField minWidth="-Infinity" prefHeight="36.0" prefWidth="150.0" style="-fx-border-radius: 4;">
+                  <TextField fx:id="textUserID" minWidth="-Infinity" prefHeight="36.0" prefWidth="150.0" style="-fx-border-radius: 4;">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -57,7 +57,7 @@
                         <Insets left="30.0" top="5.0" />
                      </HBox.margin>
                   </Label>
-                  <PasswordField minWidth="-Infinity" prefHeight="36.0" prefWidth="150.0">
+                  <PasswordField fx:id="textPassword" minWidth="-Infinity" prefHeight="36.0" prefWidth="150.0">
                      <HBox.margin>
                         <Insets left="21.0" />
                      </HBox.margin>
@@ -80,7 +80,7 @@
                         <Insets left="60.0" top="30.0" />
                      </HBox.margin>
                   </Button>
-                  <Button mnemonicParsing="false" style="-fx-background-radius: 10;" text="登陆">
+                  <Button mnemonicParsing="false" onAction="#login" style="-fx-background-radius: 10;" text="登陆">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -137,11 +137,14 @@
                   <Insets left="-477.0" top="110.0" />
                </HBox.margin>
             </ImageView>
-            <Label fx:id="labelNextPic" onMouseClicked="#setNextPic" text="Label">
+            <ImageView fitHeight="50.0" fitWidth="86.0" onMouseClicked="#setNextPic" pickOnBounds="true" preserveRatio="true">
                <HBox.margin>
-                  <Insets left="30.0" top="250.0" />
+                  <Insets left="20.0" top="250.0" />
                </HBox.margin>
-            </Label>
+               <image>
+                  <Image url="@../../../../../graphics/ahead.png" />
+               </image>
+            </ImageView>
          </children>
       </HBox>
    </center>

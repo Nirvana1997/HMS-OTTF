@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="618.0" prefWidth="1000.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.websalerui.uiWebSalerController">
+   <children>
+      <VBox prefHeight="618.0" prefWidth="250.0" style="-fx-background-color: #FFFFFF;">
+         <children>
+            <HBox prefHeight="122.0" prefWidth="244.0">
+               <children>
+                  <ImageView fitHeight="77.0" fitWidth="73.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../graphics/websalerui/portrait.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="40.0" top="40.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Label text="黄小萱">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="30.0" top="60.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </HBox>
+            <ImageView fx:id="imageSale2" fitHeight="80.0" fitWidth="250.0" onMouseClicked="#chooseWorkSale" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../graphics/websalerui/label2.png" />
+               </image>
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </ImageView>
+            <ImageView fx:id="imageSale1" fitHeight="80.0" fitWidth="250.0" onMouseClicked="#chooseWorkSale" pickOnBounds="true" preserveRatio="true" visible="false">
+               <VBox.margin>
+                  <Insets top="-80.0" />
+               </VBox.margin>
+               <image>
+                  <Image url="@../../../../../graphics/websalerui/label1.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="imageOrder1" fitHeight="80.0" fitWidth="250.0" onMouseClicked="#chooseWorkOrder" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../graphics/websalerui/label3.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="imageOrder2" fitHeight="80.0" fitWidth="250.0" onMouseClicked="#chooseWorkOrder" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../../graphics/websalerui/label4.png" />
+               </image>
+               <VBox.margin>
+                  <Insets top="-80.0" />
+               </VBox.margin>
+            </ImageView>
+            <ImageView fx:id="imageCredit1" fitHeight="80.0" fitWidth="250.0" onMouseClicked="#chooseWorkCredit" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../graphics/websalerui/label5.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="imageCredit2" fitHeight="80.0" fitWidth="250.0" onMouseClicked="#chooseWorkCredit" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../../graphics/websalerui/label6.png" />
+               </image>
+               <VBox.margin>
+                  <Insets top="-80.0" />
+               </VBox.margin>
+            </ImageView>
+         </children>
+      </VBox>
+      <AnchorPane layoutX="250.0" prefHeight="618.0" prefWidth="750.0">
+         <children>
+            <AnchorPane prefHeight="241.0" prefWidth="750.0" style="-fx-background-color: #FFFFFF;">
+               <children>
+                  <ImageView fx:id="imageSale111" fitHeight="241.0" fitWidth="250.0" onMouseClicked="#work11" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../graphics/websalerui/double111.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="imageSale112" fitHeight="241.0" fitWidth="250.0" onMouseClicked="#work11" pickOnBounds="true" preserveRatio="true" visible="false">
+                     <image>
+                        <Image url="@../../../../../graphics/websalerui/double112.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="imageVIP1" fitHeight="241.0" fitWidth="255.0" layoutX="250.0" layoutY="-1.0" onMouseClicked="#workVIP" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../graphics/websalerui/vip1.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="imageVIP2" fitHeight="241.0" fitWidth="258.0" layoutX="250.0" layoutY="-1.0" onMouseClicked="#workVIP" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../graphics/websalerui/vip2.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="imageMember1" fitHeight="241.0" fitWidth="246.0" layoutX="505.0" onMouseClicked="#workMember" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../graphics/websalerui/member1.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="imageMember2" fitHeight="240.0" fitWidth="250.0" layoutX="505.0" onMouseClicked="#workMember" pickOnBounds="true" preserveRatio="true" visible="false">
+                     <image>
+                        <Image url="@../../../../../graphics/websalerui/member2.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="56.0" fitWidth="756.0" layoutX="-5.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../graphics/websalerui/curtain.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+            <AnchorPane layoutY="241.0" prefHeight="379.0" prefWidth="751.0">
+               <children>
+                  <ImageView fitHeight="503.0" fitWidth="751.0" layoutY="-2.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../graphics/websalerui/background.png" />
+                     </image>
+                  </ImageView>
+                  <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="349.0" prefWidth="720.0" />
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

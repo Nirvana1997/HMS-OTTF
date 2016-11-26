@@ -6,9 +6,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import presentation.hotelsalerui.SceneHotelSaler;
+import presentation.websalerui.SceneWebSaler;
 
 import java.io.IOException;
 
@@ -17,7 +20,7 @@ import java.io.IOException;
  */
 public class uiLogController {
 
-    int count = 0;
+    private int count = 0;
 
     @FXML
     private ImageView imgHotel01;
@@ -25,6 +28,10 @@ public class uiLogController {
     private ImageView imgHotel02;
     @FXML
     private ImageView imgHotel03;
+    @FXML
+    private TextField textUserID;
+    @FXML
+    private PasswordField textPassword;
 
     @FXML
     public void setNextPic(){
@@ -45,10 +52,17 @@ public class uiLogController {
             imgHotel03.setVisible(true);
         }
     }
-    public Button buttonRegister;
+
     public void gotoRegister1() throws IOException {
         ObservableList<Stage> stage = FXRobotHelper.getStages();
         Scene scene = new Scene((Parent) FXMLLoader.load(getClass().getResource("sceneRegister1.fxml")));
         stage.get(0).setScene(scene);
+    }
+
+    public void login() throws IOException {
+        String userID = textUserID.getText();
+        String password = textPassword.getText();
+        SceneWebSaler sceneWebSaler = new SceneWebSaler();
+        sceneWebSaler.initUI();
     }
 }
