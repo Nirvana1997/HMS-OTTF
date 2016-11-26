@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="618.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.logui.uiRegister1Controller">
+   <children>
+      <Label layoutX="304.0" layoutY="252.0" text="账号：">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="304.0" layoutY="300.0" text="密码：">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="268.0" layoutY="353.0" text="确认密码：">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextField fx:id="textUserID" layoutX="386.0" layoutY="246.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="textConfirm" layoutX="386.0" layoutY="347.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="textPassword" layoutX="386.0" layoutY="294.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </TextField>
+      <Button fx:id="buttonNext" layoutX="628.0" layoutY="451.0" mnemonicParsing="false" onAction="#goToRegister2" text="下一步">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="83.0" fitWidth="185.0" layoutX="393.0" layoutY="83.0">
+         <image>
+            <Image url="@../../../../../graphics/step1.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="buttonReturn" layoutX="528.0" layoutY="451.0" mnemonicParsing="false" onAction="#returnToLog" text="返回">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
