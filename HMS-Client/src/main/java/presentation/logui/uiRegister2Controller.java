@@ -19,16 +19,17 @@ public class uiRegister2Controller {
     public TextField textRealName;
     public TextField textIdentity;
     public TextField textPhoneNumber;
-    public CheckBox checkPersonal;
-    public CheckBox checkEnterprise;
+    public ToggleGroup UserType;
+    public RadioButton typePersonal;
+    public RadioButton typeEnterprise;
     public DatePicker dateBirthday;
     public ComboBox comboEnterprise;
     public void gotoRegister3() throws IOException {
         String RealName = textRealName.getText();
         String Identity = textIdentity.getText();
         String PhoneNumber = textPhoneNumber.getText();
-        boolean isPersonal = checkPersonal.isSelected();
-        boolean isEnterprise = checkEnterprise.isSelected();
+        boolean isPersonal = typePersonal.isSelected();
+        boolean isEnterprise = typeEnterprise.isSelected();
 //        Chronology Birthday = dateBirthday.getChronology();
 //        String Enterprise = comboEnterprise.getAccessibleText();
 
