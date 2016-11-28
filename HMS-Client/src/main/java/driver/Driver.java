@@ -18,8 +18,8 @@
 //import businesslogic.webmanagerbl.URmanagementBlImpl;
 //import businesslogic.webmanagerbl.WSmanagementBlImpl;
 //import businesslogic.websalerbl.WebsalerblImpl;
-//import businesslogicservice.hotelinfoblservice.HotelinfoblService;
-//import businesslogicservice.hotelroomblservice.HotelroomblService;
+//import businesslogicservice.hotelsalerblservice.HotelinfoblService;
+//import businesslogicservice.hotelsalerblservice.HotelroomblService;
 //import businesslogicservice.hotelsalerblservice.HotelsalerblService;
 //import businesslogicservice.logblservice.LogBlService;
 //import businesslogicservice.orderblservice.OrderBlService;
@@ -61,10 +61,10 @@
 //
 //	LogBlService log;
 //
-//	public void isCorrect(AccountVO vo){
+//	public void isCorrectAndLogin(AccountVO vo){
 //		log = new Login();
 //		System.out.println("----------修改酒店信息----------");
-//		System.out.println(log.isCorrect(vo));
+//		System.out.println(log.isCorrectAndLogin(vo));
 //	}
 //
 //	OrderBlService order;
@@ -137,7 +137,7 @@
 //		driver.getHotelinfo("0001");
 //		driver.setOrdered(new OrderVO("0001", null, null, null, null, null));
 //		driver.modifyHotelInfo(new HotelinfoVO("0001", "仙林大酒店", TradeArea.Xianlin, null, null, null, null, "VergGood", "GreatService", 5, 5, null, null));
-//		driver.isCorrect(new AccountVO("OTTF", "1234", AccountType.user));
+//		driver.isCorrectAndLogin(new AccountVO("OTTF", "1234", AccountType.user));
 //		driver.getOrderInfo("0001");
 //		driver.getPromotionList(promotionIds);
 //		driver.searchHotel(conditionVO);

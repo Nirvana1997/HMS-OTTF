@@ -14,7 +14,7 @@ public class URmanagementBlImpl implements URmanagementBlService{
 
 	public UserInfoVO getUserInfo(String userID) {
 		UserInfoPO po = userDataService.getUserInfo(userID);
-		UserInfoVO vo = new UserInfoVO(po.getUserID(),po.getName(),po.getIdentity(),po.getContactNumber(),po.getCredit(),po.getVipLevel());
+		UserInfoVO vo = new UserInfoVO(po.getUserID(),po.getName(),po.getIdentity(),po.getContactNumber(),po.getCredit(),po.getTransaction());
 		return vo;
 	}
 

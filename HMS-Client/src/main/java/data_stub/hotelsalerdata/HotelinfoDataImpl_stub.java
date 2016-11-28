@@ -1,13 +1,12 @@
-package data_stub.hotelinfodata;
+package data_stub.hotelsalerdata;
 
-import dataservice.hotelinfodataservice.HotelinfoDataService;
+import dataservice.hotelsalerdataservice.HotelinfoDataService;
 import enumData.Address;
 import enumData.ResultMessage;
 import enumData.TradeArea;
 import po.CommentPO;
 import po.ConditionPO;
 import po.HotelinfoPO;
-import vo.HotelinfoVO;
 
 import java.util.ArrayList;
 import java.util.Iterator;

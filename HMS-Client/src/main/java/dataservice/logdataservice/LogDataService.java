@@ -23,10 +23,11 @@ public interface LogDataService {
     /**
      * 设置对应帐号的密码
      * @param account 帐号
+	 * @param password 密码
      * @return
      * @throws RemoteException
      */
-	public ResultMessage setPassword(String account) throws RemoteException;
+	public ResultMessage setPassword(String account,String password) throws RemoteException;
 	
 	public ArrayList<AccountPO> getAccountList(AccountType accountType) throws RemoteException;
 	

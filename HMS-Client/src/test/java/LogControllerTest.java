@@ -31,7 +31,7 @@ public void after() throws Exception {
 
 /** 
 * 
-* Method: isCorrect(AccountVO vo) 
+* Method: isCorrectAndLogin(AccountVO vo)
 * 
 */ 
 @Test

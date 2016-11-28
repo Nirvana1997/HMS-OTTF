@@ -1,4 +1,4 @@
-package businesslogicservice.hotelinfoblservice;
+package businesslogicservice.hotelsalerblservice;
 
 
 import vo.HotelinfoVO;

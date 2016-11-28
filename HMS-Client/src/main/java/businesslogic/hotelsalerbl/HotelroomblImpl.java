@@ -1,6 +1,6 @@
-package businesslogic.hotelroombl;
+package businesslogic.hotelsalerbl;
 
-import businesslogicservice.hotelroomblservice.HotelroomblService;
+import businesslogicservice.hotelsalerblservice.HotelroomblService;
 import enumData.ResultMessage;
 import vo.OrderVO;
 

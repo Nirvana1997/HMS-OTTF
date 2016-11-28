@@ -1,4 +1,4 @@
-package dataservice.hotelinfodataservice;
+package dataservice.hotelsalerdataservice;
 
 
 import enumData.ResultMessage;

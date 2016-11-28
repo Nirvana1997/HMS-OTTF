@@ -43,14 +43,14 @@ public class LogDataImpl_stub extends UnicastRemoteObject implements LogDataServ
         return po.getPassword();
 	}
 
-    /**
+	/**
      * 设置对应帐号的密码
      * @param account 帐号
      * @return
      * @throws RemoteException
      */
 	@Override
-	public ResultMessage setPassword(String account) throws RemoteException{
+	public ResultMessage setPassword(String account,String password) throws RemoteException{
 		if(account.equals("001")){
 			return ResultMessage.Correct;
 		}else

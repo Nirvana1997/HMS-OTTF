@@ -1,5 +1,5 @@
-import businesslogic.hotelinfobl.HotelinfoblImpl;
-import businesslogicservice.hotelinfoblservice.HotelinfoblService;
+import businesslogic.hotelsalerbl.HotelinfoblImpl;
+import businesslogicservice.hotelsalerblservice.HotelinfoblService;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.Before; 

@@ -1,15 +1,13 @@
-import businesslogic.hotelroombl.HotelroomblImpl;
-import businesslogicservice.hotelroomblservice.HotelroomblService;
+import businesslogic.hotelsalerbl.HotelroomblImpl;
+import businesslogicservice.hotelsalerblservice.HotelroomblService;
 import enumData.OrderState;
 import enumData.ResultMessage;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.Before; 
 import org.junit.After;
-import po.HotelroomPO;
 import vo.OrderVO;
 
-import java.time.Instant;
 import java.util.Date;
 
 /** 
@@ -37,7 +35,7 @@ public void after() throws Exception {
 @Test
 public void testSetOrdered() throws Exception {
     HotelroomblService hotelroomblService  = new HotelroomblImpl();
-    OrderVO orderVO = new OrderVO("0001", OrderState.canceled,"01","01", Date.from(Instant.now()),"11");
+    OrderVO orderVO = new OrderVO("0001", OrderState.canceled,"01","01", new Date(2016,11,11),"11");
     Assert.assertEquals(ResultMessage.Correct,hotelroomblService.setOrdered(orderVO));
 }
 
@@ -49,7 +47,7 @@ public void testSetOrdered() throws Exception {
 @Test
 public void testSetEmpty() throws Exception {
     HotelroomblService hotelroomblService  = new HotelroomblImpl();
-    OrderVO orderVO = new OrderVO("0001", OrderState.canceled,"01","01", Date.from(Instant.now()),"11");
+    OrderVO orderVO = new OrderVO("0001", OrderState.canceled,"01","01", new Date(2016,11,11),"11");
     Assert.assertEquals(ResultMessage.Correct,hotelroomblService.setOrdered(orderVO));
 }
 

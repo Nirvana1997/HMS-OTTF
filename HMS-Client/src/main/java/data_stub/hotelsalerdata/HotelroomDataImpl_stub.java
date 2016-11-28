@@ -1,6 +1,6 @@
-package data_stub.hotelroomdata;
+package data_stub.hotelsalerdata;
 
-import dataservice.hotelroomdataservice.HotelroomDataService;
+import dataservice.hotelsalerdataservice.HotelroomDataService;
 import enumData.ResultMessage;
 import po.HotelroomPO;
 import po.OrderPO;

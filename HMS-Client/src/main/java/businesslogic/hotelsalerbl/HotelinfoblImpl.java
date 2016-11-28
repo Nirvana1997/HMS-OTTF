@@ -1,10 +1,10 @@
-package businesslogic.hotelinfobl;
+package businesslogic.hotelsalerbl;
 
-import businesslogicservice.hotelinfoblservice.HotelinfoblService;
-import dataservice.hotelinfodataservice.HotelinfoDataService;
+import businesslogicservice.hotelsalerblservice.HotelinfoblService;
+import dataservice.hotelsalerdataservice.HotelinfoDataService;
 import po.HotelinfoPO;
 import vo.HotelinfoVO;
-import data_stub.hotelinfodata.HotelinfoDataImpl_stub;
+import data_stub.hotelsalerdata.HotelinfoDataImpl_stub;
 
 public class HotelinfoblImpl implements HotelinfoblService {
     HotelinfoDataService hotelinfoDataService;

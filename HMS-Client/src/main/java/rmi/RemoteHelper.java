@@ -1,9 +1,7 @@
 package rmi;
 
-import businesslogic.orderbl.OrderBlImpl;
-import data_stub.orderdata.OrderDataImpl_stub;
-import dataservice.hotelinfodataservice.HotelinfoDataService;
-import dataservice.hotelroomdataservice.HotelroomDataService;
+import dataservice.hotelsalerdataservice.HotelinfoDataService;
+import dataservice.hotelsalerdataservice.HotelroomDataService;
 import dataservice.hotelsalerdataservice.HotelsalerDataService;
 import dataservice.logdataservice.LogDataService;
 import dataservice.orderdataservice.OrderDataService;
@@ -14,7 +12,6 @@ import dataservice.websalerdataservice.WebsalerDataService;
 import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
-import java.rmi.Remote;
 import java.rmi.RemoteException;
 
 /**

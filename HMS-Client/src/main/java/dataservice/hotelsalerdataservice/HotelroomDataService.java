@@ -1,4 +1,4 @@
-package dataservice.hotelroomdataservice;
+package dataservice.hotelsalerdataservice;
 
 import enumData.ResultMessage;
 import po.HotelroomPO;

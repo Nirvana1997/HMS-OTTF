@@ -1,17 +1,15 @@
 package businesslogic.logbl;
 
-import data_stub.hotelinfodata.HotelinfoDataImpl_stub;
+import data_stub.hotelsalerdata.HotelinfoDataImpl_stub;
 import data_stub.logdata.LogDataImpl_stub;
 import data_stub.userdata.UserDataImpl_stub;
 import data_stub.websalerdata.WebsalerDataImpl_stub;
-import dataservice.hotelinfodataservice.HotelinfoDataService;
+import dataservice.hotelsalerdataservice.HotelinfoDataService;
 import dataservice.logdataservice.LogDataService;
 import dataservice.userdataservice.UserDataService;
 import dataservice.websalerdataservice.WebsalerDataService;
-import enumData.AccountType;
 import enumData.ResultMessage;
 import po.AccountPO;
-import po.HotelinfoPO;
 import po.UserInfoPO;
 import vo.*;
 
@@ -76,7 +74,7 @@ public class Register {
      * @throws RemoteException
      */
     public void addUserInfo(UserInfoVO vo) throws RemoteException {
-        UserInfoPO po = new UserInfoPO(vo.getUserID(),vo.getName(),vo.getIdentity(),vo.getContactNumber(),vo.getCredit(),vo.getVipLevel());
+        UserInfoPO po = new UserInfoPO(vo.getUserID(),vo.getName(),vo.getIdentity(),vo.getContactNumber(),vo.getCredit(),vo.getTransaction());
         userDataService.addUserInfo(po);
     }
 }

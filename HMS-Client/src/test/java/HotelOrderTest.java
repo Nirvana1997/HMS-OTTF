@@ -1,5 +1,5 @@
-import businesslogic.userbl.HotelOrderBlImpl;
-import businesslogicservice.hotelroomblservice.HotelroomblService;
+import businesslogic.userbl.HotelOrder;
+import businesslogic.userbl.UserController;
 import businesslogicservice.userblservice.HotelOrderBlService;
 import enumData.*;
 import org.junit.Assert;
@@ -9,20 +9,21 @@ import org.junit.After;
 import vo.ConditionVO;
 import vo.OrderVO;
 
-import java.time.Instant;
 import java.util.Date;
 
 /** 
-* HotelOrderBlImpl Tester. 
+* HotelOrder Tester.
 * 
 * @author <Authors name> 
 * @since <pre>十一月 12, 2016</pre> 
 * @version 1.0 
 */ 
-public class HotelOrderBlImplTest { 
+public class HotelOrderTest {
+    HotelOrderBlService hotelOrderBlService;
 
 @Before
-public void before() throws Exception { 
+public void before() throws Exception {
+    hotelOrderBlService = new UserController();
 } 
 
 @After
@@ -36,8 +37,8 @@ public void after() throws Exception {
 */ 
 @Test
 public void testSearchHotel() throws Exception {
-    HotelOrderBlService hotelOrderBlService = new HotelOrderBlImpl();
-    ConditionVO conditionVO = new ConditionVO("001",Address.DieDie, TradeArea.Xianlin, SortWay.CommentAscending, RoomType.big
+    HotelOrderBlService hotelOrderBlService = new UserController();
+    ConditionVO conditionVO = new ConditionVO("","001",Address.DieDie, TradeArea.Xianlin, SortWay.CommentAscending, RoomType.big
             ,200,300,false,new Date(2016,11,11),true,3,3);
     Assert.assertEquals("0001",hotelOrderBlService.searchHotel(Address.DieDie,conditionVO).get(0).getHotelID());
 } 
@@ -49,8 +50,7 @@ public void testSearchHotel() throws Exception {
 */ 
 @Test
 public void testReadHotel() throws Exception {
-    HotelOrderBlService hotelOrderBlService = new HotelOrderBlImpl();
-    ConditionVO conditionVO = new ConditionVO("001",Address.DieDie, TradeArea.Xianlin, SortWay.CommentAscending, RoomType.big
+    ConditionVO conditionVO = new ConditionVO("","001",Address.DieDie, TradeArea.Xianlin, SortWay.CommentAscending, RoomType.big
             ,200,300,false,new Date(2016,11,11),true,3,3);
     Assert.assertEquals("仙林大酒店",hotelOrderBlService.readHotel(Address.DieDie,conditionVO).get(0).getHotelname());
 } 
@@ -62,7 +62,6 @@ public void testReadHotel() throws Exception {
 */ 
 @Test
 public void testOrderHotel() throws Exception {
-    HotelOrderBlService hotelOrderBlService = new HotelOrderBlImpl();
     OrderVO orderVO = new OrderVO("1", OrderState.executing,"0001","01",new Date(2016,11,11),"01");
     Assert.assertEquals(true,hotelOrderBlService.orderHotel(orderVO,"01"));
 } 
@@ -74,7 +73,6 @@ public void testOrderHotel() throws Exception {
 */ 
 @Test
 public void testReadOrder() throws Exception {
-    HotelOrderBlService hotelOrderBlService = new HotelOrderBlImpl();
     Assert.assertEquals("123",hotelOrderBlService.readOrder("01").get(0).getHotelID());
 } 
 
@@ -85,7 +83,6 @@ public void testReadOrder() throws Exception {
 */ 
 @Test
 public void testCancelOrder() throws Exception {
-    HotelOrderBlService hotelOrderBlService = new HotelOrderBlImpl();
     Assert.assertEquals(ResultMessage.Correct,hotelOrderBlService.cancelOrder(null));
 } 
 

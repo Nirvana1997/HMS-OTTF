@@ -11,16 +11,25 @@ import java.util.ArrayList;
 import java.util.Date;
 
 /**
- * 用户:预订酒店类
+ * 酒店预定模块
+ * 负责搜索酒店、预定酒店、浏览订单和评价
  * @author xzh
  */
-public class HotelOrderBlImpl implements HotelOrderBlService{
-	
-	String orderID;
+public class HotelOrder{
+	/**
+	 * 酒店列表
+	 */
+	HotelList hotelList;
+
+    public HotelOrder() {
+        hotelList = new HotelList();
+    }
+
+    String orderID;
 	OrderState orderState;
 	String hotelID;
 	String user;
-	//TODO 时间
+	Date time;
 	String roomID;
 	ArrayList<HotelinfoVO> hotelInfoList = new ArrayList<HotelinfoVO>();
 	ArrayList<OrderVO> orderList = new ArrayList<OrderVO>();
