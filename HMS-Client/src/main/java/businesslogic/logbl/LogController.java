@@ -37,7 +37,7 @@ public class LogController implements LogBlService{
      * @throws RemoteException
      */
     @Override
-    public ResultMessage isCorrect(AccountVO vo) throws RemoteException {
+    public ResultMessage isCorrectAndLogin(AccountVO vo) throws RemoteException {
         return login.isCorrectAndLogin(vo);
     }
 
@@ -70,7 +70,7 @@ public class LogController implements LogBlService{
      */
     @Override
     public void addUserInfo(UserInfoVO vo) throws RemoteException {
-
+        register.addUserInfo(vo);
     }
 
     /**
