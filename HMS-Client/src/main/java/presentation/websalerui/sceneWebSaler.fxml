@@ -255,7 +255,7 @@
                         </ImageView>
                         <AnchorPane fx:id="memberPane1" layoutX="107.0" layoutY="33.0" prefHeight="262.0" prefWidth="506.0">
                            <children>
-                              <TextField cacheShape="false" centerShape="false" editable="false" focusTraversable="false" layoutX="28.0" layoutY="34.0" prefHeight="54.0" prefWidth="264.0" scaleShape="false" style="-fx-background-color: transparent;" text="会员等级与折扣活动一">
+                              <TextField cacheShape="false" centerShape="false" editable="false" focusTraversable="false" layoutX="28.0" layoutY="34.0" prefHeight="54.0" prefWidth="282.0" scaleShape="false" style="-fx-background-color: transparent;" text="会员等级与折扣活动一">
                                  <font>
                                     <Font size="24.0" />
                                  </font>
@@ -272,7 +272,7 @@
                         </AnchorPane>
                         <AnchorPane fx:id="memberPane2" layoutX="104.0" layoutY="36.0" prefHeight="253.0" prefWidth="506.0" visible="false">
                            <children>
-                              <TextField cacheShape="false" centerShape="false" editable="false" focusTraversable="false" layoutX="31.0" layoutY="31.0" prefHeight="54.0" prefWidth="264.0" scaleShape="false" style="-fx-background-color: transparent;" text="会员等级与折扣活动二">
+                              <TextField cacheShape="false" centerShape="false" editable="false" focusTraversable="false" layoutX="31.0" layoutY="31.0" prefHeight="54.0" prefWidth="295.0" scaleShape="false" style="-fx-background-color: transparent;" text="会员等级与折扣活动二">
                                  <font>
                                     <Font size="24.0" />
                                  </font>
