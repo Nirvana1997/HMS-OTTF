@@ -111,6 +111,7 @@ public class uiWebSalerController {
 
         doubleOnePane1.setVisible(true);
         doubleOnePane2.setVisible(false);
+
         imageSale111.setVisible(false);
         imageSale112.setVisible(true);
         imageVIP1.setVisible(true);
@@ -128,6 +129,9 @@ public class uiWebSalerController {
         paneVIP.setVisible(true);
         paneMember.setVisible(false);
 
+        VIPPane1.setVisible(true);
+        VIPPane2.setVisible(false);
+
         imageSale111.setVisible(true);
         imageSale112.setVisible(false);
         imageVIP1.setVisible(false);
@@ -144,6 +148,9 @@ public class uiWebSalerController {
         paneDoubleOne.setVisible(false);
         paneVIP.setVisible(false);
         paneMember.setVisible(true);
+
+        memberPane1.setVisible(true);
+        memberPane2.setVisible(false);
 
         imageSale111.setVisible(true);
         imageSale112.setVisible(false);
