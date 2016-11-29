@@ -44,11 +44,11 @@ public class uiRegister1Controller {
     public TextField textUserID;
     public TextField textPassword;
     public TextField textConfirm;
-
+    String UserID = textUserID.getText();
+    String Password = textPassword.getText();
+    String Confirm = textConfirm.getText();
     public void goToRegister2() throws IOException {
-        String UserID = textUserID.getText();
-        String Password = textPassword.getText();
-        String Confirm = textConfirm.getText();
+
         LogBlService logBlService = new LogController();
         PasswordComfirmVO passwordComfirmVO = new PasswordComfirmVO(UserID,Password,Confirm);
         //如果可以注册，跳转到注册界面2，并注册一个vo账户
