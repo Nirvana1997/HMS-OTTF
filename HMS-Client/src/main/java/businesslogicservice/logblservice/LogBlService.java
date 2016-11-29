@@ -18,7 +18,7 @@ public interface LogBlService {
 	 * @return
 	 * @throws RemoteException
 	 */
-	public ResultMessage isCorrect(AccountVO vo) throws RemoteException;
+	public ResultMessage isCorrectAndLogin(AccountVO vo) throws RemoteException;
 
 	/**
 	 * 返回用户类型

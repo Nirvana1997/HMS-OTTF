@@ -38,8 +38,8 @@ public void after() throws Exception {
 public void testIsCorrect() throws Exception {
     AccountVO vo1 = new AccountVO("151250119","150809", AccountType.hotelsaler);
     AccountVO vo2 = new AccountVO("151250175","150809", AccountType.user);
-    Assert.assertEquals(ResultMessage.Correct,logBlService.isCorrect(vo1));
-    Assert.assertEquals(ResultMessage.InCorrect,logBlService.isCorrect(vo2));
+    Assert.assertEquals(ResultMessage.Correct,logBlService.isCorrectAndLogin(vo1));
+    Assert.assertEquals(ResultMessage.InCorrect,logBlService.isCorrectAndLogin(vo2));
 } 
 
 /** 
