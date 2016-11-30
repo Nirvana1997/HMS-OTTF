@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.effect.ImageInput?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="618.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.webmanagerui.uiWebManagerController">
+   <children>
+      <ImageView fitHeight="618.0" fitWidth="1000.0">
+         <image>
+            <Image url="@../../../../../graphics/webmanagerui/管理员首页.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="buttonManageUser" layoutX="121.0" layoutY="300.0" mnemonicParsing="false" onAction="#gotoManageUser" text="啦啦啦啦啦啦啦">
+         <effect>
+            <ImageInput>
+               <source>
+                  <Image url="file:/D:/HMS-OTTF的副本/HMS-OTTF的副本/HMS-Client/graphics/webmanagerui/用户管理.png" />
+               </source>
+            </ImageInput>
+         </effect>
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Button fx:id="buttonManageHS" layoutX="121.0" layoutY="353.0" mnemonicParsing="false" onAction="#gotoManageHS" text="啦啦啦啦啦啦啦">
+         <effect>
+            <ImageInput>
+               <source>
+                  <Image url="file:/D:/HMS-OTTF的副本/HMS-OTTF的副本/HMS-Client/graphics/webmanagerui/酒店管理.png" />
+               </source>
+            </ImageInput>
+         </effect>
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <Button fx:id="buttonManageWS" layoutX="121.0" layoutY="407.0" mnemonicParsing="false" onAction="#gotoManageWS" text="啦啦啦啦啦啦啦">
+         <effect>
+            <ImageInput>
+               <source>
+                  <Image url="file:/D:/HMS-OTTF的副本/HMS-OTTF的副本/HMS-Client/graphics/webmanagerui/网站管理.png" />
+               </source>
+            </ImageInput>
+         </effect>
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
