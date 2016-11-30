@@ -54,7 +54,7 @@ public class Register {
     public ResultMessage isValid(PasswordComfirmVO vo) throws RemoteException {
         if(!vo.getPassword().equals(vo.getConfirm()))
             return ResultMessage.NotSame;
-        else if(logDataService.hasExisted(vo.getAcccountID()).equals(ResultMessage.HasExist))
+        else if(logDataService.hasExisted(vo.getAcccountID()))
             return ResultMessage.HasExist;
         return ResultMessage.Correct;
     }

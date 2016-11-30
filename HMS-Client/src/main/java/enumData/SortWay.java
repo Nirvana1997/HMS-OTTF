@@ -20,9 +20,9 @@ public enum SortWay {
     /**
      * 按好评升序排列
      */
-    CommentAscending,
+    GradeAscending,
     /**
      * 按好评降序排列
      */
-    CommentDescending,
+    GradeDescending,
 }
