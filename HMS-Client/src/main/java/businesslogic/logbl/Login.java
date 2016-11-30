@@ -35,7 +35,7 @@ public class Login {
      */
 	public ResultMessage isCorrectAndLogin(AccountVO vo)throws RemoteException {
 		String password = logDataService.getPassword(vo.getAccountID());
-		if(vo.getPassword() == password){
+		if(vo.getPassword().equals(password)){
 		    nowUser = new AccountPO(vo.getAccountID(),vo.getPassword(),vo.getType());
 		    return ResultMessage.Correct;
         }

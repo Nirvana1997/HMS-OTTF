@@ -28,19 +28,27 @@ public class uiRegister2Controller {
     public RadioButton typeEnterprise;
     public DatePicker dateBirthday;
     public ComboBox comboEnterprise;
+
+    /**
+     * 将账号信息存储，并跳转到登录界面3
+     * @throws IOException
+     */
     public void gotoRegister3() throws IOException {
         String RealName = textRealName.getText();
         String Identity = textIdentity.getText();
         String PhoneNumber = textPhoneNumber.getText();
         boolean isPersonal = typePersonal.isSelected();
         boolean isEnterprise = typeEnterprise.isSelected();
-        uiRegister1Controller uiregister1Controller = new uiRegister1Controller();
+//        uiRegister1Controller uiregister1Controller = new uiRegister1Controller();
 //        Chronology Birthday = dateBirthday.getChronology();
 //        String Enterprise = comboEnterprise.getAccessibleText();
         LogBlService logBlService = new LogController();
-        UserInfoVO userInfoVO = new UserInfoVO(uiregister1Controller.UserID, RealName, Identity, PhoneNumber,0,0);
+        UserInfoVO userInfoVO = new UserInfoVO(uiRegister1Controller.getUserID(), RealName, Identity, PhoneNumber,0,0);
         logBlService.addUserInfo(userInfoVO);
-        System.out.print(Identity);
+
+        //控制台输出当前存入的Userid
+        System.out.print(uiRegister1Controller.getUserID());
+
         ObservableList<Stage> stage = FXRobotHelper.getStages();
         Scene scene = new Scene((Parent) FXMLLoader.load(getClass().getResource("sceneRegister3.fxml")));
         stage.get(0).setScene(scene);
