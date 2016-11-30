@@ -11,6 +11,7 @@ import dataservice.websalerdataservice.WebsalerDataService;
 import enumData.ResultMessage;
 import po.AccountPO;
 import po.UserInfoPO;
+import rmi.RemoteHelper;
 import vo.*;
 
 import java.rmi.RemoteException;
@@ -29,10 +30,11 @@ public class Register {
 
     public Register() throws RemoteException {
         //TODO
-        this.logDataService = new LogDataImpl_stub();
+//        this.logDataService = new LogDataImpl_stub();
         this.userDataService = new UserDataImpl_stub();
-        this.hotelinfoDataService = new HotelinfoDataImpl_stub();
-        this.websalerDataService = new WebsalerDataImpl_stub();
+//        this.hotelinfoDataService = new HotelinfoDataImpl_stub();
+//        this.websalerDataService = new WebsalerDataImpl_stub();
+        this.logDataService = RemoteHelper.getInstance().getLogDataService();
     }
 
     /**
