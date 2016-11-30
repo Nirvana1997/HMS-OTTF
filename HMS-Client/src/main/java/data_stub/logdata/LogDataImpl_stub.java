@@ -93,11 +93,11 @@ public class LogDataImpl_stub extends UnicastRemoteObject implements LogDataServ
 	 * @return
 	 */
 	@Override
-	public ResultMessage hasExisted(String account) throws RemoteException {
+	public boolean hasExisted(String account) throws RemoteException {
 		if(accountMap.get(account)==null)
-			return ResultMessage.NotExist;
+			return false;
 		else
-			return ResultMessage.HasExist;
+			return true;
 	}
 
 }

@@ -2,7 +2,9 @@ package po;
 
 import enumData.AccountType;
 
-public class AccountPO {
+import java.io.Serializable;
+
+public class AccountPO implements Serializable {
 	String accountID;
 	String password;
 	AccountType type;

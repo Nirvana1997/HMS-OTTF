@@ -1,5 +1,28 @@
 package enumData;
 
 public enum SortWay {
-	name, star, price, grade
+	/**
+	 * 按价格升序排列
+	 */
+	PriceAscending,
+	/**
+	 * 按价格降序排列
+	 */
+	PriceDescending,
+	/**
+	 * 按星级升序排列
+	 */
+	StarAscending,
+	/**
+	 * 按星级降序排列
+	 */
+	StarDescending,
+	/**
+	 * 按好评升序排列
+	 */
+	GradeAscending,
+	/**
+	 * 按好评降序排列
+	 */
+	GradeDescending,
 }
