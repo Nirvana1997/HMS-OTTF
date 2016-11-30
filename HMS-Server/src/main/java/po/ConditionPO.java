@@ -20,10 +20,11 @@ public class ConditionPO {
 	boolean hasEmptyRoom;
 	int star;
 	int grade;
+	String keyWord;
 	public ConditionPO(String userID, Address address, TradeArea tradeArea,
 			SortWay sortWay, RoomType roomType, int minPrice, int maxPrice,
 			boolean hasOrdered, Date date, boolean hasEmptyRoom, int star,
-			int grade) {
+			int grade,String keyWord) {
 		super();
 		this.userID = userID;
 		this.address = address;
@@ -37,6 +38,7 @@ public class ConditionPO {
 		this.hasEmptyRoom = hasEmptyRoom;
 		this.star = star;
 		this.grade = grade;
+		this.keyWord = keyWord;
 	}
 	public String getUserID() {
 		return userID;
@@ -110,5 +112,12 @@ public class ConditionPO {
 	public void setGrade(int grade) {
 		this.grade = grade;
 	}
-	
+
+	public String getKeyWord() {
+		return keyWord;
+	}
+
+	public void setKeyWord(String keyWord) {
+		this.keyWord = keyWord;
+	}
 }
