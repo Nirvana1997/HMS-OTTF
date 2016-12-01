@@ -3,7 +3,7 @@
 //import java.util.ArrayList;
 //
 //import vo.AccountVO;
-//import vo.ConditionVO;
+//import vo.LimitVO;
 //import vo.HotelinfoVO;
 //import vo.OrderVO;
 //import vo.PromotionVO;
@@ -87,10 +87,10 @@
 //
 //	HotelOrderBlService hotelOrder;
 //
-//	public void searchHotel(ConditionVO vo){
+//	public void searchHotelInArea(LimitVO vo){
 //		hotelOrder = new HotelOrderBl_stub();
 //		System.out.println("----------搜索酒店----------");
-//		System.out.println(((HotelinfoVO) hotelOrder.searchHotel(vo).get(0)).getHotelname());
+//		System.out.println(((HotelinfoVO) hotelOrder.searchHotelInArea(vo).get(0)).getHotelname());
 //	}
 //
 //	HSmanagementBlService hsmanagement;
@@ -129,7 +129,7 @@
 //	public static void main(String[] args) {
 //		Driver driver = new Driver();
 //		ArrayList<String> promotionIds = new ArrayList<String>();
-//		ConditionVO conditionVO = new ConditionVO("0001", null, null, null, null, 0, 0, false, null, false, 0, 0);
+//		LimitVO conditionVO = new LimitVO("0001", null, null, null, null, 0, 0, false, null, false, 0, 0);
 //		PromotionVO promotionVO = new PromotionVO("0002", null, null, null, null, null, 0);
 //		promotionIds.add("0001");
 //		promotionIds.add("0001");
@@ -140,7 +140,7 @@
 //		driver.isCorrectAndLogin(new AccountVO("OTTF", "1234", AccountType.user));
 //		driver.getOrderInfo("0001");
 //		driver.getPromotionList(promotionIds);
-//		driver.searchHotel(conditionVO);
+//		driver.searchHotelInArea(conditionVO);
 //		driver.getHotelsalerInfo("0001");
 //		driver.getUserInfo("0001");
 //		driver.makeFestivalPromotion(promotionVO);

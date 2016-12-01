@@ -31,18 +31,18 @@ public class LogController implements LogBlService{
     }
 
     /**
-     * 密码是否正确
+     * 密码是否正确,若正确则登录
      * @param vo 帐号信息
      * @return
      * @throws RemoteException
      */
     @Override
-    public ResultMessage isCorrect(AccountVO vo) throws RemoteException {
+    public ResultMessage isCorrectAndLogin(AccountVO vo) throws RemoteException {
         return login.isCorrectAndLogin(vo);
     }
 
     /**
-     * 返回用户类型
+     * 返回用户类型，若不存在，则返回null
      * @param account
      * @return
      * @throws RemoteException
@@ -70,7 +70,7 @@ public class LogController implements LogBlService{
      */
     @Override
     public void addUserInfo(UserInfoVO vo) throws RemoteException {
-
+        register.addUserInfo(vo);
     }
 
     /**

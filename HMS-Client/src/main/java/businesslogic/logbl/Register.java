@@ -36,7 +36,7 @@ public class Register {
     }
 
     /**
-     * 注册帐号 TODO 改文档
+     * 注册帐号
      * @param vo 用户信息
      * @return
      * @throws RemoteException
