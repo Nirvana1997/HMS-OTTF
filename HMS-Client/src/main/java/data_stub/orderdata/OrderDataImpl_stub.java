@@ -3,6 +3,7 @@ package data_stub.orderdata;
 import dataservice.orderdataservice.OrderDataService;
 import enumData.OrderState;
 import enumData.ResultMessage;
+import enumData.RoomType;
 import po.OrderPO;
 
 import java.util.ArrayList;
@@ -12,11 +13,11 @@ import java.util.Iterator;
 public class OrderDataImpl_stub implements OrderDataService {
     ArrayList<OrderPO> orderList = new ArrayList<OrderPO>();
     Date date1 = new Date(2016, 7, 18);
-    OrderPO order1 = new OrderPO("0001", OrderState.executing, "0001", "0001", date1, "007");
+    OrderPO order1 = new OrderPO("0001", OrderState.executing, "0001", "0001", date1, RoomType.DoubleRoom,"001");
     Date date2 = new Date(2016, 11, 12);
-    OrderPO order2 = new OrderPO("0002", OrderState.executed, "0002", "0001", date2, "008");
+    OrderPO order2 = new OrderPO("0002", OrderState.executed, "0002", "0001", date2, RoomType.SingleRoom,"002");
     Date date3 = new Date(2016, 11, 14);
-    OrderPO order3 = new OrderPO("0003", OrderState.canceled, "0003", "0001", date3, "009");
+    OrderPO order3 = new OrderPO("0003", OrderState.canceled, "0003", "0001", date3, RoomType.StandardRoom,"003");
 
     public OrderDataImpl_stub() {
         orderList.add(order1);

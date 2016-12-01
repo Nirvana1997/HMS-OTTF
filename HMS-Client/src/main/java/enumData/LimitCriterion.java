@@ -6,5 +6,5 @@ package enumData;
  * Created by user on 2016/12/1.
  */
 public enum LimitCriterion {
-    PriceCriterion,GradeCriterion,KeywordCriterion,StarCriterion
+    RoomCriterion,GradeCriterion,KeywordCriterion,StarCriterion
 }

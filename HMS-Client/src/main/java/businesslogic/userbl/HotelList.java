@@ -1,6 +1,6 @@
 package businesslogic.userbl;
 
-import businesslogic.hotelsalerbl.HotelInfoImpl;
+import businesslogic.hotelsalerbl.HotelDataImpl;
 import businesslogic.userbl.criteria.Criterion;
 import enumData.Address;
 import enumData.SortWay;
@@ -13,7 +13,6 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
-import java.util.IllegalFormatCodePointException;
 
 /**
  * 酒店列表
@@ -28,7 +27,7 @@ public class HotelList {
     HotelInfo hotelInfo;
 
     public HotelList() throws RemoteException{
-        hotelInfo = new HotelInfoImpl();
+        hotelInfo = new HotelDataImpl();
     }
 
     /**

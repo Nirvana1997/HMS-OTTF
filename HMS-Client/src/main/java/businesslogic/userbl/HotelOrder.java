@@ -1,14 +1,11 @@
 package businesslogic.userbl;
 
-import businesslogic.hotelsalerbl.HotelInfoImpl;
-import businesslogicservice.userblservice.HotelOrderBlService;
+import businesslogic.hotelsalerbl.HotelDataImpl;
 import enumData.*;
 import vo.*;
 
-import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
-import java.util.Date;
 
 /**
  * 酒店预定模块
@@ -22,7 +19,7 @@ public class HotelOrder{
 	HotelInfo hotelInfo;
 
     public HotelOrder() throws RemoteException{
-        hotelInfo = new HotelInfoImpl();
+        hotelInfo = new HotelDataImpl();
     }
 
 	/**

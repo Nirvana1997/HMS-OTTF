@@ -1,10 +1,10 @@
 package po;
 
+import java.util.ArrayList;
+
 import enumData.Address;
 import enumData.RoomType;
 import enumData.TradeArea;
-
-import java.util.ArrayList;
 
 public class HotelinfoPO {
 	String hotelID;
@@ -12,23 +12,27 @@ public class HotelinfoPO {
 	TradeArea tradeArea;
 	Address address;
 	String detailAddress;
-	String contactNumber;
 	String introduction;
 	String service;
+	String contactNumber;
 	int star;
 	double grade;
+	double minPrice;
 
-	public HotelinfoPO(String hotelID, String hotelname, TradeArea tradeArea, Address address, String detailAddress, String contactNumber, String introduction, String service, int star, double grade) {
+	public HotelinfoPO(String hotelID, String hotelname, TradeArea tradeArea,
+					   Address address, String detailAddress, String introduction, String service,
+					   String contactNumber, int star, double grade,double minPrice) {
 		this.hotelID = hotelID;
 		this.hotelname = hotelname;
 		this.tradeArea = tradeArea;
 		this.address = address;
 		this.detailAddress = detailAddress;
-		this.contactNumber = contactNumber;
 		this.introduction = introduction;
 		this.service = service;
+		this.contactNumber = contactNumber;
 		this.star = star;
 		this.grade = grade;
+		this.minPrice = minPrice;
 	}
 
 	public String getHotelID() {
@@ -71,14 +75,6 @@ public class HotelinfoPO {
 		this.detailAddress = detailAddress;
 	}
 
-	public String getContactNumber() {
-		return contactNumber;
-	}
-
-	public void setContactNumber(String contactNumber) {
-		this.contactNumber = contactNumber;
-	}
-
 	public String getIntroduction() {
 		return introduction;
 	}
@@ -95,6 +91,14 @@ public class HotelinfoPO {
 		this.service = service;
 	}
 
+	public String getContactNumber() {
+		return contactNumber;
+	}
+
+	public void setContactNumber(String contactNumber) {
+		this.contactNumber = contactNumber;
+	}
+
 	public int getStar() {
 		return star;
 	}
@@ -107,7 +111,15 @@ public class HotelinfoPO {
 		return grade;
 	}
 
-	public void setGrade(int grade) {
+	public void setGrade(double grade) {
 		this.grade = grade;
+	}
+
+	public double getMinPrice() {
+		return minPrice;
+	}
+
+	public void setMinPrice(double minPrice) {
+		this.minPrice = minPrice;
 	}
 }

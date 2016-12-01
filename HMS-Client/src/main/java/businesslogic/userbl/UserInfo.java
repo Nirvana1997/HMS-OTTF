@@ -3,11 +3,14 @@ package businesslogic.userbl;
 
 
 import businesslogicservice.userblservice.InfoBlService;
+import com.sun.jmx.remote.internal.RMIExporter;
 import data_stub.userdata.UserDataImpl_stub;
 import dataservice.userdataservice.UserDataService;
 import enumData.ResultMessage;
 import po.UserInfoPO;
 import vo.UserInfoVO;
+
+import java.rmi.RemoteException;
 
 /**
  * 用户信息操作模块
@@ -26,7 +29,7 @@ public  class UserInfo{
 	 * @param vo
 	 * @return
      */
-	public ResultMessage modifyUserInfo(UserInfoVO vo) {
+	public ResultMessage modifyUserInfo(UserInfoVO vo) throws RemoteException{
 		UserInfoPO userInfoPO = new UserInfoPO(vo.getUserID(),vo.getName(),vo.getIdentity(),vo.getContactNumber(),vo.getCredit(),vo.getTransaction());
 		userDataService.setUserInfo(userInfoPO);
 		return ResultMessage.Correct;
@@ -37,7 +40,7 @@ public  class UserInfo{
 	 * @param userID
 	 * @return
 	 */
-	public UserInfoVO showUserInfo(String userID){
+	public UserInfoVO showUserInfo(String userID)throws RemoteException{
 		UserInfoPO po = userDataService.getUserInfo(userID);
 		return new UserInfoVO(po.getUserID(),po.getName(),po.getIdentity(),po.getContactNumber(),po.getCredit(),po.getTransaction());
 	}

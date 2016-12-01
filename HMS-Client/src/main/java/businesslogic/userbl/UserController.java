@@ -56,7 +56,7 @@ public class UserController implements InfoBlService,HotelOrderBlService{
      * @throws RemoteException
      */
     @Override
-    public UserInfoVO showUserInfo(String userID) {
+    public UserInfoVO showUserInfo(String userID) throws RemoteException{
         return userInfo.showUserInfo(userID);
     }
 

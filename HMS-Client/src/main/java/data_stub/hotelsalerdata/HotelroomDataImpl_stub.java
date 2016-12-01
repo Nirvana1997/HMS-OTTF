@@ -4,6 +4,7 @@ import dataservice.hotelsalerdataservice.HotelroomDataService;
 import enumData.ResultMessage;
 import po.HotelroomPO;
 import po.OrderPO;
+import po.RoomNumPO;
 
 import java.util.ArrayList;
 
@@ -26,9 +27,8 @@ public class HotelroomDataImpl_stub implements HotelroomDataService {
 	}
 
 	@Override
-	public HotelroomPO getEmptyrooms(String hotelID) {
-		HotelroomPO hotelroom = new HotelroomPO(hotelID,null,0);
-		return hotelroom;
+	public ArrayList<RoomNumPO> getEmptyrooms(String hotelID, String date) {
+		return null;
 	}
 
 	@Override
@@ -41,6 +41,11 @@ public class HotelroomDataImpl_stub implements HotelroomDataService {
 
 	@Override
 	public ArrayList<HotelroomPO> getRoomList(String hotelID) {
+		return null;
+	}
+
+	@Override
+	public ResultMessage initializeRoomInfo(RoomNumPO po) {
 		return null;
 	}
 

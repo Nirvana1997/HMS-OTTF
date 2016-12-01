@@ -6,18 +6,28 @@ package vo;
  * Created by user on 2016/11/29.
  */
 public class HotelListItemVO {
+    private String hotelID;
     private String hotelname;
     private String detailAddress;
     private int star;
     private double grade;
     private double minPrice;
 
-    public HotelListItemVO(String hotelname, String detailAddress, int star, double grade,double minPrice) {
+    public HotelListItemVO(String hotelID,String hotelname, String detailAddress, int star, double grade,double minPrice) {
+        this.hotelID = hotelID;
         this.hotelname = hotelname;
         this.detailAddress = detailAddress;
         this.star = star;
         this.grade = grade;
         this.minPrice = minPrice;
+    }
+
+    public String getHotelID() {
+        return hotelID;
+    }
+
+    public void setHotelID(String hotelID) {
+        this.hotelID = hotelID;
     }
 
     public String getHotelname() {

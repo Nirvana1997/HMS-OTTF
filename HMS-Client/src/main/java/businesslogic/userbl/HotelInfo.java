@@ -4,6 +4,8 @@ import enumData.Address;
 import enumData.SortWay;
 import enumData.TradeArea;
 import po.HotelinfoPO;
+import po.HotelroomPO;
+import po.RoomNumPO;
 import vo.HotelListItemVO;
 import vo.HotelinfoVO;
 

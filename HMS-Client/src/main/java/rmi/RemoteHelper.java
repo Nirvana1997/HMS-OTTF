@@ -2,7 +2,6 @@ package rmi;
 
 import dataservice.hotelsalerdataservice.HotelinfoDataService;
 import dataservice.hotelsalerdataservice.HotelroomDataService;
-import dataservice.hotelsalerdataservice.HotelsalerDataService;
 import dataservice.logdataservice.LogDataService;
 import dataservice.orderdataservice.OrderDataService;
 import dataservice.promotiondataservice.PromotionDataService;
@@ -28,7 +27,6 @@ public class RemoteHelper {
     private LogDataService logDataService;
     private HotelinfoDataService hotelinfoDataService;
     private HotelroomDataService hotelroomDataService;
-    private HotelsalerDataService hotelsalerDataService;
     private OrderDataService orderDataService;
     private PromotionDataService promotionDataService;
     private UserDataService userDataService;
@@ -90,10 +88,6 @@ public class RemoteHelper {
 
     public HotelroomDataService getHotelroomDataService() {
         return hotelroomDataService;
-    }
-
-    public HotelsalerDataService getHotelsalerDataService() {
-        return hotelsalerDataService;
     }
 
     public OrderDataService getOrderDataService() {
