@@ -12,9 +12,12 @@ import java.rmi.RemoteException;
 
 /**
  * 登录模块
+ * @author qzh
  */
 public class Login {
-
+	/**
+	 * 登录模块数据接口
+	 */
 	LogDataService logDataService;
 
 	/**
@@ -45,7 +48,7 @@ public class Login {
 	}
 
     /**
-     * 返回当前用户
+     * 返回当前用户，若不存在，则返回null
      * @param account
      * @return
      * @throws RemoteException
@@ -59,7 +62,7 @@ public class Login {
 	}
 
 	/**
-	 * 返回当前登录用户类型
+	 * 返回当前登录用户信息
 	 * @return
 	 */
 	public AccountVO getNowUser(){
