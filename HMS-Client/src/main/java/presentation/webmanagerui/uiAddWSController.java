@@ -1,19 +1,14 @@
 package presentation.webmanagerui;
 
-import com.sun.javafx.robot.impl.FXRobotHelper;
-import javafx.collections.ObservableList;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.stage.Stage;
+import javafx.scene.text.Text;
 
 import java.io.IOException;
 
 /**
- * Created by Administrator on 2016/11/29.
+ * Created by Administrator on 2016/12/1.
  */
-public class uiWebManagerController {
+public class uiAddWSController {
     /**
      * 三个方法分别实现左侧三个管理按钮的跳转实现
      */
@@ -21,13 +16,21 @@ public class uiWebManagerController {
     Button buttonManageUser;
     Button buttonManageHS;
     Button buttonManageWS;
-    public void gotoManageUser() throws IOException{
+    public void gotoManageUser() throws IOException {
         jump.gotoManageUser();
     }
     public void gotoManageHS() throws IOException{
         jump.gotoManageHS();
     }
     public void gotoManageWS() throws IOException{
+//        jump.gotoManageWS();
+    }
+
+    /**
+     * 返回网站管理界面
+     */
+    Text textManageWS;
+    public void returntoManageWS()throws IOException{
         jump.gotoManageWS();
     }
 }

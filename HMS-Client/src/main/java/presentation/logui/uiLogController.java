@@ -1,7 +1,5 @@
 package presentation.logui;
 
-import businesslogic.logbl.LogController;
-import businesslogicservice.logblservice.LogBlService;
 import com.sun.javafx.robot.impl.FXRobotHelper;
 import enumData.AccountType;
 import enumData.ResultMessage;
@@ -15,6 +13,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import presentation.hotelsalerui.SceneHotelSaler;
+import presentation.webmanagerui.SceneWebManager;
 import presentation.websalerui.SceneWebSaler;
 import vo.AccountVO;
 
@@ -66,9 +65,10 @@ public class uiLogController {
 
     public void login() throws IOException {
 
-        SceneWebSaler sceneWebSaler = new SceneWebSaler();
-        sceneWebSaler.initUI();
-
+//        SceneWebSaler sceneWebSaler = new SceneWebSaler();
+//        sceneWebSaler.initUI();
+        SceneWebManager sceneWebManager = new SceneWebManager();
+        sceneWebManager.initUI();
 //        // 获取用户名
 //        String userID = textUserID.getText();
 //        // 获取密码

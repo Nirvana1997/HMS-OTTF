@@ -74,7 +74,7 @@
       <AnchorPane layoutX="250.0" layoutY="107.0" prefHeight="508.0" prefWidth="749.0">
          <children>
             <Slider layoutX="735.0" orientation="VERTICAL" prefHeight="508.0" prefWidth="14.0" />
-            <ImageView fitHeight="400.0" fitWidth="300.0" layoutX="25.0" layoutY="30.0">
+            <ImageView fx:id="pic01" fitHeight="400.0" fitWidth="300.0" layoutX="25.0" layoutY="30.0" onMouseClicked="#gotoChangeHotel">
                <image>
                   <Image url="@../../../../../graphics/webmanagerui/temp/dogalphabetA.jpg" />
                </image>
@@ -84,6 +84,7 @@
                   <Image url="@../../../../../graphics/webmanagerui/temp/dogalphabetB.jpg" />
                </image>
             </ImageView>
+            <Button fx:id="buttonAddHotel" layoutX="619.0" layoutY="430.0" mnemonicParsing="false" onAction="#gotoAddHotel" text="AddHotel" />
          </children>
       </AnchorPane>
    </children>
