@@ -36,7 +36,5 @@ public class HotelroomPO {
 	public void setPrice(double price) {
 		this.price = price;
 	}
-
-
 }
 
