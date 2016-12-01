@@ -17,7 +17,6 @@ import java.util.ArrayList;
 public class LogDataImpl extends UnicastRemoteObject implements LogDataService  {
 
     public LogDataImpl() throws RemoteException{
-
     }
     /**
      * 根据账户ID得到相应密码
