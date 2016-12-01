@@ -1,5 +1,6 @@
 package main;
 
+import driver.ClientRunner;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -15,11 +16,13 @@ public class Main extends Application{
     private SceneLog sceneLog;
 
     public static void main(String[] args) {
+        ClientRunner clientRunner = new ClientRunner();
         launch(args);
     }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+
         sceneLog = new SceneLog();
 
         primaryStage.setTitle("困了么");

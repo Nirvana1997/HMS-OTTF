@@ -38,7 +38,7 @@ public void after() throws Exception {
 @Test
 public void testSearchHotel() throws Exception {
     HotelOrderBlService hotelOrderBlService = new UserController();
-    ConditionVO conditionVO = new ConditionVO("","001",Address.DieDie, TradeArea.Xianlin, SortWay.CommentAscending, RoomType.big
+    ConditionVO conditionVO = new ConditionVO("","001",Address.DieDie, TradeArea.Xianlin, SortWay.GradeAscending, RoomType.big
             ,200,300,false,new Date(2016,11,11),true,3,3);
     Assert.assertEquals("0001",hotelOrderBlService.searchHotel(Address.DieDie,conditionVO).get(0).getHotelID());
 } 
@@ -50,7 +50,7 @@ public void testSearchHotel() throws Exception {
 */ 
 @Test
 public void testReadHotel() throws Exception {
-    ConditionVO conditionVO = new ConditionVO("","001",Address.DieDie, TradeArea.Xianlin, SortWay.CommentAscending, RoomType.big
+    ConditionVO conditionVO = new ConditionVO("","001",Address.DieDie, TradeArea.Xianlin, SortWay.GradeAscending, RoomType.big
             ,200,300,false,new Date(2016,11,11),true,3,3);
     Assert.assertEquals("仙林大酒店",hotelOrderBlService.readHotel(Address.DieDie,conditionVO).get(0).getHotelname());
 } 

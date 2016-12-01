@@ -6,16 +6,17 @@ public class UserInfoPO {
 	String identity;
 	String contactNumber;
 	int credit;
-	int memLevel;
-	
+	double transaction;
+
 	public UserInfoPO(String userID, String name, String identity,
-			String contactNumber, int credit, int vipLevel) {
+					  String contactNumber, int credit, double transaction) {
 		this.userID = userID;
 		this.name = name;
 		this.identity = identity;
 		this.contactNumber = contactNumber;
 		this.credit = credit;
-		this.memLevel = vipLevel;
+		this.transaction = transaction;
+
 	}
 
 	public String getUserID() {
@@ -48,12 +49,9 @@ public class UserInfoPO {
 	public void setCredit(int credit) {
 		this.credit = credit;
 	}
-	public int getVipLevel() {
-		return memLevel;
-	}
-	public void setVipLevel(int vipLevel) {
-		this.memLevel = vipLevel;
-	}
-	
-	
+	public double getTransaction() {  return transaction;}
+	public void setTransaction(double transaction) {this.transaction = transaction;}
+
+
+
 }

@@ -44,7 +44,7 @@ public class HSmanagementBlImpl implements HSmanagementBlService{
 	}
 
 	public boolean addHotelsalerInfo(HotelsalerInfoVO vo, String password) throws RemoteException{
-        if(logDataService.hasExisted(vo.getHotelID()).equals(ResultMessage.NotExist)) {
+        if(!logDataService.hasExisted(vo.getHotelID())) {
             HotelsalerInfoPO po = new HotelsalerInfoPO(vo.getHotelID(),vo.getHotelname(),null);
             AccountPO accountPO = new AccountPO(vo.getHotelID(),password,AccountType.hotelsaler);
             logDataService.addAccount(accountPO);
