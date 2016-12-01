@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollBar?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -83,7 +84,7 @@
             </ImageView>
          </children>
       </VBox>
-      <AnchorPane layoutX="250.0" prefHeight="618.0" prefWidth="750.0">
+      <AnchorPane fx:id="paneSaleStrategy" layoutX="250.0" prefHeight="618.0" prefWidth="750.0">
          <children>
             <AnchorPane prefHeight="241.0" prefWidth="750.0" style="-fx-background-color: #FFFFFF;">
                <children>
@@ -235,7 +236,8 @@
                               </TextArea>
                            </children>
                         </AnchorPane>
-                     </children></AnchorPane>
+                     </children>
+                  </AnchorPane>
                   <AnchorPane fx:id="paneMember" prefHeight="349.0" prefWidth="720.0" visible="false">
                      <children>
                         <ImageView fx:id="imgMemberBefore" fitHeight="73.0" fitWidth="29.0" layoutX="79.0" layoutY="126.0" onMouseClicked="#memberBefore" pickOnBounds="true" preserveRatio="true">
@@ -293,5 +295,60 @@
             </AnchorPane>
          </children>
       </AnchorPane>
+      <AnchorPane fx:id="paneOrder" layoutX="250.0" prefHeight="618.0" prefWidth="751.0" visible="false">
+         <children>
+            <ScrollBar layoutY="600.0" prefHeight="18.0" prefWidth="751.0" visibleAmount="35.0" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="paneCredit" layoutX="250.0" prefHeight="618.0" prefWidth="751.0" style="-fx-background-color: #FFFFFF;" visible="false">
+         <children>
+            <AnchorPane fx:id="paneCredit1" layoutY="-1.0" prefHeight="618.0" prefWidth="751.0">
+               <children>
+                  <ImageView fitHeight="618.0" fitWidth="820.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../graphics/websalerui/background2.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView layoutX="197.0" layoutY="104.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../graphics/websalerui/信用充值.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="buttonConfirm1" layoutX="319.0" layoutY="452.0" onMouseClicked="#confirmCredit" onMouseEntered="#onConfirmEntered" onMouseExited="#onConfirmExited" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../graphics/websalerui/confirmButton.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="buttonConfirm2" layoutX="319.0" layoutY="452.0" onMouseClicked="#confirmCredit" onMouseEntered="#onConfirmEntered" onMouseExited="#onConfirmExited" pickOnBounds="true" preserveRatio="true" visible="false">
+                     <image>
+                        <Image url="@../../../../../graphics/websalerui/confirmButton2.png" />
+                     </image>
+                  </ImageView>
+               </children></AnchorPane>
+            <AnchorPane fx:id="paneCredit2" layoutX="-2.0" prefHeight="619.0" prefWidth="820.0" visible="false">
+               <children>
+                  <ImageView fitHeight="618.0" fitWidth="819.0" layoutX="2.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../graphics/websalerui/background2.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView layoutX="199.0" layoutY="81.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../graphics/websalerui/充值成功表.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="buttonReturn1" layoutX="321.0" layoutY="480.0" onMouseClicked="#returnPaneCredit1" onMouseEntered="#onReturnEntered" onMouseExited="#onReturnExited" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../graphics/websalerui/return.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="buttonReturn2" layoutX="321.0" layoutY="480.0" onMouseClicked="#returnPaneCredit1" onMouseEntered="#onReturnEntered" onMouseExited="#onReturnExited" pickOnBounds="true" preserveRatio="true" visible="false">
+                     <image>
+                        <Image url="@../../../../../graphics/websalerui/return2.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+         </children></AnchorPane>
    </children>
 </AnchorPane>
