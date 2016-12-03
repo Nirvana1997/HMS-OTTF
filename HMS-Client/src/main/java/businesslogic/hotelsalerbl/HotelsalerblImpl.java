@@ -8,6 +8,9 @@ import enumData.ResultMessage;
 import vo.HotelinfoVO;
 import vo.OrderVO;
 
+/**
+ * TODO 初始化酒店信息时，房间信息一起生成
+ */
 public class HotelsalerblImpl implements HotelsalerblService {
 
 	@Override

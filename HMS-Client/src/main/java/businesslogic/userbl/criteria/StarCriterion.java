@@ -1,6 +1,7 @@
 package businesslogic.userbl.criteria;
 
 import vo.HotelListItemVO;
+import vo.LimitVO;
 
 import java.util.ArrayList;
 
@@ -19,6 +20,11 @@ public class StarCriterion implements Criterion{
      * 最高星级
      */
     double maxGrade;
+
+    public StarCriterion(LimitVO limit) {
+        this.maxGrade = limit.getMax();
+        this.minGrade = limit.getMin();
+    }
 
     /**
      * 返回在星级区间内的所有酒店

@@ -1,4 +1,5 @@
-import businesslogic.webmanagerbl.URmanagementBlImpl;
+import businesslogic.webmanagerbl.URmanagement;
+import businesslogic.webmanagerbl.WebmanagerController;
 import businesslogicservice.webmanagerlogicservice.URmanagementBlService;
 import enumData.ResultMessage;
 import org.junit.Assert;
@@ -8,14 +9,14 @@ import org.junit.After;
 import vo.UserInfoVO;
 
 /** 
-* URmanagementBlImpl Tester. 
+* URmanagement Tester.
 * 
 * @author <Authors name> 
 * @since <pre>十一月 13, 2016</pre>
 * @version 1.0 
 */ 
-public class URmanagementBlImplTest {
-    URmanagementBlService uRmanagementBlService = new URmanagementBlImpl();
+public class UserDataImplManagementBlImplTest {
+    URmanagementBlService uRmanagementBlService = new WebmanagerController();
 
 @Before
 public void before() throws Exception { 

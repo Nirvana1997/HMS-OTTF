@@ -4,6 +4,7 @@ import enumData.AccountType;
 import enumData.ResultMessage;
 import po.AccountPO;
 
+import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
@@ -11,7 +12,7 @@ import java.util.ArrayList;
  * 负责帐号密码信息的管理
  * @author qzh
  */
-public interface LogDataService {
+public interface LogDataService extends Remote{
 	/**
 	 * 根据账户ID得到相应密码
 	 * @param account 帐号
@@ -27,7 +28,7 @@ public interface LogDataService {
 	 * @return
 	 * @throws RemoteException
 	 */
-	public ResultMessage setPassword(String account,String password) throws RemoteException;
+	public ResultMessage setPassword(String account, String password) throws RemoteException;
 
 	/**
 	 * 根据账户类型，返回账户PO的LIST

@@ -2,7 +2,7 @@ package dataservice.promotiondataservice;
 
 import enumData.PromotionType;
 import enumData.ResultMessage;
-import po.*;
+import po.PromotionPO;
 
 import java.util.ArrayList;
 

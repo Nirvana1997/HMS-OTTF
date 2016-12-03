@@ -13,9 +13,9 @@ import java.util.Date;
 public class PromotionDataImpl_stub implements PromotionDataService {
 	ArrayList<Double> discount;
 	TradeArea[] area;
-	PromotionPO promotion1 = new PromotionPO("0001", PromotionType.fesPromotion, new Date(2016,11,13), new Date(2016,11,15),area ,discount, 9.0 ,"0001");
-	PromotionPO promotion2 = new PromotionPO("0002", PromotionType.memPromotion, new Date(2016,11,13), new Date(2016,11,15),area ,discount, 9.0 ,"0001");
-	PromotionPO promotion3 = new PromotionPO("0002", PromotionType.hotelPromotion, new Date(2016,11,13), new Date(2016,11,15),area ,discount, 9.0 , "0002");
+	PromotionPO promotion1 = new PromotionPO("0001", PromotionType.fesPromotion, new Date(2016,11,13), new Date(2016,11,15),area ,discount, 9.0 );
+	PromotionPO promotion2 = new PromotionPO("0002", PromotionType.memPromotion, new Date(2016,11,13), new Date(2016,11,15),area ,discount, 9.0 );
+	PromotionPO promotion3 = new PromotionPO("0002", PromotionType.hotelPromotion, new Date(2016,11,13), new Date(2016,11,15),area ,discount, 9.0 );
 
 	public PromotionDataImpl_stub() {
 		discount = new ArrayList<Double>();

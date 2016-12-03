@@ -1,4 +1,4 @@
-package businesslogic.hotelsalerbl;
+package businesslogic.hotelsalerbl.impl;
 
 import businesslogicservice.hotelsalerblservice.HotelinfoblService;
 import dataservice.hotelsalerdataservice.HotelinfoDataService;
@@ -19,7 +19,7 @@ public class HotelinfoblImpl implements HotelinfoblService {
     /**
      * 返回酒店信息
      * @param hotelID 酒店ID
-     * @return
+     * @return 酒店信息
      */
     @Override
     public HotelinfoVO getHotelinfo(String hotelID) throws RemoteException{

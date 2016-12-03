@@ -14,9 +14,9 @@
 //import businesslogic.orderbl.OrderBl_stub;
 //import businesslogic.promotionbl.PromotionBl_stub;
 //import businesslogic.userbl.HotelOrderBl_stub;
-//import businesslogic.webmanagerbl.HSmanagementBlImpl;
-//import businesslogic.webmanagerbl.URmanagementBlImpl;
-//import businesslogic.webmanagerbl.WSmanagementBlImpl;
+//import businesslogic.webmanagerbl.HSmanagement;
+//import businesslogic.webmanagerbl.URmanagement;
+//import businesslogic.webmanagerbl.WSmanagement;
 //import businesslogic.websalerbl.WebsalerblImpl;
 //import businesslogicservice.hotelsalerblservice.HotelinfoblService;
 //import businesslogicservice.hotelsalerblservice.HotelroomblService;
@@ -96,7 +96,7 @@
 //	HSmanagementBlService hsmanagement;
 //
 //	public void getHotelsalerInfo(String hotelsalerID){
-//		hsmanagement = new HSmanagementBlImpl();
+//		hsmanagement = new HSmanagement();
 //		System.out.println("----------获得酒店信息----------");
 //		System.out.println(hsmanagement.getHotelsalerInfo("0001").getHotelname());
 //	}
@@ -104,7 +104,7 @@
 //	URmanagementBlService urmanagement;
 //
 //	public void getUserInfo(String userID){
-//		urmanagement = new URmanagementBlImpl();
+//		urmanagement = new URmanagement();
 //		System.out.println("----------获得用户个人信息----------");
 //		System.out.println(urmanagement.getUserInfo(userID).getName());
 //	}
@@ -112,7 +112,7 @@
 //	WSmanagementBlService wSmanagement;
 //
 //	public void getWebsaleInfo(String websalerID){
-//		wSmanagement = new WSmanagementBlImpl();
+//		wSmanagement = new WSmanagement();
 //		System.out.println("----------获得网络营销人员信息----------");
 //		System.out.println(wSmanagement.getWebsaleInfo("0001"));
 //	}
