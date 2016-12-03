@@ -22,7 +22,7 @@ import java.util.ArrayList;
  * 酒店列表
  * 负责对应搜索条件和排序方式生成酒店列表和一个酒店的详细信息
  * @author qzh
- * Created by personalUser on 2016/11/27.
+ * Created by user on 2016/11/27.
  */
 public class HotelList {
     /**

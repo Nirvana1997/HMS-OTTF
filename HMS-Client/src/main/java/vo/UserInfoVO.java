@@ -1,61 +1,67 @@
 package vo;
 
 public class UserInfoVO {
-	String userID;
-	String name;
-	String identity;
-	String contactNumber;
-	int credit;
-	double transaction;
+	private String userID;
+	private String name;
+	private String identity;
+	private String contactNumber;
+	private int credit;
+	private int vipLevel;
 
-	public UserInfoVO(String userID, String name, String identity,
-					  String contactNumber, int credit, double transaction) {
+	public UserInfoVO(String userID, String name, String identity, String contactNumber, int credit, int vipLevel) {
 		this.userID = userID;
 		this.name = name;
 		this.identity = identity;
 		this.contactNumber = contactNumber;
 		this.credit = credit;
-		this.transaction = transaction;
+		this.vipLevel = vipLevel;
 	}
 
 	public String getUserID() {
 		return userID;
 	}
+
 	public void setUserID(String userID) {
 		this.userID = userID;
 	}
+
 	public String getName() {
 		return name;
 	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
+
 	public String getIdentity() {
 		return identity;
 	}
+
 	public void setIdentity(String identity) {
 		this.identity = identity;
 	}
+
 	public String getContactNumber() {
 		return contactNumber;
 	}
+
 	public void setContactNumber(String contactNumber) {
 		this.contactNumber = contactNumber;
 	}
+
 	public int getCredit() {
 		return credit;
 	}
+
 	public void setCredit(int credit) {
 		this.credit = credit;
 	}
 
-	public double getTransaction() {
-		return transaction;
+	public int getVipLevel() {
+		return vipLevel;
 	}
 
-	public void setTransaction(double transaction) {
-		this.transaction = transaction;
+	public void setVipLevel(int vipLevel) {
+		this.vipLevel = vipLevel;
 	}
-	
-	
 }

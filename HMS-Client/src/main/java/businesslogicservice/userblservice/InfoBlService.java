@@ -21,9 +21,8 @@ public interface InfoBlService {
 
     /**
      * 显示个人信息
-     * @param userID 用户ID
-     * @return
+     * @return 个人信息
      * @throws RemoteException
      */
-	public UserInfoVO showUserInfo(String userID)throws RemoteException;
+	public UserInfoVO showUserInfo()throws RemoteException;
 }

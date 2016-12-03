@@ -20,7 +20,7 @@ import java.rmi.RemoteException;
  * 负责接收注册的信息并添加至数据层
  *
  * @author qzh
- *         Created by personalUser on 2016/11/25.
+ *         Created by user on 2016/11/25.
  */
 public class Register {
     LogDataService logDataService;
@@ -30,11 +30,11 @@ public class Register {
 
     public Register() throws RemoteException {
         //TODO
-//        this.logDataService = new LogDataImpl_stub();
+        this.logDataService = new LogDataImpl_stub();
         this.userDataService = new UserDataImpl_stub();
-//        this.hotelinfoDataService = new HotelinfoDataImpl_stub();
-//        this.websalerDataService = new WebsalerDataImpl_stub();
-        this.logDataService = RemoteHelper.getInstance().getLogDataService();
+        this.hotelinfoDataService = new HotelinfoDataImpl_stub();
+        this.websalerDataService = new WebsalerDataImpl_stub();
+//        this.logDataService = RemoteHelper.getInstance().getLogDataService();
     }
 
     /**

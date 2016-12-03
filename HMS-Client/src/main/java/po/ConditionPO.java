@@ -1,11 +1,11 @@
 package po;
 
-import java.util.Date;
-
 import enumData.Address;
 import enumData.RoomType;
 import enumData.SortWay;
 import enumData.TradeArea;
+
+import java.util.Date;
 
 public class ConditionPO {
 	String userID;
@@ -22,9 +22,9 @@ public class ConditionPO {
 	int grade;
 	String keyWord;
 	public ConditionPO(String userID, Address address, TradeArea tradeArea,
-			SortWay sortWay, RoomType roomType, int minPrice, int maxPrice,
-			boolean hasOrdered, Date date, boolean hasEmptyRoom, int star,
-			int grade,String keyWord) {
+                       SortWay sortWay, RoomType roomType, int minPrice, int maxPrice,
+                       boolean hasOrdered, Date date, boolean hasEmptyRoom, int star,
+                       int grade, String keyWord) {
 		super();
 		this.userID = userID;
 		this.address = address;

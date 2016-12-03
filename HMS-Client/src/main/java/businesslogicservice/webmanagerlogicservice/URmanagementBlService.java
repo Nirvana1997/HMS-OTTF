@@ -4,11 +4,26 @@ import enumData.ResultMessage;
 import vo.UserInfoVO;
 
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 
+/**
+ * 用户管理接口
+ * @author qzh
+ */
 public interface URmanagementBlService {
-	
+    /**
+     * 获取用户信息
+     * @param userID 用户ID
+     * @return 对应用户信息
+     * @throws RemoteException
+     */
 	public UserInfoVO getUserInfo(String userID) throws RemoteException;
-	
-	public ResultMessage setUserInfo (UserInfoVO vo);
-	
+
+    /**
+     * 修改用户信息
+     * @param vo 用户个人信息vo
+     */
+	public void setUserInfo (UserInfoVO vo);
+
+	public ArrayList<UserInfoVO> getUserList();
 }
