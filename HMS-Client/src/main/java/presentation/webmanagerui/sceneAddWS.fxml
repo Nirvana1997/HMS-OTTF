@@ -117,5 +117,10 @@
             <Font size="16.0" />
          </font>
       </Text>
+      <Text fx:id="buttonLogOut" fill="#0b799a" layoutX="203.0" layoutY="599.0" onMouseClicked="#LogOut" strokeType="OUTSIDE" strokeWidth="0.0" text="登出" underline="true">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

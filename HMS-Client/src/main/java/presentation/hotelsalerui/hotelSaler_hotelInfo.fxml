@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="618.0" prefWidth="1000.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.hotelsalerui.uiHotelInfoController">
+   <children>
+      <ScrollPane cacheShape="false" centerShape="false" focusTraversable="false" hbarPolicy="NEVER" layoutX="246.0" layoutY="-2.0" prefHeight="593.0" prefWidth="749.0" style="-fx-background-color: #FFFFFF;" vbarPolicy="ALWAYS">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1500.0" prefWidth="749.0" style="-fx-background-color: #FFFFFF;">
+               <children>
+                  <ImageView fitHeight="454.0" fitWidth="734.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../graphics/hotelsalerui/bk1.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="460.0" fitWidth="736.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../graphics/hotelsalerui/bk2.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="152.0" layoutY="126.0" text="萱 萱 大 酒 店" textFill="WHITE">
+                     <font>
+                        <Font size="72.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="195.0" layoutY="265.0" text="时代依旧负重前行，而你我已凌波微步。" textFill="WHITE">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <ImageView layoutX="86.0" layoutY="571.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../graphics/hotelsalerui/line.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="315.0" layoutY="507.0" text="关于我们">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="159.0" layoutY="603.0" text="星级：">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="159.0" layoutY="646.0" text="商圈：">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="159.0" layoutY="691.0" text="地址：">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="159.0" layoutY="738.0" text="联系电话：">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <TextField cacheShape="false" centerShape="false" editable="false" focusTraversable="false" layoutX="254.0" layoutY="597.0" scaleShape="false" style="-fx-background-color: #FFFFFF;" text="5星级">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </TextField>
+                  <TextField cacheShape="false" centerShape="false" editable="false" focusTraversable="false" layoutX="254.0" layoutY="640.0" scaleShape="false" style="-fx-background-color: #FFFFFF;" text="太仓大商圈">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </TextField>
+                  <TextField cacheShape="false" centerShape="false" editable="false" focusTraversable="false" layoutX="254.0" layoutY="686.0" scaleShape="false" style="-fx-background-color: #FFFFFF;" text="江苏省太仓市县府街163号">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </TextField>
+                  <TextField cacheShape="false" centerShape="false" editable="false" focusTraversable="false" layoutX="254.0" layoutY="732.0" scaleShape="false" style="-fx-background-color: #FFFFFF;" text="0512-123456789">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </TextField>
+                  <ImageView fitHeight="533.0" fitWidth="738.0" layoutX="-3.0" layoutY="978.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../graphics/hotelsalerui/bk3.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="315.0" layoutY="955.0" text="设施服务">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                  </Label>
+                  <ImageView layoutX="86.0" layoutY="1019.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../graphics/hotelsalerui/line.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="180.0" fitWidth="270.0" layoutX="423.0" layoutY="1293.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../graphics/hotelsalerui/hotelinfo.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="180.0" fitWidth="270.0" layoutX="51.0" layoutY="1059.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../graphics/hotelsalerui/hotelinfo2.JPG" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="99.0" layoutY="760.0" lineSpacing="5.0" prefHeight="182.0" prefWidth="565.0" text="       萱萱大酒店是一家商务、会议型豪华酒店，是太仓市首家五星级酒店。酒店座落在江苏省东南部，长江口南岸。东濒长江，与崇明区隔江相望，南临上海市嘉定区，交通极其便利。酒店按欧式风格设计装修，环境优美，格调高雅。客房舒适、豪华，餐饮风味独特，各类康乐休闲设施一应俱全，设施先进的商务中心随时为您提供周到、快捷的服务。" wrapText="true">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                     </cursor>
+                  </Label>
+                  <Label layoutX="375.0" layoutY="1060.0" lineSpacing="3.0" prefHeight="184.0" prefWidth="316.0" text="        萱萱大酒店定位“年轻时尚”，倡导绿色、环保、低碳的生活方式， 给入住客人大自然一般的清晰入住体验。 萱萱大酒店大多数房间价格在150元-300元之间，配备独立卫生间、书桌、床头柜、24小时光纤上网、冷热水、 独立冷暖空调等，设施齐全，服务周到。" wrapText="true">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="59.0" layoutY="1295.0" lineSpacing="3.0" prefHeight="162.0" prefWidth="310.0" text="        萱萱大酒店拥有面积达551平方米的宴会厅，能同时容纳500人的大型宴会及酒会，6间同声传译室更使得该宴会厅成为国际会议召开的首选之地。此外，7间多功能厅配备了最先进的视听系统，且“萱萱会议”服务团队更能使您举办的各种活动变轻松惬意。" wrapText="true">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+        </content>
+      </ScrollPane>
+      <VBox prefHeight="618.0" prefWidth="250.0" style="-fx-background-color: #FFFFFF;">
+         <children>
+            <HBox prefHeight="122.0" prefWidth="244.0">
+               <children>
+                  <ImageView fitHeight="77.0" fitWidth="73.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../graphics/websalerui/portrait.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="40.0" top="40.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Label text="黄小萱">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="30.0" top="60.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </HBox>
+            <ImageView fitHeight="80.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../../graphics/hotelsalerui/hotelInfo1.png" />
+               </image>
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </ImageView>
+            <ImageView fitHeight="80.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true">
+               <VBox.margin>
+                  <Insets top="-80.0" />
+               </VBox.margin>
+               <image>
+                  <Image url="@../../../../../graphics/hotelsalerui/hotelInfo2.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="80.0" fitWidth="250.0" onMouseClicked="#jumpToSceneHotelRoom" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../graphics/hotelsalerui/hotelRoom1.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="80.0" fitWidth="250.0" onMouseClicked="#jumpToSceneHotelOrder" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../graphics/hotelsalerui/hotelOrder1.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="80.0" fitWidth="250.0" onMouseClicked="#jumpToSceneHotelSaleStrategy" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../graphics/hotelsalerui/saleStrategy1.png" />
+               </image>
+            </ImageView>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

@@ -2,42 +2,28 @@
 
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.ImageInput?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="618.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.logui.uiRegister1Controller">
    <children>
       <ImageView fitHeight="618.0" fitWidth="1000.0">
          <image>
-            <Image url="@../../../../../graphics/logui/registerbc.png" />
+            <Image url="@../../../../../graphics/logui/register1bc.png" />
          </image>
       </ImageView>
-      <PasswordField fx:id="textConfirm" layoutX="399.0" layoutY="356.0">
+      <PasswordField fx:id="textConfirm" layoutX="399.0" layoutY="370.0" onMouseClicked="#cfmnotWrong">
          <font>
             <Font size="18.0" />
          </font>
       </PasswordField>
-      <Label layoutX="317.0" layoutY="261.0" text="账号：">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
-      <Label layoutX="317.0" layoutY="309.0" text="密码：">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
-      <Label layoutX="281.0" layoutY="362.0" text="确认密码：">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
-      <TextField fx:id="textUserID" layoutX="399.0" layoutY="255.0">
+      <TextField fx:id="textUserID" layoutX="399.0" layoutY="255.0" onMouseClicked="#idnotWrong">
          <font>
             <Font size="18.0" />
          </font>
@@ -45,25 +31,59 @@
             <Cursor fx:constant="DEFAULT" />
          </cursor>
       </TextField>
-      <Button fx:id="buttonNext" layoutX="641.0" layoutY="460.0" mnemonicParsing="false" onAction="#goToRegister2" text="下一步">
+      <Button fx:id="buttonNext" layoutX="672.0" layoutY="460.0" mnemonicParsing="false" onAction="#goToRegister2" prefHeight="36.0" prefWidth="87.0" text="下一步">
          <font>
             <Font size="18.0" />
          </font>
+         <effect>
+            <ImageInput>
+               <source>
+                  <Image url="@../../../../../graphics/logui/下一步.png" />
+               </source>
+            </ImageInput>
+         </effect>
       </Button>
       <ImageView fitHeight="83.0" fitWidth="185.0" layoutX="408.0" layoutY="129.0">
          <image>
             <Image url="@../../../../../graphics/step1.png" />
          </image>
       </ImageView>
-      <Button fx:id="buttonReturn" layoutX="541.0" layoutY="460.0" mnemonicParsing="false" onAction="#returnToLog" text="返回">
+      <Button fx:id="buttonReturn" layoutX="550.0" layoutY="460.0" mnemonicParsing="false" onAction="#returnToLog" prefHeight="36.0" prefWidth="87.0" text="返回">
          <font>
             <Font size="18.0" />
          </font>
+         <effect>
+            <ImageInput>
+               <source>
+                  <Image url="@../../../../../graphics/logui/返回.png" />
+               </source>
+            </ImageInput>
+         </effect>
       </Button>
-      <PasswordField fx:id="textPassword" layoutX="399.0" layoutY="303.0">
+      <PasswordField fx:id="textPassword" layoutX="399.0" layoutY="309.0" onMouseClicked="#pswnotWrong">
          <font>
             <Font size="18.0" />
          </font>
       </PasswordField>
+      <Text fx:id="idWrong" fill="RED" layoutX="665.0" layoutY="278.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*账号位数应在6-11位" visible="false">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Text fx:id="pswWrong" fill="RED" layoutX="666.0" layoutY="332.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*密码位数应在6-11位" visible="false">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Text fx:id="cfmWrong" fill="RED" layoutX="666.0" layoutY="394.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*两次输入密码不一致" visible="false">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
+      <Text fx:id="idExist" fill="RED" layoutX="672.0" layoutY="278.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*该账号已存在" visible="false">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

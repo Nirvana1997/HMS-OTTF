@@ -60,4 +60,14 @@ public class uiChangeHSController {
     public void returntoManageHS()throws IOException{
         jump.gotoManageHS();
     }
+    @FXML
+    private Text buttonLogOut;
+    /**
+     * 点击登出，返回到登录界面并清空账号
+     * @throws IOException
+     */
+    public void LogOut() throws IOException{
+        //TODO 登出账号
+        jump.gotoLogin();
+    }
 }

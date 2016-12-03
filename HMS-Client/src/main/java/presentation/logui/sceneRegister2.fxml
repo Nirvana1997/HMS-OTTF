@@ -7,6 +7,7 @@
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.effect.ImageInput?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -55,10 +56,17 @@
             <Font size="18.0" />
          </font>
       </TextField>
-      <Button fx:id="buttonFinish" layoutX="703.0" layoutY="520.0" mnemonicParsing="false" onAction="#gotoRegister3" text="完成">
+      <Button fx:id="buttonFinish" layoutX="703.0" layoutY="520.0" mnemonicParsing="false" onAction="#gotoRegister3" prefHeight="36.0" prefWidth="88.0" text="完成">
          <font>
             <Font size="18.0" />
          </font>
+         <effect>
+            <ImageInput>
+               <source>
+                  <Image url="@../../../../../graphics/logui/完成.png" />
+               </source>
+            </ImageInput>
+         </effect>
       </Button>
       <Label layoutX="269.0" layoutY="386.0" text="VIP 类型：">
          <font>

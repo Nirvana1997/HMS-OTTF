@@ -6,6 +6,7 @@ import com.sun.javafx.robot.impl.FXRobotHelper;
 import enumData.AccountType;
 import enumData.ResultMessage;
 import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -27,7 +28,14 @@ public class uiRegister1Controller {
     public TextField textPassword;
     public TextField textConfirm;
     static String uID;
-
+    @FXML
+    private Text idWrong;
+    @FXML
+    private Text pswWrong;
+    @FXML
+    private Text cfmWrong;
+    @FXML
+    private Text idExist;
     /**
      * 从注册界面1返回到登录界面
      */
@@ -70,7 +78,7 @@ public class uiRegister1Controller {
         if (logBlService.isValid(passwordComfirmVO) == ResultMessage.Correct) {
             Scene scene = new Scene((Parent) FXMLLoader.load(getClass().getResource("sceneRegister2.fxml")));
             stage.get(0).setScene(scene);
-            AccountVO accountVO = new AccountVO(UserID, Password, AccountType.user);
+            AccountVO accountVO = new AccountVO(UserID, Password, AccountType.personalUser);
             logBlService.register(accountVO);
         }
         //如果密码和确认密码输入不同，则提示错误

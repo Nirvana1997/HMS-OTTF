@@ -76,7 +76,7 @@ public class HotelroomDataImpl implements HotelroomDataService {
         boolean exist = false;
         ArrayList<String> judge = DataBaseHelper.out("select type from " + po.getHotelID() + "_roomInfo","type");
         for(int i=0;i<judge.size();i++)
-            if(judge.get(0).equals(po.getRoomType().toString()))
+            if(judge.get(i).equals(po.getRoomType().toString()))
                 exist = true;
         if(!exist) {
             DataBaseHelper.in("insert into " + po.getHotelID() + "_roomInfo (type , price) values ('" +
@@ -94,8 +94,8 @@ public class HotelroomDataImpl implements HotelroomDataService {
     @Override
     public ArrayList<HotelroomPO> getRoomList(String hotelID) {
         if(DataBaseHelper.in("show tables like '" + hotelID +"_roomInfo" + "'")){
-            ArrayList<String> typeList = DataBaseHelper.out("select type from " + hotelID + "_roomInfo","type");
-            ArrayList<String> priceList = DataBaseHelper.out("select price from " + hotelID + "_roomInfo","price");
+            ArrayList<String> typeList = DataBaseHelper.out("select type from " + hotelID + "_roomInfo order by price","type");
+            ArrayList<String> priceList = DataBaseHelper.out("select price from " + hotelID + "_roomInfo order by price","price");
             ArrayList<HotelroomPO> hotelroomPOs = new ArrayList<HotelroomPO>();
             for(int i=0;i<typeList.size();i++) {
                 RoomType type = null;

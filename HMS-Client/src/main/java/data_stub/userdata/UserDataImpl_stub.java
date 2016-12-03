@@ -9,7 +9,7 @@ public class UserDataImpl_stub implements UserDataService {
 	@Override
 	public UserInfoPO getUserInfo(String userID) {
 		// TODO Auto-generated method stub
-		return new UserInfoPO(null, null, null, null, 0, 0);
+		return new UserInfoPO("carey6918", "喋喋", "6666666", "1510518", 10, 110);
 	}
 
 	@Override

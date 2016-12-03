@@ -1,7 +1,10 @@
 package dataservice.hotelsalerdataservice;
 
 
+import enumData.Address;
 import enumData.ResultMessage;
+import enumData.SortWay;
+import enumData.TradeArea;
 import po.CommentPO;
 import po.ConditionPO;
 import po.HotelinfoPO;
@@ -28,11 +31,13 @@ public interface HotelinfoDataService{
 
 	/**
 	 * 根据搜索条件，返回酒店列表
-	 * @param po
+	 * @param tradeArea
+	 * @param address
+	 * @param sortWay
 	 * @return
 	 * @throws RemoteException
      */
-	public ArrayList<HotelinfoPO> getHotelList(ConditionPO po) throws RemoteException;
+	public ArrayList<HotelinfoPO> getHotelList(TradeArea tradeArea, Address address , SortWay sortWay) throws RemoteException;
 
 	/**
 	 * 评价
