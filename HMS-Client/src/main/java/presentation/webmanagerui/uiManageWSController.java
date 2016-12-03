@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -79,5 +80,15 @@ public class uiManageWSController {
     ImageView pic01;
     public void gotoChangeWS() throws IOException{
         jump.gotoChangeWS();
+    }
+    @FXML
+    private Text buttonLogOut;
+    /**
+     * 点击登出，返回到登录界面并清空账号
+     * @throws IOException
+     */
+    public void LogOut() throws IOException{
+        //TODO 登出账号
+        jump.gotoLogin();
     }
 }

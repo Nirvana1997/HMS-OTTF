@@ -56,6 +56,6 @@ public class UserInfoVO {
 	public void setTransaction(double transaction) {
 		this.transaction = transaction;
 	}
-	
+
 	
 }

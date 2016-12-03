@@ -37,7 +37,9 @@ public class uiLogController {
     private TextField textUserID;
     @FXML
     private PasswordField textPassword;
-
+public void uiLogController(){
+    System.out.println("i");
+}
 //    @FXML
 //    public void setNextPic(){
 //        count++;
@@ -66,15 +68,15 @@ public class uiLogController {
 
     public void login() throws IOException {
         String UserID = textUserID.getText();
-        if (UserID.equals("Iamwebsaler")){
+        if (UserID.equals("3")){
             SceneWebSaler sceneWebSaler = new SceneWebSaler();
             sceneWebSaler.initUI();
        }
-        else if(UserID.equals("Iamwebmanager")) {
+        else if(UserID.equals("4")) {
             SceneWebManager sceneWebManager = new SceneWebManager();
             sceneWebManager.initUI();
         }
-        else if(UserID.equals("Iamuser")) {
+        else if(UserID.equals("1")) {
             SceneUser sceneUser = new SceneUser();
             sceneUser.initUI();
         }

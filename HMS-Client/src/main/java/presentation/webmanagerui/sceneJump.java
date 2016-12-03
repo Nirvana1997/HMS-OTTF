@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import presentation.logui.SceneLog;
 
 import java.io.IOException;
 
@@ -52,5 +53,9 @@ public class sceneJump {
         ObservableList<Stage> stage = FXRobotHelper.getStages();
         Scene scene = new Scene((Parent) FXMLLoader.load(getClass().getResource("sceneChangeWS.fxml")));
         stage.get(0).setScene(scene);
+    }
+    public void gotoLogin() throws IOException{
+        SceneLog sceneLog = new SceneLog();
+        sceneLog.initUI();
     }
 }
