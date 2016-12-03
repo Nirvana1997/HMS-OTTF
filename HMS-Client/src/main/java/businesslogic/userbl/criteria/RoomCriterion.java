@@ -3,6 +3,7 @@ package businesslogic.userbl.criteria;
 import businesslogic.hotelsalerbl.HotelDataImpl;
 import businesslogic.userbl.HotelInfo;
 import businesslogic.userbl.HotelRoom;
+import businesslogic.userbl.RoomNumJudger;
 import enumData.RoomType;
 import po.HotelroomPO;
 import po.RoomNumPO;
@@ -19,7 +20,7 @@ import java.util.Date;
 /**
  * 根据对房间的需要进行过滤筛选
  * @author qzh
- * Created by user on 2016/11/30.
+ * Created by personalUser on 2016/11/30.
  */
 public class RoomCriterion implements Criterion{
     /**
@@ -73,7 +74,7 @@ public class RoomCriterion implements Criterion{
      * @return
      */
     @Override
-    public ArrayList<HotelListItemVO> meetCriterion(ArrayList<HotelListItemVO> hotelList) {
+    public ArrayList<HotelListItemVO> meetCriterion(ArrayList<HotelListItemVO> hotelList) throws RemoteException {
         //结果列表
         ArrayList<HotelListItemVO> res = new ArrayList<HotelListItemVO>();
         //筛选
@@ -90,7 +91,7 @@ public class RoomCriterion implements Criterion{
      * @param hotelID 酒店编号
      * @return
      */
-    private boolean meet(String hotelID){
+    private boolean meet(String hotelID) throws RemoteException {
         //判断价格是否符合条件
         HotelroomPO roomPO = null;
         for(HotelroomPO room:hotelRoom.getRoomList(hotelID)){
@@ -105,37 +106,7 @@ public class RoomCriterion implements Criterion{
         }
 
         //判断数目是否符合条件
-        //获取期间所有日期
-        ArrayList<Date> dates = getDates(startDate,endDate);
-        DateFormat df = new SimpleDateFormat("yyyy_MM_dd");
-        for (Date date:dates) {
-            for(RoomNumPO roomNum:hotelRoom.getEmptyrooms(hotelID,df.format(date))){
-                if(roomNum.getRoomType().equals(roomType)&&roomNum.getEmptyNum()<num){
-                   return false;
-                }
-            }
-        }
-        return true;
-    }
-
-    /**
-     * 返回起始日期中间的所有日期
-     * @param startDate   起始日期
-     * @param endDate     结束日期
-     * @return
-     */
-    public static ArrayList<Date> getDates(Date startDate, Date endDate) {
-        ArrayList<Date> result = new ArrayList<Date>();
-        Calendar start = Calendar.getInstance();
-        start.setTime(startDate);
-        Calendar end = Calendar.getInstance();
-        end.setTime(endDate);
-
-        while (start.before(end)) {
-            result.add(start.getTime());
-            start.add(Calendar.DAY_OF_YEAR, 1);
-        }
-        result.add(endDate);
-        return result;
+        RoomNumJudger roomNumJudger = new RoomNumJudger();
+        return roomNumJudger.haveEnoughRoom(hotelID,startDate,endDate,roomType,num);
     }
 }

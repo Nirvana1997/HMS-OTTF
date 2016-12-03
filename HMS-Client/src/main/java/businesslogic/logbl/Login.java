@@ -20,11 +20,6 @@ public class Login {
 	 */
 	LogDataService logDataService;
 
-	/**
-	 * 当前登录用户
-	 */
-	AccountPO nowUser;
-
 	public Login() throws RemoteException {
 		logDataService = RemoteHelper.getInstance().getLogDataService();
 //		logDataService = new LogDataImpl_stub();
@@ -39,7 +34,7 @@ public class Login {
 	public ResultMessage isCorrectAndLogin(AccountVO vo)throws RemoteException {
 		String password = logDataService.getPassword(vo.getAccountID());
 		if(vo.getPassword().equals(password)){
-		    nowUser = new AccountPO(vo.getAccountID(),vo.getPassword(),vo.getType());
+		    ClientUser.setNowUser(vo.getAccountID());
 		    return ResultMessage.Correct;
         }
         else{
@@ -59,14 +54,5 @@ public class Login {
 	    else{
 	        return null;
         }
-	}
-
-	/**
-	 * 返回当前登录用户信息
-	 * @return
-	 */
-	public AccountVO getNowUser(){
-	    AccountVO vo = new AccountVO(nowUser.getAccountID(),nowUser.getPassword(),nowUser.getType());
-		return vo;
 	}
 }

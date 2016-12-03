@@ -2,19 +2,18 @@ package businesslogic.userbl;
 
 import businesslogicservice.userblservice.HotelOrderBlService;
 import businesslogicservice.userblservice.InfoBlService;
-import enumData.Address;
-import enumData.ResultMessage;
-import enumData.SortWay;
-import enumData.TradeArea;
+import enumData.*;
 import vo.*;
 
+import java.rmi.RMISecurityException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * 用户操作控制器
  * @author qzh
- * Created by user on 2016/11/27.
+ * Created by personalUser on 2016/11/27.
  */
 public class UserController implements InfoBlService,HotelOrderBlService{
     /**
@@ -90,16 +89,51 @@ public class UserController implements InfoBlService,HotelOrderBlService{
     /**
      * 查看酒店详细信息
      * @param hotelID
-     * @return
+     * @return 酒店详细信息
      * @throws RemoteException
      */
     @Override
-    public ArrayList<HotelinfoVO> readHotel(String hotelID) throws RemoteException{
+    public HotelinfoVO readHotel(String hotelID) throws RemoteException{
+        return hotelList.getHotelInfo(hotelID);
+    }
+
+    /**
+     * 返回是否房间数目是否足够
+     * @param hotelID 酒店编号
+     * @param startDate 入住时间
+     * @param endDate 退房时间
+     * @param roomType 房间类型
+     * @param num 房间数目
+     * @return
+     */
+    @Override
+    public boolean haveEnoughRoom(String hotelID, Date startDate, Date endDate, RoomType roomType, int num) throws RemoteException{
+        return hotelOrder.haveEnoughRoom(hotelID,startDate,endDate,roomType,num);
+    }
+
+    /**
+     * 计算订单价格并生成订单信息
+     * @param roomType 房间类型
+     * @param hotelID 酒店编号
+     * @param startDate 入住时间
+     * @param endDate 退房时间
+     * @param num 房间数目
+     * @return 订单信息
+     * @throws RemoteException
+     */
+    @Override
+    public OrderVO makeOrder(RoomType roomType, String hotelID, Date startDate, Date endDate, int num) throws RemoteException {
         return null;
     }
 
+    /**
+     * 预定酒店，生成订单
+     * @param vo 订单信息
+     * @return 是否成功
+     * @throws RemoteException
+     */
     @Override
-    public boolean orderHotel(OrderVO vo, String userID)throws RemoteException {
+    public boolean orderHotel(OrderVO vo)throws RemoteException {
         return false;
     }
 

@@ -1,26 +1,25 @@
-import businesslogic.webmanagerbl.HSmanagementBlImpl;
+import businesslogic.webmanagerbl.HSmanagement;
 import businesslogicservice.webmanagerlogicservice.HSmanagementBlService;
 import enumData.ResultMessage;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.Before; 
 import org.junit.After;
-import po.HotelsalerInfoPO;
 import vo.HotelsalerInfoVO;
 
 /** 
-* HSmanagementBlImpl Tester. 
+* HSmanagement Tester.
 * 
 * @author <Authors name> 
 * @since <pre>十一月 13, 2016</pre>
 * @version 1.0 
 */ 
-public class HSmanagementBlImplTest {
+public class HSmanagementTest {
     HSmanagementBlService hSmanagementBlService;
 
 @Before
 public void before() throws Exception {
-    hSmanagementBlService = new HSmanagementBlImpl();
+    hSmanagementBlService = new HSmanagement();
 } 
 
 @After

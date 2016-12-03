@@ -6,6 +6,7 @@ import vo.*;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * 酒店预定模块
@@ -18,17 +19,49 @@ public class HotelOrder{
 	 */
 	HotelInfo hotelInfo;
 
+	/**
+	 * 判断房间数目
+	 */
+	RoomNumJudger roomNumJudger;
+
     public HotelOrder() throws RemoteException{
         hotelInfo = new HotelDataImpl();
+        roomNumJudger = new RoomNumJudger();
+    }
+
+	/**
+	 * 返回是否房间数目是否足够
+	 * @param hotelID 酒店编号
+	 * @param startDate 入住时间
+	 * @param endDate 退房时间
+	 * @param roomType 房间类型
+	 * @param num 房间数目
+	 * @return
+	 */
+	public boolean haveEnoughRoom(String hotelID, Date startDate, Date endDate, RoomType roomType, int num) {
+		return roomNumJudger.haveEnoughRoom(hotelID,startDate,endDate,roomType,num);
+	}
+
+    /**
+     * 计算订单价格并生成订单信息
+     * @param roomType 房间类型
+     * @param hotelID 酒店编号
+     * @param startDate 入住时间
+     * @param endDate 退房时间
+     * @param num 房间数目
+     * @return 订单信息
+     * @throws RemoteException
+     */
+    public OrderVO makeOrder(RoomType roomType, String hotelID, Date startDate, Date endDate, int num) throws RemoteException {
+        return null;
     }
 
 	/**
 	 * 预订酒店
 	 * @param vo
-	 * @param userID
      * @return
      */
-	public boolean orderHotel(OrderVO vo, String userID){
+	public boolean orderHotel(OrderVO vo){
 		return true;
 	}
 

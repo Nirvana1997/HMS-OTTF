@@ -13,8 +13,8 @@ import java.util.ArrayList;
 public class PromotionBlImpl implements PromotionBlService {
 	PromotionDataService promotionDataService;
 
-	/** 根据类型和账户查看促销列表
-	 *
+	/**
+	 * 根据类型和账户查看促销列表
 	 * @param account 账户
 	 * @return
 	 */

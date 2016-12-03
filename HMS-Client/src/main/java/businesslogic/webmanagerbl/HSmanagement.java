@@ -10,10 +10,10 @@ import vo.HotelsalerInfoVO;
 
 import java.rmi.RemoteException;
 
-public class HSmanagementBlImpl implements HSmanagementBlService{
+public class HSmanagement implements HSmanagementBlService{
     LogDataService logDataService;
 
-    public HSmanagementBlImpl() throws RemoteException{
+    public HSmanagement() throws RemoteException{
         logDataService = new LogDataImpl_stub();
     }
 

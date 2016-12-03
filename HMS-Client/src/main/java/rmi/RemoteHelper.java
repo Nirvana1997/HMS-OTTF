@@ -15,7 +15,7 @@ import java.rmi.RemoteException;
 
 /**
  * 连接服务器并提供服务
- * Created by user on 2016/11/6.
+ * Created by personalUser on 2016/11/6.
  */
 public class RemoteHelper {
     private static RemoteHelper remoteHelper;

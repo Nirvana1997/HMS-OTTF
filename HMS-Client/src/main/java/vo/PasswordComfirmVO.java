@@ -2,7 +2,7 @@ package vo;
 
 /**
  * 帐号及密码确认信息
- * Created by user on 2016/11/25.
+ * Created by personalUser on 2016/11/25.
  */
 public class PasswordComfirmVO {
     String acccountID;

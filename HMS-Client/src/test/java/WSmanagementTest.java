@@ -1,7 +1,5 @@
-import businesslogic.webmanagerbl.WSmanagementBlImpl;
-import businesslogic.websalerbl.WebsalerblImpl;
+import businesslogic.webmanagerbl.WSmanagement;
 import businesslogicservice.webmanagerlogicservice.WSmanagementBlService;
-import businesslogicservice.websalerblservice.WebsalerblService;
 import enumData.ResultMessage;
 import org.junit.Assert;
 import org.junit.Test;
@@ -10,14 +8,14 @@ import org.junit.After;
 import vo.WebsalerInfoVO;
 
 /** 
-* WSmanagementBlImpl Tester. 
+* WSmanagement Tester.
 * 
 * @author <Authors name> 
 * @since <pre>十一月 13, 2016</pre>
 * @version 1.0 
 */ 
-public class WSmanagementBlImplTest {
-    WSmanagementBlService wSmanagementBlService = new WSmanagementBlImpl();
+public class WSmanagementTest {
+    WSmanagementBlService wSmanagementBlService = new WSmanagement();
 
 @Before
 public void before() throws Exception { 

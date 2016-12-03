@@ -2,6 +2,7 @@ package businesslogic.userbl.criteria;
 
 import vo.HotelListItemVO;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 /**
@@ -15,5 +16,5 @@ public interface Criterion {
      * @param hotelList 酒店列表
      * @return
      */
-    public ArrayList<HotelListItemVO> meetCriterion(ArrayList<HotelListItemVO> hotelList);
+    public ArrayList<HotelListItemVO> meetCriterion(ArrayList<HotelListItemVO> hotelList) throws RemoteException;
 }
