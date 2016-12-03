@@ -4,6 +4,7 @@ import businesslogic.webmanagerbl.UserDataManagement;
 import data_stub.userdata.UserDataImpl_stub;
 import dataservice.userdataservice.UserDataService;
 import po.UserInfoPO;
+import utility.PVChanger;
 import vo.UserInfoVO;
 
 import java.rmi.RemoteException;
@@ -36,8 +37,8 @@ public class UserDataImpl implements UserDataManagement {
     }
 
     @Override
-    public void setUserInfo(UserInfoVO vo) {
-
+    public void setUserInfo(UserInfoVO vo) throws RemoteException{
+        userDataService.setUserInfo(PVChanger.getInstance().userInfoV2P(vo));
     }
 
     @Override

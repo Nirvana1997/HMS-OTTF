@@ -21,8 +21,8 @@ public class Login {
 	LogDataService logDataService;
 
 	public Login() throws RemoteException {
-		logDataService = RemoteHelper.getInstance().getLogDataService();
-//		logDataService = new LogDataImpl_stub();
+//		logDataService = RemoteHelper.getInstance().getLogDataService();
+		logDataService = new LogDataImpl_stub();
 	}
 
     /**

@@ -20,7 +20,7 @@ public interface UserDataManagement {
      */
     public UserInfoPO getUserInfo(String userID) throws RemoteException;
 
-    public void setUserInfo(UserInfoVO vo);
+    public void setUserInfo(UserInfoVO vo) throws RemoteException;
 
     public ArrayList<UserInfoPO> getUserList();
 }

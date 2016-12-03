@@ -16,7 +16,7 @@ public class Main extends Application{
     private SceneLog sceneLog;
 
     public static void main(String[] args) {
-        ClientRunner clientRunner = new ClientRunner();
+//        ClientRunner clientRunner = new ClientRunner();
         launch(args);
     }
 
