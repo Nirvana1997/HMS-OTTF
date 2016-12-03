@@ -1,4 +1,3 @@
-import businesslogic.userbl.HotelOrder;
 import businesslogic.userbl.UserController;
 import businesslogicservice.userblservice.HotelOrderBlService;
 import enumData.*;
@@ -6,15 +5,17 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.Before; 
 import org.junit.After;
-import vo.ConditionVO;
+import vo.HotelListItemVO;
+import vo.LimitVO;
 import vo.OrderVO;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 /** 
 * HotelOrder Tester.
 * 
-* @author <Authors name> 
+* @author <Authors name>  qzh
 * @since <pre>十一月 12, 2016</pre> 
 * @version 1.0 
 */ 
@@ -28,19 +29,46 @@ public void before() throws Exception {
 
 @After
 public void after() throws Exception { 
-} 
+}
 
-/** 
-* 
-* Method: searchHotel(Address address, ConditionVO vo) 
-* 
-*/ 
+/**
+*
+* Method: searchHotel(TradeArea tradeArea,Address address, ArrayList<LimitVO> limits)
+*
+*/
 @Test
 public void testSearchHotel() throws Exception {
     HotelOrderBlService hotelOrderBlService = new UserController();
-    ConditionVO conditionVO = new ConditionVO("","001",Address.DieDie, TradeArea.Xianlin, SortWay.GradeAscending, RoomType.big
-            ,200,300,false,new Date(2016,11,11),true,3,3);
-    Assert.assertEquals("0001",hotelOrderBlService.searchHotel(Address.DieDie,conditionVO).get(0).getHotelID());
+    LimitVO limitVO = new LimitVO(LimitCriterion.GradeCriterion,4,5);
+    ArrayList<LimitVO> limits = new ArrayList<LimitVO>();
+    limits.add(limitVO);
+    //结果是否在限制条件内
+    boolean inArea = true;
+
+    //评分区间测试
+    ArrayList<HotelListItemVO> hotels = hotelOrderBlService.searchHotel(TradeArea.Xianlin,Address.NJU,SortWay.Grade_Ascending, limits);
+    for(HotelListItemVO hotel:hotels){
+        if(!(hotel.getGrade()>=4&&hotel.getGrade()<=5))
+            inArea = false;
+    }
+    Assert.assertEquals(true,inArea);
+
+    //星级区间测试
+    limits.clear();
+    limits.add(new LimitVO(LimitCriterion.StarCriterion,4,5));
+    hotels = hotelOrderBlService.searchHotel(TradeArea.Xianlin,Address.NJU,SortWay.Grade_Ascending, limits);
+    inArea = true;
+    for(HotelListItemVO hotel:hotels){
+        if(!(hotel.getStar()>=4&&hotel.getStar()<=5))
+            inArea = false;
+    }
+    Assert.assertEquals(true,inArea);
+
+    //关键字测试
+    limits.clear();
+    limits.add(new LimitVO(LimitCriterion.KeywordCriterion,"仙林"));
+    hotels = hotelOrderBlService.searchHotel(TradeArea.Xianlin,Address.NJU,SortWay.Grade_Ascending, limits);
+    Assert.assertEquals("仙林大酒店",hotels.get(0).getHotelname());
 } 
 
 /** 
@@ -50,10 +78,8 @@ public void testSearchHotel() throws Exception {
 */ 
 @Test
 public void testReadHotel() throws Exception {
-    ConditionVO conditionVO = new ConditionVO("","001",Address.DieDie, TradeArea.Xianlin, SortWay.GradeAscending, RoomType.big
-            ,200,300,false,new Date(2016,11,11),true,3,3);
-    Assert.assertEquals("仙林大酒店",hotelOrderBlService.readHotel(Address.DieDie,conditionVO).get(0).getHotelname());
-} 
+    Assert.assertEquals("仙林大酒店",hotelOrderBlService.readHotel("0001").getHotelname());
+}
 
 /** 
 * 
@@ -63,7 +89,7 @@ public void testReadHotel() throws Exception {
 @Test
 public void testOrderHotel() throws Exception {
     OrderVO orderVO = new OrderVO("1", OrderState.executing,"0001","01",new Date(2016,11,11),"01");
-    Assert.assertEquals(true,hotelOrderBlService.orderHotel(orderVO,"01"));
+    Assert.assertEquals(true,hotelOrderBlService.orderHotel(orderVO));
 } 
 
 /** 

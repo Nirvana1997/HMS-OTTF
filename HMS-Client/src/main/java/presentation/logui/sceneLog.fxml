@@ -1,151 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.ImageInput?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="618" prefWidth="1000" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.logui.uiLogController">
-    <left>
-        <VBox prefHeight="559.0" prefWidth="333.0" BorderPane.alignment="CENTER">
-            <children>
-            <ImageView pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../../../graphics/icon.png" />
-               </image>
-               <VBox.margin>
-                  <Insets left="80.0" top="40.0" />
-               </VBox.margin>
-            </ImageView>
-                <HBox>
-                    <children>
-                        <Label prefHeight="56.0" prefWidth="80.0" text="用户名：">
-                            <font>
-                                <Font size="18.0" />
-                            </font>
-                            <HBox.margin>
-                                <Insets left="30.0" />
-                            </HBox.margin>
-                        </Label>
-                  <TextField fx:id="textUserID" minWidth="-Infinity" prefHeight="36.0" prefWidth="150.0" style="-fx-border-radius: 4;">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets left="-5.0" top="10.0" />
-                     </HBox.margin>
-                  </TextField>
-                    </children>
-                    <VBox.margin>
-                        <Insets left="40.0" top="-15.0" />
-                    </VBox.margin>
-                </HBox>
-            <HBox>
-               <children>
-                  <Label text="密码：">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets left="30.0" top="5.0" />
-                     </HBox.margin>
-                  </Label>
-                  <PasswordField fx:id="textPassword" minWidth="-Infinity" prefHeight="36.0" prefWidth="150.0">
-                     <HBox.margin>
-                        <Insets left="21.0" />
-                     </HBox.margin>
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </PasswordField>
-               </children>
-               <VBox.margin>
-                  <Insets left="40.0" top="40.0" />
-               </VBox.margin>
-            </HBox>
-            <HBox prefHeight="100.0" prefWidth="200.0">
-               <children>
-                  <Button fx:id="buttonRegister" mnemonicParsing="false" onAction="#gotoRegister1" style="-fx-background-radius: 10;" text="注册">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets left="60.0" top="30.0" />
-                     </HBox.margin>
-                  </Button>
-                  <Button mnemonicParsing="false" onAction="#login" style="-fx-background-radius: 10;" text="登陆">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets left="45.0" top="30.0" />
-                     </HBox.margin>
-                  </Button>
-               </children>
-               <VBox.margin>
-                  <Insets left="40.0" top="20.0" />
-               </VBox.margin>
-            </HBox>
-            </children>
-        </VBox>
-    </left>
-   <bottom>
-      <HBox BorderPane.alignment="CENTER">
-         <children>
-            <Label text="以游客身份登陆">
-               <font>
-                  <Font size="14.0" />
-               </font>
-               <HBox.margin>
-                  <Insets bottom="40.0" left="20.0" />
-               </HBox.margin>
-            </Label>
-         </children>
-      </HBox>
-   </bottom>
-   <center>
-      <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-         <children>
-            <ImageView fx:id="imgHotel01" fitHeight="323.0" fitWidth="490.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../../../graphics/hotel01.JPG" />
-               </image>
-               <HBox.margin>
-                  <Insets left="60.0" top="110.0" />
-               </HBox.margin>
-            </ImageView>
-            <ImageView fx:id="imgHotel02" fitHeight="322.0" fitWidth="484.0" pickOnBounds="true" preserveRatio="true" visible="false">
-               <HBox.margin>
-                  <Insets left="-485.0" top="110.0" />
-               </HBox.margin>
-               <image>
-                  <Image url="@../../../../../graphics/hotel02.jpg" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="imgHotel03" fitHeight="360.0" fitWidth="484.0" pickOnBounds="true" preserveRatio="true" visible="false">
-               <image>
-                  <Image url="@../../../../../graphics/hotel03.png" />
-               </image>
-               <HBox.margin>
-                  <Insets left="-477.0" top="110.0" />
-               </HBox.margin>
-            </ImageView>
-            <ImageView fitHeight="50.0" fitWidth="86.0" onMouseClicked="#setNextPic" pickOnBounds="true" preserveRatio="true">
-               <HBox.margin>
-                  <Insets left="20.0" top="250.0" />
-               </HBox.margin>
-               <image>
-                  <Image url="@../../../../../graphics/ahead.png" />
-               </image>
-            </ImageView>
-         </children>
-      </HBox>
-   </center>
-</BorderPane>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="618.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.logui.uiLogController">
+   <children>
+      <ImageView fitHeight="618.0" fitWidth="1000.0">
+         <image>
+            <Image url="@../../../../../graphics/logui/homepage.png" />
+         </image>
+      </ImageView>
+      <TextField fx:id="textUserID" layoutX="433.0" layoutY="313.0" minWidth="-Infinity" prefHeight="30.0" prefWidth="180.0" style="-fx-border-radius: 4;">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <Button fx:id="buttonRegister" layoutX="152.0" layoutY="420.0" mnemonicParsing="false" onAction="#gotoRegister1" prefHeight="67.0" prefWidth="180.0" text="Button">
+         <effect>
+            <ImageInput>
+               <source>
+                  <Image url="@../../../../../graphics/logui/register.png" />
+               </source>
+            </ImageInput>
+         </effect>
+      </Button>
+      <Button fx:id="buttonLogin" layoutX="647.0" layoutY="420.0" mnemonicParsing="false" onAction="#login" prefHeight="67.0" prefWidth="180.0" text="Button">
+         <effect>
+            <ImageInput>
+               <source>
+                  <Image url="@../../../../../graphics/logui/login.png" />
+               </source>
+            </ImageInput>
+         </effect>
+      </Button>
+      <PasswordField fx:id="textPassword" layoutX="433.0" layoutY="360.0" prefHeight="29.0" prefWidth="180.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </PasswordField>
+   </children>
+</AnchorPane>

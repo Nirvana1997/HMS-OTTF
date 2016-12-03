@@ -8,7 +8,7 @@ public class AccountPO implements Serializable {
 	String accountID;
 	String password;
 	AccountType type;
-
+	
 	public AccountPO(String accountID, String password, AccountType type) {
 		this.accountID = accountID;
 		this.password = password;
@@ -33,5 +33,5 @@ public class AccountPO implements Serializable {
 	public void setType(AccountType type) {
 		this.type = type;
 	}
-
+	
 }

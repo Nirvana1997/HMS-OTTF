@@ -3,7 +3,7 @@
 //import java.util.ArrayList;
 //
 //import vo.AccountVO;
-//import vo.ConditionVO;
+//import vo.LimitVO;
 //import vo.HotelinfoVO;
 //import vo.OrderVO;
 //import vo.PromotionVO;
@@ -14,9 +14,9 @@
 //import businesslogic.orderbl.OrderBl_stub;
 //import businesslogic.promotionbl.PromotionBl_stub;
 //import businesslogic.userbl.HotelOrderBl_stub;
-//import businesslogic.webmanagerbl.HSmanagementBlImpl;
-//import businesslogic.webmanagerbl.URmanagementBlImpl;
-//import businesslogic.webmanagerbl.WSmanagementBlImpl;
+//import businesslogic.webmanagerbl.HSmanagement;
+//import businesslogic.webmanagerbl.URmanagement;
+//import businesslogic.webmanagerbl.WSmanagement;
 //import businesslogic.websalerbl.WebsalerblImpl;
 //import businesslogicservice.hotelsalerblservice.HotelinfoblService;
 //import businesslogicservice.hotelsalerblservice.HotelroomblService;
@@ -87,16 +87,16 @@
 //
 //	HotelOrderBlService hotelOrder;
 //
-//	public void searchHotel(ConditionVO vo){
+//	public void searchHotelInArea(LimitVO vo){
 //		hotelOrder = new HotelOrderBl_stub();
 //		System.out.println("----------搜索酒店----------");
-//		System.out.println(((HotelinfoVO) hotelOrder.searchHotel(vo).get(0)).getHotelname());
+//		System.out.println(((HotelinfoVO) hotelOrder.searchHotelInArea(vo).get(0)).getHotelname());
 //	}
 //
 //	HSmanagementBlService hsmanagement;
 //
 //	public void getHotelsalerInfo(String hotelsalerID){
-//		hsmanagement = new HSmanagementBlImpl();
+//		hsmanagement = new HSmanagement();
 //		System.out.println("----------获得酒店信息----------");
 //		System.out.println(hsmanagement.getHotelsalerInfo("0001").getHotelname());
 //	}
@@ -104,7 +104,7 @@
 //	URmanagementBlService urmanagement;
 //
 //	public void getUserInfo(String userID){
-//		urmanagement = new URmanagementBlImpl();
+//		urmanagement = new URmanagement();
 //		System.out.println("----------获得用户个人信息----------");
 //		System.out.println(urmanagement.getUserInfo(userID).getName());
 //	}
@@ -112,7 +112,7 @@
 //	WSmanagementBlService wSmanagement;
 //
 //	public void getWebsaleInfo(String websalerID){
-//		wSmanagement = new WSmanagementBlImpl();
+//		wSmanagement = new WSmanagement();
 //		System.out.println("----------获得网络营销人员信息----------");
 //		System.out.println(wSmanagement.getWebsaleInfo("0001"));
 //	}
@@ -129,7 +129,7 @@
 //	public static void main(String[] args) {
 //		Driver driver = new Driver();
 //		ArrayList<String> promotionIds = new ArrayList<String>();
-//		ConditionVO conditionVO = new ConditionVO("0001", null, null, null, null, 0, 0, false, null, false, 0, 0);
+//		LimitVO conditionVO = new LimitVO("0001", null, null, null, null, 0, 0, false, null, false, 0, 0);
 //		PromotionVO promotionVO = new PromotionVO("0002", null, null, null, null, null, 0);
 //		promotionIds.add("0001");
 //		promotionIds.add("0001");
@@ -140,7 +140,7 @@
 //		driver.isCorrectAndLogin(new AccountVO("OTTF", "1234", AccountType.user));
 //		driver.getOrderInfo("0001");
 //		driver.getPromotionList(promotionIds);
-//		driver.searchHotel(conditionVO);
+//		driver.searchHotelInArea(conditionVO);
 //		driver.getHotelsalerInfo("0001");
 //		driver.getUserInfo("0001");
 //		driver.makeFestivalPromotion(promotionVO);

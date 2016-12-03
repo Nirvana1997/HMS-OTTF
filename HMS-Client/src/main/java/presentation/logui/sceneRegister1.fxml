@@ -12,22 +12,32 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="618.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.logui.uiRegister1Controller">
    <children>
-      <Label layoutX="304.0" layoutY="252.0" text="账号：">
+      <ImageView fitHeight="618.0" fitWidth="1000.0">
+         <image>
+            <Image url="@../../../../../graphics/logui/registerbc.png" />
+         </image>
+      </ImageView>
+      <PasswordField fx:id="textConfirm" layoutX="399.0" layoutY="356.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </PasswordField>
+      <Label layoutX="317.0" layoutY="261.0" text="账号：">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="304.0" layoutY="300.0" text="密码：">
+      <Label layoutX="317.0" layoutY="309.0" text="密码：">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <Label layoutX="268.0" layoutY="353.0" text="确认密码：">
+      <Label layoutX="281.0" layoutY="362.0" text="确认密码：">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <TextField fx:id="textUserID" layoutX="386.0" layoutY="246.0">
+      <TextField fx:id="textUserID" layoutX="399.0" layoutY="255.0">
          <font>
             <Font size="18.0" />
          </font>
@@ -35,27 +45,22 @@
             <Cursor fx:constant="DEFAULT" />
          </cursor>
       </TextField>
-      <Button fx:id="buttonNext" layoutX="628.0" layoutY="451.0" mnemonicParsing="false" onAction="#goToRegister2" text="下一步">
+      <Button fx:id="buttonNext" layoutX="641.0" layoutY="460.0" mnemonicParsing="false" onAction="#goToRegister2" text="下一步">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <ImageView fitHeight="83.0" fitWidth="185.0" layoutX="393.0" layoutY="83.0">
+      <ImageView fitHeight="83.0" fitWidth="185.0" layoutX="408.0" layoutY="129.0">
          <image>
             <Image url="@../../../../../graphics/step1.png" />
          </image>
       </ImageView>
-      <Button fx:id="buttonReturn" layoutX="528.0" layoutY="451.0" mnemonicParsing="false" onAction="#returnToLog" text="返回">
+      <Button fx:id="buttonReturn" layoutX="541.0" layoutY="460.0" mnemonicParsing="false" onAction="#returnToLog" text="返回">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <PasswordField fx:id="textPassword" layoutX="386.0" layoutY="294.0">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </PasswordField>
-      <PasswordField fx:id="textConfirm" layoutX="386.0" layoutY="347.0">
+      <PasswordField fx:id="textPassword" layoutX="399.0" layoutY="303.0">
          <font>
             <Font size="18.0" />
          </font>

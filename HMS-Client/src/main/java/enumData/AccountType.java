@@ -1,5 +1,5 @@
 package enumData;
 
 public enum AccountType {
-	user, hotelsaler, websaler, webmanager
+	personalUser,enterpriseUser, hotelsaler, websaler, webmanager
 }

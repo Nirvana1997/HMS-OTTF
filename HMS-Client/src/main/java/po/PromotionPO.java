@@ -1,10 +1,10 @@
 package po;
 
-import enumData.PromotionType;
-import enumData.TradeArea;
-
 import java.util.ArrayList;
 import java.util.Date;
+
+import enumData.PromotionType;
+import enumData.TradeArea;
 
 public class PromotionPO {
 	String promotionID;
@@ -14,11 +14,10 @@ public class PromotionPO {
 	TradeArea[] validRange;
 	ArrayList<Double> memberDiscount;
 	double normalDiscount;
-	String hotelID;
 	
 	public PromotionPO(String promotionID, PromotionType promotionType,
 			Date startDate, Date endDate, TradeArea[] validRange,
-			ArrayList<Double> memberDiscount, double normalDiscount, String hotelID) {
+			ArrayList<Double> memberDiscount, double normalDiscount) {
 		super();
 		this.promotionID = promotionID;
 		this.promotionType = promotionType;
@@ -27,7 +26,6 @@ public class PromotionPO {
 		this.validRange = validRange;
 		this.memberDiscount = memberDiscount;
 		this.normalDiscount = normalDiscount;
-		this.hotelID = hotelID;
 	}
 	
 	public Date getStartDate() {
@@ -72,7 +70,5 @@ public class PromotionPO {
 	public void setNormalDiscount(double normalDiscount) {
 		this.normalDiscount = normalDiscount;
 	}
-	public String getHotelID(){return  hotelID;}
-	public void  setHotelID(String hotelID){this.hotelID = hotelID;}
 }
 

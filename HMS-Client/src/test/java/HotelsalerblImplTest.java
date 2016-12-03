@@ -37,8 +37,7 @@ public void after() throws Exception {
 @Test
 public void testModifyHotelInfo() throws Exception {
     HotelsalerblService hotelsalerblService = new HotelsalerblImpl();
-    HotelinfoVO hotelinfoVO = new HotelinfoVO("0001","喋喋大酒店", TradeArea.Xianlin, Address.DieDie,"仙林大道",null,new ArrayList<RoomType>(),
-            new ArrayList<Integer>(),"环境优美","服务周到",3,3,new ArrayList<String>(),new ArrayList<String>());
+    HotelinfoVO hotelinfoVO = new HotelinfoVO("0001","喋喋大酒店", TradeArea.Xianlin, Address.DieDie,"仙林大道",null,"环境优美","服务周到",3,3);
     Assert.assertEquals(ResultMessage.Correct,hotelsalerblService.modifyHotelInfo(hotelinfoVO));
 } 
 
@@ -60,8 +59,8 @@ public void testReadOrder() throws Exception {
 @Test
 public void testUpdateOrder() throws Exception {
     HotelsalerblService hotelsalerblService = new HotelsalerblImpl();
-    HotelinfoVO hotelinfoVO = new HotelinfoVO("0001","喋喋大酒店", TradeArea.Xianlin, Address.DieDie,"仙林大道",null,new ArrayList<RoomType>(),
-            new ArrayList<Integer>(),"环境优美","服务周到",3,3,new ArrayList<String>(),new ArrayList<String>());
+    HotelinfoVO hotelinfoVO = new HotelinfoVO("0001","喋喋大酒店", TradeArea.Xianlin, Address.DieDie,"仙林大道",null,"环境优美","服务周到",3,3);
+
     Assert.assertEquals(ResultMessage.Correct,hotelsalerblService.modifyHotelInfo(hotelinfoVO));
 } 
 

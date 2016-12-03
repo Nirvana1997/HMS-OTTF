@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.ImageInput?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="618.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.userui.uiSearchHotelController">
+   <children>
+      <ImageView fitHeight="618.0" fitWidth="1000.0">
+         <image>
+            <Image url="@../../../../../graphics/userui/searchbc.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="buttonHomePage" layoutX="25.0" layoutY="221.0" mnemonicParsing="false" onAction="#gotoHomePage" prefHeight="64.0" prefWidth="170.0" text="Button">
+         <effect>
+            <ImageInput>
+               <source>
+                  <Image url="@../../../../../graphics/userui/首页1.png" />
+               </source>
+            </ImageInput>
+         </effect>
+      </Button>
+      <Button fx:id="buttonUserInfo" layoutX="91.0" layoutY="285.0" mnemonicParsing="false" onAction="#gotoUserInfo" prefHeight="64.0" prefWidth="170.0" text="Button">
+         <effect>
+            <ImageInput>
+               <source>
+                  <Image url="@../../../../../graphics/userui/个人信息1.png" />
+               </source>
+            </ImageInput>
+         </effect>
+      </Button>
+      <Button fx:id="buttonMyOrder" layoutX="25.0" layoutY="349.0" mnemonicParsing="false" onAction="#gotoMyOrder" prefHeight="64.0" prefWidth="170.0" text="Button">
+         <effect>
+            <ImageInput>
+               <source>
+                  <Image url="@../../../../../graphics/userui/我的订单1.png" />
+               </source>
+            </ImageInput>
+         </effect>
+      </Button>
+      <Button fx:id="buttonReadHotel" layoutX="91.0" layoutY="413.0" mnemonicParsing="false" onAction="#gotoReadHotel" prefHeight="64.0" prefWidth="170.0" text="Button">
+         <effect>
+            <ImageInput>
+               <source>
+                  <Image url="@../../../../../graphics/userui/浏览酒店1.png" />
+               </source>
+            </ImageInput>
+         </effect>
+      </Button>
+      <Button fx:id="buttonSearchHotel" layoutX="25.0" layoutY="477.0" mnemonicParsing="false" onAction="#gotoSearchHotel" prefHeight="64.0" prefWidth="170.0" text="Button">
+         <effect>
+            <ImageInput>
+               <source>
+                  <Image url="@../../../../../graphics/userui/搜索酒店2.png" />
+               </source>
+            </ImageInput>
+         </effect>
+      </Button>
+      <ImageView fx:id="UserIcon" layoutX="25.0" layoutY="92.0">
+         <image>
+            <Image url="@../../../../../graphics/userui/icon.png" />
+         </image>
+      </ImageView>
+      <Text fx:id="UserName" fill="#de5749" layoutX="151.0" layoutY="147.0" smooth="false" strokeType="OUTSIDE" strokeWidth="0.0" text="萌萌">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <ComboBox fx:id="comboAddress" layoutX="370.0" layoutY="138.0" prefHeight="30.0" prefWidth="100.0" promptText="Combo; tex">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </ComboBox>
+      <ComboBox fx:id="comboCircle" layoutX="506.0" layoutY="138.0" prefHeight="30.0" prefWidth="100.0" promptText="Combo; tex">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </ComboBox>
+      <AnchorPane layoutX="318.0" layoutY="185.0" prefHeight="363.0" prefWidth="655.0">
+         <children>
+            <Label layoutX="73.0" layoutY="33.0" prefHeight="10.0" prefWidth="48.0" text="价格">
+               <font>
+                  <Font name="SimHei" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="73.0" layoutY="111.0" prefHeight="10.0" prefWidth="36.0" text="星级">
+               <font>
+                  <Font name="SimHei" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="73.0" layoutY="258.0" prefHeight="10.0" prefWidth="36.0" text="记录">
+               <font>
+                  <Font name="SimHei" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="73.0" layoutY="184.0" prefHeight="10.0" prefWidth="36.0" text="评分">
+               <font>
+                  <Font name="SimHei" size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="priceTag1" alignment="CENTER" contentDisplay="CENTER" layoutX="159.0" layoutY="28.0" prefHeight="30.0" prefWidth="83.0" text="100以下" textAlignment="CENTER">
+               <font>
+                  <Font name="SimHei" size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="priceTag2" alignment="CENTER" contentDisplay="CENTER" layoutX="242.0" layoutY="28.0" prefHeight="30.0" prefWidth="83.0" text="100-300" textAlignment="CENTER">
+               <font>
+                  <Font name="SimHei" size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="priceTag3" alignment="CENTER" contentDisplay="CENTER" layoutX="319.0" layoutY="28.0" prefHeight="30.0" prefWidth="83.0" text="300-500" textAlignment="CENTER">
+               <font>
+                  <Font name="SimHei" size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="priceTag4" alignment="CENTER" contentDisplay="CENTER" layoutX="402.0" layoutY="28.0" prefHeight="30.0" prefWidth="83.0" text="500-1000" textAlignment="CENTER">
+               <font>
+                  <Font name="SimHei" size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="priceTag5" alignment="CENTER" contentDisplay="CENTER" layoutX="486.0" layoutY="28.0" prefHeight="30.0" prefWidth="83.0" text="1000以上" textAlignment="CENTER">
+               <font>
+                  <Font name="SimHei" size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="starTag1" alignment="CENTER" contentDisplay="CENTER" layoutX="159.0" layoutY="106.0" prefHeight="30.0" prefWidth="83.0" text="★" textAlignment="CENTER">
+               <font>
+                  <Font name="SimHei" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="starTag2" alignment="CENTER" contentDisplay="CENTER" layoutX="242.0" layoutY="106.0" prefHeight="30.0" prefWidth="83.0" text="★★" textAlignment="CENTER">
+               <font>
+                  <Font name="SimHei" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="starTag3" alignment="CENTER" contentDisplay="CENTER" layoutX="319.0" layoutY="106.0" prefHeight="30.0" prefWidth="83.0" text="★★★" textAlignment="CENTER">
+               <font>
+                  <Font name="SimHei" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="starTag4" alignment="CENTER" contentDisplay="CENTER" layoutX="402.0" layoutY="106.0" prefHeight="30.0" prefWidth="83.0" text="★★★★" textAlignment="CENTER">
+               <font>
+                  <Font name="SimHei" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="starTag5" alignment="CENTER" contentDisplay="CENTER" layoutX="486.0" layoutY="106.0" prefHeight="30.0" prefWidth="83.0" text="★★★★★" textAlignment="CENTER">
+               <font>
+                  <Font name="SimHei" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="commentTag1" alignment="CENTER" contentDisplay="CENTER" layoutX="159.0" layoutY="179.0" prefHeight="30.0" prefWidth="83.0" text="❤" textAlignment="CENTER">
+               <font>
+                  <Font name="SimHei" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="commentTag2" alignment="CENTER" contentDisplay="CENTER" layoutX="242.0" layoutY="179.0" prefHeight="30.0" prefWidth="83.0" text="❤❤" textAlignment="CENTER">
+               <font>
+                  <Font name="SimHei" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="commentTag3" alignment="CENTER" contentDisplay="CENTER" layoutX="319.0" layoutY="179.0" prefHeight="30.0" prefWidth="83.0" text="❤❤❤" textAlignment="CENTER">
+               <font>
+                  <Font name="SimHei" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="commentTag4" alignment="CENTER" contentDisplay="CENTER" layoutX="402.0" layoutY="179.0" prefHeight="30.0" prefWidth="83.0" text="❤❤❤❤" textAlignment="CENTER">
+               <font>
+                  <Font name="SimHei" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="commentTag5" alignment="CENTER" contentDisplay="CENTER" layoutX="486.0" layoutY="179.0" prefHeight="30.0" prefWidth="83.0" text="❤❤❤❤❤" textAlignment="CENTER">
+               <font>
+                  <Font name="SimHei" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="recordTag1" alignment="CENTER" contentDisplay="CENTER" layoutX="159.0" layoutY="253.0" prefHeight="30.0" prefWidth="100.0" text="未预定过" textAlignment="CENTER">
+               <font>
+                  <Font name="SimHei" size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="recordTag2" alignment="CENTER" contentDisplay="CENTER" layoutX="261.0" layoutY="253.0" prefHeight="30.0" prefWidth="100.0" text="正常预定" textAlignment="CENTER">
+               <font>
+                  <Font name="SimHei" size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="recordTag3" alignment="CENTER" contentDisplay="CENTER" layoutX="367.0" layoutY="253.0" prefHeight="30.0" prefWidth="100.0" text="异常预定" textAlignment="CENTER">
+               <font>
+                  <Font name="SimHei" size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="recordTag4" alignment="CENTER" contentDisplay="CENTER" layoutX="468.0" layoutY="253.0" prefHeight="30.0" prefWidth="100.0" text="撤销预定" textAlignment="CENTER">
+               <font>
+                  <Font name="SimHei" size="16.0" />
+               </font>
+            </Label>
+            <Button fx:id="buttonSearch" layoutX="518.0" layoutY="319.0" mnemonicParsing="false" onAction="#SearchHotel" prefHeight="30.0" prefWidth="90.0" text="Button">
+               <effect>
+                  <ImageInput>
+                     <source>
+                        <Image url="@../../../../../graphics/userui/搜索.png" />
+                     </source>
+                  </ImageInput>
+               </effect>
+            </Button>
+         </children>
+      </AnchorPane>
+      <Label fx:id="buttonLogOut" layoutX="209.0" layoutY="566.0" onMouseClicked="#LogOut" prefHeight="20.0" prefWidth="36.0" text="登出" textFill="#da6952" underline="true">
+         <font>
+            <Font name="SimHei" size="16.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

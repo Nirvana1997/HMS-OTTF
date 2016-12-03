@@ -1,70 +1,67 @@
 package businesslogic.userbl;
 
-import businesslogicservice.userblservice.HotelOrderBlService;
+import businesslogic.hotelsalerbl.HotelDataImpl;
 import enumData.*;
-import vo.CommentVO;
-import vo.ConditionVO;
-import vo.HotelinfoVO;
-import vo.OrderVO;
+import vo.*;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Date;
 
 /**
  * 酒店预定模块
- * 负责搜索酒店、预定酒店、浏览订单和评价
- * @author xzh
+ * 负责预定酒店、浏览订单和评价
+ * @author qzh
  */
 public class HotelOrder{
 	/**
 	 * 酒店列表
 	 */
-	HotelList hotelList;
+	HotelInfo hotelInfo;
 
-    public HotelOrder() {
-        hotelList = new HotelList();
+	/**
+	 * 判断房间数目
+	 */
+	RoomNumJudger roomNumJudger;
+
+    public HotelOrder() throws RemoteException{
+        hotelInfo = new HotelDataImpl();
+        roomNumJudger = new RoomNumJudger();
     }
 
-    String orderID;
-	OrderState orderState;
-	String hotelID;
-	String user;
-	Date time;
-	String roomID;
-	ArrayList<HotelinfoVO> hotelInfoList = new ArrayList<HotelinfoVO>();
-	ArrayList<OrderVO> orderList = new ArrayList<OrderVO>();
-
 	/**
-	 * 根据限制条件搜索酒店
-	 * @param address
-	 * @param vo
-     * @return
-     */
-	public ArrayList<HotelinfoVO> searchHotel(Address address,ConditionVO vo){
-		hotelInfoList.add(new HotelinfoVO("0001", "仙林大酒店", null, null, null,null, null, null, null, null, 0, 0, null, null));
-		return hotelInfoList;
+	 * 返回是否房间数目是否足够
+	 * @param hotelID 酒店编号
+	 * @param startDate 入住时间
+	 * @param endDate 退房时间
+	 * @param roomType 房间类型
+	 * @param num 房间数目
+	 * @return
+	 */
+	public boolean haveEnoughRoom(String hotelID, Date startDate, Date endDate, RoomType roomType, int num) {
+		return roomNumJudger.haveEnoughRoom(hotelID,startDate,endDate,roomType,num);
 	}
 
-	/**
-	 * 根据限制条件浏览酒店
-	 * @param address
-	 * @param vo
-     * @return
+    /**
+     * 计算订单价格并生成订单信息
+     * @param roomType 房间类型
+     * @param hotelID 酒店编号
+     * @param startDate 入住时间
+     * @param endDate 退房时间
+     * @param num 房间数目
+     * @return 订单信息
+     * @throws RemoteException
      */
-	public ArrayList<HotelinfoVO> readHotel(Address address,ConditionVO vo){
-		hotelInfoList.add(new HotelinfoVO("001","喋喋大酒店", TradeArea.Xianlin,Address.DieDie, "仙林大道",null,new ArrayList<RoomType>(),
-				new ArrayList<Integer>(),"贼好","贼棒",3,3,new ArrayList<String>(),new ArrayList<String>()));
-		return hotelInfoList;
-
-	}
+    public OrderVO makeOrder(RoomType roomType, String hotelID, Date startDate, Date endDate, int num) throws RemoteException {
+        return null;
+    }
 
 	/**
 	 * 预订酒店
 	 * @param vo
-	 * @param userID
      * @return
      */
-	public boolean orderHotel(OrderVO vo, String userID){
+	public boolean orderHotel(OrderVO vo){
 		return true;
 	}
 
@@ -74,10 +71,6 @@ public class HotelOrder{
 	 * @return
      */
 	public ArrayList<OrderVO> readOrder(String userID){
-		if(userID=="01") {
-			orderList.add(new OrderVO("11",OrderState.executing,"123","1",new Date(2016,11,11),"1"));
-			return orderList;
-		}
 		return null;
 	}
 
@@ -87,12 +80,7 @@ public class HotelOrder{
 	 * @return
      */
 	public ResultMessage cancelOrder(String OrderID){
-		if(OrderID == orderID){
-			return ResultMessage.Correct;
-		}
-		else{
-			return ResultMessage.NotExist;
-		}
+		return ResultMessage.Correct;
 	}
 
 	/**
@@ -101,7 +89,6 @@ public class HotelOrder{
      */
 	public void comment(CommentVO vo){
 		System.out.println("评价成功！");
-		
 	}
 		
 }

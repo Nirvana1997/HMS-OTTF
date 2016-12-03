@@ -30,7 +30,7 @@
          <effect>
             <ImageInput>
                <source>
-                  <Image url="file:/D:/HMS-OTTF的副本/HMS-OTTF的副本/HMS-Client/graphics/webmanagerui/用户管理蓝.png" />
+                  <Image url="@../../../../../graphics/webmanagerui/用户管理蓝.png" />
                </source>
             </ImageInput>
          </effect>
@@ -48,7 +48,7 @@
          <effect>
             <ImageInput>
                <source>
-                  <Image url="file:/D:/HMS-OTTF的副本/HMS-OTTF的副本/HMS-Client/graphics/webmanagerui/网站管理白.png" />
+                  <Image url="@../../../../../graphics/webmanagerui/网站管理白.png" />
                </source>
             </ImageInput>
          </effect>

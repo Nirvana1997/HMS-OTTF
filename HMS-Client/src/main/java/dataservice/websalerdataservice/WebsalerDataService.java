@@ -1,7 +1,7 @@
 package dataservice.websalerdataservice;
 
 import enumData.ResultMessage;
-import po.*;
+import po.WebsalerInfoPO;
 
 public interface WebsalerDataService {
 	public WebsalerInfoPO getWebsalerInfo(String websalerID);

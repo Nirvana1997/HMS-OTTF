@@ -20,7 +20,7 @@ import java.rmi.RemoteException;
  * 负责接收注册的信息并添加至数据层
  *
  * @author qzh
- *         Created by user on 2016/11/25.
+ *         Created by personalUser on 2016/11/25.
  */
 public class Register {
     LogDataService logDataService;
@@ -38,7 +38,7 @@ public class Register {
     }
 
     /**
-     * 注册帐号 TODO 改文档
+     * 注册帐号
      * @param vo 用户信息
      * @return
      * @throws RemoteException
@@ -76,6 +76,16 @@ public class Register {
      * @throws RemoteException
      */
     public void addUserInfo(UserInfoVO vo) throws RemoteException {
+        UserInfoPO po = new UserInfoPO(vo.getUserID(),vo.getName(),vo.getIdentity(),vo.getContactNumber(),vo.getCredit(),vo.getTransaction());
+        userDataService.addUserInfo(po);
+    }
+
+    /**
+     * 添加用户信息
+     * @param vo 用户个人信息
+     * @throws RemoteException
+     */
+    public void addHotelInfo(UserInfoVO vo) throws RemoteException {
         UserInfoPO po = new UserInfoPO(vo.getUserID(),vo.getName(),vo.getIdentity(),vo.getContactNumber(),vo.getCredit(),vo.getTransaction());
         userDataService.addUserInfo(po);
     }

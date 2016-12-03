@@ -5,7 +5,7 @@ public class CommentPO {
 	String userID;
 	String comment;
 	int grade;
-	
+
 	public CommentPO(String hotelID, String userID, String comment, int grade) {
 		super();
 		this.hotelID = hotelID;

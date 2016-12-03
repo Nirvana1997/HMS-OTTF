@@ -13,8 +13,8 @@ import java.util.ArrayList;
 public class PromotionBlImpl implements PromotionBlService {
 	PromotionDataService promotionDataService;
 
-	/** 根据类型和账户查看促销列表
-	 *
+	/**
+	 * 根据类型和账户查看促销列表
 	 * @param account 账户
 	 * @return
 	 */
@@ -24,7 +24,7 @@ public class PromotionBlImpl implements PromotionBlService {
 		ArrayList<PromotionPO> polist = new ArrayList<PromotionPO>();
 		polist = promotionDataService.getPromotionList(type, account);
 		for(int i = 0; i < polist.size(); i++){
-			PromotionVO vo = new PromotionVO(polist.get(i).getPromotionID(), polist.get(i).getPromotionType(), polist.get(i).getStartDate(), polist.get(i).getEndDate(), polist.get(i).getValidRange(), polist.get(i).getMemberDiscount(), polist.get(i).getNormalDiscount(),polist.get(i).getHotelID());
+			PromotionVO vo = new PromotionVO(polist.get(i).getPromotionID(), polist.get(i).getPromotionType(), polist.get(i).getStartDate(), polist.get(i).getEndDate(), polist.get(i).getValidRange(), polist.get(i).getMemberDiscount(), polist.get(i).getNormalDiscount(),null);
 			volist.add(vo);
 		}
 		return volist;
@@ -54,7 +54,7 @@ public class PromotionBlImpl implements PromotionBlService {
 	 */
 	public ResultMessage setPromotion(PromotionVO vo) {
 		promotionDataService = new PromotionDataImpl_stub();
-		PromotionPO po = new PromotionPO(vo.getPromotionID(), vo.getPromotionType(), vo.getStartDate(), vo.getEndDate(), vo.getValidRange(), vo.getMemberDiscount(), vo.getNormalDiscount(), vo.getHotelID());
+		PromotionPO po = new PromotionPO(vo.getPromotionID(), vo.getPromotionType(), vo.getStartDate(), vo.getEndDate(), vo.getValidRange(), vo.getMemberDiscount(), vo.getNormalDiscount());
 		ResultMessage result = promotionDataService.changePromotion(po);
 		return result;
 	}
@@ -66,7 +66,7 @@ public class PromotionBlImpl implements PromotionBlService {
 	 */
 	public ResultMessage addPromotion(PromotionVO vo) {
 		promotionDataService = new PromotionDataImpl_stub();
-		PromotionPO po = new PromotionPO(vo.getPromotionID(), vo.getPromotionType(), vo.getStartDate(), vo.getEndDate(), vo.getValidRange(), vo.getMemberDiscount(), vo.getNormalDiscount(),vo.getHotelID());
+		PromotionPO po = new PromotionPO(vo.getPromotionID(), vo.getPromotionType(), vo.getStartDate(), vo.getEndDate(), vo.getValidRange(), vo.getMemberDiscount(), vo.getNormalDiscount());
 		ResultMessage result = promotionDataService.addPromotion(po);
 		return result;
 	}
