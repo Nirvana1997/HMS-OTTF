@@ -13,6 +13,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import presentation.hotelsalerui.SceneHotelSaler;
+import presentation.userui.SceneUser;
 import presentation.webmanagerui.SceneWebManager;
 import presentation.websalerui.SceneWebSaler;
 import vo.AccountVO;
@@ -24,38 +25,38 @@ import java.io.IOException;
  */
 public class uiLogController {
 
-    private int count = 0;
-
-    @FXML
-    private ImageView imgHotel01;
-    @FXML
-    private ImageView imgHotel02;
-    @FXML
-    private ImageView imgHotel03;
+//    private int count = 0;
+//
+//    @FXML
+//    private ImageView imgHotel01;
+//    @FXML
+//    private ImageView imgHotel02;
+//    @FXML
+//    private ImageView imgHotel03;
     @FXML
     private TextField textUserID;
     @FXML
     private PasswordField textPassword;
 
-    @FXML
-    public void setNextPic(){
-        count++;
-        if(count % 3 == 0){
-            imgHotel01.setVisible(true);
-            imgHotel02.setVisible(false);
-            imgHotel03.setVisible(false);
-        }
-        else if(count % 3 == 1){
-            imgHotel01.setVisible(false);
-            imgHotel02.setVisible(true);
-            imgHotel03.setVisible(false);
-        }
-        else if(count % 3 == 2){
-            imgHotel01.setVisible(false);
-            imgHotel02.setVisible(false);
-            imgHotel03.setVisible(true);
-        }
-    }
+//    @FXML
+//    public void setNextPic(){
+//        count++;
+//        if(count % 3 == 0){
+//            imgHotel01.setVisible(true);
+//            imgHotel02.setVisible(false);
+//            imgHotel03.setVisible(false);
+//        }
+//        else if(count % 3 == 1){
+//            imgHotel01.setVisible(false);
+//            imgHotel02.setVisible(true);
+//            imgHotel03.setVisible(false);
+//        }
+//        else if(count % 3 == 2){
+//            imgHotel01.setVisible(false);
+//            imgHotel02.setVisible(false);
+//            imgHotel03.setVisible(true);
+//        }
+//    }
 
     public void gotoRegister1() throws IOException {
         ObservableList<Stage> stage = FXRobotHelper.getStages();
@@ -64,11 +65,22 @@ public class uiLogController {
     }
 
     public void login() throws IOException {
-
-//        SceneWebSaler sceneWebSaler = new SceneWebSaler();
-//        sceneWebSaler.initUI();
-        SceneWebManager sceneWebManager = new SceneWebManager();
-        sceneWebManager.initUI();
+        String UserID = textUserID.getText();
+        if (UserID.equals("Iamwebsaler")){
+            SceneWebSaler sceneWebSaler = new SceneWebSaler();
+            sceneWebSaler.initUI();
+       }
+        else if(UserID.equals("Iamwebmanager")) {
+            SceneWebManager sceneWebManager = new SceneWebManager();
+            sceneWebManager.initUI();
+        }
+        else if(UserID.equals("Iamuser")) {
+            SceneUser sceneUser = new SceneUser();
+            sceneUser.initUI();
+        }
+        else{
+            System.out.print("滚！不给看！");
+        }
 //        // 获取用户名
 //        String userID = textUserID.getText();
 //        // 获取密码

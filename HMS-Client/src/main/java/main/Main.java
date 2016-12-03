@@ -27,7 +27,7 @@ public class Main extends Application{
 
         primaryStage.setTitle("困了么");
         primaryStage.setWidth(1000);
-        primaryStage.setHeight(618);
+        primaryStage.setHeight(645);
         primaryStage.setResizable(false);
 
         primaryStage.setScene(sceneLog.getSceneLog());
