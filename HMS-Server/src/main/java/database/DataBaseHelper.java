@@ -137,6 +137,77 @@ public class DataBaseHelper {
     }
 
     /**
+     * 从数据库中取出一行操作
+     * @param table
+     * @param condition
+     * @param concrete
+     * @return
+     */
+    public static  ArrayList<String> outRow(String table ,String condition, String concrete){
+
+        ArrayList<String> result = new ArrayList<String>();
+
+        try{
+            //Register JDBC driver
+            Class.forName("com.mysql.jdbc.Driver");
+
+            //Open a connection
+            conn = DriverManager.getConnection(DB_URL,USER,PASS);
+
+            //Execute two queries
+            stmt = conn.createStatement();
+            Statement stmt_ = conn.createStatement();
+            try {
+                ResultSet rs = stmt.executeQuery("select * from " + table + " where " + condition
+                        + " = '" + concrete + "'" );
+
+                //查询该表中有多少列
+                ResultSet temp = stmt_.executeQuery("select count(*) from information_schema.columns where table_schema='HMS' and table_name = '" + table + "'");
+                int size = 0;
+                if(temp.next())
+                    size = temp.getInt("count(*)");
+
+                if(rs.next()) {
+                    for (int i = 1; i <= size; i++) {
+                        String a = rs.getString(i);
+                        result.add(a);
+                    }
+                }
+
+                //Clean-up environment
+                rs.close();
+                temp.close();
+                stmt.close();
+                stmt_.close();
+                conn.close();
+            }catch (SQLException se){
+                se.printStackTrace();
+            }finally{
+                //finally block used to close resources
+                try{
+                    if(stmt!=null)
+                        stmt.close();
+                }catch(SQLException se){
+                }// nothing we can do
+                try{
+                    if(conn!=null)
+                        conn.close();
+                }catch(SQLException se){
+                    se.printStackTrace();
+                }
+            }
+
+        }catch(SQLException se){
+            //Handle errors for JDBC
+            se.printStackTrace();
+        }catch(Exception e){
+            //Handle errors for Class.forName
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    /**
      * 向数据库放入数据操作（包括删除操作）
      * @param sql
      * @return
