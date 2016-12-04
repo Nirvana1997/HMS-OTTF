@@ -16,7 +16,7 @@ public class SceneHotelSaler {
 
     public void initUI() throws IOException {
         ObservableList<Stage> stage = FXRobotHelper.getStages();
-        Scene scene = new Scene((Parent) FXMLLoader.load(getClass().getResource("sceneHotelSaler.fxml")));
+        Scene scene = new Scene((Parent) FXMLLoader.load(getClass().getResource("hotelSaler_hotelInfo.fxml")));
         stage.get(0).setScene(scene);
     }
 }
