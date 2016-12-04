@@ -56,6 +56,7 @@ public class uiChangeWSController {
     /**
      * 返回网站管理界面
      */
+    @FXML
     Text textManageWS;
     public void returntoManageWS()throws IOException{
         jump.gotoManageWS();
@@ -69,5 +70,14 @@ public class uiChangeWSController {
     public void LogOut() throws IOException{
         //TODO 登出账号
         jump.gotoLogin();
+    }
+    @FXML
+    private Text buttonModifyPassword;
+    /**
+     * 点击修改密码，跳出修改密码窗口
+     * @throws IOException
+     */
+    public void gotoModifyPassword() throws IOException{
+        jump.gotoModifyPassword();
     }
 }

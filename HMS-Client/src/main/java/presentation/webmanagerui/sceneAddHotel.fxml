@@ -140,15 +140,29 @@
             </TextField>
             <ComboBox fx:id="textAddress" layoutX="147.0" layoutY="233.0" prefHeight="30.0" prefWidth="189.0" visibleRowCount="0" />
             <ComboBox fx:id="textCircle" layoutX="147.0" layoutY="273.0" prefHeight="30.0" prefWidth="189.0" visibleRowCount="0" />
-            <Button fx:id="buttonSave" layoutX="440.0" layoutY="389.0" mnemonicParsing="false" text="确认录入">
+            <Button fx:id="buttonSave" layoutX="440.0" layoutY="389.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="89.0" text="确认录入">
                <font>
                   <Font size="18.0" />
                </font>
+               <effect>
+                  <ImageInput>
+                     <source>
+                        <Image url="@../../../../../graphics/webmanagerui/确认录入.png" />
+                     </source>
+                  </ImageInput>
+               </effect>
             </Button>
-            <Button fx:id="buttonCancel" layoutX="568.0" layoutY="389.0" mnemonicParsing="false" text="取消">
+            <Button fx:id="buttonCancel" layoutX="568.0" layoutY="389.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="89.0" text="取消">
                <font>
                   <Font size="18.0" />
                </font>
+               <effect>
+                  <ImageInput>
+                     <source>
+                        <Image url="@../../../../../graphics/webmanagerui/取消.png" />
+                     </source>
+                  </ImageInput>
+               </effect>
             </Button>
          </children>
       </AnchorPane>
