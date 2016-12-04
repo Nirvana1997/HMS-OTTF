@@ -1,7 +1,5 @@
 package presentation.userui;
 
-import com.sun.org.apache.xpath.internal.operations.Or;
-import enumData.OrderState;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -9,9 +7,9 @@ import javafx.scene.control.Label;
 import java.io.IOException;
 
 /**
- * Created by Administrator on 2016/12/3.
+ * Created by Administrator on 2016/12/5.
  */
-public class uiMyOrderController {
+public class uiCommentOrderController {
     @FXML
     /**
      * 跳转到首页的按钮
@@ -102,56 +100,25 @@ public class uiMyOrderController {
         //TODO 清空账号
         jump.gotoLogin();
     }
-
+    @FXML
+    private Label buttonOrderText;
+    @FXML
+    private Label textMyOrder;
     /**
-     * 当前选择的订单状态
-     */
-    static OrderState orderState;
-    public void setOrderState(OrderState state){
-        orderState = state;
-    }
-    public static OrderState getOrderState(){
-        return orderState;
-    }
-
-
-    @FXML
-    private Button buttonNormal;
-    @FXML
-    private Button buttonAbnormal;
-    @FXML
-    private Button buttonRevoke;
-
-    /**
-     * 选择正常订单，则显示已执行和未执行的订单
+     * 跳转到详细订单界面
      * @throws IOException
      */
-    public void chooseNormal() throws IOException{
-        buttonNormal.setVisible(false);
-        buttonAbnormal.setVisible(true);
-        buttonRevoke.setVisible(true);
-        setOrderState(OrderState.executed);
+    public void gotoOrder() throws IOException{
+        jump.gotoOrder();
     }
+    @FXML
+    private Button buttonComment;
 
     /**
-     * 选择异常订单，则显示已执行和未执行的订单
+     * 评价订单
      * @throws IOException
      */
-    public void chooseAbnormal() throws IOException{
-        buttonNormal.setVisible(true);
-        buttonAbnormal.setVisible(false);
-        buttonRevoke.setVisible(true);
-        setOrderState(OrderState.abnormal);
+    public void CommentOrder() throws IOException{
+        //TODO
     }
-    /**
-     * 选择异常订单，则显示已执行和未执行的订单
-     * @throws IOException
-     */
-    public void chooseRevoke() throws IOException{
-        buttonNormal.setVisible(true);
-        buttonAbnormal.setVisible(true);
-        buttonRevoke.setVisible(false);
-        setOrderState(OrderState.canceled);
-    }
-
 }

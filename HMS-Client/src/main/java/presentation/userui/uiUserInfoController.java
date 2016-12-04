@@ -166,6 +166,7 @@ public class uiUserInfoController implements Initializable {
     public void Cancel() throws  IOException{
     }
     public void gotoModifyPassword() throws IOException{
+        jump.gotoModifyPassword();
     }
 
     @Override
