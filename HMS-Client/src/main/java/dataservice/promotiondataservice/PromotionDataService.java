@@ -16,10 +16,10 @@ public interface PromotionDataService {
 
 	/**
 	 * 删除营销策略
-	 * @param promotionID
+	 * @param name
 	 * @return
      */
-	public ResultMessage deletePromotion(String promotionID);
+	public ResultMessage deletePromotion(String name);
 
 	/**
 	 * 修改营销策略

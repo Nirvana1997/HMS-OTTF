@@ -18,9 +18,10 @@ public class PromotionPO implements Serializable{
 	double discount;
 	String hotelID;
 	String description;
+	String companyID;
 
 	public PromotionPO(String name, PromotionType promotionType, String startDate, String endDate, TradeArea tradeArea,
-					   int roomNumber, int vipLevel, double discount, String hotelID, String description) {
+					   int roomNumber, int vipLevel, double discount, String hotelID, String description, String companyID) {
 		this.name = name;
 		this.promotionType = promotionType;
 		this.startDate = startDate;
@@ -31,6 +32,7 @@ public class PromotionPO implements Serializable{
 		this.discount = discount;
 		this.hotelID = hotelID;
 		this.description = description;
+		this.companyID = companyID;
 	}
 
 	public String getName() {
@@ -111,6 +113,14 @@ public class PromotionPO implements Serializable{
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public String getCompanyID() {
+		return companyID;
+	}
+
+	public void setCompanyID(String companyID) {
+		this.companyID = companyID;
 	}
 }
 

@@ -27,9 +27,9 @@ public class PromotionDataImpl extends UnicastRemoteObject implements PromotionD
     @Override
     public ResultMessage addPromotion(PromotionPO po) {
         if(!hasExisted(po.getName())){
-            DataBaseHelper.in("insert into PromotionInfo (name,type,startDate,endDate,tradeArea,roomNumber,vipLevel,discount,hotelID,description) values ('"+
+            DataBaseHelper.in("insert into PromotionInfo (name,type,startDate,endDate,tradeArea,roomNumber,vipLevel,discount,hotelID,description,companyID) values ('"+
             po.getName() + "','" + po.getPromotionType().toString() + "','" + po.getStartDate() + "','" + po.getEndDate() + "','" +
-            po.getTradeArea().toString() + "','" + po.getRoomNumber() + "','" + po.getVipLevel() + "','" + po.getDiscount() + "','" + po.getHotelID() + "','" + po.getDescription() +"')");
+            po.getTradeArea().toString() + "','" + po.getRoomNumber() + "','" + po.getVipLevel() + "','" + po.getDiscount() + "','" + po.getHotelID() + "','" + po.getDescription() + "','" + po.getCompanyID() + "')");
             return ResultMessage.Correct;
         }else
             return ResultMessage.HasExist;
@@ -78,6 +78,7 @@ public class PromotionDataImpl extends UnicastRemoteObject implements PromotionD
         ArrayList<String> discountList = DataBaseHelper.out("select discount from PromotionInfo where type = '" + type.toString() + "'","discount");
         ArrayList<String> hotelIDList = DataBaseHelper.out("select hotelID from PromotionInfo where type = '" + type.toString() + "'","hotelID");
         ArrayList<String> descriptionList = DataBaseHelper.out("select description from PromotionInfo where type = '" + type.toString() + "'","description");
+        ArrayList<String> companyIDList = DataBaseHelper.out("select companyID from PromotionInfo where type = '" + type.toString() + "'","companyID");
         for(int i=0;i<nameList.size();i++){
             TradeArea tradeArea = null;
             try {
@@ -86,7 +87,7 @@ public class PromotionDataImpl extends UnicastRemoteObject implements PromotionD
                 ex.printStackTrace();
             }
             promotionPOs.add(new PromotionPO(nameList.get(i),type,startDateList.get(i),endDateList.get(i),tradeArea,
-                    Integer.parseInt(roomNumberList.get(i)),Integer.parseInt(vipLevelList.get(i)),Double.parseDouble(discountList.get(i)),hotelIDList.get(i),descriptionList.get(i)));
+                    Integer.parseInt(roomNumberList.get(i)),Integer.parseInt(vipLevelList.get(i)),Double.parseDouble(discountList.get(i)),hotelIDList.get(i),descriptionList.get(i),companyIDList.get(i)));
         }
         return promotionPOs;
     }
