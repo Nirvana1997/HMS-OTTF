@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -56,5 +57,14 @@ public class uiWebManagerController {
     public void gotoManageWS() throws IOException{
         jump.gotoManageWS();
     }
-
+    @FXML
+    private Text buttonLogOut;
+    /**
+     * 点击登出，返回到登录界面并清空账号
+     * @throws IOException
+     */
+    public void LogOut() throws IOException{
+        //TODO 登出账号
+        jump.gotoLogin();
+    }
 }

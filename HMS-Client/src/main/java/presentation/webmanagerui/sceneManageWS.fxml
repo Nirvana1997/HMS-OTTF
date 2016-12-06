@@ -116,16 +116,14 @@
          </image>
       </ImageView>
       <TextField fx:id="searchUserID" layoutX="825.0" layoutY="76.0" prefHeight="23.0" prefWidth="142.0">
-         <effect>
-            <ImageInput>
-               <source>
-                  <Image url="@../../../../../graphics/webmanagerui/搜索框.png" />
-               </source>
-            </ImageInput>
-         </effect>
          <font>
             <Font size="14.0" />
          </font>
       </TextField>
+      <Text fx:id="buttonLogOut" fill="#0b799a" layoutX="203.0" layoutY="599.0" onMouseClicked="#LogOut" strokeType="OUTSIDE" strokeWidth="0.0" text="登出" underline="true">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

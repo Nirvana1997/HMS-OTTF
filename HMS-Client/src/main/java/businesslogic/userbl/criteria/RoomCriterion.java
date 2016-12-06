@@ -20,7 +20,7 @@ import java.util.Date;
 /**
  * 根据对房间的需要进行过滤筛选
  * @author qzh
- * Created by personalUser on 2016/11/30.
+ * Created by user on 2016/11/30.
  */
 public class RoomCriterion implements Criterion{
     /**

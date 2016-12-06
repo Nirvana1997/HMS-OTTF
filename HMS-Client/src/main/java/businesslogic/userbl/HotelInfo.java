@@ -16,7 +16,7 @@ import java.util.ArrayList;
  * 获取酒店信息的接口
  * 负责给user模块提供hotel模块的数据
  * @author qzh
- * Created by personalUser on 2016/11/27.
+ * Created by user on 2016/11/27.
  */
 public interface HotelInfo {
     /**

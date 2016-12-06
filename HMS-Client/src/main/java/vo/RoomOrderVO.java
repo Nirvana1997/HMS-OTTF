@@ -7,7 +7,7 @@ import java.util.Date;
 /**
  * 用于记录每一次订单导致的房间数量变化
  * @author qzh
- * Created by personalUser on 2016/11/22.
+ * Created by user on 2016/11/22.
  */
 public class RoomOrderVO {
     String hotelID;

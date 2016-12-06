@@ -6,16 +6,14 @@ public class UserInfoPO {
 	String identity;
 	String contactNumber;
 	int credit;
-	double transaction;
 
 	public UserInfoPO(String userID, String name, String identity,
-					  String contactNumber, int credit, double transaction) {
+					  String contactNumber, int credit) {
 		this.userID = userID;
 		this.name = name;
 		this.identity = identity;
 		this.contactNumber = contactNumber;
 		this.credit = credit;
-		this.transaction = transaction;
 
 	}
 
@@ -49,9 +47,6 @@ public class UserInfoPO {
 	public void setCredit(int credit) {
 		this.credit = credit;
 	}
-	public double getTransaction() {  return transaction;}
-	public void setTransaction(double transaction) {this.transaction = transaction;}
-
 
 
 }

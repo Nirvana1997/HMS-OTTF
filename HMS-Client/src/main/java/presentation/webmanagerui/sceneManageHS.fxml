@@ -87,5 +87,10 @@
             <Button fx:id="buttonAddHotel" layoutX="619.0" layoutY="430.0" mnemonicParsing="false" onAction="#gotoAddHotel" text="AddHotel" />
          </children>
       </AnchorPane>
+      <Text fx:id="buttonLogOut" fill="#0b799a" layoutX="203.0" layoutY="599.0" onMouseClicked="#LogOut" strokeType="OUTSIDE" strokeWidth="0.0" text="登出" underline="true">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

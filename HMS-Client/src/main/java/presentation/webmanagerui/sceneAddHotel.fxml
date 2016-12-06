@@ -140,15 +140,29 @@
             </TextField>
             <ComboBox fx:id="textAddress" layoutX="147.0" layoutY="233.0" prefHeight="30.0" prefWidth="189.0" visibleRowCount="0" />
             <ComboBox fx:id="textCircle" layoutX="147.0" layoutY="273.0" prefHeight="30.0" prefWidth="189.0" visibleRowCount="0" />
-            <Button fx:id="buttonSave" layoutX="440.0" layoutY="389.0" mnemonicParsing="false" text="确认录入">
+            <Button fx:id="buttonSave" layoutX="440.0" layoutY="389.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="89.0" text="确认录入">
                <font>
                   <Font size="18.0" />
                </font>
+               <effect>
+                  <ImageInput>
+                     <source>
+                        <Image url="@../../../../../graphics/webmanagerui/确认录入.png" />
+                     </source>
+                  </ImageInput>
+               </effect>
             </Button>
-            <Button fx:id="buttonCancel" layoutX="568.0" layoutY="389.0" mnemonicParsing="false" text="取消">
+            <Button fx:id="buttonCancel" layoutX="568.0" layoutY="389.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="89.0" text="取消">
                <font>
                   <Font size="18.0" />
                </font>
+               <effect>
+                  <ImageInput>
+                     <source>
+                        <Image url="@../../../../../graphics/webmanagerui/取消.png" />
+                     </source>
+                  </ImageInput>
+               </effect>
             </Button>
          </children>
       </AnchorPane>
@@ -158,6 +172,11 @@
          </font>
       </Text>
       <Text fill="#065870" layoutX="370.0" layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&gt;&gt;录入酒店信息">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Text>
+      <Text fx:id="buttonLogOut" fill="#0b799a" layoutX="203.0" layoutY="599.0" onMouseClicked="#LogOut" strokeType="OUTSIDE" strokeWidth="0.0" text="登出" underline="true">
          <font>
             <Font size="16.0" />
          </font>

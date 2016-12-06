@@ -4,8 +4,6 @@ import businesslogic.webmanagerbl.UserDataManagement;
 import data_stub.userdata.UserDataImpl_stub;
 import dataservice.userdataservice.UserDataService;
 import po.UserInfoPO;
-import utility.PVChanger;
-import vo.UserInfoVO;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
@@ -36,13 +34,26 @@ public class UserDataImpl implements UserDataManagement {
         return userDataService.getUserInfo(userID);
     }
 
+    /**
+     * 设置个人信息
+     * @param po 个人信息po
+     * @throws RemoteException
+     */
     @Override
-    public void setUserInfo(UserInfoVO vo) throws RemoteException{
-        userDataService.setUserInfo(PVChanger.getInstance().userInfoV2P(vo));
+    public void setUserInfo(UserInfoPO po) throws RemoteException{
+        userDataService.setUserInfo(po);
     }
 
+    /**
+     * 获取用户列表
+     * @return 用户列表
+     */
     @Override
-    public ArrayList<UserInfoPO> getUserList() {
-        return null;
+    public ArrayList<UserInfoPO> getUserList(ArrayList<String> userIDs) throws RemoteException{
+        ArrayList<UserInfoPO> res = new ArrayList<UserInfoPO>();
+        for(String userID:userIDs){
+            res.add(userDataService.getUserInfo(userID));
+        }
+        return res;
     }
 }

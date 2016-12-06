@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="618.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.webmanagerui.uiAddWSController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="618.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.webmanagerui.uiChangeWSController">
    <children>
       <ImageView fitHeight="618.0" fitWidth="1000.0">
          <image>
@@ -80,32 +80,53 @@
                   <Font size="14.0" />
                </font>
             </TextField>
-            <TextField fx:id="textWSPassword" layoutX="125.0" layoutY="186.0">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </TextField>
             <TextField fx:id="textWSNumber" layoutX="152.0" layoutY="230.0">
                <font>
                   <Font size="14.0" />
                </font>
             </TextField>
-            <Button fx:id="buttonSave" layoutX="443.0" layoutY="384.0" mnemonicParsing="false" text="确认修改">
+            <Button fx:id="buttonSave" layoutX="452.0" layoutY="384.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="89.0" text="确认修改">
                <font>
                   <Font size="18.0" />
                </font>
+               <effect>
+                  <ImageInput>
+                     <source>
+                        <Image url="@../../../../../graphics/webmanagerui/确认修改.png" />
+                     </source>
+                  </ImageInput>
+               </effect>
             </Button>
-            <Button fx:id="buttonCancel" layoutX="572.0" layoutY="384.0" mnemonicParsing="false" text="取消">
+            <Button fx:id="buttonCancel" layoutX="572.0" layoutY="384.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="89.0" text="取消">
                <font>
                   <Font size="18.0" />
                </font>
+               <effect>
+                  <ImageInput>
+                     <source>
+                        <Image url="@../../../../../graphics/webmanagerui/取消.png" />
+                     </source>
+                  </ImageInput>
+               </effect>
             </Button>
-            <Button fx:id="buttonDelete" layoutX="346.0" layoutY="384.0" mnemonicParsing="false" text="删除">
+            <Button fx:id="buttonDelete" layoutX="331.0" layoutY="384.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="89.0" text="删除">
                <font>
                   <Font size="18.0" />
                </font>
+               <effect>
+                  <ImageInput>
+                     <source>
+                        <Image url="@../../../../../graphics/webmanagerui/删除.png" />
+                     </source>
+                  </ImageInput>
+               </effect>
             </Button>
             <Text fx:id="textWSID" layoutX="130.0" layoutY="116.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00000023">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <Text fx:id="buttonModifyPassword" fill="#4477a4" layoutX="130.0" layoutY="206.0" onMouseClicked="#gotoModifyPassword" strokeType="OUTSIDE" strokeWidth="0.0" text="修改密码" underline="true">
                <font>
                   <Font size="15.0" />
                </font>
@@ -118,6 +139,11 @@
          </font>
       </Text>
       <Text fill="#065870" layoutX="380.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&gt;&gt;修改网站营销人员">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Text>
+      <Text fx:id="buttonLogOut" fill="#0b799a" layoutX="203.0" layoutY="599.0" onMouseClicked="#LogOut" strokeType="OUTSIDE" strokeWidth="0.0" text="登出" underline="true">
          <font>
             <Font size="16.0" />
          </font>

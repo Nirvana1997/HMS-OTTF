@@ -6,6 +6,7 @@ import com.sun.javafx.robot.impl.FXRobotHelper;
 import enumData.AccountType;
 import enumData.ResultMessage;
 import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -14,6 +15,7 @@ import javafx.stage.Stage;
 import vo.AccountVO;
 import vo.PasswordComfirmVO;
 
+import javax.xml.soap.Text;
 import java.io.IOException;
 
 /**
@@ -27,7 +29,14 @@ public class uiRegister1Controller {
     public TextField textPassword;
     public TextField textConfirm;
     static String uID;
-
+    @FXML
+    private Text idWrong;
+    @FXML
+    private Text pswWrong;
+    @FXML
+    private Text cfmWrong;
+    @FXML
+    private Text idExist;
     /**
      * 从注册界面1返回到登录界面
      */

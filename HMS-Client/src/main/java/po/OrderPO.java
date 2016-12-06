@@ -1,9 +1,9 @@
 package po;
 
-import java.util.Date;
-
 import enumData.OrderState;
 import enumData.RoomType;
+
+import java.util.Date;
 
 public class OrderPO {
 	String orderID;
@@ -12,16 +12,14 @@ public class OrderPO {
 	String userID;
 	Date date;
 	RoomType roomType;
-	String roomID;
 
-	public OrderPO(String orderID, OrderState orderState, String hotelID, String userID, Date date, RoomType roomType,String roomID) {
+	public OrderPO(String orderID, OrderState orderState, String hotelID, String userID, Date date, RoomType roomType) {
 		this.orderID = orderID;
 		this.orderState = orderState;
 		this.hotelID = hotelID;
 		this.userID = userID;
 		this.date = date;
 		this.roomType = roomType;
-		this.roomID = roomID;
 	}
 
 	public String getOrderID() {
@@ -70,13 +68,5 @@ public class OrderPO {
 
 	public void setRoomType(RoomType roomType) {
 		this.roomType = roomType;
-	}
-
-	public String getRoomID() {
-		return roomID;
-	}
-
-	public void setRoomID(String roomID) {
-		this.roomID = roomID;
 	}
 }

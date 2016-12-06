@@ -9,6 +9,7 @@ import vo.UserInfoVO;
 import vo.WebsalerInfoVO;
 
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 
 /**
  * 网站管理人员模块
@@ -57,7 +58,11 @@ public class WebmanagerController implements HSmanagementBlService,URmanagementB
     }
 
     @Override
-    public ResultMessage setUserInfo(UserInfoVO vo) {
+    public void setUserInfo(UserInfoVO vo) {
+    }
+
+    @Override
+    public ArrayList<UserInfoVO> getUserList() {
         return null;
     }
 

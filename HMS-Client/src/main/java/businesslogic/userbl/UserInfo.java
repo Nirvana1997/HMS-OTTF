@@ -30,7 +30,7 @@ public  class UserInfo{
 	 * @return
      */
 	public ResultMessage modifyUserInfo(UserInfoVO vo) throws RemoteException{
-		UserInfoPO userInfoPO = new UserInfoPO(vo.getUserID(),vo.getName(),vo.getIdentity(),vo.getContactNumber(),vo.getCredit(),vo.getTransaction());
+		UserInfoPO userInfoPO = UserPVChanger.getInstance().userInfoV2P(vo);
 		userDataService.setUserInfo(userInfoPO);
 		return ResultMessage.Correct;
 	}
@@ -42,6 +42,7 @@ public  class UserInfo{
 	 */
 	public UserInfoVO showUserInfo(String userID)throws RemoteException{
 		UserInfoPO po = userDataService.getUserInfo(userID);
-		return new UserInfoVO(po.getUserID(),po.getName(),po.getIdentity(),po.getContactNumber(),po.getCredit(),po.getTransaction());
+		//TODO
+		return UserPVChanger.getInstance().userInfoP2V(po,0);
 	}
 }

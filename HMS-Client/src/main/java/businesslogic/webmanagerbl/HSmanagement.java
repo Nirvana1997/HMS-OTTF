@@ -10,14 +10,26 @@ import vo.HotelsalerInfoVO;
 
 import java.rmi.RemoteException;
 
+/**
+ * 酒店人员管理模块
+ * @author qzh
+ */
 public class HSmanagement implements HSmanagementBlService{
+    /**
+     * 酒店数据模块
+     */
     LogDataService logDataService;
 
     public HSmanagement() throws RemoteException{
         logDataService = new LogDataImpl_stub();
     }
 
-
+    /**
+     * 获取酒店工作人员信息
+     * @param hotelsalerID 酒店工作人员ID
+     * @return 酒店工作人员信息
+     * @throws RemoteException
+     */
     public HotelsalerInfoVO getHotelsalerInfo(String hotelsalerID) throws RemoteException{
         return null;
 	}

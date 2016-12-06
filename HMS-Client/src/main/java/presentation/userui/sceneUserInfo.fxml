@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.ImageInput?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -76,5 +77,113 @@
             <Font name="SimHei" size="16.0" />
          </font>
       </Label>
+      <Text layoutX="439.0" layoutY="208.0" strokeType="OUTSIDE" strokeWidth="0.0" text="账号：">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Text>
+      <Text fx:id="textUserID" layoutX="495.0" layoutY="208.0" strokeType="OUTSIDE" strokeWidth="0.0" text="111">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Text>
+      <Text layoutX="440.0" layoutY="252.0" strokeType="OUTSIDE" strokeWidth="0.0" text="姓名：">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Text>
+      <Text layoutX="440.0" layoutY="338.0" strokeType="OUTSIDE" strokeWidth="0.0" text="联系方式：">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Text>
+      <Text layoutX="440.0" layoutY="377.0" strokeType="OUTSIDE" strokeWidth="0.0" text="信用：">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Text>
+      <TextField fx:id="textRealName" layoutX="493.0" layoutY="232.0" prefHeight="29.0" prefWidth="148.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="textPhoneNumber" layoutX="530.0" layoutY="319.0" prefHeight="29.0" prefWidth="148.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <Text fx:id="textCredit" layoutX="497.0" layoutY="377.0" strokeType="OUTSIDE" strokeWidth="0.0" text="xxxxxxx">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Text>
+      <Button fx:id="buttonSave" layoutX="694.0" layoutY="509.0" mnemonicParsing="false" onAction="#Save" prefHeight="30.0" prefWidth="89.0" text="保存">
+         <font>
+            <Font size="18.0" />
+         </font>
+         <effect>
+            <ImageInput>
+               <source>
+                  <Image url="@../../../../../graphics/userui/保存.png" />
+               </source>
+            </ImageInput>
+         </effect>
+      </Button>
+      <Button fx:id="buttonCancel" layoutX="811.0" layoutY="509.0" mnemonicParsing="false" onAction="#Cancel" prefHeight="30.0" prefWidth="89.0" text="保存">
+         <font>
+            <Font size="18.0" />
+         </font>
+         <effect>
+            <ImageInput>
+               <source>
+                  <Image url="@../../../../../graphics/userui/取消.png" />
+               </source>
+            </ImageInput>
+         </effect>
+      </Button>
+      <Text layoutX="439.0" layoutY="293.0" strokeType="OUTSIDE" strokeWidth="0.0" text="身份证：">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Text>
+      <Text fx:id="textIdentity" layoutX="529.0" layoutY="293.0" strokeType="OUTSIDE" strokeWidth="0.0" text="3204******20">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Text>
+      <Button fx:id="buttonModifyPassword" layoutX="579.0" layoutY="509.0" mnemonicParsing="false" onAction="#gotoModifyPassword" prefHeight="36.0" prefWidth="89.0" text="Button">
+         <effect>
+            <ImageInput>
+               <source>
+                  <Image url="@../../../../../graphics/userui/修改密码.png" />
+               </source>
+            </ImageInput>
+         </effect>
+      </Button>
+      <Text layoutX="440.0" layoutY="416.0" strokeType="OUTSIDE" strokeWidth="0.0" text="会员等级：">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Text>
+      <Text layoutX="439.0" layoutY="453.0" strokeType="OUTSIDE" strokeWidth="0.0" text="交易总额：">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Text>
+      <Text fx:id="textVIPLevel" layoutX="525.0" layoutY="415.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Text>
+      <Text fx:id="textTransaction" layoutX="522.0" layoutY="452.0" strokeType="OUTSIDE" strokeWidth="0.0" text="xxxxxxx">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Text>
+      <Text fill="#c45b3b" layoutX="580.0" layoutY="376.0" strokeType="OUTSIDE" strokeWidth="0.0" text="信用变化记录" underline="true">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

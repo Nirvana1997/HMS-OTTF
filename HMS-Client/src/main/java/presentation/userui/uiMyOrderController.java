@@ -1,5 +1,7 @@
 package presentation.userui;
 
+import com.sun.org.apache.xpath.internal.operations.Or;
+import enumData.OrderState;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -99,6 +101,57 @@ public class uiMyOrderController {
     public void LogOut() throws IOException{
         //TODO 清空账号
         jump.gotoLogin();
+    }
+
+    /**
+     * 当前选择的订单状态
+     */
+    static OrderState orderState;
+    public void setOrderState(OrderState state){
+        orderState = state;
+    }
+    public static OrderState getOrderState(){
+        return orderState;
+    }
+
+
+    @FXML
+    private Button buttonNormal;
+    @FXML
+    private Button buttonAbnormal;
+    @FXML
+    private Button buttonRevoke;
+
+    /**
+     * 选择正常订单，则显示已执行和未执行的订单
+     * @throws IOException
+     */
+    public void chooseNormal() throws IOException{
+        buttonNormal.setVisible(false);
+        buttonAbnormal.setVisible(true);
+        buttonRevoke.setVisible(true);
+        setOrderState(OrderState.executed);
+    }
+
+    /**
+     * 选择异常订单，则显示已执行和未执行的订单
+     * @throws IOException
+     */
+    public void chooseAbnormal() throws IOException{
+        buttonNormal.setVisible(true);
+        buttonAbnormal.setVisible(false);
+        buttonRevoke.setVisible(true);
+        setOrderState(OrderState.abnormal);
+    }
+    /**
+     * 选择异常订单，则显示已执行和未执行的订单
+     * @throws IOException
+     */
+    public void chooseRevoke() throws IOException{
+        buttonNormal.setVisible(true);
+        buttonAbnormal.setVisible(true);
+        buttonRevoke.setVisible(false);
+        setOrderState(OrderState.canceled);
     }
 
 }

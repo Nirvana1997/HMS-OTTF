@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="618.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.hotelsalerui.uiHotelSaleStrategyController">
+   <children>
+      <AnchorPane layoutX="250.0" prefHeight="618.0" prefWidth="749.0" style="-fx-background-color: #FFFFFF;">
+         <children>
+            <ImageView fitHeight="652.0" fitWidth="752.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../graphics/hotelsalerui/bk.png" />
+               </image>
+            </ImageView>
+            <ImageView layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../graphics/hotelsalerui/birthday2.png" />
+               </image>
+            </ImageView>
+            <ImageView layoutX="188.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../graphics/hotelsalerui/doubleOne1.png" />
+               </image>
+            </ImageView>
+            <ImageView layoutX="376.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../graphics/hotelsalerui/company1.png" />
+               </image>
+            </ImageView>
+            <ImageView layoutX="564.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../graphics/hotelsalerui/threeRoom1.png" />
+               </image>
+            </ImageView>
+            <ImageView layoutX="-5.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../graphics/hotelsalerui/curtain.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="250.0" prefHeight="618.0" prefWidth="749.0" style="-fx-background-color: #FFFFFF;" visible="false">
+         <children>
+            <ImageView fitHeight="652.0" fitWidth="752.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../graphics/hotelsalerui/bk.png" />
+               </image>
+            </ImageView>
+            <ImageView layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../graphics/hotelsalerui/birthday1.png" />
+               </image>
+            </ImageView>
+            <ImageView layoutX="188.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../graphics/hotelsalerui/doubleOne2.png" />
+               </image>
+            </ImageView>
+            <ImageView layoutX="376.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../graphics/hotelsalerui/company1.png" />
+               </image>
+            </ImageView>
+            <ImageView layoutX="564.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../graphics/hotelsalerui/threeRoom1.png" />
+               </image>
+            </ImageView>
+            <ImageView layoutX="-5.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../graphics/hotelsalerui/curtain.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="250.0" prefHeight="618.0" prefWidth="749.0" style="-fx-background-color: #FFFFFF;" visible="false">
+         <children>
+            <ImageView fitHeight="652.0" fitWidth="752.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../graphics/hotelsalerui/bk.png" />
+               </image>
+            </ImageView>
+            <ImageView layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../graphics/hotelsalerui/birthday1.png" />
+               </image>
+            </ImageView>
+            <ImageView layoutX="188.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../graphics/hotelsalerui/doubleOne1.png" />
+               </image>
+            </ImageView>
+            <ImageView layoutX="376.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../graphics/hotelsalerui/company2.png" />
+               </image>
+            </ImageView>
+            <ImageView layoutX="564.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../graphics/hotelsalerui/threeRoom1.png" />
+               </image>
+            </ImageView>
+            <ImageView layoutX="-5.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../graphics/hotelsalerui/curtain.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="250.0" prefHeight="618.0" prefWidth="749.0" style="-fx-background-color: #FFFFFF;" visible="false">
+         <children>
+            <ImageView fitHeight="652.0" fitWidth="752.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../graphics/hotelsalerui/bk.png" />
+               </image>
+            </ImageView>
+            <ImageView layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../graphics/hotelsalerui/birthday1.png" />
+               </image>
+            </ImageView>
+            <ImageView layoutX="188.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../graphics/hotelsalerui/doubleOne1.png" />
+               </image>
+            </ImageView>
+            <ImageView layoutX="376.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../graphics/hotelsalerui/company1.png" />
+               </image>
+            </ImageView>
+            <ImageView layoutX="564.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../graphics/hotelsalerui/threeRoom2.png" />
+               </image>
+            </ImageView>
+            <ImageView layoutX="-5.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../graphics/hotelsalerui/curtain.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <VBox prefHeight="618.0" prefWidth="250.0" style="-fx-background-color: #FFFFFF;">
+         <children>
+            <HBox prefHeight="122.0" prefWidth="244.0">
+               <children>
+                  <ImageView fitHeight="77.0" fitWidth="73.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../graphics/websalerui/portrait.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="40.0" top="40.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Label text="黄小萱">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="30.0" top="60.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </HBox>
+            <ImageView fx:id="imgHotelInfo1" fitHeight="80.0" fitWidth="250.0" onMouseClicked="#jumpToSceneHotelInfo" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../graphics/hotelsalerui/hotelInfo1.png" />
+               </image>
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </ImageView>
+            <ImageView fx:id="imgHotelRoom1" fitHeight="80.0" fitWidth="250.0" onMouseClicked="#jumpToSceneHotelRoom" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../graphics/hotelsalerui/hotelRoom1.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="imgHotelOrder1" fitHeight="80.0" fitWidth="250.0" onMouseClicked="#jumpToSceneHotelOrder" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../graphics/hotelsalerui/hotelOrder1.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="imgHotelSaleStrategy2" fitHeight="82.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <image>
+                  <Image url="@../../../../../graphics/hotelsalerui/saleStrategy2.png" />
+               </image>
+            </ImageView>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

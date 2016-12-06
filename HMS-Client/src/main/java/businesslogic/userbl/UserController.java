@@ -1,5 +1,6 @@
 package businesslogic.userbl;
 
+import businesslogic.logbl.ClientUser;
 import businesslogicservice.userblservice.HotelOrderBlService;
 import businesslogicservice.userblservice.InfoBlService;
 import enumData.*;
@@ -13,7 +14,7 @@ import java.util.Date;
 /**
  * 用户操作控制器
  * @author qzh
- * Created by personalUser on 2016/11/27.
+ * Created by user on 2016/11/27.
  */
 public class UserController implements InfoBlService,HotelOrderBlService{
     /**
@@ -51,12 +52,12 @@ public class UserController implements InfoBlService,HotelOrderBlService{
 
     /**
      * 显示个人信息
-     * @param userID 用户ID
+     * @return 个人信息
      * @throws RemoteException
      */
     @Override
-    public UserInfoVO showUserInfo(String userID) throws RemoteException{
-        return userInfo.showUserInfo(userID);
+    public UserInfoVO showUserInfo() throws RemoteException{
+        return userInfo.showUserInfo(ClientUser.getNowUser());
     }
 
     /**

@@ -6,6 +6,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import presentation.logui.SceneLog;
+import presentation.logui.SceneModifyPassword;
 
 import java.io.IOException;
 
@@ -52,5 +54,24 @@ public class sceneJump {
         ObservableList<Stage> stage = FXRobotHelper.getStages();
         Scene scene = new Scene((Parent) FXMLLoader.load(getClass().getResource("sceneChangeWS.fxml")));
         stage.get(0).setScene(scene);
+    }
+    public void gotoLogin() throws IOException{
+        SceneLog sceneLog = new SceneLog();
+        sceneLog.initUI();
+    }
+    /**
+     * 修改密码
+     * @throws IOException
+     */
+    private SceneModifyPassword sceneModifyPassword;
+    public void gotoModifyPassword() throws IOException{
+        sceneModifyPassword = new SceneModifyPassword();
+        Stage primaryStage = new Stage();
+        primaryStage.setTitle("修改密码");
+        primaryStage.setWidth(500);
+        primaryStage.setHeight(320);
+        primaryStage.setResizable(false);
+        primaryStage.setScene(sceneModifyPassword.getSceneModifyPassword());
+        primaryStage.show();
     }
 }

@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 /**
  * 用户订单数据接口
- * Created by personalUser on 2016/12/2.
+ * Created by user on 2016/12/2.
  */
 public interface UserOrderInfo {
     /**

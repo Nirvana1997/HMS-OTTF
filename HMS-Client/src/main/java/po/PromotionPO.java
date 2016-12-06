@@ -1,10 +1,10 @@
 package po;
 
-import java.util.ArrayList;
-import java.util.Date;
-
 import enumData.PromotionType;
 import enumData.TradeArea;
+
+import java.util.ArrayList;
+import java.util.Date;
 
 public class PromotionPO {
 	String promotionID;

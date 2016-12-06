@@ -20,7 +20,16 @@ public interface UserDataManagement {
      */
     public UserInfoPO getUserInfo(String userID) throws RemoteException;
 
-    public void setUserInfo(UserInfoVO vo) throws RemoteException;
+    /**
+     * 设置个人信息
+     * @param po 个人信息po
+     * @throws RemoteException
+     */
+    public void setUserInfo(UserInfoPO po) throws RemoteException;
 
-    public ArrayList<UserInfoPO> getUserList();
+    /**
+     * 获取用户列表
+     * @return 用户列表
+     */
+    public ArrayList<UserInfoPO> getUserList(ArrayList<String> userIDs)throws RemoteException;
 }

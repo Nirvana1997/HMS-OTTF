@@ -13,7 +13,7 @@ import java.util.ArrayList;
 /**
  * 酒店订单数据接口实现
  * @author qzh
- * Created by personalUser on 2016/12/2.
+ * Created by user on 2016/12/2.
  */
 public class OrderDataImpl implements UserOrderInfo{
     OrderDataService orderDataService;

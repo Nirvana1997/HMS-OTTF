@@ -1,5 +1,7 @@
 package businesslogic.hotelsalerbl.impl;
 
+import businesslogic.webmanagerbl.HSmanagement;
+import businesslogic.webmanagerbl.HotelDataManagement;
 import businesslogicservice.hotelsalerblservice.HotelinfoblService;
 import dataservice.hotelsalerdataservice.HotelinfoDataService;
 import enumData.Address;
@@ -13,7 +15,7 @@ import vo.LimitVO;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-public class HotelinfoblImpl implements HotelinfoblService {
+public class HotelinfoblImpl implements HotelinfoblService,HotelDataManagement {
     HotelinfoDataService hotelinfoDataService;
 
     /**
@@ -37,4 +39,18 @@ public class HotelinfoblImpl implements HotelinfoblService {
         return hotelinfoDataService.getHotelList(tradeArea,address,sortWay);
     }
 
+    @Override
+    public HotelinfoPO getHotelInfo(String hotelID) throws RemoteException {
+        return null;
+    }
+
+    @Override
+    public void setHotelInfo(HotelinfoPO po) throws RemoteException {
+
+    }
+
+    @Override
+    public ArrayList<HotelinfoPO> getHotelList(ArrayList<String> hotelIDs) throws RemoteException {
+        return null;
+    }
 }
