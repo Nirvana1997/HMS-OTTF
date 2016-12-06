@@ -2,7 +2,9 @@ package po;
 
 import enumData.RoomType;
 
-public class HotelroomPO {
+import java.io.Serializable;
+
+public class HotelroomPO implements Serializable{
 	String hotelID;
 	RoomType roomType;
 	double price;

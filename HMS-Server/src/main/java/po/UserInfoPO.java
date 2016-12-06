@@ -2,7 +2,9 @@ package po;
 
 import enumData.UserType;
 
-public class UserInfoPO {
+import java.io.Serializable;
+
+public class UserInfoPO implements Serializable{
 	String userID;
 	String name;
 	String identity;

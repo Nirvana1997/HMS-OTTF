@@ -1,11 +1,12 @@
 package po;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import enumData.OrderState;
 import enumData.RoomType;
 
-public class OrderPO {
+public class OrderPO implements Serializable{
 	String orderID;
 	String hotelID;
 	String userID;

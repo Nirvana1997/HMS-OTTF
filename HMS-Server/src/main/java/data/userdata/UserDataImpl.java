@@ -7,12 +7,17 @@ import enumData.UserType;
 import po.CreditRecordPO;
 import po.UserInfoPO;
 import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
 /**
  * Created by mac on 2016/11/23.
  */
-public class UserDataImpl implements UserDataService {
+public class UserDataImpl extends UnicastRemoteObject implements UserDataService {
+
+    public UserDataImpl() throws RemoteException {
+    }
+
     /**
      * 根据用户ID，返回用户信息
      * @param userID

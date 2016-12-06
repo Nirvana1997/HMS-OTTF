@@ -7,12 +7,18 @@ import enumData.ResultMessage;
 import enumData.RoomType;
 import po.OrderPO;
 
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
 /**
  * Created by mac on 2016/11/23.
  */
-public class OrderDataImpl implements OrderDataService {
+public class OrderDataImpl extends UnicastRemoteObject implements OrderDataService {
+
+    public OrderDataImpl() throws RemoteException {
+    }
+
     /**
      * 根据订单ID获取订单信息
      * @param orderID

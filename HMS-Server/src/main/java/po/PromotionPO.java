@@ -1,13 +1,14 @@
 package po;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
 import enumData.PromotionType;
 import enumData.TradeArea;
 
-public class PromotionPO {
-	String promotionID;
+public class PromotionPO implements Serializable{
+	String name;
 	PromotionType promotionType;
 	String startDate;
 	String endDate;
@@ -15,10 +16,12 @@ public class PromotionPO {
 	int roomNumber;
 	int vipLevel;
 	double discount;
+	String hotelID;
+	String description;
 
-	public PromotionPO(String promotionID, PromotionType promotionType, String startDate, String endDate,
-					   TradeArea tradeArea, int roomNumber, int vipLevel, double discount) {
-		this.promotionID = promotionID;
+	public PromotionPO(String name, PromotionType promotionType, String startDate, String endDate, TradeArea tradeArea,
+					   int roomNumber, int vipLevel, double discount, String hotelID, String description) {
+		this.name = name;
 		this.promotionType = promotionType;
 		this.startDate = startDate;
 		this.endDate = endDate;
@@ -26,14 +29,16 @@ public class PromotionPO {
 		this.roomNumber = roomNumber;
 		this.vipLevel = vipLevel;
 		this.discount = discount;
+		this.hotelID = hotelID;
+		this.description = description;
 	}
 
-	public String getPromotionID() {
-		return promotionID;
+	public String getName() {
+		return name;
 	}
 
-	public void setPromotionID(String promotionID) {
-		this.promotionID = promotionID;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public PromotionType getPromotionType() {
@@ -90,6 +95,22 @@ public class PromotionPO {
 
 	public void setDiscount(double discount) {
 		this.discount = discount;
+	}
+
+	public String getHotelID() {
+		return hotelID;
+	}
+
+	public void setHotelID(String hotelID) {
+		this.hotelID = hotelID;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 }
 

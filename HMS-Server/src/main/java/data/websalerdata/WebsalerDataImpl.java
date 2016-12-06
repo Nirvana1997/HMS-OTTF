@@ -3,14 +3,21 @@ package data.websalerdata;
 import database.DataBaseHelper;
 import dataservice.websalerdataservice.WebsalerDataService;
 import enumData.ResultMessage;
+import po.VipUpPO;
 import po.WebsalerInfoPO;
 
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
 /**
  * Created by mac on 2016/11/23.
  */
-public class WebsalerDataImpl implements WebsalerDataService{
+public class WebsalerDataImpl extends UnicastRemoteObject implements WebsalerDataService{
+
+    public WebsalerDataImpl() throws RemoteException {
+    }
+
     /**
      * 根据网站营销人员ID，获取网站营销人员信息
      * @param websalerID
@@ -59,6 +66,32 @@ public class WebsalerDataImpl implements WebsalerDataService{
            return ResultMessage.Correct;
        }else
            return ResultMessage.NotExist;
+    }
+
+    /**
+     * 修改会员升级列表
+     * @param po
+     * @return
+     */
+    @Override
+    public ResultMessage setVipUpInfo(VipUpPO po) {
+        DataBaseHelper.in("update VipUpInfo set credit = '" + po.getCredit() + "' where vipLevel = '" + po.getVipLevel() + "'");
+        return ResultMessage.Correct;
+    }
+
+    /**
+     * 查看会员升级列表
+     * @return
+     */
+    @Override
+    public ArrayList<VipUpPO> checkVipUpInfo() {
+        ArrayList<VipUpPO> vipUpPOs = new ArrayList<VipUpPO>();
+        ArrayList<String> vipLevelList = DataBaseHelper.out("select vipLevel from VipUpInfo","vipLevel");
+        ArrayList<String> creditList = DataBaseHelper.out("select credit from VipUpInfo","credit");
+        for(int i=0;i<vipLevelList.size();i++){
+            vipUpPOs.add(new VipUpPO(Integer.parseInt(vipLevelList.get(i)),Integer.parseInt(creditList.get(i))));
+        }
+        return vipUpPOs;
     }
 
     /**

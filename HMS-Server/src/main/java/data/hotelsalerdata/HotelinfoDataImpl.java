@@ -11,12 +11,17 @@ import po.ConditionPO;
 import po.HotelinfoPO;
 
 import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
 /**
  * Created by mac on 2016/11/23.
  */
-public class HotelinfoDataImpl implements HotelinfoDataService {
+public class HotelinfoDataImpl extends UnicastRemoteObject implements HotelinfoDataService {
+
+    public HotelinfoDataImpl() throws RemoteException {
+    }
+
     /**
      * 根据酒店ID获取酒店信息
      * @param hotelID
@@ -131,6 +136,8 @@ public class HotelinfoDataImpl implements HotelinfoDataService {
     }
 
     private ArrayList<String> myOut(String content,String standard,String way,TradeArea tradeArea,Address address){
+        if(standard.equals("price"))
+            standard = "minPrice";
         ArrayList<String> temp = DataBaseHelper.out("select " + content + " from HotelInfo where tradeArea = '" + tradeArea.toString() + "'"
                 + " and address = '" + address.toString() + "'" + " order by " + standard + " " + way, content);
         return  temp;
@@ -147,10 +154,28 @@ public class HotelinfoDataImpl implements HotelinfoDataService {
         if(hasExisted(po.getHotelID())){
             DataBaseHelper.in("insert into Comment (hotelID,userID,comment,grade) values (" +
                     "'" + po.getHotelID() + "','" + po.getUserID() + "','" + po.getComment() + "','" + po.getGrade()
-                    + "','");
+                    + "')");
             return  ResultMessage.Correct;
         }
         return ResultMessage.NotExist;
+    }
+
+    /**
+     * 根据酒店ID获取相应评价信息
+     * @param hotelID 酒店ID
+     * @return
+     * @throws RemoteException
+     */
+    @Override
+    public ArrayList<CommentPO> getComments(String hotelID) throws RemoteException {
+        ArrayList<CommentPO> commentPOs = new ArrayList<CommentPO>();
+        ArrayList<String> userIDList = DataBaseHelper.out("select userID from Comment where hotelID = '" + hotelID + "'","userID");
+        ArrayList<String> commentList = DataBaseHelper.out("select comment from Comment where hotelID = '" + hotelID + "'","comment");
+        ArrayList<String> gradeList = DataBaseHelper.out("select grade from Comment where hotelID = '" + hotelID + "'","grade");
+        for(int i=0;i<userIDList.size();i++){
+            commentPOs.add(new CommentPO(hotelID,userIDList.get(i),commentList.get(i),Integer.parseInt(gradeList.get(i))));
+        }
+        return commentPOs;
     }
 
     /**

@@ -1,12 +1,13 @@
 package po;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import enumData.Address;
 import enumData.RoomType;
 import enumData.TradeArea;
 
-public class HotelinfoPO {
+public class HotelinfoPO implements Serializable{
 	String hotelID;
 	String hotelname;
 	TradeArea tradeArea;

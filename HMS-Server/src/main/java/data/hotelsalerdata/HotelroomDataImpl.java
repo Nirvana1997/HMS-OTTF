@@ -8,12 +8,17 @@ import po.HotelroomPO;
 import po.OrderPO;
 import po.RoomNumPO;
 
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
 
 /**
  * Created by mac on 2016/11/23.
  */
-public class HotelroomDataImpl implements HotelroomDataService {
+public class HotelroomDataImpl extends UnicastRemoteObject implements HotelroomDataService {
+
+    public HotelroomDataImpl() throws RemoteException {
+    }
 
     /**
      *根据订单信息将相应空房间数-1
@@ -22,7 +27,7 @@ public class HotelroomDataImpl implements HotelroomDataService {
      */
     @Override
     public ResultMessage setOccupied(OrderPO po) {
-        DataBaseHelper.in("update " + po.getHotelID() + "_" + po.getDate() + " set emptyNum = emptyNum - 1 where " +
+        DataBaseHelper.in("update " + po.getHotelID() + "_" + po.getCheckInDate() + " set emptyNum = emptyNum - 1 where " +
                 "type = '" + po.getRoomType().toString() + "'");
         return ResultMessage.Correct;
     }
@@ -33,7 +38,7 @@ public class HotelroomDataImpl implements HotelroomDataService {
      */
     @Override
     public ResultMessage setEmpty(OrderPO po) {
-        DataBaseHelper.in("update " + po.getHotelID() + "_" + po.getDate() + " set emptyNum = emptyNum + 1 where " +
+        DataBaseHelper.in("update " + po.getHotelID() + "_" + po.getCheckInDate() + " set emptyNum = emptyNum + 1 where " +
                 "type = '" + po.getRoomType().toString() + "'");
         return ResultMessage.Correct;
     }

@@ -1,9 +1,11 @@
 package po;
 
+import java.io.Serializable;
+
 /**
  * Created by mac on 2016/12/3.
  */
-public class VipUpPO {
+public class VipUpPO implements Serializable{
     int vipLevel;
     int credit;
 

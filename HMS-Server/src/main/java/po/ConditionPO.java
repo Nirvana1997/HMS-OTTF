@@ -1,5 +1,6 @@
 package po;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import enumData.Address;
@@ -7,7 +8,7 @@ import enumData.RoomType;
 import enumData.SortWay;
 import enumData.TradeArea;
 
-public class ConditionPO {
+public class ConditionPO implements Serializable {
 	String userID;
 	Address address;
 	TradeArea tradeArea;
