@@ -5,7 +5,7 @@ import enumData.PromotionType;
 import enumData.TradeArea;
 
 public class PromotionPO {
-	String promotionName;
+	String name;
 	String description;
 	PromotionType promotionType;
 	String hotelID;
@@ -15,9 +15,10 @@ public class PromotionPO {
 	int roomNumber = Temp.DISCOUNT_NUM;
 	int vipLevel;
 	double discount;
+	String companyID;
 
-    public PromotionPO(String promotionName, String description, PromotionType promotionType, String hotelID, String startDate, String endDate, TradeArea tradeArea, int roomNumber, int vipLevel, double discount) {
-        this.promotionName = promotionName;
+    public PromotionPO(String name, String description, PromotionType promotionType, String hotelID, String startDate, String endDate, TradeArea tradeArea, int roomNumber, int vipLevel, double discount,String companyID) {
+        this.name = name;
         this.description = description;
         this.promotionType = promotionType;
         this.hotelID = hotelID;
@@ -27,14 +28,15 @@ public class PromotionPO {
         this.roomNumber = roomNumber;
         this.vipLevel = vipLevel;
         this.discount = discount;
+        this.companyID = companyID;
     }
 
-    public String getPromotionName() {
-        return promotionName;
+    public String getName() {
+        return name;
     }
 
-    public void setPromotionName(String promotionName) {
-        this.promotionName = promotionName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getDescription() {
@@ -103,6 +105,14 @@ public class PromotionPO {
 
     public void setDiscount(double discount) {
         this.discount = discount;
+    }
+
+    public String getCompanyID() {
+        return companyID;
+    }
+
+    public void setCompanyID(String companyID) {
+        this.companyID = companyID;
     }
 }
 

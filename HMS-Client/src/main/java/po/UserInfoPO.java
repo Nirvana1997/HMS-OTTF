@@ -9,18 +9,18 @@ public class UserInfoPO {
 	String contactNumber;
 	double credit;
 	String birthday;
-	String enterpriseID;
+	String companyID;
 	UserType type;
 
 	public UserInfoPO(String userID, String name, String identity, String contactNumber,
-					  double credit, String birthday, String enterpriseID, UserType type) {
+					  double credit, String birthday, String companyID, UserType type) {
 		this.userID = userID;
 		this.name = name;
 		this.identity = identity;
 		this.contactNumber = contactNumber;
 		this.credit = credit;
 		this.birthday = birthday;
-		this.enterpriseID = enterpriseID;
+		this.companyID = companyID;
 		this.type = type;
 	}
 
@@ -72,12 +72,12 @@ public class UserInfoPO {
 		this.birthday = birthday;
 	}
 
-	public String getEnterpriseID() {
-		return enterpriseID;
+	public String getCompanyID() {
+		return companyID;
 	}
 
-	public void setEnterpriseID(String enterpriseID) {
-		this.enterpriseID = enterpriseID;
+	public void setCompanyID(String companyID) {
+		this.companyID = companyID;
 	}
 
 	public UserType getType() {
