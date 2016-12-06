@@ -2,12 +2,13 @@ package businesslogic.userbl;
 
 
 
-import businesslogicservice.userblservice.InfoBlService;
-import com.sun.jmx.remote.internal.RMIExporter;
+import businesslogic.userbl.interfaces.VipInfo;
+import businesslogic.websalerbl.impl.VipDataImpl;
 import data_stub.userdata.UserDataImpl_stub;
 import dataservice.userdataservice.UserDataService;
 import enumData.ResultMessage;
 import po.UserInfoPO;
+import utility.UserPVChanger;
 import vo.UserInfoVO;
 
 import java.rmi.RemoteException;
@@ -18,10 +19,19 @@ import java.rmi.RemoteException;
  * @author xzh
  */
 public  class UserInfo{
+	/**
+	 * 用户数据模块
+	 */
 	UserDataService userDataService;
+
+	/**
+	 * 会员等级模块
+	 */
+	VipInfo vipInfo;
 
 	public UserInfo() {
 		userDataService = new UserDataImpl_stub();
+		vipInfo = new VipDataImpl();
 	}
 
 	/**
@@ -30,7 +40,7 @@ public  class UserInfo{
 	 * @return
      */
 	public ResultMessage modifyUserInfo(UserInfoVO vo) throws RemoteException{
-		UserInfoPO userInfoPO = UserPVChanger.getInstance().userInfoV2P(vo);
+		UserInfoPO userInfoPO = UserPVChanger.userInfoV2P(vo);
 		userDataService.setUserInfo(userInfoPO);
 		return ResultMessage.Correct;
 	}
@@ -42,7 +52,7 @@ public  class UserInfo{
 	 */
 	public UserInfoVO showUserInfo(String userID)throws RemoteException{
 		UserInfoPO po = userDataService.getUserInfo(userID);
-		//TODO
-		return UserPVChanger.getInstance().userInfoP2V(po,0);
+		int vipLevel = vipInfo.calcLevel(po.getCredit());
+		return UserPVChanger.userInfoP2V(po,vipLevel);
 	}
 }

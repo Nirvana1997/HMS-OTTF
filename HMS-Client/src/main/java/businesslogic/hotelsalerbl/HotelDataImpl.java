@@ -1,7 +1,7 @@
 package businesslogic.hotelsalerbl;
 
-import businesslogic.userbl.HotelInfo;
-import businesslogic.userbl.HotelRoom;
+import businesslogic.userbl.interfaces.HotelInfo;
+import businesslogic.userbl.interfaces.HotelRoom;
 import data_stub.hotelsalerdata.HotelinfoDataImpl_stub;
 import data_stub.hotelsalerdata.HotelroomDataImpl_stub;
 import dataservice.hotelsalerdataservice.HotelinfoDataService;
@@ -12,8 +12,6 @@ import enumData.TradeArea;
 import po.HotelinfoPO;
 import po.HotelroomPO;
 import po.RoomNumPO;
-import vo.HotelListItemVO;
-import vo.HotelinfoVO;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;

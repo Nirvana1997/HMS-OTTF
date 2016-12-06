@@ -1,11 +1,9 @@
 package businesslogic.orderbl.impl;
 
-import businesslogic.logbl.ClientUser;
-import businesslogic.userbl.UserOrderInfo;
+import businesslogic.logbl.Login;
+import businesslogic.userbl.interfaces.UserOrderInfo;
 import data_stub.orderdata.OrderDataImpl_stub;
 import dataservice.orderdataservice.OrderDataService;
-import dataservice.userdataservice.UserDataService;
-import driver.ClientRunner;
 import po.OrderPO;
 
 import java.util.ArrayList;
@@ -16,6 +14,9 @@ import java.util.ArrayList;
  * Created by user on 2016/12/2.
  */
 public class OrderDataImpl implements UserOrderInfo{
+    /**
+     * 订单数据模块
+     */
     OrderDataService orderDataService;
 
     public OrderDataImpl() {
@@ -37,6 +38,6 @@ public class OrderDataImpl implements UserOrderInfo{
      */
     @Override
     public ArrayList<OrderPO> getOrderList() {
-        return orderDataService.getOrderList(ClientUser.getInstance().getNowUser());
+        return orderDataService.getOrderList(Login.getNowUser());
     }
 }

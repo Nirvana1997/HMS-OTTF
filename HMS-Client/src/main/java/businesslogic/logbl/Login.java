@@ -12,6 +12,7 @@ import java.rmi.RemoteException;
 
 /**
  * 登录模块
+ * 负责登录相关逻辑、并可以返回当前登录用户
  * @author qzh
  */
 public class Login {
@@ -19,6 +20,11 @@ public class Login {
 	 * 登录模块数据接口
 	 */
 	LogDataService logDataService;
+
+	/**
+	 * 当前用户
+	 */
+	private static String nowUser;
 
 	public Login() throws RemoteException {
 //		logDataService = RemoteHelper.getInstance().getLogDataService();
@@ -34,7 +40,7 @@ public class Login {
 	public ResultMessage isCorrectAndLogin(AccountVO vo)throws RemoteException {
 		String password = logDataService.getPassword(vo.getAccountID());
 		if(vo.getPassword().equals(password)){
-		    ClientUser.setNowUser(vo.getAccountID());
+		    nowUser = vo.getAccountID();
 		    return ResultMessage.Correct;
         }
         else{
@@ -54,5 +60,13 @@ public class Login {
 	    else{
 	        return null;
         }
+	}
+
+	/**
+	 * 获取当前登录用户帐号
+	 * @return 当前登录用户帐号
+	 */
+	public static String getNowUser(){
+		return nowUser;
 	}
 }

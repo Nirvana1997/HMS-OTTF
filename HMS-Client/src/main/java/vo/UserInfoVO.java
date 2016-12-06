@@ -1,61 +1,99 @@
 package vo;
 
+import enumData.UserType;
+
 public class UserInfoVO {
 	String userID;
 	String name;
 	String identity;
 	String contactNumber;
-	int credit;
-	double transaction;
+	double credit;
+    String birthday;
+    String enterpriseID;
+	UserType userType;
+	int vipLevel;
 
-	public UserInfoVO(String userID, String name, String identity,
-					  String contactNumber, int credit, double transaction) {
-		this.userID = userID;
-		this.name = name;
-		this.identity = identity;
-		this.contactNumber = contactNumber;
-		this.credit = credit;
-		this.transaction = transaction;
-	}
+    public UserInfoVO(String userID, String name, String identity, String contactNumber, double credit, String birthday, String enterpriseID, UserType userType, int vipLevel) {
+        this.userID = userID;
+        this.name = name;
+        this.identity = identity;
+        this.contactNumber = contactNumber;
+        this.credit = credit;
+        this.birthday = birthday;
+        this.enterpriseID = enterpriseID;
+        this.userType = userType;
+        this.vipLevel = vipLevel;
+    }
 
-	public String getUserID() {
-		return userID;
-	}
-	public void setUserID(String userID) {
-		this.userID = userID;
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	public String getIdentity() {
-		return identity;
-	}
-	public void setIdentity(String identity) {
-		this.identity = identity;
-	}
-	public String getContactNumber() {
-		return contactNumber;
-	}
-	public void setContactNumber(String contactNumber) {
-		this.contactNumber = contactNumber;
-	}
-	public int getCredit() {
-		return credit;
-	}
-	public void setCredit(int credit) {
-		this.credit = credit;
-	}
+    public String getUserID() {
+        return userID;
+    }
 
-	public double getTransaction() {
-		return transaction;
-	}
+    public void setUserID(String userID) {
+        this.userID = userID;
+    }
 
-	public void setTransaction(double transaction) {
-		this.transaction = transaction;
-	}
+    public String getName() {
+        return name;
+    }
 
-	
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getIdentity() {
+        return identity;
+    }
+
+    public void setIdentity(String identity) {
+        this.identity = identity;
+    }
+
+    public String getContactNumber() {
+        return contactNumber;
+    }
+
+    public void setContactNumber(String contactNumber) {
+        this.contactNumber = contactNumber;
+    }
+
+    public double getCredit() {
+        return credit;
+    }
+
+    public void setCredit(double credit) {
+        this.credit = credit;
+    }
+
+    public String getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(String birthday) {
+        this.birthday = birthday;
+    }
+
+    public String getEnterpriseID() {
+        return enterpriseID;
+    }
+
+    public void setEnterpriseID(String enterpriseID) {
+        this.enterpriseID = enterpriseID;
+    }
+
+    public UserType getUserType() {
+        return userType;
+    }
+
+    public void setUserType(UserType userType) {
+        this.userType = userType;
+    }
+
+    public int getVipLevel() {
+        return vipLevel;
+    }
+
+    public void setVipLevel(int vipLevel) {
+        this.vipLevel = vipLevel;
+    }
 }

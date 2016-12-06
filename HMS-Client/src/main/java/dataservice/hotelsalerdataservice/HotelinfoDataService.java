@@ -6,6 +6,7 @@ import enumData.ResultMessage;
 import enumData.SortWay;
 import enumData.TradeArea;
 import po.CommentPO;
+import po.ConditionPO;
 import po.HotelinfoPO;
 
 import java.rmi.RemoteException;

@@ -1,5 +1,6 @@
 package businesslogic.logbl;
 
+import utility.UserPVChanger;
 import data_stub.hotelsalerdata.HotelinfoDataImpl_stub;
 import data_stub.logdata.LogDataImpl_stub;
 import data_stub.userdata.UserDataImpl_stub;
@@ -11,7 +12,6 @@ import dataservice.websalerdataservice.WebsalerDataService;
 import enumData.ResultMessage;
 import po.AccountPO;
 import po.UserInfoPO;
-import rmi.RemoteHelper;
 import vo.*;
 
 import java.rmi.RemoteException;
@@ -76,17 +76,18 @@ public class Register {
      * @throws RemoteException
      */
     public void addUserInfo(UserInfoVO vo) throws RemoteException {
-        UserInfoPO po = new UserInfoPO(vo.getUserID(),vo.getName(),vo.getIdentity(),vo.getContactNumber(),vo.getCredit(),vo.getTransaction());
+        UserInfoPO po = UserPVChanger.userInfoV2P(vo);
         userDataService.addUserInfo(po);
     }
 
     /**
+     * TODO
      * 添加用户信息
      * @param vo 用户个人信息
      * @throws RemoteException
      */
     public void addHotelInfo(UserInfoVO vo) throws RemoteException {
-        UserInfoPO po = new UserInfoPO(vo.getUserID(),vo.getName(),vo.getIdentity(),vo.getContactNumber(),vo.getCredit(),vo.getTransaction());
+        UserInfoPO po = UserPVChanger.userInfoV2P(vo);
         userDataService.addUserInfo(po);
     }
 }

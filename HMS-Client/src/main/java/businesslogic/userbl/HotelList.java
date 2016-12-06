@@ -3,6 +3,8 @@ package businesslogic.userbl;
 import businesslogic.hotelsalerbl.HotelDataImpl;
 import businesslogic.orderbl.impl.OrderDataImpl;
 import businesslogic.userbl.criteria.Criterion;
+import businesslogic.userbl.interfaces.HotelInfo;
+import businesslogic.userbl.interfaces.UserOrderInfo;
 import enumData.Address;
 import enumData.OrderState;
 import enumData.SortWay;

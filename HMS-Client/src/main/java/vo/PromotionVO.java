@@ -3,73 +3,108 @@ package vo;
 import java.util.ArrayList;
 import java.util.Date;
 
+import cfg.Temp;
 import enumData.PromotionType;
 import enumData.TradeArea;
 
 public class PromotionVO {
-	String promotionID;
+	String promotionName;
+	String description;
 	PromotionType promotionType;
-	Date startDate;
-	Date endDate;
-	TradeArea[] validRange;
-	ArrayList<Double> memberDiscount;
-	double normalDiscount;
 	String hotelID;
+	String startDate;
+	String endDate;
+	TradeArea tradeArea;
+	int roomNumber = Temp.DISCOUNT_NUM;
+	int vipLevel;
+	double discount;
 
-	public PromotionVO(String promotionID, PromotionType promotionType,
-			Date startDate, Date endDate, TradeArea[] validRange,
-			ArrayList<Double> memberDiscount, double normalDiscount, String hotelID) {
-		super();
-		this.promotionID = promotionID;
+	public PromotionVO(String promotionName, String description, PromotionType promotionType, String hotelID, String startDate, String endDate, TradeArea tradeArea, int roomNumber, int vipLevel, double discount) {
+		this.promotionName = promotionName;
+		this.description = description;
 		this.promotionType = promotionType;
-		this.startDate = startDate;
-		this.endDate = endDate;
-		this.validRange = validRange;
-		this.memberDiscount = memberDiscount;
-		this.normalDiscount = normalDiscount;
 		this.hotelID = hotelID;
-	}
-	
-	public Date getStartDate() {
-		return startDate;
-	}
-	public void setStartDate(Date startDate) {
 		this.startDate = startDate;
-	}
-	public Date getEndDate() {
-		return endDate;
-	}
-	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
+		this.tradeArea = tradeArea;
+		this.roomNumber = roomNumber;
+		this.vipLevel = vipLevel;
+		this.discount = discount;
 	}
-	public ArrayList<Double> getMemberDiscount() {
-		return memberDiscount;
+
+	public String getPromotionName() {
+		return promotionName;
 	}
-	public void setMemberDiscount(ArrayList<Double> memberDiscount) {
-		this.memberDiscount = memberDiscount;
+
+	public void setPromotionName(String promotionName) {
+		this.promotionName = promotionName;
 	}
-	public String getPromotionID() {
-		return promotionID;
+
+	public String getDescription() {
+		return description;
 	}
-	public void setPromotionID(String promotionID) {
-		this.promotionID = promotionID;
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
+
 	public PromotionType getPromotionType() {
 		return promotionType;
 	}
+
 	public void setPromotionType(PromotionType promotionType) {
 		this.promotionType = promotionType;
 	}
-	public TradeArea[] getValidRange() {
-		return validRange;
+
+	public String getHotelID() {
+		return hotelID;
 	}
-	public void setValidRange(TradeArea[] validRange) {
-		this.validRange = validRange;
+
+	public void setHotelID(String hotelID) {
+		this.hotelID = hotelID;
 	}
-	public double getNormalDiscount() {
-		return normalDiscount;
+
+	public String getStartDate() {
+		return startDate;
 	}
-	public void setNormalDiscount(double normalDiscount) {this.normalDiscount = normalDiscount;}
-	public String getHotelID(){return  hotelID;}
-	public void  setHotelID(String hotelID){this.hotelID = hotelID;}
+
+	public void setStartDate(String startDate) {
+		this.startDate = startDate;
+	}
+
+	public String getEndDate() {
+		return endDate;
+	}
+
+	public void setEndDate(String endDate) {
+		this.endDate = endDate;
+	}
+
+	public TradeArea getTradeArea() {
+		return tradeArea;
+	}
+
+	public void setTradeArea(TradeArea tradeArea) {
+		this.tradeArea = tradeArea;
+	}
+
+	public int getRoomNumber() {
+		return roomNumber;
+	}
+
+	public int getVipLevel() {
+		return vipLevel;
+	}
+
+	public void setVipLevel(int vipLevel) {
+		this.vipLevel = vipLevel;
+	}
+
+	public double getDiscount() {
+		return discount;
+	}
+
+	public void setDiscount(double discount) {
+		this.discount = discount;
+	}
 }

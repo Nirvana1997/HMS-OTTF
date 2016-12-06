@@ -82,7 +82,7 @@
 //		promotion = new PromotionBl_stub();
 //		System.out.println("----------获得营销策略列表----------");
 //		ArrayList<PromotionVO> vos = promotion.getPromotionList(promotionIds);
-//		System.out.println(vos.get(0).getPromotionID());
+//		System.out.println(vos.get(0).getPromotionName());
 //	}
 //
 //	HotelOrderBlService hotelOrder;

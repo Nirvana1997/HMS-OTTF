@@ -1,9 +1,10 @@
 package businesslogic.userbl;
 
 import businesslogic.hotelsalerbl.HotelDataImpl;
+import businesslogic.userbl.interfaces.HotelRoom;
 import enumData.RoomType;
-import po.HotelroomPO;
 import po.RoomNumPO;
+import utility.DateOperation;
 
 import java.rmi.RemoteException;
 import java.text.DateFormat;
@@ -34,10 +35,8 @@ public class RoomNumJudger {
      * @return
      */
     public boolean haveEnoughRoom(String hotelID, Date startDate, Date endDate, RoomType roomType,int num){
-
-        //判断数目是否符合条件
         //获取期间所有日期
-        ArrayList<Date> dates = getDates(startDate,endDate);
+        ArrayList<Date> dates = DateOperation.getDates(startDate,endDate);
         DateFormat df = new SimpleDateFormat("yyyy_MM_dd");
         for (Date date:dates) {
             for(RoomNumPO roomNum:hotelRoom.getEmptyrooms(hotelID,df.format(date))){
@@ -47,26 +46,5 @@ public class RoomNumJudger {
             }
         }
         return true;
-    }
-
-    /**
-     * 返回起始日期中间的所有日期
-     * @param startDate   起始日期
-     * @param endDate     结束日期
-     * @return
-     */
-    private static ArrayList<Date> getDates(Date startDate, Date endDate) {
-        ArrayList<Date> result = new ArrayList<Date>();
-        Calendar start = Calendar.getInstance();
-        start.setTime(startDate);
-        Calendar end = Calendar.getInstance();
-        end.setTime(endDate);
-
-        while (start.before(end)) {
-            result.add(start.getTime());
-            start.add(Calendar.DAY_OF_YEAR, 1);
-        }
-        result.add(endDate);
-        return result;
     }
 }

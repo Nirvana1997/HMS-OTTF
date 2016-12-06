@@ -1,12 +1,11 @@
 package businesslogic.userbl;
 
-import businesslogic.logbl.ClientUser;
+import businesslogic.logbl.Login;
 import businesslogicservice.userblservice.HotelOrderBlService;
 import businesslogicservice.userblservice.InfoBlService;
 import enumData.*;
 import vo.*;
 
-import java.rmi.RMISecurityException;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Date;
@@ -57,7 +56,7 @@ public class UserController implements InfoBlService,HotelOrderBlService{
      */
     @Override
     public UserInfoVO showUserInfo() throws RemoteException{
-        return userInfo.showUserInfo(ClientUser.getNowUser());
+        return userInfo.showUserInfo(Login.getNowUser());
     }
 
     /**

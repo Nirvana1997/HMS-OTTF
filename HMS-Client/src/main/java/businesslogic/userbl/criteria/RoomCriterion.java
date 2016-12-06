@@ -1,20 +1,15 @@
 package businesslogic.userbl.criteria;
 
 import businesslogic.hotelsalerbl.HotelDataImpl;
-import businesslogic.userbl.HotelInfo;
-import businesslogic.userbl.HotelRoom;
+import businesslogic.userbl.interfaces.HotelRoom;
 import businesslogic.userbl.RoomNumJudger;
 import enumData.RoomType;
 import po.HotelroomPO;
-import po.RoomNumPO;
 import vo.HotelListItemVO;
 import vo.LimitVO;
 
 import java.rmi.RemoteException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 
 /**

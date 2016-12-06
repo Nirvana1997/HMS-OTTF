@@ -1,7 +1,10 @@
 package businesslogic.webmanagerbl;
 
+import businesslogic.userbl.interfaces.VipInfo;
 import businesslogic.userbl.impl.UserDataImpl;
-import businesslogic.userbl.UserPVChanger;
+import utility.UserPVChanger;
+import businesslogic.websalerbl.impl.VipDataImpl;
+import po.UserInfoPO;
 import vo.UserInfoVO;
 
 import java.rmi.RemoteException;
@@ -14,7 +17,17 @@ public class URmanagement{
     /**
      * 用户数据管理模块
      */
-    UserDataManagement userDataManagement = new UserDataImpl();
+    UserDataManagement userDataManagement;
+
+    /**
+     * 用户等级模块
+     */
+    VipInfo vipInfo;
+
+    public URmanagement() {
+        userDataManagement = new UserDataImpl();
+        vipInfo = new VipDataImpl();
+    }
 
     /**
      * 获取用户信息
@@ -23,7 +36,9 @@ public class URmanagement{
      * @throws RemoteException
      */
 	public UserInfoVO getUserInfo(String userID) throws RemoteException{
-		return UserPVChanger.getInstance().userInfoP2V(userDataManagement.getUserInfo(userID));
+        UserInfoPO po = userDataManagement.getUserInfo(userID);
+        int vipLevel = vipInfo.calcLevel(po.getCredit());
+		return UserPVChanger.userInfoP2V(po,vipLevel);
 	}
 
     /**
@@ -31,7 +46,7 @@ public class URmanagement{
      * @param vo 用户个人信息vo
      */
 	public void setUserInfo(UserInfoVO vo) throws RemoteException {
-	    userDataManagement.setUserInfo(UserPVChanger.getInstance().userInfoV2P(vo));
+	    userDataManagement.setUserInfo(UserPVChanger.userInfoV2P(vo));
 	}
 
 }
