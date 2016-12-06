@@ -1,4 +1,4 @@
-package businesslogic.userbl;
+package businesslogic.userbl.interfaces;
 
 import po.OrderPO;
 

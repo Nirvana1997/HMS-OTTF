@@ -1,4 +1,4 @@
-package businesslogic.userbl;
+package businesslogic.userbl.interfaces;
 
 import java.rmi.RemoteException;
 
@@ -9,9 +9,9 @@ import java.rmi.RemoteException;
 public interface VipInfo {
     /**
      * 计算会员等级
-     * @param transaction 交易总额
+     * @param credit 信用值
      * @return 会员等级
      * @throws RemoteException
      */
-    public int calcLevel(Double transaction)throws RemoteException;
+    public int calcLevel(Double credit)throws RemoteException;
 }
