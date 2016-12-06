@@ -3,14 +3,22 @@ package vo;
 import java.util.Date;
 
 import businesslogic.promotionbl.Promotion;
+import enumData.Address;
 import enumData.OrderState;
 import enumData.RoomType;
+import enumData.TradeArea;
 
 /**
  * 预定时的信息
+ * 与PO相比多了酒店名称、酒店地址
+ * @author qzh
  */
 public class OrderVO {
     String hotelID;
+    String hotelname;
+    TradeArea tradeArea;
+    Address address;
+    String detailAddress;
     int roomNumber;
     int peopleNumber;
     Date checkInDate;
@@ -35,8 +43,12 @@ public class OrderVO {
     String roomID;
 
     //预定时
-    public OrderVO(String hotelID, int roomNumber, int peopleNumber, Date checkInDate, Date checkOutDate, RoomType roomType, boolean haveChild) {
+    public OrderVO(String hotelID, String hotelname, TradeArea tradeArea,Address address,String detailAddress, int roomNumber, int peopleNumber, Date checkInDate, Date checkOutDate, RoomType roomType, boolean haveChild) {
         this.hotelID = hotelID;
+        this.hotelname = hotelname;
+        this.tradeArea = tradeArea;
+        this.address = address;
+        this.detailAddress = detailAddress;
         this.roomNumber = roomNumber;
         this.peopleNumber = peopleNumber;
         this.checkInDate = checkInDate;
@@ -46,21 +58,25 @@ public class OrderVO {
     }
 
     //查看时
-    public OrderVO(String orderID, String hotelID, String userID, String roomID, int roomNumber, int peopleNumber, OrderState orderState, Date checkInDate, Date checkOutDate, Date ddl, RoomType roomType, double price, boolean haveChild, PromotionVO Promotion) {
-        this.orderID = orderID;
+    public OrderVO(String hotelID, String hotelname, TradeArea tradeArea, Address address, String detailAddress, int roomNumber, int peopleNumber, Date checkInDate, Date checkOutDate, RoomType roomType, boolean haveChild, String orderID, String userID, OrderState orderState, Date ddl, double price, PromotionVO promotion, String roomID) {
         this.hotelID = hotelID;
-        this.userID = userID;
-        this.roomID = roomID;
+        this.hotelname = hotelname;
+        this.tradeArea = tradeArea;
+        this.address = address;
+        this.detailAddress = detailAddress;
         this.roomNumber = roomNumber;
         this.peopleNumber = peopleNumber;
-        this.orderState = orderState;
         this.checkInDate = checkInDate;
         this.checkOutDate = checkOutDate;
-        this.ddl = ddl;
         this.roomType = roomType;
-        this.price = price;
         this.haveChild = haveChild;
-        this.Promotion = Promotion;
+        this.orderID = orderID;
+        this.userID = userID;
+        this.orderState = orderState;
+        this.ddl = ddl;
+        this.price = price;
+        Promotion = promotion;
+        this.roomID = roomID;
     }
 
     public String getHotelID() {
@@ -71,12 +87,36 @@ public class OrderVO {
         this.hotelID = hotelID;
     }
 
-    public String getRoomID() {
-        return roomID;
+    public String getHotelname() {
+        return hotelname;
     }
 
-    public void setRoomID(String roomID) {
-        this.roomID = roomID;
+    public void setHotelname(String hotelname) {
+        this.hotelname = hotelname;
+    }
+
+    public TradeArea getTradeArea() {
+        return tradeArea;
+    }
+
+    public void setTradeArea(TradeArea tradeArea) {
+        this.tradeArea = tradeArea;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+    public String getDetailAddress() {
+        return detailAddress;
+    }
+
+    public void setDetailAddress(String detailAddress) {
+        this.detailAddress = detailAddress;
     }
 
     public int getRoomNumber() {
@@ -95,14 +135,6 @@ public class OrderVO {
         this.peopleNumber = peopleNumber;
     }
 
-    public OrderState getOrderState() {
-        return orderState;
-    }
-
-    public void setOrderState(OrderState orderState) {
-        this.orderState = orderState;
-    }
-
     public Date getCheckInDate() {
         return checkInDate;
     }
@@ -117,14 +149,6 @@ public class OrderVO {
 
     public void setCheckOutDate(Date checkOutDate) {
         this.checkOutDate = checkOutDate;
-    }
-
-    public Date getDdl() {
-        return ddl;
-    }
-
-    public void setDdl(Date ddl) {
-        this.ddl = ddl;
     }
 
     public RoomType getRoomType() {
@@ -159,6 +183,22 @@ public class OrderVO {
         this.userID = userID;
     }
 
+    public OrderState getOrderState() {
+        return orderState;
+    }
+
+    public void setOrderState(OrderState orderState) {
+        this.orderState = orderState;
+    }
+
+    public Date getDdl() {
+        return ddl;
+    }
+
+    public void setDdl(Date ddl) {
+        this.ddl = ddl;
+    }
+
     public double getPrice() {
         return price;
     }
@@ -171,7 +211,15 @@ public class OrderVO {
         return Promotion;
     }
 
-    public void setPromotion(PromotionVO Promotion) {
-        this.Promotion = Promotion;
+    public void setPromotion(PromotionVO promotion) {
+        Promotion = promotion;
+    }
+
+    public String getRoomID() {
+        return roomID;
+    }
+
+    public void setRoomID(String roomID) {
+        this.roomID = roomID;
     }
 }

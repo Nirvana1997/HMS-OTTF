@@ -15,7 +15,7 @@ public class PromotionPVChanger {
      * @return 促销策略VO
      */
     public static PromotionVO promotionP2V(PromotionPO po){
-        return new PromotionVO(po.getPromotionName(),po.getDescription(),po.getPromotionType(),po.getHotelID(),po.getStartDate(),po.getEndDate(),po.getTradeArea(),po.getRoomNumber(),po.getVipLevel(),po.getDiscount());
+        return new PromotionVO(po.getName(),po.getDescription(),po.getPromotionType(),po.getHotelID(),po.getStartDate(),po.getEndDate(),po.getTradeArea(),po.getRoomNumber(),po.getVipLevel(),po.getDiscount(),po.getCompanyID());
     }
 
     /**
@@ -24,6 +24,6 @@ public class PromotionPVChanger {
      * @return 用户信息PO
      */
     public static PromotionPO promotionV2P(PromotionVO vo){
-        return new PromotionPO(vo.getPromotionName(),vo.getDescription(),vo.getPromotionType(),vo.getHotelID(),vo.getStartDate(),vo.getEndDate(),vo.getTradeArea(),vo.getRoomNumber(),vo.getVipLevel(),vo.getDiscount());
+        return new PromotionPO(vo.getPromotionName(),vo.getDescription(),vo.getPromotionType(),vo.getHotelID(),vo.getStartDate(),vo.getEndDate(),vo.getTradeArea(),vo.getRoomNumber(),vo.getVipLevel(),vo.getDiscount(),vo.getCompanyID());
     }
 }

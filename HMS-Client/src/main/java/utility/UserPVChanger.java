@@ -24,7 +24,7 @@ public class UserPVChanger {
      * @return 用户信息VO
      */
     public static UserInfoVO userInfoP2V(UserInfoPO po,int vipLevel){
-        return new UserInfoVO(po.getUserID(),po.getName(),po.getIdentity(),po.getContactNumber(),po.getCredit(),po.getBirthday(),po.getEnterpriseID(),po.getType(),vipLevel);
+        return new UserInfoVO(po.getUserID(),po.getName(),po.getIdentity(),po.getContactNumber(),po.getCredit(),po.getBirthday(),po.getCompanyID(),po.getType(),vipLevel);
     }
 
 

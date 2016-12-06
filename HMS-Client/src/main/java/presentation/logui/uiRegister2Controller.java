@@ -41,7 +41,7 @@ public class uiRegister2Controller {
         boolean isEnterprise = typeEnterprise.isSelected();
 //        uiRegister1Controller uiregister1Controller = new uiRegister1Controller();
 //        Chronology Birthday = dateBirthday.getChronology();
-//        String Enterprise = comboEnterprise.getAccessibleText();
+//        String Company = comboEnterprise.getAccessibleText();
         LogBlService logBlService = new LogController();
         UserInfoVO userInfoVO = new UserInfoVO(uiRegister1Controller.getUserID(), RealName, Identity, PhoneNumber,0,0);
         logBlService.addUserInfo(userInfoVO);

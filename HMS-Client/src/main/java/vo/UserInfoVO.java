@@ -9,18 +9,18 @@ public class UserInfoVO {
 	String contactNumber;
 	double credit;
     String birthday;
-    String enterpriseID;
+    String companyID;
 	UserType userType;
 	int vipLevel;
 
-    public UserInfoVO(String userID, String name, String identity, String contactNumber, double credit, String birthday, String enterpriseID, UserType userType, int vipLevel) {
+    public UserInfoVO(String userID, String name, String identity, String contactNumber, double credit, String birthday, String companyID, UserType userType, int vipLevel) {
         this.userID = userID;
         this.name = name;
         this.identity = identity;
         this.contactNumber = contactNumber;
         this.credit = credit;
         this.birthday = birthday;
-        this.enterpriseID = enterpriseID;
+        this.companyID = companyID;
         this.userType = userType;
         this.vipLevel = vipLevel;
     }
@@ -73,12 +73,12 @@ public class UserInfoVO {
         this.birthday = birthday;
     }
 
-    public String getEnterpriseID() {
-        return enterpriseID;
+    public String getCompanyID() {
+        return companyID;
     }
 
-    public void setEnterpriseID(String enterpriseID) {
-        this.enterpriseID = enterpriseID;
+    public void setCompanyID(String companyID) {
+        this.companyID = companyID;
     }
 
     public UserType getUserType() {
