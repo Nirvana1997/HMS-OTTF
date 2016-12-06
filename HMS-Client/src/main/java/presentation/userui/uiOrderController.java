@@ -1,17 +1,29 @@
 package presentation.userui;
 
-import com.sun.org.apache.xpath.internal.operations.Or;
+import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
 import enumData.OrderState;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.text.Text;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 /**
- * Created by Administrator on 2016/12/3.
+ * Created by Administrator on 2016/12/5.
  */
-public class uiMyOrderController {
+public class uiOrderController implements Initializable{
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        if(uiMyOrderController.getOrderState()== OrderState.executed){
+            buttonComment.setVisible(true);
+        }
+    }
+
+
     @FXML
     /**
      * 跳转到首页的按钮
@@ -103,55 +115,21 @@ public class uiMyOrderController {
         jump.gotoLogin();
     }
 
-    /**
-     * 当前选择的订单状态
-     */
-    static OrderState orderState;
-    public void setOrderState(OrderState state){
-        orderState = state;
-    }
-    public static OrderState getOrderState(){
-        return orderState;
-    }
-
-
     @FXML
-    private Button buttonNormal;
-    @FXML
-    private Button buttonAbnormal;
+    private Label textMyOrder;
     @FXML
     private Button buttonRevoke;
 
     /**
-     * 选择正常订单，则显示已执行和未执行的订单
+     * 撤回订单
      * @throws IOException
      */
-    public void chooseNormal() throws IOException{
-        buttonNormal.setVisible(false);
-        buttonAbnormal.setVisible(true);
-        buttonRevoke.setVisible(true);
-        setOrderState(OrderState.executed);
+    public void RevokeOrder() throws IOException{
+        //TODO
     }
-
-    /**
-     * 选择异常订单，则显示已执行和未执行的订单
-     * @throws IOException
-     */
-    public void chooseAbnormal() throws IOException{
-        buttonNormal.setVisible(true);
-        buttonAbnormal.setVisible(false);
-        buttonRevoke.setVisible(true);
-        setOrderState(OrderState.abnormal);
+    @FXML
+    private Button buttonComment;
+    public void gotoCommentOrder() throws IOException{
+        jump.gotoCommentOrder();
     }
-    /**
-     * 选择异常订单，则显示已执行和未执行的订单
-     * @throws IOException
-     */
-    public void chooseRevoke() throws IOException{
-        buttonNormal.setVisible(true);
-        buttonAbnormal.setVisible(true);
-        buttonRevoke.setVisible(false);
-        setOrderState(OrderState.canceled);
-    }
-
 }

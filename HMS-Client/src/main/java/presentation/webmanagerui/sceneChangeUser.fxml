@@ -69,11 +69,6 @@
                   <Font size="15.0" />
                </font>
             </Text>
-            <TextField fx:id="textPassword" layoutX="123.0" layoutY="99.0" text="Password">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </TextField>
             <Text layoutX="67.0" layoutY="159.0" strokeType="OUTSIDE" strokeWidth="0.0" text="姓名：">
                <font>
                   <Font size="15.0" />
@@ -84,16 +79,6 @@
                   <Font size="15.0" />
                </font>
             </Text>
-            <Text layoutX="353.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="确认密码：">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Text>
-            <TextField fx:id="textConfirmPassword" layoutX="449.0" layoutY="99.0" text="Confirm">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </TextField>
             <TextField fx:id="textRealName" layoutX="123.0" layoutY="139.0" text="Name">
                <font>
                   <Font size="14.0" />
@@ -144,16 +129,35 @@
             </RadioButton>
             <DatePicker fx:id="dataBirthday" layoutX="174.0" layoutY="285.0" />
             <ComboBox fx:id="nameEnterprise" layoutX="174.0" layoutY="351.0" prefHeight="23.0" prefWidth="186.0" promptText="喋喋集团" />
-            <Button fx:id="buttonSave" layoutX="449.0" layoutY="422.0" mnemonicParsing="false" text="保存">
+            <Button fx:id="buttonSave" layoutX="428.0" layoutY="422.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="87.0" text="保存">
                <font>
                   <Font size="18.0" />
                </font>
+               <effect>
+                  <ImageInput>
+                     <source>
+                        <Image url="@../../../../../graphics/webmanagerui/确认修改.png" />
+                     </source>
+                  </ImageInput>
+               </effect>
             </Button>
-            <Button fx:id="buttonCancel" layoutX="533.0" layoutY="422.0" mnemonicParsing="false" text="取消">
+            <Button fx:id="buttonCancel" layoutX="551.0" layoutY="422.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="87.0" text="取消">
                <font>
                   <Font size="18.0" />
                </font>
+               <effect>
+                  <ImageInput>
+                     <source>
+                        <Image url="@../../../../../graphics/webmanagerui/取消.png" />
+                     </source>
+                  </ImageInput>
+               </effect>
             </Button>
+            <Text fx:id="buttonModifyPassword" fill="#355c86" layoutX="128.0" layoutY="119.0" onMouseClicked="#gotoModifyPassword" strokeType="OUTSIDE" strokeWidth="0.0" text="修改密码" underline="true">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
          </children>
       </AnchorPane>
       <Text fx:id="textManageUser" fill="#3a72d3" layoutX="283.0" layoutY="88.0" onMouseClicked="#returntoManageUser" strokeType="OUTSIDE" strokeWidth="0.0" text="用户管理" underline="true">

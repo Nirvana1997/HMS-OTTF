@@ -76,5 +76,81 @@
             <Font name="SimHei" size="16.0" />
          </font>
       </Label>
+      <ImageView fitHeight="36.0" fitWidth="366.0" layoutX="315.0" layoutY="138.0">
+         <image>
+            <Image url="@../../../../../graphics/userui/MyOrder/menu.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="buttonNormal" layoutX="315.0" layoutY="138.0" mnemonicParsing="false" onAction="#chooseNormal" prefHeight="36.0" prefWidth="125.0" text="Button">
+         <effect>
+            <ImageInput>
+               <source>
+                  <Image url="@../../../../../graphics/userui/MyOrder/正常订单.png" />
+               </source>
+            </ImageInput>
+         </effect>
+      </Button>
+      <Button fx:id="buttonAbnormal" layoutX="435.0" layoutY="138.0" mnemonicParsing="false" onAction="#chooseAbnormal" prefHeight="36.0" prefWidth="125.0" text="Button">
+         <effect>
+            <ImageInput>
+               <source>
+                  <Image url="@../../../../../graphics/userui/MyOrder/异常订单.png" />
+               </source>
+            </ImageInput>
+         </effect>
+      </Button>
+      <Button fx:id="buttonRevoke" layoutX="555.0" layoutY="138.0" mnemonicParsing="false" onAction="#chooseRevoke" prefHeight="36.0" prefWidth="125.0" text="Button">
+         <effect>
+            <ImageInput>
+               <source>
+                  <Image url="@../../../../../graphics/userui/MyOrder/撤销订单.png" />
+               </source>
+            </ImageInput>
+         </effect>
+      </Button>
+      <AnchorPane fx:id="Order" layoutX="336.0" layoutY="240.0" prefHeight="324.0" prefWidth="248.0">
+         <children>
+            <ImageView fitHeight="324.0" fitWidth="248.0">
+               <image>
+                  <Image url="@../../../../../graphics/userui/MyOrder/order.png" />
+               </image>
+            </ImageView>
+            <Text fx:id="orderID" fill="WHITE" layoutX="64.0" layoutY="87.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0000006918" textAlignment="CENTER">
+               <font>
+                  <Font name="SimHei" size="24.0" />
+               </font>
+            </Text>
+            <Text layoutX="50.0" layoutY="167.0" strokeType="OUTSIDE" strokeWidth="0.0" text="时间：">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Text>
+            <Text fx:id="orderDate" layoutX="112.0" layoutY="167.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2016/12/3">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Text>
+            <Text layoutX="50.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" text="酒店：">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Text>
+            <Text fx:id="orderHotel" layoutX="112.0" layoutY="199.0" strokeType="OUTSIDE" strokeWidth="0.0" text="喋喋大酒店">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Text>
+            <Text layoutX="50.0" layoutY="231.0" strokeType="OUTSIDE" strokeWidth="0.0" text="客房：">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Text>
+            <Text fx:id="orderRoom" layoutX="112.0" layoutY="231.0" strokeType="OUTSIDE" strokeWidth="0.0" text="总统套房">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

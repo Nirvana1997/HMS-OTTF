@@ -95,15 +95,29 @@
                   <Font size="14.0" />
                </font>
             </TextField>
-            <Button fx:id="buttonSave" layoutX="426.0" layoutY="384.0" mnemonicParsing="false" text="确认添加">
+            <Button fx:id="buttonSave" layoutX="426.0" layoutY="384.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="89.0" text="确认添加">
                <font>
                   <Font size="18.0" />
                </font>
+               <effect>
+                  <ImageInput>
+                     <source>
+                        <Image url="@../../../../../graphics/webmanagerui/确认添加.png" />
+                     </source>
+                  </ImageInput>
+               </effect>
             </Button>
-            <Button fx:id="buttonCancel" layoutX="572.0" layoutY="384.0" mnemonicParsing="false" text="取消">
+            <Button fx:id="buttonCancel" layoutX="572.0" layoutY="384.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="89.0" text="取消">
                <font>
                   <Font size="18.0" />
                </font>
+               <effect>
+                  <ImageInput>
+                     <source>
+                        <Image url="@../../../../../graphics/webmanagerui/取消.png" />
+                     </source>
+                  </ImageInput>
+               </effect>
             </Button>
          </children>
       </AnchorPane>
