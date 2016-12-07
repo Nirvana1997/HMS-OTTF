@@ -52,7 +52,10 @@ public  class UserInfo{
 	 */
 	public UserInfoVO showUserInfo(String userID)throws RemoteException{
 		UserInfoPO po = userDataService.getUserInfo(userID);
+
 		int vipLevel = vipInfo.calcLevel(po.getCredit());
+
 		return UserPVChanger.userInfoP2V(po,vipLevel);
+
 	}
 }

@@ -1,5 +1,7 @@
 package presentation.logui;
 
+import businesslogic.logbl.LogController;
+import businesslogicservice.logblservice.LogBlService;
 import com.sun.javafx.robot.impl.FXRobotHelper;
 import enumData.AccountType;
 import enumData.ResultMessage;
@@ -67,65 +69,74 @@ public void uiLogController(){
     }
 
     public void login() throws IOException {
-        String UserID = textUserID.getText();
-        if (UserID.equals("3")){
-            SceneWebSaler sceneWebSaler = new SceneWebSaler();
-            sceneWebSaler.initUI();
-       }
-        else if(UserID.equals("4")) {
-            SceneWebManager sceneWebManager = new SceneWebManager();
-            sceneWebManager.initUI();
-        }
-        else if(UserID.equals("1")) {
-            SceneUser sceneUser = new SceneUser();
-            sceneUser.initUI();
-        }
-        else if(UserID.equals("2")) {
-            SceneHotelSaler sceneHotelSaler = new SceneHotelSaler();
-            sceneHotelSaler.initUI();
-        }
-        else{
-            System.out.print("滚！不给看！");
-        }
-//        // 获取用户名
-//        String userID = textUserID.getText();
-//        // 获取密码
-//        String password = textPassword.getText();
+//        String UserID = textUserID.getText();
+//        if (UserID.equals("3")){
+//            SceneWebSaler sceneWebSaler = new SceneWebSaler();
+//            sceneWebSaler.initUI();
+//       }
+//        else if(UserID.equals("4")) {
+//            SceneWebManager sceneWebManager = new SceneWebManager();
+//            sceneWebManager.initUI();
+//        }
+//        else if(UserID.equals("1")) {
+//            SceneUser sceneUser = new SceneUser();
+//            sceneUser.initUI();
+//        }
+//        else if(UserID.equals("2")) {
+//            SceneHotelSaler sceneHotelSaler = new SceneHotelSaler();
+//            sceneHotelSaler.initUI();
+//        }
+//        else{
+//            System.out.print("滚！不给看！");
+//        }
+        // 获取用户名
+        String userID = textUserID.getText();
+        // 获取密码
+        String password = textPassword.getText();
 
-//        LogBlService logbl = new LogController();
-//        AccountType accountType = logbl.accoutType(userID);
-//        if(accountType == null){
-//            // TODO
-//        }
-//
-//        else if(accountType == AccountType.user){
-//            // TODO
-//        }
-//
-//        else if(accountType == AccountType.hotelsaler){
-//            ResultMessage result = logbl.isCorrectAndLogin(this.createAccountVo(userID, password, accountType));
-//            System.out.println(result);
-//            if (result == ResultMessage.Correct){
-//                SceneHotelSaler sceneHotelSaler = new SceneHotelSaler();
-//                sceneHotelSaler.initUI();
-//            }else{
-//                // TODO
-//            }
-//        }
-//
-//        else if(accountType == AccountType.websaler){
-//            ResultMessage result = logbl.isCorrectAndLogin(this.createAccountVo(userID, password, accountType));
-//            if (result == ResultMessage.Correct){
-//                SceneWebSaler sceneWebSaler = new SceneWebSaler();
-//                sceneWebSaler.initUI();
-//            }else{
-//                // TODO
-//            }
-//        }
-//
-//        else if(accountType == AccountType.webmanager){
-//            // TODO
-//        }
+        LogBlService logbl = new LogController();
+        AccountType accountType = logbl.accoutType(userID);
+        if(accountType == null){
+            // TODO
+        }
+
+        else if(accountType == AccountType.user){
+            // TODO
+            ResultMessage result = logbl.isCorrectAndLogin(this.createAccountVo(userID, password, accountType));
+            System.out.println(result);
+            if (result == ResultMessage.Correct){
+                SceneUser sceneUser = new SceneUser();
+                sceneUser.initUI();
+            }else{
+                // TODO
+            }
+
+        }
+
+        else if(accountType == AccountType.hotelsaler){
+            ResultMessage result = logbl.isCorrectAndLogin(this.createAccountVo(userID, password, accountType));
+            System.out.println(result);
+            if (result == ResultMessage.Correct){
+                SceneHotelSaler sceneHotelSaler = new SceneHotelSaler();
+                sceneHotelSaler.initUI();
+            }else{
+                // TODO
+            }
+        }
+
+        else if(accountType == AccountType.websaler){
+            ResultMessage result = logbl.isCorrectAndLogin(this.createAccountVo(userID, password, accountType));
+            if (result == ResultMessage.Correct){
+                SceneWebSaler sceneWebSaler = new SceneWebSaler();
+                sceneWebSaler.initUI();
+            }else{
+                // TODO
+            }
+        }
+
+        else if(accountType == AccountType.webmanager){
+            // TODO
+        }
     }
 
     private AccountVO createAccountVo(String accountID, String password, AccountType type){
