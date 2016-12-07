@@ -7,13 +7,13 @@ public class UserInfoVO {
 	String name;
 	String identity;
 	String contactNumber;
-	double credit;
+	int credit;
     String birthday;
     String companyID;
 	UserType userType;
 	int vipLevel;
 
-    public UserInfoVO(String userID, String name, String identity, String contactNumber, double credit, String birthday, String companyID, UserType userType, int vipLevel) {
+    public UserInfoVO(String userID, String name, String identity, String contactNumber, int credit, String birthday, String companyID, UserType userType, int vipLevel) {
         this.userID = userID;
         this.name = name;
         this.identity = identity;
@@ -57,11 +57,11 @@ public class UserInfoVO {
         this.contactNumber = contactNumber;
     }
 
-    public double getCredit() {
+    public int getCredit() {
         return credit;
     }
 
-    public void setCredit(double credit) {
+    public void setCredit(int credit) {
         this.credit = credit;
     }
 

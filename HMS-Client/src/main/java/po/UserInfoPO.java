@@ -7,13 +7,13 @@ public class UserInfoPO {
 	String name;
 	String identity;
 	String contactNumber;
-	double credit;
+	int credit;
 	String birthday;
 	String companyID;
 	UserType type;
 
 	public UserInfoPO(String userID, String name, String identity, String contactNumber,
-					  double credit, String birthday, String companyID, UserType type) {
+					  int credit, String birthday, String companyID, UserType type) {
 		this.userID = userID;
 		this.name = name;
 		this.identity = identity;
@@ -56,11 +56,11 @@ public class UserInfoPO {
 		this.contactNumber = contactNumber;
 	}
 
-	public double getCredit() {
+	public int getCredit() {
 		return credit;
 	}
 
-	public void setCredit(double credit) {
+	public void setCredit(int credit) {
 		this.credit = credit;
 	}
 
