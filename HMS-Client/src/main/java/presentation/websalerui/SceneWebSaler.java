@@ -15,7 +15,7 @@ import java.io.IOException;
 public class SceneWebSaler {
     public void initUI() throws IOException {
         ObservableList<Stage> stage = FXRobotHelper.getStages();
-        Scene scene = new Scene((Parent) FXMLLoader.load(getClass().getResource("sceneWebSaler.fxml")));
+        Scene scene = new Scene((Parent) FXMLLoader.load(getClass().getResource("webSaler_saleStrategy.fxml")));
         stage.get(0).setScene(scene);
     }
 }

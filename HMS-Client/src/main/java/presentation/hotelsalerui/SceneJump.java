@@ -6,12 +6,24 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import presentation.logui.SceneLog;
+
 import java.io.IOException;
+import java.util.Observable;
 
 /**
  * Created by thinkpad on 2016/12/2.
  */
 public class SceneJump {
+
+    /**
+     * 跳转到登陆界面
+     */
+    public void backToLogin() throws IOException {
+        ObservableList<Stage> stage = FXRobotHelper.getStages();
+        SceneLog sceneLog = new SceneLog();
+        stage.get(0).setScene(sceneLog.getSceneLog());
+    }
 
     /**
      * 跳转到酒店信息界面
@@ -49,4 +61,12 @@ public class SceneJump {
         stage.get(0).setScene(scene);
     }
 
+    /**
+     * 跳转到编辑酒店信息界面
+     */
+    public void jumpToSceneEditInfo() throws IOException{
+        ObservableList<Stage> stage = FXRobotHelper.getStages();
+        Scene scene = new Scene((Parent) FXMLLoader.load(getClass().getResource("hotelSaler_EditInfo.fxml")));
+        stage.get(0).setScene(scene);
+    }
 }
