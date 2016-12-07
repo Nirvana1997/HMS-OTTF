@@ -3,6 +3,7 @@ package businesslogic.userbl.interfaces;
 import po.HotelroomPO;
 import po.RoomNumPO;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 /**
@@ -15,12 +16,12 @@ public interface HotelRoom {
      * @param date
      * @return
      */
-    public ArrayList<RoomNumPO> getEmptyrooms(String hotelID, String date);
+    public ArrayList<RoomNumPO> getEmptyrooms(String hotelID, String date) throws RemoteException;
 
     /**
      *得到房间列表（类型，价格）
      * @param hotelID
      * @return
      */
-    public ArrayList<HotelroomPO> getRoomList(String hotelID);
+    public ArrayList<HotelroomPO> getRoomList(String hotelID) throws RemoteException;
 }

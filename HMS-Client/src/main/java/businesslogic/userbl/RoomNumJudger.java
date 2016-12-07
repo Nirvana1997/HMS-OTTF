@@ -34,7 +34,7 @@ public class RoomNumJudger {
      * @param num 房间数目
      * @return
      */
-    public boolean haveEnoughRoom(String hotelID, Date startDate, Date endDate, RoomType roomType,int num){
+    public boolean haveEnoughRoom(String hotelID, Date startDate, Date endDate, RoomType roomType,int num) throws RemoteException {
         //获取期间所有日期
         ArrayList<Date> dates = DateOperation.getDates(startDate,endDate);
         DateFormat df = new SimpleDateFormat("yyyy_MM_dd");

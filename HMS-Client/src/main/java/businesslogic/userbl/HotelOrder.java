@@ -67,7 +67,7 @@ public class HotelOrder {
      * @param vo 订单信息
      * @return 房间数目是否足够
      */
-    public boolean haveEnoughRoom(OrderVO vo) {
+    public boolean haveEnoughRoom(OrderVO vo) throws RemoteException {
         return roomNumJudger.haveEnoughRoom(vo.getHotelID(),vo.getCheckInDate(),vo.getCheckOutDate(),vo.getRoomType(),vo.getRoomNumber());
     }
 
