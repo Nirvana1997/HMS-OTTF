@@ -2,9 +2,6 @@ package utility;
 
 import po.OrderPO;
 import vo.OrderVO;
-import vo.PromotionVO;
-
-import java.util.Date;
 
 /**
  * 负责订单PO、VO转换
@@ -18,7 +15,7 @@ public class OrderPVChanger {
      * @return 订单VO
      */
     public static OrderVO orderP2V(OrderPO po){
-        return new OrderVO(po.getHotelID(),po.getHotelname(),po.getTradeArea(),po.getAddress(),po.getDetailAddress(),po.getRoomNumber(),po.getPeopleNumber(), DateOperation.stringToDate(po.getCheckInDate()),DateOperation.stringToDate(po.getCheckOutDate()),po.getRoomType(),po.isHaveChild(),po.getOrderID(),po.getUserID(),po.getOrderState(),po.getDdl(),po.getPrice(),po.getPromotionName(),po.getRoomID());
+        return new OrderVO(po.getHotelID(),po.getHotelName(),po.getTradeArea(),po.getAddress(),po.getDetailAddress(),po.getRoomNumber(),po.getPeopleNumber(), DateOperation.stringToDate(po.getCheckInDate()),DateOperation.stringToDate(po.getCheckOutDate()),po.getRoomType(),po.isHaveChild(),po.getOrderID(),po.getUserID(),po.getOrderState(),po.getDdl(),po.getPrice(),po.getPromotionName(),po.getRoomID());
     }
 
     /**

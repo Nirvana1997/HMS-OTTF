@@ -15,14 +15,17 @@ import java.util.Iterator;
 
 public class HotelinfoDataImpl_stub implements HotelinfoDataService {
     ArrayList<HotelinfoPO> hotelList = new ArrayList<HotelinfoPO>();
-    HotelinfoPO hotel1 = new HotelinfoPO("0001", "仙林大酒店", TradeArea.Xianlin, Address.NJU,  null, null, "VergGood", "GreatService", 3, 3,99);
-    HotelinfoPO hotel2 = new HotelinfoPO("0002", "喋喋大酒店", TradeArea.Xianlin, Address.NJU, null, null, "VergGood", "GreatService", 4, 5,80);
-    HotelinfoPO hotel3 = new HotelinfoPO("0003", "萱萱大酒店", TradeArea.XuanQuan, Address.XuanXuan, null, null, "VergGood", "GreatService", 5, 5,200);
+    ArrayList<CommentPO> commentPOList = new ArrayList<CommentPO>();
+    HotelinfoPO hotel1 = new HotelinfoPO("0001", "XianlinHotel", TradeArea.Xianlin, Address.NJU,  null, null, "VeryGood", "1233321", 3, 3,99);
+    HotelinfoPO hotel2 = new HotelinfoPO("0002", "DiedieHotel", TradeArea.Xianlin, Address.NJU, null, null, "VeryGood", "111", 4, 5,80);
+    HotelinfoPO hotel3 = new HotelinfoPO("0003", "XuanxuanHotel", TradeArea.XuanQuan, Address.XuanXuan, null, null, "VeryGood", "134123123", 5, 5,200);
+    HotelinfoPO hotel4 = new HotelinfoPO("0004", "ZhihaoHotel",TradeArea.XuanQuan,Address.NJU,"Near the NJU","Excellent","VeryGood","1288888",5,9.9,300);
 
     public HotelinfoDataImpl_stub() {
         hotelList.add(hotel1);
         hotelList.add(hotel2);
         hotelList.add(hotel3);
+        hotelList.add(hotel4);
     }
 
     @Override
@@ -39,10 +42,14 @@ public class HotelinfoDataImpl_stub implements HotelinfoDataService {
 
     @Override
     public ResultMessage setHotelinfo(HotelinfoPO po) {
-        if (po.getHotelID().equals("0001")) {
-            return ResultMessage.Correct;
-        } else
-            return ResultMessage.NotExist;
+        for(int i=0;i<hotelList.size();i++){
+            if(hotelList.get(i).getHotelID().equals(po.getHotelID())) {
+                hotelList.remove(i);
+                hotelList.add(po);
+                break;
+            }
+        }
+        return ResultMessage.Correct;
     }
 
     @Override
@@ -58,15 +65,24 @@ public class HotelinfoDataImpl_stub implements HotelinfoDataService {
 
     @Override
     public ResultMessage addComments(CommentPO po) {
-        if (po.getHotelID().equals("0001")) {
-            return ResultMessage.HasExist;
-        } else
-            return ResultMessage.Correct;
+        commentPOList.add(po);
+        return ResultMessage.Correct;
+    }
+
+    @Override
+    public ArrayList<CommentPO> getComments(String hotelID) throws RemoteException {
+        ArrayList<CommentPO> list = new ArrayList<CommentPO>();
+        for(int i=0;i<commentPOList.size();i++){
+            if(commentPOList.get(i).getHotelID().equals(hotelID))
+                list.add(commentPOList.get(i));
+        }
+        return list;
     }
 
     @Override
     public ResultMessage addHotelinfo(HotelinfoPO po) throws RemoteException {
-        return null;
+        hotelList.add(po);
+        return ResultMessage.Correct;
     }
 
 }

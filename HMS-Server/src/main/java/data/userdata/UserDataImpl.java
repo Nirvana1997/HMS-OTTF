@@ -54,7 +54,7 @@ public class UserDataImpl extends UnicastRemoteObject implements UserDataService
             DataBaseHelper.in("update UserInfo set contactNumber = '" + po.getContactNumber() + "' where userID = '" + po.getUserID() +"'");
             DataBaseHelper.in("update UserInfo set credit = '" + po.getCredit() + "' where userID = '" + po.getUserID() +"'");
             DataBaseHelper.in("update UserInfo set birthday = '" + po.getBirthday() + "' where userID = '" + po.getUserID() +"'");
-            DataBaseHelper.in("update UserInfo set enterpriseID = '" + po.getEnterpriseID() + "' where userID = '" + po.getUserID() +"'");
+            DataBaseHelper.in("update UserInfo set companyID = '" + po.getCompanyID() + "' where userID = '" + po.getUserID() +"'");
             DataBaseHelper.in("update UserInfo set type = '" + po.getType().toString() + "' where userID = '" + po.getUserID() +"'");
             return ResultMessage.Correct;
         }else
@@ -73,9 +73,9 @@ public class UserDataImpl extends UnicastRemoteObject implements UserDataService
             return ResultMessage.HasExist;
         //创建信用记录表
         DataBaseHelper.in("create table " + po.getUserID() + "_credit" + "(date varchar(50),change varchar(50),finalCredit varchar(50))");
-        DataBaseHelper.in("insert into UserInfo (userID,name,identity,contactNumber,credit,birthday,enterpriseID,type) values (" +
+        DataBaseHelper.in("insert into UserInfo (userID,name,identity,contactNumber,credit,birthday,companyID,type) values (" +
                 "'" + po.getUserID() + "','" + po.getName() + "','" + po.getIdentity() + "','" + po.getContactNumber()
-                + "','" + po.getCredit() + "','" + po.getBirthday() + "','" + po.getEnterpriseID()
+                + "','" + po.getCredit() + "','" + po.getBirthday() + "','" + po.getCompanyID()
                 + "','" + po.getType().toString() + "')");
         return ResultMessage.Correct;
     }

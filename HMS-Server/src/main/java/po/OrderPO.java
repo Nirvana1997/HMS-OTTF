@@ -3,8 +3,10 @@ package po;
 import java.io.Serializable;
 import java.util.Date;
 
+import enumData.Address;
 import enumData.OrderState;
 import enumData.RoomType;
+import enumData.TradeArea;
 
 public class OrderPO implements Serializable{
 	String orderID;
@@ -20,10 +22,16 @@ public class OrderPO implements Serializable{
 	RoomType roomType;
 	double price;
 	boolean haveChild;
+	String hotelName;
+	String promotionName;
+	TradeArea tradeArea;
+	Address address;
+	String detailAddress;
 
-	public OrderPO(String orderID, String hotelID, String userID, String roomID, int roomNumber,
-				   int peopleNumber, OrderState orderState, String checkInDate,
-				   String checkOutDate, String ddl, RoomType roomType, double price, boolean haveChild) {
+	public OrderPO(String orderID, String hotelID, String userID, String roomID, int roomNumber, int peopleNumber,
+				   OrderState orderState, String checkInDate, String checkOutDate, String ddl, RoomType roomType,
+				   double price, boolean haveChild, String hotelName, String promotionName, TradeArea tradeArea,
+				   Address address, String detailAddress) {
 		this.orderID = orderID;
 		this.hotelID = hotelID;
 		this.userID = userID;
@@ -37,6 +45,11 @@ public class OrderPO implements Serializable{
 		this.roomType = roomType;
 		this.price = price;
 		this.haveChild = haveChild;
+		this.hotelName = hotelName;
+		this.promotionName = promotionName;
+		this.tradeArea = tradeArea;
+		this.address = address;
+		this.detailAddress = detailAddress;
 	}
 
 	public String getOrderID() {
@@ -141,5 +154,45 @@ public class OrderPO implements Serializable{
 
 	public void setHaveChild(boolean haveChild) {
 		this.haveChild = haveChild;
+	}
+
+	public String getHotelName() {
+		return hotelName;
+	}
+
+	public void setHotelName(String hotelName) {
+		this.hotelName = hotelName;
+	}
+
+	public String getPromotionName() {
+		return promotionName;
+	}
+
+	public void setPromotionName(String promotionName) {
+		this.promotionName = promotionName;
+	}
+
+	public TradeArea getTradeArea() {
+		return tradeArea;
+	}
+
+	public void setTradeArea(TradeArea tradeArea) {
+		this.tradeArea = tradeArea;
+	}
+
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
+	}
+
+	public String getDetailAddress() {
+		return detailAddress;
+	}
+
+	public void setDetailAddress(String detailAddress) {
+		this.detailAddress = detailAddress;
 	}
 }

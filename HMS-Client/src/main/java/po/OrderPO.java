@@ -5,11 +5,9 @@ import enumData.OrderState;
 import enumData.RoomType;
 import enumData.TradeArea;
 
-import java.util.Date;
-
 public class OrderPO {
 	String hotelID;
-	String hotelname;
+	String hotelName;
 	TradeArea tradeArea;
 	Address address;
 	String detailAddress;
@@ -22,14 +20,14 @@ public class OrderPO {
 	String orderID;
 	String userID;
 	OrderState orderState;
-	Date ddl;
+	String ddl;
 	double price;
 	String promotionName;
 	String roomID;
 
-	public OrderPO(String hotelID, String hotelname, TradeArea tradeArea, Address address, String detailAddress, int roomNumber, int peopleNumber, String checkInDate, String checkOutDate, RoomType roomType, boolean haveChild, String orderID, String userID, OrderState orderState, Date ddl, double price, String promotionName, String roomID) {
+	public OrderPO(String hotelID, String hotelName, TradeArea tradeArea, Address address, String detailAddress, int roomNumber, int peopleNumber, String checkInDate, String checkOutDate, RoomType roomType, boolean haveChild, String orderID, String userID, OrderState orderState, String ddl, double price, String promotionName, String roomID) {
 		this.hotelID = hotelID;
-		this.hotelname = hotelname;
+		this.hotelName = hotelName;
 		this.tradeArea = tradeArea;
 		this.address = address;
 		this.detailAddress = detailAddress;
@@ -56,12 +54,12 @@ public class OrderPO {
 		this.hotelID = hotelID;
 	}
 
-	public String getHotelname() {
-		return hotelname;
+	public String getHotelName() {
+		return hotelName;
 	}
 
-	public void setHotelname(String hotelname) {
-		this.hotelname = hotelname;
+	public void setHotelName(String hotelName) {
+		this.hotelName = hotelName;
 	}
 
 	public TradeArea getTradeArea() {
@@ -160,11 +158,11 @@ public class OrderPO {
 		this.orderState = orderState;
 	}
 
-	public Date getDdl() {
+	public String getDdl() {
 		return ddl;
 	}
 
-	public void setDdl(Date ddl) {
+	public void setDdl(String ddl) {
 		this.ddl = ddl;
 	}
 

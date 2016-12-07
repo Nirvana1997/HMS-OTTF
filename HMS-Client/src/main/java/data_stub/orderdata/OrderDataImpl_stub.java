@@ -1,9 +1,7 @@
 package data_stub.orderdata;
 
 import dataservice.orderdataservice.OrderDataService;
-import enumData.OrderState;
-import enumData.ResultMessage;
-import enumData.RoomType;
+import enumData.*;
 import po.OrderPO;
 
 import java.util.ArrayList;
@@ -12,13 +10,11 @@ import java.util.Iterator;
 
 public class OrderDataImpl_stub implements OrderDataService {
     ArrayList<OrderPO> orderList = new ArrayList<OrderPO>();
-    Date date1 = new Date(2016, 7, 18);
-    OrderPO order1 = new OrderPO("0001", OrderState.executing, "0001", "0001", date1, RoomType.DoubleRoom,"001");
-    Date date2 = new Date(2016, 11, 12);
-    OrderPO order2 = new OrderPO("0002", OrderState.executed, "0002", "0001", date2, RoomType.SingleRoom,"002");
-    Date date3 = new Date(2016, 11, 14);
-    OrderPO order3 = new OrderPO("0003", OrderState.canceled, "0003", "0001", date3, RoomType.StandardRoom,"003");
-
+    OrderPO order1 = new OrderPO("01","ZHotel", TradeArea.Xianlin, Address.NJU,"In Xianlin",1,1,"2016_5_8","2016_5_9",RoomType.SingleRoom,false,"001","151520175",OrderState.executing,"7:00",300,"Web period","001");
+    OrderPO order2 = new OrderPO("02","XHotel", TradeArea.XuanQuan, Address.NJU,"In XuanQuan",1,2,"2016_9_10","2016_9_12",RoomType.StandardRoom,false,"002","151520119",OrderState.abnormal,"8:00",200,"Web Vip","001");
+    OrderPO order3 = new OrderPO("02","DHotel", TradeArea.XuanQuan, Address.NJU,"In XuanQuan",2,2,"2016_12_1","2016_12_2",RoomType.DoubleRoom,true,"003","151520125",OrderState.canceled,"9:00",270,"Web vip","001");
+    OrderPO order4 = new OrderPO("03","BHotel", TradeArea.Xianlin, Address.NJU,"In Xianlin",3,2,"2016_1_1","2016_1_2",RoomType.DoubleRoom,false,"004","151520135",OrderState.executing,"5:00",130,"Trade discount","001");
+    OrderPO order5 = new OrderPO("03","AHotel", TradeArea.Xianlin, Address.NJU,"In Xianlin",3,2,"2016_10_11","2016_10_12",RoomType.SingleRoom,false,"005","151520145",OrderState.executing,"4:00",390,"Company discount","001");
     public OrderDataImpl_stub() {
         orderList.add(order1);
         orderList.add(order2);
@@ -39,19 +35,23 @@ public class OrderDataImpl_stub implements OrderDataService {
 
     @Override
     public ResultMessage setOrderInfo(OrderPO po) {
-        // TODO Auto-generated method stub
+        deleteOrder(po.getOrderID());
+        addOrder(po);
         return ResultMessage.Correct;
     }
 
     @Override
     public ResultMessage addOrder(OrderPO po) {
-        // TODO Auto-generated method stub
+        orderList.add(po);
         return ResultMessage.Correct;
     }
 
     @Override
     public ResultMessage deleteOrder(String orderID) {
-        // TODO Auto-generated method stub
+        for(int i=0;i<orderList.size();i++){
+            if(orderList.get(i).getOrderID().equals(orderID))
+                orderList.remove(i);
+        }
         return ResultMessage.Correct;
     }
 
@@ -60,7 +60,7 @@ public class OrderDataImpl_stub implements OrderDataService {
         // TODO Auto-generated method stub
         ArrayList<OrderPO> temp = new ArrayList<OrderPO>();
         for (int i = 0; i < orderList.size(); i++) {
-            if (orderList.get(i).getUserID() == account){
+            if (orderList.get(i).getUserID().equals(account)){
                 temp.add(orderList.get(i));
             }
         }

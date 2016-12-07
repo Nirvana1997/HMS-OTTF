@@ -2,9 +2,7 @@ package data.orderdata;
 
 import database.DataBaseHelper;
 import dataservice.orderdataservice.OrderDataService;
-import enumData.OrderState;
-import enumData.ResultMessage;
-import enumData.RoomType;
+import enumData.*;
 import po.OrderPO;
 
 import java.rmi.RemoteException;
@@ -29,14 +27,19 @@ public class OrderDataImpl extends UnicastRemoteObject implements OrderDataServi
         ArrayList<String> info = DataBaseHelper.outRow("OrderInfo","orderID" ,orderID);
         OrderState orderState = null;
         RoomType roomType = null;
+        TradeArea tradeArea = null;
+        Address address = null;
         try {
             orderState = Enum.valueOf(OrderState.class,info.get(6).trim());
             roomType = Enum.valueOf(RoomType.class,info.get(10).trim());
+            tradeArea = Enum.valueOf(TradeArea.class,info.get(15).trim());
+            address = Enum.valueOf(Address.class,info.get(16).trim());
         }catch (IllegalArgumentException ex){
             ex.printStackTrace();
         }
         return new OrderPO(info.get(0),info.get(1),info.get(2),info.get(3),Integer.parseInt(info.get(4)),Integer.parseInt(info.get(5)),
-                orderState,info.get(7),info.get(8),info.get(9),roomType,Double.parseDouble(info.get(11)),Boolean.getBoolean(info.get(12)));
+                orderState,info.get(7),info.get(8),info.get(9),roomType,Double.parseDouble(info.get(11)),Boolean.getBoolean(info.get(12)),
+                info.get(13),info.get(14),tradeArea,address,info.get(17));
     }
 
     /**
@@ -58,6 +61,11 @@ public class OrderDataImpl extends UnicastRemoteObject implements OrderDataServi
         DataBaseHelper.in("update OrderInfo set roomType = '" + po.getRoomType() + "' where orderID = '" + po.getOrderID() +"'");
         DataBaseHelper.in("update OrderInfo set price = '" + po.getPrice() + "' where orderID = '" + po.getOrderID() +"'");
         DataBaseHelper.in("update OrderInfo set haveChild = '" + po.isHaveChild() + "' where orderID = '" + po.getOrderID() +"'");
+        DataBaseHelper.in("update OrderInfo set hotelName = '" + po.getHotelName() + "' where orderID = '" + po.getOrderID() +"'");
+        DataBaseHelper.in("update OrderInfo set promotionName = '" + po.getPromotionName() + "' where orderID = '" + po.getOrderID() +"'");
+        DataBaseHelper.in("update OrderInfo set tradeArea = '" + po.getTradeArea() + "' where orderID = '" + po.getOrderID() +"'");
+        DataBaseHelper.in("update OrderInfo set address = '" + po.getAddress() + "' where orderID = '" + po.getOrderID() +"'");
+        DataBaseHelper.in("update OrderInfo set detailAddress = '" + po.getDetailAddress() + "' where orderID = '" + po.getOrderID() +"'");
         return ResultMessage.Correct;
     }
 
@@ -81,17 +89,27 @@ public class OrderDataImpl extends UnicastRemoteObject implements OrderDataServi
         ArrayList<String> roomTypeList = DataBaseHelper.out("select roomType from OrderInfo where userID ='" + account + "'","roomType");
         ArrayList<String> priceList = DataBaseHelper.out("select price from OrderInfo where userID ='" + account + "'","price");
         ArrayList<String> haveChildList = DataBaseHelper.out("select haveChild from OrderInfo where userID ='" + account + "'","haveChild");
+        ArrayList<String> hotelNameList = DataBaseHelper.out("select hotelName from OrderInfo where userID ='" + account + "'","hotelName");
+        ArrayList<String> promotionNameList = DataBaseHelper.out("select promotionName from OrderInfo where userID ='" + account + "'","promotionName");
+        ArrayList<String> tradeAreaList = DataBaseHelper.out("select tradeArea from OrderInfo where userID ='" + account + "'","tradeArea");
+        ArrayList<String> addressList = DataBaseHelper.out("select address from OrderInfo where userID ='" + account + "'","address");
+        ArrayList<String> detailAddressList = DataBaseHelper.out("select detailAddress from OrderInfo where userID ='" + account + "'","detailAddress");
         for(int i=0;i<orderIDList.size();i++){
             OrderState orderState = null;
             RoomType roomType = null;
+            TradeArea tradeArea = null;
+            Address address = null;
             try {
                 orderState = Enum.valueOf(OrderState.class,orderStateList.get(i).trim());
                 roomType = Enum.valueOf(RoomType.class,roomTypeList.get(i).trim());
+                tradeArea = Enum.valueOf(TradeArea.class,tradeAreaList.get(i).trim());
+                address = Enum.valueOf(Address.class,addressList.get(i).trim());
             }catch (IllegalArgumentException ex){
                 ex.printStackTrace();
             }
             orderPOs.add(new OrderPO(orderIDList.get(i),hotelIDList.get(i),account,roomIDList.get(i),Integer.parseInt(roomNumberList.get(i)),Integer.parseInt(peopleNumberList.get(i)),
-                    orderState,checkInDateList.get(i),checkOutDateList.get(i),ddlList.get(i),roomType,Double.parseDouble(priceList.get(i)),Boolean.getBoolean(haveChildList.get(i))));
+                    orderState,checkInDateList.get(i),checkOutDateList.get(i),ddlList.get(i),roomType,Double.parseDouble(priceList.get(i)),Boolean.getBoolean(haveChildList.get(i)),
+                    hotelNameList.get(i),promotionNameList.get(i),tradeArea,address,detailAddressList.get(i)));
         }
         return orderPOs;
     }
@@ -104,10 +122,10 @@ public class OrderDataImpl extends UnicastRemoteObject implements OrderDataServi
     @Override
     public ResultMessage addOrder(OrderPO po) {
         if(!hasExisted(po.getOrderID())) {
-            DataBaseHelper.in("insert into OrderInfo (orderID,hotelID,userID,roomID,roomNumber,peopleNumber,orderState,checkInDate,checkOutDate,ddl,roomType,price,haveChild) " +
-                    "values ('" + po.getOrderID() + "','" + po.getHotelID() + "','" + po.getUserID() + "','" + po.getRoomID() + "','" + po.getRoomNumber() + "','" + po.getPeopleNumber()+
-                    "','" + po.getOrderState().toString() + "','" + po.getCheckInDate() + "','" + po.getCheckOutDate() + "','" + po.getDdl() + "','" + po.getRoomType().toString() + "','"
-                    + po.getPrice() + "','" + po.isHaveChild() + "')");
+            DataBaseHelper.in("insert into OrderInfo (orderID,hotelID,userID,roomID,roomNumber,peopleNumber,orderState,checkInDate,checkOutDate,ddl,roomType,price,haveChild,hotelName,promotionName,tradeArea,address,detailAddress) " +
+                    "values ('" + po.getOrderID() + "','" + po.getHotelID() + "','" + po.getUserID() + "','" + po.getRoomID() + "','" + po.getRoomNumber() + "','" + po.getPeopleNumber()+ "','" + po.getOrderState().toString() + "','" +
+                    po.getCheckInDate() + "','" + po.getCheckOutDate() + "','" + po.getDdl() + "','" + po.getRoomType().toString() + "','" + po.getPrice() + "','" + po.isHaveChild() + "','" + po.getHotelName() + "','" +
+                    po.getPromotionName() + "','" + po.getTradeArea() + "','" + po.getAddress() + "','" + po.getDetailAddress() + "')");
             return ResultMessage.Correct;
         }else
             return ResultMessage.HasExist;
