@@ -40,7 +40,7 @@
 //		hotelinfo = new HotelinfoblImpl();
 //		hotelinfovo = hotelinfo.getHotelinfo(HotelID);
 //		System.out.println("----------获得酒店信息----------");
-//		System.out.println(hotelinfovo.getHotelID()+" "+hotelinfovo.getHotelname());
+//		System.out.println(hotelinfovo.getHotelID()+" "+hotelinfovo.getHotelName());
 //	}
 //
 //	HotelroomblService hotelroom;
@@ -90,7 +90,7 @@
 //	public void searchHotelInArea(LimitVO vo){
 //		hotelOrder = new HotelOrderBl_stub();
 //		System.out.println("----------搜索酒店----------");
-//		System.out.println(((HotelinfoVO) hotelOrder.searchHotelInArea(vo).get(0)).getHotelname());
+//		System.out.println(((HotelinfoVO) hotelOrder.searchHotelInArea(vo).get(0)).getHotelName());
 //	}
 //
 //	HSmanagementBlService hsmanagement;
@@ -98,7 +98,7 @@
 //	public void getHotelsalerInfo(String hotelsalerID){
 //		hsmanagement = new HSmanagement();
 //		System.out.println("----------获得酒店信息----------");
-//		System.out.println(hsmanagement.getHotelsalerInfo("0001").getHotelname());
+//		System.out.println(hsmanagement.getHotelsalerInfo("0001").getHotelName());
 //	}
 //
 //	URmanagementBlService urmanagement;

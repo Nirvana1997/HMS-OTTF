@@ -2,7 +2,12 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -13,196 +18,354 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="618.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.hotelsalerui.uiHotelRoomController">
    <children>
-      <AnchorPane layoutX="250.0" prefHeight="618.0" prefWidth="752.0" style="-fx-background-color: #FFFFFF;">
-         <children>
-            <ImageView fitHeight="618.0" fitWidth="752.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../../../graphics/hotelsalerui/bk.png" />
-               </image>
-            </ImageView>
-            <ImageView layoutX="2.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../../../graphics/hotelsalerui/bk4.png" />
-               </image>
-            </ImageView>
-            <AnchorPane layoutX="14.0" layoutY="171.0" prefHeight="322.0" prefWidth="239.0">
+      <ScrollPane hbarPolicy="NEVER" layoutX="246.0" layoutY="-6.0" prefHeight="629.0" prefWidth="756.0" vvalue="1.0">
+         <content>
+            <AnchorPane prefHeight="800.0" prefWidth="752.0" style="-fx-background-color: #FFFFFF;">
                <children>
-                  <ImageView pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="653.0" fitWidth="972.0" layoutY="-28.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../graphics/hotelsalerui/Orderbk.png" />
+                        <Image url="@../../../../../graphics/hotelsalerui/bk.png" />
                      </image>
                   </ImageView>
-                  <Label text="标准（单人）间" textFill="WHITE">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="31.0" layoutY="149.0" text="空房数量：">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="32.0" layoutY="211.0" text="价格：">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="labelEditSingleRoom" layoutX="161.0" layoutY="266.0" onMouseClicked="#onClickedLabelEditSingleRoom" onMouseEntered="#onEnteredLabelEditSingleRoom" onMouseExited="#onExitedLabelEditSingleRoom" text="编辑">
+                  <ImageView layoutX="2.0" layoutY="-26.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../graphics/hotelsalerui/bk4.png" />
+                     </image>
+                  </ImageView>
+                  <AnchorPane layoutX="14.0" layoutY="140.0" prefHeight="322.0" prefWidth="239.0">
+                     <children>
+                        <ImageView pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../../graphics/hotelsalerui/Orderbk.png" />
+                           </image>
+                        </ImageView>
+                        <Label text="标准（单人）间" textFill="WHITE">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="31.0" layoutY="149.0" text="空房数量：">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="32.0" layoutY="211.0" text="价格：">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="labelEditSingleRoom" layoutX="161.0" layoutY="262.0" onMouseClicked="#onClickedLabelEditSingleRoom" onMouseEntered="#onEnteredLabelEditSingleRoom" onMouseExited="#onExitedLabelEditSingleRoom" text="编辑">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Label>
+                        <Label layoutX="149.0" layoutY="211.0" text="元/晚">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="175.0" layoutY="149.0" text="间">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="textFieldSingleRoomPrice" layoutX="90.0" layoutY="212.0" prefHeight="23.0" prefWidth="54.0" visible="false" />
+                        <Label fx:id="labelSingleRoomNum" layoutX="119.0" layoutY="149.0" prefHeight="24.0" prefWidth="54.0">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="labelSingleRoomPrice" layoutX="81.0" layoutY="211.0" prefHeight="24.0" prefWidth="63.0">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="47.0" layoutY="59.0" text="标准（单人）间" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="20.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="buttonConfirmSingleRoom" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" layoutX="76.0" layoutY="254.0" mnemonicParsing="false" onMouseClicked="#confirmEditSingleRoom" text="确认" textAlignment="CENTER" visible="false">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <cursor>
+                              <Cursor fx:constant="DEFAULT" />
+                           </cursor>
+                        </Button>
+                        <Button fx:id="buttonCancelSingleRoom" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" layoutX="144.0" layoutY="254.0" mnemonicParsing="false" onMouseClicked="#cancelEditSingleRoom" text="取消" textAlignment="CENTER" visible="false">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <cursor>
+                              <Cursor fx:constant="DEFAULT" />
+                           </cursor>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="495.0" layoutY="140.0" prefHeight="322.0" prefWidth="239.0">
+                     <children>
+                        <ImageView pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../../graphics/hotelsalerui/Orderbk.png" />
+                           </image>
+                        </ImageView>
+                        <Label layoutX="31.0" layoutY="149.0" text="空房数量：">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="32.0" layoutY="211.0" text="价格：">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="labelEditDisabledRoom" layoutX="161.0" layoutY="262.0" onMouseClicked="#onClickedLabelEditDisabledRoom" onMouseEntered="#onEnteredLabelEditDisabledRoom" onMouseExited="#onExitedLabelEditDisabledRoom" text="编辑">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Label>
+                        <Label layoutX="149.0" layoutY="211.0" text="元/晚">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="175.0" layoutY="149.0" text="间">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="textFieldDisabledRoomPrice" layoutX="90.0" layoutY="212.0" prefHeight="23.0" prefWidth="54.0" visible="false" />
+                        <Label fx:id="labelDisabledRoomNum" layoutX="119.0" layoutY="149.0" prefHeight="24.0" prefWidth="54.0">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="labelDisabledRoomPrice" layoutX="81.0" layoutY="211.0" prefHeight="24.0" prefWidth="63.0">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="71.0" layoutY="60.0" text="无障碍客房" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="20.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="buttonConfirmDisabledRoom" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" layoutX="76.0" layoutY="253.0" mnemonicParsing="false" onMouseClicked="#confirmEditDisabledRoom" text="确认" textAlignment="CENTER" visible="false">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <cursor>
+                              <Cursor fx:constant="DEFAULT" />
+                           </cursor>
+                        </Button>
+                        <Button fx:id="buttonCancelDisabledRoom" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" layoutX="144.0" layoutY="253.0" mnemonicParsing="false" onMouseClicked="#cancelEditDisabledRoom" text="取消" textAlignment="CENTER" visible="false">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <cursor>
+                              <Cursor fx:constant="DEFAULT" />
+                           </cursor>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="254.0" layoutY="140.0" prefHeight="322.0" prefWidth="239.0">
+                     <children>
+                        <ImageView pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../../graphics/hotelsalerui/Orderbk.png" />
+                           </image>
+                        </ImageView>
+                        <Label layoutX="31.0" layoutY="149.0" text="空房数量：">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="32.0" layoutY="211.0" text="价格：">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="labelEditDoubleRoom" layoutX="161.0" layoutY="262.0" onMouseClicked="#onClickedLabelEditDoubleRoom" onMouseEntered="#onEnteredLabelEditDoubleRoom" onMouseExited="#onExitedLabelEditDoubleRoom" text="编辑">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Label>
+                        <Label layoutX="149.0" layoutY="211.0" text="元/晚">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="175.0" layoutY="149.0" text="间">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="textFieldDoubleRoomPrice" layoutX="90.0" layoutY="212.0" prefHeight="23.0" prefWidth="54.0" visible="false" />
+                        <Label fx:id="labelDoubleRoomNum" layoutX="119.0" layoutY="149.0" prefHeight="24.0" prefWidth="54.0">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="labelDoubleRoomPrice" layoutX="81.0" layoutY="211.0" prefHeight="24.0" prefWidth="63.0">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="47.0" layoutY="59.0" text="标准（双人）间" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="20.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="buttonConfirmDoubleRoom" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" layoutX="75.0" layoutY="253.0" mnemonicParsing="false" onMouseClicked="#confirmEditDoubleRoom" text="确认" textAlignment="CENTER" visible="false">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <cursor>
+                              <Cursor fx:constant="DEFAULT" />
+                           </cursor>
+                        </Button>
+                        <Button fx:id="buttonCancelDoubleRoom" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" layoutX="144.0" layoutY="253.0" mnemonicParsing="false" onMouseClicked="#cancelEditDoubleRoom" text="取消" textAlignment="CENTER" visible="false">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <cursor>
+                              <Cursor fx:constant="DEFAULT" />
+                           </cursor>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+                  <MenuButton layoutX="33.0" layoutY="82.0" mnemonicParsing="false" style="-fx-background-color: #FFFFFF;" text="选择日期">
+                     <items>
+                        <MenuItem mnemonicParsing="false" />
+                        <MenuItem mnemonicParsing="false" />
+                        <MenuItem mnemonicParsing="false" />
+                     </items>
                      <font>
                         <Font size="16.0" />
                      </font>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Label>
-                  <Label layoutX="149.0" layoutY="211.0" text="元/晚">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="175.0" layoutY="149.0" text="间">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="textFieldSingleRoomNum" layoutX="117.0" layoutY="150.0" prefHeight="23.0" prefWidth="54.0" visible="false" />
-                  <TextField fx:id="textFieldSingleRoomPrice" layoutX="90.0" layoutY="212.0" prefHeight="23.0" prefWidth="54.0" visible="false" />
-                  <Label fx:id="labelSingleRoomNum" layoutX="119.0" layoutY="149.0" prefHeight="24.0" prefWidth="54.0">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="labelSingleRoomPrice" layoutX="81.0" layoutY="211.0" prefHeight="24.0" prefWidth="63.0">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="47.0" layoutY="59.0" text="标准（单人）间" textFill="WHITE">
-                     <font>
-                        <Font name="System Bold" size="20.0" />
-                     </font>
-                  </Label>
-               </children></AnchorPane>
-            <AnchorPane layoutX="497.0" layoutY="171.0" prefHeight="322.0" prefWidth="239.0">
-               <children>
-                  <ImageView pickOnBounds="true" preserveRatio="true">
+                  </MenuButton>
+                  <ImageView fitHeight="334.0" fitWidth="744.0" layoutX="4.0" layoutY="625.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../graphics/hotelsalerui/Orderbk.png" />
+                        <Image url="@../../../../../graphics/hotelsalerui/bkcopy.png" />
                      </image>
                   </ImageView>
-                  <Label text="标准（单人）间" textFill="WHITE">
+                  <ImageView fitHeight="24.0" fitWidth="564.0" layoutX="82.0" layoutY="505.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../graphics/hotelsalerui/line.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="54.0" layoutY="533.0" text="用户线下入住/退房登记：">
                      <font>
-                        <Font size="20.0" />
+                        <Font size="24.0" />
                      </font>
                   </Label>
-                  <Label layoutX="31.0" layoutY="149.0" text="空房数量：">
+                  <Label layoutX="71.0" layoutY="634.0" text="房间类型：">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label layoutX="32.0" layoutY="211.0" text="价格：">
+                  <Label layoutX="71.0" layoutY="720.0" text="房间数目：">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label fx:id="labelEditDisabledRoom" layoutX="161.0" layoutY="266.0" onMouseClicked="#onClickedLabelEditDisabledRoom" onMouseEntered="#onEnteredLabelEditDisabledRoom" onMouseExited="#onExitedLabelEditDisabledRoom" text="编辑">
+                  <Label layoutX="71.0" layoutY="780.0" text="入住时间：">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="71.0" layoutY="842.0" text="预计离开时间：">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <CheckBox layoutX="151.0" layoutY="671.0" mnemonicParsing="false" text="标准（单人）间">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </CheckBox>
+                  <CheckBox layoutX="338.0" layoutY="671.0" mnemonicParsing="false" text="标准（双人）间">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </CheckBox>
+                  <CheckBox layoutX="536.0" layoutY="671.0" mnemonicParsing="false" text="无障碍客房">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </CheckBox>
+                  <TextField layoutX="176.0" layoutY="718.0">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </TextField>
+                  <TextField layoutX="176.0" layoutY="778.0">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </TextField>
+                  <TextField layoutX="209.0" layoutY="839.0">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </TextField>
+                  <Label layoutX="72.0" layoutY="589.0" text="入住/退房：">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <CheckBox layoutX="196.0" layoutY="589.0" mnemonicParsing="false" text="入住">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </CheckBox>
+                  <CheckBox layoutX="303.0" layoutY="589.0" mnemonicParsing="false" text="退房">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </CheckBox>
+                  <Button layoutX="459.0" layoutY="881.0" mnemonicParsing="false" text="确认">
                      <font>
                         <Font size="16.0" />
                      </font>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Label>
-                  <Label layoutX="149.0" layoutY="211.0" text="元/晚">
+                  </Button>
+                  <Button layoutX="571.0" layoutY="881.0" mnemonicParsing="false" text="取消">
                      <font>
-                        <Font size="18.0" />
+                        <Font size="16.0" />
                      </font>
-                  </Label>
-                  <Label layoutX="175.0" layoutY="149.0" text="间">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="textFieldDisabledRoomNum" layoutX="117.0" layoutY="150.0" prefHeight="23.0" prefWidth="54.0" visible="false" />
-                  <TextField fx:id="textFieldDisabledRoomPrice" layoutX="90.0" layoutY="212.0" prefHeight="23.0" prefWidth="54.0" visible="false" />
-                  <Label fx:id="labelDisabledRoomNum" layoutX="119.0" layoutY="149.0" prefHeight="24.0" prefWidth="54.0">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="labelDisabledRoomPrice" layoutX="81.0" layoutY="211.0" prefHeight="24.0" prefWidth="63.0">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="71.0" layoutY="60.0" text="无障碍客房" textFill="WHITE">
-                     <font>
-                        <Font name="System Bold" size="20.0" />
-                     </font>
-                  </Label>
+                  </Button>
                </children>
             </AnchorPane>
-            <AnchorPane layoutX="257.0" layoutY="171.0" prefHeight="322.0" prefWidth="239.0">
-               <children>
-                  <ImageView pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../../../graphics/hotelsalerui/Orderbk.png" />
-                     </image>
-                  </ImageView>
-                  <Label text="标准（单人）间" textFill="WHITE">
-                     <font>
-                        <Font size="20.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="31.0" layoutY="149.0" text="空房数量：">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="32.0" layoutY="211.0" text="价格：">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="labelEditDoubleRoom" layoutX="161.0" layoutY="266.0" onMouseClicked="#onClickedLabelEditDoubleRoom" onMouseEntered="#onEnteredLabelEditDoubleRoom" onMouseExited="#onExitedLabelEditDoubleRoom" text="编辑">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Label>
-                  <Label layoutX="149.0" layoutY="211.0" text="元/晚">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="175.0" layoutY="149.0" text="间">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="textFieldDoubleRoomNum" layoutX="117.0" layoutY="150.0" prefHeight="23.0" prefWidth="54.0" visible="false" />
-                  <TextField fx:id="textFieldDoubleRoomPrice" layoutX="90.0" layoutY="212.0" prefHeight="23.0" prefWidth="54.0" visible="false" />
-                  <Label fx:id="labelDoubleRoomNum" layoutX="119.0" layoutY="149.0" prefHeight="24.0" prefWidth="54.0">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="labelDoubleRoomPrice" layoutX="81.0" layoutY="211.0" prefHeight="24.0" prefWidth="63.0">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="47.0" layoutY="59.0" text="标准（双人）间" textFill="WHITE">
-                     <font>
-                        <Font name="System Bold" size="20.0" />
-                     </font>
-                  </Label>
-               </children>
-            </AnchorPane>
-         </children>
-      </AnchorPane>
+         </content>
+      </ScrollPane>
       <VBox prefHeight="618.0" prefWidth="250.0" style="-fx-background-color: #FFFFFF;">
          <children>
             <HBox prefHeight="122.0" prefWidth="244.0">
@@ -259,6 +422,17 @@
                   <Image url="@../../../../../graphics/hotelsalerui/saleStrategy1.png" />
                </image>
             </ImageView>
+            <Label fx:id="labelExit" onMouseClicked="#onClickedLabelExit" onMouseEntered="#enteredLabelExit" onMouseExited="#exitedLabelExit" text="登出">
+               <VBox.margin>
+                  <Insets left="20.0" top="115.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Label>
          </children>
       </VBox>
    </children>

@@ -80,6 +80,10 @@ public void uiLogController(){
             SceneUser sceneUser = new SceneUser();
             sceneUser.initUI();
         }
+        else if(UserID.equals("2")) {
+            SceneHotelSaler sceneHotelSaler = new SceneHotelSaler();
+            sceneHotelSaler.initUI();
+        }
         else{
             System.out.print("滚！不给看！");
         }

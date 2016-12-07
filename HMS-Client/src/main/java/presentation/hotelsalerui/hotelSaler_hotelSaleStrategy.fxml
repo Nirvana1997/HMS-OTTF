@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -11,7 +16,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="618.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.hotelsalerui.uiHotelSaleStrategyController">
    <children>
-      <AnchorPane layoutX="250.0" prefHeight="618.0" prefWidth="749.0" style="-fx-background-color: #FFFFFF;">
+      <AnchorPane fx:id="panePromotionBirthday" layoutX="250.0" prefHeight="618.0" prefWidth="749.0" style="-fx-background-color: #FFFFFF;">
          <children>
             <ImageView fitHeight="652.0" fitWidth="752.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -23,17 +28,17 @@
                   <Image url="@../../../../../graphics/hotelsalerui/birthday2.png" />
                </image>
             </ImageView>
-            <ImageView layoutX="188.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView layoutX="188.0" layoutY="27.0" onMouseClicked="#showPromotionDoubleOne" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../../../graphics/hotelsalerui/doubleOne1.png" />
                </image>
             </ImageView>
-            <ImageView layoutX="376.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView layoutX="376.0" layoutY="27.0" onMouseClicked="#showPromotionCompany" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../../../graphics/hotelsalerui/company1.png" />
                </image>
             </ImageView>
-            <ImageView layoutX="564.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView layoutX="564.0" layoutY="27.0" onMouseClicked="#showPromotionThreeRooms" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../../../graphics/hotelsalerui/threeRoom1.png" />
                </image>
@@ -43,16 +48,48 @@
                   <Image url="@../../../../../graphics/hotelsalerui/curtain.png" />
                </image>
             </ImageView>
+            <AnchorPane layoutY="257.0" prefHeight="360.0" prefWidth="752.0" style="-fx-background-color: transparent;">
+               <children>
+                  <ImageView layoutX="67.0" layoutY="141.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../graphics/hotelsalerui/left.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView layoutX="643.0" layoutY="140.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../graphics/hotelsalerui/right.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView layoutX="89.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../graphics/hotelsalerui/promotionBk.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="127.0" layoutY="73.0" prefHeight="218.0" prefWidth="490.0">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="695.0" layoutY="322.0" text="编辑" underline="true">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Label>
+               </children>
+            </AnchorPane>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="250.0" prefHeight="618.0" prefWidth="749.0" style="-fx-background-color: #FFFFFF;" visible="false">
+      <AnchorPane fx:id="panePromotionDoubleOne" layoutX="250.0" prefHeight="618.0" prefWidth="749.0" style="-fx-background-color: transparent;" visible="false">
          <children>
             <ImageView fitHeight="652.0" fitWidth="752.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../../../graphics/hotelsalerui/bk.png" />
                </image>
             </ImageView>
-            <ImageView layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView layoutY="27.0" onMouseClicked="#showPromotionBirthday" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../../../graphics/hotelsalerui/birthday1.png" />
                </image>
@@ -62,12 +99,12 @@
                   <Image url="@../../../../../graphics/hotelsalerui/doubleOne2.png" />
                </image>
             </ImageView>
-            <ImageView layoutX="376.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView layoutX="376.0" layoutY="27.0" onMouseClicked="#showPromotionCompany" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../../../graphics/hotelsalerui/company1.png" />
                </image>
             </ImageView>
-            <ImageView layoutX="564.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView layoutX="564.0" layoutY="27.0" onMouseClicked="#showPromotionThreeRooms" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../../../graphics/hotelsalerui/threeRoom1.png" />
                </image>
@@ -77,21 +114,53 @@
                   <Image url="@../../../../../graphics/hotelsalerui/curtain.png" />
                </image>
             </ImageView>
+            <AnchorPane layoutY="257.0" prefHeight="360.0" prefWidth="752.0">
+               <children>
+                  <ImageView layoutX="67.0" layoutY="141.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../graphics/hotelsalerui/left.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView layoutX="643.0" layoutY="140.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../graphics/hotelsalerui/right.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView layoutX="89.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../graphics/hotelsalerui/promotionBk.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="127.0" layoutY="73.0" prefHeight="218.0" prefWidth="490.0">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="695.0" layoutY="322.0" text="编辑" underline="true">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Label>
+               </children>
+            </AnchorPane>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="250.0" prefHeight="618.0" prefWidth="749.0" style="-fx-background-color: #FFFFFF;" visible="false">
+      <AnchorPane fx:id="panePromotionCompany" layoutX="250.0" prefHeight="618.0" prefWidth="749.0" style="-fx-background-color: #FFFFFF;" visible="false">
          <children>
             <ImageView fitHeight="652.0" fitWidth="752.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../../../graphics/hotelsalerui/bk.png" />
                </image>
             </ImageView>
-            <ImageView layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView layoutY="27.0" onMouseClicked="#showPromotionBirthday" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../../../graphics/hotelsalerui/birthday1.png" />
                </image>
             </ImageView>
-            <ImageView layoutX="188.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView layoutX="188.0" layoutY="27.0" onMouseClicked="#showPromotionDoubleOne" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../../../graphics/hotelsalerui/doubleOne1.png" />
                </image>
@@ -101,7 +170,7 @@
                   <Image url="@../../../../../graphics/hotelsalerui/company2.png" />
                </image>
             </ImageView>
-            <ImageView layoutX="564.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView layoutX="564.0" layoutY="27.0" onMouseClicked="#showPromotionThreeRooms" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../../../graphics/hotelsalerui/threeRoom1.png" />
                </image>
@@ -111,26 +180,58 @@
                   <Image url="@../../../../../graphics/hotelsalerui/curtain.png" />
                </image>
             </ImageView>
+            <AnchorPane layoutY="257.0" prefHeight="360.0" prefWidth="752.0">
+               <children>
+                  <ImageView layoutX="67.0" layoutY="141.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../graphics/hotelsalerui/left.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView layoutX="643.0" layoutY="140.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../graphics/hotelsalerui/right.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView layoutX="89.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../graphics/hotelsalerui/promotionBk.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="127.0" layoutY="73.0" prefHeight="218.0" prefWidth="490.0">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="695.0" layoutY="322.0" text="编辑" underline="true">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Label>
+               </children>
+            </AnchorPane>
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="250.0" prefHeight="618.0" prefWidth="749.0" style="-fx-background-color: #FFFFFF;" visible="false">
+      <AnchorPane fx:id="panePromotionThreeRooms" layoutX="250.0" prefHeight="618.0" prefWidth="749.0" style="-fx-background-color: #FFFFFF;" visible="false">
          <children>
             <ImageView fitHeight="652.0" fitWidth="752.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../../../graphics/hotelsalerui/bk.png" />
                </image>
             </ImageView>
-            <ImageView layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView layoutY="27.0" onMouseClicked="#showPromotionBirthday" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../../../graphics/hotelsalerui/birthday1.png" />
                </image>
             </ImageView>
-            <ImageView layoutX="188.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView layoutX="188.0" layoutY="27.0" onMouseClicked="#showPromotionDoubleOne" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../../../graphics/hotelsalerui/doubleOne1.png" />
                </image>
             </ImageView>
-            <ImageView layoutX="376.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView layoutX="376.0" layoutY="27.0" onMouseClicked="#showPromotionCompany" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../../../graphics/hotelsalerui/company1.png" />
                </image>
@@ -145,6 +246,38 @@
                   <Image url="@../../../../../graphics/hotelsalerui/curtain.png" />
                </image>
             </ImageView>
+            <AnchorPane layoutY="257.0" prefHeight="360.0" prefWidth="752.0">
+               <children>
+                  <ImageView layoutX="67.0" layoutY="141.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../graphics/hotelsalerui/left.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView layoutX="643.0" layoutY="140.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../graphics/hotelsalerui/right.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView layoutX="89.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../graphics/hotelsalerui/promotionBk.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="127.0" layoutY="73.0" prefHeight="218.0" prefWidth="490.0">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="695.0" layoutY="322.0" text="编辑" underline="true">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Label>
+               </children>
+            </AnchorPane>
          </children>
       </AnchorPane>
       <VBox prefHeight="618.0" prefWidth="250.0" style="-fx-background-color: #FFFFFF;">
@@ -198,7 +331,52 @@
                   <Image url="@../../../../../graphics/hotelsalerui/saleStrategy2.png" />
                </image>
             </ImageView>
+            <Label fx:id="labelExit" onMouseClicked="#onClickedLabelExit" onMouseEntered="#enteredLabelExit" onMouseExited="#exitedLabelExit" text="登出">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <VBox.margin>
+                  <Insets left="20.0" top="114.0" />
+               </VBox.margin>
+            </Label>
          </children>
       </VBox>
+      <AnchorPane layoutX="250.0" layoutY="258.0" prefHeight="360.0" prefWidth="752.0" visible="false">
+         <children>
+            <MenuButton layoutX="83.0" layoutY="30.0" mnemonicParsing="false" style="-fx-background-color: #FFFFFF;" text="选择活动">
+              <items>
+                <MenuItem mnemonicParsing="false" text="Action 1" />
+                <MenuItem mnemonicParsing="false" text="Action 2" />
+              </items>
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </MenuButton>
+            <TextArea layoutX="83.0" layoutY="85.0" prefHeight="191.0" prefWidth="490.0" />
+            <Button layoutX="368.0" layoutY="301.0" mnemonicParsing="false" text="新建">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+            <Button layoutX="458.0" layoutY="301.0" mnemonicParsing="false" text="删除">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+            <Button layoutX="546.0" layoutY="301.0" mnemonicParsing="false" text="确认">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+            <Button layoutX="636.0" layoutY="301.0" mnemonicParsing="false" text="取消">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

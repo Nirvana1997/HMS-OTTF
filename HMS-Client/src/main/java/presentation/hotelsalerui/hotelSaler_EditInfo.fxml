@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="618.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.hotelsalerui.uiEditInfoController">
+   <children>
+      <AnchorPane layoutX="250.0" prefHeight="618.0" prefWidth="752.0" style="-fx-background-color: #FFFFFF;">
+         <children>
+            <ImageView fitHeight="653.0" fitWidth="972.0" layoutY="-28.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../graphics/hotelsalerui/bk.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="122.0" fitWidth="794.0" layoutY="-28.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../graphics/hotelsalerui/bk4.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="63.0" layoutY="92.0" text="酒店名字：">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="63.0" layoutY="137.0" text="所属商圈：">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="421.0" layoutY="138.0" text="所在街道：">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="textFieldHotelName" layoutX="180.0" layoutY="90.0">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </TextField>
+            <MenuButton layoutX="179.0" layoutY="135.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="180.0" style="-fx-background-color: #FFFFFF;" text="选择商圈">
+              <items>
+                <MenuItem mnemonicParsing="false" text="Action 1" />
+                <MenuItem mnemonicParsing="false" text="Action 2" />
+              </items>
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </MenuButton>
+            <MenuButton layoutX="527.0" layoutY="135.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="180.0" style="-fx-background-color: #FFFFFF;" text="选择街道">
+              <items>
+                <MenuItem mnemonicParsing="false" text="Action 1" />
+                <MenuItem mnemonicParsing="false" text="Action 2" />
+              </items>
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </MenuButton>
+            <Label layoutX="63.0" layoutY="186.0" text="详细地址：">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="textFieldDetailAddress" layoutX="180.0" layoutY="184.0" prefHeight="29.0" prefWidth="401.0">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </TextField>
+            <Label layoutX="63.0" layoutY="236.0" text="联系电话：">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <TextField fx:id="textFieldTelNumber" layoutX="179.0" layoutY="233.0" prefHeight="28.0" prefWidth="180.0">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </TextField>
+            <Label layoutX="457.0" layoutY="236.0" text="星级：">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <MenuButton layoutX="527.0" layoutY="234.0" mnemonicParsing="false" style="-fx-background-color: #FFFFFF;" text="选择星级">
+              <items>
+                <MenuItem mnemonicParsing="false" text="Action 1" />
+                <MenuItem mnemonicParsing="false" text="Action 2" />
+              </items>
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </MenuButton>
+            <Label layoutX="63.0" layoutY="287.0" text="酒店简介：">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <TextArea fx:id="textAreaHotelIntroduction" layoutX="180.0" layoutY="287.0" prefHeight="107.0" prefWidth="401.0" wrapText="true">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </TextArea>
+            <Label layoutX="63.0" layoutY="422.0" text="设施服务：">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <TextArea fx:id="textAreaHotelFacility" layoutX="180.0" layoutY="422.0" prefHeight="107.0" prefWidth="401.0">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </TextArea>
+            <Button layoutX="539.0" layoutY="550.0" mnemonicParsing="false" onMouseClicked="#onClickedConfirmEditHotelInfo" text="确认">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+            <Button layoutX="631.0" layoutY="550.0" mnemonicParsing="false" onMouseClicked="#onClickedCancelEditHotelInfo" text="取消">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+      <VBox prefHeight="618.0" prefWidth="250.0" style="-fx-background-color: #FFFFFF;">
+         <children>
+            <HBox prefHeight="122.0" prefWidth="244.0">
+               <children>
+                  <ImageView fitHeight="77.0" fitWidth="73.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../graphics/websalerui/portrait.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="40.0" top="40.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Label text="黄小萱">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="30.0" top="60.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </HBox>
+            <ImageView fitHeight="80.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true" visible="false">
+               <image>
+                  <Image url="@../../../../../graphics/hotelsalerui/hotelInfo1.png" />
+               </image>
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </ImageView>
+            <ImageView fitHeight="80.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true">
+               <VBox.margin>
+                  <Insets top="-80.0" />
+               </VBox.margin>
+               <image>
+                  <Image url="@../../../../../graphics/hotelsalerui/hotelInfo2.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="80.0" fitWidth="250.0" onMouseClicked="#jumpToSceneHotelRoom" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../graphics/hotelsalerui/hotelRoom1.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="80.0" fitWidth="250.0" onMouseClicked="#jumpToSceneHotelOrder" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../graphics/hotelsalerui/hotelOrder1.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="80.0" fitWidth="250.0" onMouseClicked="#jumpToSceneHotelSaleStrategy" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../graphics/hotelsalerui/saleStrategy1.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="labelExit" onMouseClicked="#onClickedLabelExit" onMouseEntered="#enteredLabelExit" onMouseExited="#exitedLabelExit" text="登出">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <VBox.margin>
+                  <Insets left="20.0" top="115.0" />
+               </VBox.margin>
+            </Label>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

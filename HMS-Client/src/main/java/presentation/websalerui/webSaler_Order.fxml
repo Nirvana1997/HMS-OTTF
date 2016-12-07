@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollBar?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -10,8 +11,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="618.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.hotelsalerui.uiHotelOrderController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="618.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.websalerui.uiWebSalerOrderController">
    <children>
+      <AnchorPane layoutX="250.0" prefHeight="618.0" prefWidth="751.0">
+         <children>
+            <ScrollBar layoutY="600.0" prefHeight="18.0" prefWidth="751.0" visibleAmount="35.0" />
+         </children>
+      </AnchorPane>
       <VBox prefHeight="618.0" prefWidth="250.0" style="-fx-background-color: #FFFFFF;">
          <children>
             <HBox prefHeight="122.0" prefWidth="244.0">
@@ -37,46 +43,36 @@
                   <Insets />
                </VBox.margin>
             </HBox>
-            <ImageView fx:id="imgHotelInfo1" fitHeight="80.0" fitWidth="250.0" onMouseClicked="#jumpToSceneHotelInfo" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../../../graphics/hotelsalerui/hotelInfo1.png" />
-               </image>
+            <ImageView fitHeight="80.0" fitWidth="250.0" onMouseClicked="#jumpToSceneSaleStrategy" pickOnBounds="true" preserveRatio="true">
                <VBox.margin>
                   <Insets top="20.0" />
                </VBox.margin>
-            </ImageView>
-            <ImageView fx:id="imgHotelRoom1" fitHeight="80.0" fitWidth="250.0" onMouseClicked="#jumpToSceneHotelRoom" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../graphics/hotelsalerui/hotelRoom1.png" />
+                  <Image url="@../../../../../graphics/websalerui/label1.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="imgHotelOrder1" fitHeight="80.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="80.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../graphics/hotelsalerui/hotelOrder1.png" />
-               </image>
-            </ImageView>
-            <ImageView fx:id="imgHotelOrder2" fitHeight="80.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../../../graphics/hotelsalerui/hotelOrder2.png" />
+                  <Image url="@../../../../../graphics/websalerui/label4.png" />
                </image>
                <VBox.margin>
-                  <Insets top="-80.0" />
+                  <Insets />
                </VBox.margin>
             </ImageView>
-            <ImageView fx:id="imgHotelSaleStrategy1" fitHeight="80.0" fitWidth="250.0" onMouseClicked="#jumpToSceneHotelSaleStrategy" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="80.0" fitWidth="250.0" onMouseClicked="#jumpToScneCredit" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../../../graphics/hotelsalerui/saleStrategy1.png" />
+                  <Image url="@../../../../../graphics/websalerui/label5.png" />
                </image>
             </ImageView>
             <Label fx:id="labelExit" onMouseClicked="#onClickedLabelExit" onMouseEntered="#enteredLabelExit" onMouseExited="#exitedLabelExit" text="登出">
-               <font>
-                  <Font size="18.0" />
-               </font>
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
+               <font>
+                  <Font size="18.0" />
+               </font>
                <VBox.margin>
-                  <Insets left="20.0" top="115.0" />
+                  <Insets left="16.0" top="200.0" />
                </VBox.margin>
             </Label>
          </children>
