@@ -15,7 +15,7 @@ public class OrderPVChanger {
      * @return 订单VO
      */
     public static OrderVO orderP2V(OrderPO po){
-        return new OrderVO(po.getHotelID(),po.getHotelName(),po.getTradeArea(),po.getAddress(),po.getDetailAddress(),po.getRoomNumber(),po.getPeopleNumber(), DateOperation.stringToDate(po.getCheckInDate()),DateOperation.stringToDate(po.getCheckOutDate()),po.getRoomType(),po.isHaveChild(),po.getOrderID(),po.getUserID(),po.getOrderState(),po.getDdl(),po.getPrice(),po.getPromotionName(),po.getRoomID());
+        return new OrderVO(po.getHotelID(),po.getHotelName(),po.getTradeArea(),po.getAddress(),po.getDetailAddress(),po.getRoomNumber(),po.getPeopleNumber(), DateOperation.stringToDate(po.getCheckInDate()),DateOperation.stringToDate(po.getCheckOutDate()),po.getRoomType(),po.isHaveChild(),po.getOrderID(),po.getUserID(),po.getOrderState(),DateOperation.stringToDate(po.getDdl()),po.getPrice(),po.getPromotionName(),po.getRoomID());
     }
 
     /**
@@ -24,6 +24,6 @@ public class OrderPVChanger {
      * @return 订单
      */
     public static OrderPO orderV2P(OrderVO vo){
-        return new OrderPO(vo.getHotelID(),vo.getHotelname(),vo.getTradeArea(),vo.getAddress(),vo.getDetailAddress(),vo.getRoomNumber(),vo.getPeopleNumber(), DateOperation.dateToString(vo.getCheckInDate()),DateOperation.dateToString(vo.getCheckOutDate()),vo.getRoomType(),vo.isHaveChild(),vo.getOrderID(),vo.getUserID(),vo.getOrderState(),vo.getDdl(),vo.getPrice(),vo.getPromotionName(),vo.getRoomID());
+        return new OrderPO(vo.getHotelID(),vo.getHotelname(),vo.getTradeArea(),vo.getAddress(),vo.getDetailAddress(),vo.getRoomNumber(),vo.getPeopleNumber(), DateOperation.dateToString(vo.getCheckInDate()),DateOperation.dateToString(vo.getCheckOutDate()),vo.getRoomType(),vo.isHaveChild(),vo.getOrderID(),vo.getUserID(),vo.getOrderState(),DateOperation.dateToString(vo.getDdl()),vo.getPrice(),vo.getPromotionName(),vo.getRoomID());
     }
 }

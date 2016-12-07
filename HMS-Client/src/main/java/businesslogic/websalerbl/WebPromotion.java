@@ -1,6 +1,8 @@
 package businesslogic.websalerbl;
 
 import businesslogic.promotionbl.Promotion;
+import data_stub.websalerdata.WebsalerDataImpl_stub;
+import dataservice.websalerdataservice.WebsalerDataService;
 import enumData.ResultMessage;
 import vo.PromotionVO;
 
@@ -12,7 +14,17 @@ import java.util.ArrayList;
  *
  * @author qzh
  */
-public class Websaler {
+public class WebPromotion {
+    /**
+     * 网站营销人员数据接口
+     */
+    WebsalerDataService websalerDataService;
+
+    public WebPromotion() {
+        //TODO
+        this.websalerDataService = new WebsalerDataImpl_stub();
+    }
+
     /**
      * 制定优惠策略
      *
@@ -34,16 +46,14 @@ public class Websaler {
         return ResultMessage.Correct;
     }
 
-    public ResultMessage cancelFestivalPromotion(PromotionVO vo) {
+    /**
+     * 取消一个营销策略
+     *
+     * @param promotionName 营销策略名称
+     * @return 是否成功
+     */
+    public ResultMessage cancelFestivalPromotion(String promotionName) {
         return ResultMessage.Correct;
-    }
-
-    public ResultMessage addCredit(String userID, int value) {
-        if (userID == "0001") {
-            return ResultMessage.Correct;
-        } else {
-            return ResultMessage.NotExist;
-        }
     }
 
 }

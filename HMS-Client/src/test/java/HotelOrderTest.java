@@ -88,7 +88,7 @@ public void testReadHotel() throws Exception {
 */ 
 @Test
 public void testOrderHotel() throws Exception {
-    OrderVO orderVO = new OrderVO("1", OrderState.executing,"0001","01",new Date(2016,11,11),"01");
+    OrderVO orderVO = null;
     Assert.assertEquals(true,hotelOrderBlService.orderHotel(orderVO));
 } 
 

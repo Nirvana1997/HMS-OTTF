@@ -4,6 +4,7 @@ import businesslogic.userbl.interfaces.VipInfo;
 import data_stub.websalerdata.WebsalerDataImpl_stub;
 import dataservice.websalerdataservice.WebsalerDataService;
 import po.CreditRecordPO;
+import po.VipUpPO;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
@@ -26,11 +27,11 @@ public class VipDataImpl implements VipInfo{
      * @throws RemoteException
      */
     @Override
-    public int calcLevel(Double credit) throws RemoteException {
-        ArrayList<CreditRecordPO> vipLevels = websalerDataService.getVipList();
+    public int calcLevel(int credit) throws RemoteException {
+        ArrayList<VipUpPO> vipLevels = websalerDataService.checkVipUpInfo();
         int res = 0;
         for(int i=vipLevels.size()-1;i>=0;i--){
-            if(credit>vipLevels.get(i).getFinalCredit()){
+            if(credit>vipLevels.get(i).getCredit()){
                 res = i + 1;
                 break;
             }

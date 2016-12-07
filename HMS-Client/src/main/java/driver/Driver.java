@@ -119,10 +119,10 @@
 //
 //	WebsalerblService websaler;
 //
-//	public void makeFestivalPromotion(PromotionVO vo){
+//	public void makePeriodPromotion(PromotionVO vo){
 //		websaler = new WebsalerblImpl();
 //		System.out.println("----------制定节日促销活动----------");
-//		System.out.println(websaler.makeFestivalPromotion(vo));
+//		System.out.println(websaler.makePeriodPromotion(vo));
 //	}
 //
 //
@@ -143,6 +143,6 @@
 //		driver.searchHotelInArea(conditionVO);
 //		driver.getHotelsalerInfo("0001");
 //		driver.getUserInfo("0001");
-//		driver.makeFestivalPromotion(promotionVO);
+//		driver.makePeriodPromotion(promotionVO);
 //	}
 //}
