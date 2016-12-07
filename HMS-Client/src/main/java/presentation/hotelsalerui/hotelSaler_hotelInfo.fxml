@@ -16,7 +16,7 @@
    <children>
       <ScrollPane cacheShape="false" centerShape="false" focusTraversable="false" hbarPolicy="NEVER" layoutX="246.0" layoutY="-2.0" prefHeight="593.0" prefWidth="749.0" style="-fx-background-color: #FFFFFF;" vbarPolicy="ALWAYS">
         <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1500.0" prefWidth="749.0" style="-fx-background-color: #FFFFFF;">
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1350.0" prefWidth="749.0" style="-fx-background-color: #FFFFFF;">
                <children>
                   <ImageView fitHeight="454.0" fitWidth="734.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -53,17 +53,17 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label layoutX="159.0" layoutY="646.0" text="商圈：">
+                  <Label layoutX="159.0" layoutY="646.0" text="所属商圈：">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label layoutX="159.0" layoutY="691.0" text="地址：">
+                  <Label layoutX="159.0" layoutY="732.0" text="详细地址：">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Label layoutX="159.0" layoutY="738.0" text="联系电话：">
+                  <Label layoutX="159.0" layoutY="776.0" text="联系电话：">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -78,42 +78,37 @@
                         <Font size="18.0" />
                      </font>
                   </TextField>
-                  <TextField cacheShape="false" centerShape="false" editable="false" focusTraversable="false" layoutX="254.0" layoutY="686.0" scaleShape="false" style="-fx-background-color: #FFFFFF;" text="江苏省太仓市县府街163号">
+                  <TextField cacheShape="false" centerShape="false" editable="false" focusTraversable="false" layoutX="254.0" layoutY="726.0" scaleShape="false" style="-fx-background-color: #FFFFFF;" text="江苏省太仓市县府街163号">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </TextField>
-                  <TextField cacheShape="false" centerShape="false" editable="false" focusTraversable="false" layoutX="254.0" layoutY="732.0" scaleShape="false" style="-fx-background-color: #FFFFFF;" text="0512-123456789">
+                  <TextField cacheShape="false" centerShape="false" editable="false" focusTraversable="false" layoutX="255.0" layoutY="770.0" scaleShape="false" style="-fx-background-color: #FFFFFF;" text="0512-123456789">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </TextField>
-                  <ImageView fitHeight="533.0" fitWidth="738.0" layoutX="-3.0" layoutY="978.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="533.0" fitWidth="738.0" layoutX="-2.0" layoutY="830.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../../../graphics/hotelsalerui/bk3.png" />
                      </image>
                   </ImageView>
-                  <Label layoutX="315.0" layoutY="955.0" text="设施服务">
+                  <Label layoutX="314.0" layoutY="998.0" text="设施服务">
                      <font>
                         <Font size="30.0" />
                      </font>
                   </Label>
-                  <ImageView layoutX="86.0" layoutY="1019.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView layoutX="86.0" layoutY="1064.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../../../graphics/hotelsalerui/line.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="180.0" fitWidth="270.0" layoutX="423.0" layoutY="1293.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../../../graphics/hotelsalerui/hotelinfo.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="180.0" fitWidth="270.0" layoutX="51.0" layoutY="1059.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="180.0" fitWidth="270.0" layoutX="60.0" layoutY="1109.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../../../graphics/hotelsalerui/hotelinfo2.JPG" />
                      </image>
                   </ImageView>
-                  <Label layoutX="99.0" layoutY="760.0" lineSpacing="5.0" prefHeight="182.0" prefWidth="565.0" text="       萱萱大酒店是一家商务、会议型豪华酒店，是太仓市首家五星级酒店。酒店座落在江苏省东南部，长江口南岸。东濒长江，与崇明区隔江相望，南临上海市嘉定区，交通极其便利。酒店按欧式风格设计装修，环境优美，格调高雅。客房舒适、豪华，餐饮风味独特，各类康乐休闲设施一应俱全，设施先进的商务中心随时为您提供周到、快捷的服务。" wrapText="true">
+                  <Label layoutX="94.0" layoutY="794.0" lineSpacing="5.0" prefHeight="182.0" prefWidth="565.0" text="       萱萱大酒店是一家商务、会议型豪华酒店，是太仓市首家五星级酒店。酒店座落在江苏省东南部，长江口南岸。东濒长江，与崇明区隔江相望，南临上海市嘉定区，交通极其便利。酒店按欧式风格设计装修，环境优美，格调高雅。客房舒适、豪华，餐饮风味独特，各类康乐休闲设施一应俱全，设施先进的商务中心随时为您提供周到、快捷的服务。" wrapText="true">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -121,16 +116,29 @@
                         <Cursor fx:constant="DEFAULT" />
                      </cursor>
                   </Label>
-                  <Label layoutX="375.0" layoutY="1060.0" lineSpacing="3.0" prefHeight="184.0" prefWidth="316.0" text="        萱萱大酒店定位“年轻时尚”，倡导绿色、环保、低碳的生活方式， 给入住客人大自然一般的清晰入住体验。 萱萱大酒店大多数房间价格在150元-300元之间，配备独立卫生间、书桌、床头柜、24小时光纤上网、冷热水、 独立冷暖空调等，设施齐全，服务周到。" wrapText="true">
+                  <Label layoutX="377.0" layoutY="1093.0" lineSpacing="3.0" prefHeight="212.0" prefWidth="281.0" text="        萱萱大酒店定位“年轻时尚”，倡导绿色、环保、低碳的生活方式， 给入住客人大自然一般的清晰入住体验。 萱萱大酒店大多数房间价格在150元-300元之间，配备独立卫生间、书桌、床头柜、24小时光纤上网、冷热水、 独立冷暖空调等，设施齐全，服务周到。" wrapText="true">
                      <font>
-                        <Font size="15.0" />
+                        <Font size="16.0" />
                      </font>
                   </Label>
-                  <Label layoutX="59.0" layoutY="1295.0" lineSpacing="3.0" prefHeight="162.0" prefWidth="310.0" text="        萱萱大酒店拥有面积达551平方米的宴会厅，能同时容纳500人的大型宴会及酒会，6间同声传译室更使得该宴会厅成为国际会议召开的首选之地。此外，7间多功能厅配备了最先进的视听系统，且“萱萱会议”服务团队更能使您举办的各种活动变轻松惬意。" wrapText="true">
+                  <Label fx:id="labelEdit" layoutX="675.0" layoutY="20.0" onMouseClicked="#onClickedLabelEdit" onMouseEntered="#onEnteredLabelEdit" onMouseExited="#onExitedLabelEdit" text="编辑" textFill="WHITE">
                      <font>
-                        <Font size="15.0" />
+                        <Font size="16.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Label>
+                  <Label layoutX="158.0" layoutY="688.0" text="所在街道：">
+                     <font>
+                        <Font size="18.0" />
                      </font>
                   </Label>
+                  <TextField centerShape="false" focusTraversable="false" layoutX="253.0" layoutY="682.0" scaleShape="false" style="-fx-background-color: #FFFFFF;" text="县府街">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </TextField>
                </children>
             </AnchorPane>
         </content>
@@ -191,6 +199,17 @@
                   <Image url="@../../../../../graphics/hotelsalerui/saleStrategy1.png" />
                </image>
             </ImageView>
+            <Label fx:id="labelExit" onMouseClicked="#onClickedLabelExit" onMouseEntered="#enteredLabelExit" onMouseExited="#exitedLabelExit" text="登出">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <VBox.margin>
+                  <Insets left="20.0" top="115.0" />
+               </VBox.margin>
+            </Label>
          </children>
       </VBox>
    </children>

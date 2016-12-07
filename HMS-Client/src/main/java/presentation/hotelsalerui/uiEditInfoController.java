@@ -3,15 +3,17 @@ package presentation.hotelsalerui;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 /**
- * Created by thinkpad on 2016/11/25.
+ * Created by thinkpad on 2016/12/4.
  */
-public class uiHotelInfoController implements Initializable{
+public class uiEditInfoController implements Initializable{
 
     private SceneJump sceneJump = new SceneJump();
 
@@ -21,17 +23,16 @@ public class uiHotelInfoController implements Initializable{
     @FXML
     private Label labelExit;
 
-    /**
-     * 标题label
-     */
     @FXML
-    private Label labelTitle;
-
-    /**
-     * 编辑酒店信息label
-     */
+    private TextField textFieldHotelName;
     @FXML
-    private Label labelEdit;
+    private TextField textFieldDetailAddress;
+    @FXML
+    private TextField textFieldTelNumber;
+    @FXML
+    private TextArea textAreaHotelIntroduction;
+    @FXML
+    private TextArea textAreaHotelFacility;
 
     /**
      * 酒店房间按钮点击监听
@@ -76,24 +77,25 @@ public class uiHotelInfoController implements Initializable{
     }
 
     /**
-     * 鼠标移入编辑信息按钮监听
+     * 确认修改酒店信息监听
      */
-    public void onEnteredLabelEdit(){
-        labelEdit.setUnderline(true);
+    public void onClickedConfirmEditHotelInfo() throws IOException{
+        String hotelName = textFieldHotelName.getText();
+        String detailAddress = textFieldDetailAddress.getText();
+        String telNumber = textFieldTelNumber.getText();
+        String hotelIntroduction = textAreaHotelIntroduction.getText();
+        String hotelFacility = textAreaHotelFacility.getText();
+
+        //TODO
+
+        sceneJump.jumpToSceneHotelInfo();
     }
 
     /**
-     * 鼠标移出编辑信息按钮监听
+     * 取消修改酒店信息监听
      */
-    public void onExitedLabelEdit(){
-        labelEdit.setUnderline(false);
-    }
-
-    /**
-     * 鼠标点击编辑信息按钮监听
-     */
-    public void onClickedLabelEdit() throws IOException{
-        sceneJump.jumpToSceneEditInfo();
+    public void onClickedCancelEditHotelInfo() throws IOException{
+        sceneJump.jumpToSceneHotelInfo();
     }
 
     @Override

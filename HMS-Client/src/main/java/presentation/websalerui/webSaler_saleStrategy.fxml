@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="618.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.websalerui.uiWebSaleStrategyController">
+   <children>
+      <AnchorPane layoutX="250.0" prefHeight="618.0" prefWidth="752.0" style="-fx-background-color: #FFFFFF;">
+         <children>
+            <ImageView fitHeight="565.0" fitWidth="756.0" layoutY="56.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../graphics/websalerui/background2.png" />
+               </image>
+            </ImageView>
+            <AnchorPane layoutY="241.0" prefHeight="379.0" prefWidth="751.0" style="-fx-background-color: transparent;">
+               <children>
+                  <AnchorPane fx:id="paneDoubleOne" layoutY="21.0" onMouseClicked="#onClickedEditDoubleOne" prefHeight="349.0" prefWidth="751.0" style="-fx-background-color: transparent;">
+                     <children>
+                        <ImageView fitHeight="73.0" fitWidth="29.0" layoutX="79.0" layoutY="126.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../../graphics/websalerui/leftButton.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="62.0" fitWidth="54.0" layoutX="610.0" layoutY="126.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../../graphics/websalerui/rightButton.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="262.0" fitWidth="527.0" layoutX="101.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../../graphics/websalerui/infoFrame.png" />
+                           </image>
+                        </ImageView>
+                        <AnchorPane layoutX="107.0" layoutY="33.0" prefHeight="262.0" prefWidth="506.0">
+                           <children>
+                              <TextField cacheShape="false" centerShape="false" editable="false" focusTraversable="false" layoutX="28.0" layoutY="28.0" prefHeight="54.0" prefWidth="264.0" scaleShape="false" style="-fx-background-color: transparent;" text="双“11”优惠活动一">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </TextField>
+                              <Label layoutX="40.0" layoutY="84.0" prefHeight="147.0" prefWidth="431.0" wrapText="true">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </AnchorPane>
+                        <Label fx:id="labelEditDoubleOne" layoutX="698.0" layoutY="321.0" text="编辑">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="paneVIP" layoutY="21.0" prefHeight="349.0" prefWidth="751.0" style="-fx-background-color: transparent;" visible="false">
+                     <children>
+                        <ImageView fitHeight="73.0" fitWidth="29.0" layoutX="79.0" layoutY="126.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../../graphics/websalerui/leftButton.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="62.0" fitWidth="54.0" layoutX="610.0" layoutY="126.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../../graphics/websalerui/rightButton.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="262.0" fitWidth="527.0" layoutX="101.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../../graphics/websalerui/infoFrame.png" />
+                           </image>
+                        </ImageView>
+                        <AnchorPane layoutX="107.0" layoutY="33.0" prefHeight="262.0" prefWidth="506.0">
+                           <children>
+                              <TextField cacheShape="false" centerShape="false" editable="false" focusTraversable="false" layoutX="28.0" layoutY="28.0" prefHeight="54.0" prefWidth="264.0" scaleShape="false" style="-fx-background-color: transparent;" text="特定商圈VIP活动一">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </TextField>
+                              <Label layoutX="40.0" layoutY="84.0" prefHeight="147.0" prefWidth="431.0" wrapText="true">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </AnchorPane>
+                        <Label fx:id="labelEditVIP" layoutX="698.0" layoutY="321.0" onMouseClicked="#onClickedEditVIP" text="编辑">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="paneMember" layoutY="21.0" prefHeight="349.0" prefWidth="751.0" style="-fx-background-color: transparent;" visible="false">
+                     <children>
+                        <ImageView fitHeight="73.0" fitWidth="29.0" layoutX="79.0" layoutY="126.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../../graphics/websalerui/leftButton.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="62.0" fitWidth="54.0" layoutX="610.0" layoutY="126.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../../graphics/websalerui/rightButton.png" />
+                           </image>
+                        </ImageView>
+                        <ImageView fitHeight="262.0" fitWidth="527.0" layoutX="101.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../../../graphics/websalerui/infoFrame.png" />
+                           </image>
+                        </ImageView>
+                        <AnchorPane layoutX="107.0" layoutY="33.0" prefHeight="262.0" prefWidth="506.0">
+                           <children>
+                              <TextField cacheShape="false" centerShape="false" editable="false" focusTraversable="false" layoutX="28.0" layoutY="28.0" prefHeight="54.0" prefWidth="264.0" scaleShape="false" style="-fx-background-color: transparent;" text="会员等级与折扣活动一">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </TextField>
+                              <Label layoutX="40.0" layoutY="84.0" prefHeight="147.0" prefWidth="431.0" wrapText="true">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </AnchorPane>
+                        <Label fx:id="labelEditMember" layoutX="698.0" layoutY="321.0" onMouseClicked="#onClickedEditMember" text="编辑">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="paneEditPromotion" prefHeight="379.0" prefWidth="751.0" visible="false">
+                     <children>
+                        <MenuButton fx:id="menuButtonEdit_ChoosePromotionType" layoutX="81.0" layoutY="35.0" mnemonicParsing="false" style="-fx-background-color: #FFFFFF;" text="选择活动">
+                          <items>
+                            <MenuItem mnemonicParsing="false" text="Action 1" />
+                            <MenuItem mnemonicParsing="false" text="Action 2" />
+                          </items>
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </MenuButton>
+                        <TextArea layoutX="81.0" layoutY="94.0" prefHeight="189.0" prefWidth="469.0" promptText="活动内容" wrapText="true">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </TextArea>
+                        <Button layoutX="431.0" layoutY="314.0" mnemonicParsing="false" onMouseClicked="#onClickedDeletePromotion" text="删除">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Button>
+                        <Button layoutX="341.0" layoutY="314.0" mnemonicParsing="false" onMouseClicked="#onClickedNewPromotion" text="新建">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Button>
+                        <Button layoutX="523.0" layoutY="314.0" mnemonicParsing="false" onMouseClicked="#onClickedConfirmEditPromotion" text="确认">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Button>
+                        <Button layoutX="613.0" layoutY="314.0" mnemonicParsing="false" onMouseClicked="#onClickedCancelEditPromotion" text="取消">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Button>
+                        <TextField fx:id="textFieldPromotionName" layoutX="81.0" layoutY="35.0" prefHeight="34.0" prefWidth="189.0" promptText="优惠活动名" visible="false">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </TextField>
+                     </children></AnchorPane>
+               </children>
+            </AnchorPane>
+            <AnchorPane prefHeight="241.0" prefWidth="750.0" style="-fx-background-color: #FFFFFF;">
+               <children>
+                  <ImageView fx:id="imageSale111" fitHeight="241.0" fitWidth="250.0" onMouseClicked="#work11" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../graphics/websalerui/double111.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="imageSale112" fitHeight="241.0" fitWidth="250.0" onMouseClicked="#work11" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../graphics/websalerui/double112.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="imageVIP1" fitHeight="241.0" fitWidth="255.0" layoutX="250.0" layoutY="-1.0" onMouseClicked="#workVIP" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../graphics/websalerui/vip1.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="imageVIP2" fitHeight="241.0" fitWidth="258.0" layoutX="250.0" layoutY="-1.0" onMouseClicked="#workVIP" pickOnBounds="true" preserveRatio="true" visible="false">
+                     <image>
+                        <Image url="@../../../../../graphics/websalerui/vip2.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="imageMember1" fitHeight="241.0" fitWidth="246.0" layoutX="505.0" onMouseClicked="#workMember" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../graphics/websalerui/member1.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="imageMember2" fitHeight="240.0" fitWidth="250.0" layoutX="505.0" onMouseClicked="#workMember" pickOnBounds="true" preserveRatio="true" visible="false">
+                     <image>
+                        <Image url="@../../../../../graphics/websalerui/member2.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="56.0" fitWidth="756.0" layoutX="-5.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../graphics/websalerui/curtain.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+      <VBox prefHeight="618.0" prefWidth="250.0" style="-fx-background-color: #FFFFFF;">
+         <children>
+            <HBox prefHeight="122.0" prefWidth="244.0">
+               <children>
+                  <ImageView fitHeight="77.0" fitWidth="73.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../graphics/websalerui/portrait.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="40.0" top="40.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <Label text="黄小萱">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="30.0" top="60.0" />
+                     </HBox.margin>
+                  </Label>
+               </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </HBox>
+            <ImageView fitHeight="80.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../graphics/websalerui/label2.png" />
+               </image>
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </ImageView>
+            <ImageView fitHeight="80.0" fitWidth="250.0" onMouseClicked="#jumpToSceneOrder" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../graphics/websalerui/label3.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="80.0" fitWidth="250.0" onMouseClicked="#jumpToSceneCredit" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../graphics/websalerui/label5.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="labelExit" onMouseClicked="#onClickedLabelExit" onMouseEntered="#enteredLabelExit" onMouseExited="#exitedLabelExit" text="登出">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="16.0" top="200.0" />
+               </VBox.margin>
+            </Label>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

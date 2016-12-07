@@ -1,4 +1,4 @@
-package presentation.hotelsalerui;
+package presentation.websalerui;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -6,9 +6,9 @@ import javafx.scene.control.Label;
 import java.io.IOException;
 
 /**
- * Created by thinkpad on 2016/12/3.
+ * Created by thinkpad on 2016/12/5.
  */
-public class uiHotelOrderController {
+public class uiWebSalerOrderController {
 
     private SceneJump sceneJump = new SceneJump();
 
@@ -19,24 +19,17 @@ public class uiHotelOrderController {
     private Label labelExit;
 
     /**
-     * 酒店信息按钮点击监听
+     * 跳转到销售策略界面
      */
-    public void jumpToSceneHotelInfo() throws IOException {
-        sceneJump.jumpToSceneHotelInfo();
+    public void jumpToSceneSaleStrategy() throws IOException {
+        sceneJump.jumpToSceneSaleStrategy();
     }
 
     /**
-     * 酒店房间按钮点击监听
+     * 跳转到信用充值界面
      */
-    public void jumpToSceneHotelRoom() throws IOException {
-        sceneJump.jumpToSceneHotelRoom();
-    }
-
-    /**
-     * 酒店促销按钮点击监听
-     */
-    public void jumpToSceneHotelSaleStrategy() throws IOException {
-        sceneJump.jumpToSceneHotelSaleStrategy();
+    public void jumpToScneCredit() throws IOException {
+        sceneJump.jumpToSceneCredit();
     }
 
     /**
@@ -59,4 +52,5 @@ public class uiHotelOrderController {
     public void onClickedLabelExit() throws IOException {
         sceneJump.backToLogin();
     }
+
 }
