@@ -81,4 +81,13 @@ public class LogController implements LogBlService{
     public ResultMessage isValid(PasswordComfirmVO vo) throws RemoteException{
         return register.isValid(vo);
     }
+
+    /**
+     * 修改密码
+     *
+     * @param password 新密码
+     */
+    public void modifyPassword(String password) throws RemoteException{
+        login.modifyPassword(password);
+    }
 }
