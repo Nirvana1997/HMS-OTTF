@@ -11,11 +11,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import vo.AccountVO;
 import vo.PasswordComfirmVO;
 
-import javax.xml.soap.Text;
 import java.io.IOException;
 
 /**
@@ -26,8 +26,8 @@ public class uiRegister1Controller {
     public Button buttonReturn;
     public Button buttonNext;
     public TextField textUserID;
-    public TextField textPassword;
-    public TextField textConfirm;
+    public PasswordField textPassword;
+    public PasswordField textConfirm;
     static String uID;
     @FXML
     private Text idWrong;
@@ -67,16 +67,22 @@ public class uiRegister1Controller {
     public void goToRegister2() throws IOException {
         String UserID = textUserID.getText();
         setUserID(UserID);
-
-        //控制台输出当前读入的Userid
-        System.out.println(uID);
-
+        int idsize = UserID.length();
         String Password = textPassword.getText();
+        int pswsize = Password.length();
         String Confirm = textConfirm.getText();
         LogBlService logBlService = new LogController();
         PasswordComfirmVO passwordComfirmVO = new PasswordComfirmVO(UserID, Password, Confirm);
+        //如果账号位数不对
+        if (idsize < temp.MIN_LENGTH || idsize > temp.MAX_LENGTH){
+            idWrong.setVisible(true);
+        }
+        //如果密码位数不对
+        else if(pswsize < temp.MIN_LENGTH || pswsize > temp.MAX_LENGTH){
+            pswWrong.setVisible(true);
+        }
         //如果可以注册，跳转到注册界面2，并注册一个vo账户
-        if (logBlService.isValid(passwordComfirmVO) == ResultMessage.Correct) {
+        else if (logBlService.isValid(passwordComfirmVO) == ResultMessage.Correct) {
             Scene scene = new Scene((Parent) FXMLLoader.load(getClass().getResource("sceneRegister2.fxml")));
             stage.get(0).setScene(scene);
             AccountVO accountVO = new AccountVO(UserID, Password, AccountType.user);
@@ -84,16 +90,33 @@ public class uiRegister1Controller {
         }
         //如果密码和确认密码输入不同，则提示错误
         else if (logBlService.isValid(passwordComfirmVO) == ResultMessage.NotSame) {
-            Stage warning = new Stage();
-            Scene scene = new Scene((Parent) FXMLLoader.load(getClass().getResource("dialogWarning.fxml")));
-            warning.setTitle("secondWindow");
-            warning.setScene(scene);
-            warning.show();
-            System.out.print("两次密码不相同");
+            cfmWrong.setVisible(true);
         }
         //如果用户名已经存在，则提示已存在
         else if (logBlService.isValid(passwordComfirmVO) == ResultMessage.HasExist) {
-            System.out.print("用户已存在");
+            idExist.setVisible(true);
         }
+    }
+
+    /**
+     * 点击账号输入框，隐藏红色警告字
+     * @throws IOException
+     */
+    public void idnotWrong() throws IOException{
+        idWrong.setVisible(false);
+        idExist.setVisible(false);
+    }    /**
+     * 点击密码输入框，隐藏红色警告字
+     * @throws IOException
+     */
+    public void pswnotWrong() throws IOException{
+        pswWrong.setVisible(false);
+    }
+    /**
+     * 点击确认密码输入框，隐藏红色警告字
+     * @throws IOException
+     */
+    public void cfmnotWrong() throws IOException{
+        cfmWrong.setVisible(false);
     }
 }

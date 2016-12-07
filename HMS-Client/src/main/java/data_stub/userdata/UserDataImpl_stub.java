@@ -11,10 +11,10 @@ import java.util.ArrayList;
 
 public class UserDataImpl_stub implements UserDataService {
 	ArrayList<UserInfoPO> userInfoPOs= new ArrayList<UserInfoPO>();
-	UserInfoPO userInfoPO1 = new UserInfoPO("151250175","xzh","220283199611210319","13596297777",1200,"1996_11_21",null, UserType.Person);
-	UserInfoPO userInfoPO2 = new UserInfoPO("151250119","qzh","220283199611210310","13596291111",2200,"1996_10_01",null, UserType.Person);
-	UserInfoPO userInfoPO3 = new UserInfoPO("151250125","hyx","220283199611210311","13596292222",3200,"1996_01_21","01", UserType.Company);
-	UserInfoPO userInfoPO4 = new UserInfoPO("151250135","gmd","220283199611210312","13596293333",2000,"1996_02_20","02", UserType.Company);
+	UserInfoPO userInfoPO1 = new UserInfoPO("151250001","xzh","220283199611210319","13596297777",1200,"1996_11_21",null, UserType.Person);
+	UserInfoPO userInfoPO2 = new UserInfoPO("151250002","qzh","220283199611210310","13596291111",2200,"1996_10_01",null, UserType.Person);
+	UserInfoPO userInfoPO3 = new UserInfoPO("151250003","hyx","220283199611210311","13596292222",3200,"1996_01_21","01", UserType.Company);
+	UserInfoPO userInfoPO4 = new UserInfoPO("151250004","gmd","220283199611210312","13596293333",2000,"1996_02_20","02", UserType.Company);
 	ArrayList<CreditRecordPO> creditRecordPOs = new ArrayList<CreditRecordPO>();
 
 	public UserDataImpl_stub() {

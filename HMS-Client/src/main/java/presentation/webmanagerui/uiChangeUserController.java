@@ -1,16 +1,19 @@
 package presentation.webmanagerui;
 
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.text.Text;
 import sun.awt.TimedWindowEvent;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 /**
  * Created by Administrator on 2016/11/30.
  */
-public class uiChangeUserController {
+public class uiChangeUserController implements Initializable{
 
     @FXML
             private Text textUserID;
@@ -121,5 +124,11 @@ public class uiChangeUserController {
         String PhoneNumber = textPhoneNumber.getText();
         int Credit = Integer.parseInt(textCredit.getText());
 
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        textUserID.setText(uiManageUserController.getUserID());
+        System.out.println(uiManageUserController.getUserID());
     }
 }
