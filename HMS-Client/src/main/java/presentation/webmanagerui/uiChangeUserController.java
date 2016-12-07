@@ -1,7 +1,7 @@
 package presentation.webmanagerui;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
+import javafx.scene.control.*;
 import javafx.scene.text.Text;
 import sun.awt.TimedWindowEvent;
 
@@ -11,6 +11,23 @@ import java.io.IOException;
  * Created by Administrator on 2016/11/30.
  */
 public class uiChangeUserController {
+
+    @FXML
+            private Text textUserID;
+    @FXML
+            private Text textCredit;
+    @FXML
+            private TextField textRealName;
+    @FXML
+            private TextField textPhoneNumber;
+    @FXML
+            private RadioButton typePersonal;
+    @FXML
+            private RadioButton typeEnterprise;
+    @FXML
+            private DatePicker dateBirthday;
+    @FXML
+            private ComboBox nameEnterprise;
     /**
      * 界面跳转的类
      */
@@ -94,5 +111,15 @@ public class uiChangeUserController {
      */
     public void gotoModifyPassword() throws IOException{
         jump.gotoModifyPassword();
+    }
+    @FXML
+    private Button buttonSave;
+
+    public void SaveUser() throws IOException{
+        String UserID = textUserID.getText();
+        String RealName = textRealName.getText();
+        String PhoneNumber = textPhoneNumber.getText();
+        int Credit = Integer.parseInt(textCredit.getText());
+
     }
 }

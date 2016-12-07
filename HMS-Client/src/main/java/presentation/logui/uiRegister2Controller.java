@@ -4,6 +4,7 @@ import businesslogic.logbl.LogController;
 import businesslogicservice.logblservice.LogBlService;
 import com.sun.javafx.robot.impl.FXRobotHelper;
 import com.sun.org.apache.regexp.internal.RE;
+import enumData.UserType;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -39,11 +40,20 @@ public class uiRegister2Controller {
         String PhoneNumber = textPhoneNumber.getText();
         boolean isPersonal = typePersonal.isSelected();
         boolean isEnterprise = typeEnterprise.isSelected();
-//        uiRegister1Controller uiregister1Controller = new uiRegister1Controller();
-//        Chronology Birthday = dateBirthday.getChronology();
-//        String Company = comboEnterprise.getAccessibleText();
+        enumData.UserType userType;
+        if(isPersonal){
+            userType = enumData.UserType.Person;
+        }
+        else if(isEnterprise){
+            userType = enumData.UserType.Company;
+        }
+        else{
+            userType = null;
+        }
+        String Birthday = dateBirthday.getPromptText();
+        String Company = comboEnterprise.getAccessibleText();
         LogBlService logBlService = new LogController();
-        UserInfoVO userInfoVO = new UserInfoVO(uiRegister1Controller.getUserID(), RealName, Identity, PhoneNumber,0,0);
+        UserInfoVO userInfoVO = new UserInfoVO(uiRegister1Controller.getUserID(), RealName, Identity, PhoneNumber,0,Birthday,Company,userType,0);
         logBlService.addUserInfo(userInfoVO);
 
         //控制台输出当前存入的Userid

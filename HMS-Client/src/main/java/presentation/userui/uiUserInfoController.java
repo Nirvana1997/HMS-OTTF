@@ -5,6 +5,7 @@ import businesslogic.userbl.UserController;
 import businesslogicservice.logblservice.LogBlService;
 import businesslogicservice.userblservice.InfoBlService;
 import enumData.ResultMessage;
+import enumData.UserType;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -120,8 +121,6 @@ public class uiUserInfoController implements Initializable {
     @FXML
     private Text textUserID;
     @FXML
-    private PasswordField textPassword;
-    @FXML
     private TextField textRealName;
     @FXML
     private TextField textPhoneNumber;
@@ -131,35 +130,37 @@ public class uiUserInfoController implements Initializable {
     private Text textCredit;
     @FXML
     private Text textVIPLevel;
-    @FXML
-    private Text textTransaction;
+
+    String Birthday;
+    String CompanyID;
+    UserType userType;
 
     @FXML
     private Button buttonSave;
     public void Save() throws RemoteException {
         String UserID = textUserID.getText();
-        String Password = textPassword.getText();
         String RealName = textRealName.getText();
         String PhoneNumber = textPhoneNumber.getText();
         int VIPLevel = Integer.parseInt(textVIPLevel.getText());
-        double Transaction = Double.parseDouble(textTransaction.getText());
         int Credit = Integer.parseInt(textCredit.getText());
         String Identity = textIdentity.getText();
         System.out.print(UserID);
-        UserInfoVO vo = new UserInfoVO(UserID, RealName, Identity,PhoneNumber,Credit,Transaction);
+        UserInfoVO vo = new UserInfoVO(UserID, RealName, Identity,PhoneNumber,Credit,Birthday,CompanyID,userType,VIPLevel);
         InfoBlService infoBlService = new UserController() ;
         infoBlService.modifyUserInfo(vo);
     }
 
     public void init() throws RemoteException {
         InfoBlService infoBlService = new UserController();
-        UserInfoVO vo = infoBlService.showUserInfo("carey6918");
+        UserInfoVO vo = infoBlService.showUserInfo();
         textUserID.setText(vo.getUserID());
         textCredit.setText(String.valueOf(vo.getCredit()));
         textIdentity.setText(vo.getIdentity());
         textPhoneNumber.setText(vo.getContactNumber());
         textRealName.setText(vo.getName());
-        textTransaction.setText(String.valueOf(vo.getTransaction()));
+        Birthday = vo.getBirthday();
+        CompanyID = vo.getCompanyID();
+        userType = vo.getUserType();
 
     }
 

@@ -2,16 +2,33 @@ package presentation.userui;
 
 import com.sun.org.apache.xpath.internal.operations.Or;
 import enumData.OrderState;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  * Created by Administrator on 2016/12/3.
  */
 public class uiMyOrderController {
+
+    ArrayList<String> cnm = new ArrayList<String>();
+    public uiMyOrderController(){
+        cnm.add("1");
+        cnm.add("2");
+        cnm.add("3");
+    }
+
     @FXML
     /**
      * 跳转到首页的按钮
@@ -121,6 +138,14 @@ public class uiMyOrderController {
     private Button buttonAbnormal;
     @FXML
     private Button buttonRevoke;
+    @FXML
+    private TableView orderList;
+    @FXML
+    private TableColumn hotelList;
+    @FXML
+    private TableColumn idList;
+    @FXML
+    private TableColumn timeList;
 
     /**
      * 选择正常订单，则显示已执行和未执行的订单
@@ -147,11 +172,22 @@ public class uiMyOrderController {
      * 选择异常订单，则显示已执行和未执行的订单
      * @throws IOException
      */
+//    private ObservableList<String> personData = FXCollections.observableArrayList();
     public void chooseRevoke() throws IOException{
         buttonNormal.setVisible(true);
         buttonAbnormal.setVisible(true);
         buttonRevoke.setVisible(false);
         setOrderState(OrderState.canceled);
+//        idList.setText();
     }
+
+    @FXML
+    private ImageView panelOrder;
+
+    public void gotoOrder() throws IOException{
+        jump.gotoOrder();
+    }
+
+
 
 }

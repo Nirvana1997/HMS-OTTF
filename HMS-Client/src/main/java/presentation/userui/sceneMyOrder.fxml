@@ -108,9 +108,9 @@
             </ImageInput>
          </effect>
       </Button>
-      <AnchorPane fx:id="Order" layoutX="336.0" layoutY="240.0" prefHeight="324.0" prefWidth="248.0">
+      <AnchorPane fx:id="Order" layoutX="336.0" layoutY="240.0" prefHeight="324.0" prefWidth="248.0" visible="false">
          <children>
-            <ImageView fitHeight="324.0" fitWidth="248.0">
+            <ImageView fx:id="panelOrder" fitHeight="324.0" fitWidth="248.0" onMouseClicked="#gotoOrder">
                <image>
                   <Image url="@../../../../../graphics/userui/MyOrder/order.png" />
                </image>

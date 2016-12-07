@@ -21,6 +21,10 @@ public class uiOrderController implements Initializable{
         if(uiMyOrderController.getOrderState()== OrderState.executed){
             buttonComment.setVisible(true);
         }
+        else if(uiMyOrderController.getOrderState() == OrderState.abnormal){
+            buttonRevoke.setVisible(true);
+        }
+
     }
 
 

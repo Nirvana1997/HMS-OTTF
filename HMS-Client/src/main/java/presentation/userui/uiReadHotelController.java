@@ -3,8 +3,12 @@ package presentation.userui;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.SpinnerValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  * Created by Administrator on 2016/12/3.
@@ -100,5 +104,18 @@ public class uiReadHotelController {
         //TODO 清空账号
         jump.gotoLogin();
     }
+    ArrayList<Integer> cnm = new ArrayList<Integer>();
+    public uiReadHotelController(){
+        cnm.add(1);
+        cnm.add(2);
+        cnm.add(3);
+    }
+
+//    @FXML
+//    private ImageView priceAscending;
+//    public void showPriceAscending() throws IOException{
+//        int num = 0;
+//        ImageView img = new ImageView(new Image("graphics/"));
+//    }
 
 }

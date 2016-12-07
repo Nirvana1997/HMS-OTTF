@@ -79,7 +79,7 @@ public class uiRegister1Controller {
         if (logBlService.isValid(passwordComfirmVO) == ResultMessage.Correct) {
             Scene scene = new Scene((Parent) FXMLLoader.load(getClass().getResource("sceneRegister2.fxml")));
             stage.get(0).setScene(scene);
-            AccountVO accountVO = new AccountVO(UserID, Password, AccountType.personalUser);
+            AccountVO accountVO = new AccountVO(UserID, Password, AccountType.user);
             logBlService.register(accountVO);
         }
         //如果密码和确认密码输入不同，则提示错误
