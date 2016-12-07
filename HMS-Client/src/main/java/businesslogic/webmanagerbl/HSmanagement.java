@@ -6,9 +6,11 @@ import dataservice.logdataservice.LogDataService;
 import enumData.AccountType;
 import enumData.ResultMessage;
 import po.AccountPO;
+import vo.HotelinfoVO;
 import vo.HotelsalerInfoVO;
 
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 
 /**
  * 酒店人员管理模块
@@ -60,6 +62,29 @@ public class HSmanagement implements HSmanagementBlService{
         }
 	}
 
-	
 
+    @Override
+    public ArrayList<HotelinfoVO> getHotellist() throws RemoteException {
+        return null;
+    }
+
+    @Override
+    public HotelinfoVO getHotelinfo(String hotelsalerID) throws RemoteException {
+        return null;
+    }
+
+    @Override
+    public ResultMessage setHotelinfo(HotelinfoVO vo) throws RemoteException {
+        return null;
+    }
+
+    @Override
+    public boolean addHotelinfo(HotelinfoVO vo) throws RemoteException {
+        return false;
+    }
+
+    @Override
+    public ResultMessage deleteHotelinfo(String hotelsalerID) throws RemoteException {
+        return null;
+    }
 }
