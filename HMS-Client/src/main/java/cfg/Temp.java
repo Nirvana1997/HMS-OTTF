@@ -24,4 +24,9 @@ public class Temp {
      * 三间以上特惠
      */
     public static final int DISCOUNT_NUM = 3;
+
+    /**
+     * 超过规定时间减少的信用值比例
+     */
+    public static final double CREDIT_CUT = 0.5;
 }

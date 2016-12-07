@@ -2,6 +2,7 @@ package businesslogic.userbl.interfaces;
 
 import po.OrderPO;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 /**
@@ -10,14 +11,29 @@ import java.util.ArrayList;
  */
 public interface UserOrderInfo {
     /**
-     * 在数据层生成订单信息
+     * 添加订单信息
      * @param po 订单信息
+     * @throws RemoteException
      */
-    public void addOrder(OrderPO po);
+    public void addOrder(OrderPO po)throws RemoteException;
 
     /**
-     * 获得用户订单列表
-     * @return 登录用户订单列表
+     * 根据账户，返回相应订单列表
+     * @param account
+     * @return 对应用户的订单列表
      */
-    public ArrayList<OrderPO> getOrderList();
+    public ArrayList<OrderPO> getOrderList(String account)throws RemoteException;
+
+    /**
+     * 修改订单信息
+     * @param po
+     */
+    public void setOrderInfo(OrderPO po)throws RemoteException;
+
+    /**
+     * 根据订单ID获取订单信息
+     * @param orderID
+     * @return
+     */
+    public OrderPO getOrderInfo(String orderID)throws RemoteException;
 }

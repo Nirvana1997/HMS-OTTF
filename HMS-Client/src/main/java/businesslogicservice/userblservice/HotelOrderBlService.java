@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import businesslogic.userbl.HotelList;
+import businesslogic.userbl.OrderFiller;
+import com.sun.org.apache.xpath.internal.operations.Or;
 import enumData.*;
 import vo.*;
 
@@ -43,28 +45,19 @@ public interface HotelOrderBlService {
 	 */
 	public HotelinfoVO readHotel(String hotelID)throws RemoteException;
 
-    /**
-     * 返回是否房间数目是否足够
-     * @param hotelID 酒店编号
-     * @param startDate 入住时间
-     * @param endDate 退房时间
-     * @param roomType 房间类型
-     * @param num 房间数目
-     * @return
-     */
-	public boolean haveEnoughRoom(String hotelID, Date startDate, Date endDate, RoomType roomType,int num) throws RemoteException;
+	/**
+	 * 返回是否房间数目是否足够
+	 * @param vo 订单信息
+	 * @return
+	 */
+	public boolean haveEnoughRoom(OrderVO vo) throws RemoteException;
 
     /**
      * 计算订单价格并生成订单信息
-     * @param roomType 房间类型
-     * @param hotelID 酒店编号
-     * @param startDate 入住时间
-     * @param endDate 退房时间
-     * @param num 房间数目
-     * @return 订单信息
+     * @param vo 订单信息
      * @throws RemoteException
      */
-	public OrderVO makeOrder(RoomType roomType, String hotelID, Date startDate, Date endDate, int num)throws RemoteException;
+	public OrderVO makeOrder(OrderVO vo)throws RemoteException;
 
     /**
      * 预定酒店，生成订单

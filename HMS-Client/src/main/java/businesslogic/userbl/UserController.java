@@ -12,10 +12,11 @@ import java.util.Date;
 
 /**
  * 用户操作控制器
+ *
  * @author qzh
- * Created by user on 2016/11/27.
+ *         Created by user on 2016/11/27.
  */
-public class UserController implements InfoBlService,HotelOrderBlService{
+public class UserController implements InfoBlService, HotelOrderBlService {
     /**
      * 用户信息操作模块
      */
@@ -31,7 +32,7 @@ public class UserController implements InfoBlService,HotelOrderBlService{
      */
     HotelList hotelList;
 
-    public UserController() throws RemoteException{
+    public UserController() throws RemoteException {
         userInfo = new UserInfo();
         hotelOrder = new HotelOrder();
         hotelList = new HotelList();
@@ -39,116 +40,133 @@ public class UserController implements InfoBlService,HotelOrderBlService{
 
     /**
      * 修改个人信息
+     *
      * @param vo 用户个人信息
      * @return
      * @throws RemoteException
      */
     @Override
-    public ResultMessage modifyUserInfo(UserInfoVO vo)throws RemoteException {
+    public ResultMessage modifyUserInfo(UserInfoVO vo) throws RemoteException {
         userInfo.modifyUserInfo(vo);
         return ResultMessage.Correct;
     }
 
     /**
      * 显示个人信息
+     *
      * @return 个人信息
      * @throws RemoteException
      */
     @Override
-    public UserInfoVO showUserInfo() throws RemoteException{
+    public UserInfoVO showUserInfo() throws RemoteException {
         return userInfo.showUserInfo(Login.getNowUser());
     }
 
     /**
      * 返回固定商圈、地址中的所有酒店并生成列表项
+     *
      * @param tradeArea 商圈
-     * @param address 地址
-     * @param sortWay 排序方式
+     * @param address   地址
+     * @param sortWay   排序方式
      * @return
      * @throws RemoteException
      */
     @Override
-    public ArrayList<HotelListItemVO> searchHotel(TradeArea tradeArea, Address address, SortWay sortWay)throws RemoteException {
-        return hotelList.searchHotelInArea(tradeArea,address,sortWay);
+    public ArrayList<HotelListItemVO> searchHotel(TradeArea tradeArea, Address address, SortWay sortWay) throws RemoteException {
+        return hotelList.searchHotelInArea(tradeArea, address, sortWay);
     }
 
     /**
      * 返回固定商圈、地址中符合限制条件的酒店并生成列表项
+     *
      * @param tradeArea 商圈
-     * @param address 地址
-     * @param sortWay 排序方式
-     * @param limits 限制条件数组
+     * @param address   地址
+     * @param sortWay   排序方式
+     * @param limits    限制条件数组
      * @return
      * @throws RemoteException
      */
     @Override
-    public ArrayList<HotelListItemVO> searchHotel(TradeArea tradeArea, Address address, SortWay sortWay,ArrayList<LimitVO> limits)throws RemoteException {
-        return hotelList.hotelFilter(hotelList.searchHotelInArea(tradeArea,address,sortWay),limits);
+    public ArrayList<HotelListItemVO> searchHotel(TradeArea tradeArea, Address address, SortWay sortWay, ArrayList<LimitVO> limits) throws RemoteException {
+        return hotelList.hotelFilter(hotelList.searchHotelInArea(tradeArea, address, sortWay), limits);
     }
 
     /**
      * 查看酒店详细信息
+     *
      * @param hotelID
      * @return 酒店详细信息
      * @throws RemoteException
      */
     @Override
-    public HotelinfoVO readHotel(String hotelID) throws RemoteException{
+    public HotelinfoVO readHotel(String hotelID) throws RemoteException {
         return hotelList.getHotelInfo(hotelID);
     }
 
     /**
      * 返回是否房间数目是否足够
-     * @param hotelID 酒店编号
-     * @param startDate 入住时间
-     * @param endDate 退房时间
-     * @param roomType 房间类型
-     * @param num 房间数目
+     *
+     * @param vo 订单信息
      * @return
      */
     @Override
-    public boolean haveEnoughRoom(String hotelID, Date startDate, Date endDate, RoomType roomType, int num) throws RemoteException{
-        return hotelOrder.haveEnoughRoom(hotelID,startDate,endDate,roomType,num);
+    public boolean haveEnoughRoom(OrderVO vo) throws RemoteException {
+        return hotelOrder.haveEnoughRoom(vo);
     }
 
     /**
      * 计算订单价格并生成订单信息
-     * @param roomType 房间类型
-     * @param hotelID 酒店编号
-     * @param startDate 入住时间
-     * @param endDate 退房时间
-     * @param num 房间数目
-     * @return 订单信息
+     *
+     * @param vo 订单信息
      * @throws RemoteException
      */
     @Override
-    public OrderVO makeOrder(RoomType roomType, String hotelID, Date startDate, Date endDate, int num) throws RemoteException {
-        return null;
+    public OrderVO makeOrder(OrderVO vo) throws RemoteException {
+        return hotelOrder.makeOrder(vo);
     }
 
     /**
      * 预定酒店，生成订单
+     *
      * @param vo 订单信息
      * @return 是否成功
      * @throws RemoteException
      */
     @Override
-    public boolean orderHotel(OrderVO vo)throws RemoteException {
-        return false;
+    public boolean orderHotel(OrderVO vo) throws RemoteException {
+        return hotelOrder.orderHotel(vo);
     }
 
+    /**
+     * 根据用户id得到该用户的订单列表
+     *
+     * @param userID
+     * @return 订单列表
+     */
     @Override
-    public ArrayList<OrderVO> readOrder(String userID)throws RemoteException {
-        return null;
+    public ArrayList<OrderVO> readOrder(String userID) throws RemoteException {
+        return hotelOrder.readOrder(userID);
     }
 
+    /**
+     * 根据订单ID取消该订单
+     * 若超出规定时间，会扣除一定信用
+     *
+     * @param orderID 订单ID
+     * @return 若成功则返回Correct，若发生错误则返回Incorrect
+     */
     @Override
-    public ResultMessage cancelOrder(String OrderID)throws RemoteException {
-        return null;
+    public ResultMessage cancelOrder(String orderID) throws RemoteException {
+        return hotelOrder.cancelOrder(orderID);
     }
 
+    /**
+     * 评价订单
+     *
+     * @param vo
+     */
     @Override
-    public void comment(CommentVO vo)throws RemoteException {
-
+    public void comment(CommentVO vo) throws RemoteException {
+        hotelOrder.comment(vo);
     }
 }

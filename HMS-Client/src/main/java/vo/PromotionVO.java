@@ -18,8 +18,9 @@ public class PromotionVO {
 	int roomNumber = Temp.DISCOUNT_NUM;
 	int vipLevel;
 	double discount;
+	String companyID;
 
-	public PromotionVO(String promotionName, String description, PromotionType promotionType, String hotelID, String startDate, String endDate, TradeArea tradeArea, int roomNumber, int vipLevel, double discount) {
+	public PromotionVO(String promotionName, String description, PromotionType promotionType, String hotelID, String startDate, String endDate, TradeArea tradeArea, int roomNumber, int vipLevel, double discount,String companyID) {
 		this.promotionName = promotionName;
 		this.description = description;
 		this.promotionType = promotionType;
@@ -30,6 +31,7 @@ public class PromotionVO {
 		this.roomNumber = roomNumber;
 		this.vipLevel = vipLevel;
 		this.discount = discount;
+		this.companyID = companyID;
 	}
 
 	public String getPromotionName() {
@@ -106,5 +108,13 @@ public class PromotionVO {
 
 	public void setDiscount(double discount) {
 		this.discount = discount;
+	}
+
+	public String getCompanyID() {
+		return companyID;
+	}
+
+	public void setCompanyID(String companyID) {
+		this.companyID = companyID;
 	}
 }

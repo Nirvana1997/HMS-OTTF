@@ -37,7 +37,7 @@ public class OrderVO {
     //TODO 逻辑层计算
     double price;
     //逻辑层获得
-    PromotionVO Promotion;
+    String  promotionName;
 
     //生成时为null
     String roomID;
@@ -58,7 +58,7 @@ public class OrderVO {
     }
 
     //查看时
-    public OrderVO(String hotelID, String hotelname, TradeArea tradeArea, Address address, String detailAddress, int roomNumber, int peopleNumber, Date checkInDate, Date checkOutDate, RoomType roomType, boolean haveChild, String orderID, String userID, OrderState orderState, Date ddl, double price, PromotionVO promotion, String roomID) {
+    public OrderVO(String hotelID, String hotelname, TradeArea tradeArea, Address address, String detailAddress, int roomNumber, int peopleNumber, Date checkInDate, Date checkOutDate, RoomType roomType, boolean haveChild, String orderID, String userID, OrderState orderState, Date ddl, double price, String  promotionName, String roomID) {
         this.hotelID = hotelID;
         this.hotelname = hotelname;
         this.tradeArea = tradeArea;
@@ -75,7 +75,7 @@ public class OrderVO {
         this.orderState = orderState;
         this.ddl = ddl;
         this.price = price;
-        Promotion = promotion;
+        this.promotionName = promotionName;
         this.roomID = roomID;
     }
 
@@ -207,12 +207,12 @@ public class OrderVO {
         this.price = price;
     }
 
-    public PromotionVO getPromotion() {
-        return Promotion;
+    public String  getPromotionName() {
+        return promotionName;
     }
 
-    public void setPromotion(PromotionVO promotion) {
-        Promotion = promotion;
+    public void setPromotion(String  promotionName) {
+        this.promotionName = promotionName;
     }
 
     public String getRoomID() {
