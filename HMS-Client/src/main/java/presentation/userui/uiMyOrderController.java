@@ -5,29 +5,24 @@ import enumData.OrderState;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.fxml.Initializable;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import presentation.webmanagerui.tableMember;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
+import java.util.ResourceBundle;
 
 /**
  * Created by Administrator on 2016/12/3.
  */
-public class uiMyOrderController {
+public class uiMyOrderController implements Initializable{
 
-    ArrayList<String> cnm = new ArrayList<String>();
-    public uiMyOrderController(){
-        cnm.add("1");
-        cnm.add("2");
-        cnm.add("3");
-    }
 
     @FXML
     /**
@@ -138,14 +133,7 @@ public class uiMyOrderController {
     private Button buttonAbnormal;
     @FXML
     private Button buttonRevoke;
-    @FXML
-    private TableView orderList;
-    @FXML
-    private TableColumn hotelList;
-    @FXML
-    private TableColumn idList;
-    @FXML
-    private TableColumn timeList;
+
 
     /**
      * 选择正常订单，则显示已执行和未执行的订单
@@ -172,22 +160,99 @@ public class uiMyOrderController {
      * 选择异常订单，则显示已执行和未执行的订单
      * @throws IOException
      */
-//    private ObservableList<String> personData = FXCollections.observableArrayList();
+
     public void chooseRevoke() throws IOException{
         buttonNormal.setVisible(true);
         buttonAbnormal.setVisible(true);
         buttonRevoke.setVisible(false);
         setOrderState(OrderState.canceled);
-//        idList.setText();
     }
 
     @FXML
-    private ImageView panelOrder;
+    private Button buttongotoOrder;
 
+    /**
+     * 根据选择的订单跳转到订单界面
+     * @throws IOException
+     */
     public void gotoOrder() throws IOException{
-        jump.gotoOrder();
+        //检验是否选中一张订单
+        for(int i = 0; i < orderData.size();i++){
+            setChooseOrder(false);
+            if(orderList.getSelectionModel().isSelected(i)){
+                setChooseOrder(true);
+                break;
+            }
+        }
+        //如果有，则跳转
+        if(chooseOrder) {
+            setOrderID(orderList.getSelectionModel().getSelectedItem().getOrderID());
+            jump.gotoOrder();
+        }
+        //如果没有，跳出提示框
+        else{
+            setChooseOrder(false);
+            jump.warning();
+        }
+    }
+    @FXML
+    private ImageView searchOrder;
+    @FXML
+    private TextField textSearch;
+    public void SearchOrder() throws IOException {
+        if(textSearch.getText()!=null) {
+            setOrderID(textSearch.getText());
+            jump.gotoOrder();
+        }
+    }
+    @FXML
+    private TableView<tableOrder> orderList;
+    @FXML
+    private TableColumn<tableOrder,String> columnID;
+    @FXML
+    private TableColumn<tableOrder,String> columnHotel;
+    @FXML
+    private TableColumn<tableOrder,String> columnTime;
+    @FXML
+    private TableColumn<tableOrder,String> columnState;
+
+    private ObservableList<tableOrder> orderData = FXCollections.observableArrayList();
+
+    /**
+     * 初始化：获取用户列表，并显示
+     * @param location
+     * @param resources
+     */
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+//        URmanagementBlService uRmanagementBlService = new WebmanagerController();
+//        ArrayList<UserInfoVO> list = uRmanagementBlService.getUserList();
+//        for(int i = 0; i < list.size();i++){
+//            personData.add(new tableMember(list.get(i).getUserID(), list.get(i).getName(), list.get(i).getContactNumber()));
+//        }
+        orderData.add(new tableOrder("UR151250045","喋喋","15105180105","saa"));
+        orderData.add(new tableOrder("UR151250042","喋","15105180102","aaa"));
+        orderList.setItems(orderData);
+        columnID.setCellValueFactory(cellData -> cellData.getValue().OrderIDProperty());
+        columnHotel.setCellValueFactory(cellData -> cellData.getValue().HotelIDProperty());
+        columnTime.setCellValueFactory(cellData -> cellData.getValue().OrderTimeProperty());
+        columnState.setCellValueFactory(cellData -> cellData.getValue().StateProperty());
+//        userList.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+//        userList.getSelectionModel().getSelectedItem().getuserID();
     }
 
+    /**
+     * 当前订单的ID
+     */
+    static String currentOrderID;
+    public void setOrderID(String id){ currentOrderID = id;}
+    public static String getOrderID(){ return currentOrderID;}
 
+    /**
+     * 是否选择订单
+     */
+    static Boolean chooseOrder = true;
+    public void setChooseOrder(boolean is){ chooseOrder = is;}
+    public static Boolean getChooseOrder(){ return chooseOrder;}
 
 }

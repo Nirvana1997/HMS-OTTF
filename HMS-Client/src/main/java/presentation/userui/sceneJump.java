@@ -106,4 +106,61 @@ public class sceneJump {
         Scene scene = new Scene((Parent) FXMLLoader.load(getClass().getResource("sceneOrder.fxml")));
         stage.get(0).setScene(scene);
     }
+
+    /**
+     * 相应酒店
+     * @throws IOException
+     */
+    public void gotoHotel() throws IOException{
+        ObservableList<Stage> stage = FXRobotHelper.getStages();
+        Scene scene = new Scene((Parent) FXMLLoader.load(getClass().getResource("sceneHotel.fxml")));
+        stage.get(0).setScene(scene);
+    }
+
+    /**
+     * 预订酒店
+     * @throws IOException
+     */
+    public void gotoReserveHotel() throws IOException{
+        ObservableList<Stage> stage = FXRobotHelper.getStages();
+        Scene scene = new Scene((Parent) FXMLLoader.load(getClass().getResource("sceneReserveHotel.fxml")));
+        stage.get(0).setScene(scene);
+    }
+    /**
+     * 跳出警告窗口
+     * @throws IOException
+     */
+    public void warning() throws IOException{
+        Stage secondWindow=new Stage();
+        Scene scene=new Scene((Parent) FXMLLoader.load(getClass().getResource("sceneWarning.fxml")));
+        secondWindow.setTitle("Warning!");
+        secondWindow.setScene(scene);
+        secondWindow.show();
+        uiMyOrderController.chooseOrder = true;
+        uiReadHotelController.chooseHotel = true;
+    }
+
+    /**
+     * 预订成功
+     * @throws IOException
+     */
+    public void reserveSuccess() throws IOException{
+        Stage secondWindow=new Stage();
+        Scene scene=new Scene((Parent) FXMLLoader.load(getClass().getResource("sceneReserveSuccess.fxml")));
+        secondWindow.setTitle("Success!");
+        secondWindow.setScene(scene);
+        secondWindow.show();
+    }
+
+    /**
+     * 确认预订
+     * @throws IOException
+     */
+    public void ConfirmOrder() throws IOException{
+        Stage secondWindow=new Stage();
+        Scene scene=new Scene((Parent) FXMLLoader.load(getClass().getResource("sceneConfirmOrder.fxml")));
+        secondWindow.setTitle("Confirm");
+        secondWindow.setScene(scene);
+        secondWindow.show();
+    }
 }

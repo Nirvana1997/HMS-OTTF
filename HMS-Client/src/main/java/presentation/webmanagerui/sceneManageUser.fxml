@@ -55,35 +55,28 @@
             </ImageInput>
          </effect>
       </Button>
-      <ImageView layoutX="775.0" layoutY="66.0">
-         <image>
-            <Image url="@../../../../../graphics/webmanagerui/放大镜.png" />
-         </image>
-      </ImageView>
-      <TextField fx:id="searchUserID" layoutX="825.0" layoutY="76.0" prefHeight="23.0" prefWidth="142.0">
-         <effect>
-            <ImageInput>
-               <source>
-                  <Image url="@../../../../../graphics/webmanagerui/搜索框.png" />
-               </source>
-            </ImageInput>
-         </effect>
-         <font>
-            <Font size="14.0" />
-         </font>
-      </TextField>
       <Text fx:id="buttonLogOut" fill="#0b799a" layoutX="203.0" layoutY="599.0" onMouseClicked="#LogOut" strokeType="OUTSIDE" strokeWidth="0.0" text="登出" underline="true">
          <font>
             <Font size="16.0" />
          </font>
       </Text>
-      <TableView fx:id="userList" layoutX="298.0" layoutY="151.0" prefHeight="424.0" prefWidth="502.0">
+      <TableView fx:id="userList" layoutX="300.0" layoutY="150.0" prefHeight="424.0" prefWidth="502.0">
         <columns>
           <TableColumn fx:id="columnID" prefWidth="180.0" text="用户编号" />
           <TableColumn fx:id="columnName" minWidth="0.0" prefWidth="140.0" text="姓名" />
             <TableColumn fx:id="columnNumber" minWidth="0.0" prefWidth="181.0" text="联系方式" />
         </columns>
       </TableView>
-      <Button fx:id="buttonChange" layoutX="868.0" layoutY="437.0" mnemonicParsing="false" onAction="#gotoChangeUser" text="查看用户信息" />
+      <Button fx:id="buttonChange" layoutX="868.0" layoutY="442.0" mnemonicParsing="false" onAction="#gotoChangeUser" text="查看用户信息" />
+      <ImageView fx:id="searchUR" layoutX="896.0" layoutY="66.0" onMouseClicked="#SearchUR">
+         <image>
+            <Image url="@../../../../../graphics/webmanagerui/放大镜.png" />
+         </image>
+      </ImageView>
+      <TextField fx:id="textSearch" layoutX="753.0" layoutY="76.0" prefHeight="23.0" prefWidth="142.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
    </children>
 </AnchorPane>

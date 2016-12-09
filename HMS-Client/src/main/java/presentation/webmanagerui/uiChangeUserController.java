@@ -122,13 +122,19 @@ public class uiChangeUserController implements Initializable{
         String UserID = textUserID.getText();
         String RealName = textRealName.getText();
         String PhoneNumber = textPhoneNumber.getText();
-        int Credit = Integer.parseInt(textCredit.getText());
+//        int Credit = Integer.parseInt(textCredit.getText());
 
     }
 
+    /**
+     * 初始化内容
+     * @throws IOException
+     */
+    public void init() {
+        textUserID.setText(uiManageUserController.getUserID());
+    }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        textUserID.setText(uiManageUserController.getUserID());
-        System.out.println(uiManageUserController.getUserID());
+       init();
     }
 }

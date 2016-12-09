@@ -1,15 +1,20 @@
 package presentation.webmanagerui;
 
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 
+import javax.naming.spi.InitialContextFactory;
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 /**
  * Created by Administrator on 2016/12/1.
  */
-public class uiChangeWSController {
+public class uiChangeWSController implements Initializable{
     /**
      * 界面跳转的类
      */
@@ -79,5 +84,22 @@ public class uiChangeWSController {
      */
     public void gotoModifyPassword() throws IOException{
         jump.gotoModifyPassword();
+    }
+    @FXML
+    private Text textWSID;
+    @FXML
+    private TextField textWSAccount;
+    @FXML
+    private TextField textWSNumber;
+    /**
+     * 初始化内容
+     * @throws IOException
+     */
+    public void init(){
+        textWSID.setText(uiManageHSController.getHotelID());
+    }
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        init();
     }
 }

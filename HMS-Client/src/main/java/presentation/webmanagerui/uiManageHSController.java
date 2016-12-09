@@ -1,23 +1,30 @@
 package presentation.webmanagerui;
 
 import com.sun.javafx.robot.impl.FXRobotHelper;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 /**
  * Created by Administrator on 2016/11/30.
  */
-public class uiManageHSController {
+public class uiManageHSController implements Initializable{
     /**
      * 界面跳转的类
      */
@@ -62,11 +69,12 @@ public class uiManageHSController {
 
 
     /**
-     * 点击图片跳转到相应的修改详细酒店信息界面
+     * 点击按钮跳转到相应的修改详细酒店信息界面
      */
     @FXML
-    ImageView pic01;
-    public void gotoChangeHotel() throws IOException{
+    private Button buttonChange;
+    public void gotoChangeHS() throws IOException{
+        setHotelID(hotelList.getSelectionModel().getSelectedItem().getID());
         jump.gotoChangeHS();
     }
 
@@ -83,6 +91,21 @@ public class uiManageHSController {
     public void gotoAddHotel() throws IOException{
         jump.gotoAddHotel();
     }
+
+    @FXML
+    private TextField textSearch;
+    @FXML
+    private ImageView searchHS;
+    /**
+     * 根据ID搜索并跳转
+     * @throws IOException
+     */
+    public void SearchHS() throws IOException{
+        //TODO 判断ID是否存在
+        setHotelID(textSearch.getText());
+        jump.gotoChangeHS();
+    }
+
     @FXML
     private Text buttonLogOut;
     /**
@@ -93,4 +116,41 @@ public class uiManageHSController {
         //TODO 登出账号
         jump.gotoLogin();
     }
+
+    @FXML
+    private TableView<tableMember> hotelList;
+    @FXML
+    private TableColumn<tableMember,String> columnID;
+    @FXML
+    private TableColumn<tableMember,String> columnName;
+    @FXML
+    private TableColumn<tableMember,String> columnNumber;
+
+    private ObservableList<tableMember> personData = FXCollections.observableArrayList();
+
+    /**
+     * 初始化：获取用户列表，并显示
+     * @param location
+     * @param resources
+     */
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+//        URmanagementBlService uRmanagementBlService = new WebmanagerController();
+//        ArrayList<UserInfoVO> list = uRmanagementBlService.getUserList();
+//        for(int i = 0; i < list.size();i++){
+//            personData.add(new tableMember(list.get(i).getUserID(), list.get(i).getName(), list.get(i).getContactNumber()));
+//        }
+        personData.add(new tableMember("HS151250045","喋喋大酒店","15105180105"));
+        personData.add(new tableMember("HS151250042","喋喋巨大酒店","15105180102"));
+        hotelList.setItems(personData);
+        columnID.setCellValueFactory(cellData -> cellData.getValue().IDProperty());
+        columnName.setCellValueFactory(cellData -> cellData.getValue().NameProperty());
+        columnNumber.setCellValueFactory(cellData -> cellData.getValue().NumberProperty());
+//        userList.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+//        userList.getSelectionModel().getSelectedItem().getuserID();
+    }
+    static String currentHotelID;
+    public void setHotelID(String hid){ currentHotelID = hid;}
+    public static String getHotelID(){ return currentHotelID;}
+
 }
