@@ -1,8 +1,10 @@
 package businesslogic.userbl.impl;
 
-import businesslogic.webmanagerbl.UserDataManagement;
+import businesslogic.webmanagerbl.UserInfoForManagement;
+import businesslogic.websalerbl.CreditInfo;
 import data_stub.userdata.UserDataImpl_stub;
 import dataservice.userdataservice.UserDataService;
+import enumData.ResultMessage;
 import po.UserInfoPO;
 
 import java.rmi.RemoteException;
@@ -14,13 +16,13 @@ import java.util.ArrayList;
  * @author qzh
  * Created by user on 2016/12/3.
  */
-public class UserDataImpl implements UserDataManagement {
+public class UserDataImplForManagement implements UserInfoForManagement,CreditInfo {
     /**
      * 用户数据模块
      */
     UserDataService userDataService;
 
-    public UserDataImpl() {
+    public UserDataImplForManagement() {
         userDataService = new UserDataImpl_stub();
     }
 
@@ -49,11 +51,35 @@ public class UserDataImpl implements UserDataManagement {
      * @return 用户列表
      */
     @Override
-    public ArrayList<UserInfoPO> getUserList(ArrayList<String> userIDs) throws RemoteException{
+    public ArrayList<UserInfoPO> getUserList() throws RemoteException{
         ArrayList<UserInfoPO> res = new ArrayList<UserInfoPO>();
-        for(String userID:userIDs){
-            res.add(userDataService.getUserInfo(userID));
-        }
+        //TODO
         return res;
+    }
+
+    /**
+     * 为用户增加信用值
+     *
+     * @param userID 用户ID
+     * @param value  增加的值
+     * @return 是否成功
+     */
+    @Override
+    public ResultMessage addCredit(String userID, int value) throws RemoteException {
+        UserInfoPO po = userDataService.getUserInfo(userID);
+        po.setCredit(po.getCredit()+value);
+        userDataService.setUserInfo(po);
+        return ResultMessage.Correct;
+    }
+
+    /**
+     * 获得对应用户信用值
+     *
+     * @param userID 用户ID
+     * @return 对应信用值
+     */
+    @Override
+    public int getCredit(String userID) throws RemoteException {
+        return userDataService.getUserInfo(userID).getCredit();
     }
 }

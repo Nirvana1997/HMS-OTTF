@@ -1,22 +1,25 @@
 package businesslogic.hotelsalerbl.impl;
 
-import businesslogic.webmanagerbl.HSmanagement;
-import businesslogic.webmanagerbl.HotelDataManagement;
+import businesslogic.webmanagerbl.HotelInfoForManagement;
 import businesslogicservice.hotelsalerblservice.HotelinfoblService;
 import dataservice.hotelsalerdataservice.HotelinfoDataService;
 import enumData.Address;
 import enumData.SortWay;
 import enumData.TradeArea;
 import po.HotelinfoPO;
+import utility.HotelPVChanger;
 import vo.HotelinfoVO;
 import data_stub.hotelsalerdata.HotelinfoDataImpl_stub;
-import vo.LimitVO;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-public class HotelinfoblImpl implements HotelinfoblService,HotelDataManagement {
+public class HotelinfoDataImpl implements HotelinfoblService,HotelInfoForManagement {
     HotelinfoDataService hotelinfoDataService;
+
+    public HotelinfoDataImpl() {
+        hotelinfoDataService = new HotelinfoDataImpl_stub();
+    }
 
     /**
      * 返回酒店信息
@@ -25,13 +28,8 @@ public class HotelinfoblImpl implements HotelinfoblService,HotelDataManagement {
      */
     @Override
     public HotelinfoVO getHotelinfo(String hotelID) throws RemoteException{
-        hotelinfoDataService = new HotelinfoDataImpl_stub();
         HotelinfoPO po = hotelinfoDataService.getHotelinfo(hotelID);
-        if (po != null) {
-            HotelinfoVO vo = new HotelinfoVO(po.getHotelID(), po.getHotelname(), po.getTradeArea(), po.getAddress(), po.getDetailAddress(),null, po.getIntroduction(), po.getService(), po.getStar(), po.getGrade());
-            return vo;
-        } else
-            return null;
+        return HotelPVChanger.hotelP2V(po);
     }
 
     @Override
@@ -41,16 +39,26 @@ public class HotelinfoblImpl implements HotelinfoblService,HotelDataManagement {
 
     @Override
     public HotelinfoPO getHotelInfo(String hotelID) throws RemoteException {
-        return null;
+        return hotelinfoDataService.getHotelinfo(hotelID);
     }
 
     @Override
     public void setHotelInfo(HotelinfoPO po) throws RemoteException {
-
+        hotelinfoDataService.setHotelinfo(po);
     }
 
     @Override
-    public ArrayList<HotelinfoPO> getHotelList(ArrayList<String> hotelIDs) throws RemoteException {
-        return null;
+    public ArrayList<HotelinfoPO> getHotelList() throws RemoteException {
+        return hotelinfoDataService.getHotelList();
+    }
+
+    @Override
+    public void addHotelInfo(HotelinfoPO po) throws RemoteException {
+        hotelinfoDataService.addHotelinfo(po);
+    }
+
+    @Override
+    public void deleteHotelInfo(String hotelID) throws RemoteException {
+        hotelinfoDataService.deleteHotelinfo(hotelID);
     }
 }

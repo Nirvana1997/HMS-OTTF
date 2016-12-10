@@ -1,5 +1,7 @@
 package cfg;
 
+import enumData.SortWay;
+
 /**
  * TODO
  * Created by user on 2016/12/3.
@@ -39,4 +41,6 @@ public class Temp {
     public static final String WEB_SALER = "03";
 
     public static final int ID_NUMBER_LENGTH = 10;
+
+    public static final SortWay sortway = SortWay.Grade_Descending;
 }
