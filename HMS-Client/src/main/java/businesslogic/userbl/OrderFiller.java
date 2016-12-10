@@ -1,12 +1,10 @@
 package businesslogic.userbl;
 
-import businesslogic.hotelsalerbl.HotelDataImpl;
+import businesslogic.hotelsalerbl.impl.HotelDataImpl;
 import businesslogic.logbl.Login;
 import businesslogic.promotionbl.impl.PromotionDataImpl;
 import businesslogic.userbl.interfaces.HotelRoom;
 import businesslogic.userbl.interfaces.PromotionInfo;
-import businesslogic.userbl.interfaces.VipInfo;
-import businesslogic.websalerbl.impl.VipDataImpl;
 import cfg.Temp;
 import data_stub.userdata.UserDataImpl_stub;
 import dataservice.userdataservice.UserDataService;
@@ -44,11 +42,6 @@ public class OrderFiller {
      */
     HotelRoom hotelRoom;
 
-    /**
-     * 会员等级接口
-     */
-    VipInfo vipInfo;
-
     /**TODO
      * 用户数据接口
      */
@@ -58,7 +51,6 @@ public class OrderFiller {
         this.orderVO = orderVO;
         promotionInfo = new PromotionDataImpl();
         hotelRoom = new HotelDataImpl();
-        vipInfo = new VipDataImpl();
         userDataService = new UserDataImpl_stub();
     }
 
@@ -82,14 +74,14 @@ public class OrderFiller {
      */
     private void fillOrderID(){
         Date date = new Date();
-        orderVO.setOrderID(Login.getNowUser()+date.getTime());
+        orderVO.setOrderID(Login.getNowUserID()+date.getTime());
     }
 
     /**
      * 填充用户ID
      */
     private void fillUserID(){
-        orderVO.setUserID(Login.getNowUser());
+        orderVO.setUserID(Login.getNowUserID());
     }
 
     /**
@@ -129,8 +121,7 @@ public class OrderFiller {
         orderVO.setPrice(price);
         //获得用户信息
         UserInfoPO userInfoPO = userDataService.getUserInfo(orderVO.getUserID());
-        int vipLevel = vipInfo.calcLevel(userInfoPO.getCredit());
-        UserInfoVO userInfoVO = UserPVChanger.userInfoP2V(userInfoPO,vipLevel);
+        UserInfoVO userInfoVO = UserPVChanger.userInfoP2V(userInfoPO);
         promotionInfo.choosePromotion(userInfoVO, orderVO);
     }
 }

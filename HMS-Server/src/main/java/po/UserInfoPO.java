@@ -5,6 +5,7 @@ import enumData.UserType;
 import java.io.Serializable;
 
 public class UserInfoPO implements Serializable{
+	String account;
 	String userID;
 	String name;
 	String identity;
@@ -14,8 +15,10 @@ public class UserInfoPO implements Serializable{
 	String companyID;
 	UserType type;
 
-	public UserInfoPO(String userID, String name, String identity, String contactNumber,
+
+	public UserInfoPO(String account, String userID, String name, String identity, String contactNumber,
 					  int credit, String birthday, String companyID, UserType type) {
+		this.account = account;
 		this.userID = userID;
 		this.name = name;
 		this.identity = identity;
@@ -88,5 +91,13 @@ public class UserInfoPO implements Serializable{
 
 	public void setType(UserType type) {
 		this.type = type;
+	}
+
+	public String getAccount() {
+		return account;
+	}
+
+	public void setAccount(String account) {
+		this.account = account;
 	}
 }

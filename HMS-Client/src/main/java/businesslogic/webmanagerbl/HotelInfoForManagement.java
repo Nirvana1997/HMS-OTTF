@@ -9,7 +9,7 @@ import java.util.ArrayList;
  * 酒店数据接口
  * Created by user on 2016/12/3.
  */
-public interface HotelDataManagement {
+public interface HotelInfoForManagement {
     /**
      * 获得某个酒店的信息
      * @param hotelID 酒店ID
@@ -25,8 +25,22 @@ public interface HotelDataManagement {
     public void setHotelInfo(HotelinfoPO po) throws RemoteException;
 
     /**
-     * 获取用户列表
-     * @return 用户列表
+     * 获取酒店列表
+     * @return 酒店列表
      */
-    public ArrayList<HotelinfoPO> getHotelList(ArrayList<String> hotelIDs)throws RemoteException;
+    public ArrayList<HotelinfoPO> getHotelList()throws RemoteException;
+
+    /**
+     * 添加酒店信息
+     * @param po 酒店信息
+     * @throws RemoteException
+     */
+    public void addHotelInfo(HotelinfoPO po) throws RemoteException;
+
+    /**
+     * 删除酒店信息
+     * @param hotelID 酒店编号
+     * @throws RemoteException
+     */
+    public void deleteHotelInfo(String hotelID) throws RemoteException;
 }

@@ -1,4 +1,4 @@
-package businesslogic.userbl.interfaces;
+package utility;
 
 import java.rmi.RemoteException;
 

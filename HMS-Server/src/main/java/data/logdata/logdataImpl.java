@@ -2,11 +2,11 @@ package data.logdata;
 
 import database.DataBaseHelper;
 import dataservice.logdataservice.LogDataService;
+import encryption.DesUtils;
 import enumData.AccountType;
 import enumData.ResultMessage;
 import po.AccountPO;
 
-import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
@@ -16,7 +16,10 @@ import java.util.ArrayList;
  */
 public class LogDataImpl extends UnicastRemoteObject implements LogDataService  {
 
-    public LogDataImpl() throws RemoteException{
+    private DesUtils desUtils;
+
+    public LogDataImpl() throws Exception{
+        desUtils = new DesUtils();
     }
     /**
      * 根据账户ID得到相应密码
@@ -26,9 +29,11 @@ public class LogDataImpl extends UnicastRemoteObject implements LogDataService  
      */
     @Override
     public String getPassword(String account) throws RemoteException {
+        account = desUtils.en(account);
         if(hasExisted(account)) {
-            ArrayList<String> passwordList = DataBaseHelper.out("select password from Account where accountID = '" + account + "'", "password");
-            return passwordList.get(0);
+            ArrayList<String> passwordList = DataBaseHelper.out("select password from Account where account = '" + account + "'", "password");
+            String password = desUtils.de(passwordList.get(0));
+            return password;
         }else {
             return null;
         }
@@ -43,8 +48,10 @@ public class LogDataImpl extends UnicastRemoteObject implements LogDataService  
      */
     @Override
     public ResultMessage setPassword(String account,String password) throws RemoteException {
+        account = desUtils.en(account);
+        password = desUtils.en(password);
         if(hasExisted(account)){
-            DataBaseHelper.in("update Account set password = '" + password + "' where accountID = '" + account +"'");
+            DataBaseHelper.in("update Account set password = '" + password + "' where account = '" + account +"'");
             return ResultMessage.Correct;
         }else {
             return ResultMessage.NotExist;
@@ -60,11 +67,15 @@ public class LogDataImpl extends UnicastRemoteObject implements LogDataService  
     @Override
     public ArrayList<AccountPO> getAccountList(AccountType accountType) throws RemoteException {
         String type = accountType.toString();
-        ArrayList<String> accountIDList =  DataBaseHelper.out("select accountID from Account where type = '" + type +"'", "accountID");
+        ArrayList<String> IDList = DataBaseHelper.out("select ID from Account where type = '" + type + "'","ID");
+        ArrayList<String> accountList =  DataBaseHelper.out("select account from Account where type = '" + type +"'", "account");
         ArrayList<String> passwordList = DataBaseHelper.out("select password from Account where type = '" + type + "'", "password");
         ArrayList<AccountPO> accountPOArrayList = new ArrayList<AccountPO>();
-        for(int i=0;i<accountIDList.size();i++)
-            accountPOArrayList.add(new AccountPO(accountIDList.get(i),passwordList.get(i),accountType));
+        for(int i=0;i<IDList.size();i++) {
+            String account = desUtils.de(accountList.get(i));
+            String password = desUtils.de(passwordList.get(i));
+            accountPOArrayList.add(new AccountPO(IDList.get(i), account, password, accountType));
+        }
         return accountPOArrayList;
     }
 
@@ -76,15 +87,16 @@ public class LogDataImpl extends UnicastRemoteObject implements LogDataService  
      */
     @Override
     public ResultMessage addAccount(AccountPO po) throws RemoteException {
-        String accountID = po.getAccountID();
-        String password = po.getPassword();
+        String ID = po.getID();
+        String account = desUtils.en(po.getAccount());
+        String password = desUtils.en(po.getPassword());
         String type = po.getType().toString();
 
-        if(hasExisted(accountID))
+        if(hasExisted(account))
             return ResultMessage.HasExist;
 
-        DataBaseHelper.in("insert into Account (accountID,password,type) values (" +
-                "'" + accountID + "','" + password + "','" + type + "')");
+        DataBaseHelper.in("insert into Account (ID,account,password,type) values ('" + ID + "','" +
+                 account + "','" + password + "','" + type + "')");
         return ResultMessage.Correct;
     }
 
@@ -96,8 +108,9 @@ public class LogDataImpl extends UnicastRemoteObject implements LogDataService  
      */
     @Override
     public ResultMessage deleteAccount(String account) throws RemoteException {
+        account = desUtils.en(account);
         if(hasExisted(account)) {
-            DataBaseHelper.in("delete from Account where accountID = '" + account + "'");
+            DataBaseHelper.in("delete from Account where account = '" + account + "'");
             return ResultMessage.Correct;
         }else
             return ResultMessage.NotExist;
@@ -111,8 +124,9 @@ public class LogDataImpl extends UnicastRemoteObject implements LogDataService  
      */
     @Override
     public AccountType getAccountType(String account) throws RemoteException {
+        account = desUtils.en(account);
         if(hasExisted(account)) {
-            ArrayList<String> typeList = DataBaseHelper.out("select type from Account where accountID = '" + account + "'", "type");
+            ArrayList<String> typeList = DataBaseHelper.out("select type from Account where account = '" + account + "'", "type");
             try {
                 return Enum.valueOf(AccountType.class,typeList.get(0).trim());
             }catch (IllegalArgumentException ex){
@@ -123,6 +137,18 @@ public class LogDataImpl extends UnicastRemoteObject implements LogDataService  
     }
 
     /**
+     * 根据用户类型，返回该类型对应已有账号数量
+     * @param type 帐号类型
+     * @return
+     * @throws RemoteException
+     */
+    @Override
+    public int getTypeNum(AccountType type) throws RemoteException {
+        ArrayList<String> num = DataBaseHelper.out("select account from Account where type = '" + type + "'","account");
+        return num.size();
+    }
+
+    /**
      * 判断该账户在数据库中是否存在
      * @param account
      * @return
@@ -130,9 +156,9 @@ public class LogDataImpl extends UnicastRemoteObject implements LogDataService  
      */
     @Override
     public boolean hasExisted(String account) throws RemoteException {
-        ArrayList<String> accountIDList =  DataBaseHelper.out("select accountID from Account", "accountID");
-        for(int i=0;i<accountIDList.size();i++)
-            if(accountIDList.get(i).equals(account))
+        ArrayList<String> accountList =  DataBaseHelper.out("select account from Account", "account");
+        for(int i=0;i<accountList.size();i++)
+            if(accountList.get(i).equals(account))
                 return true;
         return  false;
     }

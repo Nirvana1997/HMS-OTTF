@@ -1,5 +1,8 @@
 package businesslogic.logbl;
 
+import businesslogic.promotionbl.strategies.Strategy;
+import cfg.Temp;
+import enumData.AccountType;
 import utility.UserPVChanger;
 import data_stub.hotelsalerdata.HotelinfoDataImpl_stub;
 import data_stub.logdata.LogDataImpl_stub;
@@ -67,7 +70,22 @@ public class Register {
      * @throws RemoteException
      */
     private void addAccount(AccountVO vo) throws RemoteException {
-        logDataService.addAccount(new AccountPO(vo.getAccountID(), vo.getPassword(), vo.getType()));
+        //获得某个类型数目，以便编成ID
+        int num = logDataService.getTypeNum(vo.getType());
+        String id = String.valueOf(num);
+        while (id.length()< Temp.ID_NUMBER_LENGTH) {
+            id = "0" + id;
+        }
+        //前两位加上人员标识
+        if(vo.getType().equals(AccountType.user))
+            id = Temp.USER+id;
+        else if(vo.getType().equals(AccountType.hotelsaler))
+            id = Temp.HOTELSALER+id;
+        else if(vo.getType().equals(AccountType.webmanager))
+            id = Temp.WEB_MANAGER+id;
+        else if(vo.getType().equals(AccountType.websaler))
+            id = Temp.WEB_SALER+id;
+        logDataService.addAccount(new AccountPO(vo.getAccount(),id, vo.getPassword(), vo.getType()));
     }
 
     /**

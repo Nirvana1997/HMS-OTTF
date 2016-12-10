@@ -2,6 +2,7 @@ package data.userdata;
 
 import database.DataBaseHelper;
 import dataservice.userdataservice.UserDataService;
+import encryption.DesUtils;
 import enumData.ResultMessage;
 import enumData.UserType;
 import po.CreditRecordPO;
@@ -15,7 +16,10 @@ import java.util.ArrayList;
  */
 public class UserDataImpl extends UnicastRemoteObject implements UserDataService {
 
-    public UserDataImpl() throws RemoteException {
+    private DesUtils desUtils;
+
+    public UserDataImpl() throws Exception {
+        desUtils = new DesUtils();
     }
 
     /**
@@ -34,7 +38,11 @@ public class UserDataImpl extends UnicastRemoteObject implements UserDataService
             }catch (IllegalArgumentException ex){
                 ex.printStackTrace();
             }
-            return new UserInfoPO(info.get(0),info.get(1),info.get(2),info.get(3),Integer.parseInt(info.get(4)),
+            String name = desUtils.de(info.get(1));
+            String identity = desUtils.de(info.get(2));
+            String contactNumber = desUtils.de(info.get(3));
+            String account = desUtils.de(info.get(8));
+            return new UserInfoPO(account,info.get(0),name,identity,contactNumber,Integer.parseInt(info.get(4)),
                     info.get(5),info.get(6),type);
         }else
             return null;
@@ -49,13 +57,18 @@ public class UserDataImpl extends UnicastRemoteObject implements UserDataService
     @Override
     public ResultMessage setUserInfo(UserInfoPO po) throws RemoteException {
         if(hasExisted(po.getUserID())){
-            DataBaseHelper.in("update UserInfo set name = '" + po.getName() + "' where userID = '" + po.getUserID() +"'");
-            DataBaseHelper.in("update UserInfo set identity = '" + po.getIdentity() + "' where userID = '" + po.getUserID() +"'");
-            DataBaseHelper.in("update UserInfo set contactNumber = '" + po.getContactNumber() + "' where userID = '" + po.getUserID() +"'");
+            String name = desUtils.en(po.getName());
+            String identity = desUtils.en(po.getIdentity());
+            String contactNumber = desUtils.en(po.getContactNumber());
+            String account = desUtils.en(po.getAccount());
+            DataBaseHelper.in("update UserInfo set name = '" + name + "' where userID = '" + po.getUserID() +"'");
+            DataBaseHelper.in("update UserInfo set identity = '" + identity + "' where userID = '" + po.getUserID() +"'");
+            DataBaseHelper.in("update UserInfo set contactNumber = '" + contactNumber + "' where userID = '" + po.getUserID() +"'");
             DataBaseHelper.in("update UserInfo set credit = '" + po.getCredit() + "' where userID = '" + po.getUserID() +"'");
             DataBaseHelper.in("update UserInfo set birthday = '" + po.getBirthday() + "' where userID = '" + po.getUserID() +"'");
             DataBaseHelper.in("update UserInfo set companyID = '" + po.getCompanyID() + "' where userID = '" + po.getUserID() +"'");
             DataBaseHelper.in("update UserInfo set type = '" + po.getType().toString() + "' where userID = '" + po.getUserID() +"'");
+            DataBaseHelper.in("update UserInfo set account = '" + account + "' where userID = '" + po.getUserID() +"'");
             return ResultMessage.Correct;
         }else
             return ResultMessage.NotExist;
@@ -73,10 +86,16 @@ public class UserDataImpl extends UnicastRemoteObject implements UserDataService
             return ResultMessage.HasExist;
         //创建信用记录表
         DataBaseHelper.in("create table " + po.getUserID() + "_credit" + "(date varchar(50),change varchar(50),finalCredit varchar(50))");
-        DataBaseHelper.in("insert into UserInfo (userID,name,identity,contactNumber,credit,birthday,companyID,type) values (" +
-                "'" + po.getUserID() + "','" + po.getName() + "','" + po.getIdentity() + "','" + po.getContactNumber()
+
+        String name = desUtils.en(po.getName());
+        String identity = desUtils.en(po.getIdentity());
+        String contactNumber = desUtils.en(po.getContactNumber());
+        String account = desUtils.en(po.getAccount());
+
+        DataBaseHelper.in("insert into UserInfo (userID,name,identity,contactNumber,credit,birthday,companyID,type,account) values (" +
+                "'" + po.getUserID() + "','" + name + "','" + identity + "','" + contactNumber
                 + "','" + po.getCredit() + "','" + po.getBirthday() + "','" + po.getCompanyID()
-                + "','" + po.getType().toString() + "')");
+                + "','" + po.getType().toString() + "','" + account + "')");
         return ResultMessage.Correct;
     }
 
@@ -94,6 +113,43 @@ public class UserDataImpl extends UnicastRemoteObject implements UserDataService
             return ResultMessage.Correct;
         }else
             return ResultMessage.NotExist;
+    }
+
+    /**
+     * 得到用户信息列表（所有用户）
+     * @return
+     * @throws RemoteException
+     */
+    @Override
+    public ArrayList<UserInfoPO> getUserInfoList() throws RemoteException {
+        ArrayList<UserInfoPO> userInfoPOs = new ArrayList<UserInfoPO>();
+        ArrayList<String> accountList = DataBaseHelper.out("select account from UserInfo","account");
+        ArrayList<String> userIDList = DataBaseHelper.out("select userID from UserInfo","userID");
+        ArrayList<String> nameList = DataBaseHelper.out("select name from UserInfo","name");
+        ArrayList<String> identityList = DataBaseHelper.out("select identity from UserInfo","identity");
+        ArrayList<String> contactNumberList = DataBaseHelper.out("select contactNumber from UserInfo","contactNumber");
+        ArrayList<String> creditList = DataBaseHelper.out("select credit from UserInfo","credit");
+        ArrayList<String> birthdayList = DataBaseHelper.out("select birthday from UserInfo","birthday");
+        ArrayList<String> companyIDList = DataBaseHelper.out("select companyID from UserInfo","companyID");
+        ArrayList<String> typeList = DataBaseHelper.out("select type from UserInfo","type");
+
+        for(int i=0;i<accountList.size();i++){
+            UserType type = null;
+            try {
+                type = Enum.valueOf(UserType.class,typeList.get(i).trim());
+            }catch (IllegalArgumentException ex){
+                ex.printStackTrace();
+            }
+            String name = desUtils.de(nameList.get(i));
+            String identity = desUtils.de(identityList.get(i));
+            String contactNumber = desUtils.de(contactNumberList.get(i));
+            String account = desUtils.de(accountList.get(i));
+
+            userInfoPOs.add(new UserInfoPO(account,userIDList.get(i),name,identity,contactNumber,
+                    Integer.parseInt(creditList.get(i)),birthdayList.get(i),companyIDList.get(i),type));
+        }
+
+        return userInfoPOs;
     }
 
     /**
@@ -153,6 +209,17 @@ public class UserDataImpl extends UnicastRemoteObject implements UserDataService
             creditRecordPOs.add(new CreditRecordPO(dateList.get(i),Integer.parseInt(changeList.get(i)),Integer.parseInt(finalCreditList.get(i))));
         }
         return creditRecordPOs;
+    }
+
+    /**
+     * 得到当前用户ID的总数+1
+     * @return
+     * @throws RemoteException
+     */
+    @Override
+    public int getCurrentUserID() throws RemoteException {
+        ArrayList<String> num = DataBaseHelper.out("select userID from UserInfo","userID");
+        return num.size() + 1;
     }
 
     /**

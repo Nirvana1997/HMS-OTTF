@@ -2,6 +2,7 @@ package data.websalerdata;
 
 import database.DataBaseHelper;
 import dataservice.websalerdataservice.WebsalerDataService;
+import encryption.DesUtils;
 import enumData.ResultMessage;
 import po.VipUpPO;
 import po.WebsalerInfoPO;
@@ -15,7 +16,10 @@ import java.util.ArrayList;
  */
 public class WebsalerDataImpl extends UnicastRemoteObject implements WebsalerDataService{
 
-    public WebsalerDataImpl() throws RemoteException {
+    private DesUtils desUtils;
+
+    public WebsalerDataImpl() throws Exception {
+        desUtils = new DesUtils();
     }
 
     /**
@@ -26,7 +30,8 @@ public class WebsalerDataImpl extends UnicastRemoteObject implements WebsalerDat
     @Override
     public WebsalerInfoPO getWebsalerInfo(String websalerID) {
         ArrayList<String> info = DataBaseHelper.outRow("WebsalerInfo","websalerID" ,websalerID);
-        return new WebsalerInfoPO(websalerID,info.get(1));
+        String contactNumber = desUtils.de(info.get(1));
+        return new WebsalerInfoPO(websalerID,contactNumber);
     }
 
     /**
@@ -36,7 +41,8 @@ public class WebsalerDataImpl extends UnicastRemoteObject implements WebsalerDat
      */
     @Override
     public ResultMessage setWebsalerInfo(WebsalerInfoPO po) {
-        DataBaseHelper.in("update WebsalerInfo set contactNumber = '" + po.getContactNumber() + "' where websalerID = '" + po.getWebsalerID() +"'");
+        String contactNumber = desUtils.en(po.getContactNumber());
+        DataBaseHelper.in("update WebsalerInfo set contactNumber = '" + contactNumber + "' where websalerID = '" + po.getWebsalerID() +"'");
         return ResultMessage.Correct;
     }
 
@@ -48,7 +54,8 @@ public class WebsalerDataImpl extends UnicastRemoteObject implements WebsalerDat
     @Override
     public ResultMessage addWebsalerInfo(WebsalerInfoPO po) {
         if(!hasExisted(po.getWebsalerID())){
-            DataBaseHelper.in("insert into WebsalerInfo (websalerID,contactNumber) values ('" + po.getWebsalerID() + "','" + po.getContactNumber() + "')");
+            String contactNumber = desUtils.en(po.getContactNumber());
+            DataBaseHelper.in("insert into WebsalerInfo (websalerID,contactNumber) values ('" + po.getWebsalerID() + "','" + contactNumber + "')");
             return ResultMessage.Correct;
         }else
             return ResultMessage.HasExist;
@@ -66,6 +73,23 @@ public class WebsalerDataImpl extends UnicastRemoteObject implements WebsalerDat
            return ResultMessage.Correct;
        }else
            return ResultMessage.NotExist;
+    }
+
+    /**
+     * 得到网站营销人员信息列表（所有营销人员）
+     * @return
+     * @throws RemoteException
+     */
+    @Override
+    public ArrayList<WebsalerInfoPO> getWebsalerInfoList() throws RemoteException {
+        ArrayList<WebsalerInfoPO> websalerInfoPOs = new ArrayList<WebsalerInfoPO>();
+        ArrayList<String> websalerIDList  = DataBaseHelper.out("select websalerID from WebsalerInfo","websalerID");
+        ArrayList<String> contactNumberList  = DataBaseHelper.out("select contactNumber from WebsalerInfo","contactNumber");
+        for(int i=0;i<websalerIDList.size();i++){
+            String contactNumber = desUtils.de(contactNumberList.get(i));
+            websalerInfoPOs.add(new WebsalerInfoPO(websalerIDList.get(i),contactNumber));
+        }
+        return websalerInfoPOs;
     }
 
     /**

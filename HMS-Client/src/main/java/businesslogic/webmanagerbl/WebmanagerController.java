@@ -5,7 +5,6 @@ import businesslogicservice.webmanagerlogicservice.URmanagementBlService;
 import businesslogicservice.webmanagerlogicservice.WSmanagementBlService;
 import enumData.ResultMessage;
 import vo.HotelinfoVO;
-import vo.HotelsalerInfoVO;
 import vo.UserInfoVO;
 import vo.WebsalerInfoVO;
 
@@ -53,18 +52,31 @@ public class WebmanagerController implements HSmanagementBlService,URmanagementB
         return null;
     }
 
+    /**
+     * 获取用户信息
+     *
+     * @param userID 用户ID
+     * @return 对应用户信息
+     * @throws RemoteException
+     */
     @Override
     public UserInfoVO getUserInfo(String userID) throws RemoteException {
-        return null;
+        return uRmanagement.getUserInfo(userID);
+    }
+
+    /**
+     * 修改用户信息
+     *
+     * @param vo 用户个人信息vo
+     */
+    @Override
+    public void setUserInfo(UserInfoVO vo) throws RemoteException {
+        uRmanagement.setUserInfo(vo);
     }
 
     @Override
-    public void setUserInfo(UserInfoVO vo) {
-    }
-
-    @Override
-    public ArrayList<UserInfoVO> getUserList() {
-        return null;
+    public ArrayList<UserInfoVO> getUserList() throws RemoteException {
+        return uRmanagement.getUserList();
     }
 
     @Override

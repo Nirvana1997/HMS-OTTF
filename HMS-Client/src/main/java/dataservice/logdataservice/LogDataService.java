@@ -59,6 +59,14 @@ public interface LogDataService extends Remote{
 	public AccountType getAccountType(String account)throws RemoteException;
 
 	/**
+	 * 根据用户类型，返回该类型对应已有账号数量
+	 * @param type 帐号类型
+	 * @return 该类型已有帐号数量
+	 * @throws RemoteException
+     */
+	public int getTypeNum(AccountType type)throws RemoteException;
+
+	/**
 	 * 判断该账户在数据库中是否存在
 	 * @param account 账户ID
 	 * @return 是否存在（布尔值）

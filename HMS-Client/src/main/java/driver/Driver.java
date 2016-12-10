@@ -7,9 +7,9 @@
 //import vo.HotelinfoVO;
 //import vo.OrderVO;
 //import vo.PromotionVO;
-//import businesslogic.hotelinfobl.HotelinfoblImpl;
+//import businesslogic.hotelinfobl.HotelinfoDataImpl;
 //import businesslogic.hotelroombl.Hotelroombl_stub;
-//import businesslogic.hotelsalerbl.HotelsalerblImpl;
+//import businesslogic.hotelsalerbl.HotelInfoOperation;
 //import businesslogic.logbl.Login;
 //import businesslogic.orderbl.OrderBl_stub;
 //import businesslogic.promotionbl.PromotionBl_stub;
@@ -37,7 +37,7 @@
 //	HotelinfoVO hotelinfovo;
 //
 //	public void getHotelinfo(String HotelID) {
-//		hotelinfo = new HotelinfoblImpl();
+//		hotelinfo = new HotelinfoDataImpl();
 //		hotelinfovo = hotelinfo.getHotelinfo(HotelID);
 //		System.out.println("----------获得酒店信息----------");
 //		System.out.println(hotelinfovo.getHotelID()+" "+hotelinfovo.getHotelName());
@@ -54,7 +54,7 @@
 //	HotelsalerblService hotelsaler;
 //
 //	public  void modifyHotelInfo(HotelinfoVO vo){
-//		hotelsaler = new HotelsalerblImpl();
+//		hotelsaler = new HotelInfoOperation();
 //		System.out.println("----------修改酒店信息----------");
 //		System.out.println(hotelsaler.modifyHotelInfo(vo));
 //	}
@@ -95,10 +95,10 @@
 //
 //	HSmanagementBlService hsmanagement;
 //
-//	public void getHotelsalerInfo(String hotelsalerID){
+//	public void getHotelInfo(String hotelsalerID){
 //		hsmanagement = new HSmanagement();
 //		System.out.println("----------获得酒店信息----------");
-//		System.out.println(hsmanagement.getHotelsalerInfo("0001").getHotelName());
+//		System.out.println(hsmanagement.getHotelInfo("0001").getHotelName());
 //	}
 //
 //	URmanagementBlService urmanagement;
@@ -141,7 +141,7 @@
 //		driver.getOrderInfo("0001");
 //		driver.getPromotionList(promotionIds);
 //		driver.searchHotelInArea(conditionVO);
-//		driver.getHotelsalerInfo("0001");
+//		driver.getHotelInfo("0001");
 //		driver.getUserInfo("0001");
 //		driver.makePeriodPromotion(promotionVO);
 //	}

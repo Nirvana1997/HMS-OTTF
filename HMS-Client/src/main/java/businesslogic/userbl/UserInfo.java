@@ -2,7 +2,7 @@ package businesslogic.userbl;
 
 
 
-import businesslogic.userbl.interfaces.VipInfo;
+import utility.VipInfo;
 import businesslogic.websalerbl.impl.VipDataImpl;
 import data_stub.userdata.UserDataImpl_stub;
 import dataservice.userdataservice.UserDataService;
@@ -24,14 +24,8 @@ public  class UserInfo{
 	 */
 	UserDataService userDataService;
 
-	/**
-	 * 会员等级模块
-	 */
-	VipInfo vipInfo;
-
 	public UserInfo() {
 		userDataService = new UserDataImpl_stub();
-		vipInfo = new VipDataImpl();
 	}
 
 	/**
@@ -52,10 +46,7 @@ public  class UserInfo{
 	 */
 	public UserInfoVO showUserInfo(String userID)throws RemoteException{
 		UserInfoPO po = userDataService.getUserInfo(userID);
-
-		int vipLevel = vipInfo.calcLevel(po.getCredit());
-
-		return UserPVChanger.userInfoP2V(po,vipLevel);
+		return UserPVChanger.userInfoP2V(po);
 
 	}
 }

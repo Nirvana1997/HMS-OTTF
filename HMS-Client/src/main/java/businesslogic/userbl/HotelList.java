@@ -1,7 +1,6 @@
 package businesslogic.userbl;
 
-import businesslogic.hotelsalerbl.HotelDataImpl;
-import businesslogic.logbl.Login;
+import businesslogic.hotelsalerbl.impl.HotelDataImpl;
 import businesslogic.orderbl.impl.OrderDataImpl;
 import businesslogic.userbl.criteria.Criterion;
 import businesslogic.userbl.interfaces.HotelInfo;
@@ -12,6 +11,7 @@ import enumData.SortWay;
 import enumData.TradeArea;
 import po.HotelinfoPO;
 import po.OrderPO;
+import utility.HotelPVChanger;
 import vo.HotelListItemVO;
 import vo.HotelinfoVO;
 import vo.LimitVO;
@@ -44,7 +44,7 @@ public class HotelList {
      */
     public HotelinfoVO getHotelInfo(String hotelID)throws RemoteException{
         HotelinfoPO po = hotelInfo.getHotelInfo(hotelID);
-        return new HotelinfoVO(po.getHotelID(),po.getHotelname(),po.getTradeArea(),po.getAddress(),po.getDetailAddress(),po.getContactNumber(),po.getIntroduction(),po.getService(),po.getStar(),po.getGrade());
+        return HotelPVChanger.hotelP2V(po);
     }
 
     /**
