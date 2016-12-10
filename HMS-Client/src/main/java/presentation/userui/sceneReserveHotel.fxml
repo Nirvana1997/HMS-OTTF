@@ -51,7 +51,7 @@
          <effect>
             <ImageInput>
                <source>
-                  <Image url="@../../../../../graphics/userui/浏览酒店2.png" />
+                  <Image url="file:/D:/HMS-OTTF的副本/HMS-OTTF的副本/HMS-Client/graphics/userui/浏览酒店1.png" />
                </source>
             </ImageInput>
          </effect>
@@ -206,13 +206,13 @@
             <Font size="16.0" />
          </font>
       </Text>
-      <DatePicker fx:id="checkinDate" layoutX="472.0" layoutY="447.0" onMouseExited="#initCheckOutDate" prefHeight="30.0" prefWidth="144.0" />
+      <DatePicker fx:id="checkinDate" editable="false" layoutX="472.0" layoutY="447.0" onMouseExited="#initCheckOutDate" prefHeight="30.0" prefWidth="144.0" />
       <Text layoutX="386.0" layoutY="515.0" strokeType="OUTSIDE" strokeWidth="0.0" text="退房时间：">
          <font>
             <Font size="16.0" />
          </font>
       </Text>
-      <DatePicker fx:id="checkoutDate" layoutX="472.0" layoutY="494.0" prefHeight="30.0" prefWidth="144.0" />
+      <DatePicker fx:id="checkoutDate" editable="false" layoutX="472.0" layoutY="494.0" prefHeight="30.0" prefWidth="144.0" />
       <Button fx:id="buttonCommitOrder" layoutX="764.0" layoutY="530.0" mnemonicParsing="false" onAction="#CommitOrder" text="提交订单" />
       <Button fx:id="buttonCancel" layoutX="852.0" layoutY="530.0" mnemonicParsing="false" onAction="#Cancel" text="取消" />
    </children>

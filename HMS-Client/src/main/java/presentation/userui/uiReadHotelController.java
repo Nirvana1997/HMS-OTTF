@@ -127,7 +127,7 @@ public class uiReadHotelController implements Initializable {
         }
         //如果有，则跳转
         if(chooseHotel) {
-            setHotelID(hotelList.getSelectionModel().getSelectedItem().getHotelID());
+            jump.setHotelID(hotelList.getSelectionModel().getSelectedItem().getHotelID());
             jump.gotoHotel();
         }
         //如果没有，跳出提示框
@@ -154,7 +154,7 @@ public class uiReadHotelController implements Initializable {
         }
         //如果有，则跳转
         if(chooseHotel) {
-            setHotelID(hotelList.getSelectionModel().getSelectedItem().getHotelID());
+            jump.setHotelID(hotelList.getSelectionModel().getSelectedItem().getHotelID());
             jump.gotoReserveHotel();
         }
         //如果没有，跳出提示框
@@ -217,12 +217,7 @@ public class uiReadHotelController implements Initializable {
         columnHasCanceled.setCellValueFactory(cellData -> cellData.getValue().hasCanceledProperty());
     }
 
-    /**
-     * 当前选择酒店的ID
-     */
-    static String currentHotelid;
-    public void setHotelID(String id){ currentHotelid = id;}
-    public static String getHotelID(){ return currentHotelid;}
+
     /**
      * 是否选择酒店
      */
