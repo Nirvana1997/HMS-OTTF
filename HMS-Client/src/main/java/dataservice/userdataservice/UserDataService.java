@@ -42,6 +42,13 @@ public interface UserDataService extends Remote{
 	public ResultMessage deleteUserInfo(String userID) throws RemoteException;
 
 	/**
+	 * 得到用户信息列表（所有用户）
+	 * @return 用户信息列表
+	 * @throws RemoteException
+     */
+	public ArrayList<UserInfoPO> getUserInfoList() throws RemoteException;
+
+	/**
 	 * 增加用户信用值
 	 * @param userID 用户ID
 	 * @param value 增加的信息值
@@ -68,5 +75,12 @@ public interface UserDataService extends Remote{
 	 * @throws RemoteException
      */
 	public ArrayList<CreditRecordPO> checkCreditRecord(String userID) throws RemoteException;
+
+	/**
+	 * 得到当前用户ID的总数+1
+	 * @return 当前用户ID总数+1
+	 * @throws RemoteException
+     */
+	public int getCurrentUserID() throws RemoteException;
 
 }

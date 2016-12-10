@@ -1,5 +1,6 @@
 package dataservice.orderdataservice;
 
+import enumData.IDType;
 import enumData.ResultMessage;
 import po.OrderPO;
 
@@ -23,11 +24,13 @@ public interface OrderDataService extends Remote{
 	public ResultMessage setOrderInfo(OrderPO po)throws RemoteException;
 
 	/**
-	 * 根据账户，返回相应订单列表
-	 * @param account 用户ID
-	 * @return 订单PO的列表
+	 * 根据ID类型和ID，去搜索相应的订单
+	 * @param ID 具体ID
+	 * @param type ID类型
+	 * @return 订单信息的列表
+	 * @throws RemoteException
      */
-	public ArrayList<OrderPO> getOrderList(String account)throws RemoteException;
+	public ArrayList<OrderPO> getOrderList(String ID, IDType type)throws RemoteException;
 
 	/**
 	 * 向数据库添加订单信息

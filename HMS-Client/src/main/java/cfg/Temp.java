@@ -29,4 +29,14 @@ public class Temp {
      * 超过规定时间减少的信用值比例
      */
     public static final double CREDIT_CUT = 0.5;
+
+    public static final String WEB_MANAGER = "00";
+
+    public static final String USER = "01";
+
+    public static final String HOTELSALER = "02";
+
+    public static final String WEB_SALER = "03";
+
+    public static final int ID_NUMBER_LENGTH = 10;
 }
