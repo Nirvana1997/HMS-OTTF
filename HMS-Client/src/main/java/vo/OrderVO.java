@@ -211,7 +211,7 @@ public class OrderVO {
         return promotionName;
     }
 
-    public void setPromotion(String  promotionName) {
+    public void setPromotionName(String  promotionName) {
         this.promotionName = promotionName;
     }
 

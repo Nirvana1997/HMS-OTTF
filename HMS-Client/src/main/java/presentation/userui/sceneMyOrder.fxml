@@ -2,6 +2,9 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.ImageInput?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -76,12 +79,12 @@
             <Font name="SimHei" size="16.0" />
          </font>
       </Label>
-      <ImageView fitHeight="36.0" fitWidth="366.0" layoutX="315.0" layoutY="138.0">
+      <ImageView fitHeight="36.0" fitWidth="366.0" layoutX="317.0" layoutY="105.0">
          <image>
             <Image url="@../../../../../graphics/userui/MyOrder/menu.png" />
          </image>
       </ImageView>
-      <Button fx:id="buttonNormal" layoutX="315.0" layoutY="138.0" mnemonicParsing="false" onAction="#chooseNormal" prefHeight="36.0" prefWidth="125.0" text="Button">
+      <Button fx:id="buttonNormal" layoutX="317.0" layoutY="105.0" mnemonicParsing="false" onAction="#chooseNormal" prefHeight="36.0" prefWidth="125.0" text="Button">
          <effect>
             <ImageInput>
                <source>
@@ -90,7 +93,7 @@
             </ImageInput>
          </effect>
       </Button>
-      <Button fx:id="buttonAbnormal" layoutX="435.0" layoutY="138.0" mnemonicParsing="false" onAction="#chooseAbnormal" prefHeight="36.0" prefWidth="125.0" text="Button">
+      <Button fx:id="buttonAbnormal" layoutX="437.0" layoutY="105.0" mnemonicParsing="false" onAction="#chooseAbnormal" prefHeight="36.0" prefWidth="125.0" text="Button">
          <effect>
             <ImageInput>
                <source>
@@ -99,7 +102,7 @@
             </ImageInput>
          </effect>
       </Button>
-      <Button fx:id="buttonRevoke" layoutX="555.0" layoutY="138.0" mnemonicParsing="false" onAction="#chooseRevoke" prefHeight="36.0" prefWidth="125.0" text="Button">
+      <Button fx:id="buttonRevoke" layoutX="557.0" layoutY="105.0" mnemonicParsing="false" onAction="#chooseRevoke" prefHeight="36.0" prefWidth="125.0" text="Button">
          <effect>
             <ImageInput>
                <source>
@@ -108,9 +111,9 @@
             </ImageInput>
          </effect>
       </Button>
-      <AnchorPane fx:id="Order" layoutX="336.0" layoutY="240.0" prefHeight="324.0" prefWidth="248.0">
+      <AnchorPane fx:id="Order" layoutX="336.0" layoutY="240.0" prefHeight="324.0" prefWidth="248.0" visible="false">
          <children>
-            <ImageView fitHeight="324.0" fitWidth="248.0">
+            <ImageView fx:id="panelOrder" fitHeight="324.0" fitWidth="248.0" onMouseClicked="#gotoOrder">
                <image>
                   <Image url="@../../../../../graphics/userui/MyOrder/order.png" />
                </image>
@@ -152,5 +155,24 @@
             </Text>
          </children>
       </AnchorPane>
+      <TableView fx:id="orderList" layoutX="315.0" layoutY="171.0" prefHeight="414.0" prefWidth="495.0">
+        <columns>
+          <TableColumn fx:id="columnID" prefWidth="130.0" text="订单编号" />
+          <TableColumn fx:id="columnHotel" prefWidth="110.0" text="酒店名称" />
+            <TableColumn fx:id="columnTime" prefWidth="143.0" text="入住时间" />
+            <TableColumn fx:id="columnState" prefWidth="111.0" text="订单状态" />
+        </columns>
+      </TableView>
+      <ImageView fx:id="searchOrder" layoutX="913.0" layoutY="92.0" onMouseClicked="#SearchOrder">
+         <image>
+            <Image url="@../../../../../graphics/webmanagerui/放大镜.png" />
+         </image>
+      </ImageView>
+      <TextField fx:id="textSearch" layoutX="771.0" layoutY="103.0" prefHeight="23.0" prefWidth="142.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <Button fx:id="buttongotoOrder" layoutX="860.0" layoutY="553.0" mnemonicParsing="false" onAction="#gotoOrder" text="查看订单" />
    </children>
 </AnchorPane>

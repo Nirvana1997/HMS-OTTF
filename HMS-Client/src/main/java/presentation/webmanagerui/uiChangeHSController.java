@@ -133,12 +133,12 @@ public class uiChangeHSController implements Initializable{
      * 初始化内容
      * @throws IOException
      */
-    public void init() throws IOException{
-        textHotelName.setText("刷新！duang！" );
+    public void init(){
+        textHSID.setText(uiManageHSController.getHotelID());
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        init();
     }
 
 

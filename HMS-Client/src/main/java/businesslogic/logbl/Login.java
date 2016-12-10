@@ -12,7 +12,7 @@ import java.rmi.RemoteException;
 
 /**
  * 登录模块
- * 负责登录相关逻辑、并可以返回当前登录用户
+ * 负责登录相关逻辑,包括判断密码是否正确、修改密码、返回当前登录用户
  * @author qzh
  */
 public class Login {
@@ -34,7 +34,7 @@ public class Login {
     /**
      * 密码是否正确,若正确则登录
      * @param vo 帐号信息
-     * @return
+     * @return 是否正确
      * @throws RemoteException
      */
 	public ResultMessage isCorrectAndLogin(AccountVO vo)throws RemoteException {
@@ -49,9 +49,9 @@ public class Login {
 	}
 
     /**
-     * 返回当前用户，若不存在，则返回null
-     * @param account
-     * @return
+     * 返回对应用户帐号类型，若不存在，则返回null
+     * @param account 帐号
+     * @return 帐号类型
      * @throws RemoteException
      */
 	public AccountType accoutType(String account)throws RemoteException{
@@ -60,6 +60,15 @@ public class Login {
 	    else{
 	        return null;
         }
+	}
+
+	/**
+	 * 修改密码
+	 *
+	 * @param password 新密码
+	 */
+	public void modifyPassword(String password) throws RemoteException {
+		logDataService.setPassword(nowUser,password);
 	}
 
 	/**

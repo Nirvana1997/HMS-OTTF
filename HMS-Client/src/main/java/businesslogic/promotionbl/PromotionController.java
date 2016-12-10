@@ -9,6 +9,7 @@ import po.PromotionPO;
 import utility.PromotionPVChanger;
 import vo.PromotionVO;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 /**
@@ -25,7 +26,7 @@ public class PromotionController implements PromotionBlService {
      * @param account 账户
      * @return
      */
-    public ArrayList<PromotionVO> getPromotionList(PromotionType type, String account) {
+    public ArrayList<PromotionVO> getPromotionList(PromotionType type, String account) throws RemoteException {
         return promotion.getPromotionList(type,account);
     }
 
@@ -35,12 +36,12 @@ public class PromotionController implements PromotionBlService {
      * @param promotionID 促销ID
      * @return
      */
-    public PromotionVO getPromotion(String promotionID) {
+    public PromotionVO getPromotion(String promotionID) throws RemoteException{
         //TODO
 //		promotionDataService = new PromotionDataImpl_stub();
 //		PromotionPO po = promotionDataService.getPromotion(promotionID);
 //		if(po!=null) {
-//			PromotionVO vo = new PromotionVO(po.getPromotionName(), po.getPromotionType(), po.getStartDate(), po.getEndDate(), po.getValidRange(), po.getMemberDiscount(), po.getNormalDiscount());
+//			PromotionVO vo = new PromotionVO(po.getName(), po.getPromotionType(), po.getStartDate(), po.getEndDate(), po.getValidRange(), po.getMemberDiscount(), po.getNormalDiscount());
 //			return vo;
 //		}
         return null;
@@ -51,7 +52,7 @@ public class PromotionController implements PromotionBlService {
      * @param vo 读入的促销信息
      * @return
      */
-    public ResultMessage setPromotion(PromotionVO vo) {
+    public ResultMessage setPromotion(PromotionVO vo) throws RemoteException {
         promotionDataService = new PromotionDataImpl_stub();
         PromotionPO po = PromotionPVChanger.promotionV2P(vo);
         ResultMessage result = promotionDataService.changePromotion(po);
@@ -63,7 +64,7 @@ public class PromotionController implements PromotionBlService {
      * @param vo 添加的促销信息
      * @return
      */
-    public ResultMessage addPromotion(PromotionVO vo) {
+    public ResultMessage addPromotion(PromotionVO vo) throws RemoteException {
         promotionDataService = new PromotionDataImpl_stub();
         PromotionPO po = PromotionPVChanger.promotionV2P(vo);
         ResultMessage result = promotionDataService.addPromotion(po);
@@ -75,7 +76,7 @@ public class PromotionController implements PromotionBlService {
      * @param promotionID 删除的ID
      * @return
      */
-    public ResultMessage deletePromotion(String promotionID) {
+    public ResultMessage deletePromotion(String promotionID) throws RemoteException {
         promotionDataService = new PromotionDataImpl_stub();
         ResultMessage result = promotionDataService.deletePromotion(promotionID);
         return result;

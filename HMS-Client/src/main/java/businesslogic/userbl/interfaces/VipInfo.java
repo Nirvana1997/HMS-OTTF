@@ -13,5 +13,5 @@ public interface VipInfo {
      * @return 会员等级
      * @throws RemoteException
      */
-    public int calcLevel(Double credit)throws RemoteException;
+    public int calcLevel(int credit)throws RemoteException;
 }

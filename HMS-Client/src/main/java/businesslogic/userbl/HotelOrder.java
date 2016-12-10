@@ -67,7 +67,7 @@ public class HotelOrder {
      * @param vo 订单信息
      * @return 房间数目是否足够
      */
-    public boolean haveEnoughRoom(OrderVO vo) {
+    public boolean haveEnoughRoom(OrderVO vo) throws RemoteException {
         return roomNumJudger.haveEnoughRoom(vo.getHotelID(),vo.getCheckInDate(),vo.getCheckOutDate(),vo.getRoomType(),vo.getRoomNumber());
     }
 
@@ -103,7 +103,7 @@ public class HotelOrder {
     public ArrayList<OrderVO> readOrder(String userID) throws RemoteException {
         //结果数组
         ArrayList<OrderVO> res = new ArrayList<OrderVO>();
-        for(OrderPO po:userOrderInfo.getOrderList(userID)){
+        for(OrderPO po:userOrderInfo.getOrderList()){
             res.add(OrderPVChanger.orderP2V(po));
         }
         return res;
@@ -124,7 +124,7 @@ public class HotelOrder {
             userOrderInfo.setOrderInfo(po);
 
             //计算规定时间
-            Date ddl = DateOperation.subHours(po.getDdl(), Temp.H);
+            Date ddl = DateOperation.subHours(DateOperation.stringToDate(po.getDdl()), Temp.H);
             //判断是否在规定时间前取消，若超过规定时间，则减少一定的信用值
             if(new Date().after(ddl)){
                 userDataService.subCredit(Login.getNowUser(),(int)(po.getPrice()*Temp.CREDIT_CUT),DateOperation.dateToString(new Date()));

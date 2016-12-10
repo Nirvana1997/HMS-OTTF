@@ -68,7 +68,7 @@ public class HotelDataImpl implements HotelInfo,HotelRoom {
      * @return
      */
     @Override
-    public ArrayList<RoomNumPO> getEmptyrooms(String hotelID, String date){
+    public ArrayList<RoomNumPO> getEmptyrooms(String hotelID, String date) throws RemoteException {
         return hotelroomDataService.getEmptyrooms(hotelID,date);
     }
 
@@ -78,7 +78,7 @@ public class HotelDataImpl implements HotelInfo,HotelRoom {
      * @return
      */
     @Override
-    public ArrayList<HotelroomPO> getRoomList(String hotelID) {
+    public ArrayList<HotelroomPO> getRoomList(String hotelID) throws RemoteException {
         return hotelroomDataService.getRoomList(hotelID);
     }
 }

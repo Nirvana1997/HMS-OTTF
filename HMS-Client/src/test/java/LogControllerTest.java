@@ -36,7 +36,7 @@ public void after() throws Exception {
 @Test
 public void testIsCorrect() throws Exception {
     AccountVO vo1 = new AccountVO("151250119","150809", AccountType.hotelsaler);
-    AccountVO vo2 = new AccountVO("151250175","150809", AccountType.personalUser);
+    AccountVO vo2 = new AccountVO("151250175","150809", AccountType.user);
     Assert.assertEquals(ResultMessage.Correct,logBlService.isCorrectAndLogin(vo1));
     Assert.assertEquals(ResultMessage.InCorrect,logBlService.isCorrectAndLogin(vo2));
 } 
@@ -48,7 +48,7 @@ public void testIsCorrect() throws Exception {
 */ 
 @Test
 public void testAccoutType() throws Exception {
-    Assert.assertEquals(AccountType.personalUser,logBlService.accoutType("151250119"));
+    Assert.assertEquals(AccountType.user,logBlService.accoutType("151250119"));
     Assert.assertEquals(AccountType.hotelsaler,logBlService.accoutType("151250175"));
 }
 
@@ -69,8 +69,8 @@ public void testRegister() throws Exception {
     comments.add("good");
     HotelinfoVO hvo = new HotelinfoVO("0001", "仙林大酒店", TradeArea.Xianlin, Address.NJU, "仙林","1111 ", "VergGood", "GreatService", 5, 5);
     HotelsalerAccountVO vo1 = new HotelsalerAccountVO("151250119","150809", AccountType.hotelsaler,hvo);
-    UserInfoVO uvo = new UserInfoVO("01", "钱志豪", "320581", "139136", 0, 0);
-    AccountVO vo2 = new UserAccountVO("151250189","150809", AccountType.personalUser,uvo);
+    UserInfoVO uvo = new UserInfoVO("01", "钱志豪", "320581", "139136", 0, "1997_03_26","",UserType.Person,0);
+    AccountVO vo2 = new UserAccountVO("151250189","150809", AccountType.user,uvo);
 //    Assert.assertEquals(ResultMessage.HasExist,logBlService.register(vo1));
     Assert.assertEquals(ResultMessage.Correct,logBlService.register(vo2));
 }

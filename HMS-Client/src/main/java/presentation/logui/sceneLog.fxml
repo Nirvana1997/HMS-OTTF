@@ -8,7 +8,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
-
+<?import javafx.scene.text.Text?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="618.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.logui.uiLogController">
    <children>
@@ -17,7 +17,7 @@
             <Image url="@../../../../../graphics/logui/homepage.png" />
          </image>
       </ImageView>
-      <TextField fx:id="textUserID" layoutX="433.0" layoutY="313.0" minWidth="-Infinity" prefHeight="30.0" prefWidth="180.0" style="-fx-border-radius: 4;">
+      <TextField fx:id="textUserID" layoutX="433.0" layoutY="313.0" minWidth="-Infinity" onMouseClicked="#clearUser" prefHeight="30.0" prefWidth="180.0" style="-fx-border-radius: 4;">
          <font>
             <Font size="14.0" />
          </font>
@@ -40,10 +40,12 @@
             </ImageInput>
          </effect>
       </Button>
-      <PasswordField fx:id="textPassword" layoutX="433.0" layoutY="360.0" prefHeight="29.0" prefWidth="180.0">
+      <PasswordField fx:id="textPassword" layoutX="433.0" layoutY="360.0" onMouseClicked="#clearPassword" prefHeight="29.0" prefWidth="180.0">
          <font>
             <Font size="14.0" />
          </font>
       </PasswordField>
+      <Text fx:id="wrongPassword" fill="RED" layoutX="461.0" layoutY="415.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*账号密码错误" visible="false" />
+      <Text fx:id="notExist" fill="RED" layoutX="461.0" layoutY="415.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*该账户不存在" visible="false" />
    </children>
 </AnchorPane>

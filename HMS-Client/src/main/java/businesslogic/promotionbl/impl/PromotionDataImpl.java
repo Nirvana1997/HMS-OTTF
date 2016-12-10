@@ -12,6 +12,7 @@ import vo.UserInfoVO;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 /**
@@ -36,7 +37,7 @@ public class PromotionDataImpl implements PromotionInfo {
      * @return 填充完网站营销策略和酒店营销策略的订单
      */
     @Override
-    public OrderVO choosePromotion(UserInfoVO userInfoVO, OrderVO orderVO) {
+    public OrderVO choosePromotion(UserInfoVO userInfoVO, OrderVO orderVO) throws RemoteException {
         //结果订单
         OrderVO res = orderVO;
         //营销策略列表
@@ -78,7 +79,7 @@ public class PromotionDataImpl implements PromotionInfo {
 
         //填充订单信息
         res.setPrice(leastPrice);
-        res.setPromotion(PromotionPVChanger.promotionP2V(bestPromotion));
+        res.setPromotionName(bestPromotion.getName());
         return res;
     }
 
@@ -88,7 +89,7 @@ public class PromotionDataImpl implements PromotionInfo {
      * @param hotelID 酒店编号
      * @return 所有网站和预定酒店的营销策略
      */
-    private ArrayList<PromotionPO> getUsablePromotions(String hotelID) {
+    private ArrayList<PromotionPO> getUsablePromotions(String hotelID) throws RemoteException {
         ArrayList<PromotionPO> res = new ArrayList<PromotionPO>();
         //获得各种类型可使用的营销策略
         mergeList(res, promotionDataService.getPromotionList(PromotionType.Web_Period));

@@ -16,11 +16,34 @@ import java.util.ResourceBundle;
  * Created by Administrator on 2016/12/5.
  */
 public class uiOrderController implements Initializable{
+    @FXML
+    private Text orderID;
+    @FXML
+    private Text orderState;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         if(uiMyOrderController.getOrderState()== OrderState.executed){
             buttonComment.setVisible(true);
         }
+        else if(uiMyOrderController.getOrderState() == OrderState.executing){
+            buttonRevoke.setVisible(true);
+        }
+        orderID.setText(uiMyOrderController.getOrderID());
+        String state;
+        //根据订单状态显示相应字符
+        if(uiMyOrderController.getOrderState() == OrderState.abnormal){
+            state = "异常";
+        }
+        else if(uiMyOrderController.getOrderState() == OrderState.executed){
+            state = "已执行";
+        }
+        else if(uiMyOrderController.getOrderState() == OrderState.executing){
+            state = "未执行";
+        }
+        else{
+            state = "已撤销";
+        }
+        orderState.setText(state);
     }
 
 

@@ -6,6 +6,8 @@ import po.PromotionPO;
 import vo.OrderVO;
 import vo.UserInfoVO;
 
+import java.rmi.RemoteException;
+
 /**
  * 促销策略信息接口
  * @author qzh
@@ -18,5 +20,5 @@ public interface PromotionInfo {
      * @param orderVO 订单信息
      * @return 填充完网站营销策略和酒店营销策略的订单
      */
-    public OrderVO choosePromotion(UserInfoVO userInfoVO,OrderVO orderVO);
+    public OrderVO choosePromotion(UserInfoVO userInfoVO,OrderVO orderVO) throws RemoteException;
 }

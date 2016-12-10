@@ -4,6 +4,7 @@ import businesslogicservice.webmanagerlogicservice.HSmanagementBlService;
 import businesslogicservice.webmanagerlogicservice.URmanagementBlService;
 import businesslogicservice.webmanagerlogicservice.WSmanagementBlService;
 import enumData.ResultMessage;
+import vo.HotelinfoVO;
 import vo.HotelsalerInfoVO;
 import vo.UserInfoVO;
 import vo.WebsalerInfoVO;
@@ -67,22 +68,27 @@ public class WebmanagerController implements HSmanagementBlService,URmanagementB
     }
 
     @Override
-    public HotelsalerInfoVO getHotelsalerInfo(String hotelsalerID) throws RemoteException {
+    public ArrayList<HotelinfoVO> getHotellist() throws RemoteException {
         return null;
     }
 
     @Override
-    public ResultMessage setHotelsalerInfo(HotelsalerInfoVO vo) throws RemoteException {
+    public HotelinfoVO getHotelinfo(String hotelsalerID) throws RemoteException {
         return null;
     }
 
     @Override
-    public boolean addHotelsalerInfo(HotelsalerInfoVO vo, String password) throws RemoteException {
+    public ResultMessage setHotelinfo(HotelinfoVO vo) throws RemoteException {
+        return null;
+    }
+
+    @Override
+    public boolean addHotelinfo(HotelinfoVO vo) throws RemoteException {
         return false;
     }
 
     @Override
-    public ResultMessage deleteHotelsalerVO(String hotelsalerID) throws RemoteException {
+    public ResultMessage deleteHotelinfo(String hotelsalerID) throws RemoteException {
         return null;
     }
 }

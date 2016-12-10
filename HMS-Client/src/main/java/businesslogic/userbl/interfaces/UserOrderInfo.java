@@ -19,10 +19,9 @@ public interface UserOrderInfo {
 
     /**
      * 根据账户，返回相应订单列表
-     * @param account
      * @return 对应用户的订单列表
      */
-    public ArrayList<OrderPO> getOrderList(String account)throws RemoteException;
+    public ArrayList<OrderPO> getOrderList()throws RemoteException;
 
     /**
      * 修改订单信息
