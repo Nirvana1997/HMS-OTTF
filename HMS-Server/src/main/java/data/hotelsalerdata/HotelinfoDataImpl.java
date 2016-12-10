@@ -7,7 +7,6 @@ import enumData.ResultMessage;
 import enumData.SortWay;
 import enumData.TradeArea;
 import po.CommentPO;
-import po.ConditionPO;
 import po.HotelinfoPO;
 
 import java.rmi.RemoteException;
@@ -64,7 +63,7 @@ public class HotelinfoDataImpl extends UnicastRemoteObject implements HotelinfoD
     @Override
     public ResultMessage setHotelinfo(HotelinfoPO po) throws RemoteException {
         if(hasExisted(po.getHotelID())){
-            DataBaseHelper.in("update HotelInfo set hotelName = '" + po.getHotelname() + "' where hotelID = '" + po.getHotelID() +"'");
+            DataBaseHelper.in("update HotelInfo set hotelName = '" + po.getHotelName() + "' where hotelID = '" + po.getHotelID() +"'");
             DataBaseHelper.in("update HotelInfo set tradeArea = '" + po.getTradeArea().toString() + "' where hotelID = '" + po.getHotelID() +"'");
             DataBaseHelper.in("update HotelInfo set address = '" + po.getAddress().toString() + "' where hotelID = '" + po.getHotelID() +"'");
             DataBaseHelper.in("update HotelInfo set detailAddress = '" + po.getDetailAddress() + "' where hotelID = '" + po.getHotelID() +"'");
@@ -128,11 +127,42 @@ public class HotelinfoDataImpl extends UnicastRemoteObject implements HotelinfoD
             hotelinfoPOList.add(new HotelinfoPO(hotelIDList.get(i),hotelNameList.get(i),tradeArea_,address_,detailAddressList.get(i),
                     introductionList.get(i),serviceList.get(i),contactNumList.get(i),Integer.parseInt(starList.get(i)),
                     Double.parseDouble(gradeList.get(i)),Double.parseDouble(priceList.get(i))));
-
-            return hotelinfoPOList;
         }
 
         return hotelinfoPOList;
+    }
+
+    @Override
+    public ArrayList<HotelinfoPO> getHotelList() throws RemoteException {
+        ArrayList<HotelinfoPO> hotelinfoPOs = new ArrayList<HotelinfoPO>();
+        ArrayList<String> hotelIDList = DataBaseHelper.outSelect("HotelInfo","hotelID");
+        ArrayList<String> hotelNameList = DataBaseHelper.outSelect("HotelInfo","hotelName");
+        ArrayList<String> tradeAreaList = DataBaseHelper.outSelect("HotelInfo","tradeArea");
+        ArrayList<String> addressList = DataBaseHelper.outSelect("HotelInfo","address");
+        ArrayList<String> detailAddressList = DataBaseHelper.outSelect("HotelInfo","detailAddress");
+        ArrayList<String> introductionList = DataBaseHelper.outSelect("HotelInfo","introduction");
+        ArrayList<String> serviceList = DataBaseHelper.outSelect("HotelInfo","service");
+        ArrayList<String> contactNumberList = DataBaseHelper.outSelect("HotelInfo","contactNumber");
+        ArrayList<String> starList = DataBaseHelper.outSelect("HotelInfo","star");
+        ArrayList<String> gradeList = DataBaseHelper.outSelect("HotelInfo","grade");
+        ArrayList<String> minPriceList = DataBaseHelper.outSelect("HotelInfo","minPrice");
+
+        for(int i=0;i<hotelNameList.size();i++){
+            ArrayList<String> temp = null;
+            TradeArea tradeArea_ = null;
+            Address address_ = null;
+            try {
+                tradeArea_ = Enum.valueOf(TradeArea.class,tradeAreaList.get(i).trim());
+                address_ = Enum.valueOf(Address.class,addressList.get(i).trim());
+            }catch (IllegalArgumentException ex){
+                ex.printStackTrace();
+            }
+
+            hotelinfoPOs.add(new HotelinfoPO(hotelIDList.get(i),hotelNameList.get(i),tradeArea_,address_,detailAddressList.get(i),
+                    introductionList.get(i),serviceList.get(i),contactNumberList.get(i),Integer.parseInt(starList.get(i)),
+                    Double.parseDouble(gradeList.get(i)),Double.parseDouble(minPriceList.get(i))));
+        }
+        return hotelinfoPOs;
     }
 
     private ArrayList<String> myOut(String content,String standard,String way,TradeArea tradeArea,Address address){
@@ -189,10 +219,19 @@ public class HotelinfoDataImpl extends UnicastRemoteObject implements HotelinfoD
         if(hasExisted(po.getHotelID()))
             return ResultMessage.HasExist;
         DataBaseHelper.in("insert into HotelInfo (hotelID,hotelName,tradeArea,address,detailAddress,introduction,service,contactNumber,star,grade,minPrice) values (" +
-                "'" + po.getHotelID() + "','" + po.getHotelname() + "','" + po.getTradeArea().toString() + "','" + po.getAddress().toString()
+                "'" + po.getHotelID() + "','" + po.getHotelName() + "','" + po.getTradeArea().toString() + "','" + po.getAddress().toString()
                 + "','" + po.getDetailAddress() + "','" + po.getIntroduction() + "','" + po.getService() +"','" + po.getContactNumber() +
                 "','" + po.getStar() + "','" + po.getGrade() + "','"+ po.getMinPrice() + "')");
         return ResultMessage.Correct;
+    }
+
+    @Override
+    public ResultMessage deleteHotelinfo(String hotelID) throws RemoteException {
+        if(hasExisted(hotelID)){
+            DataBaseHelper.in("delete from HotelInfo where hotelID = '" + hotelID + "'");
+            return ResultMessage.Correct;
+        }else
+            return ResultMessage.NotExist;
     }
 
     /**

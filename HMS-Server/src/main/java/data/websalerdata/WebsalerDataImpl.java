@@ -69,6 +69,22 @@ public class WebsalerDataImpl extends UnicastRemoteObject implements WebsalerDat
     }
 
     /**
+     * 得到网站营销人员信息列表（所有营销人员）
+     * @return
+     * @throws RemoteException
+     */
+    @Override
+    public ArrayList<WebsalerInfoPO> getWebsalerInfoList() throws RemoteException {
+        ArrayList<WebsalerInfoPO> websalerInfoPOs = new ArrayList<WebsalerInfoPO>();
+        ArrayList<String> websalerIDList  = DataBaseHelper.out("select websalerID from WebsalerInfo","websalerID");
+        ArrayList<String> contactNumberList  = DataBaseHelper.out("select contactNumber from WebsalerInfo","contactNumber");
+        for(int i=0;i<websalerIDList.size();i++){
+            websalerInfoPOs.add(new WebsalerInfoPO(websalerIDList.get(i),contactNumberList.get(i)));
+        }
+        return websalerInfoPOs;
+    }
+
+    /**
      * 修改会员升级列表
      * @param po
      * @return

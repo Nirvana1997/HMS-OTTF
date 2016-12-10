@@ -9,7 +9,6 @@ import po.CommentPO;
 import po.HotelinfoPO;
 
 import java.rmi.RemoteException;
-import java.util.Scanner;
 
 /**
  * Created by mac on 2016/12/4.
@@ -26,7 +25,7 @@ public class HotelInfoTest {
                 "鼓楼","很好","服务周到","13331411234",3,5.5,100.0)));
         System.out.println(hotelinfoDataService.addHotelinfo(new HotelinfoPO("04","喋喋大酒店", TradeArea.Gulou, Address.Gulou,
                 "鼓楼","很好","服务周到","15991920001",2,7.2,175.0)));
-        System.out.println(hotelinfoDataService.getHotelinfo("03").getHotelname());
+        System.out.println(hotelinfoDataService.getHotelinfo("03").getHotelName());
         System.out.println(hotelinfoDataService.getHotelList(TradeArea.Xianlin,Address.Xianlin, SortWay.Price_Ascending).get(0).getMinPrice());
         System.out.println(hotelinfoDataService.getHotelList(TradeArea.Xianlin,Address.Xianlin, SortWay.Price_Descending).get(0).getMinPrice());
         System.out.println(hotelinfoDataService.setHotelinfo(new HotelinfoPO("01","梓航大酒店", TradeArea.Xianlin, Address.Xianlin,
@@ -34,5 +33,6 @@ public class HotelInfoTest {
         System.out.println(hotelinfoDataService.getHotelinfo("01").getContactNumber());
         System.out.println(hotelinfoDataService.addComments(new CommentPO("01","511422713","很棒很舒适",10)));
         System.out.println(hotelinfoDataService.getComments("01").get(0).getComment());
+
     }
 }

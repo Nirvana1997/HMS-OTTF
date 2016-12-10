@@ -41,6 +41,13 @@ public interface HotelinfoDataService extends Remote{
 	public ArrayList<HotelinfoPO> getHotelList(TradeArea tradeArea, Address address , SortWay sortWay) throws RemoteException;
 
 	/**
+	 * 直接返回所有酒店信息
+	 * @return 所有酒店信息PO的列表
+	 * @throws RemoteException
+     */
+	public ArrayList<HotelinfoPO> getHotelList() throws RemoteException;
+
+	/**
 	 * 评价
 	 * @param po 评价信息PO
 	 * @return 结果信息
@@ -63,4 +70,12 @@ public interface HotelinfoDataService extends Remote{
 	 * @throws RemoteException
      */
 	public ResultMessage addHotelinfo(HotelinfoPO po) throws RemoteException;
+
+	/**
+	 * 删除酒店信息
+	 * @param hotelID 酒店ID
+	 * @return 结果信息
+	 * @throws RemoteException
+     */
+	public ResultMessage deleteHotelinfo(String hotelID) throws RemoteException;
 }

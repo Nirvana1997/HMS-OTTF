@@ -70,30 +70,32 @@ public class OrderDataImpl extends UnicastRemoteObject implements OrderDataServi
     }
 
     /**
-     * 根据账户，返回相应订单列表
-     * @param account
+     * 根据ID类型和ID，去搜索相应的订单
+     * @param ID 具体ID
+     * @param type ID类型
      * @return
      */
     @Override
-    public ArrayList<OrderPO> getOrderList(String account) {
+    public ArrayList<OrderPO> getOrderList(String ID,IDType type) {
         ArrayList<OrderPO> orderPOs = new ArrayList<OrderPO>();
-        ArrayList<String> orderIDList = DataBaseHelper.out("select orderID from OrderInfo where userID ='" + account + "'","orderID");
-        ArrayList<String> hotelIDList = DataBaseHelper.out("select hotelID from OrderInfo where userID ='" + account + "'","hotelID");
-        ArrayList<String> roomIDList = DataBaseHelper.out("select roomID from OrderInfo where userID ='" + account + "'","roomID");
-        ArrayList<String> roomNumberList = DataBaseHelper.out("select roomNumber from OrderInfo where userID ='" + account + "'","roomNumber");
-        ArrayList<String> peopleNumberList = DataBaseHelper.out("select peopleNumber from OrderInfo where userID ='" + account + "'","peopleNumber");
-        ArrayList<String> orderStateList = DataBaseHelper.out("select orderState from OrderInfo where userID ='" + account + "'","orderState");
-        ArrayList<String> checkInDateList = DataBaseHelper.out("select checkInDate from OrderInfo where userID ='" + account + "'","checkInDate");
-        ArrayList<String> checkOutDateList = DataBaseHelper.out("select checkOutDate from OrderInfo where userID ='" + account + "'","checkOutDate");
-        ArrayList<String> ddlList = DataBaseHelper.out("select ddl from OrderInfo where userID ='" + account + "'","ddl");
-        ArrayList<String> roomTypeList = DataBaseHelper.out("select roomType from OrderInfo where userID ='" + account + "'","roomType");
-        ArrayList<String> priceList = DataBaseHelper.out("select price from OrderInfo where userID ='" + account + "'","price");
-        ArrayList<String> haveChildList = DataBaseHelper.out("select haveChild from OrderInfo where userID ='" + account + "'","haveChild");
-        ArrayList<String> hotelNameList = DataBaseHelper.out("select hotelName from OrderInfo where userID ='" + account + "'","hotelName");
-        ArrayList<String> promotionNameList = DataBaseHelper.out("select promotionName from OrderInfo where userID ='" + account + "'","promotionName");
-        ArrayList<String> tradeAreaList = DataBaseHelper.out("select tradeArea from OrderInfo where userID ='" + account + "'","tradeArea");
-        ArrayList<String> addressList = DataBaseHelper.out("select address from OrderInfo where userID ='" + account + "'","address");
-        ArrayList<String> detailAddressList = DataBaseHelper.out("select detailAddress from OrderInfo where userID ='" + account + "'","detailAddress");
+        ArrayList<String> orderIDList = DataBaseHelper.out("select orderID from OrderInfo where " + type + " ='" + ID + "'","orderID");
+        ArrayList<String> hotelIDList = DataBaseHelper.out("select hotelID from OrderInfo where " + type + " ='" + ID + "'","hotelID");
+        ArrayList<String> userIDList = DataBaseHelper.out("select userID from OrderInfo where " + type + " ='" + ID + "'","userID");
+        ArrayList<String> roomIDList = DataBaseHelper.out("select roomID from OrderInfo where " + type + " ='" + ID + "'","roomID");
+        ArrayList<String> roomNumberList = DataBaseHelper.out("select roomNumber from OrderInfo where "+ type + " ='" + ID + "'","roomNumber");
+        ArrayList<String> peopleNumberList = DataBaseHelper.out("select peopleNumber from OrderInfo where " + type + " ='" + ID + "'","peopleNumber");
+        ArrayList<String> orderStateList = DataBaseHelper.out("select orderState from OrderInfo where "+ type + " ='" + ID + "'","orderState");
+        ArrayList<String> checkInDateList = DataBaseHelper.out("select checkInDate from OrderInfo where "+ type + " ='" + ID + "'","checkInDate");
+        ArrayList<String> checkOutDateList = DataBaseHelper.out("select checkOutDate from OrderInfo where " + type + " ='" + ID + "'","checkOutDate");
+        ArrayList<String> ddlList = DataBaseHelper.out("select ddl from OrderInfo where "+ type + " ='" + ID + "'","ddl");
+        ArrayList<String> roomTypeList = DataBaseHelper.out("select roomType from OrderInfo where "+ type + " ='" + ID + "'","roomType");
+        ArrayList<String> priceList = DataBaseHelper.out("select price from OrderInfo where "+ type +" ='" + ID + "'","price");
+        ArrayList<String> haveChildList = DataBaseHelper.out("select haveChild from OrderInfo where "+ type +" ='" + ID + "'","haveChild");
+        ArrayList<String> hotelNameList = DataBaseHelper.out("select hotelName from OrderInfo where "+ type +" ='" + ID + "'","hotelName");
+        ArrayList<String> promotionNameList = DataBaseHelper.out("select promotionName from OrderInfo where "+ type +" ='" + ID + "'","promotionName");
+        ArrayList<String> tradeAreaList = DataBaseHelper.out("select tradeArea from OrderInfo where "+ type +" ='" + ID + "'","tradeArea");
+        ArrayList<String> addressList = DataBaseHelper.out("select address from OrderInfo where "+ type +" ='" + ID + "'","address");
+        ArrayList<String> detailAddressList = DataBaseHelper.out("select detailAddress from OrderInfo where "+ type +" ='" + ID + "'","detailAddress");
         for(int i=0;i<orderIDList.size();i++){
             OrderState orderState = null;
             RoomType roomType = null;
@@ -107,7 +109,7 @@ public class OrderDataImpl extends UnicastRemoteObject implements OrderDataServi
             }catch (IllegalArgumentException ex){
                 ex.printStackTrace();
             }
-            orderPOs.add(new OrderPO(orderIDList.get(i),hotelIDList.get(i),account,roomIDList.get(i),Integer.parseInt(roomNumberList.get(i)),Integer.parseInt(peopleNumberList.get(i)),
+            orderPOs.add(new OrderPO(orderIDList.get(i),hotelIDList.get(i),userIDList.get(i),roomIDList.get(i),Integer.parseInt(roomNumberList.get(i)),Integer.parseInt(peopleNumberList.get(i)),
                     orderState,checkInDateList.get(i),checkOutDateList.get(i),ddlList.get(i),roomType,Double.parseDouble(priceList.get(i)),Boolean.getBoolean(haveChildList.get(i)),
                     hotelNameList.get(i),promotionNameList.get(i),tradeArea,address,detailAddressList.get(i)));
         }

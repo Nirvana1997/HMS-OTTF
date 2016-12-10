@@ -1,15 +1,13 @@
 package po;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 
 import enumData.Address;
-import enumData.RoomType;
 import enumData.TradeArea;
 
 public class HotelinfoPO implements Serializable{
 	String hotelID;
-	String hotelname;
+	String hotelName;
 	TradeArea tradeArea;
 	Address address;
 	String detailAddress;
@@ -20,11 +18,11 @@ public class HotelinfoPO implements Serializable{
 	double grade;
 	double minPrice;
 
-	public HotelinfoPO(String hotelID, String hotelname, TradeArea tradeArea, Address address,
+	public HotelinfoPO(String hotelID, String hotelName, TradeArea tradeArea, Address address,
 					   String detailAddress, String introduction, String service,
 					   String contactNumber, int star, double grade, double minPrice) {
 		this.hotelID = hotelID;
-		this.hotelname = hotelname;
+		this.hotelName = hotelName;
 		this.tradeArea = tradeArea;
 		this.address = address;
 		this.detailAddress = detailAddress;
@@ -44,12 +42,12 @@ public class HotelinfoPO implements Serializable{
 		this.hotelID = hotelID;
 	}
 
-	public String getHotelname() {
-		return hotelname;
+	public String getHotelName() {
+		return hotelName;
 	}
 
-	public void setHotelname(String hotelname) {
-		this.hotelname = hotelname;
+	public void setHotelName(String hotelName) {
+		this.hotelName = hotelName;
 	}
 
 	public TradeArea getTradeArea() {
