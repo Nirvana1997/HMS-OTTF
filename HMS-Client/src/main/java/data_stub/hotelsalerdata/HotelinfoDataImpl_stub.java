@@ -6,7 +6,6 @@ import enumData.ResultMessage;
 import enumData.SortWay;
 import enumData.TradeArea;
 import po.CommentPO;
-import po.ConditionPO;
 import po.HotelinfoPO;
 
 import java.rmi.RemoteException;
@@ -64,6 +63,11 @@ public class HotelinfoDataImpl_stub implements HotelinfoDataService {
     }
 
     @Override
+    public ArrayList<HotelinfoPO> getHotelList() throws RemoteException {
+        return hotelList;
+    }
+
+    @Override
     public ResultMessage addComments(CommentPO po) {
         commentPOList.add(po);
         return ResultMessage.Correct;
@@ -83,6 +87,17 @@ public class HotelinfoDataImpl_stub implements HotelinfoDataService {
     public ResultMessage addHotelinfo(HotelinfoPO po) throws RemoteException {
         hotelList.add(po);
         return ResultMessage.Correct;
+    }
+
+    @Override
+    public ResultMessage deleteHotelinfo(String hotelID) throws RemoteException {
+        for(int i = 0;i<hotelList.size();i++){
+            if(hotelList.get(i).getHotelID().equals(hotelID)) {
+                hotelList.remove(i);
+                return ResultMessage.Correct;
+            }
+        }
+        return ResultMessage.NotExist;
     }
 
 }

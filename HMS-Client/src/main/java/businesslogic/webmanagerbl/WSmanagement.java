@@ -4,7 +4,10 @@ import businesslogicservice.webmanagerlogicservice.WSmanagementBlService;
 import enumData.ResultMessage;
 import vo.WebsalerInfoVO;
 
-public class WSmanagement implements WSmanagementBlService{
+/**
+ * 网站营销人员
+ */
+public class WSmanagement {
 	
 	WebsalerInfoVO webSaler = new WebsalerInfoVO("0001", "1234");
 	String pswd = "1234";

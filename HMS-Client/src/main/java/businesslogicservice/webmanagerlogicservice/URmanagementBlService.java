@@ -23,7 +23,7 @@ public interface URmanagementBlService {
      * 修改用户信息
      * @param vo 用户个人信息vo
      */
-	public void setUserInfo (UserInfoVO vo);
+	public void setUserInfo (UserInfoVO vo) throws RemoteException;
 
-	public ArrayList<UserInfoVO> getUserList();
+	public ArrayList<UserInfoVO> getUserList() throws RemoteException;
 }

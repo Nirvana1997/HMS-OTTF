@@ -14,10 +14,11 @@ public class HotelinfoVO {
     private String service;
     private int star;
     private double grade;
+    private double minPrice;
 
     public HotelinfoVO(String hotelID, String hotelname, TradeArea tradeArea,
                        Address address, String detailAddress, String contactNumber,
-                       String introduction, String service, int star, double grade) {
+                       String introduction, String service, int star, double grade,double minPrice) {
         super();
         this.hotelID = hotelID;
         this.hotelname = hotelname;
@@ -29,6 +30,7 @@ public class HotelinfoVO {
         this.service = service;
         this.star = star;
         this.grade = grade;
+        this.minPrice = minPrice;
     }
 
     public String getHotelID() {
@@ -95,19 +97,27 @@ public class HotelinfoVO {
         this.star = star;
     }
 
-    public double getGrade() {
-        return grade;
-    }
-
-    public void setGrade(int grade) {
-        this.grade = grade;
-    }
-
     public String getContactNumber() {
         return contactNumber;
     }
 
     public void setContactNumber(String contactNumber) {
         this.contactNumber = contactNumber;
+    }
+
+    public double getGrade(){
+        return grade;
+    }
+
+    public void setGrade(double grade) {
+        this.grade = grade;
+    }
+
+    public double getMinPrice() {
+        return minPrice;
+    }
+
+    public void setMinPrice(double minPrice) {
+        this.minPrice = minPrice;
     }
 }

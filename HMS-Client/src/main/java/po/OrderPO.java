@@ -46,6 +46,14 @@ public class OrderPO {
 		this.roomID = roomID;
 	}
 
+	public OrderPO(String hotelID, String checkInDate, String checkOutDate, RoomType roomType, int roomNumber) {
+		this.hotelID = hotelID;
+		this.checkInDate = checkInDate;
+		this.checkOutDate = checkOutDate;
+		this.roomType = roomType;
+		this.roomNumber = roomNumber;
+	}
+
 	public String getHotelID() {
 		return hotelID;
 	}

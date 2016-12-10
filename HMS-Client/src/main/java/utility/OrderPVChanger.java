@@ -1,6 +1,7 @@
 package utility;
 
 import po.OrderPO;
+import vo.BelowLineOrderVO;
 import vo.OrderVO;
 
 /**
@@ -25,5 +26,14 @@ public class OrderPVChanger {
      */
     public static OrderPO orderV2P(OrderVO vo){
         return new OrderPO(vo.getHotelID(),vo.getHotelname(),vo.getTradeArea(),vo.getAddress(),vo.getDetailAddress(),vo.getRoomNumber(),vo.getPeopleNumber(), DateOperation.dateToString(vo.getCheckInDate()),DateOperation.dateToString(vo.getCheckOutDate()),vo.getRoomType(),vo.isHaveChild(),vo.getOrderID(),vo.getUserID(),vo.getOrderState(),DateOperation.dateToString(vo.getDdl()),vo.getPrice(),vo.getPromotionName(),vo.getRoomID());
+    }
+
+    /**
+     * 根据线下订单生成订单PO
+     * @param vo 线下订单VO
+     * @return 订单PO
+     */
+    public static OrderPO belowLineOrderV2P(BelowLineOrderVO vo){
+        return new OrderPO(vo.getHotelID(),DateOperation.dateToString(vo.getCheckInDate()),DateOperation.dateToString(vo.getCheckOutDate()),vo.getRoomType(),vo.getRoomNumber());
     }
 }

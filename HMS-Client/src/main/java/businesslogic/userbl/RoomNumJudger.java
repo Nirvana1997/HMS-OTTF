@@ -1,6 +1,6 @@
 package businesslogic.userbl;
 
-import businesslogic.hotelsalerbl.HotelDataImpl;
+import businesslogic.hotelsalerbl.impl.HotelDataImpl;
 import businesslogic.userbl.interfaces.HotelRoom;
 import enumData.RoomType;
 import po.RoomNumPO;
@@ -10,7 +10,6 @@ import java.rmi.RemoteException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 
 /**

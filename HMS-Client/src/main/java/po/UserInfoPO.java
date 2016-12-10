@@ -1,5 +1,6 @@
 package po;
 
+import businesslogic.promotionbl.strategies.Strategy;
 import enumData.UserType;
 
 public class UserInfoPO {
@@ -24,7 +25,7 @@ public class UserInfoPO {
 		this.type = type;
 	}
 
-	public String getUserID() {
+    public String getUserID() {
 		return userID;
 	}
 
