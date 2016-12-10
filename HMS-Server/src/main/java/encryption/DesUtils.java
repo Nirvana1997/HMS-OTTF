@@ -169,4 +169,34 @@ public class DesUtils {
 
         return key;
     }
+
+    /**
+     * 存码操作
+     * @param str
+     * @return
+     */
+    public String en (String str){
+        String string = "";
+        try {
+            string = encrypt(str);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return string;
+    }
+
+    /**
+     * 解码操作
+     * @param str
+     * @return
+     */
+    public String de (String str){
+        String string = "";
+        try {
+            string = decrypt(str);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return string;
+    }
 }

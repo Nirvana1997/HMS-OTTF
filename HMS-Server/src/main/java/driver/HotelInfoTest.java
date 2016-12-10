@@ -14,7 +14,7 @@ import java.rmi.RemoteException;
  * Created by mac on 2016/12/4.
  */
 public class HotelInfoTest {
-    public static void main(String[] args) throws RemoteException {
+    public static void main(String[] args) throws Exception {
         //酒店信息实现测试
         HotelinfoDataService hotelinfoDataService = new HotelinfoDataImpl();
         System.out.println(hotelinfoDataService.addHotelinfo(new HotelinfoPO("01","梓航大酒店", TradeArea.Xianlin, Address.Xianlin,

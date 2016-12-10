@@ -2,13 +2,13 @@ package data.hotelsalerdata;
 
 import database.DataBaseHelper;
 import dataservice.hotelsalerdataservice.HotelinfoDataService;
+import encryption.DesUtils;
 import enumData.Address;
 import enumData.ResultMessage;
 import enumData.SortWay;
 import enumData.TradeArea;
 import po.CommentPO;
 import po.HotelinfoPO;
-
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
@@ -18,7 +18,10 @@ import java.util.ArrayList;
  */
 public class HotelinfoDataImpl extends UnicastRemoteObject implements HotelinfoDataService {
 
-    public HotelinfoDataImpl() throws RemoteException {
+    private DesUtils desUtils;
+
+    public HotelinfoDataImpl() throws Exception {
+        desUtils = new DesUtils();
     }
 
     /**
@@ -48,8 +51,9 @@ public class HotelinfoDataImpl extends UnicastRemoteObject implements HotelinfoD
             }catch (IllegalArgumentException ex){
                 ex.printStackTrace();
             }
+            String contactNumber_ = desUtils.de(contactNumber.get(0));
             return  new HotelinfoPO(hotelID,hotelName.get(0),tradeArea_,address_,detailAddress.get(0),introduction.get(0),
-                    service.get(0),contactNumber.get(0),Integer.parseInt(star.get(0)),Double.parseDouble(grade.get(0)),Double.parseDouble(minPrice.get(0)));
+                    service.get(0),contactNumber_,Integer.parseInt(star.get(0)),Double.parseDouble(grade.get(0)),Double.parseDouble(minPrice.get(0)));
         }
         return null;
     }
@@ -63,13 +67,14 @@ public class HotelinfoDataImpl extends UnicastRemoteObject implements HotelinfoD
     @Override
     public ResultMessage setHotelinfo(HotelinfoPO po) throws RemoteException {
         if(hasExisted(po.getHotelID())){
+            String contactNumber = desUtils.en(po.getContactNumber());
             DataBaseHelper.in("update HotelInfo set hotelName = '" + po.getHotelName() + "' where hotelID = '" + po.getHotelID() +"'");
             DataBaseHelper.in("update HotelInfo set tradeArea = '" + po.getTradeArea().toString() + "' where hotelID = '" + po.getHotelID() +"'");
             DataBaseHelper.in("update HotelInfo set address = '" + po.getAddress().toString() + "' where hotelID = '" + po.getHotelID() +"'");
             DataBaseHelper.in("update HotelInfo set detailAddress = '" + po.getDetailAddress() + "' where hotelID = '" + po.getHotelID() +"'");
             DataBaseHelper.in("update HotelInfo set introduction = '" + po.getIntroduction() + "' where hotelID = '" + po.getHotelID() +"'");
             DataBaseHelper.in("update HotelInfo set service = '" + po.getService() + "' where hotelID = '" + po.getHotelID() +"'");
-            DataBaseHelper.in("update HotelInfo set contactNumber = '" + po.getContactNumber() + "' where hotelID = '" + po.getHotelID() +"'");
+            DataBaseHelper.in("update HotelInfo set contactNumber = '" + contactNumber + "' where hotelID = '" + po.getHotelID() +"'");
             DataBaseHelper.in("update HotelInfo set star = '" + po.getStar() + "' where hotelID = '" + po.getHotelID() +"'");
             DataBaseHelper.in("update HotelInfo set grade = '" + po.getGrade() + "' where hotelID = '" + po.getHotelID() +"'");
             DataBaseHelper.in("update HotelInfo set minPrice = '" + po.getMinPrice() + "' where hotelID = '" + po.getHotelID() +"'");
@@ -123,9 +128,10 @@ public class HotelinfoDataImpl extends UnicastRemoteObject implements HotelinfoD
             }catch (IllegalArgumentException ex){
                 ex.printStackTrace();
             }
+            String contactNumber = desUtils.de(contactNumList.get(i));
 
             hotelinfoPOList.add(new HotelinfoPO(hotelIDList.get(i),hotelNameList.get(i),tradeArea_,address_,detailAddressList.get(i),
-                    introductionList.get(i),serviceList.get(i),contactNumList.get(i),Integer.parseInt(starList.get(i)),
+                    introductionList.get(i),serviceList.get(i),contactNumber,Integer.parseInt(starList.get(i)),
                     Double.parseDouble(gradeList.get(i)),Double.parseDouble(priceList.get(i))));
         }
 
@@ -157,9 +163,10 @@ public class HotelinfoDataImpl extends UnicastRemoteObject implements HotelinfoD
             }catch (IllegalArgumentException ex){
                 ex.printStackTrace();
             }
+            String contactNumber = desUtils.de(contactNumberList.get(i));
 
             hotelinfoPOs.add(new HotelinfoPO(hotelIDList.get(i),hotelNameList.get(i),tradeArea_,address_,detailAddressList.get(i),
-                    introductionList.get(i),serviceList.get(i),contactNumberList.get(i),Integer.parseInt(starList.get(i)),
+                    introductionList.get(i),serviceList.get(i),contactNumber,Integer.parseInt(starList.get(i)),
                     Double.parseDouble(gradeList.get(i)),Double.parseDouble(minPriceList.get(i))));
         }
         return hotelinfoPOs;
@@ -216,11 +223,12 @@ public class HotelinfoDataImpl extends UnicastRemoteObject implements HotelinfoD
      */
     @Override
     public ResultMessage addHotelinfo(HotelinfoPO po) throws RemoteException {
+        String contactNumber = desUtils.en(po.getContactNumber());
         if(hasExisted(po.getHotelID()))
             return ResultMessage.HasExist;
         DataBaseHelper.in("insert into HotelInfo (hotelID,hotelName,tradeArea,address,detailAddress,introduction,service,contactNumber,star,grade,minPrice) values (" +
                 "'" + po.getHotelID() + "','" + po.getHotelName() + "','" + po.getTradeArea().toString() + "','" + po.getAddress().toString()
-                + "','" + po.getDetailAddress() + "','" + po.getIntroduction() + "','" + po.getService() +"','" + po.getContactNumber() +
+                + "','" + po.getDetailAddress() + "','" + po.getIntroduction() + "','" + po.getService() +"','" + contactNumber +
                 "','" + po.getStar() + "','" + po.getGrade() + "','"+ po.getMinPrice() + "')");
         return ResultMessage.Correct;
     }
