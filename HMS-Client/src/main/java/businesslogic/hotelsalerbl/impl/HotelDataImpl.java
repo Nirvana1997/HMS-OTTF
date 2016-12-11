@@ -26,7 +26,7 @@ import java.util.ArrayList;
  * @author qzh
  *         Created by personalUser on 2016/11/29.
  */
-public class HotelDataImpl implements HotelInfo, HotelRoom,HotelInfoForManagement,HotelInfoAdder {
+public class HotelDataImpl implements HotelInfo, HotelRoom,HotelInfoForManagement {
     /**
      * 酒店信息数据接口
      */
@@ -88,9 +88,17 @@ public class HotelDataImpl implements HotelInfo, HotelRoom,HotelInfoForManagemen
         return hotelinfoDataService.getHotelList();
     }
 
+    /**
+     * 添加酒店信息并添上初始均为0的房间信息
+     * @param po 酒店信息
+     * @throws RemoteException
+     */
     @Override
-    public void addHotelInfo(HotelinfoPO po) throws RemoteException {
+    public void addHotelInfoAndRoom(HotelinfoPO po) throws RemoteException {
         hotelinfoDataService.addHotelinfo(po);
+
+        //TODO
+        hotelroomDataService.initializeRoomInfo(null);
     }
 
     @Override
@@ -121,13 +129,5 @@ public class HotelDataImpl implements HotelInfo, HotelRoom,HotelInfoForManagemen
         return hotelroomDataService.getRoomList(hotelID);
     }
 
-    /**
-     * 添加酒店信息
-     * @param vo 酒店信息
-     * @throws RemoteException
-     */
-    @Override
-    public void addHotelInfo(HotelinfoVO vo) throws RemoteException {
-        hotelinfoDataService.addHotelinfo(HotelPVChanger.hotelV2P(vo));
-    }
+
 }

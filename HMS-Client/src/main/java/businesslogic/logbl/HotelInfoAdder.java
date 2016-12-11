@@ -11,7 +11,7 @@ import java.rmi.RemoteException;
  */
 public interface HotelInfoAdder {
     /**
-     * 添加酒店信息
+     * 添加酒店信息并添上初始均为0的房间信息
      * @param vo 酒店信息
      * @throws RemoteException
      */

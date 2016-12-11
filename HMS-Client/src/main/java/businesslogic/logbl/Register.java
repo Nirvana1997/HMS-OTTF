@@ -18,7 +18,7 @@ import vo.UserInfoVO;
 import java.rmi.RemoteException;
 
 /**
- * 负责接收注册的信息并添加至数据层
+ * 负责接收客户注册的信息并添加至数据层
  *
  * @author qzh
  *         Created by user on 2016/11/25.
@@ -26,15 +26,11 @@ import java.rmi.RemoteException;
 public class Register {
     LogDataService logDataService;
     UserInfoAdder userInfoAdder;
-    HotelInfoAdder hotelinfoAdder;
-    WebsalerDataService websalerDataService;
 
     public Register() throws RemoteException {
         //TODO
         this.logDataService = new LogDataImpl_stub();
         this.userInfoAdder = new UserDataImpl();
-        this.hotelinfoAdder = new HotelDataImpl();
-        this.websalerDataService = new WebsalerDataImpl_stub();
 //        this.logDataService = RemoteHelper.getInstance().getLogDataService();
     }
 
@@ -95,12 +91,5 @@ public class Register {
         userInfoAdder.addUserInfo(vo);
     }
 
-    /**
-     * 添加酒店信息
-     * @param vo 酒店信息
-     * @throws RemoteException
-     */
-    public void addHotelInfo(HotelinfoVO vo) throws RemoteException {
-       hotelinfoAdder.addHotelInfo(vo);
-    }
+
 }

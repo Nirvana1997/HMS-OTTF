@@ -39,11 +39,11 @@ public class HSmanagement{
         hotelInfoForManagement.setHotelInfo(HotelPVChanger.hotelV2P(vo));
     }
 
-    public void addHotelinfo(HotelinfoVO vo) throws RemoteException {
-        hotelInfoForManagement.addHotelInfo(HotelPVChanger.hotelV2P(vo));
+    public void addHotelinfoAndRoom(HotelinfoVO vo) throws RemoteException {
+        hotelInfoForManagement.addHotelInfoAndRoom(HotelPVChanger.hotelV2P(vo));
     }
 
-    public void deleteHotelinfo(String hotelID) throws RemoteException {
+    public void deleteHotel(String hotelID) throws RemoteException {
         hotelInfoForManagement.deleteHotelInfo(hotelID);
     }
 }

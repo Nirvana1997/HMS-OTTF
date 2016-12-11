@@ -31,11 +31,11 @@ public interface HotelInfoForManagement {
     public ArrayList<HotelinfoPO> getHotelList()throws RemoteException;
 
     /**
-     * 添加酒店信息
+     * 添加酒店信息并添上初始均为0的房间信息
      * @param po 酒店信息
      * @throws RemoteException
      */
-    public void addHotelInfo(HotelinfoPO po) throws RemoteException;
+    public void addHotelInfoAndRoom(HotelinfoPO po) throws RemoteException;
 
     /**
      * 删除酒店信息

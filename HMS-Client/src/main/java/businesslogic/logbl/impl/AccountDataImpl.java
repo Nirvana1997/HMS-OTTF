@@ -1,26 +1,28 @@
 package businesslogic.logbl.impl;
 
-import businesslogic.webmanagerbl.AccountList;
+import businesslogic.webmanagerbl.AccountInfo;
 import data_stub.logdata.LogDataImpl_stub;
 import dataservice.logdataservice.LogDataService;
 import enumData.AccountType;
 import po.AccountPO;
+import utility.AccountPVChanger;
+import vo.AccountVO;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 /**
- * 获取账户列表
+ * 帐号数据接口实现
  * @author qzh
  * Created by user on 2016/12/3.
  */
-public class AccountListImpl implements AccountList{
+public class AccountDataImpl implements AccountInfo {
     /**
      * 帐号数据模块
      */
     private LogDataService logDataService;
 
-    public AccountListImpl() throws RemoteException {
+    public AccountDataImpl() throws RemoteException {
         //TODO
         this.logDataService = new LogDataImpl_stub();
     }
@@ -38,4 +40,15 @@ public class AccountListImpl implements AccountList{
         }
         return res;
     }
+
+    /**
+     * 添加帐号
+     * @param vo 帐号vo
+     * @throws RemoteException
+     */
+    @Override
+    public void addAccount(AccountVO vo) throws RemoteException {
+        logDataService.addAccount(AccountPVChanger.accountV2P(vo));
+    }
+
 }

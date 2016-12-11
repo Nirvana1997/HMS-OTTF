@@ -32,24 +32,30 @@ public class WebmanagerController implements HSmanagementBlService,URmanagementB
      */
     private WSmanagement wSmanagement;
 
+    public WebmanagerController() throws RemoteException {
+        hSmanagement = new HSmanagement();
+        uRmanagement = new URmanagement();
+        wSmanagement = new WSmanagement();
+    }
+
     @Override
     public WebsalerInfoVO getWebsaleInfo(String websalerID) {
-        return null;
+        return wSmanagement.getWebsaleInfo(websalerID);
     }
 
     @Override
     public ResultMessage setWebsalerInfo(WebsalerInfoVO vo) {
-        return null;
+        return wSmanagement.setWebsalerInfo(vo);
     }
 
     @Override
     public boolean addWebsalerInfo(WebsalerInfoVO vo, String password) {
-        return false;
+        return wSmanagement.addWebsalerInfo(vo,password);
     }
 
     @Override
     public ResultMessage deleteWebsalerInfo(String websalerID) {
-        return null;
+        return wSmanagement.deleteWebsalerInfo(websalerID);
     }
 
     /**
@@ -81,26 +87,29 @@ public class WebmanagerController implements HSmanagementBlService,URmanagementB
 
     @Override
     public ArrayList<HotelinfoVO> getHotellist() throws RemoteException {
-        return null;
+        return hSmanagement.getHotellist();
     }
 
     @Override
     public HotelinfoVO getHotelinfo(String hotelsalerID) throws RemoteException {
-        return null;
+        return hSmanagement.getHotelinfo(hotelsalerID);
     }
 
     @Override
     public ResultMessage setHotelinfo(HotelinfoVO vo) throws RemoteException {
-        return null;
+        hSmanagement.setHotelinfo(vo);
+        return ResultMessage.Correct;
     }
 
     @Override
     public boolean addHotelinfo(HotelinfoVO vo) throws RemoteException {
-        return false;
+        hSmanagement.addHotelinfoAndRoom(vo);
+        return true;
     }
 
     @Override
     public ResultMessage deleteHotelinfo(String hotelsalerID) throws RemoteException {
-        return null;
+        hSmanagement.deleteHotel(hotelsalerID);
+        return ResultMessage.Correct;
     }
 }
