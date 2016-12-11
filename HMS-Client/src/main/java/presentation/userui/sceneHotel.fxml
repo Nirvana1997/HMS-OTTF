@@ -50,7 +50,7 @@
          <effect>
             <ImageInput>
                <source>
-                  <Image url="@../../../../../graphics/userui/浏览酒店2.png" />
+                  <Image url="file:/D:/HMS-OTTF的副本/HMS-OTTF的副本/HMS-Client/graphics/userui/浏览酒店1.png" />
                </source>
             </ImageInput>
          </effect>

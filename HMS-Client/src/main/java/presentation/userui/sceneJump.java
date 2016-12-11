@@ -138,6 +138,8 @@ public class sceneJump {
         secondWindow.show();
         uiMyOrderController.chooseOrder = true;
         uiReadHotelController.chooseHotel = true;
+        uiSearchHotelController.isFinish = true;
+        uiSearchHotelController.isValid = true;
     }
 
     /**
@@ -163,4 +165,10 @@ public class sceneJump {
         secondWindow.setScene(scene);
         secondWindow.show();
     }
+    /**
+     * 当前选择酒店的ID
+     */
+    static String currentHotelid;
+    public void setHotelID(String id){ currentHotelid = id;}
+    public static String getHotelID(){ return currentHotelid;}
 }

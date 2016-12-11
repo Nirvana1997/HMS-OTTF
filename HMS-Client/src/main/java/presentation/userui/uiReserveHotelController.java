@@ -158,7 +158,7 @@ public class uiReserveHotelController implements Initializable{
         else {
             //读取酒店信息
             HotelOrderBlService hotelOrderBlService = new UserController();
-            HotelinfoVO currentHotel = hotelOrderBlService.readHotel(uiReadHotelController.getHotelID());
+            HotelinfoVO currentHotel = hotelOrderBlService.readHotel(jump.getHotelID());
             //设置订单信息
             OrderVO reserveOrder = new OrderVO(currentHotel.getHotelID(), currentHotel.getHotelname(), currentHotel.getTradeArea(),
                     currentHotel.getAddress(), currentHotel.getDetailAddress(), Integer.parseInt(textRoomNumber.getText()), Integer.parseInt(textPeopleNumber.getText()),
@@ -186,7 +186,6 @@ public class uiReserveHotelController implements Initializable{
     public static Date getDate(DatePicker ld) throws ParseException {
         SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
         return sdf.parse(ld.getValue().toString());
-
     }
 
     /**
@@ -212,7 +211,7 @@ public class uiReserveHotelController implements Initializable{
         }
         HotelinfoVO currentHotel = null;
         try {
-            currentHotel = hotelOrderBlService.readHotel(uiReadHotelController.getHotelID());
+            currentHotel = hotelOrderBlService.readHotel(jump.getHotelID());
         } catch (RemoteException e) {
             e.printStackTrace();
         }
