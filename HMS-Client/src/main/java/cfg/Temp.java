@@ -10,7 +10,7 @@ public class Temp {
     /**
      * 会员最大等级
      */
-    public static final int MAX_LEVEL = 7;
+    public static final int MAX_LEVEL = 3;
 
     /**
      * 最晚执行时间
