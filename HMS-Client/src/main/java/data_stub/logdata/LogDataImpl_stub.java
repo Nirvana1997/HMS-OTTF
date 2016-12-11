@@ -18,17 +18,22 @@ import java.util.Map;
 public class LogDataImpl_stub extends UnicastRemoteObject implements LogDataService {
     //TODO
     Map<String,AccountPO> accountMap = new HashMap<String,AccountPO>();
-    AccountPO account1 = new AccountPO("151250001","111111",AccountType.user);
-    AccountPO account2 = new AccountPO("151250002","111111",AccountType.hotelsaler);
-	AccountPO account3 = new AccountPO("151250003","111111",AccountType.websaler);
-	AccountPO account4 = new AccountPO("151250004","111111",AccountType.webmanager);
+    ArrayList<AccountPO> accountList = new ArrayList<>();
+    AccountPO account1 = new AccountPO("151250001","0101","111111",AccountType.user);
+    AccountPO account2 = new AccountPO("151250002","0201","111111",AccountType.hotelsaler);
+	AccountPO account3 = new AccountPO("151250003","0301","111111",AccountType.websaler);
+	AccountPO account4 = new AccountPO("151250004","0001","111111",AccountType.webmanager);
 
 	public LogDataImpl_stub() throws RemoteException{
 		super();
-		accountMap.put("151250001",account1);
-		accountMap.put("151250002",account2);
-		accountMap.put("151250003",account3);
-		accountMap.put("151250004",account4);
+		accountMap.put("0101",account1);
+		accountMap.put("0201",account2);
+		accountMap.put("0301",account3);
+		accountMap.put("0001",account4);
+		accountList.add(account1);
+		accountList.add(account2);
+		accountList.add(account3);
+		accountList.add(account4);
 	}
 
 
@@ -55,19 +60,15 @@ public class LogDataImpl_stub extends UnicastRemoteObject implements LogDataServ
      */
 	@Override
 	public ResultMessage setPassword(String account,String password) throws RemoteException{
-		if(account.equals("001")){
-			return ResultMessage.Correct;
-		}else
-		return ResultMessage.NotExist;
+		AccountPO po = accountMap.get(account);
+		po.setPassword(password);
+		accountMap.put(account,po);
+		return ResultMessage.Correct;
 	}
 
 	@Override
 	public ArrayList<AccountPO> getAccountList(AccountType accountType) throws RemoteException{
-		ArrayList<AccountPO> AccountList = new ArrayList<AccountPO>();
-		//TODO
-		AccountPO po = new AccountPO("OTTF", "1234", accountType);
-		AccountList.add(po);
-		return AccountList;
+		return accountList;
 	}
 
 	@Override
@@ -90,6 +91,11 @@ public class LogDataImpl_stub extends UnicastRemoteObject implements LogDataServ
     public AccountType getAccountType(String account) throws RemoteException {
         return accountMap.get(account).getType();
     }
+
+	@Override
+	public int getTypeNum(AccountType type) throws RemoteException {
+		return accountMap.size();
+	}
 
 	/**
 	 * 检验用户名是否重复

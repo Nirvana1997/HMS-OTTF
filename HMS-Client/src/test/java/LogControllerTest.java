@@ -67,7 +67,7 @@ public void testRegister() throws Exception {
     userIDs.add("0001");
     ArrayList<String> comments = new ArrayList<String>();
     comments.add("good");
-    HotelinfoVO hvo = new HotelinfoVO("0001", "仙林大酒店", TradeArea.Xianlin, Address.NJU, "仙林","1111 ", "VergGood", "GreatService", 5, 5);
+    HotelinfoVO hvo = new HotelinfoVO("0001", "仙林大酒店", TradeArea.Xianlin, Address.NJU, "仙林","1111 ", "VergGood", "GreatService", 5, 5,93.6);
     HotelsalerAccountVO vo1 = new HotelsalerAccountVO("151250119","150809", AccountType.hotelsaler,hvo);
     UserInfoVO uvo = new UserInfoVO("01", "钱志豪", "320581", "139136", 0, "1997_03_26","",UserType.Person,0);
     AccountVO vo2 = new UserAccountVO("151250189","150809", AccountType.user,uvo);

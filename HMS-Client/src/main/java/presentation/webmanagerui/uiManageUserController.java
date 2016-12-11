@@ -1,33 +1,18 @@
 package presentation.webmanagerui;
 
-import businesslogic.webmanagerbl.URmanagement;
-import businesslogic.webmanagerbl.UserDataManagement;
-import businesslogic.webmanagerbl.WebmanagerController;
-import businesslogicservice.webmanagerlogicservice.URmanagementBlService;
-import com.sun.javafx.robot.impl.FXRobotHelper;
-import javafx.beans.InvalidationListener;
-import javafx.beans.Observable;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.Image;
+import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
-import vo.UserAccountVO;
-import vo.UserInfoVO;
 
-import javax.jws.soap.SOAPBinding;
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 /**

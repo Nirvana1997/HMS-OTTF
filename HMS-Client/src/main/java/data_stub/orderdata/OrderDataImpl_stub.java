@@ -4,6 +4,7 @@ import dataservice.orderdataservice.OrderDataService;
 import enumData.*;
 import po.OrderPO;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
@@ -56,7 +57,7 @@ public class OrderDataImpl_stub implements OrderDataService {
     }
 
     @Override
-    public ArrayList<OrderPO> getOrderList(String account) {
+    public ArrayList<OrderPO> getOrderList(String account,IDType idType) throws RemoteException{
         // TODO Auto-generated method stub
         ArrayList<OrderPO> temp = new ArrayList<OrderPO>();
         for (int i = 0; i < orderList.size(); i++) {

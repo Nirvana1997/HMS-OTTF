@@ -60,6 +60,11 @@ public class UserDataImpl_stub implements UserDataService {
 	}
 
 	@Override
+	public ArrayList<UserInfoPO> getUserInfoList() throws RemoteException {
+		return userInfoPOs;
+	}
+
+	@Override
 	public ResultMessage addCredit(String userID, int value, String date) throws RemoteException {
 		for(int i=0;i<userInfoPOs.size();i++){
 			if(userInfoPOs.get(i).getUserID().equals(userID)) {
@@ -82,5 +87,10 @@ public class UserDataImpl_stub implements UserDataService {
 		return creditRecordPOs;
 	}
 
-	
+	@Override
+	public int getCurrentUserID() throws RemoteException {
+		return 0;
+	}
+
+
 }
