@@ -1,5 +1,6 @@
 package businesslogic.hotelsalerbl.impl;
 
+import businesslogic.logbl.HotelInfoAdder;
 import businesslogic.userbl.interfaces.HotelInfo;
 import businesslogic.userbl.interfaces.HotelRoom;
 import businesslogic.webmanagerbl.HotelInfoForManagement;
@@ -14,6 +15,7 @@ import po.HotelinfoPO;
 import po.HotelroomPO;
 import po.RoomNumPO;
 import utility.HotelPVChanger;
+import vo.HotelinfoVO;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
@@ -24,7 +26,7 @@ import java.util.ArrayList;
  * @author qzh
  *         Created by personalUser on 2016/11/29.
  */
-public class HotelDataImpl implements HotelInfo, HotelRoom,HotelInfoForManagement {
+public class HotelDataImpl implements HotelInfo, HotelRoom,HotelInfoForManagement,HotelInfoAdder {
     /**
      * 酒店信息数据接口
      */
@@ -117,5 +119,15 @@ public class HotelDataImpl implements HotelInfo, HotelRoom,HotelInfoForManagemen
     @Override
     public ArrayList<HotelroomPO> getRoomList(String hotelID) throws RemoteException {
         return hotelroomDataService.getRoomList(hotelID);
+    }
+
+    /**
+     * 添加酒店信息
+     * @param vo 酒店信息
+     * @throws RemoteException
+     */
+    @Override
+    public void addHotelInfo(HotelinfoVO vo) throws RemoteException {
+        hotelinfoDataService.addHotelinfo(HotelPVChanger.hotelV2P(vo));
     }
 }

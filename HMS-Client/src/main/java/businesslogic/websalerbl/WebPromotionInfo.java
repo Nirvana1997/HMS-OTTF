@@ -18,10 +18,9 @@ public interface WebPromotionInfo {
     /**
      * 获得对应类型网站营销策略
      *
-     * @param promotionType 营销策略类型
      * @return 所有对应类型网站营销策略
      */
-    public ArrayList<PromotionPO> getWebPromotions(PromotionType promotionType) throws RemoteException;
+    public ArrayList<PromotionPO> getWebPromotions() throws RemoteException;
 
     /**
      * 获得应对名称的促销策略

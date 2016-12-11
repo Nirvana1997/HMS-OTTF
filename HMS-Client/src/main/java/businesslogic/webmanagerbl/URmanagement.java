@@ -1,7 +1,7 @@
 package businesslogic.webmanagerbl;
 
 import utility.VipInfo;
-import businesslogic.userbl.impl.UserDataImplForManagement;
+import businesslogic.userbl.impl.UserDataImpl;
 import utility.UserPVChanger;
 import businesslogic.websalerbl.impl.VipDataImpl;
 import po.UserInfoPO;
@@ -27,7 +27,7 @@ public class URmanagement {
     VipInfo vipInfo;
 
     public URmanagement() {
-        userInfoForManagement = new UserDataImplForManagement();
+        userInfoForManagement = new UserDataImpl();
         vipInfo = new VipDataImpl();
     }
 

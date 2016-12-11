@@ -7,6 +7,7 @@ import dataservice.websalerdataservice.WebsalerDataService;
 import enumData.PromotionType;
 import enumData.ResultMessage;
 import po.PromotionPO;
+import utility.PromotionPVChanger;
 import vo.PromotionVO;
 
 import java.rmi.RemoteException;
@@ -77,7 +78,12 @@ public class WebPromotion {
      * @param promotionType 营销策略类型
      * @return 所有对应类型网站营销策略
      */
-    public ArrayList<PromotionPO> getWebPromotions(PromotionType promotionType) throws RemoteException{
-        return webPromotionInfo.getWebPromotions(promotionType);
+    public ArrayList<PromotionVO> getWebPromotions(PromotionType promotionType) throws RemoteException{
+        ArrayList<PromotionVO> res = new ArrayList<PromotionVO>();
+        for(PromotionPO po:webPromotionInfo.getWebPromotions()){
+            if(po.getPromotionType().equals(promotionType))
+                res.add(PromotionPVChanger.promotionP2V(po));
+        }
+        return res;
     }
 }

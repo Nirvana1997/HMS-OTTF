@@ -1,6 +1,6 @@
 package businesslogic.websalerbl;
 
-import businesslogic.userbl.impl.UserDataImplForManagement;
+import businesslogic.userbl.impl.UserDataImpl;
 import businesslogicservice.websalerblservice.WebsalerblService;
 import enumData.PromotionType;
 import enumData.ResultMessage;
@@ -30,7 +30,7 @@ public class WebsalerController implements WebsalerblService {
 
     public WebsalerController() {
         this.webPromotion = new WebPromotion();
-        this.creditInfo = new UserDataImplForManagement();
+        this.creditInfo = new UserDataImpl();
     }
 
     /**
@@ -64,11 +64,7 @@ public class WebsalerController implements WebsalerblService {
      */
     @Override
     public ArrayList<PromotionVO> getPromotionList(PromotionType promotionType) throws RemoteException {
-        ArrayList<PromotionVO> res = new ArrayList<PromotionVO>();
-        for(PromotionPO po:webPromotion.getWebPromotions(promotionType)){
-            res.add(PromotionPVChanger.promotionP2V(po));
-        }
-        return res;
+        return webPromotion.getWebPromotions(promotionType);
     }
 
     /**

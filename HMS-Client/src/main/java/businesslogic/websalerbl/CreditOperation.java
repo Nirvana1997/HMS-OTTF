@@ -1,6 +1,6 @@
 package businesslogic.websalerbl;
 
-import businesslogic.userbl.impl.UserDataImplForManagement;
+import businesslogic.userbl.impl.UserDataImpl;
 import enumData.ResultMessage;
 
 import java.rmi.RemoteException;
@@ -19,7 +19,7 @@ public class CreditOperation {
     CreditInfo creditInfo;
 
     public CreditOperation() {
-        this.creditInfo = new UserDataImplForManagement();
+        this.creditInfo = new UserDataImpl();
     }
 
     /**

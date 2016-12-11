@@ -1,21 +1,19 @@
 package businesslogic.logbl;
 
-import businesslogic.promotionbl.strategies.Strategy;
+import businesslogic.hotelsalerbl.impl.HotelDataImpl;
+import businesslogic.userbl.impl.UserDataImpl;
 import cfg.Temp;
-import enumData.AccountType;
-import utility.UserPVChanger;
-import data_stub.hotelsalerdata.HotelinfoDataImpl_stub;
 import data_stub.logdata.LogDataImpl_stub;
-import data_stub.userdata.UserDataImpl_stub;
 import data_stub.websalerdata.WebsalerDataImpl_stub;
-import dataservice.hotelsalerdataservice.HotelinfoDataService;
 import dataservice.logdataservice.LogDataService;
-import dataservice.userdataservice.UserDataService;
 import dataservice.websalerdataservice.WebsalerDataService;
+import enumData.AccountType;
 import enumData.ResultMessage;
 import po.AccountPO;
-import po.UserInfoPO;
-import vo.*;
+import vo.AccountVO;
+import vo.HotelinfoVO;
+import vo.PasswordComfirmVO;
+import vo.UserInfoVO;
 
 import java.rmi.RemoteException;
 
@@ -27,15 +25,15 @@ import java.rmi.RemoteException;
  */
 public class Register {
     LogDataService logDataService;
-    UserDataService userDataService;
-    HotelinfoDataService hotelinfoDataService;
+    UserInfoAdder userInfoAdder;
+    HotelInfoAdder hotelinfoAdder;
     WebsalerDataService websalerDataService;
 
     public Register() throws RemoteException {
         //TODO
         this.logDataService = new LogDataImpl_stub();
-        this.userDataService = new UserDataImpl_stub();
-        this.hotelinfoDataService = new HotelinfoDataImpl_stub();
+        this.userInfoAdder = new UserDataImpl();
+        this.hotelinfoAdder = new HotelDataImpl();
         this.websalerDataService = new WebsalerDataImpl_stub();
 //        this.logDataService = RemoteHelper.getInstance().getLogDataService();
     }
@@ -66,7 +64,7 @@ public class Register {
 
     /**
      * 添加帐号至数据层
-     * @param vo
+     * @param vo 帐号信息
      * @throws RemoteException
      */
     private void addAccount(AccountVO vo) throws RemoteException {
@@ -94,18 +92,15 @@ public class Register {
      * @throws RemoteException
      */
     public void addUserInfo(UserInfoVO vo) throws RemoteException {
-        UserInfoPO po = UserPVChanger.userInfoV2P(vo);
-        userDataService.addUserInfo(po);
+        userInfoAdder.addUserInfo(vo);
     }
 
     /**
-     * TODO
-     * 添加用户信息
-     * @param vo 用户个人信息
+     * 添加酒店信息
+     * @param vo 酒店信息
      * @throws RemoteException
      */
-    public void addHotelInfo(UserInfoVO vo) throws RemoteException {
-        UserInfoPO po = UserPVChanger.userInfoV2P(vo);
-        userDataService.addUserInfo(po);
+    public void addHotelInfo(HotelinfoVO vo) throws RemoteException {
+       hotelinfoAdder.addHotelInfo(vo);
     }
 }

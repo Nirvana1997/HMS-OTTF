@@ -7,7 +7,6 @@ import data_stub.promotiondata.PromotionDataImpl_stub;
 import dataservice.promotiondataservice.PromotionDataService;
 import enumData.PromotionType;
 import po.PromotionPO;
-import utility.DateOperation;
 import utility.PromotionPVChanger;
 import vo.OrderVO;
 import vo.PromotionVO;
@@ -89,11 +88,10 @@ public class PromotionDataImpl implements PromotionInfo, WebPromotionInfo {
     /**
      * 获得对应类型网站营销策略
      *
-     * @param promotionType 营销策略类型
      * @return 所有对应类型网站营销策略
      */
     @Override
-    public ArrayList<PromotionPO> getWebPromotions(PromotionType promotionType) throws RemoteException {
+    public ArrayList<PromotionPO> getWebPromotions() throws RemoteException {
         ArrayList<PromotionPO> res = new ArrayList<PromotionPO>();
         //获得网站的营销策略
         for(PromotionType type:PromotionType.values()){

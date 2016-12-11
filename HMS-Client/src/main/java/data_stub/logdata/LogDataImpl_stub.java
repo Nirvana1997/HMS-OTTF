@@ -18,7 +18,7 @@ import java.util.Map;
 public class LogDataImpl_stub extends UnicastRemoteObject implements LogDataService {
     //TODO
     Map<String,AccountPO> accountMap = new HashMap<String,AccountPO>();
-    ArrayList<AccountPO> accountList = new ArrayList<>();
+    ArrayList<AccountPO> accountList = new ArrayList<AccountPO>();
     AccountPO account1 = new AccountPO("151250001","0101","111111",AccountType.user);
     AccountPO account2 = new AccountPO("151250002","0201","111111",AccountType.hotelsaler);
 	AccountPO account3 = new AccountPO("151250003","0301","111111",AccountType.websaler);
@@ -26,10 +26,10 @@ public class LogDataImpl_stub extends UnicastRemoteObject implements LogDataServ
 
 	public LogDataImpl_stub() throws RemoteException{
 		super();
-		accountMap.put("0101",account1);
-		accountMap.put("0201",account2);
-		accountMap.put("0301",account3);
-		accountMap.put("0001",account4);
+		accountMap.put("151250001",account1);
+		accountMap.put("151250002",account2);
+		accountMap.put("151250003",account3);
+		accountMap.put("151250004",account4);
 		accountList.add(account1);
 		accountList.add(account2);
 		accountList.add(account3);

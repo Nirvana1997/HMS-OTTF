@@ -1,11 +1,14 @@
 package businesslogic.userbl.impl;
 
+import businesslogic.logbl.UserInfoAdder;
 import businesslogic.webmanagerbl.UserInfoForManagement;
 import businesslogic.websalerbl.CreditInfo;
 import data_stub.userdata.UserDataImpl_stub;
 import dataservice.userdataservice.UserDataService;
 import enumData.ResultMessage;
 import po.UserInfoPO;
+import utility.UserPVChanger;
+import vo.UserInfoVO;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
@@ -16,13 +19,13 @@ import java.util.ArrayList;
  * @author qzh
  * Created by user on 2016/12/3.
  */
-public class UserDataImplForManagement implements UserInfoForManagement,CreditInfo {
+public class UserDataImpl implements UserInfoForManagement,CreditInfo,UserInfoAdder {
     /**
      * 用户数据模块
      */
     UserDataService userDataService;
 
-    public UserDataImplForManagement() {
+    public UserDataImpl() {
         userDataService = new UserDataImpl_stub();
     }
 
@@ -81,5 +84,15 @@ public class UserDataImplForManagement implements UserInfoForManagement,CreditIn
     @Override
     public int getCredit(String userID) throws RemoteException {
         return userDataService.getUserInfo(userID).getCredit();
+    }
+
+    /**
+     * 添加用户信息
+     * @param vo 用户个人信息
+     * @throws RemoteException
+     */
+    @Override
+    public void addUserInfo(UserInfoVO vo) throws RemoteException {
+        userDataService.addUserInfo(UserPVChanger.userInfoV2P(vo));
     }
 }
