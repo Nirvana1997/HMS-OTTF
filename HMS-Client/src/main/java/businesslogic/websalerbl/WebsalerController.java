@@ -1,10 +1,14 @@
 package businesslogic.websalerbl;
 
+import businesslogic.userbl.impl.UserDataImpl;
 import businesslogicservice.websalerblservice.WebsalerblService;
 import enumData.PromotionType;
 import enumData.ResultMessage;
+import po.PromotionPO;
+import utility.PromotionPVChanger;
 import vo.PromotionVO;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 /**
@@ -19,8 +23,14 @@ public class WebsalerController implements WebsalerblService {
      */
     WebPromotion webPromotion;
 
+    /**
+     * 信用数据接口
+     */
+    CreditInfo creditInfo;
+
     public WebsalerController() {
         this.webPromotion = new WebPromotion();
+        this.creditInfo = new UserDataImpl();
     }
 
     /**
@@ -30,7 +40,7 @@ public class WebsalerController implements WebsalerblService {
      * @return 是否成功
      */
     @Override
-    public ResultMessage makePromotion(PromotionVO vo) {
+    public ResultMessage makePromotion(PromotionVO vo) throws RemoteException {
         return webPromotion.makePromotion(vo);
     }
 
@@ -42,7 +52,7 @@ public class WebsalerController implements WebsalerblService {
      * @return 是否成功
      */
     @Override
-    public ResultMessage makeListPromotion(ArrayList<PromotionVO> promotions) {
+    public ResultMessage makeListPromotion(ArrayList<PromotionVO> promotions) throws RemoteException {
         return webPromotion.makeListPromotion(promotions);
     }
 
@@ -53,8 +63,8 @@ public class WebsalerController implements WebsalerblService {
      * @return 对应类型所有营销策略
      */
     @Override
-    public ArrayList<PromotionVO> getPromotionList(PromotionType promotionType) {
-        return null;
+    public ArrayList<PromotionVO> getPromotionList(PromotionType promotionType) throws RemoteException {
+        return webPromotion.getWebPromotions(promotionType);
     }
 
     /**
@@ -64,12 +74,30 @@ public class WebsalerController implements WebsalerblService {
      * @return 是否成功
      */
     @Override
-    public ResultMessage cancelPromotion(String promotionName) {
+    public ResultMessage cancelPromotion(String promotionName) throws RemoteException {
         return webPromotion.cancelFestivalPromotion(promotionName);
     }
 
+    /**
+     * 为用户增加信用值
+     *
+     * @param userID 用户ID
+     * @param value  增加的值
+     * @return 是否成功
+     */
     @Override
-    public ResultMessage addCredit(String userID, int value) {
-        return null;
+    public ResultMessage addCredit(String userID, int value) throws RemoteException {
+        return creditInfo.addCredit(userID,value);
+    }
+
+    /**
+     * 获得对应用户信用值
+     *
+     * @param userID 用户ID
+     * @return 对应信用值
+     */
+    @Override
+    public int getCredit(String userID) throws RemoteException{
+        return creditInfo.getCredit(userID);
     }
 }

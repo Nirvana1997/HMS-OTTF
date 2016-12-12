@@ -5,7 +5,6 @@ import businesslogicservice.webmanagerlogicservice.URmanagementBlService;
 import businesslogicservice.webmanagerlogicservice.WSmanagementBlService;
 import enumData.ResultMessage;
 import vo.HotelinfoVO;
-import vo.HotelsalerInfoVO;
 import vo.UserInfoVO;
 import vo.WebsalerInfoVO;
 
@@ -33,62 +32,84 @@ public class WebmanagerController implements HSmanagementBlService,URmanagementB
      */
     private WSmanagement wSmanagement;
 
+    public WebmanagerController() throws RemoteException {
+        hSmanagement = new HSmanagement();
+        uRmanagement = new URmanagement();
+        wSmanagement = new WSmanagement();
+    }
+
     @Override
     public WebsalerInfoVO getWebsaleInfo(String websalerID) {
-        return null;
+        return wSmanagement.getWebsaleInfo(websalerID);
     }
 
     @Override
     public ResultMessage setWebsalerInfo(WebsalerInfoVO vo) {
-        return null;
+        return wSmanagement.setWebsalerInfo(vo);
     }
 
     @Override
     public boolean addWebsalerInfo(WebsalerInfoVO vo, String password) {
-        return false;
+        return wSmanagement.addWebsalerInfo(vo,password);
     }
 
     @Override
     public ResultMessage deleteWebsalerInfo(String websalerID) {
-        return null;
+        return wSmanagement.deleteWebsalerInfo(websalerID);
     }
 
+    /**
+     * 获取用户信息
+     *
+     * @param userID 用户ID
+     * @return 对应用户信息
+     * @throws RemoteException
+     */
     @Override
     public UserInfoVO getUserInfo(String userID) throws RemoteException {
-        return null;
+        return uRmanagement.getUserInfo(userID);
+    }
+
+    /**
+     * 修改用户信息
+     *
+     * @param vo 用户个人信息vo
+     */
+    @Override
+    public void setUserInfo(UserInfoVO vo) throws RemoteException {
+        uRmanagement.setUserInfo(vo);
     }
 
     @Override
-    public void setUserInfo(UserInfoVO vo) {
-    }
-
-    @Override
-    public ArrayList<UserInfoVO> getUserList() {
-        return null;
+    public ArrayList<UserInfoVO> getUserList() throws RemoteException {
+        return uRmanagement.getUserList();
     }
 
     @Override
     public ArrayList<HotelinfoVO> getHotellist() throws RemoteException {
-        return null;
+        return hSmanagement.getHotellist();
     }
 
     @Override
     public HotelinfoVO getHotelinfo(String hotelsalerID) throws RemoteException {
-        return null;
+        return hSmanagement.getHotelinfo(hotelsalerID);
     }
 
     @Override
     public ResultMessage setHotelinfo(HotelinfoVO vo) throws RemoteException {
-        return null;
+        hSmanagement.setHotelinfo(vo);
+        return ResultMessage.Correct;
     }
 
     @Override
     public boolean addHotelinfo(HotelinfoVO vo) throws RemoteException {
-        return false;
+        hSmanagement.addHotelinfoAndRoom(vo);
+        return true;
     }
 
     @Override
     public ResultMessage deleteHotelinfo(String hotelsalerID) throws RemoteException {
-        return null;
+        hSmanagement.deleteHotel(hotelsalerID);
+        return ResultMessage.Correct;
     }
 }

@@ -3,12 +3,12 @@ package businesslogic.userbl;
 import businesslogic.logbl.Login;
 import businesslogicservice.userblservice.HotelOrderBlService;
 import businesslogicservice.userblservice.InfoBlService;
+import cfg.Temp;
 import enumData.*;
 import vo.*;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
-import java.util.Date;
 
 /**
  * 用户操作控制器
@@ -59,21 +59,21 @@ public class UserController implements InfoBlService, HotelOrderBlService {
      */
     @Override
     public UserInfoVO showUserInfo() throws RemoteException {
-        return userInfo.showUserInfo(Login.getNowUser());
+        return userInfo.showUserInfo(Login.getNowUserID());
     }
 
     /**
      * 返回固定商圈、地址中的所有酒店并生成列表项
+     * 默认以评分降序排列
      *
      * @param tradeArea 商圈
      * @param address   地址
-     * @param sortWay   排序方式
      * @return
      * @throws RemoteException
      */
     @Override
-    public ArrayList<HotelListItemVO> searchHotel(TradeArea tradeArea, Address address, SortWay sortWay) throws RemoteException {
-        return hotelList.searchHotelInArea(tradeArea, address, sortWay);
+    public ArrayList<HotelListItemVO> searchHotel(TradeArea tradeArea, Address address) throws RemoteException {
+        return hotelList.searchHotelInArea(tradeArea, address, Temp.sortway);
     }
 
     /**
@@ -81,14 +81,13 @@ public class UserController implements InfoBlService, HotelOrderBlService {
      *
      * @param tradeArea 商圈
      * @param address   地址
-     * @param sortWay   排序方式
      * @param limits    限制条件数组
      * @return
      * @throws RemoteException
      */
     @Override
-    public ArrayList<HotelListItemVO> searchHotel(TradeArea tradeArea, Address address, SortWay sortWay, ArrayList<LimitVO> limits) throws RemoteException {
-        return hotelList.hotelFilter(hotelList.searchHotelInArea(tradeArea, address, sortWay), limits);
+    public ArrayList<HotelListItemVO> searchHotel(TradeArea tradeArea, Address address, ArrayList<LimitVO> limits) throws RemoteException {
+        return hotelList.hotelFilter(hotelList.searchHotelInArea(tradeArea, address, Temp.sortway), limits);
     }
 
     /**
@@ -163,7 +162,7 @@ public class UserController implements InfoBlService, HotelOrderBlService {
     /**
      * 评价订单
      *
-     * @param vo
+     * @param vo 评价信息
      */
     @Override
     public void comment(CommentVO vo) throws RemoteException {

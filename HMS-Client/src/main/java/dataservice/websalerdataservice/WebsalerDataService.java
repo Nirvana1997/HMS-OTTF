@@ -38,6 +38,13 @@ public interface WebsalerDataService extends Remote {
 	public ResultMessage deleteWebsalerInfo(String websalerID)throws RemoteException;
 
 	/**
+	 * 得到网站营销人员信息列表（所有营销人员）
+	 * @return 网站营销人员信息列表
+	 * @throws RemoteException
+     */
+	public ArrayList<WebsalerInfoPO> getWebsalerInfoList()throws RemoteException;
+
+	/**
 	 * 修改会员升级列表
 	 * @param po 会员升级信息PO
 	 * @return 结果信息

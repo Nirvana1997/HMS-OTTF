@@ -1,9 +1,8 @@
 package businesslogic.websalerbl.impl;
 
-import businesslogic.userbl.interfaces.VipInfo;
+import utility.VipInfo;
 import data_stub.websalerdata.WebsalerDataImpl_stub;
 import dataservice.websalerdataservice.WebsalerDataService;
-import po.CreditRecordPO;
 import po.VipUpPO;
 
 import java.rmi.RemoteException;

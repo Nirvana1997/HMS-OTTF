@@ -1,6 +1,6 @@
 package businesslogic.userbl.criteria;
 
-import businesslogic.hotelsalerbl.HotelDataImpl;
+import businesslogic.hotelsalerbl.impl.HotelDataImpl;
 import businesslogic.userbl.interfaces.HotelRoom;
 import businesslogic.userbl.RoomNumJudger;
 import enumData.RoomType;

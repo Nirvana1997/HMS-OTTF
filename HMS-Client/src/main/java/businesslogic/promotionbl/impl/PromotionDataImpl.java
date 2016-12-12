@@ -2,12 +2,14 @@ package businesslogic.promotionbl.impl;
 
 import businesslogic.promotionbl.strategies.Strategy;
 import businesslogic.userbl.interfaces.PromotionInfo;
+import businesslogic.websalerbl.WebPromotionInfo;
 import data_stub.promotiondata.PromotionDataImpl_stub;
 import dataservice.promotiondataservice.PromotionDataService;
 import enumData.PromotionType;
 import po.PromotionPO;
 import utility.PromotionPVChanger;
 import vo.OrderVO;
+import vo.PromotionVO;
 import vo.UserInfoVO;
 
 import java.lang.reflect.Constructor;
@@ -22,7 +24,7 @@ import java.util.ArrayList;
  * @author qzh
  *         Created by user on 2016/12/4.
  */
-public class PromotionDataImpl implements PromotionInfo {
+public class PromotionDataImpl implements PromotionInfo, WebPromotionInfo {
     //TODO
     /**
      * 营销策略模块
@@ -84,6 +86,57 @@ public class PromotionDataImpl implements PromotionInfo {
     }
 
     /**
+     * 获得对应类型网站营销策略
+     *
+     * @return 所有对应类型网站营销策略
+     */
+    @Override
+    public ArrayList<PromotionPO> getWebPromotions() throws RemoteException {
+        ArrayList<PromotionPO> res = new ArrayList<PromotionPO>();
+        //获得网站的营销策略
+        for(PromotionType type:PromotionType.values()){
+            //判断是否为网站营销策略
+            if(type.toString().startsWith("Web"))
+                mergeList(res, promotionDataService.getPromotionList(type));
+        }
+        return res;
+    }
+
+    /**
+     * 获得应对名称的促销策略
+     *
+     * @param promotionName 营销策略名称
+     * @return 营销策略信息
+     */
+    @Override
+    public PromotionPO getPromotion(String promotionName) {
+        //TODO
+        return null;
+    }
+
+    /**
+     * 添加营销策略
+     *
+     * @param vo 营销策略信息
+     */
+    @Override
+    public void addPromotion(PromotionVO vo) throws RemoteException {
+        PromotionPO po = PromotionPVChanger.promotionV2P(vo);
+        promotionDataService.addPromotion(po);
+    }
+
+    /**
+     * 删除营销策略
+     *
+     * @param promotionName 营销策略名称
+     */
+    @Override
+    public void deletePromotion(String promotionName) throws RemoteException {
+        promotionDataService.deletePromotion(promotionName);
+    }
+
+
+    /**
      * 获得所有网站和该酒店的营销策略
      *
      * @param hotelID 酒店编号
@@ -92,13 +145,9 @@ public class PromotionDataImpl implements PromotionInfo {
     private ArrayList<PromotionPO> getUsablePromotions(String hotelID) throws RemoteException {
         ArrayList<PromotionPO> res = new ArrayList<PromotionPO>();
         //获得各种类型可使用的营销策略
-        mergeList(res, promotionDataService.getPromotionList(PromotionType.Web_Period));
-        mergeList(res, promotionDataService.getPromotionList(PromotionType.Web_TradeArea));
-        mergeList(res, promotionDataService.getPromotionList(PromotionType.Web_Vip));
-        mergeList(res,promotionDataService.getPromotionList(PromotionType.Hotel_Period,hotelID));
-        mergeList(res,promotionDataService.getPromotionList(PromotionType.Hotel_Company,hotelID));
-        mergeList(res,promotionDataService.getPromotionList(PromotionType.Hotel_Num,hotelID));
-        mergeList(res,promotionDataService.getPromotionList(PromotionType.Hotel_Birth,hotelID));
+        for(PromotionType type:PromotionType.values()){
+            mergeList(res, promotionDataService.getPromotionList(type));
+        }
         return res;
     }
 

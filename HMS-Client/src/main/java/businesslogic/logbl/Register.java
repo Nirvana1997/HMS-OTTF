@@ -1,39 +1,36 @@
 package businesslogic.logbl;
 
-import utility.UserPVChanger;
-import data_stub.hotelsalerdata.HotelinfoDataImpl_stub;
+import businesslogic.hotelsalerbl.impl.HotelDataImpl;
+import businesslogic.userbl.impl.UserDataImpl;
+import cfg.Temp;
 import data_stub.logdata.LogDataImpl_stub;
-import data_stub.userdata.UserDataImpl_stub;
 import data_stub.websalerdata.WebsalerDataImpl_stub;
-import dataservice.hotelsalerdataservice.HotelinfoDataService;
 import dataservice.logdataservice.LogDataService;
-import dataservice.userdataservice.UserDataService;
 import dataservice.websalerdataservice.WebsalerDataService;
+import enumData.AccountType;
 import enumData.ResultMessage;
 import po.AccountPO;
-import po.UserInfoPO;
-import vo.*;
+import vo.AccountVO;
+import vo.HotelinfoVO;
+import vo.PasswordComfirmVO;
+import vo.UserInfoVO;
 
 import java.rmi.RemoteException;
 
 /**
- * 负责接收注册的信息并添加至数据层
+ * 负责接收客户注册的信息并添加至数据层
  *
  * @author qzh
  *         Created by user on 2016/11/25.
  */
 public class Register {
     LogDataService logDataService;
-    UserDataService userDataService;
-    HotelinfoDataService hotelinfoDataService;
-    WebsalerDataService websalerDataService;
+    UserInfoAdder userInfoAdder;
 
     public Register() throws RemoteException {
         //TODO
         this.logDataService = new LogDataImpl_stub();
-        this.userDataService = new UserDataImpl_stub();
-        this.hotelinfoDataService = new HotelinfoDataImpl_stub();
-        this.websalerDataService = new WebsalerDataImpl_stub();
+        this.userInfoAdder = new UserDataImpl();
 //        this.logDataService = RemoteHelper.getInstance().getLogDataService();
     }
 
@@ -63,11 +60,26 @@ public class Register {
 
     /**
      * 添加帐号至数据层
-     * @param vo
+     * @param vo 帐号信息
      * @throws RemoteException
      */
     private void addAccount(AccountVO vo) throws RemoteException {
-        logDataService.addAccount(new AccountPO(vo.getAccountID(), vo.getPassword(), vo.getType()));
+        //获得某个类型数目，以便编成ID
+        int num = logDataService.getTypeNum(vo.getType());
+        String id = String.valueOf(num);
+        while (id.length()< Temp.ID_NUMBER_LENGTH) {
+            id = "0" + id;
+        }
+        //前两位加上人员标识
+        if(vo.getType().equals(AccountType.user))
+            id = Temp.USER+id;
+        else if(vo.getType().equals(AccountType.hotelsaler))
+            id = Temp.HOTELSALER+id;
+        else if(vo.getType().equals(AccountType.webmanager))
+            id = Temp.WEB_MANAGER+id;
+        else if(vo.getType().equals(AccountType.websaler))
+            id = Temp.WEB_SALER+id;
+        logDataService.addAccount(new AccountPO(vo.getAccount(),id, vo.getPassword(), vo.getType()));
     }
 
     /**
@@ -76,18 +88,8 @@ public class Register {
      * @throws RemoteException
      */
     public void addUserInfo(UserInfoVO vo) throws RemoteException {
-        UserInfoPO po = UserPVChanger.userInfoV2P(vo);
-        userDataService.addUserInfo(po);
+        userInfoAdder.addUserInfo(vo);
     }
 
-    /**
-     * TODO
-     * 添加用户信息
-     * @param vo 用户个人信息
-     * @throws RemoteException
-     */
-    public void addHotelInfo(UserInfoVO vo) throws RemoteException {
-        UserInfoPO po = UserPVChanger.userInfoV2P(vo);
-        userDataService.addUserInfo(po);
-    }
+
 }

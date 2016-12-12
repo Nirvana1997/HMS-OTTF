@@ -73,6 +73,11 @@ public class WebsalerDataImpl_stub implements WebsalerDataService {
 	}
 
 	@Override
+	public ArrayList<WebsalerInfoPO> getWebsalerInfoList() throws RemoteException {
+		return websalerInfoPOs;
+	}
+
+	@Override
 	public ResultMessage setVipUpInfo(VipUpPO po) throws RemoteException {
 		for(int i=0;i<vipUpPOs.size();i++){
 			if(vipUpPOs.get(i).getVipLevel() == po.getVipLevel())

@@ -5,7 +5,6 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
-<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -26,14 +25,14 @@
             </ImageView>
             <AnchorPane layoutY="241.0" prefHeight="379.0" prefWidth="751.0" style="-fx-background-color: transparent;">
                <children>
-                  <AnchorPane fx:id="paneDoubleOne" layoutY="21.0" onMouseClicked="#onClickedEditDoubleOne" prefHeight="349.0" prefWidth="751.0" style="-fx-background-color: transparent;">
+                  <AnchorPane fx:id="paneDoubleOne" layoutY="21.0" prefHeight="349.0" prefWidth="751.0" style="-fx-background-color: transparent;">
                      <children>
-                        <ImageView fitHeight="73.0" fitWidth="29.0" layoutX="79.0" layoutY="126.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="73.0" fitWidth="29.0" layoutX="79.0" layoutY="126.0" onMouseClicked="#doubleOneBefore" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../../../../graphics/websalerui/leftButton.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="62.0" fitWidth="54.0" layoutX="610.0" layoutY="126.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="62.0" fitWidth="54.0" layoutX="610.0" layoutY="126.0" onMouseClicked="#doubleOneNext" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../../../../graphics/websalerui/rightButton.png" />
                            </image>
@@ -45,19 +44,24 @@
                         </ImageView>
                         <AnchorPane layoutX="107.0" layoutY="33.0" prefHeight="262.0" prefWidth="506.0">
                            <children>
-                              <TextField cacheShape="false" centerShape="false" editable="false" focusTraversable="false" layoutX="28.0" layoutY="28.0" prefHeight="54.0" prefWidth="264.0" scaleShape="false" style="-fx-background-color: transparent;" text="双“11”优惠活动一">
-                                 <font>
-                                    <Font size="24.0" />
-                                 </font>
-                              </TextField>
-                              <Label layoutX="40.0" layoutY="84.0" prefHeight="147.0" prefWidth="431.0" wrapText="true">
+                              <Label fx:id="labelInfoPromotionDoubleOne" layoutX="40.0" layoutY="84.0" prefHeight="147.0" prefWidth="431.0" wrapText="true">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
                               </Label>
+                              <Label fx:id="labelDatePromotionDoubleOne" alignment="CENTER" layoutX="293.0" layoutY="38.0" prefHeight="34.0" prefWidth="189.0">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="labelNamePromotionDoubleOne" layoutX="32.0" layoutY="28.0" prefHeight="54.0" prefWidth="246.0" wrapText="true">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
                            </children>
                         </AnchorPane>
-                        <Label fx:id="labelEditDoubleOne" layoutX="698.0" layoutY="321.0" text="编辑">
+                        <Label layoutX="698.0" layoutY="321.0" onMouseClicked="#onClickedEditDoubleOne" text="编辑">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
@@ -69,12 +73,12 @@
                   </AnchorPane>
                   <AnchorPane fx:id="paneVIP" layoutY="21.0" prefHeight="349.0" prefWidth="751.0" style="-fx-background-color: transparent;" visible="false">
                      <children>
-                        <ImageView fitHeight="73.0" fitWidth="29.0" layoutX="79.0" layoutY="126.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="73.0" fitWidth="29.0" layoutX="79.0" layoutY="126.0" onMouseClicked="#vipBefore" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../../../../graphics/websalerui/leftButton.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="62.0" fitWidth="54.0" layoutX="610.0" layoutY="126.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="62.0" fitWidth="54.0" layoutX="610.0" layoutY="126.0" onMouseClicked="#vipNext" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../../../../graphics/websalerui/rightButton.png" />
                            </image>
@@ -86,19 +90,34 @@
                         </ImageView>
                         <AnchorPane layoutX="107.0" layoutY="33.0" prefHeight="262.0" prefWidth="506.0">
                            <children>
-                              <TextField cacheShape="false" centerShape="false" editable="false" focusTraversable="false" layoutX="28.0" layoutY="28.0" prefHeight="54.0" prefWidth="264.0" scaleShape="false" style="-fx-background-color: transparent;" text="特定商圈VIP活动一">
+                              <Label fx:id="labelInfoPromotionVIP" layoutX="32.0" layoutY="91.0" prefHeight="147.0" prefWidth="431.0" wrapText="true">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="labelDatePromotionVIP" alignment="CENTER" layoutX="303.0" layoutY="21.0" prefHeight="34.0" prefWidth="189.0">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="labelNamePromotionVIP" layoutX="32.0" layoutY="21.0" prefHeight="34.0" prefWidth="264.0" wrapText="true">
                                  <font>
                                     <Font size="24.0" />
                                  </font>
-                              </TextField>
-                              <Label layoutX="40.0" layoutY="84.0" prefHeight="147.0" prefWidth="431.0" wrapText="true">
+                              </Label>
+                              <Label layoutX="32.0" layoutY="58.0" prefHeight="29.0" prefWidth="54.0" text="商圈：">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="labelTradeArea" layoutX="86.0" layoutY="62.0" prefHeight="22.0" prefWidth="146.0">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
                               </Label>
                            </children>
                         </AnchorPane>
-                        <Label fx:id="labelEditVIP" layoutX="698.0" layoutY="321.0" onMouseClicked="#onClickedEditVIP" text="编辑">
+                        <Label layoutX="698.0" layoutY="321.0" onMouseClicked="#onClickedEditVIP" text="编辑">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
@@ -110,12 +129,12 @@
                   </AnchorPane>
                   <AnchorPane fx:id="paneMember" layoutY="21.0" prefHeight="349.0" prefWidth="751.0" style="-fx-background-color: transparent;" visible="false">
                      <children>
-                        <ImageView fitHeight="73.0" fitWidth="29.0" layoutX="79.0" layoutY="126.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="73.0" fitWidth="29.0" layoutX="79.0" layoutY="126.0" onMouseClicked="#memberBefore" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../../../../graphics/websalerui/leftButton.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="62.0" fitWidth="54.0" layoutX="610.0" layoutY="126.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="62.0" fitWidth="54.0" layoutX="610.0" layoutY="126.0" onMouseClicked="#memberNext" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../../../../graphics/websalerui/rightButton.png" />
                            </image>
@@ -127,19 +146,73 @@
                         </ImageView>
                         <AnchorPane layoutX="107.0" layoutY="33.0" prefHeight="262.0" prefWidth="506.0">
                            <children>
-                              <TextField cacheShape="false" centerShape="false" editable="false" focusTraversable="false" layoutX="28.0" layoutY="28.0" prefHeight="54.0" prefWidth="264.0" scaleShape="false" style="-fx-background-color: transparent;" text="会员等级与折扣活动一">
-                                 <font>
-                                    <Font size="24.0" />
-                                 </font>
-                              </TextField>
-                              <Label layoutX="40.0" layoutY="84.0" prefHeight="147.0" prefWidth="431.0" wrapText="true">
+                              <Label fx:id="labelInfoPromotionMember" layoutX="40.0" layoutY="84.0" prefHeight="147.0" prefWidth="281.0" wrapText="true">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
                               </Label>
+                              <Label fx:id="labelNamePromotionMember" layoutX="31.0" layoutY="27.0" prefHeight="54.0" prefWidth="246.0" wrapText="true">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="labelDatePromotionMember" alignment="CENTER" layoutX="301.0" layoutY="37.0" prefHeight="34.0" prefWidth="189.0">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                              <AnchorPane fx:id="paneEditMember1" layoutX="318.0" layoutY="84.0" prefHeight="147.0" prefWidth="156.0">
+                                 <children>
+                                    <Label layoutX="16.0" layoutY="10.0" prefHeight="24.0" prefWidth="63.0" text="等级1：">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="19.0" layoutY="58.0" text="等级2：">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="19.0" layoutY="105.0" text="等级3：">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="labelLevel1" alignment="CENTER" layoutX="77.0" layoutY="11.0" prefHeight="22.0" prefWidth="47.0">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="labelLevel2" alignment="CENTER" layoutX="77.0" layoutY="58.0" prefHeight="22.0" prefWidth="47.0">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="labelLevel3" alignment="CENTER" layoutX="79.0" layoutY="105.0" prefHeight="22.0" prefWidth="47.0">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="132.0" layoutY="11.0" text="折">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="132.0" layoutY="58.0" text="折">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="132.0" layoutY="105.0" text="折">
+                                       <font>
+                                          <Font size="16.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </AnchorPane>
                            </children>
                         </AnchorPane>
-                        <Label fx:id="labelEditMember" layoutX="698.0" layoutY="321.0" onMouseClicked="#onClickedEditMember" text="编辑">
+                        <Label layoutX="698.0" layoutY="321.0" onMouseClicked="#onClickedEditMember" text="编辑">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
@@ -151,16 +224,7 @@
                   </AnchorPane>
                   <AnchorPane fx:id="paneEditPromotion" prefHeight="379.0" prefWidth="751.0" visible="false">
                      <children>
-                        <MenuButton fx:id="menuButtonEdit_ChoosePromotionType" layoutX="81.0" layoutY="35.0" mnemonicParsing="false" style="-fx-background-color: #FFFFFF;" text="选择活动">
-                          <items>
-                            <MenuItem mnemonicParsing="false" text="Action 1" />
-                            <MenuItem mnemonicParsing="false" text="Action 2" />
-                          </items>
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                        </MenuButton>
-                        <TextArea layoutX="81.0" layoutY="94.0" prefHeight="189.0" prefWidth="469.0" promptText="活动内容" wrapText="true">
+                        <TextArea fx:id="textAreaPromotonContent" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="46.0" layoutY="124.0" prefHeight="159.0" prefWidth="431.0" promptText="活动内容" scaleShape="false" wrapText="true">
                            <font>
                               <Font size="16.0" />
                            </font>
@@ -185,11 +249,80 @@
                               <Font size="16.0" />
                            </font>
                         </Button>
-                        <TextField fx:id="textFieldPromotionName" layoutX="81.0" layoutY="35.0" prefHeight="34.0" prefWidth="189.0" promptText="优惠活动名" visible="false">
+                        <TextField fx:id="textFieldPromotionName" layoutX="46.0" layoutY="38.0" prefHeight="24.0" prefWidth="189.0" promptText="优惠活动名">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </TextField>
+                        <Label layoutX="46.0" layoutY="80.0" prefHeight="34.0" prefWidth="83.0" text="开始时间：">
                            <font>
                               <Font size="16.0" />
                            </font>
+                        </Label>
+                        <TextField fx:id="textFieldPromotionBeginTime" layoutX="129.0" layoutY="83.0" prefHeight="29.0" prefWidth="137.0" promptText="例：2016_7_17">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
                         </TextField>
+                        <Label layoutX="275.0" layoutY="80.0" prefHeight="34.0" prefWidth="83.0" text="结束时间：">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="textFieldPromotionEndTime" layoutX="363.0" layoutY="83.0" prefHeight="29.0" prefWidth="137.0" promptText="例：2016_7_18">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </TextField>
+                        <Label layoutX="276.0" layoutY="42.0" text="活动折扣：">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="textFieldDiscount" layoutX="363.0" layoutY="38.0" prefHeight="24.0" prefWidth="119.0" promptText="输入值为小数">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </TextField>
+                        <AnchorPane fx:id="paneEditMember" layoutX="482.0" layoutY="130.0" prefHeight="147.0" prefWidth="246.0" visible="false">
+                           <children>
+                              <Label layoutX="16.0" layoutY="10.0" prefHeight="24.0" prefWidth="63.0" text="等级1：">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="19.0" layoutY="58.0" text="等级2：">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="19.0" layoutY="105.0" text="等级3：">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="textFieldLevel1" layoutX="87.0" layoutY="8.0" prefHeight="29.0" prefWidth="146.0" promptText="输入折扣，值为小数">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </TextField>
+                              <TextField fx:id="textFieldLevel2" layoutX="87.0" layoutY="55.0" prefHeight="29.0" prefWidth="146.0" promptText="输入折扣，值为小数">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </TextField>
+                              <TextField fx:id="textFieldLevel3" layoutX="87.0" layoutY="102.0" prefHeight="29.0" prefWidth="146.0" promptText="输入折扣，值为小数">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </TextField>
+                           </children>
+                        </AnchorPane>
+                        <MenuButton fx:id="menuButtonTradeArea" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="543.0" layoutY="38.0" mnemonicParsing="false" scaleShape="false" style="-fx-background-color: #FFFFFF;" text="选择商圈" visible="false">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </MenuButton>
                      </children></AnchorPane>
                </children>
             </AnchorPane>

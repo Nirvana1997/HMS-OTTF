@@ -5,6 +5,7 @@ import enumData.PromotionType;
 import enumData.ResultMessage;
 import vo.PromotionVO;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 public interface WebsalerblService {
@@ -14,7 +15,7 @@ public interface WebsalerblService {
      * @param vo 优惠策略信息
      * @return 是否成功
      */
-    public ResultMessage makePromotion(PromotionVO vo);
+    public ResultMessage makePromotion(PromotionVO vo) throws RemoteException;
 
     /**
      * 制定范围性优惠策略
@@ -23,7 +24,7 @@ public interface WebsalerblService {
      * @param promotions 营销策略列表
      * @return 是否成功
      */
-    public ResultMessage makeListPromotion(ArrayList<PromotionVO> promotions);
+    public ResultMessage makeListPromotion(ArrayList<PromotionVO> promotions) throws RemoteException;
 
     /**
      * 返回一个类型的所有营销策略
@@ -31,7 +32,7 @@ public interface WebsalerblService {
      * @param promotionType 营销策略类型
      * @return 对应类型所有营销策略
      */
-    public ArrayList<PromotionVO> getPromotionList(PromotionType promotionType);
+    public ArrayList<PromotionVO> getPromotionList(PromotionType promotionType) throws RemoteException;
 
     /**
      * 取消一个营销策略
@@ -39,7 +40,7 @@ public interface WebsalerblService {
      * @param promotionName 营销策略名称
      * @return 是否成功
      */
-    public ResultMessage cancelPromotion(String promotionName);
+    public ResultMessage cancelPromotion(String promotionName) throws RemoteException;
 
     /**
      * 为用户增加信用值
@@ -48,5 +49,13 @@ public interface WebsalerblService {
      * @param value  增加的值
      * @return 是否成功
      */
-    public ResultMessage addCredit(String userID, int value);
+    public ResultMessage addCredit(String userID, int value) throws RemoteException;
+
+    /**
+     * 获得对应用户信用值
+     *
+     * @param userID 用户ID
+     * @return 对应信用值
+     */
+    public int getCredit(String userID) throws RemoteException;
 }

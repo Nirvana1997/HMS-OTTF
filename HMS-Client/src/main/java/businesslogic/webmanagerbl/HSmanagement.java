@@ -1,13 +1,9 @@
 package businesslogic.webmanagerbl;
 
-import businesslogicservice.webmanagerlogicservice.HSmanagementBlService;
-import data_stub.logdata.LogDataImpl_stub;
-import dataservice.logdataservice.LogDataService;
-import enumData.AccountType;
-import enumData.ResultMessage;
-import po.AccountPO;
+import businesslogic.hotelsalerbl.impl.HotelDataImpl;
+import po.HotelinfoPO;
+import utility.HotelPVChanger;
 import vo.HotelinfoVO;
-import vo.HotelsalerInfoVO;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
@@ -16,75 +12,38 @@ import java.util.ArrayList;
  * 酒店人员管理模块
  * @author qzh
  */
-public class HSmanagement implements HSmanagementBlService{
+public class HSmanagement{
     /**
      * 酒店数据模块
      */
-    LogDataService logDataService;
+    HotelInfoForManagement hotelInfoForManagement;
 
     public HSmanagement() throws RemoteException{
-        logDataService = new LogDataImpl_stub();
+        hotelInfoForManagement = new HotelDataImpl();
     }
 
-    /**
-     * 获取酒店工作人员信息
-     * @param hotelsalerID 酒店工作人员ID
-     * @return 酒店工作人员信息
-     * @throws RemoteException
-     */
-    public HotelsalerInfoVO getHotelsalerInfo(String hotelsalerID) throws RemoteException{
-        return null;
-	}
 
-	public ResultMessage setHotelsalerInfo(HotelsalerInfoVO vo) throws RemoteException{
-        if(logDataService.getAccountType(vo.getHotelID()).equals(AccountType.hotelsaler)) {
-            return ResultMessage.Correct;
-        }else {
-            return ResultMessage.NotExist;
-        }
-	}
-
-	public boolean addHotelsalerInfo(HotelsalerInfoVO vo, String password) throws RemoteException{
-        if(!logDataService.hasExisted(vo.getHotelID())) {
-            AccountPO accountPO = new AccountPO(vo.getHotelID(),password,AccountType.hotelsaler);
-            logDataService.addAccount(accountPO);
-            return true;
-        }else {
-            return false;
-        }
-	}
-
-	public ResultMessage deleteHotelsalerVO(String hotelsalerID) throws RemoteException{
-        if(logDataService.getAccountType(hotelsalerID).equals(AccountType.hotelsaler)) {
-            return ResultMessage.Correct;
-        }else {
-            return ResultMessage.NotExist;
-        }
-	}
-
-
-    @Override
     public ArrayList<HotelinfoVO> getHotellist() throws RemoteException {
-        return null;
+        ArrayList<HotelinfoVO> res = new ArrayList<HotelinfoVO>();
+        for(HotelinfoPO po: hotelInfoForManagement.getHotelList()){
+            res.add(HotelPVChanger.hotelP2V(po));
+        }
+        return res;
     }
 
-    @Override
-    public HotelinfoVO getHotelinfo(String hotelsalerID) throws RemoteException {
-        return null;
+    public HotelinfoVO getHotelinfo(String hotelID) throws RemoteException {
+        return HotelPVChanger.hotelP2V(hotelInfoForManagement.getHotelInfo(hotelID));
     }
 
-    @Override
-    public ResultMessage setHotelinfo(HotelinfoVO vo) throws RemoteException {
-        return null;
+    public void setHotelinfo(HotelinfoVO vo) throws RemoteException {
+        hotelInfoForManagement.setHotelInfo(HotelPVChanger.hotelV2P(vo));
     }
 
-    @Override
-    public boolean addHotelinfo(HotelinfoVO vo) throws RemoteException {
-        return false;
+    public void addHotelinfoAndRoom(HotelinfoVO vo) throws RemoteException {
+        hotelInfoForManagement.addHotelInfoAndRoom(HotelPVChanger.hotelV2P(vo));
     }
 
-    @Override
-    public ResultMessage deleteHotelinfo(String hotelsalerID) throws RemoteException {
-        return null;
+    public void deleteHotel(String hotelID) throws RemoteException {
+        hotelInfoForManagement.deleteHotelInfo(hotelID);
     }
 }

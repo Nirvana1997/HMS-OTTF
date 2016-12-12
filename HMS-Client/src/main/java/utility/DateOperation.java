@@ -77,14 +77,14 @@ public class DateOperation {
     }
 
     /**
-     * 在一个时间上减去若干小时
+     * 在一个时间上加上若干小时
      * @param date 时间
      * @param hours 小时数
      * @return 结果时间
      */
-    public static Date subHours(Date date,int hours){
+    public static Date addHours(Date date, int hours){
         Calendar calendar = Calendar.getInstance();
-        calendar.add(Calendar.HOUR_OF_DAY,-hours);
+        calendar.add(Calendar.HOUR_OF_DAY,hours);
         return calendar.getTime();
     }
 }

@@ -204,7 +204,7 @@ public class uiHotelController implements Initializable{
         }
         HotelinfoVO currentHotel = null;
         try {
-            currentHotel = hotelOrderBlService.readHotel(uiReadHotelController.getHotelID());
+            currentHotel = hotelOrderBlService.readHotel(jump.getHotelID());
         } catch (RemoteException e) {
             e.printStackTrace();
         }

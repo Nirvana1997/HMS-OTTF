@@ -18,6 +18,10 @@ public class uiWarningController implements Initializable{
     private Text warningChooseOrder;
     @FXML
     private Text warningChooseHotel;
+    @FXML
+    private Text warningValid;
+    @FXML
+    private Text warningFinish;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         if(uiMyOrderController.getChooseOrder()==false){
@@ -25,6 +29,12 @@ public class uiWarningController implements Initializable{
         }
         if(uiReadHotelController.getChooseHotel()==false){
             warningChooseHotel.setVisible(true);
+        }
+        if(uiSearchHotelController.isValid==false){
+            warningValid.setVisible(true);
+        }
+        if(uiSearchHotelController.isFinish==false){
+            warningFinish.setVisible(true);
         }
     }
 }

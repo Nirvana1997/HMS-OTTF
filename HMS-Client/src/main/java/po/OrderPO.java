@@ -20,12 +20,11 @@ public class OrderPO {
 	String orderID;
 	String userID;
 	OrderState orderState;
-	String ddl;
 	double price;
 	String promotionName;
 	String roomID;
 
-	public OrderPO(String hotelID, String hotelName, TradeArea tradeArea, Address address, String detailAddress, int roomNumber, int peopleNumber, String checkInDate, String checkOutDate, RoomType roomType, boolean haveChild, String orderID, String userID, OrderState orderState, String ddl, double price, String promotionName, String roomID) {
+	public OrderPO(String hotelID, String hotelName, TradeArea tradeArea, Address address, String detailAddress, int roomNumber, int peopleNumber, String checkInDate, String checkOutDate, RoomType roomType, boolean haveChild, String orderID, String userID, OrderState orderState, double price, String promotionName, String roomID) {
 		this.hotelID = hotelID;
 		this.hotelName = hotelName;
 		this.tradeArea = tradeArea;
@@ -40,10 +39,17 @@ public class OrderPO {
 		this.orderID = orderID;
 		this.userID = userID;
 		this.orderState = orderState;
-		this.ddl = ddl;
 		this.price = price;
 		this.promotionName = promotionName;
 		this.roomID = roomID;
+	}
+
+	public OrderPO(String hotelID, String checkInDate, String checkOutDate, RoomType roomType, int roomNumber) {
+		this.hotelID = hotelID;
+		this.checkInDate = checkInDate;
+		this.checkOutDate = checkOutDate;
+		this.roomType = roomType;
+		this.roomNumber = roomNumber;
 	}
 
 	public String getHotelID() {
@@ -156,14 +162,6 @@ public class OrderPO {
 
 	public void setOrderState(OrderState orderState) {
 		this.orderState = orderState;
-	}
-
-	public String getDdl() {
-		return ddl;
-	}
-
-	public void setDdl(String ddl) {
-		this.ddl = ddl;
 	}
 
 	public double getPrice() {
