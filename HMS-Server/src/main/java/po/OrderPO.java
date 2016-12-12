@@ -18,7 +18,6 @@ public class OrderPO implements Serializable{
 	OrderState orderState;
 	String checkInDate;
 	String checkOutDate;
-	String ddl;
 	RoomType roomType;
 	double price;
 	boolean haveChild;
@@ -29,9 +28,8 @@ public class OrderPO implements Serializable{
 	String detailAddress;
 
 	public OrderPO(String orderID, String hotelID, String userID, String roomID, int roomNumber, int peopleNumber,
-				   OrderState orderState, String checkInDate, String checkOutDate, String ddl, RoomType roomType,
-				   double price, boolean haveChild, String hotelName, String promotionName, TradeArea tradeArea,
-				   Address address, String detailAddress) {
+				   OrderState orderState, String checkInDate, String checkOutDate, RoomType roomType, double price,
+				   boolean haveChild, String hotelName, String promotionName, TradeArea tradeArea, Address address, String detailAddress) {
 		this.orderID = orderID;
 		this.hotelID = hotelID;
 		this.userID = userID;
@@ -41,7 +39,6 @@ public class OrderPO implements Serializable{
 		this.orderState = orderState;
 		this.checkInDate = checkInDate;
 		this.checkOutDate = checkOutDate;
-		this.ddl = ddl;
 		this.roomType = roomType;
 		this.price = price;
 		this.haveChild = haveChild;
@@ -122,14 +119,6 @@ public class OrderPO implements Serializable{
 
 	public void setCheckOutDate(String checkOutDate) {
 		this.checkOutDate = checkOutDate;
-	}
-
-	public String getDdl() {
-		return ddl;
-	}
-
-	public void setDdl(String ddl) {
-		this.ddl = ddl;
 	}
 
 	public RoomType getRoomType() {

@@ -48,9 +48,9 @@ public interface HotelroomDataService extends Remote{
 
 	/**
 	 * 酒店工作人员初始化房间信息（房间类型，对应的总房间数，空房间数）
-	 * @param po 空房间数量PO
+	 * @param list 空房间数量POlist
 	 * @return 结果信息
      */
-	public ResultMessage initializeRoomInfo(RoomNumPO po)throws RemoteException;
+	public ResultMessage initializeRoomInfo(ArrayList<RoomNumPO> list)throws RemoteException;
 
 }

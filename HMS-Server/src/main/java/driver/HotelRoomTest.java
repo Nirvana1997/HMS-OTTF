@@ -14,7 +14,6 @@ import java.rmi.RemoteException;
 public class HotelRoomTest {
     public static void main(String[] args) throws RemoteException {
         HotelroomDataService hotelroomDataService = new HotelroomDataImpl();
-        System.out.println(hotelroomDataService.initializeRoomInfo(new RoomNumPO("01","2016_11_11",20,10, RoomType.DoubleRoom)));
         System.out.println(hotelroomDataService.addHotelroom(new HotelroomPO("01",RoomType.DoubleRoom,200.0)));
         System.out.println(hotelroomDataService.addHotelroom(new HotelroomPO("01",RoomType.SingleRoom,150.0)));
         System.out.println(hotelroomDataService.addHotelroom(new HotelroomPO("01", RoomType.StandardRoom,300.0)));

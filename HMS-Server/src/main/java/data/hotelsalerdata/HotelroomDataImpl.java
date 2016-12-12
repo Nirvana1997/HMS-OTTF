@@ -118,16 +118,19 @@ public class HotelroomDataImpl extends UnicastRemoteObject implements HotelroomD
 
     /**
      * 酒店工作人员初始化房间信息（房间类型，对应的总房间数，空房间数）
-     * @param po
+     * @param list
      * @return
      */
     @Override
-    public ResultMessage initializeRoomInfo(RoomNumPO po) {
-        if(!DataBaseHelper.in("show tables like '" + po.getHotelID() + "_" + po.getDate() + "'"))
-            DataBaseHelper.in("create table " + po.getHotelID() + "_" + po.getDate() +
-                    " ( type varchar(50),totalNum int ,emptyNum int )");
-        DataBaseHelper.in("insert into " + po.getHotelID() + "_" + po.getDate() + " (type,totalNum,emptyNum)"
-        + " values " + "('" + po.getRoomType().toString() + "','" + po.getTotalNum() + "','" + po.getEmptyNum() + "')");
+    public ResultMessage initializeRoomInfo(ArrayList<RoomNumPO> list) {
+        for(int i=0;i<list.size();i++) {
+            RoomNumPO po = list.get(i);
+            if (!DataBaseHelper.in("show tables like '" + po.getHotelID() + "_" + po.getDate() + "'"))
+                DataBaseHelper.in("create table " + po.getHotelID() + "_" + po.getDate() +
+                        " ( type varchar(50),totalNum int ,emptyNum int )");
+            DataBaseHelper.in("insert into " + po.getHotelID() + "_" + po.getDate() + " (type,totalNum,emptyNum)"
+                    + " values " + "('" + po.getRoomType().toString() + "','" + po.getTotalNum() + "','" + po.getEmptyNum() + "')");
+        }
         return ResultMessage.Correct;
     }
 }

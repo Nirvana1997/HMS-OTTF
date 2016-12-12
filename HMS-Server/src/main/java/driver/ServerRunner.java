@@ -37,6 +37,8 @@ public class ServerRunner {
             e.printStackTrace();
         } catch (AlreadyBoundException e) {
             e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
     }
