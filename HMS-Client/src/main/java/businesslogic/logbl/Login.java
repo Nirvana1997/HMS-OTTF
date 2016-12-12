@@ -40,7 +40,7 @@ public class Login {
     public ResultMessage isCorrectAndLogin(AccountVO vo) throws RemoteException {
         String password = logDataService.getPassword(vo.getAccount());
         if (vo.getPassword().equals(password)) {
-            nowUserID = vo.getID();
+            nowUserID = logDataService.getID(vo.getAccount());
             return ResultMessage.Correct;
         } else {
             return ResultMessage.InCorrect;

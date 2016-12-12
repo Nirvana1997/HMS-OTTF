@@ -6,13 +6,13 @@ import java.io.Serializable;
 
 public class AccountPO implements Serializable {
 	String ID;
-	String accountID;
+	String account;
 	String password;
 	AccountType type;
 
-	public AccountPO(String ID, String accountID, String password, AccountType type) {
+	public AccountPO(String ID, String account, String password, AccountType type) {
 		this.ID = ID;
-		this.accountID = accountID;
+		this.account = account;
 		this.password = password;
 		this.type = type;
 	}
@@ -25,12 +25,12 @@ public class AccountPO implements Serializable {
 		this.ID = ID;
 	}
 
-	public String getAccountID() {
-		return accountID;
+	public String getAccount() {
+		return account;
 	}
 
-	public void setAccountID(String accountID) {
-		this.accountID = accountID;
+	public void setAccount(String account) {
+		this.account = account;
 	}
 
 	public String getPassword() {

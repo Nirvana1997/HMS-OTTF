@@ -16,7 +16,7 @@ import java.util.ArrayList;
 * @since <pre>十一月 9, 2016</pre>
 * @version 1.0 
 */ 
-public class LogControllerTest {
+public class LogTest {
     LogBlService logBlService;
 
 @Before

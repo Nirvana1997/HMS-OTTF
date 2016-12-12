@@ -123,10 +123,10 @@ public class HotelOrder {
             po.setOrderState(OrderState.canceled);
             userOrderInfo.setOrderInfo(po);
 
-            //计算规定时间
-            Date ddl = DateOperation.subHours(DateOperation.stringToDate(po.getDdl()), Temp.H);
+            //计算扣除信用的规定时间
+            Date subCreditDdl = DateOperation.addHours(DateOperation.stringToDate(po.getCheckInDate()), Temp.HOUR-Temp.H);
             //判断是否在规定时间前取消，若超过规定时间，则减少一定的信用值
-            if(new Date().after(ddl)){
+            if(new Date().after(subCreditDdl)){
                 userDataService.subCredit(Login.getNowUserID(),(int)(po.getPrice()*Temp.CREDIT_CUT),DateOperation.dateToString(new Date()));
             }
             return ResultMessage.Correct;
