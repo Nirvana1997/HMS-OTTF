@@ -34,7 +34,65 @@ public class PromotionVO {
 		this.companyID = companyID;
 	}
 
-	public String getPromotionName() {
+	/**
+	 * 双十一优惠活动构造器
+	 * @param name
+	 * @param description
+	 * @param web_period
+	 * @param beginTime
+	 * @param endTime
+	 * @param discount
+	 */
+	public PromotionVO(String name, String description, PromotionType web_period, String beginTime, String endTime, double discount) {
+        this.promotionName = name;
+        this.description = description;
+        this.promotionType = web_period;
+        this.startDate = beginTime;
+        this.endDate = endTime;
+        this.discount = discount;
+    }
+
+    /**
+     * 特定商圈优惠活动构造器
+     * @param name
+     * @param description
+     * @param web_tradeArea
+     * @param beginTime
+     * @param endTime
+     * @param tradeArea
+     * @param discount
+     */
+    public PromotionVO(String name, String description, PromotionType web_tradeArea, String beginTime, String endTime, TradeArea tradeArea, double discount) {
+        this.promotionName = name;
+        this.description = description;
+        this.promotionType = web_tradeArea;
+        this.startDate = beginTime;
+        this.endDate = endTime;
+        this.tradeArea = tradeArea;
+        this.discount = discount;
+    }
+
+    /**
+     * 会员等级策略构造器
+     * @param name
+     * @param description
+     * @param web_vip
+     * @param beginTime
+     * @param endTime
+     * @param vipLevel
+     * @param discount
+     */
+    public PromotionVO(String name, String description, PromotionType web_vip, String beginTime, String endTime, int vipLevel, double discount) {
+        this.promotionName = name;
+        this.description = description;
+        this.promotionType = web_vip;
+        this.startDate = beginTime;
+        this.endDate = endTime;
+        this.vipLevel = vipLevel;
+        this.discount = discount;
+    }
+
+    public String getPromotionName() {
 		return promotionName;
 	}
 

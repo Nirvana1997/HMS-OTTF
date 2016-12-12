@@ -59,7 +59,7 @@ public class SceneJump {
      * 删除界面
      */
     public void jumpToDeletePromotion() throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("webSaler_deletePromotion.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("delete.fxml"));
         Scene sceneDelete = new Scene(root);
         Stage primaryStage = new Stage();
         primaryStage.setWidth(200);

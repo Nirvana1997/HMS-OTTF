@@ -1,5 +1,7 @@
 package presentation.websalerui;
 
+import businesslogic.websalerbl.WebsalerController;
+import businesslogicservice.websalerblservice.WebsalerblService;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -17,6 +19,8 @@ import java.util.ResourceBundle;
 public class uiWebSalerCreditController implements Initializable {
 
     private SceneJump sceneJump = new SceneJump();
+
+    private WebsalerblService websalerbl = new WebsalerController();
 
     /**
      * 登出按钮
