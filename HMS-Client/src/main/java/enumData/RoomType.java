@@ -1,5 +1,5 @@
 package enumData;
 
 public enum RoomType {
-	SingleRoom,DoubleRoom,StandardRoom
+	SingleRoom,DoubleRoom, DisabledRoom
 }

@@ -11,7 +11,8 @@ import java.util.ArrayList;
  */
 public interface HotelRoom {
     /**
-     *根据酒店ID和日期，查询对应日期空房间状况
+     * 根据酒店ID和日期，查询对应日期空房间状况
+     *
      * @param hotelID
      * @param date
      * @return
@@ -19,7 +20,8 @@ public interface HotelRoom {
     public ArrayList<RoomNumPO> getEmptyrooms(String hotelID, String date) throws RemoteException;
 
     /**
-     *得到房间列表（类型，价格）
+     * 得到房间列表（类型，价格）
+     *
      * @param hotelID
      * @return
      */

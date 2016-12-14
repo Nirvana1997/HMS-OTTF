@@ -97,13 +97,13 @@ public class HotelOrder {
     /**
      * 根据用户id得到该用户的订单列表
      *
-     * @param userID
+     * @param orderState 订单状态
      * @return 订单列表
      */
-    public ArrayList<OrderVO> readOrder(String userID) throws RemoteException {
+    public ArrayList<OrderVO> readOrder(OrderState orderState) throws RemoteException {
         //结果数组
         ArrayList<OrderVO> res = new ArrayList<OrderVO>();
-        for(OrderPO po:userOrderInfo.getOrderList()){
+        for(OrderPO po:userOrderInfo.getOrderList(orderState)){
             res.add(OrderPVChanger.orderP2V(po));
         }
         return res;

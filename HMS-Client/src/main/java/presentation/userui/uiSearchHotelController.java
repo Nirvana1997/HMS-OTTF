@@ -1,11 +1,6 @@
 package presentation.userui;
 
-import businesslogic.userbl.UserController;
-import businesslogicservice.userblservice.HotelOrderBlService;
-import enumData.Address;
 import enumData.LimitCriterion;
-import enumData.SortWay;
-import enumData.TradeArea;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -13,15 +8,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Callback;
-import jdk.nashorn.internal.runtime.regexp.joni.SearchAlgorithm;
-import sun.security.krb5.internal.APOptions;
 import vo.HotelListItemVO;
-import vo.HotelinfoVO;
 import vo.LimitVO;
 
 import java.io.IOException;
 import java.net.URL;
-import java.rmi.RemoteException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -287,7 +278,7 @@ public class uiSearchHotelController implements Initializable{
     public enumData.RoomType getRoomType(ToggleGroup bt){
         if(bt.getSelectedToggle()==SingleRoom){return enumData.RoomType.SingleRoom;}
         else if(bt.getSelectedToggle()==DoubleRoom){return enumData.RoomType.DoubleRoom;}
-        else if(bt.getSelectedToggle()==StandardRoom){return enumData.RoomType.StandardRoom;}
+        else if(bt.getSelectedToggle()==StandardRoom){return enumData.RoomType.DisabledRoom;}
         else return null;
     }
 

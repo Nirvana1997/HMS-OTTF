@@ -66,7 +66,7 @@ public class HotelSalerController implements HotelsalerblService,HotelinfoblServ
      * @throws RemoteException
      */
     @Override
-    public HotelinfoVO getHotelInfo() throws RemoteException {
+    public HotelinfoVO getHotelinfo() throws RemoteException {
         return hotelInfoOperation.getHotelInfo();
     }
 
@@ -122,11 +122,6 @@ public class HotelSalerController implements HotelsalerblService,HotelinfoblServ
     @Override
     public ArrayList<HotelroomVO> getRoomInfo() throws RemoteException{
         return hotelroomOperation.getRoomInfo();
-    }
-
-    @Override
-    public HotelinfoVO getHotelinfo(String HotelID) throws RemoteException {
-        return null;
     }
 
     @Override

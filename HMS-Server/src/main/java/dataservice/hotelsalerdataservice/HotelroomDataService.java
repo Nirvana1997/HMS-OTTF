@@ -10,19 +10,6 @@ import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 public interface HotelroomDataService extends Remote{
-	/**
-	 *根据订单信息将相应空房间数-1
-	 * @param po 订单PO
-	 * @return 结果信息
-     */
-	public ResultMessage setOccupied(OrderPO po)throws RemoteException;
-
-	/**
-	 *根据订单信息将相应空房间数+1
-	 * @param po 订单PO
-	 * @return 结果信息
-     */
-	public ResultMessage setEmpty(OrderPO po)throws RemoteException;
 
 	/**
 	 *根据酒店ID和日期，查询对应日期空房间状况

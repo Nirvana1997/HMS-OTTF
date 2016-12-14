@@ -103,6 +103,17 @@ public class UserController implements InfoBlService, HotelOrderBlService {
     }
 
     /**
+     * 是否有足够的信用值
+     *
+     * @return 是否足够
+     * @throws RemoteException
+     */
+    @Override
+    public boolean hasEnoughCredit() throws RemoteException {
+        return userInfo.hasEnoughCredit();
+    }
+
+    /**
      * 返回是否房间数目是否足够
      *
      * @param vo 订单信息
@@ -139,12 +150,12 @@ public class UserController implements InfoBlService, HotelOrderBlService {
     /**
      * 根据用户id得到该用户的订单列表
      *
-     * @param userID
+     * @param orderState 订单状态
      * @return 订单列表
      */
     @Override
-    public ArrayList<OrderVO> readOrder(String userID) throws RemoteException {
-        return hotelOrder.readOrder(userID);
+    public ArrayList<OrderVO> readOrder(OrderState orderState) throws RemoteException {
+        return hotelOrder.readOrder(orderState);
     }
 
     /**

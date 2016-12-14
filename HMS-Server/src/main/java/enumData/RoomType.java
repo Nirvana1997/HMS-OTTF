@@ -1,5 +1,16 @@
 package enumData;
 
 public enum RoomType {
-	SingleRoom,DoubleRoom,StandardRoom
+	/**
+	 * 单人间
+	 */
+	SingleRoom,
+	/**
+	 * 双人间
+	 */
+	DoubleRoom,
+	/**
+	 * 无障碍房间
+	 */
+	DisabledRoom
 }

@@ -1,5 +1,6 @@
 package data.hotelsalerdata;
 
+import autoManage.ManageRoomNum;
 import database.DataBaseHelper;
 import dataservice.hotelsalerdataservice.HotelroomDataService;
 import enumData.ResultMessage;
@@ -18,29 +19,6 @@ import java.util.ArrayList;
 public class HotelroomDataImpl extends UnicastRemoteObject implements HotelroomDataService {
 
     public HotelroomDataImpl() throws RemoteException {
-    }
-
-    /**
-     *根据订单信息将相应空房间数-1
-     * @param po
-     * @return
-     */
-    @Override
-    public ResultMessage setOccupied(OrderPO po) {
-        DataBaseHelper.in("update " + po.getHotelID() + "_" + po.getCheckInDate() + " set emptyNum = emptyNum - 1 where " +
-                "type = '" + po.getRoomType().toString() + "'");
-        return ResultMessage.Correct;
-    }
-    /**
-     *根据订单信息将相应空房间数+1
-     * @param po
-     * @return
-     */
-    @Override
-    public ResultMessage setEmpty(OrderPO po) {
-        DataBaseHelper.in("update " + po.getHotelID() + "_" + po.getCheckInDate() + " set emptyNum = emptyNum + 1 where " +
-                "type = '" + po.getRoomType().toString() + "'");
-        return ResultMessage.Correct;
     }
 
     /**
@@ -161,6 +139,13 @@ public class HotelroomDataImpl extends UnicastRemoteObject implements HotelroomD
             DataBaseHelper.in("insert into " + po.getHotelID() + "_" + po.getDate() + " (type,emptyNum)"
                     + " values " + "('" + po.getRoomType().toString() + "','" + po.getEmptyNum() + "')");
         }
+        //每次初始化酒店房间数量信息时，添加一个触发器去自动管理每日信息
+        int[] roomTotalNum = new int[3];//存放该酒店每种房间对应总数，用于初始化触发器
+        String hotelID = list.get(0).getHotelID();
+        roomTotalNum[0] = Integer.parseInt(DataBaseHelper.outSingle(hotelID+"_roomInfo","number","type",RoomType.SingleRoom+""));
+        roomTotalNum[1] = Integer.parseInt(DataBaseHelper.outSingle(hotelID+"_roomInfo","number","type",RoomType.DoubleRoom+""));
+        roomTotalNum[2] = Integer.parseInt(DataBaseHelper.outSingle(hotelID+"_roomInfo","number","type",RoomType.DisabledRoom+""));
+        ManageRoomNum.update(30,roomTotalNum,hotelID);
         return ResultMessage.Correct;
     }
 

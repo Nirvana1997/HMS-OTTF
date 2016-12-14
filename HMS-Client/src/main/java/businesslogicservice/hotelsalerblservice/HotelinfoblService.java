@@ -19,10 +19,9 @@ import java.util.ArrayList;
 public interface HotelinfoblService {
 	/**
 	 * 获得酒店信息
-	 * @param HotelID 酒店编号
 	 * @return
 	 */
-	public HotelinfoVO getHotelinfo(String HotelID)throws RemoteException;
+	public HotelinfoVO getHotelinfo()throws RemoteException;
 
 	/**
 	 * 根据条件获得酒店列表
