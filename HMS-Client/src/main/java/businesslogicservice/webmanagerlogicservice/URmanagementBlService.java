@@ -17,13 +17,13 @@ public interface URmanagementBlService {
      * @return 对应用户信息
      * @throws RemoteException
      */
-	public UserInfoVO getUserInfo(String userID) throws RemoteException;
+    UserInfoVO getUserInfo(String userID) throws RemoteException;
 
     /**
      * 修改用户信息
      * @param vo 用户个人信息vo
      */
-	public void setUserInfo (UserInfoVO vo) throws RemoteException;
+    void setUserInfo(UserInfoVO vo) throws RemoteException;
 
-	public ArrayList<UserInfoVO> getUserList() throws RemoteException;
+	ArrayList<UserInfoVO> getUserList() throws RemoteException;
 }

@@ -13,10 +13,10 @@ import java.rmi.RemoteException;
  *         Created by user on 2016/12/3.
  */
 public class UserPVChanger {
-    static VipInfo vipInfo;
+    static VipInfo vipInfo = new VipDataImpl();
 
     public UserPVChanger() {
-        vipInfo = new VipDataImpl();
+//        vipInfo = ;
     }
 
     /**

@@ -20,7 +20,7 @@ public interface UserInfoForManagement {
      * @return 用户信息列表
      * @throws RemoteException
      */
-    public ArrayList<UserInfoPO> getUserList() throws RemoteException;
+    ArrayList<UserInfoPO> getUserList() throws RemoteException;
 
     /**
      * 获得某个用户的信息
@@ -28,7 +28,7 @@ public interface UserInfoForManagement {
      * @param userID
      * @return 用户信息
      */
-    public UserInfoPO getUserInfo(String userID) throws RemoteException;
+    UserInfoPO getUserInfo(String userID) throws RemoteException;
 
     /**
      * 设置个人信息
@@ -36,5 +36,5 @@ public interface UserInfoForManagement {
      * @param po 个人信息po
      * @throws RemoteException
      */
-    public void setUserInfo(UserInfoPO po) throws RemoteException;
+    void setUserInfo(UserInfoPO po) throws RemoteException;
 }
