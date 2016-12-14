@@ -36,7 +36,7 @@ public class AccountDataImpl implements AccountInfo {
     public ArrayList<String> getList(AccountType accountType)throws RemoteException{
         ArrayList<String> res = new ArrayList<String>();
         for(AccountPO po:logDataService.getAccountList(accountType)){
-            res.add(po.getAccountID());
+            res.add(po.getAccount());
         }
         return res;
     }

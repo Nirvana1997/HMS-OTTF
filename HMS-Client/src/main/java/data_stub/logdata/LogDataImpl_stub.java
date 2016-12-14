@@ -19,10 +19,10 @@ public class LogDataImpl_stub extends UnicastRemoteObject implements LogDataServ
     //TODO
     Map<String,AccountPO> accountMap = new HashMap<String,AccountPO>();
     ArrayList<AccountPO> accountList = new ArrayList<AccountPO>();
-    AccountPO account1 = new AccountPO("151250001","0101","111111",AccountType.user);
-    AccountPO account2 = new AccountPO("151250002","0201","111111",AccountType.hotelsaler);
-	AccountPO account3 = new AccountPO("151250003","0301","111111",AccountType.websaler);
-	AccountPO account4 = new AccountPO("151250004","0001","111111",AccountType.webmanager);
+    AccountPO account1 = new AccountPO("0101","151250001","111111",AccountType.user);
+    AccountPO account2 = new AccountPO("0201","151250002","111111",AccountType.hotelsaler);
+	AccountPO account3 = new AccountPO("0301","151250003","111111",AccountType.websaler);
+	AccountPO account4 = new AccountPO("0001","151250004","111111",AccountType.webmanager);
 
 	public LogDataImpl_stub() throws RemoteException{
 		super();
@@ -52,6 +52,11 @@ public class LogDataImpl_stub extends UnicastRemoteObject implements LogDataServ
         return po.getPassword();
 	}
 
+	@Override
+	public String getID(String account) throws RemoteException {
+		return accountMap.get(account).getID();
+	}
+
 	/**
      * 设置对应帐号的密码
      * @param account 帐号
@@ -73,7 +78,7 @@ public class LogDataImpl_stub extends UnicastRemoteObject implements LogDataServ
 
 	@Override
 	public ResultMessage addAccount(AccountPO po)throws RemoteException {
-		if(po.getAccountID().equals("001")){
+		if(po.getAccount().equals("001")){
 			return ResultMessage.HasExist;
 		}else
 		return ResultMessage.Correct;

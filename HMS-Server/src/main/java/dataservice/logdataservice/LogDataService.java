@@ -18,6 +18,14 @@ public interface LogDataService extends Remote{
 	public String getPassword(String account) throws RemoteException;
 
 	/**
+	 * 根据帐号得到相应的ID
+	 * @param account 帐号
+	 * @return ID
+	 * @throws RemoteException
+     */
+	public String getID(String account) throws RemoteException;
+
+	/**
 	 * 根据账户ID修改相应密码
 	 * @param account 帐号
 	 * @param password 密码

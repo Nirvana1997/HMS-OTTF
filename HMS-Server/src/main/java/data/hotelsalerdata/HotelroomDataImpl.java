@@ -51,8 +51,9 @@ public class HotelroomDataImpl extends UnicastRemoteObject implements HotelroomD
      */
     public ArrayList<RoomNumPO> getEmptyrooms(String hotelID,String date){
         ArrayList<RoomNumPO> roomNumPOs = new ArrayList<RoomNumPO>();
+        if(!DataBaseHelper.in("show tables like '" + hotelID + "_" + date + "'"))
+            return roomNumPOs;
         ArrayList<String> typeList = DataBaseHelper.out("select type from " + hotelID + "_" + date,"type");
-        ArrayList<String> totalNumList = DataBaseHelper.out("select totalNum from " + hotelID + "_" + date,"totalNum");
         ArrayList<String> emptyNumList = DataBaseHelper.out("select emptyNum from " + hotelID + "_" + date,"emptyNum");
         for(int i=0;i<typeList.size();i++){
             RoomType type = null;
@@ -61,31 +62,59 @@ public class HotelroomDataImpl extends UnicastRemoteObject implements HotelroomD
             }catch (IllegalArgumentException ex){
                 ex.printStackTrace();
             }
-            roomNumPOs.add(new RoomNumPO(hotelID,date,Integer.parseInt(totalNumList.get(i)),
-                    Integer.parseInt(emptyNumList.get(i)),type));
+            roomNumPOs.add(new RoomNumPO(hotelID,date,Integer.parseInt(emptyNumList.get(i)),type));
         }
         return roomNumPOs;
     }
 
+    /**
+     * 初始化酒店信息
+     * @param list 酒店房间信息POList
+     * @return
+     * @throws RemoteException
+     */
+    @Override
+    public ResultMessage initializeRoomInfo(ArrayList<HotelroomPO> list) throws RemoteException {
+        for(int i=0;i<list.size();i++){
+            initializeRoomInfo(list.get(i));
+        }
+        return ResultMessage.Correct;
+    }
 
     /**
-     *添加酒店房间信息
+     * 修改酒店信息
+     * @param list 酒店房间信息POList
+     * @return
+     * @throws RemoteException
+     */
+    @Override
+    public ResultMessage setRoomInfo(ArrayList<HotelroomPO> list) throws RemoteException {
+        for(int i=0;i<list.size();i++){
+            HotelroomPO po = list.get(i);
+            DataBaseHelper.in("update " + po.getHotelID() + "_roomInfo set price = '" + po.getPrice() + "' where type = '" + po.getRoomType() + "'" );
+            DataBaseHelper.in("update " + po.getHotelID() + "_roomInfo set number = '" + po.getRoomNumber() + "' where type = '" + po.getRoomType() + "'" );
+        }
+        return ResultMessage.Correct;
+    }
+
+
+    /**
+     *初始化酒店房间信息(单个PO)
      * @param po
      * @return
      */
-    @Override
-    public ResultMessage addHotelroom(HotelroomPO po) {
+    private ResultMessage initializeRoomInfo(HotelroomPO po) {
         if(!DataBaseHelper.in("show tables like '" + po.getHotelID() +"_roomInfo" + "'"))
             DataBaseHelper.in("create table " + po.getHotelID() + "_roomInfo" +
-                    "(type varchar(50),price float)");
+                    "(type varchar(50),price float,number varchar(20)");
         boolean exist = false;
         ArrayList<String> judge = DataBaseHelper.out("select type from " + po.getHotelID() + "_roomInfo","type");
         for(int i=0;i<judge.size();i++)
             if(judge.get(i).equals(po.getRoomType().toString()))
                 exist = true;
         if(!exist) {
-            DataBaseHelper.in("insert into " + po.getHotelID() + "_roomInfo (type , price) values ('" +
-                    po.getRoomType().toString() + "','" + po.getPrice() + "')");
+            DataBaseHelper.in("insert into " + po.getHotelID() + "_roomInfo (type , price , number) values ('" +
+                    po.getRoomType().toString() + "','" + po.getPrice() + "','" + po.getRoomNumber() + "')");
             return  ResultMessage.Correct;
         }
         return ResultMessage.HasExist;
@@ -101,6 +130,7 @@ public class HotelroomDataImpl extends UnicastRemoteObject implements HotelroomD
         if(DataBaseHelper.in("show tables like '" + hotelID +"_roomInfo" + "'")){
             ArrayList<String> typeList = DataBaseHelper.out("select type from " + hotelID + "_roomInfo order by price","type");
             ArrayList<String> priceList = DataBaseHelper.out("select price from " + hotelID + "_roomInfo order by price","price");
+            ArrayList<String> numberList = DataBaseHelper.out("select number from " + hotelID + "_roomInfo order by price","number");
             ArrayList<HotelroomPO> hotelroomPOs = new ArrayList<HotelroomPO>();
             for(int i=0;i<typeList.size();i++) {
                 RoomType type = null;
@@ -109,7 +139,7 @@ public class HotelroomDataImpl extends UnicastRemoteObject implements HotelroomD
                 }catch (IllegalArgumentException ex){
                     ex.printStackTrace();
                 }
-                hotelroomPOs.add(new HotelroomPO(hotelID, type, Double.parseDouble(priceList.get(i))));
+                hotelroomPOs.add(new HotelroomPO(hotelID, type, Double.parseDouble(priceList.get(i)),Integer.parseInt(numberList.get(i))));
             }
             return  hotelroomPOs;
         }
@@ -117,17 +147,36 @@ public class HotelroomDataImpl extends UnicastRemoteObject implements HotelroomD
     }
 
     /**
-     * 酒店工作人员初始化房间信息（房间类型，对应的总房间数，空房间数）
-     * @param po
+     * 酒店工作人员初始化房间数量信息（房间类型，对应的总房间数，空房间数）
+     * @param list
      * @return
      */
     @Override
-    public ResultMessage initializeRoomInfo(RoomNumPO po) {
-        if(!DataBaseHelper.in("show tables like '" + po.getHotelID() + "_" + po.getDate() + "'"))
-            DataBaseHelper.in("create table " + po.getHotelID() + "_" + po.getDate() +
-                    " ( type varchar(50),totalNum int ,emptyNum int )");
-        DataBaseHelper.in("insert into " + po.getHotelID() + "_" + po.getDate() + " (type,totalNum,emptyNum)"
-        + " values " + "('" + po.getRoomType().toString() + "','" + po.getTotalNum() + "','" + po.getEmptyNum() + "')");
+    public ResultMessage initializeRoomNum(ArrayList<RoomNumPO> list) {
+        for(int i=0;i<list.size();i++) {
+            RoomNumPO po = list.get(i);
+            if (!DataBaseHelper.in("show tables like '" + po.getHotelID() + "_" + po.getDate() + "'"))
+                DataBaseHelper.in("create table " + po.getHotelID() + "_" + po.getDate() +
+                        " ( type varchar(50),emptyNum int )");
+            DataBaseHelper.in("insert into " + po.getHotelID() + "_" + po.getDate() + " (type,emptyNum)"
+                    + " values " + "('" + po.getRoomType().toString() + "','" + po.getEmptyNum() + "')");
+        }
+        return ResultMessage.Correct;
+    }
+
+    /**
+     * 修改房间数量信息（房间类型，对应的总房间数，空房间数）
+     * @param list 房间数量POlist
+     * @return
+     * @throws RemoteException
+     */
+    @Override
+    public ResultMessage setRoomNum(ArrayList<RoomNumPO> list) throws RemoteException {
+        for(int i=0;i<list.size();i++){
+            RoomNumPO po = list.get(i);
+            DataBaseHelper.in("update " + po.getHotelID() + "_" + po.getDate() + " set emptyNum = '" + po.getEmptyNum() + "' where type = '"
+            + po.getRoomType() + "'");
+        }
         return ResultMessage.Correct;
     }
 }
