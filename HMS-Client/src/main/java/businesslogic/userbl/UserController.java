@@ -150,12 +150,12 @@ public class UserController implements InfoBlService, HotelOrderBlService {
     /**
      * 根据用户id得到该用户的订单列表
      *
-     * @param userID
+     * @param orderState 订单状态
      * @return 订单列表
      */
     @Override
-    public ArrayList<OrderVO> readOrder(String userID) throws RemoteException {
-        return hotelOrder.readOrder(userID);
+    public ArrayList<OrderVO> readOrder(OrderState orderState) throws RemoteException {
+        return hotelOrder.readOrder(orderState);
     }
 
     /**

@@ -83,10 +83,10 @@ public interface HotelOrderBlService {
     /**
      * 根据用户id得到该用户的订单列表
      *
-     * @param userID
+     * @param orderState 订单状态
      * @return 订单列表
      */
-    public ArrayList<OrderVO> readOrder(String userID) throws RemoteException;
+    public ArrayList<OrderVO> readOrder(OrderState orderState) throws RemoteException;
 
     /**
      * 根据订单ID取消该订单
