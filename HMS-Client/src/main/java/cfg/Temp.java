@@ -45,4 +45,6 @@ public class Temp {
     public static final SortWay sortway = SortWay.Grade_Descending;
 
     public static final int days = 30;
+
+    public static final int minCredit = 0;
 }

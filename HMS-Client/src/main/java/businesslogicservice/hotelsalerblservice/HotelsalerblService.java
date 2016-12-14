@@ -18,14 +18,6 @@ public interface HotelsalerblService {
     public ResultMessage modifyHotelInfo(HotelinfoVO vo) throws RemoteException;
 
     /**
-     * 获得当前登录帐号对应酒店信息
-     *
-     * @return 对应酒店信息
-     * @throws RemoteException
-     */
-    public HotelinfoVO getHotelInfo() throws RemoteException;
-
-    /**
      * 浏览登录帐号对应酒店订单
      *
      * @return 酒店订单列表
