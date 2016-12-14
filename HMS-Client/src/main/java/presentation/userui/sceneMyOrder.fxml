@@ -173,6 +173,13 @@
             <Font size="14.0" />
          </font>
       </TextField>
-      <Button fx:id="buttongotoOrder" layoutX="860.0" layoutY="553.0" mnemonicParsing="false" onAction="#gotoOrder" text="查看订单" />
+      <Button fx:id="buttongotoOrder" layoutX="860.0" layoutY="541.0" mnemonicParsing="false" onAction="#gotoOrder" prefHeight="36.0" prefWidth="89.0" text="查看订单">
+         <effect>
+            <ImageInput>
+               <source>
+                  <Image url="@../../../../../graphics/userui/查看订单.png" />
+               </source>
+            </ImageInput>
+         </effect></Button>
    </children>
 </AnchorPane>

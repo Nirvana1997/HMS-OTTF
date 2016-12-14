@@ -67,7 +67,14 @@
             <TableColumn fx:id="columnNumber" minWidth="0.0" prefWidth="181.0" text="联系方式" />
         </columns>
       </TableView>
-      <Button fx:id="buttonChange" layoutX="868.0" layoutY="442.0" mnemonicParsing="false" onAction="#gotoChangeUser" text="查看用户信息" />
+      <Button fx:id="buttonChange" layoutX="845.0" layoutY="472.0" mnemonicParsing="false" onAction="#gotoChangeUser" prefHeight="39.0" prefWidth="89.0" text="查看用户信息">
+         <effect>
+            <ImageInput>
+               <source>
+                  <Image url="@../../../../../graphics/webmanagerui/查看详情.png" />
+               </source>
+            </ImageInput>
+         </effect></Button>
       <ImageView fx:id="searchUR" layoutX="896.0" layoutY="66.0" onMouseClicked="#SearchUR">
          <image>
             <Image url="@../../../../../graphics/webmanagerui/放大镜.png" />
