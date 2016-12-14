@@ -1,6 +1,10 @@
 package presentation.userui;
 
+import businesslogic.userbl.UserController;
+import businesslogicservice.userblservice.HotelOrderBlService;
+import enumData.Address;
 import enumData.LimitCriterion;
+import enumData.TradeArea;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;

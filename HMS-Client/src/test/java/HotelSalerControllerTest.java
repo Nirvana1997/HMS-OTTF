@@ -73,9 +73,9 @@ public class HotelSalerControllerTest {
     @Test
     public void testUpdateOrder() throws Exception {
         OrderVO vo = hotelSalerController.readOrder().get(0);
-        vo.setCheckOutDate(new Date(2016,1,1));
+        vo.setCheckOutDate(DateOperation.stringToDate("2016_01_01"));
         hotelSalerController.updateOrder(vo);
-        Assert.assertEquals("2016_1_1", DateOperation.dateToString(hotelSalerController.readOrder().get(0).getCheckOutDate()));
+        Assert.assertEquals("2016_01_01", DateOperation.dateToString(hotelSalerController.readOrder().get(0).getCheckOutDate()));
     }
 
 

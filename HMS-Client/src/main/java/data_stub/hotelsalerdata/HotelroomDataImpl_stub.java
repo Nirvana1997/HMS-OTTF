@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class HotelroomDataImpl_stub implements HotelroomDataService {
 	ArrayList<HotelroomPO> hotelroomPOs = new ArrayList<HotelroomPO>();
 	ArrayList<RoomNumPO> roomNumPOs = new ArrayList<RoomNumPO>();
-	HotelroomPO hotelroomPO1 = new HotelroomPO("0201", RoomType.StandardRoom,200,20);
+	HotelroomPO hotelroomPO1 = new HotelroomPO("0201", RoomType.DisabledRoom,200,20);
 	HotelroomPO hotelroomPO2 = new HotelroomPO("0201", RoomType.DoubleRoom,300,10);
 	HotelroomPO hotelroomPO3 = new HotelroomPO("0201", RoomType.SingleRoom,100,5);
 	RoomNumPO roomNumPO1 = new RoomNumPO("0201","2016_11_12",19,RoomType.SingleRoom);
@@ -27,28 +27,6 @@ public class HotelroomDataImpl_stub implements HotelroomDataService {
 		roomNumPOs.add(roomNumPO1);
 		roomNumPOs.add(roomNumPO2);
 		roomNumPOs.add(roomNumPO3);
-	}
-
-	@Override
-	public ResultMessage setOccupied(OrderPO po) {
-		for(int i=0;i<roomNumPOs.size();i++){
-			if(roomNumPOs.get(i).getHotelID().equals(po.getHotelID())&&
-					roomNumPOs.get(i).getDate().equals(po.getCheckInDate())){
-				roomNumPOs.get(i).setEmptyNum(roomNumPOs.get(i).getEmptyNum()-1);
-			}
-		}
-		return ResultMessage.Correct;
-	}
-
-	@Override
-	public ResultMessage setEmpty(OrderPO po) {
-		for(int i=0;i<roomNumPOs.size();i++){
-			if(roomNumPOs.get(i).getHotelID().equals(po.getHotelID())&&
-					roomNumPOs.get(i).getDate().equals(po.getCheckInDate())){
-				roomNumPOs.get(i).setEmptyNum(roomNumPOs.get(i).getEmptyNum()+1);
-			}
-		}
-		return ResultMessage.Correct;
 	}
 
 	@Override

@@ -38,8 +38,11 @@ public class OrderDataImpl_stub implements OrderDataService {
 
     @Override
     public ResultMessage setOrderInfo(OrderPO po) {
-        deleteOrder(po.getOrderID());
-        addOrder(po);
+        for(int i=0;i<orderList.size();i++){
+            if(orderList.get(i).getOrderID().equals(po.getOrderID())){
+                orderList.set(i,po);
+            }
+        }
         return ResultMessage.Correct;
     }
 
