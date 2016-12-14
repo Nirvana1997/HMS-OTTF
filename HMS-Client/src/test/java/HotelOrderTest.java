@@ -1,3 +1,4 @@
+import businesslogic.logbl.LogController;
 import businesslogic.userbl.UserController;
 import businesslogicservice.userblservice.HotelOrderBlService;
 import enumData.*;
@@ -5,6 +6,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.Before; 
 import org.junit.After;
+import vo.AccountVO;
 import vo.HotelListItemVO;
 import vo.LimitVO;
 import vo.OrderVO;
@@ -22,10 +24,14 @@ import java.util.Date;
 public class HotelOrderTest {
     HotelOrderBlService hotelOrderBlService;
 
+    LogController logController;
+
 @Before
 public void before() throws Exception {
     hotelOrderBlService = new UserController();
-} 
+    logController = new LogController();
+    logController.isCorrectAndLogin(new AccountVO("151250001","111111",null));
+}
 
 @After
 public void after() throws Exception { 
@@ -99,7 +105,8 @@ public void testOrderHotel() throws Exception {
 */ 
 @Test
 public void testReadOrder() throws Exception {
-    Assert.assertEquals("123",hotelOrderBlService.readOrder("01").get(0).getHotelID());
+    Assert.assertEquals("0200001",hotelOrderBlService.readOrder(OrderState.executing).get(0).getHotelID());
+    Assert.assertEquals(3,hotelOrderBlService.readOrder(OrderState.executing).size());
 } 
 
 /** 

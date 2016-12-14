@@ -7,6 +7,7 @@ import com.sun.org.apache.xpath.internal.operations.Or;
 import data_stub.orderdata.OrderDataImpl_stub;
 import dataservice.orderdataservice.OrderDataService;
 import enumData.IDType;
+import enumData.OrderState;
 import enumData.ResultMessage;
 import po.OrderPO;
 import utility.OrderPVChanger;
@@ -17,21 +18,23 @@ import java.util.ArrayList;
 
 /**
  * 酒店订单数据接口实现
+ *
  * @author qzh
- * Created by user on 2016/12/2.
+ *         Created by user on 2016/12/2.
  */
-public class OrderDataImpl implements UserOrderInfo,HotelOrderInfo{
+public class OrderDataImpl implements UserOrderInfo, HotelOrderInfo {
     /**
      * 订单数据模块
      */
     OrderDataService orderDataService;
 
     public OrderDataImpl() {
-        orderDataService = new OrderDataImpl_stub();
+    orderDataService = new OrderDataImpl_stub();
     }
 
     /**
      * 生成订单
+     *
      * @param po 订单信息
      */
     @Override
@@ -41,15 +44,33 @@ public class OrderDataImpl implements UserOrderInfo,HotelOrderInfo{
 
     /**
      * 获得用户订单列表
+     *
+     * @param orderState 订单状态
+     * @return 登录用户订单列表
+     */
+    @Override
+    public ArrayList<OrderPO> getOrderListByState(OrderState orderState) throws RemoteException {
+        ArrayList<OrderPO> res = new ArrayList<>();
+        for(OrderPO po:orderDataService.getOrderList(Login.getNowUserID(), IDType.userID)){
+            if(po.getOrderState().equals(orderState))
+                res.add(po);
+        }
+        return res;
+    }
+
+    /**
+     * 获得用户订单列表
+     *
      * @return 登录用户订单列表
      */
     @Override
     public ArrayList<OrderPO> getOrderList() throws RemoteException {
-        return orderDataService.getOrderList(Login.getNowUserID(),IDType.userID);
+        return orderDataService.getOrderList(Login.getNowUserID(), IDType.userID);
     }
 
     /**
      * 修改订单信息
+     *
      * @param po
      */
     @Override
@@ -59,6 +80,7 @@ public class OrderDataImpl implements UserOrderInfo,HotelOrderInfo{
 
     /**
      * 根据订单ID获取订单信息
+     *
      * @param orderID
      * @return
      */
@@ -74,9 +96,9 @@ public class OrderDataImpl implements UserOrderInfo,HotelOrderInfo{
      * @return 酒店订单列表
      */
     @Override
-    public ArrayList<OrderVO> getHotelOrders(String hotelID) throws RemoteException{
+    public ArrayList<OrderVO> getHotelOrders(String hotelID) throws RemoteException {
         ArrayList<OrderVO> res = new ArrayList<OrderVO>();
-        for(OrderPO po:orderDataService.getOrderList(hotelID, IDType.hotelID)){
+        for (OrderPO po : orderDataService.getOrderList(hotelID, IDType.hotelID)) {
             res.add(OrderPVChanger.orderP2V(po));
         }
         return res;
@@ -84,6 +106,7 @@ public class OrderDataImpl implements UserOrderInfo,HotelOrderInfo{
 
     /**
      * 更新订单信息
+     *
      * @param po 订单信息
      * @return 是否成功
      */

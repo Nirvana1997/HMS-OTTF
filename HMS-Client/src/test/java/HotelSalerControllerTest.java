@@ -44,10 +44,10 @@ public class HotelSalerControllerTest {
      */
     @Test
     public void testModifyHotelInfo() throws Exception {
-        HotelinfoVO vo = hotelSalerController.getHotelInfo();
+        HotelinfoVO vo = hotelSalerController.getHotelinfo();
         vo.setHotelname("haha");
         hotelSalerController.modifyHotelInfo(vo);
-        Assert.assertEquals("haha",hotelSalerController.getHotelInfo().getHotelname());
+        Assert.assertEquals("haha",hotelSalerController.getHotelinfo().getHotelname());
     }
 
     /**
@@ -55,7 +55,7 @@ public class HotelSalerControllerTest {
      */
     @Test
     public void testGetHotelInfo() throws Exception {
-        Assert.assertEquals("XianlinHotel",hotelSalerController.getHotelInfo().getHotelname());
+        Assert.assertEquals("XianlinHotel",hotelSalerController.getHotelinfo().getHotelname());
     }
 
     /**

@@ -20,12 +20,19 @@ public interface UserOrderInfo {
     void addOrder(OrderPO po) throws RemoteException;
 
     /**
-     * 根据账户，返回相应订单列表
+     * 根据账户和状态，返回相应订单列表
      *
      * @param orderState 订单状态
      * @return 对应用户的订单列表
      */
-    ArrayList<OrderPO> getOrderList(OrderState orderState) throws RemoteException;
+    ArrayList<OrderPO> getOrderListByState(OrderState orderState) throws RemoteException;
+
+    /**
+     * 根据账户，返回相应订单列表
+     *
+     * @return 对应用户的订单列表
+     */
+    ArrayList<OrderPO> getOrderList() throws RemoteException;
 
     /**
      * 修改订单信息

@@ -55,9 +55,7 @@ public class UserDataImpl implements UserInfoForManagement,CreditInfo,UserInfoAd
      */
     @Override
     public ArrayList<UserInfoPO> getUserList() throws RemoteException{
-        ArrayList<UserInfoPO> res = new ArrayList<UserInfoPO>();
-        //TODO
-        return res;
+        return userDataService.getUserInfoList();
     }
 
     /**

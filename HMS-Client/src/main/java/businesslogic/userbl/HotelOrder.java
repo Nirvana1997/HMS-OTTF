@@ -103,7 +103,7 @@ public class HotelOrder {
     public ArrayList<OrderVO> readOrder(OrderState orderState) throws RemoteException {
         //结果数组
         ArrayList<OrderVO> res = new ArrayList<OrderVO>();
-        for(OrderPO po:userOrderInfo.getOrderList(orderState)){
+        for(OrderPO po:userOrderInfo.getOrderListByState(orderState)){
             res.add(OrderPVChanger.orderP2V(po));
         }
         return res;

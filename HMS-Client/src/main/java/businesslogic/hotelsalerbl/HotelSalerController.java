@@ -124,8 +124,4 @@ public class HotelSalerController implements HotelsalerblService,HotelinfoblServ
         return hotelroomOperation.getRoomInfo();
     }
 
-    @Override
-    public ArrayList<HotelinfoPO> searchHotel(TradeArea tradeArea, Address address, SortWay sortWay) throws RemoteException {
-        return null;
-    }
 }

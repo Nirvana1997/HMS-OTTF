@@ -41,9 +41,8 @@ public class HotelroomOperation {
      * @return 是否成功
      */
     public ResultMessage setOrdered(BelowLineOrderVO vo) throws RemoteException {
-        //根据线下订单生成订单信息，方便统一操作
-        OrderPO po = OrderPVChanger.belowLineOrderV2P(vo);
-        return hotelroomDataService.setOccupied(po);
+        subEmptyRoom(vo);
+        return ResultMessage.Correct;
     }
 
     /**
@@ -54,9 +53,10 @@ public class HotelroomOperation {
      * @return 是否成功
      */
     public ResultMessage setEmpty(BelowLineOrderVO vo) throws RemoteException {
-        //根据线下订单生成订单信息，方便统一操作
-        OrderPO po = OrderPVChanger.belowLineOrderV2P(vo);
-        return hotelroomDataService.setEmpty(po);
+        //设置为负的，取消预定，来增加空房间数量
+        vo.setRoomNumber(-vo.getRoomNumber());
+        subEmptyRoom(vo);
+        return ResultMessage.Correct;
     }
 
     /**
@@ -66,7 +66,7 @@ public class HotelroomOperation {
      */
     public void setRoomInfo(ArrayList<HotelroomVO> hotelrooms) throws RemoteException {
         ArrayList<HotelroomPO> pos = new ArrayList<HotelroomPO>();
-        for(HotelroomVO vo:hotelrooms){
+        for (HotelroomVO vo : hotelrooms) {
             pos.add(HotelPVChanger.hotelroomV2P(vo));
         }
         //判断是否是第一次设置
@@ -79,7 +79,7 @@ public class HotelroomOperation {
             ArrayList<Date> dates = DateOperation.getDates(new Date(), DateOperation.addDays(new Date(), Temp.days));
             for (Date date : dates) {
                 for (HotelroomPO po : pos) {
-                    roomNums.add(new RoomNumPO(Login.getNowUserID(),DateOperation.dateToString(date),po.getRoomNumber(),po.getRoomType()));
+                    roomNums.add(new RoomNumPO(Login.getNowUserID(), DateOperation.dateToString(date), po.getRoomNumber(), po.getRoomType()));
                 }
                 hotelroomDataService.initializeRoomNum(roomNums);
                 //清空以添加下一天信息
@@ -93,7 +93,7 @@ public class HotelroomOperation {
             ArrayList<Date> dates = DateOperation.getDates(new Date(), DateOperation.addDays(new Date(), Temp.days));
             for (Date date : dates) {
                 for (HotelroomPO po : pos) {
-                    roomNums.add(new RoomNumPO(Login.getNowUserID(),DateOperation.dateToString(date),po.getRoomNumber(),po.getRoomType()));
+                    roomNums.add(new RoomNumPO(Login.getNowUserID(), DateOperation.dateToString(date), po.getRoomNumber(), po.getRoomType()));
                 }
                 hotelroomDataService.setRoomNum(roomNums);
                 //清空以添加下一天信息
@@ -110,9 +110,31 @@ public class HotelroomOperation {
      */
     public ArrayList<HotelroomVO> getRoomInfo() throws RemoteException {
         ArrayList<HotelroomVO> res = new ArrayList<HotelroomVO>();
-        for(HotelroomPO po:hotelroomDataService.getRoomList(Login.getNowUserID())){
+        for (HotelroomPO po : hotelroomDataService.getRoomList(Login.getNowUserID())) {
             res.add(HotelPVChanger.hotelroomP2V(po));
         }
         return res;
+    }
+
+    /**
+     * 根据线下订单减少房间数目
+     *
+     * @param vo 线下订单信息
+     * @throws RemoteException
+     */
+    private void subEmptyRoom(BelowLineOrderVO vo) throws RemoteException {
+        //根据线下订单生成订单信息，方便统一操作
+        OrderPO po = OrderPVChanger.belowLineOrderV2P(vo);
+        //对每天的房间数目进行操作
+        for (Date date : DateOperation.getDates(vo.getCheckInDate(), vo.getCheckOutDate())) {
+            ArrayList<RoomNumPO> roomNums = hotelroomDataService.getEmptyrooms(Login.getNowUserID(), DateOperation.dateToString(date));
+            for (RoomNumPO roomNum : roomNums) {
+                if (roomNum.getRoomType().equals(roomNum.getRoomType())) {
+                    roomNum.setEmptyNum(roomNum.getEmptyNum() - vo.getRoomNumber());
+                    break;
+                }
+            }
+            hotelroomDataService.setRoomNum(roomNums);
+        }
     }
 }

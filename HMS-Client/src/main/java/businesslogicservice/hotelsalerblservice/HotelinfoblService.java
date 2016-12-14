@@ -22,13 +22,4 @@ public interface HotelinfoblService {
 	 * @return
 	 */
 	public HotelinfoVO getHotelinfo()throws RemoteException;
-
-	/**
-	 * 根据条件获得酒店列表
-	 * @param tradeArea 商圈
-	 * @param address 地址
-	 * @param sortWay 排序方式
-	 * @return
-	 */
-	public ArrayList<HotelinfoPO> searchHotel(TradeArea tradeArea, Address address, SortWay sortWay) throws RemoteException;
 }

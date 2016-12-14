@@ -1,4 +1,5 @@
 import businesslogic.logbl.LogController;
+import businesslogic.userbl.UserInfo;
 import businesslogic.webmanagerbl.WebmanagerController;
 import enumData.ResultMessage;
 import org.junit.After;
@@ -6,7 +7,10 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import vo.AccountVO;
+import vo.UserInfoVO;
 import vo.WebsalerInfoVO;
+
+import java.util.ArrayList;
 
 /**
  * WebmanagerController Tester.
@@ -89,7 +93,8 @@ public class WebmanagerControllerTest {
      */
     @Test
     public void testGetUserList() throws Exception {
-//TODO: Test goes here... 
+        ArrayList<UserInfoVO> userInfos = webmanagerController.getUserList();
+        Assert.assertEquals(4,userInfos.size());
     }
 
     /**
