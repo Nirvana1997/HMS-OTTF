@@ -1,6 +1,7 @@
 package utility;
 
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -79,8 +80,13 @@ public class DateOperation {
      * @return date对象
      */
     public static Date stringToDate(String string) {
-        String[] date = string.split("_");
-        return new Date(Integer.valueOf(date[0]), Integer.valueOf(date[1]), Integer.valueOf(date[2]));
+        DateFormat df = new SimpleDateFormat("yyyy_MM_dd");
+        try {
+            return df.parse(string);
+        }catch (ParseException e){
+            e.printStackTrace();
+        }
+        return null;
     }
 
     /**
