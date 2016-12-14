@@ -137,7 +137,21 @@
             <TableColumn fx:id="columnHasCanceled" minWidth="0.0" prefWidth="85.0" text="撤销订单" />
         </columns>
       </TableView>
-      <Button fx:id="buttonReserve" layoutX="903.0" layoutY="476.0" mnemonicParsing="false" onAction="#gotoReserveHotel" text="预订酒店" />
-      <Button fx:id="buttonHotel" layoutX="903.0" layoutY="520.0" mnemonicParsing="false" onAction="#gotoHotel" text="查看详情" />
+      <Button fx:id="buttonReserve" layoutX="888.0" layoutY="457.0" mnemonicParsing="false" onAction="#gotoReserveHotel" prefHeight="40.0" prefWidth="93.0" text="预订酒店">
+         <effect>
+            <ImageInput>
+               <source>
+                  <Image url="@../../../../../graphics/userui/预订酒店.png" />
+               </source>
+            </ImageInput>
+         </effect></Button>
+      <Button fx:id="buttonHotel" layoutX="888.0" layoutY="509.0" mnemonicParsing="false" onAction="#gotoHotel" prefHeight="40.0" prefWidth="93.0" text="查看详情">
+         <effect>
+            <ImageInput>
+               <source>
+                  <Image url="@../../../../../graphics/userui/查看详情.png" />
+               </source>
+            </ImageInput>
+         </effect></Button>
    </children>
 </AnchorPane>

@@ -62,8 +62,22 @@
             <TableColumn fx:id="columnNumber" minWidth="0.0" prefWidth="181.0" text="联系方式" />
          </columns>
       </TableView>
-      <Button fx:id="buttonAddHotel" layoutX="860.0" layoutY="501.0" mnemonicParsing="false" onAction="#gotoAddHotel" text="AddHotel" />
-      <Button fx:id="buttonChange" layoutX="852.0" layoutY="441.0" mnemonicParsing="false" onAction="#gotoChangeHS" text="查看酒店信息" />
+      <Button fx:id="buttonAddHotel" layoutX="845.0" layoutY="526.0" mnemonicParsing="false" onAction="#gotoAddHotel" prefHeight="40.0" prefWidth="89.0" text="AddHotel">
+         <effect>
+            <ImageInput>
+               <source>
+                  <Image url="@../../../../../graphics/webmanagerui/添加酒店.png" />
+               </source>
+            </ImageInput>
+         </effect></Button>
+      <Button fx:id="buttonChange" layoutX="845.0" layoutY="472.0" mnemonicParsing="false" onAction="#gotoChangeHS" prefHeight="40.0" prefWidth="89.0" text="查看酒店信息">
+         <effect>
+            <ImageInput>
+               <source>
+                  <Image url="@../../../../../graphics/webmanagerui/查看详情.png" />
+               </source>
+            </ImageInput>
+         </effect></Button>
       <Text fx:id="buttonLogOut" fill="#0b799a" layoutX="203.0" layoutY="599.0" onMouseClicked="#LogOut" strokeType="OUTSIDE" strokeWidth="0.0" text="登出" underline="true">
          <font>
             <Font size="16.0" />

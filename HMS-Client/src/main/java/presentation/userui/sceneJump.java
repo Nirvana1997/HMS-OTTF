@@ -140,6 +140,7 @@ public class sceneJump {
         uiReadHotelController.chooseHotel = true;
         uiSearchHotelController.isFinish = true;
         uiSearchHotelController.isValid = true;
+        uiSearchHotelController.chooseHotel = true;
     }
 
     /**

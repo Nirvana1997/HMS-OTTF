@@ -231,6 +231,13 @@
             <Font size="36.0" />
          </font>
       </Label>
-      <Button fx:id="buttonReserve" layoutX="819.0" layoutY="500.0" mnemonicParsing="false" onAction="#gotoReserveHotel" prefHeight="35.0" prefWidth="88.0" text="预订酒店" />
+      <Button fx:id="buttonReserve" layoutX="795.0" layoutY="509.0" mnemonicParsing="false" onAction="#gotoReserveHotel" prefHeight="35.0" prefWidth="88.0" text="预订酒店">
+         <effect>
+            <ImageInput>
+               <source>
+                  <Image url="@../../../../../graphics/userui/预订酒店.png" />
+               </source>
+            </ImageInput>
+         </effect></Button>
    </children>
 </AnchorPane>
