@@ -2,7 +2,6 @@ package presentation.userui;
 
 import businesslogic.userbl.UserController;
 import businesslogicservice.userblservice.HotelOrderBlService;
-import enumData.RoomType;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -196,7 +195,7 @@ public class uiReserveHotelController implements Initializable{
     public enumData.RoomType getRoomType(ToggleGroup bt){
         if(bt.getSelectedToggle()==singleRoom){return enumData.RoomType.SingleRoom;}
         else if(bt.getSelectedToggle()==doubleRoom){return enumData.RoomType.DoubleRoom;}
-        else if(bt.getSelectedToggle()==standardRoom){return enumData.RoomType.StandardRoom;}
+        else if(bt.getSelectedToggle()==standardRoom){return enumData.RoomType.DisabledRoom;}
         else return null;
     }
 
@@ -211,7 +210,7 @@ public class uiReserveHotelController implements Initializable{
         }
         HotelinfoVO currentHotel = null;
         try {
-            currentHotel = hotelOrderBlService.readHotel(jump.getHotelID());
+            currentHotel = hotelOrderBlService.readHotel(sceneJump.getHotelID());
         } catch (RemoteException e) {
             e.printStackTrace();
         }

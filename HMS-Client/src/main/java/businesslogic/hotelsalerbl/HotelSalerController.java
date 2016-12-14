@@ -2,11 +2,20 @@ package businesslogic.hotelsalerbl;
 
 import businesslogic.logbl.Login;
 import businesslogic.userbl.HotelOrder;
+import businesslogicservice.hotelsalerblservice.HotelinfoblService;
+import businesslogicservice.hotelsalerblservice.HotelroomblService;
 import businesslogicservice.hotelsalerblservice.HotelsalerblService;
 import data_stub.hotelsalerdata.HotelroomDataImpl_stub;
 import dataservice.hotelsalerdataservice.HotelroomDataService;
+import enumData.Address;
 import enumData.ResultMessage;
+import enumData.SortWay;
+import enumData.TradeArea;
+import po.HotelinfoPO;
+import po.HotelroomPO;
+import vo.BelowLineOrderVO;
 import vo.HotelinfoVO;
+import vo.HotelroomVO;
 import vo.OrderVO;
 
 import java.rmi.RemoteException;
@@ -18,7 +27,7 @@ import java.util.ArrayList;
  * @author qzh
  *         Created by user on 2016/12/7.
  */
-public class HotelSalerController implements HotelsalerblService {
+public class HotelSalerController implements HotelsalerblService,HotelinfoblService,HotelroomblService {
     /**
      * 酒店信息操作
      */
@@ -57,7 +66,7 @@ public class HotelSalerController implements HotelsalerblService {
      * @throws RemoteException
      */
     @Override
-    public HotelinfoVO getHotelInfo() throws RemoteException {
+    public HotelinfoVO getHotelinfo() throws RemoteException {
         return hotelInfoOperation.getHotelInfo();
     }
 
@@ -80,5 +89,43 @@ public class HotelSalerController implements HotelsalerblService {
     @Override
     public ResultMessage updateOrder(OrderVO vo) throws RemoteException {
         return hotelOrderOperation.updateOrder(vo);
+    }
+
+    /**
+     * 线下订单生成时，
+     * 将一个订单上的对应日期中的房间减少
+     *
+     * @param vo 线下订单信息
+     * @return 是否成功
+     */
+    @Override
+    public ResultMessage setOrdered(BelowLineOrderVO vo) throws RemoteException {
+        return hotelroomOperation.setOrdered(vo);
+    }
+
+    @Override
+    public ResultMessage setEmpty(BelowLineOrderVO vo) throws RemoteException {
+        return hotelroomOperation.setEmpty(vo);
+    }
+
+    @Override
+    public void setRoomInfo(ArrayList<HotelroomVO> hotelrooms) throws RemoteException {
+        hotelroomOperation.setRoomInfo(hotelrooms);
+    }
+
+    /**
+     * 获得房间信息
+     *
+     * @return 酒店房间信息
+     * @throws RemoteException
+     */
+    @Override
+    public ArrayList<HotelroomVO> getRoomInfo() throws RemoteException{
+        return hotelroomOperation.getRoomInfo();
+    }
+
+    @Override
+    public ArrayList<HotelinfoPO> searchHotel(TradeArea tradeArea, Address address, SortWay sortWay) throws RemoteException {
+        return null;
     }
 }

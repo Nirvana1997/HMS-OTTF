@@ -4,20 +4,20 @@ import dataservice.hotelsalerdataservice.HotelroomDataService;
 import enumData.ResultMessage;
 import enumData.RoomType;
 import po.HotelroomPO;
-import po.OrderPO;
 import po.RoomNumPO;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 public class HotelroomDataImpl_stub implements HotelroomDataService {
 	ArrayList<HotelroomPO> hotelroomPOs = new ArrayList<HotelroomPO>();
 	ArrayList<RoomNumPO> roomNumPOs = new ArrayList<RoomNumPO>();
-	HotelroomPO hotelroomPO1 = new HotelroomPO("01", RoomType.StandardRoom,200);
-	HotelroomPO hotelroomPO2 = new HotelroomPO("01", RoomType.DoubleRoom,300);
-	HotelroomPO hotelroomPO3 = new HotelroomPO("01", RoomType.SingleRoom,100);
-	RoomNumPO roomNumPO1 = new RoomNumPO("01","2016_11_12",20,19,RoomType.SingleRoom);
-	RoomNumPO roomNumPO2 = new RoomNumPO("01","2016_11_12",10,9,RoomType.StandardRoom);
-	RoomNumPO roomNumPO3 = new RoomNumPO("01","2016_11_12",5,2,RoomType.SingleRoom);
+	HotelroomPO hotelroomPO1 = new HotelroomPO("01", RoomType.DisabledRoom,200,20);
+	HotelroomPO hotelroomPO2 = new HotelroomPO("01", RoomType.DoubleRoom,300,10);
+	HotelroomPO hotelroomPO3 = new HotelroomPO("01", RoomType.SingleRoom,100,5);
+	RoomNumPO roomNumPO1 = new RoomNumPO("01","2016_11_12",19,RoomType.SingleRoom);
+	RoomNumPO roomNumPO2 = new RoomNumPO("01","2016_11_12",9,RoomType.DisabledRoom);
+	RoomNumPO roomNumPO3 = new RoomNumPO("01","2016_11_12",2,RoomType.SingleRoom);
 
 	public HotelroomDataImpl_stub() {
 		hotelroomPOs.add(hotelroomPO1);
@@ -26,28 +26,6 @@ public class HotelroomDataImpl_stub implements HotelroomDataService {
 		roomNumPOs.add(roomNumPO1);
 		roomNumPOs.add(roomNumPO2);
 		roomNumPOs.add(roomNumPO3);
-	}
-
-	@Override
-	public ResultMessage setOccupied(OrderPO po) {
-		for(int i=0;i<roomNumPOs.size();i++){
-			if(roomNumPOs.get(i).getHotelID().equals(po.getHotelID())&&
-					roomNumPOs.get(i).getDate().equals(po.getCheckInDate())){
-				roomNumPOs.get(i).setEmptyNum(roomNumPOs.get(i).getEmptyNum()-1);
-			}
-		}
-		return ResultMessage.Correct;
-	}
-
-	@Override
-	public ResultMessage setEmpty(OrderPO po) {
-		for(int i=0;i<roomNumPOs.size();i++){
-			if(roomNumPOs.get(i).getHotelID().equals(po.getHotelID())&&
-					roomNumPOs.get(i).getDate().equals(po.getCheckInDate())){
-				roomNumPOs.get(i).setEmptyNum(roomNumPOs.get(i).getEmptyNum()+1);
-			}
-		}
-		return ResultMessage.Correct;
 	}
 
 	@Override
@@ -62,10 +40,15 @@ public class HotelroomDataImpl_stub implements HotelroomDataService {
 	}
 
 	@Override
-	public ResultMessage addHotelroom(HotelroomPO po) {
-		hotelroomPOs.add(po);
-		return ResultMessage.Correct;
+	public ResultMessage initializeRoomInfo(ArrayList<HotelroomPO> list) throws RemoteException {
+		return null;
 	}
+
+	@Override
+	public ResultMessage setRoomInfo(ArrayList<HotelroomPO> list) throws RemoteException {
+		return null;
+	}
+
 
 	@Override
 	public ArrayList<HotelroomPO> getRoomList(String hotelID) {
@@ -78,9 +61,14 @@ public class HotelroomDataImpl_stub implements HotelroomDataService {
 	}
 
 	@Override
-	public ResultMessage initializeRoomInfo(RoomNumPO po) {
-		roomNumPOs.add(po);
-		return ResultMessage.Correct;
+	public ResultMessage initializeRoomNum(ArrayList<RoomNumPO> list) throws RemoteException {
+		return null;
 	}
+
+	@Override
+	public ResultMessage setRoomNum(ArrayList<RoomNumPO> list) throws RemoteException {
+		return null;
+	}
+
 
 }

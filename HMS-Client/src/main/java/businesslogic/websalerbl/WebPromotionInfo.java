@@ -20,7 +20,7 @@ public interface WebPromotionInfo {
      *
      * @return 所有对应类型网站营销策略
      */
-    public ArrayList<PromotionPO> getWebPromotions() throws RemoteException;
+    ArrayList<PromotionPO> getWebPromotions() throws RemoteException;
 
     /**
      * 获得应对名称的促销策略
@@ -28,19 +28,19 @@ public interface WebPromotionInfo {
      * @param promotionName 营销策略名称
      * @return 营销策略信息
      */
-    public PromotionPO getPromotion(String promotionName);
+    PromotionPO getPromotion(String promotionName);
 
     /**
      * 添加营销策略
      *
      * @param vo 营销策略信息
      */
-    public void addPromotion(PromotionVO vo) throws RemoteException;
+    void addPromotion(PromotionVO vo) throws RemoteException;
 
     /**
      * 删除营销策略
      *
      * @param promotionName 营销策略名称
      */
-    public void deletePromotion(String promotionName) throws RemoteException;
+    void deletePromotion(String promotionName) throws RemoteException;
 }

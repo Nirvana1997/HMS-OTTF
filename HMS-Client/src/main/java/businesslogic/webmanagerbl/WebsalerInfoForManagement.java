@@ -17,7 +17,7 @@ public interface WebsalerInfoForManagement {
      *
      * @return 网站营销人员信息列表
      */
-    public ArrayList<WebsalerInfoVO> getWebsalerInfoList()throws RemoteException;
+    ArrayList<WebsalerInfoVO> getWebsalerInfoList()throws RemoteException;
 
     /**
      * 获得网站营销人员信息
@@ -25,26 +25,26 @@ public interface WebsalerInfoForManagement {
      * @param websalerID 网站营销人员编号
      * @return 网站营销人员信息
      */
-    public WebsalerInfoVO getWebsalerInfo(String websalerID)throws RemoteException;
+    WebsalerInfoVO getWebsalerInfo(String websalerID)throws RemoteException;
 
     /**
      * 设置网站营销人员信息
      *
      * @param websalerInfoVO 网站营销人员信息
      */
-    public void setWebsalerInfo(WebsalerInfoVO websalerInfoVO)throws RemoteException;
+    void setWebsalerInfo(WebsalerInfoVO websalerInfoVO)throws RemoteException;
 
     /**
      * 添加网站营销人员信息
      *
      * @param websalerInfoVO 网站营销人员信息
      */
-    public void addWebsalerInfo(WebsalerInfoVO websalerInfoVO)throws RemoteException;
+    void addWebsalerInfo(WebsalerInfoVO websalerInfoVO)throws RemoteException;
 
     /**
      * 删除网站营销人员信息
      *
-     * @param websalerID
+     * @param websalerID 网站营销人员编号
      */
-    public void deleteWebsalerInfo(String websalerID)throws RemoteException;
+    void deleteWebsalerInfo(String websalerID)throws RemoteException;
 }

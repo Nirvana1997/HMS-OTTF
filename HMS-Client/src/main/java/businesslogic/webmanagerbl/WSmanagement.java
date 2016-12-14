@@ -1,52 +1,90 @@
 package businesslogic.webmanagerbl;
 
-import businesslogicservice.webmanagerlogicservice.WSmanagementBlService;
+import businesslogic.logbl.impl.AccountDataImpl;
+import businesslogic.websalerbl.impl.WebsalerDataImpl;
+import enumData.AccountType;
 import enumData.ResultMessage;
 import vo.WebsalerInfoVO;
 
+import java.rmi.RemoteException;
+import java.util.ArrayList;
+
 /**
- * 网站营销人员
+ * 网站营销人员管理模块
+ *
+ * @author qzh
  */
 public class WSmanagement {
-	
-	WebsalerInfoVO webSaler = new WebsalerInfoVO("0001", "1234");
-	String pswd = "1234";
-	
-	//根据ID查看网站营销人员信息
-	public WebsalerInfoVO getWebsaleInfo(String websalerID) {
-		if(websalerID == webSaler.getWebsalerID())
-			return webSaler;
-		return null;
-	}
+    /**
+     * 网站营销人员信息管理模块
+     */
+    WebsalerInfoForManagement websalerInfoForManagement;
 
-	//更新网站营销人员信息
-	public ResultMessage setWebsalerInfo(WebsalerInfoVO vo) {
-		if(vo == webSaler){
-			System.out.println("更新成功");
-			return ResultMessage.Correct;
-		}
-		System.out.println("该用户不存在！");
-		return ResultMessage.NotExist;
-	}
+    /**
+     * 帐号信息管理模块
+     */
+    AccountInfo accountInfo;
 
-	//增加网站营销人员
-	public boolean addWebsalerInfo(WebsalerInfoVO vo, String password) {
-		if(password == pswd){
-			System.out.println("添加成功");
-			return true;
-		}
-		System.out.println("密码不符合格式");
-		return false;
-	}
+    public WSmanagement() throws RemoteException {
+        websalerInfoForManagement = new WebsalerDataImpl();
+        accountInfo = new AccountDataImpl();
+    }
 
-	//删除网站营销人员
-	public ResultMessage deleteWebsalerInfo(String websalerID) {
-		if(websalerID == webSaler.getWebsalerID()){
-			System.out.println("删除成功");
-			return ResultMessage.Correct;
-		}
-		System.out.println("该用户不存在！");
-		return ResultMessage.NotExist;
-	}
+    /**
+     * 获得网站营销人员信息
+     *
+     * @param websalerID 网站营销人员编号
+     * @return 网站营销人员信息
+     */
+    public WebsalerInfoVO getWebsaleInfo(String websalerID) throws RemoteException {
+        return websalerInfoForManagement.getWebsalerInfo(websalerID);
+    }
+
+    /**
+     * 设置网站营销人员信息
+     *
+     * @param vo 网站营销人员信息
+     */
+    public ResultMessage setWebsalerInfo(WebsalerInfoVO vo) throws RemoteException {
+        websalerInfoForManagement.setWebsalerInfo(vo);
+        return ResultMessage.Correct;
+    }
+
+    /**
+     * 添加网站营销人员信息和帐号
+     *
+     * @param vo       网站营销人员信息
+     * @param account  帐号
+     * @param password 密码
+     * @return 是否成功
+     */
+    public boolean addWebsalerInfoAndAccount(WebsalerInfoVO vo, String account, String password) throws RemoteException {
+        accountInfo.addAccount(account, password, AccountType.websaler);
+        vo.setWebsalerID(accountInfo.getID(account));
+        websalerInfoForManagement.addWebsalerInfo(vo);
+        return true;
+    }
+
+    /**
+     * 删除网站营销人员信息
+     *
+     * @param websalerID 网站营销人员编号
+     * @return 是否成功
+     */
+    public ResultMessage deleteWebsalerInfo(String websalerID) throws RemoteException {
+        websalerInfoForManagement.deleteWebsalerInfo(websalerID);
+        accountInfo.deleteAccount(websalerID);
+        return ResultMessage.Correct;
+    }
+
+    /**
+     * 获得所有网站营销人员的信息
+     *
+     * @return 网站营销人员信息列表
+     * @throws RemoteException
+     */
+    public ArrayList<WebsalerInfoVO> getWebsalerInfoList() throws RemoteException {
+        return websalerInfoForManagement.getWebsalerInfoList();
+    }
 
 }

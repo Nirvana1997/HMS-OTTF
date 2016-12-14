@@ -74,7 +74,8 @@ public void uiLogController(){
     private Text notExist;
 
     public void login() throws IOException {
-
+//        SceneUser sceneUser = new SceneUser();
+//                sceneUser.initUI();
         // 获取用户名
         String userID = textUserID.getText();
         // 获取密码

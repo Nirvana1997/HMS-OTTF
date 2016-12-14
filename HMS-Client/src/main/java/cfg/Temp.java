@@ -40,7 +40,11 @@ public class Temp {
 
     public static final String WEB_SALER = "03";
 
-    public static final int ID_NUMBER_LENGTH = 10;
+    public static final int ID_NUMBER_LENGTH = 5;
 
     public static final SortWay sortway = SortWay.Grade_Descending;
+
+    public static final int days = 30;
+
+    public static final int minCredit = 0;
 }

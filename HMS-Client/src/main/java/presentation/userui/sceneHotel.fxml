@@ -134,71 +134,81 @@
       </Button>
       <AnchorPane fx:id="HotelInfoPane" layoutX="324.0" layoutY="181.0" prefHeight="319.0" prefWidth="595.0">
          <children>
-            <Text layoutX="29.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="酒店名称：">
+            <Text layoutX="298.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="酒店名称：">
                <font>
                   <Font size="16.0" />
                </font>
             </Text>
-            <Text layoutX="29.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="详细地址：">
+            <Text layoutX="298.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="详细地址：">
                <font>
                   <Font size="16.0" />
                </font>
             </Text>
-            <Text layoutX="29.0" layoutY="184.0" strokeType="OUTSIDE" strokeWidth="0.0" text="星级：">
+            <Text layoutX="298.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="星级：">
                <font>
                   <Font size="16.0" />
                </font>
             </Text>
-            <Text layoutX="29.0" layoutY="153.0" strokeType="OUTSIDE" strokeWidth="0.0" text="评分：">
+            <Text layoutX="298.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" text="评分：">
                <font>
                   <Font size="16.0" />
                </font>
             </Text>
-            <Text layoutX="29.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="联系方式：">
+            <Text layoutX="298.0" layoutY="115.0" strokeType="OUTSIDE" strokeWidth="0.0" text="联系方式：">
                <font>
                   <Font size="16.0" />
                </font>
             </Text>
-            <Text layoutX="29.0" layoutY="220.0" strokeType="OUTSIDE" strokeWidth="0.0" text="简介：">
+            <Text layoutX="298.0" layoutY="217.0" strokeType="OUTSIDE" strokeWidth="0.0" text="简介：">
                <font>
                   <Font size="16.0" />
                </font>
             </Text>
-            <Text fx:id="textHotelName" layoutX="116.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="喋喋">
+            <Text fx:id="textHotelName" layoutX="385.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="喋喋">
                <font>
                   <Font size="16.0" />
                </font>
             </Text>
-            <Text fx:id="textDetailAddress" layoutX="116.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="喋喋">
+            <Text fx:id="textDetailAddress" layoutX="385.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="喋喋">
                <font>
                   <Font size="16.0" />
                </font>
             </Text>
-            <Text fx:id="textContactNumber" layoutX="116.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="喋喋">
+            <Text fx:id="textContactNumber" layoutX="385.0" layoutY="115.0" strokeType="OUTSIDE" strokeWidth="0.0" text="喋喋">
                <font>
                   <Font size="16.0" />
                </font>
             </Text>
-            <Text fx:id="textGrade" layoutX="84.0" layoutY="153.0" strokeType="OUTSIDE" strokeWidth="0.0" text="喋喋">
+            <Text fx:id="textGrade" layoutX="353.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" text="喋喋">
                <font>
                   <Font size="16.0" />
                </font>
             </Text>
-            <Text fx:id="textStar" layoutX="84.0" layoutY="185.0" strokeType="OUTSIDE" strokeWidth="0.0" text="喋喋">
+            <Text fx:id="textStar" layoutX="353.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" text="喋喋">
                <font>
                   <Font size="16.0" />
                </font>
             </Text>
-            <Text fx:id="textIntroduction" layoutX="84.0" layoutY="220.0" strokeType="OUTSIDE" strokeWidth="0.0" text="喋喋">
+            <Text fx:id="textIntroduction" layoutX="353.0" layoutY="217.0" strokeType="OUTSIDE" strokeWidth="0.0" text="喋喋">
                <font>
                   <Font size="16.0" />
                </font>
             </Text>
-            <ImageView fitHeight="168.0" fitWidth="284.0" layoutX="303.0" layoutY="38.0">
+            <ImageView fitHeight="324.0" fitWidth="248.0" layoutX="-11.0" layoutY="14.0">
                <image>
-                  <Image url="@../../../../../graphics/hotel03.png" />
+                  <Image url="@../../../../../graphics/userui/MyOrder/order.png" />
                </image>
             </ImageView>
+            <Text fill="WHITE" layoutX="65.0" layoutY="101.0" strokeType="OUTSIDE" strokeWidth="0.0" text="促销活动">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <Text layoutX="65.0" layoutY="180.0" strokeType="OUTSIDE" strokeWidth="0.0" text="双11六折！">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Text>
          </children>
       </AnchorPane>
       <AnchorPane fx:id="HotelRoomPane" layoutX="324.0" layoutY="192.0" prefHeight="361.0" prefWidth="595.0" visible="false">
@@ -231,6 +241,13 @@
             <Font size="36.0" />
          </font>
       </Label>
-      <Button fx:id="buttonReserve" layoutX="819.0" layoutY="500.0" mnemonicParsing="false" onAction="#gotoReserveHotel" prefHeight="35.0" prefWidth="88.0" text="预订酒店" />
+      <Button fx:id="buttonReserve" layoutX="795.0" layoutY="509.0" mnemonicParsing="false" onAction="#gotoReserveHotel" prefHeight="35.0" prefWidth="88.0" text="预订酒店">
+         <effect>
+            <ImageInput>
+               <source>
+                  <Image url="@../../../../../graphics/userui/预订酒店.png" />
+               </source>
+            </ImageInput>
+         </effect></Button>
    </children>
 </AnchorPane>

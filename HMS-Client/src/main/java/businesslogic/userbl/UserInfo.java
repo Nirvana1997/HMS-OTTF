@@ -2,6 +2,8 @@ package businesslogic.userbl;
 
 
 
+import businesslogic.logbl.Login;
+import cfg.Temp;
 import utility.VipInfo;
 import businesslogic.websalerbl.impl.VipDataImpl;
 import data_stub.userdata.UserDataImpl_stub;
@@ -48,5 +50,20 @@ public  class UserInfo{
 		UserInfoPO po = userDataService.getUserInfo(userID);
 		return UserPVChanger.userInfoP2V(po);
 
+	}
+
+	/**
+	 * 是否有足够的信用值
+	 *
+	 * @return 是否足够
+	 * @throws RemoteException
+	 */
+	public boolean hasEnoughCredit() throws RemoteException {
+		if(userDataService.getUserInfo(Login.getNowUserID()).getCredit()>= Temp.minCredit){
+			return true;
+		}
+		else{
+			return false;
+		}
 	}
 }

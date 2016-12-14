@@ -1,5 +1,7 @@
 package utility;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -12,8 +14,9 @@ import java.util.Date;
 public class DateOperation {
     /**
      * 返回起始日期中间的所有日期
-     * @param startDate   起始日期
-     * @param endDate     结束日期
+     *
+     * @param startDate 起始日期
+     * @param endDate   结束日期
      * @return
      */
     public static ArrayList<Date> getDates(Date startDate, Date endDate) {
@@ -38,18 +41,19 @@ public class DateOperation {
 
     /**
      * 判断一个日期是否在一段时间内（包含头尾）
-     * @param date 被判断日期
+     *
+     * @param date  被判断日期
      * @param start 开始日期
-     * @param end 结束日期
+     * @param end   结束日期
      * @return 是否在期间内
      */
-    public static boolean isDuring(Date date,Date start,Date end){
+    public static boolean isDuring(Date date, Date start, Date end) {
         //在头尾
-        if(date.equals(start)||date.equals(end)){
+        if (date.equals(start) || date.equals(end)) {
             return true;
         }
         //在期间
-        if(date.after(start)&&date.before(end)){
+        if (date.after(start) && date.before(end)) {
             return true;
         }
         return false;
@@ -58,33 +62,50 @@ public class DateOperation {
     /**
      * 把Date对象转化为String
      * 格式为yyyy_MM_dd
+     *
      * @param date date对象
      * @return 对应字符串
      */
-    public static String dateToString(Date date){
-        return new String(date.getYear()+"_"+date.getMonth()+"_"+date.getDate());
+    public static String dateToString(Date date) {
+        DateFormat df = new SimpleDateFormat("yyyy_MM_dd");
+        return df.format(date);
     }
 
     /**
      * 把String转化为date对象
      * 格式为yyyy_MM_dd
+     *
      * @param string 字符串
      * @return date对象
      */
-    public static Date stringToDate(String string){
+    public static Date stringToDate(String string) {
         String[] date = string.split("_");
-        return new Date(Integer.valueOf(date[0]),Integer.valueOf(date[1]),Integer.valueOf(date[2]));
+        return new Date(Integer.valueOf(date[0]), Integer.valueOf(date[1]), Integer.valueOf(date[2]));
     }
 
     /**
      * 在一个时间上加上若干小时
-     * @param date 时间
+     *
+     * @param date  时间
      * @param hours 小时数
      * @return 结果时间
      */
-    public static Date addHours(Date date, int hours){
+    public static Date addHours(Date date, int hours) {
         Calendar calendar = Calendar.getInstance();
-        calendar.add(Calendar.HOUR_OF_DAY,hours);
+        calendar.add(Calendar.HOUR_OF_DAY, hours);
+        return calendar.getTime();
+    }
+
+    /**
+     * 在一个时间上加上若干小时
+     *
+     * @param date 时间
+     * @param days 小时数
+     * @return 结果时间
+     */
+    public static Date addDays(Date date, int days) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.DAY_OF_YEAR, days);
         return calendar.getTime();
     }
 }

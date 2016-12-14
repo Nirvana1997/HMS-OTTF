@@ -36,5 +36,8 @@ public class uiWarningController implements Initializable{
         if(uiSearchHotelController.isFinish==false){
             warningFinish.setVisible(true);
         }
+        if(uiSearchHotelController.chooseHotel==false){
+            warningChooseHotel.setVisible(true);
+        }
     }
 }
