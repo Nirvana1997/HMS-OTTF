@@ -1,5 +1,7 @@
 package presentation.hotelsalerui;
 
+import businesslogic.hotelsalerbl.HotelSalerController;
+import businesslogicservice.hotelsalerblservice.HotelinfoblService;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -14,6 +16,7 @@ import java.util.ResourceBundle;
 public class uiHotelInfoController implements Initializable{
 
     private SceneJump sceneJump = new SceneJump();
+
 
     /**
      * 登出按钮
