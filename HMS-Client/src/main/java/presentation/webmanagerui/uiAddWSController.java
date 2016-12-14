@@ -1,8 +1,12 @@
 package presentation.webmanagerui;
 
+import businesslogic.webmanagerbl.WebmanagerController;
+import businesslogicservice.webmanagerlogicservice.WSmanagementBlService;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
+import vo.WebsalerInfoVO;
 
 import java.io.IOException;
 
@@ -70,4 +74,34 @@ public class uiAddWSController {
         //TODO 登出账号
         jump.gotoLogin();
     }
+
+    @FXML
+    private TextField textWSAccount;
+    @FXML
+    private TextField textWSPassword;
+    @FXML
+    private TextField textWSNumber;
+    @FXML
+    private Button buttonSave;
+    @FXML
+    private Button buttonCancel;
+    @FXML
+    private Text warningAccount;
+
+    /**
+     * 注册网站管理人员账号
+     * @throws IOException
+     */
+    public void Save() throws IOException{
+        WebmanagerController webmanagerController = new WebmanagerController();
+        WebsalerInfoVO addVo = new WebsalerInfoVO(textWSNumber.getText());
+        if(!webmanagerController.addWebsalerInfoAndAccount(addVo,textWSAccount.getText(),textWSPassword.getText())){
+            warningAccount.setVisible(true);
+        }
+    }
+
+    public void notWarningAccount()throws IOException{
+        warningAccount.setVisible(false);
+    }
+
 }

@@ -1,5 +1,6 @@
 package presentation.webmanagerui;
 
+import businesslogic.webmanagerbl.WebmanagerController;
 import com.sun.javafx.robot.impl.FXRobotHelper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -16,9 +17,12 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import vo.HotelinfoVO;
 
 import java.io.IOException;
 import java.net.URL;
+import java.rmi.RemoteException;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 /**
@@ -74,8 +78,24 @@ public class uiManageHSController implements Initializable{
     @FXML
     private Button buttonChange;
     public void gotoChangeHS() throws IOException{
-        setHotelID(hotelList.getSelectionModel().getSelectedItem().getID());
-        jump.gotoChangeHS();
+        //检验是否选中
+        for(int i = 0; i < personData.size();i++){
+            setChoose(false);
+            if(hotelList.getSelectionModel().isSelected(i)){
+                setChoose(true);
+                break;
+            }
+        }
+        //如果有，则跳转
+        if(choose) {
+            jump.setCurrentHSID(hotelList.getSelectionModel().getSelectedItem().getID());
+            jump.gotoChangeHS();
+        }
+        //如果没有，跳出提示框
+        else{
+            setChoose(false);
+            jump.warning();
+        }
     }
 
     /**
@@ -135,13 +155,16 @@ public class uiManageHSController implements Initializable{
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-//        URmanagementBlService uRmanagementBlService = new WebmanagerController();
-//        ArrayList<UserInfoVO> list = uRmanagementBlService.getUserList();
-//        for(int i = 0; i < list.size();i++){
-//            personData.add(new tableMember(list.get(i).getUserID(), list.get(i).getName(), list.get(i).getContactNumber()));
-//        }
-        personData.add(new tableMember("HS151250045","喋喋大酒店","15105180105"));
-        personData.add(new tableMember("HS151250042","喋喋巨大酒店","15105180102"));
+        try {
+            WebmanagerController webmanagerController = new WebmanagerController();
+            ArrayList<HotelinfoVO> list = webmanagerController.getHotellist();
+            for(int i = 0; i < list.size();i++){
+                personData.add(new tableMember(list.get(i).getHotelID(), list.get(i).getHotelname(), list.get(i).getContactNumber()));
+            }
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+
         hotelList.setItems(personData);
         columnID.setCellValueFactory(cellData -> cellData.getValue().IDProperty());
         columnName.setCellValueFactory(cellData -> cellData.getValue().NameProperty());
@@ -152,5 +175,7 @@ public class uiManageHSController implements Initializable{
     static String currentHotelID;
     public void setHotelID(String hid){ currentHotelID = hid;}
     public static String getHotelID(){ return currentHotelID;}
-
+    static boolean choose;
+    public void setChoose(boolean is){ choose = is;}
+    public static boolean getChoose(){ return choose;}
 }

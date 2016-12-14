@@ -1,5 +1,6 @@
 package presentation.webmanagerui;
 
+import businesslogic.webmanagerbl.WebmanagerController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -10,9 +11,12 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
+import vo.UserInfoVO;
 
 import java.io.IOException;
 import java.net.URL;
+import java.rmi.RemoteException;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 /**
@@ -67,8 +71,24 @@ public class uiManageUserController implements Initializable{
     @FXML
     private Button buttonChange;
     public void gotoChangeUser() throws IOException {
-        setUserID(userList.getSelectionModel().getSelectedItem().getID());
-        jump.gotoChangeUser();
+        //检验是否选中
+        for(int i = 0; i < personData.size();i++){
+            setChoose(false);
+            if(userList.getSelectionModel().isSelected(i)){
+                setChoose(true);
+                break;
+            }
+        }
+        //如果有，则跳转
+        if(choose) {
+            jump.setCurrentUserID(userList.getSelectionModel().getSelectedItem().getID());
+            jump.gotoChangeUser();
+        }
+        //如果没有，跳出提示框
+        else{
+            setChoose(false);
+            jump.warning();
+        }
     }
     @FXML
     private TextField textSearch;
@@ -80,7 +100,7 @@ public class uiManageUserController implements Initializable{
      */
     public void SearchUR() throws IOException{
         //TODO 判断ID是否存在
-        setUserID(textSearch.getText());
+        jump.setCurrentUserID(textSearch.getText());
         jump.gotoChangeUser();
     }
     @FXML
@@ -113,21 +133,26 @@ public class uiManageUserController implements Initializable{
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-//        URmanagementBlService uRmanagementBlService = new WebmanagerController();
-//        ArrayList<UserInfoVO> list = uRmanagementBlService.getUserList();
-//        for(int i = 0; i < list.size();i++){
-//            personData.add(new tableMember(list.get(i).getUserID(), list.get(i).getName(), list.get(i).getContactNumber()));
-//        }
-        personData.add(new tableMember("UR151250045","喋喋","15105180105"));
-        personData.add(new tableMember("UR151250042","喋","15105180102"));
+        try {
+            WebmanagerController webmanagerController = new WebmanagerController();
+            ArrayList<UserInfoVO> list = webmanagerController.getUserList();
+            for(int i = 0; i < list.size();i++){
+                personData.add(new tableMember(list.get(i).getUserID(), list.get(i).getName(), list.get(i).getContactNumber()));
+            }
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+
         userList.setItems(personData);
         columnID.setCellValueFactory(cellData -> cellData.getValue().IDProperty());
         columnName.setCellValueFactory(cellData -> cellData.getValue().NameProperty());
         columnNumber.setCellValueFactory(cellData -> cellData.getValue().NumberProperty());
-//        userList.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
-//        userList.getSelectionModel().getSelectedItem().getuserID();
+
     }
     static String currentUserID;
     public void setUserID(String uid){ currentUserID = uid;}
     public static String getUserID(){ return currentUserID;}
+    static boolean choose;
+    public void setChoose(boolean is){ choose = is;}
+    public static boolean getChoose(){ return choose;}
 }

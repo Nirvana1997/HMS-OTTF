@@ -88,11 +88,6 @@
                   <Font size="15.0" />
                </font>
             </Text>
-            <Text layoutX="413.0" layoutY="161.0" strokeType="OUTSIDE" strokeWidth="0.0" text="编号：">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Text>
             <Text layoutX="413.0" layoutY="205.0" strokeType="OUTSIDE" strokeWidth="0.0" text="账号：">
                <font>
                   <Font size="15.0" />
@@ -114,11 +109,6 @@
                </font>
             </TextField>
             <TextField fx:id="textDetailAddress" layoutX="147.0" layoutY="185.0">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </TextField>
-            <TextField fx:id="textHSID" layoutX="482.0" layoutY="141.0">
                <font>
                   <Font size="14.0" />
                </font>
@@ -164,6 +154,16 @@
                   </ImageInput>
                </effect>
             </Button>
+            <Text layoutX="56.0" layoutY="340.0" strokeType="OUTSIDE" strokeWidth="0.0" text="酒店星级：">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <TextField fx:id="textStar" layoutX="147.0" layoutY="324.0">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </TextField>
          </children>
       </AnchorPane>
       <Text fx:id="textManageHS" fill="#3a72d3" layoutX="293.0" layoutY="98.0" onMouseClicked="#returntoManageHS" strokeType="OUTSIDE" strokeWidth="0.0" text="酒店管理" underline="true">

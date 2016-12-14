@@ -1,13 +1,17 @@
 package presentation.webmanagerui;
 
+import businesslogic.webmanagerbl.WebmanagerController;
+import enumData.UserType;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.text.Text;
 import sun.awt.TimedWindowEvent;
+import vo.UserInfoVO;
 
 import java.io.IOException;
 import java.net.URL;
+import java.rmi.RemoteException;
 import java.util.ResourceBundle;
 
 /**
@@ -24,13 +28,15 @@ public class uiChangeUserController implements Initializable{
     @FXML
             private TextField textPhoneNumber;
     @FXML
+            private ToggleGroup userType;
+    @FXML
             private RadioButton typePersonal;
     @FXML
             private RadioButton typeEnterprise;
     @FXML
             private DatePicker dateBirthday;
     @FXML
-            private ComboBox nameEnterprise;
+            private TextField nameEnterprise;
     /**
      * 界面跳转的类
      */
@@ -118,23 +124,60 @@ public class uiChangeUserController implements Initializable{
     @FXML
     private Button buttonSave;
 
+    /**
+     * 修改用户信息
+     * @throws IOException
+     */
     public void SaveUser() throws IOException{
-        String UserID = textUserID.getText();
-        String RealName = textRealName.getText();
-        String PhoneNumber = textPhoneNumber.getText();
-//        int Credit = Integer.parseInt(textCredit.getText());
+        WebmanagerController webmanagerController = new WebmanagerController();
+        UserInfoVO vo = webmanagerController.getUserInfo(jump.currentUserID);
+        vo.setName(textRealName.getText());
+        vo.setContactNumber(textPhoneNumber.getText());
+        if(userType.getSelectedToggle()==typePersonal){
+            vo.setUserType(UserType.Person);
+            vo.setBirthday(dateBirthday.getPromptText());
+            vo.setCompanyID("");
+        }
+        else{
+            vo.setUserType(UserType.Company);
+            vo.setBirthday("");
+            vo.setCompanyID(nameEnterprise.getText());
+        }
+        webmanagerController.setUserInfo(vo);
+    }
 
+    public void Cancel() throws RemoteException {
+        init();
     }
 
     /**
      * 初始化内容
      * @throws IOException
      */
-    public void init() {
-        textUserID.setText(uiManageUserController.getUserID());
+
+    public void init() throws RemoteException {
+        WebmanagerController webmanagerController = new WebmanagerController();
+        UserInfoVO vo = webmanagerController.getUserInfo(jump.currentUserID);
+        textUserID.setText(vo.getUserID());
+        textRealName.setText(vo.getName());
+        textPhoneNumber.setText(vo.getContactNumber());
+        textCredit.setText(String.valueOf(vo.getCredit()));
+        if(vo.getUserType()== UserType.Person){
+            typePersonal.setSelected(true);
+            dateBirthday.setPromptText(vo.getBirthday());
+        }
+        else{
+            typeEnterprise.setSelected(true);
+            nameEnterprise.setText(vo.getCompanyID());
+        }
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-       init();
+        try {
+            init();
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+
     }
 }
