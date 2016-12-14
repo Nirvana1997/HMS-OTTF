@@ -9,7 +9,11 @@ public class WebsalerInfoVO {
 		this.websalerID = websalerID;
 		this.contactNumber = contactNumber;
 	}
-	
+	public WebsalerInfoVO(String contactNumber){
+		super();
+		this.websalerID = null;
+		this.contactNumber = contactNumber;
+	}
 	public String getWebsalerID() {
 		return websalerID;
 	}

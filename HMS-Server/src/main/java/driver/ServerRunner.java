@@ -1,6 +1,12 @@
 package driver;
 
+import data.hotelsalerdata.HotelinfoDataImpl;
+import data.hotelsalerdata.HotelroomDataImpl;
 import data.logdata.LogDataImpl;
+import data.orderdata.OrderDataImpl;
+import data.promotiondata.PromotionDataImpl;
+import data.userdata.UserDataImpl;
+import data.websalerdata.WebsalerDataImpl;
 import dataservice.logdataservice.LogDataService;
 import java.net.MalformedURLException;
 import java.rmi.AlreadyBoundException;
@@ -26,10 +32,15 @@ public class ServerRunner {
      * 初始化服务器
      */
     public void initServer(){
-        LogDataService logDataService;
         try {
             LocateRegistry.createRegistry(8888);
+            Naming.bind("rmi://localhost:8888/HotelinfoDataService",  new HotelinfoDataImpl());
+            Naming.bind("rmi://localhost:8888/HotelroomDataService",  new HotelroomDataImpl());
             Naming.bind("rmi://localhost:8888/LogDataService",  new LogDataImpl());
+            Naming.bind("rmi://localhost:8888/OrderDataService",  new OrderDataImpl());
+            Naming.bind("rmi://localhost:8888/PromotionDataService",  new PromotionDataImpl());
+            Naming.bind("rmi://localhost:8888/UserDataService",  new UserDataImpl());
+            Naming.bind("rmi://localhost:8888/WebsalerDataService",  new WebsalerDataImpl());
 
         } catch (RemoteException e) {
             e.printStackTrace();

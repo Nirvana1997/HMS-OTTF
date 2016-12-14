@@ -33,7 +33,8 @@ public class uiConfirmOrderController implements Initializable{
         jump.gotoHotel();
         //提示预订成功
         jump.reserveSuccess();
-
+        //关闭当前窗口
+        buttonCancel.getScene().getWindow().hide();
     }
     public void Cancel() throws IOException{
         buttonCancel.getScene().getWindow().hide();

@@ -1,5 +1,6 @@
 package presentation.webmanagerui;
 
+import businesslogic.webmanagerbl.WebmanagerController;
 import com.sun.javafx.robot.impl.FXRobotHelper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -16,9 +17,13 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import vo.UserInfoVO;
+import vo.WebsalerInfoVO;
 
 import java.io.IOException;
 import java.net.URL;
+import java.rmi.RemoteException;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 /**
@@ -86,8 +91,24 @@ public class uiManageWSController implements Initializable{
     @FXML
     private Button buttonChange;
     public void gotoChangeWS() throws IOException{
-        setWebsalerID(websalerList.getSelectionModel().getSelectedItem().getID());
-        jump.gotoChangeWS();
+        //检验是否选中
+        for(int i = 0; i < personData.size();i++){
+            setChoose(false);
+            if(websalerList.getSelectionModel().isSelected(i)){
+                setChoose(true);
+                break;
+            }
+        }
+        //如果有，则跳转
+        if(choose) {
+            jump.setCurrentWSID(websalerList.getSelectionModel().getSelectedItem().getID());
+            jump.gotoChangeWS();
+        }
+        //如果没有，跳出提示框
+        else{
+            setChoose(false);
+            jump.warning();
+        }
     }
     @FXML
     private TextField textSearch;
@@ -130,11 +151,17 @@ public class uiManageWSController implements Initializable{
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-//        URmanagementBlService uRmanagementBlService = new WebmanagerController();
-//        ArrayList<UserInfoVO> list = uRmanagementBlService.getUserList();
-//        for(int i = 0; i < list.size();i++){
-//            personData.add(new tableMember(list.get(i).getUserID(), list.get(i).getName(), list.get(i).getContactNumber()));
-//        }
+        WebmanagerController webmanagerController = null;
+        try {
+            webmanagerController = new WebmanagerController();
+            ArrayList<WebsalerInfoVO> list = webmanagerController.getWebsalerInfoList();
+//            for(int i = 0; i < list.size();i++){
+//                personData.add(new tableMember(list.get(i).getWebsalerID(), list.get(i).ge, list.get(i).getContactNumber()));
+//            }
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+
         personData.add(new tableMember("网管151250045","喋老板","15105180105"));
         personData.add(new tableMember("网管151250042","喋喋大老板","15105180102"));
         websalerList.setItems(personData);
@@ -147,4 +174,7 @@ public class uiManageWSController implements Initializable{
     static String currentWebsalerID;
     public void setWebsalerID(String uid){ currentWebsalerID = uid;}
     public static String getWebsalerID(){ return currentWebsalerID;}
+    static boolean choose;
+    public void setChoose(boolean is){ choose = is;}
+    public static boolean getChoose(){ return choose;}
 }

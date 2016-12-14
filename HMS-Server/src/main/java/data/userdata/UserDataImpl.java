@@ -5,6 +5,7 @@ import dataservice.userdataservice.UserDataService;
 import encryption.DesUtils;
 import enumData.ResultMessage;
 import enumData.UserType;
+import po.CreditChangePO;
 import po.CreditRecordPO;
 import po.UserInfoPO;
 import java.rmi.RemoteException;
@@ -85,7 +86,8 @@ public class UserDataImpl extends UnicastRemoteObject implements UserDataService
         if(hasExisted(po.getUserID()))
             return ResultMessage.HasExist;
         //创建信用记录表
-        DataBaseHelper.in("create table " + po.getUserID() + "_credit" + "(date varchar(50),change varchar(50),finalCredit varchar(50))");
+        DataBaseHelper.in("create table " + po.getUserID() + "_credit" + "(date varchar(50),change varchar(50),finalCredit varchar(50)," +
+                "reason varchar(50),orderID varchar(20))");
 
         String name = desUtils.en(po.getName());
         String identity = desUtils.en(po.getIdentity());
@@ -154,19 +156,18 @@ public class UserDataImpl extends UnicastRemoteObject implements UserDataService
 
     /**
      * 增加用户信用值
-     * @param userID
-     * @param value
-     * @param date
+     * @param po
      * @return
      * @throws RemoteException
      */
     @Override
-    public ResultMessage addCredit(String userID, int value ,String date) throws RemoteException {
-        if(hasExisted(userID)) {
-            ArrayList<String> credit = DataBaseHelper.out("select credit from UserInfo where userID ='" + userID + "'", "credit");
-            int creditValue = Integer.parseInt(credit.get(0)) + value;
-            DataBaseHelper.in("insert into " + userID + "_credit (date,change,finalCredit) values ('" + date + "','" + value + "','" + creditValue + "')");
-            DataBaseHelper.in("update UserInfo set credit = '" + creditValue + "' where userID = '" +userID + "'");
+    public ResultMessage addCredit(CreditChangePO po) throws RemoteException {
+        if(hasExisted(po.getUserID())) {
+            String credit = DataBaseHelper.outSingle("UserInfo","credit","userID",po.getUserID());
+            int finalCredit = Integer.parseInt(credit) + po.getValue();
+            DataBaseHelper.in("insert into " + po.getUserID() + "_credit (date,change,finalCredit,reason,orderID) values ('" + po.getDate() + "','" + po.getValue() + "','"
+                    + finalCredit + "','" + po.getReason() + "','" + po.getOrderID() +  "')");
+            DataBaseHelper.in("update UserInfo set credit = '" + finalCredit + "' where userID = '" + po.getUserID() + "'");
             return ResultMessage.Correct;
         }else
             return ResultMessage.NotExist;
@@ -174,23 +175,15 @@ public class UserDataImpl extends UnicastRemoteObject implements UserDataService
 
     /**
      * 减少用户信用值
-     * @param userID
-     * @param value
-     * @param date
+     * @param po
      * @return
      * @throws RemoteException
      */
     @Override
-    public ResultMessage subCredit(String userID, int value ,String date) throws RemoteException {
-        if(hasExisted(userID)) {
-            ArrayList<String> credit = DataBaseHelper.out("select credit from UserInfo where userID ='" + userID + "'", "credit");
-            int creditValue = Integer.parseInt(credit.get(0)) - value;
-            value = 0 - value;
-            DataBaseHelper.in("insert into " + userID + "_credit (date,change,finalCredit) values ('" + date + "','" + value + "','" + creditValue + "')");
-            DataBaseHelper.in("update UserInfo set credit = '" + creditValue + "' where userID = '" +userID + "'");
-            return ResultMessage.Correct;
-        }else
-            return ResultMessage.NotExist;
+    public ResultMessage subCredit(CreditChangePO po) throws RemoteException {
+        CreditChangePO temp = po;
+        temp.setValue(0 - temp.getValue());
+        return addCredit(temp);
     }
 
     /**
@@ -205,8 +198,10 @@ public class UserDataImpl extends UnicastRemoteObject implements UserDataService
         ArrayList<String> dateList = DataBaseHelper.out("select date from " + userID + "_credit","date");
         ArrayList<String> changeList = DataBaseHelper.out("select change from " + userID + "_credit","change");
         ArrayList<String> finalCreditList = DataBaseHelper.out("select finalCredit from " + userID + "_credit","finalCredit");
+        ArrayList<String> reasonList = DataBaseHelper.out("select reason from " + userID + "_credit","reason");
+        ArrayList<String> orderIDList = DataBaseHelper.out("select orderID from " + userID + "_credit","orderID");
         for(int i=0;i<dateList.size();i++){
-            creditRecordPOs.add(new CreditRecordPO(dateList.get(i),Integer.parseInt(changeList.get(i)),Integer.parseInt(finalCreditList.get(i))));
+            creditRecordPOs.add(new CreditRecordPO(dateList.get(i),Integer.parseInt(changeList.get(i)),Integer.parseInt(finalCreditList.get(i)),reasonList.get(i),orderIDList.get(i)));
         }
         return creditRecordPOs;
     }

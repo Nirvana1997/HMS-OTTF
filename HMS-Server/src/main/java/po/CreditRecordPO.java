@@ -9,11 +9,15 @@ public class CreditRecordPO implements Serializable{
     String date;
     int change;
     int finalCredit;
+    String reason;
+    String orderID;
 
-    public CreditRecordPO(String date, int change, int finalCredit) {
+    public CreditRecordPO(String date, int change, int finalCredit, String reason, String orderID) {
         this.date = date;
         this.change = change;
         this.finalCredit = finalCredit;
+        this.reason = reason;
+        this.orderID = orderID;
     }
 
     public String getDate() {
@@ -38,5 +42,21 @@ public class CreditRecordPO implements Serializable{
 
     public void setFinalCredit(int finalCredit) {
         this.finalCredit = finalCredit;
+    }
+
+    public String getReason() {
+        return reason;
+    }
+
+    public void setReason(String reason) {
+        this.reason = reason;
+    }
+
+    public String getOrderID() {
+        return orderID;
+    }
+
+    public void setOrderID(String orderID) {
+        this.orderID = orderID;
     }
 }

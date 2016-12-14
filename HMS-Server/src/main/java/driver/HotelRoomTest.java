@@ -30,7 +30,5 @@ public class HotelRoomTest {
 //        System.out.println(hotelroomDataService.getRoomList("01").get(1).getPrice());
 //        System.out.println(hotelroomDataService.getRoomList("01").get(2).getPrice());
 //        System.out.println(hotelroomDataService.getEmptyrooms("01","2016_11_11").get(0).getTotalNum());
-        System.out.println(hotelroomDataService.setEmpty(new OrderPO(null,"01",null,null,0,0,null,"2016_11_12",null,
-                RoomType.DoubleRoom,0,true,null,null,null,null,null)));
     }
 }

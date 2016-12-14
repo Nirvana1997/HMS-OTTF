@@ -192,16 +192,16 @@ public class uiSearchHotelController implements Initializable{
             SearchList.add(KeywordLimit);
         }
         //TODO 将列表存入搜索酒店
-//        HotelOrderBlService hotelOrderBlService = new UserController();
-//        ArrayList<HotelListItemVO> searchHotelList = hotelOrderBlService.searchHotel(TradeArea.Xianlin, Address.DieDie, SortWay.Grade_Ascending,SearchList);
+        HotelOrderBlService hotelOrderBlService = new UserController();
+        ArrayList<HotelListItemVO> searchHotelList = hotelOrderBlService.searchHotel(TradeArea.Xianlin, Address.NJU,SearchList);
 
-        ArrayList<HotelListItemVO> searchHotelList = new ArrayList<HotelListItemVO>();
-        HotelListItemVO vo1 = new HotelListItemVO("0001","喋喋大酒店","南大旁边",5, 3.0, 300.0,true,false,false);
-        HotelListItemVO vo2 = new HotelListItemVO("0002","喋喋中酒店","南大隔壁",4, 2.0, 1000.0,false,false,false);
-        HotelListItemVO vo3 = new HotelListItemVO("0003","喋喋小酒店","南大里面",3, 5.0, 200.0,true,true,false);
-        searchHotelList.add(vo1);
-        searchHotelList.add(vo2);
-        searchHotelList.add(vo3);
+//        ArrayList<HotelListItemVO> searchHotelList = new ArrayList<HotelListItemVO>();
+//        HotelListItemVO vo1 = new HotelListItemVO("0001","喋喋大酒店","南大旁边",5, 3.0, 300.0,true,false,false);
+//        HotelListItemVO vo2 = new HotelListItemVO("0002","喋喋中酒店","南大隔壁",4, 2.0, 1000.0,false,false,false);
+//        HotelListItemVO vo3 = new HotelListItemVO("0003","喋喋小酒店","南大里面",3, 5.0, 200.0,true,true,false);
+//        searchHotelList.add(vo1);
+//        searchHotelList.add(vo2);
+//        searchHotelList.add(vo3);
         searchHotelPane.setVisible(false);
         initTable(searchHotelList);
         hotelListPane.setVisible(true);

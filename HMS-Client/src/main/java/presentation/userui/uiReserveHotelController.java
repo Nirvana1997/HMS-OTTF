@@ -144,7 +144,10 @@ public class uiReserveHotelController implements Initializable{
     private Button buttonCommitOrder;
     @FXML
     private Button buttonCancel;
-
+    @FXML
+    private Text warningRoom;
+    @FXML
+    private Text warningCredit;
     /**
      * 提交订单
      * @throws IOException
@@ -162,16 +165,18 @@ public class uiReserveHotelController implements Initializable{
             OrderVO reserveOrder = new OrderVO(currentHotel.getHotelID(), currentHotel.getHotelname(), currentHotel.getTradeArea(),
                     currentHotel.getAddress(), currentHotel.getDetailAddress(), Integer.parseInt(textRoomNumber.getText()), Integer.parseInt(textPeopleNumber.getText()),
                     getDate(checkinDate), getDate(checkoutDate), getRoomType(RoomType), (HaveChild.getSelectedToggle() == haveChild));
-            OrderVO confirmOrder = hotelOrderBlService.makeOrder(reserveOrder);
-            setCurrentOrder(confirmOrder);
-            System.out.println(confirmOrder.getOrderID());
-            System.out.println(confirmOrder.getDdl());
-
-
-//            hotelOrderBlService.orderHotel(confirmOrder);
-            //确认预订
-            jump.ConfirmOrder();
-
+            if(hotelOrderBlService.haveEnoughRoom(reserveOrder)) {
+                OrderVO confirmOrder = hotelOrderBlService.makeOrder(reserveOrder);
+                setCurrentOrder(confirmOrder);
+                //确认预订
+                jump.ConfirmOrder();
+            }
+            else if(!hotelOrderBlService.haveEnoughRoom(reserveOrder)){
+                warningRoom.setVisible(true);
+            }
+            else{
+                warningCredit.setVisible(true);
+            }
         }
     }
     public void Cancel() throws IOException{
@@ -199,6 +204,13 @@ public class uiReserveHotelController implements Initializable{
         else return null;
     }
 
+    /**
+     * 点击房间数量，隐藏房间数量警告信息
+     * @throws IOException
+     */
+    public void notWarningRoom() throws IOException{
+        warningRoom.setVisible(false);
+    }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         //读取酒店信息

@@ -180,9 +180,9 @@ public class uiReadHotelController implements Initializable {
     @FXML
     private TableColumn<tableHotel,String> columnHasCanceled;
     private ObservableList<tableHotel> hotelData = FXCollections.observableArrayList();
-    HotelListItemVO vo1 = new HotelListItemVO("0001","喋喋大酒店","南大旁边",5, 3.0, 300.0,true,false,false);
-    HotelListItemVO vo2 = new HotelListItemVO("0002","喋喋中酒店","南大隔壁",4, 2.0, 1000.0,false,false,false);
-    HotelListItemVO vo3 = new HotelListItemVO("0003","喋喋小酒店","南大里面",3, 5.0, 200.0,true,true,false);
+    HotelListItemVO vo1 = new HotelListItemVO("0201","喋喋大酒店","南大旁边",5, 3.0, 300.0,true,false,false);
+    HotelListItemVO vo2 = new HotelListItemVO("0202","喋喋中酒店","南大隔壁",4, 2.0, 1000.0,false,false,false);
+    HotelListItemVO vo3 = new HotelListItemVO("0203","喋喋小酒店","南大里面",3, 5.0, 200.0,true,true,false);
     /**
      * 初始化酒店列表
      */
@@ -208,7 +208,6 @@ public class uiReadHotelController implements Initializable {
         }
         hotelList.setItems(hotelData);
         columnHotelName.setCellValueFactory(cellData -> cellData.getValue().hotelNameProperty());
-
         columnPrice.setCellValueFactory(cellData -> cellData.getValue().priceProperty());
         columnStar.setCellValueFactory(cellData -> cellData.getValue().starProperty());
         columnGrade.setCellValueFactory(cellData -> cellData.getValue().gradeProperty());

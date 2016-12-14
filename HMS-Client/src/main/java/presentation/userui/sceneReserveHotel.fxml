@@ -168,7 +168,7 @@
             <Font size="16.0" />
          </font>
       </Text>
-      <TextField fx:id="textRoomNumber" layoutX="474.0" layoutY="319.0" prefHeight="23.0" prefWidth="77.0">
+      <TextField fx:id="textRoomNumber" layoutX="474.0" layoutY="319.0" onMouseClicked="#notWarningRoom" prefHeight="23.0" prefWidth="77.0">
          <font>
             <Font size="14.0" />
          </font>
@@ -229,5 +229,15 @@
                </source>
             </ImageInput>
          </effect></Button>
+      <Text fx:id="warningRoom" fill="RED" layoutX="563.0" layoutY="338.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*该酒店房间数量不足" visible="false">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Text>
+      <Text fx:id="warningCredit" fill="RED" layoutX="386.0" layoutY="558.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*您的信用值不足，请线下联系客服进行充值。" visible="false">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

@@ -8,6 +8,9 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import presentation.logui.SceneLog;
 import presentation.logui.SceneModifyPassword;
+import presentation.userui.uiMyOrderController;
+import presentation.userui.uiReadHotelController;
+import presentation.userui.uiSearchHotelController;
 
 import java.io.IOException;
 
@@ -74,4 +77,25 @@ public class sceneJump {
         primaryStage.setScene(sceneModifyPassword.getSceneModifyPassword());
         primaryStage.show();
     }
+    /**
+     * 跳出警告窗口
+     * @throws IOException
+     */
+    public void warning() throws IOException{
+        Stage secondWindow=new Stage();
+        Scene scene=new Scene((Parent) FXMLLoader.load(getClass().getResource("sceneWarning.fxml")));
+        secondWindow.setTitle("Warning!");
+        secondWindow.setScene(scene);
+        secondWindow.show();
+        uiManageHSController.choose = false;
+        uiManageUserController.choose = false;
+        uiManageWSController.choose = false;
+    }
+    public static String currentUserID;
+    public static String currentHSID;
+    public static String currentWSID;
+    public void setCurrentUserID(String id){currentUserID = id;}
+    public void setCurrentHSID(String id){currentHSID = id;}
+    public void setCurrentWSID(String id){currentWSID = id;}
+
 }
