@@ -1,9 +1,7 @@
-package driver;
+package autoManage;
 
-import data.hotelsalerdata.HotelroomDataImpl;
 import database.DataBaseHelper;
-import dataservice.hotelsalerdataservice.HotelroomDataService;
-import po.RoomNumPO;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -14,13 +12,6 @@ import java.util.Date;
  */
 public class ManageRoomInfo {
     public static void main(String[] args) {
-        ManageRoomInfo.init();
-    }
-
-    public static void init(){
-    }
-
-    public static void update(){
 
     }
 

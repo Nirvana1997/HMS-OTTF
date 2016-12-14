@@ -10,14 +10,12 @@ import java.io.Serializable;
 public class RoomNumPO implements Serializable{
     String hotelID;
     String date;
-    int totalNum;
     int emptyNum;
     RoomType roomType;
 
-    public RoomNumPO(String hotelID, String date, int totalNum, int emptyNum, RoomType roomType) {
+    public RoomNumPO(String hotelID, String date, int emptyNum, RoomType roomType) {
         this.hotelID = hotelID;
         this.date = date;
-        this.totalNum = totalNum;
         this.emptyNum = emptyNum;
         this.roomType = roomType;
     }
@@ -36,14 +34,6 @@ public class RoomNumPO implements Serializable{
 
     public void setDate(String date) {
         this.date = date;
-    }
-
-    public int getTotalNum() {
-        return totalNum;
-    }
-
-    public void setTotalNum(int totalNum) {
-        this.totalNum = totalNum;
     }
 
     public int getEmptyNum() {

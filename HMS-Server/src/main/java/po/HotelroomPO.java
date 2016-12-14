@@ -8,11 +8,13 @@ public class HotelroomPO implements Serializable{
 	String hotelID;
 	RoomType roomType;
 	double price;
+	int roomNumber;
 
-	public HotelroomPO(String hotelID, RoomType roomType, double price) {
+	public HotelroomPO(String hotelID, RoomType roomType, double price, int roomNumber) {
 		this.hotelID = hotelID;
 		this.roomType = roomType;
 		this.price = price;
+		this.roomNumber = roomNumber;
 	}
 
 	public String getHotelID() {
@@ -37,6 +39,14 @@ public class HotelroomPO implements Serializable{
 
 	public void setPrice(double price) {
 		this.price = price;
+	}
+
+	public int getRoomNumber() {
+		return roomNumber;
+	}
+
+	public void setRoomNumber(int roomNumber) {
+		this.roomNumber = roomNumber;
 	}
 }
 
