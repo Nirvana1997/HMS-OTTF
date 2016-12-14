@@ -18,7 +18,7 @@ public class Login {
     /**
      * 登录模块数据接口
      */
-    LogDataService logDataService;
+    private LogDataService logDataService;
 
     /**
      * 当前用户

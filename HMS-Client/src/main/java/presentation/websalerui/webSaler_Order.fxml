@@ -20,16 +20,19 @@
    <children>
       <AnchorPane layoutX="250.0" prefHeight="618.0" prefWidth="751.0" style="-fx-background-color: #FFFFFF;">
          <children>
-            <TableView cacheShape="false" centerShape="false" focusTraversable="false" layoutX="48.0" layoutY="115.0" prefHeight="452.0" prefWidth="656.0" scaleShape="false">
+            <TableView fx:id="orderList" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="48.0" layoutY="111.0" prefHeight="407.0" prefWidth="656.0" scaleShape="false">
               <columns>
-                <TableColumn prefWidth="130.0" text="C1" />
-                <TableColumn minWidth="5.0" prefWidth="127.0" text="C2" />
+                <TableColumn fx:id="columnOrderID" prefWidth="106.0" text="订单编号" />
+                <TableColumn fx:id="columnUserID" minWidth="5.0" prefWidth="110.0" text="用户ID" />
+                  <TableColumn fx:id="columnHotelID" prefWidth="116.0" text="酒店名称" />
+                  <TableColumn fx:id="columnState" prefWidth="110.0" text="订单状态" />
+                  <TableColumn fx:id="columnReason" prefWidth="213.0" sortable="false" text="撤销原因" />
               </columns>
             </TableView>
-            <MenuButton cacheShape="false" centerShape="false" focusTraversable="false" layoutX="48.0" layoutY="48.0" mnemonicParsing="false" scaleShape="false" text="未撤销订单">
+            <MenuButton fx:id="menuButtonChooseOrderState" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="48.0" layoutY="48.0" mnemonicParsing="false" scaleShape="false" text="未撤销订单">
               <items>
-                <MenuItem mnemonicParsing="false" text="未撤销订单" />
-                <MenuItem mnemonicParsing="false" text="已撤销订单" />
+                <MenuItem mnemonicParsing="false" onAction="#checkNotRevokeOrder" text="未撤销订单" />
+                <MenuItem mnemonicParsing="false" onAction="#checkRevokeOrder" text="已撤销订单" />
               </items>
                <font>
                   <Font size="16.0" />
@@ -41,6 +44,11 @@
                </font>
             </TextField>
             <Button cacheShape="false" centerShape="false" focusTraversable="false" layoutX="650.0" layoutY="48.0" mnemonicParsing="false" scaleShape="false" text="搜索">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+            <Button layoutX="619.0" layoutY="543.0" mnemonicParsing="false" text="查看详细">
                <font>
                   <Font size="16.0" />
                </font>

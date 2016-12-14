@@ -4,12 +4,11 @@ import dataservice.logdataservice.LogDataService;
 import enumData.AccountType;
 import enumData.ResultMessage;
 import po.AccountPO;
+import po.PromotionPO;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 /**
  * 负责帐号密码信息的管理
@@ -17,12 +16,12 @@ import java.util.Map;
  */
 public class LogDataImpl_stub extends UnicastRemoteObject implements LogDataService {
     //TODO
-    Map<String,AccountPO> accountMap = new HashMap<String,AccountPO>();
-    ArrayList<AccountPO> accountList = new ArrayList<AccountPO>();
-    AccountPO account1 = new AccountPO("0101","151250001","111111",AccountType.user);
-    AccountPO account2 = new AccountPO("0201","151250002","111111",AccountType.hotelsaler);
-	AccountPO account3 = new AccountPO("0301","151250003","111111",AccountType.websaler);
-	AccountPO account4 = new AccountPO("0001","151250004","111111",AccountType.webmanager);
+    static Map<String,AccountPO> accountMap = new HashMap<String,AccountPO>();
+    static ArrayList<AccountPO> accountList = new ArrayList<AccountPO>();
+    AccountPO account1 = new AccountPO("0100001","151250001","111111",AccountType.user);
+    AccountPO account2 = new AccountPO("0200001","151250002","111111",AccountType.hotelsaler);
+	AccountPO account3 = new AccountPO("0300001","151250003","111111",AccountType.websaler);
+	AccountPO account4 = new AccountPO("0000001","151250004","111111",AccountType.webmanager);
 
 	public LogDataImpl_stub() throws RemoteException{
 		super();
@@ -78,18 +77,24 @@ public class LogDataImpl_stub extends UnicastRemoteObject implements LogDataServ
 
 	@Override
 	public ResultMessage addAccount(AccountPO po)throws RemoteException {
-		if(po.getAccount().equals("001")){
-			return ResultMessage.HasExist;
-		}else
-		return ResultMessage.Correct;
+        accountList.add(po);
+		accountMap.put(po.getAccount(),po);
+        return ResultMessage.Correct;
 	}
 
 	@Override
-	public ResultMessage deleteAccount(String account) throws RemoteException{
-		if(account.equals("001")){
-			return ResultMessage.Correct;
-		}else
-		return ResultMessage.NotExist;
+	public ResultMessage deleteAccount(String id) throws RemoteException{
+		String account = "";
+		int index = 0;
+		for(int i=0;i<accountList.size();i++){
+		    if(id.equals(accountList.get(i).getID())) {
+		    	account = accountList.get(i).getAccount();
+				index = i;
+			};
+        }
+        accountList.remove(index);
+		accountMap.remove(account);
+        return ResultMessage.Correct;
 	}
 
     @Override

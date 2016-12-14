@@ -11,12 +11,13 @@ import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
 import java.net.URL;
+import java.rmi.RemoteException;
 import java.util.ResourceBundle;
 
 /**
  * Created by thinkpad on 2016/12/5.
  */
-public class uiWebSalerCreditController implements Initializable {
+public class uiWebSalerCreditController {
 
     private SceneJump sceneJump = new SceneJump();
 
@@ -101,20 +102,6 @@ public class uiWebSalerCreditController implements Initializable {
     private Label labelSuccessCreditPresent;
 
     /**
-     * 初始化方法
-     * @param location
-     * @param resources
-     */
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        // TODO
-        labelSuccessMoney.setText("￥");
-        labelSuccessUserId.setText("");
-        labelSuccessCreditBefore.setText("");
-        labelSuccessCreditPresent.setText("");
-    }
-
-    /**
      * 跳转到销售策略界面
      */
     public void jumpToSceneSaleStrategy() throws IOException {
@@ -151,14 +138,26 @@ public class uiWebSalerCreditController implements Initializable {
     public void confirmCredit(){
         String userId = textFieldUserId.getText();
         String confirmUserId = textFieldConfirmUserId.getText();
+        int previousCredit = 0;
+        int presentCredit = 0;
 
-        if(userId.equals(confirmUserId)){
-            String money = textFieldMoney.getText();
-
+        if(userId.equals(confirmUserId) && !userId.equals("")){
+            int money = Integer.parseInt(textFieldMoney.getText());
+            try {
+                previousCredit = websalerbl.getCredit(userId);
+                websalerbl.addCredit(userId,money);
+                presentCredit = websalerbl.getCredit(userId);
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
+            // 初始化充值成功界面
+            labelSuccessMoney.setText("￥" + textFieldMoney.getText());
+            labelSuccessUserId.setText(userId);
+            labelSuccessCreditBefore.setText(String.valueOf(previousCredit));
+            labelSuccessCreditPresent.setText(String.valueOf(presentCredit));
+            // 切换界面
             paneCredit1.setVisible(false);
             paneCredit2.setVisible(true);
-
-            // TODO
         }else{
             labelWarning.setVisible(true);
         }

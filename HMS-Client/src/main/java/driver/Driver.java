@@ -111,10 +111,10 @@
 //
 //	WSmanagementBlService wSmanagement;
 //
-//	public void getWebsaleInfo(String websalerID){
+//	public void getWebsalerInfo(String websalerID){
 //		wSmanagement = new WSmanagement();
 //		System.out.println("----------获得网络营销人员信息----------");
-//		System.out.println(wSmanagement.getWebsaleInfo("0001"));
+//		System.out.println(wSmanagement.getWebsalerInfo("0001"));
 //	}
 //
 //	WebsalerblService websaler;

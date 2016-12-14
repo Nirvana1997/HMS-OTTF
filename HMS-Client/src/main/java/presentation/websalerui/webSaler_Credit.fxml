@@ -31,13 +31,16 @@
                      <image>
                         <Image url="@../../../../../graphics/websalerui/confirmButton.png" />
                      </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
                   </ImageView>
                   <ImageView fx:id="buttonConfirm2" layoutX="319.0" layoutY="452.0" onMouseClicked="#confirmCredit" onMouseEntered="#onConfirmEntered" onMouseExited="#onConfirmExited" pickOnBounds="true" preserveRatio="true" visible="false">
                      <image>
                         <Image url="@../../../../../graphics/websalerui/confirmButton2.png" />
                      </image>
                   </ImageView>
-                  <TextField fx:id="textFieldUserId" layoutX="322.0" layoutY="230.0" prefHeight="36.0" prefWidth="173.0" style="-fx-background-color: #FFFFFF;">
+                  <TextField fx:id="textFieldUserId" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="322.0" layoutY="230.0" prefHeight="36.0" prefWidth="173.0" scaleShape="false" style="-fx-background-color: #FFFFFF;">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -45,17 +48,17 @@
                         <Insets />
                      </opaqueInsets>
                   </TextField>
-                  <TextField fx:id="textFieldConfirmUserId" layoutX="362.0" layoutY="307.0" prefHeight="36.0" prefWidth="139.0" style="-fx-background-color: #FFFFFF;">
+                  <TextField fx:id="textFieldConfirmUserId" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="362.0" layoutY="307.0" prefHeight="36.0" prefWidth="139.0" scaleShape="false" style="-fx-background-color: #FFFFFF;">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </TextField>
-                  <TextField fx:id="textFieldMoney" layoutX="375.0" layoutY="379.0" prefHeight="23.0" prefWidth="131.0" style="-fx-background-color: #FFFFFF;">
+                  <TextField fx:id="textFieldMoney" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="375.0" layoutY="379.0" prefHeight="23.0" prefWidth="131.0" scaleShape="false" style="-fx-background-color: #FFFFFF;">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </TextField>
-                  <Label fx:id="labelWarning" layoutX="337.0" layoutY="345.0" text="两次用户名输入不一致！" textFill="RED" visible="false">
+                  <Label fx:id="labelWarning" layoutX="337.0" layoutY="345.0" text="请再次确认用户名！" textFill="RED" visible="false">
                      <font>
                         <Font size="15.0" />
                      </font>
@@ -84,22 +87,22 @@
                         <Image url="@../../../../../graphics/websalerui/return2.png" />
                      </image>
                   </ImageView>
-                  <Label fx:id="labelSuccessMoney" alignment="CENTER" layoutX="281.0" layoutY="191.0" prefHeight="36.0" prefWidth="181.0">
+                  <Label fx:id="labelSuccessMoney" alignment="CENTER" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="281.0" layoutY="191.0" prefHeight="36.0" prefWidth="181.0" scaleShape="false">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <Label fx:id="labelSuccessUserId" layoutX="336.0" layoutY="263.0" prefHeight="35.0" prefWidth="165.0">
+                  <Label fx:id="labelSuccessUserId" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="336.0" layoutY="263.0" prefHeight="35.0" prefWidth="165.0" scaleShape="false">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <Label fx:id="labelSuccessCreditBefore" layoutX="356.0" layoutY="338.0" prefHeight="35.0" prefWidth="139.0">
+                  <Label fx:id="labelSuccessCreditBefore" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="356.0" layoutY="338.0" prefHeight="35.0" prefWidth="139.0" scaleShape="false">
                      <font>
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <Label fx:id="labelSuccessCreditPresent" layoutX="356.0" layoutY="409.0" prefHeight="36.0" prefWidth="139.0">
+                  <Label fx:id="labelSuccessCreditPresent" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="356.0" layoutY="409.0" prefHeight="36.0" prefWidth="139.0" scaleShape="false">
                      <font>
                         <Font size="20.0" />
                      </font>

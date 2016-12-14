@@ -15,5 +15,5 @@ public interface UserInfoAdder {
      * @param vo 用户个人信息
      * @throws RemoteException
      */
-    public void addUserInfo(UserInfoVO vo) throws RemoteException;
+    void addUserInfo(UserInfoVO vo) throws RemoteException;
 }
