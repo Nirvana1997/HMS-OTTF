@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.ImageInput?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="618.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.userui.uiUserInfoController">
+   <children>
+      <ImageView fitHeight="618.0" fitWidth="1000.0">
+         <image>
+            <Image url="@../../../../../graphics/userui/bc.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="buttonHomePage" layoutX="25.0" layoutY="221.0" mnemonicParsing="false" onAction="#gotoHomePage" prefHeight="64.0" prefWidth="170.0" text="Button">
+         <effect>
+            <ImageInput>
+               <source>
+                  <Image url="@../../../../../graphics/userui/首页1.png" />
+               </source>
+            </ImageInput>
+         </effect>
+      </Button>
+      <Button fx:id="buttonUserInfo" layoutX="91.0" layoutY="285.0" mnemonicParsing="false" onAction="#gotoUserInfo" prefHeight="64.0" prefWidth="170.0" text="Button">
+         <effect>
+            <ImageInput>
+               <source>
+                  <Image url="@../../../../../graphics/userui/个人信息2.png" />
+               </source>
+            </ImageInput>
+         </effect>
+      </Button>
+      <Button fx:id="buttonMyOrder" layoutX="25.0" layoutY="349.0" mnemonicParsing="false" onAction="#gotoMyOrder" prefHeight="64.0" prefWidth="170.0" text="Button">
+         <effect>
+            <ImageInput>
+               <source>
+                  <Image url="@../../../../../graphics/userui/我的订单1.png" />
+               </source>
+            </ImageInput>
+         </effect>
+      </Button>
+      <Button fx:id="buttonReadHotel" layoutX="91.0" layoutY="413.0" mnemonicParsing="false" onAction="#gotoReadHotel" prefHeight="64.0" prefWidth="170.0" text="Button">
+         <effect>
+            <ImageInput>
+               <source>
+                  <Image url="@../../../../../graphics/userui/浏览酒店1.png" />
+               </source>
+            </ImageInput>
+         </effect>
+      </Button>
+      <Button fx:id="buttonSearchHotel" layoutX="25.0" layoutY="477.0" mnemonicParsing="false" onAction="#gotoSearchHotel" prefHeight="64.0" prefWidth="170.0" text="Button">
+         <effect>
+            <ImageInput>
+               <source>
+                  <Image url="@../../../../../graphics/userui/搜索酒店1.png" />
+               </source>
+            </ImageInput>
+         </effect>
+      </Button>
+      <ImageView fx:id="UserIcon" layoutX="25.0" layoutY="92.0">
+         <image>
+            <Image url="@../../../../../graphics/userui/icon.png" />
+         </image>
+      </ImageView>
+      <Text fx:id="UserName" fill="#de5749" layoutX="151.0" layoutY="147.0" smooth="false" strokeType="OUTSIDE" strokeWidth="0.0" text="萌萌">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Text>
+      <Label fx:id="buttonLogOut" layoutX="219.0" layoutY="576.0" onMouseClicked="#LogOut" prefHeight="20.0" prefWidth="36.0" text="登出" textFill="#da6952" underline="true">
+         <font>
+            <Font name="SimHei" size="16.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
