@@ -1,5 +1,8 @@
 package presentation.userui;
 
+import businesslogic.userbl.UserController;
+import enumData.Address;
+import enumData.TradeArea;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -118,7 +121,7 @@ public class uiReadHotelController implements Initializable {
      */
     public void gotoHotel() throws IOException{
         //检验是否选中个酒店
-        for(int i = 0; i < hotelData.size();i++){
+        for(int i = 0; i < Data.size();i++){
             setChooseHotel(false);
             if(hotelList.getSelectionModel().isSelected(i)){
                 setChooseHotel(true);
@@ -145,7 +148,7 @@ public class uiReadHotelController implements Initializable {
      */
     public void gotoReserveHotel() throws IOException{
         //检验是否选中个酒店
-        for(int i = 0; i < hotelData.size();i++){
+        for(int i = 0; i < Data.size();i++){
             setChooseHotel(false);
             if(hotelList.getSelectionModel().isSelected(i)){
                 setChooseHotel(true);
@@ -163,6 +166,11 @@ public class uiReadHotelController implements Initializable {
             jump.warning();
         }
     }
+    public void showHotel() throws IOException{
+        UserController userController = new UserController();
+        ArrayList<HotelListItemVO> list = userController.searchHotel(getArea(textCircle),getAddress(textAddress));
+        initTable(list);
+    }
     @FXML
     private TableView<tableHotel> hotelList;
     @FXML
@@ -179,18 +187,13 @@ public class uiReadHotelController implements Initializable {
     private TableColumn<tableHotel,String> columnHasAbnormal;
     @FXML
     private TableColumn<tableHotel,String> columnHasCanceled;
-    private ObservableList<tableHotel> hotelData = FXCollections.observableArrayList();
-    HotelListItemVO vo1 = new HotelListItemVO("0201","喋喋大酒店","南大旁边",5, 3.0, 300.0,true,false,false);
-    HotelListItemVO vo2 = new HotelListItemVO("0202","喋喋中酒店","南大隔壁",4, 2.0, 1000.0,false,false,false);
-    HotelListItemVO vo3 = new HotelListItemVO("0203","喋喋小酒店","南大里面",3, 5.0, 200.0,true,true,false);
+    private ObservableList<tableHotel> Data = FXCollections.observableArrayList();
+
     /**
      * 初始化酒店列表
      */
-    public void initTable(){
-        ArrayList<HotelListItemVO> listItemVOs = new ArrayList<HotelListItemVO>();
-        listItemVOs.add(vo1);
-        listItemVOs.add(vo2);
-        listItemVOs.add(vo3);
+    public void initTable(ArrayList<HotelListItemVO> listItemVOs){
+        ObservableList<tableHotel> hotelData = FXCollections.observableArrayList();
         for(int i = 0; i < listItemVOs.size();i++) {
             //表示是否的符号
             String signAb;
@@ -205,6 +208,7 @@ public class uiReadHotelController implements Initializable {
 
             hotelData.add(new tableHotel(listItemVOs.get(i).getHotelID(), listItemVOs.get(i).getHotelname(), listItemVOs.get(i).getMinPrice(), listItemVOs.get(i).getStar(),
                     listItemVOs.get(i).getGrade(), signNo, signAb, signCa));
+            Data = hotelData;
         }
         hotelList.setItems(hotelData);
         columnHotelName.setCellValueFactory(cellData -> cellData.getValue().hotelNameProperty());
@@ -216,6 +220,64 @@ public class uiReadHotelController implements Initializable {
         columnHasCanceled.setCellValueFactory(cellData -> cellData.getValue().hasCanceledProperty());
     }
 
+    /**
+     * 根据选择框内容确定商圈
+     * @param cb 选择框
+     * @return
+     */
+    public TradeArea getArea(ComboBox cb){
+        if(cb.getSelectionModel().getSelectedItem()=="长江")
+            return TradeArea.Changjiang;
+        if(cb.getSelectionModel().getSelectedItem()=="黄河")
+            return TradeArea.Huanghe;
+        if(cb.getSelectionModel().getSelectedItem()=="南海")
+            return TradeArea.Nanhai;
+        return null;
+    }
+    /**
+     * 根据选择框内容确定地址
+     * @param cb 选择框
+     * @return
+     */
+    public Address getAddress(ComboBox cb){
+        if(cb.getSelectionModel().getSelectedItem()=="南京")
+            return Address.Nanjing;
+        if(cb.getSelectionModel().getSelectedItem()=="上海")
+            return Address.Shanghai;
+        if(cb.getSelectionModel().getSelectedItem()=="北京")
+            return Address.Beijing;
+        if(cb.getSelectionModel().getSelectedItem()=="天津")
+            return Address.Tianjing;
+        if(cb.getSelectionModel().getSelectedItem()=="广东")
+            return Address.Guangdong;
+        if(cb.getSelectionModel().getSelectedItem()=="澳门")
+            return Address.Aomen;
+        return null;
+    }
+    @FXML
+    private ComboBox textCircle;
+    @FXML
+    private ComboBox textAddress;
+    public final ObservableList<String> circle = FXCollections.observableArrayList("长江","黄河","南海");
+    public final ObservableList<String> cjAddress = FXCollections.observableArrayList("上海","南京");
+    public final ObservableList<String> hhAddress = FXCollections.observableArrayList("北京","天津");
+    public final ObservableList<String> nhAddress = FXCollections.observableArrayList("广东","澳门");
+
+    /**
+     * 根据选择的商圈初始化地址
+     */
+    public void initAddress(){
+
+        if(textCircle.getSelectionModel().getSelectedItem()=="长江"){
+            textAddress.getItems().setAll(cjAddress);
+        }
+        else if(textCircle.getSelectionModel().getSelectedItem()=="黄河"){
+            textAddress.getItems().setAll(hhAddress);
+        }
+        else if(textCircle.getSelectionModel().getSelectedItem()=="南海"){
+            textAddress.getItems().setAll(nhAddress);
+        }
+    }
 
     /**
      * 是否选择酒店
@@ -226,6 +288,6 @@ public class uiReadHotelController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        initTable();
+        textCircle.setItems(circle);
     }
 }

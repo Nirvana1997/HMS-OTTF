@@ -1,6 +1,10 @@
 package presentation.userui;
 
+import businesslogic.userbl.UserController;
+import businesslogicservice.userblservice.HotelOrderBlService;
+import enumData.Address;
 import enumData.LimitCriterion;
+import enumData.TradeArea;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -193,15 +197,7 @@ public class uiSearchHotelController implements Initializable{
         }
         //TODO 将列表存入搜索酒店
         HotelOrderBlService hotelOrderBlService = new UserController();
-        ArrayList<HotelListItemVO> searchHotelList = hotelOrderBlService.searchHotel(TradeArea.Xianlin, Address.NJU,SearchList);
-
-//        ArrayList<HotelListItemVO> searchHotelList = new ArrayList<HotelListItemVO>();
-//        HotelListItemVO vo1 = new HotelListItemVO("0001","喋喋大酒店","南大旁边",5, 3.0, 300.0,true,false,false);
-//        HotelListItemVO vo2 = new HotelListItemVO("0002","喋喋中酒店","南大隔壁",4, 2.0, 1000.0,false,false,false);
-//        HotelListItemVO vo3 = new HotelListItemVO("0003","喋喋小酒店","南大里面",3, 5.0, 200.0,true,true,false);
-//        searchHotelList.add(vo1);
-//        searchHotelList.add(vo2);
-//        searchHotelList.add(vo3);
+        ArrayList<HotelListItemVO> searchHotelList = hotelOrderBlService.searchHotel(getArea(textCircle), getAddress(textAddress),SearchList);
         searchHotelPane.setVisible(false);
         initTable(searchHotelList);
         hotelListPane.setVisible(true);
@@ -281,7 +277,63 @@ public class uiSearchHotelController implements Initializable{
         else if(bt.getSelectedToggle()==StandardRoom){return enumData.RoomType.DisabledRoom;}
         else return null;
     }
+    /**
+     * 根据选择框内容确定商圈
+     * @param cb 选择框
+     * @return
+     */
+    public TradeArea getArea(ComboBox cb){
+        if(cb.getSelectionModel().getSelectedItem()=="长江")
+            return TradeArea.Changjiang;
+        if(cb.getSelectionModel().getSelectedItem()=="黄河")
+            return TradeArea.Huanghe;
+        if(cb.getSelectionModel().getSelectedItem()=="南海")
+            return TradeArea.Nanhai;
+        return null;
+    }
+    /**
+     * 根据选择框内容确定地址
+     * @param cb 选择框
+     * @return
+     */
+    public Address getAddress(ComboBox cb){
+        if(cb.getSelectionModel().getSelectedItem()=="南京")
+            return Address.Nanjing;
+        if(cb.getSelectionModel().getSelectedItem()=="上海")
+            return Address.Shanghai;
+        if(cb.getSelectionModel().getSelectedItem()=="北京")
+            return Address.Beijing;
+        if(cb.getSelectionModel().getSelectedItem()=="天津")
+            return Address.Tianjing;
+        if(cb.getSelectionModel().getSelectedItem()=="广东")
+            return Address.Guangdong;
+        if(cb.getSelectionModel().getSelectedItem()=="澳门")
+            return Address.Aomen;
+        return null;
+    }
+    @FXML
+    private ComboBox textCircle;
+    @FXML
+    private ComboBox textAddress;
+    public final ObservableList<String> circle = FXCollections.observableArrayList("长江","黄河","南海");
+    public final ObservableList<String> cjAddress = FXCollections.observableArrayList("上海","南京");
+    public final ObservableList<String> hhAddress = FXCollections.observableArrayList("北京","天津");
+    public final ObservableList<String> nhAddress = FXCollections.observableArrayList("广东","澳门");
 
+    /**
+     * 根据选择的商圈初始化地址
+     */
+    public void initAddress(){
+        if(textCircle.getSelectionModel().getSelectedItem()=="长江"){
+            textAddress.getItems().addAll(cjAddress);
+        }
+        else if(textCircle.getSelectionModel().getSelectedItem()=="黄河"){
+            textAddress.getItems().addAll(hhAddress);
+        }
+        else if(textCircle.getSelectionModel().getSelectedItem()=="南海"){
+            textAddress.getItems().addAll(nhAddress);
+        }
+    }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         /**
@@ -303,6 +355,7 @@ public class uiSearchHotelController implements Initializable{
             }
         };
         checkinDate.setDayCellFactory(dayCellFactoryin);
+        textCircle.getItems().addAll(circle);
     }
 
     /**

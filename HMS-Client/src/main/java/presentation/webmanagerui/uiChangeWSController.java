@@ -96,6 +96,7 @@ public class uiChangeWSController implements Initializable{
      * @throws IOException
      */
     public void init(){
+
         textWSID.setText(uiManageHSController.getHotelID());
     }
     @Override
