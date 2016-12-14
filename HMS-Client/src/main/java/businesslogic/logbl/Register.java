@@ -66,7 +66,7 @@ public class Register {
     private void addAccount(AccountVO vo) throws RemoteException {
         //获得某个类型数目，以便编成ID
         int num = logDataService.getTypeNum(vo.getType());
-        String id = String.valueOf(num);
+        String id = String.valueOf(num+1);
         while (id.length()< Temp.ID_NUMBER_LENGTH) {
             id = "0" + id;
         }
@@ -79,7 +79,7 @@ public class Register {
             id = Temp.WEB_MANAGER+id;
         else if(vo.getType().equals(AccountType.websaler))
             id = Temp.WEB_SALER+id;
-        logDataService.addAccount(new AccountPO(vo.getAccount(),id, vo.getPassword(), vo.getType()));
+        logDataService.addAccount(new AccountPO(id,vo.getAccount(), vo.getPassword(), vo.getType()));
     }
 
     /**

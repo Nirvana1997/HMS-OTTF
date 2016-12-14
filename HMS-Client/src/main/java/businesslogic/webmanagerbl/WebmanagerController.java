@@ -38,24 +38,59 @@ public class WebmanagerController implements HSmanagementBlService,URmanagementB
         wSmanagement = new WSmanagement();
     }
 
+    /**
+     * 获得网站营销人员信息
+     *
+     * @param websalerID 网站营销人员编号
+     * @return 网站营销人员信息
+     */
     @Override
-    public WebsalerInfoVO getWebsaleInfo(String websalerID) {
+    public WebsalerInfoVO getWebsalerInfo(String websalerID) throws RemoteException {
         return wSmanagement.getWebsaleInfo(websalerID);
     }
 
+    /**
+     * 设置网站营销人员信息
+     *
+     * @param vo 网站营销人员信息
+     */
     @Override
-    public ResultMessage setWebsalerInfo(WebsalerInfoVO vo) {
+    public ResultMessage setWebsalerInfo(WebsalerInfoVO vo) throws RemoteException {
         return wSmanagement.setWebsalerInfo(vo);
     }
 
+    /**
+     * 添加网站营销人员信息和帐号
+     *
+     * @param vo       网站营销人员信息
+     * @param account  帐号
+     * @param password 密码
+     */
     @Override
-    public boolean addWebsalerInfo(WebsalerInfoVO vo, String password) {
-        return wSmanagement.addWebsalerInfo(vo,password);
+    public boolean addWebsalerInfoAndAccount(WebsalerInfoVO vo,String account, String password) throws RemoteException {
+        return wSmanagement.addWebsalerInfoAndAccount(vo,account,password);
     }
 
+    /**
+     * 删除网站营销人员信息
+     *
+     * @param websalerID 网站营销人员编号
+     * @return 是否成功
+     */
     @Override
-    public ResultMessage deleteWebsalerInfo(String websalerID) {
+    public ResultMessage deleteWebsalerInfoAndAccount(String websalerID) throws RemoteException {
         return wSmanagement.deleteWebsalerInfo(websalerID);
+    }
+
+    /**
+     * 获得所有网站营销人员的信息
+     *
+     * @return 网站营销人员信息列表
+     * @throws RemoteException
+     */
+    @Override
+    public ArrayList<WebsalerInfoVO> getWebsalerInfoList() throws RemoteException {
+        return wSmanagement.getWebsalerInfoList();
     }
 
     /**

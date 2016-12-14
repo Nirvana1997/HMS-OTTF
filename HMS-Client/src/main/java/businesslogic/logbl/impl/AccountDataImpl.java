@@ -1,5 +1,6 @@
 package businesslogic.logbl.impl;
 
+import businesslogic.logbl.Register;
 import businesslogic.webmanagerbl.AccountInfo;
 import data_stub.logdata.LogDataImpl_stub;
 import dataservice.logdataservice.LogDataService;
@@ -22,9 +23,15 @@ public class AccountDataImpl implements AccountInfo {
      */
     private LogDataService logDataService;
 
+    /**
+     * 注册模块
+     */
+    private Register register;
+
     public AccountDataImpl() throws RemoteException {
         //TODO
         this.logDataService = new LogDataImpl_stub();
+        register = new Register();
     }
 
     /**
@@ -43,12 +50,24 @@ public class AccountDataImpl implements AccountInfo {
 
     /**
      * 添加帐号
-     * @param vo 帐号vo
+     *
+     * @param account 帐号
+     * @param password 密码
+     * @param accountType 帐号类型
      * @throws RemoteException
      */
+    public void addAccount(String account,String password,AccountType accountType) throws RemoteException {
+        register.register(new AccountVO(account,password,accountType));
+    }
+
     @Override
-    public void addAccount(AccountVO vo) throws RemoteException {
-        logDataService.addAccount(AccountPVChanger.accountV2P(vo));
+    public void deleteAccount(String id) throws RemoteException {
+        logDataService.deleteAccount(id);
+    }
+
+    @Override
+    public String getID(String account) throws RemoteException {
+        return logDataService.getID(account);
     }
 
 }

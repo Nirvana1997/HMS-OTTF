@@ -14,8 +14,9 @@ import java.util.Date;
 
 /**
  * 判断是否有足够房间数量
+ *
  * @author qzh
- * Created by user on 2016/12/2.
+ *         Created by user on 2016/12/2.
  */
 public class RoomNumJudger {
     private HotelRoom hotelRoom;
@@ -26,21 +27,48 @@ public class RoomNumJudger {
 
     /**
      * 返回是否房间数目是否足够
-     * @param hotelID 酒店编号
+     *
+     * @param hotelID   酒店编号
      * @param startDate 入住时间
-     * @param endDate 退房时间
-     * @param roomType 房间类型
-     * @param num 房间数目
+     * @param endDate   退房时间
+     * @param roomType  房间类型
+     * @param num       房间数目
      * @return
      */
-    public boolean haveEnoughRoom(String hotelID, Date startDate, Date endDate, RoomType roomType,int num) throws RemoteException {
+    public boolean haveEnoughRoom(String hotelID, Date startDate, Date endDate, RoomType roomType, int num) throws RemoteException {
         //获取期间所有日期
-        ArrayList<Date> dates = DateOperation.getDates(startDate,endDate);
+        ArrayList<Date> dates = DateOperation.getDates(startDate, endDate);
         DateFormat df = new SimpleDateFormat("yyyy_MM_dd");
-        for (Date date:dates) {
-            for(RoomNumPO roomNum:hotelRoom.getEmptyrooms(hotelID,df.format(date))){
-                if(roomNum.getRoomType().equals(roomType)&&roomNum.getEmptyNum()<num){
+        for (Date date : dates) {
+            for (RoomNumPO roomNum : hotelRoom.getEmptyrooms(hotelID, df.format(date))) {
+                if (roomNum.getRoomType().equals(roomType) && roomNum.getEmptyNum() < num) {
                     return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    /**
+     * 增加对应天内的房间数量（num为负时为减）
+     *
+     * @param hotelID   酒店编号
+     * @param startDate 入住时间
+     * @param endDate   退房时间
+     * @param roomType  房间类型
+     * @param num       房间数目
+     * @return
+     */
+    public boolean addEmptyRoom(String hotelID, Date startDate, Date endDate, RoomType roomType, int num) throws RemoteException {
+        //获取期间所有日期
+        ArrayList<Date> dates = DateOperation.getDates(startDate, endDate);
+        DateFormat df = new SimpleDateFormat("yyyy_MM_dd");
+        for (Date date : dates) {
+            for (RoomNumPO roomNum : hotelRoom.getEmptyrooms(hotelID, df.format(date))) {
+                if (roomNum.getRoomType().equals(roomType)) {
+                    int n = roomNum.getEmptyNum();
+                    n+=num;
+                    roomNum.setEmptyNum(n);
                 }
             }
         }

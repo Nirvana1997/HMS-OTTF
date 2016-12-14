@@ -7,17 +7,18 @@ import po.HotelroomPO;
 import po.OrderPO;
 import po.RoomNumPO;
 
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 public class HotelroomDataImpl_stub implements HotelroomDataService {
 	ArrayList<HotelroomPO> hotelroomPOs = new ArrayList<HotelroomPO>();
 	ArrayList<RoomNumPO> roomNumPOs = new ArrayList<RoomNumPO>();
-	HotelroomPO hotelroomPO1 = new HotelroomPO("01", RoomType.StandardRoom,200);
-	HotelroomPO hotelroomPO2 = new HotelroomPO("01", RoomType.DoubleRoom,300);
-	HotelroomPO hotelroomPO3 = new HotelroomPO("01", RoomType.SingleRoom,100);
-	RoomNumPO roomNumPO1 = new RoomNumPO("01","2016_11_12",20,19,RoomType.SingleRoom);
-	RoomNumPO roomNumPO2 = new RoomNumPO("01","2016_11_12",10,9,RoomType.StandardRoom);
-	RoomNumPO roomNumPO3 = new RoomNumPO("01","2016_11_12",5,2,RoomType.SingleRoom);
+	HotelroomPO hotelroomPO1 = new HotelroomPO("01", RoomType.StandardRoom,200,20);
+	HotelroomPO hotelroomPO2 = new HotelroomPO("01", RoomType.DoubleRoom,300,10);
+	HotelroomPO hotelroomPO3 = new HotelroomPO("01", RoomType.SingleRoom,100,5);
+	RoomNumPO roomNumPO1 = new RoomNumPO("01","2016_11_12",19,RoomType.SingleRoom);
+	RoomNumPO roomNumPO2 = new RoomNumPO("01","2016_11_12",9,RoomType.StandardRoom);
+	RoomNumPO roomNumPO3 = new RoomNumPO("01","2016_11_12",2,RoomType.SingleRoom);
 
 	public HotelroomDataImpl_stub() {
 		hotelroomPOs.add(hotelroomPO1);
@@ -62,10 +63,15 @@ public class HotelroomDataImpl_stub implements HotelroomDataService {
 	}
 
 	@Override
-	public ResultMessage addHotelroom(HotelroomPO po) {
-		hotelroomPOs.add(po);
-		return ResultMessage.Correct;
+	public ResultMessage initializeRoomInfo(ArrayList<HotelroomPO> list) throws RemoteException {
+		return null;
 	}
+
+	@Override
+	public ResultMessage setRoomInfo(ArrayList<HotelroomPO> list) throws RemoteException {
+		return null;
+	}
+
 
 	@Override
 	public ArrayList<HotelroomPO> getRoomList(String hotelID) {
@@ -78,9 +84,14 @@ public class HotelroomDataImpl_stub implements HotelroomDataService {
 	}
 
 	@Override
-	public ResultMessage initializeRoomInfo(RoomNumPO po) {
-		roomNumPOs.add(po);
-		return ResultMessage.Correct;
+	public ResultMessage initializeRoomNum(ArrayList<RoomNumPO> list) throws RemoteException {
+		return null;
 	}
+
+	@Override
+	public ResultMessage setRoomNum(ArrayList<RoomNumPO> list) throws RemoteException {
+		return null;
+	}
+
 
 }

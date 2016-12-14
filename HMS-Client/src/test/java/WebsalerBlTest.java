@@ -112,8 +112,8 @@ public class WebsalerBlTest {
      */
     @Test
     public void testAddCredit() throws Exception {
-        websalerblService.addCredit("151250001",100);
-        Assert.assertEquals(1300,websalerblService.getCredit("151250001"));
+        websalerblService.addCredit("0100001",100);
+        Assert.assertEquals(1300,websalerblService.getCredit("0100001"));
     }
 
     /**
@@ -121,10 +121,10 @@ public class WebsalerBlTest {
      */
     @Test
     public void testGetCredit() throws Exception {
-        Assert.assertEquals(1200,websalerblService.getCredit("151250001"));
-        Assert.assertEquals(2200,websalerblService.getCredit("151250002"));
-        Assert.assertEquals(3200,websalerblService.getCredit("151250003"));
-        Assert.assertEquals(2000,websalerblService.getCredit("151250004"));
+        Assert.assertEquals(1200,websalerblService.getCredit("0100001"));
+        Assert.assertEquals(2200,websalerblService.getCredit("0100002"));
+        Assert.assertEquals(3200,websalerblService.getCredit("0100003"));
+        Assert.assertEquals(2000,websalerblService.getCredit("0100004"));
 
     }
 
