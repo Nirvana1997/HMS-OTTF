@@ -78,5 +78,43 @@ public class HotelSalerControllerTest {
         Assert.assertEquals("2016_01_01", DateOperation.dateToString(hotelSalerController.readOrder().get(0).getCheckOutDate()));
     }
 
+    /**
+     *
+     * Method: setOrdered(BelowLineOrderVO vo)
+     *
+     */
+    @Test
+    public void testSetOrdered() throws Exception {
+//TODO: Test goes here...
+    }
 
+    /**
+     *
+     * Method: setEmpty(BelowLineOrderVO vo)
+     *
+     */
+    @Test
+    public void testSetEmpty() throws Exception {
+//TODO: Test goes here...
+    }
+
+    /**
+     *
+     * Method: setRoomInfo(ArrayList<HotelroomVO> hotelrooms)
+     *
+     */
+    @Test
+    public void testSetRoomInfo() throws Exception {
+//TODO: Test goes here...
+    }
+
+    /**
+     *
+     * Method: getRoomInfo()
+     *
+     */
+    @Test
+    public void testGetRoomInfo() throws Exception {
+        Assert.assertEquals(200,hotelSalerController.getRoomInfo().get(0).getPrice(),0.1);
+    }
 } 
