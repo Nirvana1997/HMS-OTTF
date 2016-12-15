@@ -52,7 +52,7 @@ public void testSearchHotel() throws Exception {
     boolean inArea = true;
 
     //评分区间测试
-    ArrayList<HotelListItemVO> hotels = hotelOrderBlService.searchHotel(TradeArea.Xianlin,Address.NJU, limits);
+    ArrayList<HotelListItemVO> hotels = hotelOrderBlService.searchHotel(TradeArea.Huanghe,Address.Beijing, limits);
     for(HotelListItemVO hotel:hotels){
         if(!(hotel.getGrade()>=4&&hotel.getGrade()<=5))
             inArea = false;
@@ -62,7 +62,7 @@ public void testSearchHotel() throws Exception {
     //星级区间测试
     limits.clear();
     limits.add(new LimitVO(LimitCriterion.StarCriterion,4,5));
-    hotels = hotelOrderBlService.searchHotel(TradeArea.Xianlin,Address.NJU, limits);
+    hotels = hotelOrderBlService.searchHotel(TradeArea.Changjiang,Address.Shanghai, limits);
     inArea = true;
     for(HotelListItemVO hotel:hotels){
         if(!(hotel.getStar()>=4&&hotel.getStar()<=5))
@@ -73,7 +73,7 @@ public void testSearchHotel() throws Exception {
     //关键字测试
     limits.clear();
     limits.add(new LimitVO(LimitCriterion.KeywordCriterion,"仙林"));
-    hotels = hotelOrderBlService.searchHotel(TradeArea.Xianlin,Address.NJU, limits);
+    hotels = hotelOrderBlService.searchHotel(TradeArea.Nanhai,Address.Nanjing, limits);
     Assert.assertEquals("仙林大酒店",hotels.get(0).getHotelname());
 } 
 

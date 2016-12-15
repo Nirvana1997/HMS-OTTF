@@ -37,7 +37,7 @@ public class WebsalerBlTest {
      */
     @Test
     public void testMakePromotion() throws Exception {
-        PromotionVO vo = new PromotionVO("haha","2333",PromotionType.Web_Period,"2016_1_4","2016_1_7", TradeArea.Xianlin,0.5);
+        PromotionVO vo = new PromotionVO("haha","2333",PromotionType.Web_Period,"2016_1_4","2016_1_7", TradeArea.Changjiang,0.5);
         websalerblService.makePromotion(vo);
         boolean exist = false;
         for(PromotionVO v:websalerblService.getPromotionList(PromotionType.Web_Period)){
