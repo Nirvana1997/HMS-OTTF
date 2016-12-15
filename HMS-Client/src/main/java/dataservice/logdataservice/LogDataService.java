@@ -81,4 +81,7 @@ public interface LogDataService extends Remote{
 	 * @throws RemoteException
 	 */
 	public boolean hasExisted(String account)throws RemoteException;
+
+	//TODO
+	public String getAccount(String id)throws RemoteException;
 }

@@ -137,5 +137,12 @@ public class WebmanagerControllerTest {
 //TODO: Test goes here... 
     }
 
+    /**
+     * Method: getAccount(String id)
+     */
+    @Test
+    public void testGetAccount()throws Exception{
+        Assert.assertEquals("151250001",webmanagerController.getAccount("0100001"));
+    }
 
 } 
