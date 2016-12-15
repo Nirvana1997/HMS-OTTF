@@ -29,6 +29,7 @@ public class HotelroomDataImpl_stub implements HotelroomDataService {
 		roomNumPOs.add(roomNumPO3);
 	}
 
+
 	@Override
 	public ArrayList<RoomNumPO> getEmptyrooms(String hotelID, String date) {
 		ArrayList<RoomNumPO> list = new ArrayList<RoomNumPO>();

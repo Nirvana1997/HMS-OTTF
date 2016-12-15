@@ -22,15 +22,11 @@
             <Font size="14.0" />
          </font>
       </TextField>
-      <Button fx:id="buttonRegister" layoutX="152.0" layoutY="420.0" mnemonicParsing="false" onAction="#gotoRegister1" prefHeight="67.0" prefWidth="180.0" text="Button">
-         <effect>
-            <ImageInput>
-               <source>
-                  <Image url="@../../../../../graphics/logui/register.png" />
-               </source>
-            </ImageInput>
-         </effect>
-      </Button>
+      <PasswordField fx:id="textPassword" layoutX="433.0" layoutY="360.0" onMouseClicked="#clearPassword" prefHeight="29.0" prefWidth="180.0">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </PasswordField>
       <Button fx:id="buttonLogin" layoutX="647.0" layoutY="420.0" mnemonicParsing="false" onAction="#login" prefHeight="67.0" prefWidth="180.0" text="Button">
          <effect>
             <ImageInput>
@@ -40,11 +36,15 @@
             </ImageInput>
          </effect>
       </Button>
-      <PasswordField fx:id="textPassword" layoutX="433.0" layoutY="360.0" onMouseClicked="#clearPassword" prefHeight="29.0" prefWidth="180.0">
-         <font>
-            <Font size="14.0" />
-         </font>
-      </PasswordField>
+      <Button fx:id="buttonRegister" layoutX="152.0" layoutY="420.0" mnemonicParsing="false" onAction="#gotoRegister1" prefHeight="67.0" prefWidth="180.0" text="Button">
+         <effect>
+            <ImageInput>
+               <source>
+                  <Image url="@../../../../../graphics/logui/register.png" />
+               </source>
+            </ImageInput>
+         </effect>
+      </Button>
       <Text fx:id="wrongPassword" fill="RED" layoutX="461.0" layoutY="415.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*账号密码错误" visible="false" />
       <Text fx:id="notExist" fill="RED" layoutX="461.0" layoutY="415.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*该账户不存在" visible="false" />
    </children>
