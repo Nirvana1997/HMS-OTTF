@@ -1,6 +1,5 @@
 package businesslogic.hotelsalerbl.impl;
 
-import businesslogic.logbl.HotelInfoAdder;
 import businesslogic.userbl.interfaces.HotelInfo;
 import businesslogic.userbl.interfaces.HotelRoom;
 import businesslogic.webmanagerbl.HotelInfoForManagement;
@@ -14,8 +13,6 @@ import enumData.TradeArea;
 import po.HotelinfoPO;
 import po.HotelroomPO;
 import po.RoomNumPO;
-import utility.HotelPVChanger;
-import vo.HotelinfoVO;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
@@ -89,16 +86,13 @@ public class HotelDataImpl implements HotelInfo, HotelRoom,HotelInfoForManagemen
     }
 
     /**
-     * 添加酒店信息并添上初始均为0的房间信息
+     * 添加酒店信息
      * @param po 酒店信息
      * @throws RemoteException
      */
     @Override
-    public void addHotelInfoAndRoom(HotelinfoPO po) throws RemoteException {
+    public void addHotelInfo(HotelinfoPO po) throws RemoteException {
         hotelinfoDataService.addHotelinfo(po);
-
-        //TODO
-        hotelroomDataService.initializeRoomInfo(null);
     }
 
     @Override

@@ -35,7 +35,7 @@ public interface HotelInfoForManagement {
      * @param po 酒店信息
      * @throws RemoteException
      */
-    public void addHotelInfoAndRoom(HotelinfoPO po) throws RemoteException;
+    public void addHotelInfo(HotelinfoPO po) throws RemoteException;
 
     /**
      * 删除酒店信息

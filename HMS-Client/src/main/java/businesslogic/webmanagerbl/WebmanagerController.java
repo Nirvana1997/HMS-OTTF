@@ -141,8 +141,8 @@ public class WebmanagerController implements HSmanagementBlService,URmanagementB
     }
 
     @Override
-    public boolean addHotelinfo(HotelinfoVO vo) throws RemoteException {
-        hSmanagement.addHotelinfoAndRoom(vo);
+    public boolean addHotelinfoAndAccount(HotelinfoVO vo,String account,String password) throws RemoteException {
+        hSmanagement.addHotelinfoAndAccount(vo,account,password);
         return true;
     }
 

@@ -1,12 +1,16 @@
 import businesslogic.logbl.LogController;
 import businesslogic.userbl.UserInfo;
 import businesslogic.webmanagerbl.WebmanagerController;
+import enumData.Address;
 import enumData.ResultMessage;
+import enumData.TradeArea;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import po.UserInfoPO;
 import vo.AccountVO;
+import vo.HotelinfoVO;
 import vo.UserInfoVO;
 import vo.WebsalerInfoVO;
 
@@ -85,7 +89,10 @@ public class WebmanagerControllerTest {
      */
     @Test
     public void testSetUserInfo() throws Exception {
-//TODO: Test goes here... 
+        UserInfoVO vo = webmanagerController.getUserInfo("0100001");
+        vo.setIdentity("6666");
+        webmanagerController.setUserInfo(vo);
+        Assert.assertEquals("6666",webmanagerController.getUserInfo("0100001").getIdentity());
     }
 
     /**
@@ -102,7 +109,8 @@ public class WebmanagerControllerTest {
      */
     @Test
     public void testGetHotellist() throws Exception {
-//TODO: Test goes here... 
+        ArrayList<HotelinfoVO> hotelinfos = webmanagerController.getHotellist();
+        Assert.assertEquals(4,hotelinfos.size());
     }
 
     /**
@@ -110,7 +118,7 @@ public class WebmanagerControllerTest {
      */
     @Test
     public void testGetHotelinfo() throws Exception {
-//TODO: Test goes here... 
+        Assert.assertEquals("XianlinHotel",webmanagerController.getHotelinfo("0200001").getHotelname());
     }
 
     /**
@@ -118,15 +126,20 @@ public class WebmanagerControllerTest {
      */
     @Test
     public void testSetHotelinfo() throws Exception {
-//TODO: Test goes here... 
+        HotelinfoVO vo = webmanagerController.getHotelinfo("0200001");
+        vo.setHotelname("XianlinlinHotel");
+        webmanagerController.setHotelinfo(vo);
+        Assert.assertEquals("XianlinlinHotel",webmanagerController.getHotelinfo("0200001").getHotelname());
     }
 
     /**
      * Method: addHotelinfo(HotelinfoVO vo)
      */
     @Test
-    public void testAddHotelinfo() throws Exception {
-//TODO: Test goes here... 
+    public void testAddHotelinfoAndAccount() throws Exception {
+        webmanagerController.addHotelinfoAndAccount(new HotelinfoVO(null, "HahaHotel",TradeArea.Nanhai, Address.Guangdong,"Near the NJU","Excellent","VeryGood","1288888",5,9.9,300),"Haha","233333");
+        Assert.assertEquals(ResultMessage.Correct,logController.isCorrectAndLogin(new AccountVO("haha","233333",null)));
+        Assert.assertEquals("HahaHotel",webmanagerController.getHotelinfo("0200005"));
     }
 
     /**
