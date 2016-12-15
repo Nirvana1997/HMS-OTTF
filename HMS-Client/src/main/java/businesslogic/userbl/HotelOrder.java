@@ -95,6 +95,16 @@ public class HotelOrder {
     }
 
     /**
+     * 返回订单信息
+     * @param orderID 订单编号
+     * @return 订单
+     * @throws RemoteException
+     */
+    public OrderVO getOrderInfo(String orderID)throws RemoteException{
+        return OrderPVChanger.orderP2V(userOrderInfo.getOrderInfo(orderID));
+    }
+
+    /**
      * 根据用户id得到该用户的订单列表
      *
      * @param orderState 订单状态

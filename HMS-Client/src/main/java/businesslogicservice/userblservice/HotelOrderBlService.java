@@ -89,6 +89,14 @@ public interface HotelOrderBlService {
     public ArrayList<OrderVO> readOrder(OrderState orderState) throws RemoteException;
 
     /**
+     * 返回订单信息
+     * @param orderID 订单编号
+     * @return 订单
+     * @throws RemoteException
+     */
+    public OrderVO getOrderInfo(String orderID)throws RemoteException;
+
+    /**
      * 根据订单ID取消该订单
      * 若超出规定时间，会扣除一定信用
      *
