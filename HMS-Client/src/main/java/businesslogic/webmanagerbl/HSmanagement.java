@@ -48,11 +48,13 @@ public class HSmanagement{
     }
 
     public void addHotelinfoAndAccount(HotelinfoVO vo,String account, String password) throws RemoteException {
-        hotelInfoForManagement.addHotelInfo(HotelPVChanger.hotelV2P(vo));
         accountInfo.addAccount(account,password, AccountType.hotelsaler);
+        vo.setHotelID(accountInfo.getID(account));
+        hotelInfoForManagement.addHotelInfo(HotelPVChanger.hotelV2P(vo));
     }
 
-    public void deleteHotel(String hotelID) throws RemoteException {
+    public void deleteHotelAndAccount(String hotelID) throws RemoteException {
         hotelInfoForManagement.deleteHotelInfo(hotelID);
+        accountInfo.deleteAccount(hotelID);
     }
 }

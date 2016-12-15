@@ -147,8 +147,8 @@ public class WebmanagerController implements HSmanagementBlService,URmanagementB
     }
 
     @Override
-    public ResultMessage deleteHotelinfo(String hotelsalerID) throws RemoteException {
-        hSmanagement.deleteHotel(hotelsalerID);
+    public ResultMessage deleteHotelinfoAndAccount(String hotelsalerID) throws RemoteException {
+        hSmanagement.deleteHotelAndAccount(hotelsalerID);
         return ResultMessage.Correct;
     }
 

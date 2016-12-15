@@ -15,6 +15,6 @@ public interface HSmanagementBlService {
 	
 	public boolean addHotelinfoAndAccount(HotelinfoVO vo,String account,String password)throws RemoteException;
 	
-	public ResultMessage deleteHotelinfo(String hotelsalerID)throws RemoteException;
+	public ResultMessage deleteHotelinfoAndAccount(String hotelsalerID)throws RemoteException;
 	
 }

@@ -1,6 +1,7 @@
 import businesslogic.logbl.LogController;
 import businesslogic.userbl.UserInfo;
 import businesslogic.webmanagerbl.WebmanagerController;
+import enumData.AccountType;
 import enumData.Address;
 import enumData.ResultMessage;
 import enumData.TradeArea;
@@ -64,7 +65,7 @@ public class WebmanagerControllerTest {
     public void testAddWebsalerInfo() throws Exception {
         webmanagerController.addWebsalerInfoAndAccount(new WebsalerInfoVO(null,"12345678910"),"testWebSaler","websaler");
         Assert.assertEquals(ResultMessage.Correct,logController.isCorrectAndLogin(new AccountVO("testWebSaler","websaler",null)));
-        Assert.assertEquals("12345678910",webmanagerController.getWebsalerInfo("0300005").getContactNumber());
+        Assert.assertEquals(4,webmanagerController.getWebsalerInfoList().size());
     }
 
     /**
@@ -72,6 +73,7 @@ public class WebmanagerControllerTest {
      */
     @Test
     public void testDeleteWebsalerInfo() throws Exception {
+        Assert.assertEquals(AccountType.websaler,logController.accoutType("151250003"));
         webmanagerController.deleteWebsalerInfoAndAccount("0300001");
         Assert.assertEquals(null,logController.accoutType("151250003"));
     }
@@ -138,16 +140,18 @@ public class WebmanagerControllerTest {
     @Test
     public void testAddHotelinfoAndAccount() throws Exception {
         webmanagerController.addHotelinfoAndAccount(new HotelinfoVO(null, "HahaHotel",TradeArea.Nanhai, Address.Guangdong,"Near the NJU","Excellent","VeryGood","1288888",5,9.9,300),"Haha","233333");
-        Assert.assertEquals(ResultMessage.Correct,logController.isCorrectAndLogin(new AccountVO("haha","233333",null)));
-        Assert.assertEquals("HahaHotel",webmanagerController.getHotelinfo("0200005"));
+        Assert.assertEquals(ResultMessage.Correct,logController.isCorrectAndLogin(new AccountVO("Haha","233333",null)));
+        Assert.assertEquals("HahaHotel",webmanagerController.getHotelinfo("0200005").getHotelname());
     }
 
     /**
      * Method: deleteHotelinfo(String hotelsalerID)
      */
     @Test
-    public void testDeleteHotelinfo() throws Exception {
-//TODO: Test goes here... 
+    public void testDeleteHotelinfoAndAccount() throws Exception {
+        Assert.assertEquals(ResultMessage.Correct,logController.isCorrectAndLogin(new AccountVO("151250002","111111",null)));
+        webmanagerController.deleteHotelinfoAndAccount("0200001");
+        Assert.assertEquals(ResultMessage.InCorrect,logController.isCorrectAndLogin(new AccountVO("151250002","111111",null)));
     }
 
     /**
