@@ -75,17 +75,12 @@
                   <Font size="15.0" />
                </font>
             </Text>
-            <TextField fx:id="textWSAccount" layoutX="125.0" layoutY="143.0">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </TextField>
             <TextField fx:id="textWSNumber" layoutX="152.0" layoutY="230.0">
                <font>
                   <Font size="14.0" />
                </font>
             </TextField>
-            <Button fx:id="buttonSave" layoutX="452.0" layoutY="384.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="89.0" text="确认修改">
+            <Button fx:id="buttonSave" layoutX="452.0" layoutY="384.0" mnemonicParsing="false" onAction="#Save" prefHeight="36.0" prefWidth="89.0" text="确认修改">
                <font>
                   <Font size="18.0" />
                </font>
@@ -97,7 +92,7 @@
                   </ImageInput>
                </effect>
             </Button>
-            <Button fx:id="buttonCancel" layoutX="572.0" layoutY="384.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="89.0" text="取消">
+            <Button fx:id="buttonCancel" layoutX="572.0" layoutY="384.0" mnemonicParsing="false" onAction="#init" prefHeight="36.0" prefWidth="89.0" text="取消">
                <font>
                   <Font size="18.0" />
                </font>
@@ -109,7 +104,7 @@
                   </ImageInput>
                </effect>
             </Button>
-            <Button fx:id="buttonDelete" layoutX="331.0" layoutY="384.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="89.0" text="删除">
+            <Button fx:id="buttonDelete" layoutX="331.0" layoutY="384.0" mnemonicParsing="false" onAction="#Delete" prefHeight="36.0" prefWidth="89.0" text="删除">
                <font>
                   <Font size="18.0" />
                </font>
@@ -127,6 +122,11 @@
                </font>
             </Text>
             <Text fx:id="buttonModifyPassword" fill="#4477a4" layoutX="130.0" layoutY="206.0" onMouseClicked="#gotoModifyPassword" strokeType="OUTSIDE" strokeWidth="0.0" text="修改密码" underline="true">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <Text fx:id="textWSAccount" layoutX="130.0" layoutY="163.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00000023">
                <font>
                   <Font size="15.0" />
                </font>

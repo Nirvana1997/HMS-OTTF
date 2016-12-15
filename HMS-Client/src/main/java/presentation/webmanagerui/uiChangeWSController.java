@@ -1,20 +1,24 @@
 package presentation.webmanagerui;
 
+import businesslogic.webmanagerbl.WebmanagerController;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
+import vo.WebsalerInfoVO;
 
 import javax.naming.spi.InitialContextFactory;
 import java.io.IOException;
 import java.net.URL;
+import java.rmi.RemoteException;
 import java.util.ResourceBundle;
 
 /**
  * Created by Administrator on 2016/12/1.
  */
 public class uiChangeWSController implements Initializable{
+    WebmanagerController webmanagerController = new WebmanagerController();
     /**
      * 界面跳转的类
      */
@@ -34,6 +38,9 @@ public class uiChangeWSController implements Initializable{
      * 网站管理按钮
      */
             Button buttonManageWS;
+
+    public uiChangeWSController() throws RemoteException {
+    }
 
     /**
      * 跳转到用户管理界面
@@ -88,19 +95,53 @@ public class uiChangeWSController implements Initializable{
     @FXML
     private Text textWSID;
     @FXML
-    private TextField textWSAccount;
+    private Text textWSAccount;
     @FXML
     private TextField textWSNumber;
+    @FXML
+    private Button buttonDelete;
+    @FXML
+    private Button buttonSave;
+    @FXML
+    private Button buttonCancel;
+
+    /**
+     * 修改WS信息
+     * @throws RemoteException
+     */
+    public void Save() throws RemoteException {
+        WebsalerInfoVO vo = webmanagerController.getWebsalerInfo(jump.currentWSID);
+        vo.setContactNumber(textWSNumber.getText());
+    }
+
+    /**
+     * 删除WS信息
+     * @throws IOException
+     */
+    public void Delete() throws IOException {
+        webmanagerController.deleteWebsalerInfoAndAccount(jump.currentWSID);
+        jump.gotoManageWS();
+        jump.deleteSuccess();
+
+    }
+
+
     /**
      * 初始化内容
      * @throws IOException
      */
-    public void init(){
-
-        textWSID.setText(uiManageHSController.getHotelID());
+    public void init() throws RemoteException {
+        WebsalerInfoVO vo = webmanagerController.getWebsalerInfo(jump.currentWSID);
+        textWSID.setText(vo.getWebsalerID());
+        textWSAccount.setText(webmanagerController.getAccount(vo.getWebsalerID()));
+        textWSNumber.setText(vo.getContactNumber());
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        init();
+        try {
+            init();
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
     }
 }

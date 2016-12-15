@@ -120,7 +120,9 @@ public class uiChangeHSController implements Initializable{
      */
     public void Delete() throws IOException{
         webmanagerController.deleteHotelinfo(textHSID.getText());
-        //TODO 提示删除成功
+        jump.gotoManageHS();
+        jump.deleteSuccess();
+
     }
     @FXML
     private Button buttonCancel;
@@ -193,6 +195,7 @@ public class uiChangeHSController implements Initializable{
      * 根据选择的商圈初始化地址
      */
     public void initAddress(){
+        textAddress.setPromptText("");
         if(textCircle.getSelectionModel().getSelectedItem()=="长江"){
             textAddress.getItems().setAll(cjAddress);
         }
@@ -211,6 +214,7 @@ public class uiChangeHSController implements Initializable{
 
         HotelinfoVO currentHotel = webmanagerController.getHotelinfo(jump.currentHSID);
         textHotelName.setText(currentHotel.getHotelname());
+        textHSAccount.setText(webmanagerController.getAccount(jump.currentHSID));
         textDetailAddress.setText(currentHotel.getDetailAddress());
         textStar.setText(String.valueOf(currentHotel.getStar()));
         textHSID.setText(currentHotel.getHotelID());

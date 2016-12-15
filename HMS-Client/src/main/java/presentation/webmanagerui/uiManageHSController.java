@@ -122,7 +122,7 @@ public class uiManageHSController implements Initializable{
      */
     public void SearchHS() throws IOException{
         //TODO 判断ID是否存在
-        setHotelID(textSearch.getText());
+        jump.setCurrentHSID(textSearch.getText());
         jump.gotoChangeHS();
     }
 

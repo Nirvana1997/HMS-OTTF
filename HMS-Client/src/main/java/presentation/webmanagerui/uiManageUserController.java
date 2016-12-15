@@ -82,6 +82,7 @@ public class uiManageUserController implements Initializable{
         //如果有，则跳转
         if(choose) {
             jump.setCurrentUserID(userList.getSelectionModel().getSelectedItem().getID());
+            System.out.println(jump.currentUserID);
             jump.gotoChangeUser();
         }
         //如果没有，跳出提示框

@@ -113,16 +113,25 @@ public class uiAddHotelController implements Initializable{
     @FXML
     private Button buttonCancel;
 
+    @FXML
+    private Text warningAccount;
+
     public void Save() throws RemoteException{
         AccountVO accountVO = new AccountVO(textHSAccount.getText(),textHSPassword.getText(), AccountType.hotelsaler);
         HotelinfoVO vo = new HotelinfoVO(null,textHotelName.getText(),getArea(textCircle),getAddress(textAddress),
                 textDetailAddress.getText(),textHSNumber.getText(),"","",Integer.parseInt(textStar.getText()),0,0);
         WebmanagerController webmanagerController = new WebmanagerController();
         if(!webmanagerController.addHotelinfo(vo)){
-            //TODO 返回false的原因未知。
+            warningAccount.setVisible(true);
         }
     }
-
+    /**
+     * 点击账户名，取消账户名存在的警告
+     * @throws IOException
+     */
+    public void notWarningAccount()throws IOException{
+        warningAccount.setVisible(false);
+    }
     /**
      * 根据选择框内容确定商圈
      * @param cb 选择框

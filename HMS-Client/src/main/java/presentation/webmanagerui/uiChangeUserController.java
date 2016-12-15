@@ -20,23 +20,25 @@ import java.util.ResourceBundle;
 public class uiChangeUserController implements Initializable{
 
     @FXML
-            private Text textUserID;
+    private Text textUserID;
     @FXML
-            private Text textCredit;
+    private Text textUserAccount;
     @FXML
-            private TextField textRealName;
+    private Text textCredit;
     @FXML
-            private TextField textPhoneNumber;
+    private TextField textRealName;
     @FXML
-            private ToggleGroup userType;
+    private TextField textPhoneNumber;
     @FXML
-            private RadioButton typePersonal;
+    private ToggleGroup userType;
     @FXML
-            private RadioButton typeEnterprise;
+    private RadioButton typePersonal;
     @FXML
-            private DatePicker dateBirthday;
+    private RadioButton typeEnterprise;
     @FXML
-            private TextField nameEnterprise;
+    private DatePicker dateBirthday;
+    @FXML
+    private TextField nameEnterprise;
     /**
      * 界面跳转的类
      */
@@ -159,16 +161,19 @@ public class uiChangeUserController implements Initializable{
         WebmanagerController webmanagerController = new WebmanagerController();
         UserInfoVO vo = webmanagerController.getUserInfo(jump.currentUserID);
         textUserID.setText(vo.getUserID());
+        textUserAccount.setText(webmanagerController.getAccount(vo.getUserID()));
         textRealName.setText(vo.getName());
         textPhoneNumber.setText(vo.getContactNumber());
         textCredit.setText(String.valueOf(vo.getCredit()));
         if(vo.getUserType()== UserType.Person){
             typePersonal.setSelected(true);
             dateBirthday.setPromptText(vo.getBirthday());
+            nameEnterprise.setText("");
         }
         else{
             typeEnterprise.setSelected(true);
             nameEnterprise.setText(vo.getCompanyID());
+            dateBirthday.setPromptText("");
         }
     }
     @Override

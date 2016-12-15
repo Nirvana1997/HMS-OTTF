@@ -58,7 +58,7 @@
       </Button>
       <AnchorPane layoutX="250.0" layoutY="107.0" prefHeight="508.0" prefWidth="751.0">
          <children>
-            <Text layoutX="67.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="账号：">
+            <Text layoutX="67.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="账号：">
                <font>
                   <Font size="15.0" />
                </font>
@@ -93,12 +93,12 @@
                   <Font size="15.0" />
                </font>
             </Text>
-            <Text layoutX="120.0" layoutY="234.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\\">
+            <Text fx:id="textCredit" layoutX="120.0" layoutY="234.0" strokeType="OUTSIDE" strokeWidth="0.0" text="\\">
                <font>
                   <Font size="15.0" />
                </font>
             </Text>
-            <Text fx:id="textUserID" layoutX="126.0" layoutY="75.0" strokeType="OUTSIDE" strokeWidth="0.0" text="UserID">
+            <Text fx:id="textUserAccount" layoutX="126.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="UserID">
                <font>
                   <Font size="15.0" />
                </font>
@@ -121,7 +121,7 @@
                   <Font size="15.0" />
                </font>
             </RadioButton>
-            <DatePicker fx:id="dataBirthday" layoutX="174.0" layoutY="285.0" />
+            <DatePicker fx:id="dateBirthday" layoutX="174.0" layoutY="285.0" />
             <Button fx:id="buttonSave" layoutX="428.0" layoutY="422.0" mnemonicParsing="false" onAction="#SaveUser" prefHeight="36.0" prefWidth="87.0" text="保存">
                <font>
                   <Font size="18.0" />
@@ -156,6 +156,16 @@
                   <Font size="14.0" />
                </font>
             </TextField>
+            <Text layoutX="67.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="编号：">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <Text fx:id="textUserID" layoutX="126.0" layoutY="58.0" strokeType="OUTSIDE" strokeWidth="0.0" text="UserID">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
          </children>
       </AnchorPane>
       <Text fx:id="textManageUser" fill="#3a72d3" layoutX="283.0" layoutY="88.0" onMouseClicked="#returntoManageUser" strokeType="OUTSIDE" strokeWidth="0.0" text="用户管理" underline="true">

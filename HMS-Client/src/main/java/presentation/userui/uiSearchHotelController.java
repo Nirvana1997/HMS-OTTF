@@ -325,13 +325,13 @@ public class uiSearchHotelController implements Initializable{
      */
     public void initAddress(){
         if(textCircle.getSelectionModel().getSelectedItem()=="长江"){
-            textAddress.getItems().addAll(cjAddress);
+            textAddress.getItems().setAll(cjAddress);
         }
         else if(textCircle.getSelectionModel().getSelectedItem()=="黄河"){
-            textAddress.getItems().addAll(hhAddress);
+            textAddress.getItems().setAll(hhAddress);
         }
         else if(textCircle.getSelectionModel().getSelectedItem()=="南海"){
-            textAddress.getItems().addAll(nhAddress);
+            textAddress.getItems().setAll(nhAddress);
         }
     }
     @Override
