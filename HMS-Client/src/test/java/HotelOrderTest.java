@@ -62,7 +62,7 @@ public void testSearchHotel() throws Exception {
     //星级区间测试
     limits.clear();
     limits.add(new LimitVO(LimitCriterion.StarCriterion,4,5));
-    hotels = hotelOrderBlService.searchHotel(TradeArea.Xianlin,Address.NJU, limits);
+    hotels = hotelOrderBlService.searchHotel(TradeArea.Changjiang,Address.Beijing, limits);
     inArea = true;
     for(HotelListItemVO hotel:hotels){
         if(!(hotel.getStar()>=4&&hotel.getStar()<=5))
