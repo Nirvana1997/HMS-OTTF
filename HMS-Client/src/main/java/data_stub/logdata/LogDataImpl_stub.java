@@ -120,4 +120,13 @@ public class LogDataImpl_stub extends UnicastRemoteObject implements LogDataServ
 			return true;
 	}
 
+	@Override
+	public String getAccount(String id) throws RemoteException {
+		for(AccountPO po:accountList){
+			if(po.getID().equals(id))
+				return po.getAccount();
+		}
+		return null;
+	}
+
 }

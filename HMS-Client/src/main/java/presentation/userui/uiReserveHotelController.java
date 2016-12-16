@@ -245,8 +245,6 @@ public class uiReserveHotelController implements Initializable{
                         };
                     }
                 };
-
-
         checkinDate.setDayCellFactory(dayCellFactoryin);
 
     }

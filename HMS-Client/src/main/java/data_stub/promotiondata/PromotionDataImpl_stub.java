@@ -14,7 +14,7 @@ import java.util.Date;
 public class PromotionDataImpl_stub implements PromotionDataService {
 	ArrayList<PromotionPO> promotionPOs = new ArrayList<PromotionPO>();
 	PromotionPO promotion1 = new PromotionPO("Birthday discount","When it is user's birthday,the user can have a discount",PromotionType.Hotel_Birth,"01",null,null,null,0,0,0.8,null);
-	PromotionPO promotion2 = new PromotionPO("TradeArea discount","In the certain tradeArea,the users can have a discount",PromotionType.Web_TradeArea,null,null,null,TradeArea.Xianlin,0,1,0.9,null);
+	PromotionPO promotion2 = new PromotionPO("TradeArea discount","In the certain tradeArea,the users can have a discount",PromotionType.Web_TradeArea,null,null,null,TradeArea.Changjiang,0,1,0.9,null);
 	PromotionPO promotion3 = new PromotionPO("RoomNumber discount","When the number of rooms is up to a standard,the users can have a discount",PromotionType.Hotel_Num,"01",null,null,null,3,0,0.8,null);
 	PromotionPO promotion4 = new PromotionPO("Hotel Period discount","During some periods,discount",PromotionType.Hotel_Period,"01","2015_01_01","2016_12_12",null,0,0,0.6,null);
 	PromotionPO promotion5 = new PromotionPO("Company discount","With the cooperation,someone may have a discount",PromotionType.Hotel_Company,"01",null,null,null,0,0,0.7,"007");

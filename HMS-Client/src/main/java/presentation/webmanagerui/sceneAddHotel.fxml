@@ -78,12 +78,12 @@
                   <Font size="15.0" />
                </font>
             </Text>
-            <Text layoutX="56.0" layoutY="250.0" strokeType="OUTSIDE" strokeWidth="0.0" text="酒店地址：">
+            <Text layoutX="56.0" layoutY="250.0" strokeType="OUTSIDE" strokeWidth="0.0" text="酒店商圈：">
                <font>
                   <Font size="15.0" />
                </font>
             </Text>
-            <Text layoutX="56.0" layoutY="294.0" strokeType="OUTSIDE" strokeWidth="0.0" text="酒店商圈：">
+            <Text layoutX="56.0" layoutY="294.0" strokeType="OUTSIDE" strokeWidth="0.0" text="酒店地址：">
                <font>
                   <Font size="15.0" />
                </font>
@@ -113,7 +113,7 @@
                   <Font size="14.0" />
                </font>
             </TextField>
-            <TextField fx:id="textHSAccount" layoutX="482.0" layoutY="185.0">
+            <TextField fx:id="textHSAccount" layoutX="482.0" layoutY="185.0" onMouseClicked="#notWarningAccount">
                <font>
                   <Font size="14.0" />
                </font>
@@ -128,9 +128,9 @@
                   <Font size="14.0" />
                </font>
             </TextField>
-            <ComboBox fx:id="textAddress" layoutX="147.0" layoutY="233.0" prefHeight="30.0" prefWidth="189.0" visibleRowCount="0" />
-            <ComboBox fx:id="textCircle" layoutX="147.0" layoutY="273.0" prefHeight="30.0" prefWidth="189.0" visibleRowCount="0" />
-            <Button fx:id="buttonSave" layoutX="440.0" layoutY="389.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="89.0" text="确认录入">
+            <ComboBox fx:id="textCircle" layoutX="147.0" layoutY="233.0" onAction="#initAddress" onMouseExited="#initAddress" prefHeight="30.0" prefWidth="189.0" promptText="请选择商圈" visibleRowCount="0" />
+            <ComboBox fx:id="textAddress" layoutX="147.0" layoutY="273.0" prefHeight="30.0" prefWidth="189.0" promptText="请选择地址" visibleRowCount="0" />
+            <Button fx:id="buttonSave" layoutX="440.0" layoutY="389.0" mnemonicParsing="false" onAction="#Save" prefHeight="36.0" prefWidth="89.0" text="确认录入">
                <font>
                   <Font size="18.0" />
                </font>
@@ -142,7 +142,7 @@
                   </ImageInput>
                </effect>
             </Button>
-            <Button fx:id="buttonCancel" layoutX="568.0" layoutY="389.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="89.0" text="取消">
+            <Button fx:id="buttonCancel" layoutX="568.0" layoutY="389.0" mnemonicParsing="false" onAction="#returntoManageHS" prefHeight="36.0" prefWidth="89.0" text="取消">
                <font>
                   <Font size="18.0" />
                </font>
@@ -164,6 +164,7 @@
                   <Font size="14.0" />
                </font>
             </TextField>
+            <Text fx:id="warningAccount" fill="RED" layoutX="475.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*该酒店已存在" visible="false" />
          </children>
       </AnchorPane>
       <Text fx:id="textManageHS" fill="#3a72d3" layoutX="293.0" layoutY="98.0" onMouseClicked="#returntoManageHS" strokeType="OUTSIDE" strokeWidth="0.0" text="酒店管理" underline="true">

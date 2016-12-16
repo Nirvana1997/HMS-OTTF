@@ -15,10 +15,10 @@ import java.util.Iterator;
 public class HotelinfoDataImpl_stub implements HotelinfoDataService {
     ArrayList<HotelinfoPO> hotelList = new ArrayList<HotelinfoPO>();
     ArrayList<CommentPO> commentPOList = new ArrayList<CommentPO>();
-    HotelinfoPO hotel1 = new HotelinfoPO("0200001", "XianlinHotel", TradeArea.Xianlin, Address.NJU,  "", "", "VeryGood", "1233321", 3, 3,99);
-    HotelinfoPO hotel2 = new HotelinfoPO("0200002", "DiedieHotel", TradeArea.Xianlin, Address.NJU, "", "", "VeryGood", "111", 4, 5,80);
-    HotelinfoPO hotel3 = new HotelinfoPO("0200003", "XuanxuanHotel", TradeArea.XuanQuan, Address.XuanXuan, "", "", "VeryGood", "134123123", 5, 5,200);
-    HotelinfoPO hotel4 = new HotelinfoPO("0200004", "ZhihaoHotel",TradeArea.XuanQuan,Address.NJU,"Near the NJU","Excellent","VeryGood","1288888",5,9.9,300);
+    HotelinfoPO hotel1 = new HotelinfoPO("0200001", "XianlinHotel", TradeArea.Changjiang, Address.Nanjing,  "", "", "VeryGood", "1233321", 3, 3,99);
+    HotelinfoPO hotel2 = new HotelinfoPO("0200002", "DiedieHotel", TradeArea.Changjiang, Address.Shanghai, "", "", "VeryGood", "111", 4, 5,80);
+    HotelinfoPO hotel3 = new HotelinfoPO("0200003", "XuanxuanHotel", TradeArea.Huanghe, Address.Beijing, "", "", "VeryGood", "134123123", 5, 5,200);
+    HotelinfoPO hotel4 = new HotelinfoPO("0200004", "ZhihaoHotel",TradeArea.Nanhai,Address.Guangdong,"Near the NJU","Excellent","VeryGood","1288888",5,9.9,300);
 
     public HotelinfoDataImpl_stub() {
         hotelList.add(hotel1);

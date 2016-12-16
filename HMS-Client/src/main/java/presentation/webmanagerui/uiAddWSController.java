@@ -100,6 +100,10 @@ public class uiAddWSController {
         }
     }
 
+    /**
+     * 点击账户名，取消账户名存在的警告
+     * @throws IOException
+     */
     public void notWarningAccount()throws IOException{
         warningAccount.setVisible(false);
     }

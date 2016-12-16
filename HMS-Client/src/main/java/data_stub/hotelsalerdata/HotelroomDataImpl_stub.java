@@ -13,12 +13,12 @@ import java.util.ArrayList;
 public class HotelroomDataImpl_stub implements HotelroomDataService {
 	ArrayList<HotelroomPO> hotelroomPOs = new ArrayList<HotelroomPO>();
 	ArrayList<RoomNumPO> roomNumPOs = new ArrayList<RoomNumPO>();
-	HotelroomPO hotelroomPO1 = new HotelroomPO("0201", RoomType.DisabledRoom,200,20);
-	HotelroomPO hotelroomPO2 = new HotelroomPO("0201", RoomType.DoubleRoom,300,10);
-	HotelroomPO hotelroomPO3 = new HotelroomPO("0201", RoomType.SingleRoom,100,5);
-	RoomNumPO roomNumPO1 = new RoomNumPO("0201","2016_11_12",19,RoomType.SingleRoom);
-	RoomNumPO roomNumPO2 = new RoomNumPO("0201","2016_11_12",9,RoomType.DisabledRoom);
-	RoomNumPO roomNumPO3 = new RoomNumPO("0201","2016_11_12",2,RoomType.SingleRoom);
+	HotelroomPO hotelroomPO1 = new HotelroomPO("0200001", RoomType.DisabledRoom,200,20);
+	HotelroomPO hotelroomPO2 = new HotelroomPO("0200001", RoomType.DoubleRoom,300,10);
+	HotelroomPO hotelroomPO3 = new HotelroomPO("0200001", RoomType.SingleRoom,100,5);
+	RoomNumPO roomNumPO1 = new RoomNumPO("0200001","2016_11_12",19,RoomType.SingleRoom);
+	RoomNumPO roomNumPO2 = new RoomNumPO("0200001","2016_11_12",9,RoomType.DisabledRoom);
+	RoomNumPO roomNumPO3 = new RoomNumPO("0200001","2016_11_12",2,RoomType.SingleRoom);
 
 	public HotelroomDataImpl_stub() {
 		hotelroomPOs.add(hotelroomPO1);
@@ -28,6 +28,7 @@ public class HotelroomDataImpl_stub implements HotelroomDataService {
 		roomNumPOs.add(roomNumPO2);
 		roomNumPOs.add(roomNumPO3);
 	}
+
 
 	@Override
 	public ArrayList<RoomNumPO> getEmptyrooms(String hotelID, String date) {

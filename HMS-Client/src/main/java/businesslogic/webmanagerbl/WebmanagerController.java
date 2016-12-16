@@ -1,5 +1,6 @@
 package businesslogic.webmanagerbl;
 
+import businesslogicservice.webmanagerlogicservice.AccountBlService;
 import businesslogicservice.webmanagerlogicservice.HSmanagementBlService;
 import businesslogicservice.webmanagerlogicservice.URmanagementBlService;
 import businesslogicservice.webmanagerlogicservice.WSmanagementBlService;
@@ -16,7 +17,7 @@ import java.util.ArrayList;
  * @author qzh
  * Created by user on 2016/12/2.
  */
-public class WebmanagerController implements HSmanagementBlService,URmanagementBlService,WSmanagementBlService{
+public class WebmanagerController implements HSmanagementBlService,URmanagementBlService,WSmanagementBlService,AccountBlService{
     /**
      * 酒店工作人员管理模块
      */
@@ -32,10 +33,13 @@ public class WebmanagerController implements HSmanagementBlService,URmanagementB
      */
     private WSmanagement wSmanagement;
 
+    private AccountOperation accountOperation;
+
     public WebmanagerController() throws RemoteException {
         hSmanagement = new HSmanagement();
         uRmanagement = new URmanagement();
         wSmanagement = new WSmanagement();
+        accountOperation = new AccountOperation();
     }
 
     /**
@@ -137,14 +141,19 @@ public class WebmanagerController implements HSmanagementBlService,URmanagementB
     }
 
     @Override
-    public boolean addHotelinfo(HotelinfoVO vo) throws RemoteException {
-        hSmanagement.addHotelinfoAndRoom(vo);
+    public boolean addHotelinfoAndAccount(HotelinfoVO vo,String account,String password) throws RemoteException {
+        hSmanagement.addHotelinfoAndAccount(vo,account,password);
         return true;
     }
 
     @Override
-    public ResultMessage deleteHotelinfo(String hotelsalerID) throws RemoteException {
-        hSmanagement.deleteHotel(hotelsalerID);
+    public ResultMessage deleteHotelinfoAndAccount(String hotelsalerID) throws RemoteException {
+        hSmanagement.deleteHotelAndAccount(hotelsalerID);
         return ResultMessage.Correct;
+    }
+
+    @Override
+    public String getAccount(String id) throws RemoteException {
+        return accountOperation.getAccount(id);
     }
 }

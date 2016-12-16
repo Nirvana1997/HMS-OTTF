@@ -2,5 +2,5 @@ package enumData;
 
 public enum Address {
 	//TODO
-    NJU,DieDie,XuanXuan
+    Shanghai, Beijing, Nanjing,Tianjing,Guangdong,Aomen
 }

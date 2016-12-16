@@ -70,4 +70,9 @@ public class AccountDataImpl implements AccountInfo {
         return logDataService.getID(account);
     }
 
+    @Override
+    public String getAccount(String id) throws RemoteException {
+        return logDataService.getAccount(id);
+    }
+
 }

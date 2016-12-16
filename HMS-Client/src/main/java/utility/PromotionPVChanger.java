@@ -3,6 +3,8 @@ package utility;
 import po.PromotionPO;
 import vo.PromotionVO;
 
+import java.util.Date;
+
 /**
  * 负责营销策略PO，VO互相转化
  * @author qzh
@@ -15,7 +17,7 @@ public class PromotionPVChanger {
      * @return 促销策略VO
      */
     public static PromotionVO promotionP2V(PromotionPO po){
-        return new PromotionVO(po.getName(),po.getDescription(),po.getPromotionType(),po.getHotelID(),po.getStartDate(),po.getEndDate(),po.getTradeArea(),po.getRoomNumber(),po.getVipLevel(),po.getDiscount(),po.getCompanyID());
+        return new PromotionVO(po.getName(),po.getDescription(),po.getPromotionType(),po.getHotelID(),DateOperation.stringToDate(po.getStartDate()),DateOperation.stringToDate(po.getEndDate()),po.getTradeArea(),po.getRoomNumber(),po.getVipLevel(),po.getDiscount(),po.getCompanyID());
     }
 
     /**
@@ -24,6 +26,6 @@ public class PromotionPVChanger {
      * @return 用户信息PO
      */
     public static PromotionPO promotionV2P(PromotionVO vo){
-        return new PromotionPO(vo.getPromotionName(),vo.getDescription(),vo.getPromotionType(),vo.getHotelID(),vo.getStartDate(),vo.getEndDate(),vo.getTradeArea(),vo.getRoomNumber(),vo.getVipLevel(),vo.getDiscount(),vo.getCompanyID());
+        return new PromotionPO(vo.getPromotionName(),vo.getDescription(),vo.getPromotionType(),vo.getHotelID(),DateOperation.dateToString(vo.getStartDate()), DateOperation.dateToString(vo.getEndDate()),vo.getTradeArea(),vo.getRoomNumber(),vo.getVipLevel(),vo.getDiscount(),vo.getCompanyID());
     }
 }

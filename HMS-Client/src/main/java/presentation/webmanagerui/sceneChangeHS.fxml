@@ -78,12 +78,12 @@
                   <Font size="15.0" />
                </font>
             </Text>
-            <Text layoutX="56.0" layoutY="250.0" strokeType="OUTSIDE" strokeWidth="0.0" text="酒店地址：">
+            <Text layoutX="56.0" layoutY="250.0" strokeType="OUTSIDE" strokeWidth="0.0" text="酒店商圈：">
                <font>
                   <Font size="15.0" />
                </font>
             </Text>
-            <Text layoutX="56.0" layoutY="294.0" strokeType="OUTSIDE" strokeWidth="0.0" text="酒店商圈：">
+            <Text layoutX="56.0" layoutY="294.0" strokeType="OUTSIDE" strokeWidth="0.0" text="酒店地址：">
                <font>
                   <Font size="15.0" />
                </font>
@@ -123,8 +123,8 @@
                   <Font size="14.0" />
                </font>
             </TextField>
-            <ComboBox fx:id="textAddress" layoutX="147.0" layoutY="233.0" prefHeight="30.0" prefWidth="189.0" visibleRowCount="0" />
-            <ComboBox fx:id="textCircle" layoutX="147.0" layoutY="273.0" prefHeight="30.0" prefWidth="189.0" visibleRowCount="0" />
+            <ComboBox fx:id="textCircle" layoutX="147.0" layoutY="233.0" onAction="#initAddress" prefHeight="30.0" prefWidth="189.0" promptText="请输入商圈" visibleRowCount="0" />
+            <ComboBox fx:id="textAddress" layoutX="147.0" layoutY="273.0" prefHeight="30.0" prefWidth="189.0" promptText="请输入地址" visibleRowCount="0" />
             <Button fx:id="buttonSave" layoutX="440.0" layoutY="389.0" mnemonicParsing="false" onAction="#Save" prefHeight="36.0" prefWidth="89.0" text="确认修改">
                <font>
                   <Font size="18.0" />
@@ -176,6 +176,16 @@
                   <Font size="15.0" />
                </font>
             </Text>
+            <Text layoutX="56.0" layoutY="340.0" strokeType="OUTSIDE" strokeWidth="0.0" text="酒店星级：">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <TextField fx:id="textStar" layoutX="147.0" layoutY="320.0" text="南大旁边">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </TextField>
          </children>
       </AnchorPane>
       <Text fx:id="textManageHS" fill="#3a72d3" layoutX="293.0" layoutY="98.0" onMouseClicked="#returntoManageHS" strokeType="OUTSIDE" strokeWidth="0.0" text="酒店管理" underline="true">

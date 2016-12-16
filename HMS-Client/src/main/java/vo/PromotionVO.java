@@ -12,15 +12,15 @@ public class PromotionVO {
 	String description;
 	PromotionType promotionType;
 	String hotelID;
-	String startDate;
-	String endDate;
+	Date startDate;
+	Date endDate;
 	TradeArea tradeArea;
 	int roomNumber = Temp.DISCOUNT_NUM;
 	int vipLevel;
 	double discount;
 	String companyID;
 
-	public PromotionVO(String promotionName, String description, PromotionType promotionType, String hotelID, String startDate, String endDate, TradeArea tradeArea, int roomNumber, int vipLevel, double discount,String companyID) {
+	public PromotionVO(String promotionName, String description, PromotionType promotionType, String hotelID, Date startDate, Date endDate, TradeArea tradeArea, int roomNumber, int vipLevel, double discount,String companyID) {
 		this.promotionName = promotionName;
 		this.description = description;
 		this.promotionType = promotionType;
@@ -43,7 +43,7 @@ public class PromotionVO {
 	 * @param endTime
 	 * @param discount
 	 */
-	public PromotionVO(String name, String description, PromotionType web_period, String beginTime, String endTime, double discount) {
+	public PromotionVO(String name, String description, PromotionType web_period, Date beginTime, Date endTime, double discount) {
         this.promotionName = name;
         this.description = description;
         this.promotionType = web_period;
@@ -62,7 +62,7 @@ public class PromotionVO {
      * @param tradeArea
      * @param discount
      */
-    public PromotionVO(String name, String description, PromotionType web_tradeArea, String beginTime, String endTime, TradeArea tradeArea, double discount) {
+    public PromotionVO(String name, String description, PromotionType web_tradeArea, Date beginTime, Date endTime, TradeArea tradeArea, double discount) {
         this.promotionName = name;
         this.description = description;
         this.promotionType = web_tradeArea;
@@ -82,7 +82,7 @@ public class PromotionVO {
      * @param vipLevel
      * @param discount
      */
-    public PromotionVO(String name, String description, PromotionType web_vip, String beginTime, String endTime, int vipLevel, double discount) {
+    public PromotionVO(String name, String description, PromotionType web_vip, Date beginTime, Date endTime, int vipLevel, double discount) {
         this.promotionName = name;
         this.description = description;
         this.promotionType = web_vip;
@@ -124,19 +124,19 @@ public class PromotionVO {
 		this.hotelID = hotelID;
 	}
 
-	public String getStartDate() {
+	public Date getStartDate() {
 		return startDate;
 	}
 
-	public void setStartDate(String startDate) {
+	public void setStartDate(Date startDate) {
 		this.startDate = startDate;
 	}
 
-	public String getEndDate() {
+	public Date getEndDate() {
 		return endDate;
 	}
 
-	public void setEndDate(String endDate) {
+	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
 	}
 

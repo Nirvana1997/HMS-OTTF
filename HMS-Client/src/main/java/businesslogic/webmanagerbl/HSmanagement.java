@@ -1,6 +1,8 @@
 package businesslogic.webmanagerbl;
 
 import businesslogic.hotelsalerbl.impl.HotelDataImpl;
+import businesslogic.logbl.impl.AccountDataImpl;
+import enumData.AccountType;
 import po.HotelinfoPO;
 import utility.HotelPVChanger;
 import vo.HotelinfoVO;
@@ -18,8 +20,14 @@ public class HSmanagement{
      */
     HotelInfoForManagement hotelInfoForManagement;
 
+    /**
+     * 帐号数据模块
+     */
+    AccountInfo accountInfo;
+
     public HSmanagement() throws RemoteException{
         hotelInfoForManagement = new HotelDataImpl();
+        accountInfo = new AccountDataImpl();
     }
 
 
@@ -39,11 +47,14 @@ public class HSmanagement{
         hotelInfoForManagement.setHotelInfo(HotelPVChanger.hotelV2P(vo));
     }
 
-    public void addHotelinfoAndRoom(HotelinfoVO vo) throws RemoteException {
-        hotelInfoForManagement.addHotelInfoAndRoom(HotelPVChanger.hotelV2P(vo));
+    public void addHotelinfoAndAccount(HotelinfoVO vo,String account, String password) throws RemoteException {
+        accountInfo.addAccount(account,password, AccountType.hotelsaler);
+        vo.setHotelID(accountInfo.getID(account));
+        hotelInfoForManagement.addHotelInfo(HotelPVChanger.hotelV2P(vo));
     }
 
-    public void deleteHotel(String hotelID) throws RemoteException {
+    public void deleteHotelAndAccount(String hotelID) throws RemoteException {
         hotelInfoForManagement.deleteHotelInfo(hotelID);
+        accountInfo.deleteAccount(hotelID);
     }
 }

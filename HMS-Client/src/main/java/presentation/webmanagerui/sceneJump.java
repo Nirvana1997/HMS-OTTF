@@ -91,6 +91,19 @@ public class sceneJump {
         uiManageUserController.choose = false;
         uiManageWSController.choose = false;
     }
+
+    /**
+     * 删除成功
+     * @throws IOException
+     */
+    public void deleteSuccess() throws  IOException{
+        Stage secondWindow=new Stage();
+        Scene scene=new Scene((Parent) FXMLLoader.load(getClass().getResource("sceneDeleteSuccess.fxml")));
+        secondWindow.setTitle("Success!");
+        secondWindow.setScene(scene);
+        secondWindow.show();
+    }
+
     public static String currentUserID;
     public static String currentHSID;
     public static String currentWSID;

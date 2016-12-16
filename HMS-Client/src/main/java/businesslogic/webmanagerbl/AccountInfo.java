@@ -51,4 +51,13 @@ public interface AccountInfo {
      * @throws RemoteException
      */
     public String getID(String account) throws RemoteException;
+
+    /**
+     * 获得对应帐号
+     *
+     * @param id 编号
+     * @return 帐号
+     * @throws RemoteException
+     */
+    public String getAccount(String id) throws RemoteException;
 }

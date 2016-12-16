@@ -41,6 +41,21 @@
             <Font size="18.0" />
          </font>
       </Label>
+      <Label layoutX="269.0" layoutY="386.0" text="VIP 类型：">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Text layoutX="420.0" layoutY="436.0" strokeType="OUTSIDE" strokeWidth="0.0" text="生日：">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Text>
+      <Text layoutX="420.0" layoutY="501.0" strokeType="OUTSIDE" strokeWidth="0.0" text="企业：">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </Text>
       <TextField fx:id="textRealName" layoutX="386.0" layoutY="227.0">
          <font>
             <Font size="18.0" />
@@ -56,6 +71,21 @@
             <Font size="18.0" />
          </font>
       </TextField>
+      <RadioButton fx:id="typePersonal" layoutX="386.0" layoutY="386.0" mnemonicParsing="false" text="个人账户">
+         <font>
+            <Font size="18.0" />
+         </font>
+         <toggleGroup>
+            <ToggleGroup fx:id="UserType" />
+         </toggleGroup>
+      </RadioButton>
+      <DatePicker fx:id="dateBirthday" layoutX="485.0" layoutY="419.0" prefHeight="23.0" prefWidth="140.0" />
+      <RadioButton fx:id="typeEnterprise" layoutX="386.0" layoutY="451.0" mnemonicParsing="false" text="企业账户" toggleGroup="$UserType">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </RadioButton>
+      <ComboBox fx:id="comboEnterprise" layoutX="485.0" layoutY="484.0" prefHeight="23.0" prefWidth="140.0" />
       <Button fx:id="buttonFinish" layoutX="703.0" layoutY="520.0" mnemonicParsing="false" onAction="#gotoRegister3" prefHeight="36.0" prefWidth="88.0" text="完成">
          <font>
             <Font size="18.0" />
@@ -68,35 +98,5 @@
             </ImageInput>
          </effect>
       </Button>
-      <Label layoutX="269.0" layoutY="386.0" text="VIP 类型：">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
-      <DatePicker fx:id="dateBirthday" layoutX="485.0" layoutY="419.0" prefHeight="23.0" prefWidth="140.0" />
-      <Text layoutX="420.0" layoutY="436.0" strokeType="OUTSIDE" strokeWidth="0.0" text="生日：">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Text>
-      <Text layoutX="420.0" layoutY="501.0" strokeType="OUTSIDE" strokeWidth="0.0" text="企业：">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Text>
-      <ComboBox fx:id="comboEnterprise" layoutX="485.0" layoutY="484.0" prefHeight="23.0" prefWidth="140.0" />
-      <RadioButton fx:id="typePersonal" layoutX="386.0" layoutY="386.0" mnemonicParsing="false" text="个人账户">
-         <font>
-            <Font size="18.0" />
-         </font>
-         <toggleGroup>
-            <ToggleGroup fx:id="UserType" />
-         </toggleGroup>
-      </RadioButton>
-      <RadioButton fx:id="typeEnterprise" layoutX="386.0" layoutY="451.0" mnemonicParsing="false" text="企业账户" toggleGroup="$UserType">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </RadioButton>
    </children>
 </AnchorPane>

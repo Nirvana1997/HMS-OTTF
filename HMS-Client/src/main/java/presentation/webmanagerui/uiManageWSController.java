@@ -155,15 +155,14 @@ public class uiManageWSController implements Initializable{
         try {
             webmanagerController = new WebmanagerController();
             ArrayList<WebsalerInfoVO> list = webmanagerController.getWebsalerInfoList();
-//            for(int i = 0; i < list.size();i++){
-//                personData.add(new tableMember(list.get(i).getWebsalerID(), list.get(i).ge, list.get(i).getContactNumber()));
-//            }
+
+            for(int i = 0; i < list.size();i++){
+                personData.add(new tableMember(list.get(i).getWebsalerID(), webmanagerController.getAccount(list.get(i).getWebsalerID()), list.get(i).getContactNumber()));
+            }
         } catch (RemoteException e) {
             e.printStackTrace();
         }
 
-        personData.add(new tableMember("网管151250045","喋老板","15105180105"));
-        personData.add(new tableMember("网管151250042","喋喋大老板","15105180102"));
         websalerList.setItems(personData);
         columnID.setCellValueFactory(cellData -> cellData.getValue().IDProperty());
         columnName.setCellValueFactory(cellData -> cellData.getValue().NameProperty());

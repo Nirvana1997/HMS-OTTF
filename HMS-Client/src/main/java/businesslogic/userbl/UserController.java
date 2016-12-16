@@ -158,6 +158,11 @@ public class UserController implements InfoBlService, HotelOrderBlService {
         return hotelOrder.readOrder(orderState);
     }
 
+    @Override
+    public OrderVO getOrderInfo(String orderID) throws RemoteException {
+        return hotelOrder.getOrderInfo(orderID);
+    }
+
     /**
      * 根据订单ID取消该订单
      * 若超出规定时间，会扣除一定信用
