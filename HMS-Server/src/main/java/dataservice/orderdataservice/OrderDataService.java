@@ -45,4 +45,27 @@ public interface OrderDataService extends Remote{
 	 * @return 结果信息
      */
 	public ResultMessage deleteOrder(String orderID)throws RemoteException;
+
+	/**
+	 * 添加订单异常信息
+	 * @param po 订单异常PO
+	 * @return 结果信息
+	 * @throws RemoteException
+     */
+	public ResultMessage addOrderExceptionInfo(OrderExceptionPO po)throws RemoteException;
+
+	/**
+	 * 获取订单异常信息（根据订单ID，获取单个）
+	 * @param orderID 订单ID
+	 * @return 订单异常信息PO
+	 * @throws RemoteException
+     */
+	public OrderExceptionPO getOrderExceptionInfo(String orderID)throws RemoteException;
+
+	/**
+	 * 获取订单异常信息（所有）
+	 * @return 订单异常信息POList
+	 * @throws RemoteException
+     */
+	public ArrayList<OrderExceptionPO> getOrderExceptionInfo()throws RemoteException;
 }

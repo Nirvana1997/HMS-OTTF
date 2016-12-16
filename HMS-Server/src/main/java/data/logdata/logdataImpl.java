@@ -52,6 +52,18 @@ public class LogDataImpl extends UnicastRemoteObject implements LogDataService  
     }
 
     /**
+     * 根据ID得到相应帐号
+     * @param ID ID
+     * @return
+     * @throws RemoteException
+     */
+    @Override
+    public String getAccount(String ID) throws RemoteException {
+        String account = DataBaseHelper.outSingle("Account","account","ID",ID);
+        return account;
+    }
+
+    /**
      * 根据账户ID修改相应密码
      * @param account 帐号
      * @param password
