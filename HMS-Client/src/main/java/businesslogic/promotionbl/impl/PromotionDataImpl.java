@@ -86,6 +86,24 @@ public class PromotionDataImpl implements PromotionInfo, WebPromotionInfo {
     }
 
     /**
+     * 根据酒店ID获得对应营销策略
+     *
+     * @param hotelID 酒店ID
+     * @return 酒店营销策略
+     * @throws RemoteException
+     */
+    @Override
+    public ArrayList<PromotionPO> getHotelPromotion(String hotelID) throws RemoteException {
+        ArrayList<PromotionPO> res = new ArrayList<>();
+
+        for(PromotionType type:PromotionType.values()){
+            mergeList(res, promotionDataService.getPromotionList(type,hotelID));
+        }
+
+        return res;
+    }
+
+    /**
      * 获得对应类型网站营销策略
      *
      * @return 所有对应类型网站营销策略

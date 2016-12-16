@@ -13,6 +13,7 @@ import enumData.TradeArea;
 import po.HotelinfoPO;
 import po.HotelroomPO;
 import po.RoomNumPO;
+import vo.HotelroomVO;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
@@ -123,5 +124,15 @@ public class HotelDataImpl implements HotelInfo, HotelRoom,HotelInfoForManagemen
         return hotelroomDataService.getRoomList(hotelID);
     }
 
-
+    /**
+     * 获得酒店房间信息
+     *
+     * @param hotelID 酒店id
+     * @return 酒店房间信息
+     * @throws RemoteException
+     */
+    @Override
+    public ArrayList<HotelroomPO> getRooms(String hotelID) throws RemoteException{
+        return hotelroomDataService.getRoomList(hotelID);
+    }
 }
