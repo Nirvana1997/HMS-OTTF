@@ -129,19 +129,19 @@ public class HotelSalerControllerTest {
     }
 
     @Test
-    public void deletePromotion() throws Exception {
+    public void testDeletePromotion() throws Exception {
         hotelSalerController.deletePromotion("Birthday discount");
         Assert.assertEquals(0,hotelSalerController.getPromotion(PromotionType.Hotel_Birth).size());
     }
 
     @Test
-    public void addPromotion() throws Exception {
-        hotelSalerController.addPromotion(new PromotionVO("haha","heihei",PromotionType.Hotel_Birth,"0200001",0.8));
+    public void testAddPromotion() throws Exception {
+        hotelSalerController.addPromotion(new PromotionVO("haha","heihei",PromotionType.Hotel_Birth,0.8));
         Assert.assertEquals(2,hotelSalerController.getPromotion(PromotionType.Hotel_Birth).size());
     }
 
     @Test
-    public void setPromotion() throws Exception {
+    public void testSetPromotion() throws Exception {
         PromotionVO vo = hotelSalerController.getPromotion(PromotionType.Hotel_Birth).get(0);
         vo.setDescription("haha");
         hotelSalerController.setPromotion(vo);

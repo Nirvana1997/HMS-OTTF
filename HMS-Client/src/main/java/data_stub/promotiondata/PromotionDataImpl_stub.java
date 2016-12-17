@@ -70,7 +70,7 @@ public class PromotionDataImpl_stub implements PromotionDataService {
 		ArrayList<PromotionPO> temp = getPromotionList(type);
 		ArrayList<PromotionPO> list = new ArrayList<PromotionPO>();
 		for(int i=0;i<temp.size();i++){
-			if(temp.get(i).getHotelID().equals(hotelID))
+			if(temp.get(i).getHotelID()!=null&&temp.get(i).getHotelID().equals(hotelID))
 				list.add(temp.get(i));
 		}
 		return list;
