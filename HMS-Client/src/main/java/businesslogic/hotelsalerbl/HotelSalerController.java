@@ -7,10 +7,7 @@ import businesslogicservice.hotelsalerblservice.HotelroomblService;
 import businesslogicservice.hotelsalerblservice.HotelsalerblService;
 import data_stub.hotelsalerdata.HotelroomDataImpl_stub;
 import dataservice.hotelsalerdataservice.HotelroomDataService;
-import enumData.Address;
-import enumData.ResultMessage;
-import enumData.SortWay;
-import enumData.TradeArea;
+import enumData.*;
 import po.HotelinfoPO;
 import po.HotelroomPO;
 import vo.*;
@@ -88,9 +85,8 @@ public class HotelSalerController implements HotelsalerblService,HotelinfoblServ
         return hotelOrderOperation.updateOrder(vo);
     }
 
-    //TODO
     @Override
-    public ArrayList<PromotionVO> getPromotion() throws RemoteException {
+    public ArrayList<PromotionVO> getPromotion(PromotionType promotionType) throws RemoteException {
         return null;
     }
 

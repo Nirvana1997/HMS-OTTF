@@ -1,6 +1,7 @@
 package businesslogic.promotionbl.impl;
 
 import businesslogic.hotelsalerbl.HotelPromotionInfo;
+import businesslogic.promotionbl.Promotion;
 import businesslogic.promotionbl.strategies.Strategy;
 import businesslogic.userbl.interfaces.PromotionInfo;
 import businesslogic.websalerbl.WebPromotionInfo;
@@ -143,8 +144,12 @@ public class PromotionDataImpl implements PromotionInfo, WebPromotionInfo,HotelP
     }
 
     @Override
-    public ArrayList<PromotionVO> getPromotions(String hotelID) throws RemoteException {
-        return null;
+    public ArrayList<PromotionVO> getPromotions(String hotelID,PromotionType promotionType) throws RemoteException {
+        ArrayList<PromotionVO> res = new ArrayList<>();
+        for(PromotionPO po:promotionDataService.getPromotionList(promotionType,hotelID)){
+            res.add(PromotionPVChanger.promotionP2V(po));
+        }
+        return res;
     }
 
     /**

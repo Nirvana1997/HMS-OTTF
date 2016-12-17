@@ -3,6 +3,7 @@ package businesslogicservice.hotelsalerblservice;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import enumData.PromotionType;
 import enumData.ResultMessage;
 import vo.HotelinfoVO;
 import vo.OrderVO;
@@ -38,10 +39,11 @@ public interface HotelsalerblService {
     /**
      * 获取当前酒店的营销策略
      *
+     * @param promotionType 营销策略类型
      * @return 酒店营销策略列表
      * @throws RemoteException
      */
-    public ArrayList<PromotionVO> getPromotion() throws RemoteException;
+    public ArrayList<PromotionVO> getPromotion(PromotionType promotionType) throws RemoteException;
 
     /**
      * 删除酒店营销策略
