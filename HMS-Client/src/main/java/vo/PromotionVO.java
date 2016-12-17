@@ -35,6 +35,22 @@ public class PromotionVO {
 	}
 
 	/**
+	 * 酒店生日特惠
+	 * @param promotionName
+	 * @param description
+	 * @param promotionType
+	 * @param hotelID
+	 * @param discount
+	 */
+	public PromotionVO(String promotionName, String description, PromotionType promotionType, String hotelID, double discount) {
+		this.promotionName = promotionName;
+		this.description = description;
+		this.promotionType = promotionType;
+		this.hotelID = hotelID;
+		this.discount = discount;
+	}
+
+	/**
 	 * 双十一优惠活动构造器
 	 * @param name
 	 * @param description

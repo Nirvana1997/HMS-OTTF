@@ -37,10 +37,16 @@ public class HotelSalerController implements HotelsalerblService,HotelinfoblServ
      */
     HotelOrderOperation hotelOrderOperation;
 
+    /**
+     * 酒店营销策略操作
+     */
+    PromotionOperation promotionOperation;
+
     public HotelSalerController() {
         hotelInfoOperation = new HotelInfoOperation();
         hotelroomOperation = new HotelroomOperation();
         hotelOrderOperation = new HotelOrderOperation();
+        promotionOperation = new PromotionOperation();
     }
 
     /**
@@ -87,22 +93,22 @@ public class HotelSalerController implements HotelsalerblService,HotelinfoblServ
 
     @Override
     public ArrayList<PromotionVO> getPromotion(PromotionType promotionType) throws RemoteException {
-        return null;
+        return promotionOperation.getPromotions(promotionType);
     }
 
     @Override
     public void deletePromotion(String promotionName) throws RemoteException {
-
+        promotionOperation.deletePromotion(promotionName);
     }
 
     @Override
     public void addPromotion(PromotionVO vo) throws RemoteException {
-
+        promotionOperation.addPromotion(vo);
     }
 
     @Override
     public void setPromotion(PromotionVO vo) throws RemoteException {
-
+        promotionOperation.setPromotion(vo);
     }
 
     /**

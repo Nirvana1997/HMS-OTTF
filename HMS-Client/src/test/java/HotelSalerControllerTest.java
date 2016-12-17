@@ -3,6 +3,7 @@ import businesslogic.logbl.LogController;
 import businesslogic.logbl.Login;
 import com.sun.org.apache.xpath.internal.operations.Or;
 import enumData.AccountType;
+import enumData.PromotionType;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.Before;
@@ -11,6 +12,7 @@ import utility.DateOperation;
 import vo.AccountVO;
 import vo.HotelinfoVO;
 import vo.OrderVO;
+import vo.PromotionVO;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -116,5 +118,30 @@ public class HotelSalerControllerTest {
     @Test
     public void testGetRoomInfo() throws Exception {
         Assert.assertEquals(200,hotelSalerController.getRoomInfo().get(0).getPrice(),0.1);
+    }
+
+    @Test
+    public void testGetPromotion() throws Exception {
+        Assert.assertEquals("Birthday discount",hotelSalerController.getPromotion(PromotionType.Hotel_Birth).get(0).getPromotionName());
+    }
+
+    @Test
+    public void deletePromotion() throws Exception {
+        hotelSalerController.deletePromotion("Birthday discount");
+        Assert.assertEquals(0,hotelSalerController.getPromotion(PromotionType.Hotel_Birth).size());
+    }
+
+    @Test
+    public void addPromotion() throws Exception {
+        hotelSalerController.addPromotion(new PromotionVO("haha","heihei",PromotionType.Hotel_Birth,"0200001",0.8));
+        Assert.assertEquals(2,hotelSalerController.getPromotion(PromotionType.Hotel_Birth).size());
+    }
+
+    @Test
+    public void setPromotion() throws Exception {
+        PromotionVO vo = hotelSalerController.getPromotion(PromotionType.Hotel_Birth).get(0);
+        vo.setDescription("haha");
+        hotelSalerController.setPromotion(vo);
+        Assert.assertEquals("haha",hotelSalerController.getPromotion(PromotionType.Hotel_Birth).get(0).getDescription());
     }
 } 

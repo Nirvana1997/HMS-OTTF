@@ -2,6 +2,7 @@ package data_stub.orderdata;
 
 import dataservice.orderdataservice.OrderDataService;
 import enumData.*;
+import po.OrderExceptionPO;
 import po.OrderPO;
 
 import java.rmi.RemoteException;
@@ -59,6 +60,21 @@ public class OrderDataImpl_stub implements OrderDataService {
                 orderList.remove(i);
         }
         return ResultMessage.Correct;
+    }
+
+    @Override
+    public ResultMessage addOrderExceptionInfo(OrderExceptionPO po) throws RemoteException {
+        return null;
+    }
+
+    @Override
+    public OrderExceptionPO getOrderExceptionInfo(String orderID) throws RemoteException {
+        return null;
+    }
+
+    @Override
+    public ArrayList<OrderExceptionPO> getOrderExceptionInfo() throws RemoteException {
+        return null;
     }
 
     @Override
