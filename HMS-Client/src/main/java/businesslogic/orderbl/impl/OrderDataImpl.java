@@ -3,12 +3,14 @@ package businesslogic.orderbl.impl;
 import businesslogic.hotelsalerbl.HotelOrderInfo;
 import businesslogic.logbl.Login;
 import businesslogic.userbl.interfaces.UserOrderInfo;
+import businesslogic.websalerbl.ExceptionOrder;
 import com.sun.org.apache.xpath.internal.operations.Or;
 import data_stub.orderdata.OrderDataImpl_stub;
 import dataservice.orderdataservice.OrderDataService;
 import enumData.IDType;
 import enumData.OrderState;
 import enumData.ResultMessage;
+import po.OrderExceptionPO;
 import po.OrderPO;
 import utility.OrderPVChanger;
 import vo.OrderVO;
@@ -22,7 +24,7 @@ import java.util.ArrayList;
  * @author qzh
  *         Created by user on 2016/12/2.
  */
-public class OrderDataImpl implements UserOrderInfo, HotelOrderInfo {
+public class OrderDataImpl implements UserOrderInfo, HotelOrderInfo,ExceptionOrder {
     /**
      * 订单数据模块
      */
@@ -113,5 +115,22 @@ public class OrderDataImpl implements UserOrderInfo, HotelOrderInfo {
     @Override
     public ResultMessage setOrder(OrderPO po) throws RemoteException {
         return orderDataService.setOrderInfo(po);
+    }
+
+    @Override
+    public ArrayList<OrderExceptionPO> getExceptionOrders(boolean hasCanceled) throws RemoteException {
+        ArrayList<OrderExceptionPO> exceptionOrders = new ArrayList<>();
+        for(OrderExceptionPO po:orderDataService.getOrderExceptionInfo()){
+            if(hasCanceled==po.isHaveCanceled()){
+                exceptionOrders.add(po);
+            }
+        }
+        return exceptionOrders;
+    }
+
+    @Override
+    public void cancelOrder(OrderExceptionPO po) throws RemoteException {
+        //TODO
+        orderDataService.addOrderExceptionInfo(po);
     }
 }

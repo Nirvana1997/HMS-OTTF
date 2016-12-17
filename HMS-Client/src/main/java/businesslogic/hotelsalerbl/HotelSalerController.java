@@ -13,10 +13,7 @@ import enumData.SortWay;
 import enumData.TradeArea;
 import po.HotelinfoPO;
 import po.HotelroomPO;
-import vo.BelowLineOrderVO;
-import vo.HotelinfoVO;
-import vo.HotelroomVO;
-import vo.OrderVO;
+import vo.*;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
@@ -89,6 +86,26 @@ public class HotelSalerController implements HotelsalerblService,HotelinfoblServ
     @Override
     public ResultMessage updateOrder(OrderVO vo) throws RemoteException {
         return hotelOrderOperation.updateOrder(vo);
+    }
+
+    @Override
+    public ArrayList<PromotionVO> getPromotion() throws RemoteException {
+        return null;
+    }
+
+    @Override
+    public void deletePromotion(String promotionName) throws RemoteException {
+
+    }
+
+    @Override
+    public void addPromotion(PromotionVO vo) throws RemoteException {
+
+    }
+
+    @Override
+    public void setPromotion(PromotionVO vo) throws RemoteException {
+
     }
 
     /**
