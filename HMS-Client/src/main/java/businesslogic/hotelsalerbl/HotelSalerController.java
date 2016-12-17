@@ -88,6 +88,7 @@ public class HotelSalerController implements HotelsalerblService,HotelinfoblServ
         return hotelOrderOperation.updateOrder(vo);
     }
 
+    //TODO
     @Override
     public ArrayList<PromotionVO> getPromotion() throws RemoteException {
         return null;

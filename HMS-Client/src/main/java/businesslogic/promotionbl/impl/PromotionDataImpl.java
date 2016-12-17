@@ -1,5 +1,6 @@
 package businesslogic.promotionbl.impl;
 
+import businesslogic.hotelsalerbl.HotelPromotionInfo;
 import businesslogic.promotionbl.strategies.Strategy;
 import businesslogic.userbl.interfaces.PromotionInfo;
 import businesslogic.websalerbl.WebPromotionInfo;
@@ -24,7 +25,7 @@ import java.util.ArrayList;
  * @author qzh
  *         Created by user on 2016/12/4.
  */
-public class PromotionDataImpl implements PromotionInfo, WebPromotionInfo {
+public class PromotionDataImpl implements PromotionInfo, WebPromotionInfo,HotelPromotionInfo {
     //TODO
     /**
      * 营销策略模块
@@ -120,15 +121,8 @@ public class PromotionDataImpl implements PromotionInfo, WebPromotionInfo {
         return res;
     }
 
-    /**
-     * 获得应对名称的促销策略
-     *
-     * @param promotionName 营销策略名称
-     * @return 营销策略信息
-     */
     @Override
     public PromotionPO getPromotion(String promotionName) {
-        //TODO
         return null;
     }
 
@@ -141,6 +135,16 @@ public class PromotionDataImpl implements PromotionInfo, WebPromotionInfo {
     public void addPromotion(PromotionVO vo) throws RemoteException {
         PromotionPO po = PromotionPVChanger.promotionV2P(vo);
         promotionDataService.addPromotion(po);
+    }
+
+    @Override
+    public void setPromotion(PromotionVO vo) throws RemoteException {
+        promotionDataService.changePromotion(PromotionPVChanger.promotionV2P(vo));
+    }
+
+    @Override
+    public ArrayList<PromotionVO> getPromotions(String hotelID) throws RemoteException {
+        return null;
     }
 
     /**
