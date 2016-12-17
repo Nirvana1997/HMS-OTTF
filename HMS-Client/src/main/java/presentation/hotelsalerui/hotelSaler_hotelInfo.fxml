@@ -4,7 +4,6 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -28,7 +27,7 @@
                         <Image url="@../../../../../graphics/hotelsalerui/bk2.png" />
                      </image>
                   </ImageView>
-                  <Label layoutX="152.0" layoutY="126.0" text="萱 萱 大 酒 店" textFill="WHITE">
+                  <Label fx:id="labelTitle" layoutX="152.0" layoutY="126.0" text="萱 萱 大 酒 店" textFill="WHITE">
                      <font>
                         <Font size="72.0" />
                      </font>
@@ -68,26 +67,6 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <TextField cacheShape="false" centerShape="false" editable="false" focusTraversable="false" layoutX="254.0" layoutY="597.0" scaleShape="false" style="-fx-background-color: #FFFFFF;" text="5星级">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </TextField>
-                  <TextField cacheShape="false" centerShape="false" editable="false" focusTraversable="false" layoutX="254.0" layoutY="640.0" scaleShape="false" style="-fx-background-color: #FFFFFF;" text="太仓大商圈">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </TextField>
-                  <TextField cacheShape="false" centerShape="false" editable="false" focusTraversable="false" layoutX="254.0" layoutY="726.0" scaleShape="false" style="-fx-background-color: #FFFFFF;" text="江苏省太仓市县府街163号">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </TextField>
-                  <TextField cacheShape="false" centerShape="false" editable="false" focusTraversable="false" layoutX="255.0" layoutY="770.0" scaleShape="false" style="-fx-background-color: #FFFFFF;" text="0512-123456789">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </TextField>
                   <ImageView fitHeight="533.0" fitWidth="738.0" layoutX="-2.0" layoutY="830.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../../../graphics/hotelsalerui/bk3.png" />
@@ -108,7 +87,7 @@
                         <Image url="@../../../../../graphics/hotelsalerui/hotelinfo2.JPG" />
                      </image>
                   </ImageView>
-                  <Label layoutX="94.0" layoutY="794.0" lineSpacing="5.0" prefHeight="182.0" prefWidth="565.0" text="       萱萱大酒店是一家商务、会议型豪华酒店，是太仓市首家五星级酒店。酒店座落在江苏省东南部，长江口南岸。东濒长江，与崇明区隔江相望，南临上海市嘉定区，交通极其便利。酒店按欧式风格设计装修，环境优美，格调高雅。客房舒适、豪华，餐饮风味独特，各类康乐休闲设施一应俱全，设施先进的商务中心随时为您提供周到、快捷的服务。" wrapText="true">
+                  <Label fx:id="labelIntroduction" layoutX="94.0" layoutY="794.0" lineSpacing="5.0" prefHeight="182.0" prefWidth="565.0" wrapText="true">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -116,7 +95,7 @@
                         <Cursor fx:constant="DEFAULT" />
                      </cursor>
                   </Label>
-                  <Label layoutX="377.0" layoutY="1093.0" lineSpacing="3.0" prefHeight="212.0" prefWidth="281.0" text="        萱萱大酒店定位“年轻时尚”，倡导绿色、环保、低碳的生活方式， 给入住客人大自然一般的清晰入住体验。 萱萱大酒店大多数房间价格在150元-300元之间，配备独立卫生间、书桌、床头柜、24小时光纤上网、冷热水、 独立冷暖空调等，设施齐全，服务周到。" wrapText="true">
+                  <Label fx:id="labelService" layoutX="377.0" layoutY="1093.0" lineSpacing="3.0" prefHeight="212.0" prefWidth="281.0" wrapText="true">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -129,16 +108,41 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Label>
-                  <Label layoutX="158.0" layoutY="688.0" text="所在街道：">
+                  <Label layoutX="158.0" layoutY="688.0" text="所在地址：">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <TextField centerShape="false" focusTraversable="false" layoutX="253.0" layoutY="682.0" scaleShape="false" style="-fx-background-color: #FFFFFF;" text="县府街">
+                  <Label layoutX="289.0" layoutY="603.0" prefHeight="24.0" prefWidth="54.0" text="星级">
                      <font>
                         <Font size="18.0" />
                      </font>
-                  </TextField>
+                  </Label>
+                  <Label fx:id="labelStarLevel" layoutX="248.0" layoutY="603.0" prefHeight="30.0" prefWidth="36.0" wrapText="true">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="labelTradeArea" layoutX="266.0" layoutY="642.0" prefHeight="33.0" prefWidth="220.0" wrapText="true">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="labelAddress" layoutX="261.0" layoutY="683.0" prefHeight="35.0" prefWidth="219.0" wrapText="true">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="labelDetailAddress" layoutX="264.0" layoutY="726.0" prefHeight="37.0" prefWidth="220.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="labelTelephoneNum" layoutX="267.0" layoutY="770.0" prefHeight="36.0" prefWidth="220.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
                </children>
             </AnchorPane>
         </content>

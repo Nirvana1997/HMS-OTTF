@@ -1,12 +1,17 @@
 package presentation.hotelsalerui;
 
+import enumData.PromotionType;
 import javafx.fxml.FXML;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Created by thinkpad on 2016/12/3.
@@ -14,6 +19,7 @@ import java.io.IOException;
 public class uiHotelSaleStrategyController {
 
     private SceneJump sceneJump = new SceneJump();
+
 
     /**
      * 编辑按钮代号
@@ -23,6 +29,14 @@ public class uiHotelSaleStrategyController {
      * 4-编辑三间及以上promotion按钮
      */
     private static int promptionType;
+
+    /**
+     * 活动点击次数
+     */
+    private static int birthdayCount = 0;
+    private static int doubleOneCount = 0;
+    private static int companyCount = 0;
+    private static int threeRoomsCount = 0;
 
     /**
      * 登出按钮
@@ -97,20 +111,16 @@ public class uiHotelSaleStrategyController {
     private TextField textFieldPromotionName;
 
     /**
-     * promotion开始时间label和textField
+     * promotion开始时间datePicker
      */
     @FXML
-    private Label labelPromotionBeginTime;
-    @FXML
-    private TextField textFieldPromotionBeginTime;
+    private DatePicker datePickerBeginTime;
 
     /**
-     * promotion结束时间label和textField
+     * promotion结束时间datePicker
      */
     @FXML
-    private Label labelPromotionEndTime;
-    @FXML
-    private TextField textFieldPromotionEndTime;
+    private DatePicker datePickerEndTime;
 
     /**
      * 酒店信息按钮点击监听
@@ -198,24 +208,135 @@ public class uiHotelSaleStrategyController {
         paneEditPromotion.setVisible(false);
     }
 
+    /**
+     * 获取日期
+     * @param ld 日期选取器
+     * @return Date格式的日期
+     */
+    public static Date getDate(DatePicker ld) throws ParseException {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        return sdf.parse(ld.getValue().toString());
+    }
+
+    /**
+     * 设置promotion面板内容
+     * @param n
+     * @param promotionType
+     */
+    private void initPromotionContent(int n, PromotionType promotionType) {
+        if(promotionType == PromotionType.Hotel_Birth){
+//            labelNamePromotionDoubleOne.setText(promotionDoubleOne.get(n).getPromotionName());
+//            labelInfoPromotionDoubleOne.setText(promotionDoubleOne.get(n).getDescription());
+//            labelDatePromotionDoubleOne.setText(promotionDoubleOne.get(n).getStartDate() + "~" + promotionDoubleOne.get(n).getEndDate());
+        }
+        else if(promotionType == PromotionType.Hotel_Period){
+//            labelNamePromotionVIP.setText(promotionVIP.get(n).getPromotionName());
+//            labelInfoPromotionVIP.setText(promotionVIP.get(n).getDescription());
+//            labelDatePromotionVIP.setText(promotionVIP.get(n).getStartDate() + "~" + promotionVIP.get(n).getEndDate());
+//            labelTradeArea.setText(String.valueOf(promotionVIP.get(n).getTradeArea()));
+        }
+        else if(promotionType == PromotionType.Hotel_Company){
+//            labelNamePromotionMember.setText(promotionMember.get(n).getPromotionName());
+//            labelInfoPromotionMember.setText(promotionMember.get(n).getDescription());
+//            labelDatePromotionMember.setText(promotionMember.get(n).getStartDate() + "~" + promotionMember.get(n).getEndDate());
+        }
+        else if(promotionType == PromotionType.Hotel_Num){
+
+        }
+    }
+
+    /**
+     * 生日特惠活动下一张监听
+     */
+    public void birthdayNext() {
+        birthdayCount++;
+
+    }
+
+    /**
+     * 生日特惠活动上一张监听
+     */
+    public void birthdayBefore() {
+        birthdayCount--;
+    }
+
+
+    /**
+     * 双11活动下一张监听
+     */
+    public void doubleOneNext(){
+        doubleOneCount++;
+//        int n = Math.abs(doubleOneCount % lengthPromotionDoubleOne);
+//        this.initPromotionContent(n, PromotionType.Web_Period);
+    }
+
+    /**
+     * 双11活动上一张监听
+     */
+    public void doubleOneBefore() {
+        doubleOneCount--;
+//        int n = Math.abs(doubleOneCount % lengthPromotionDoubleOne);
+//        this.initPromotionContent(n,PromotionType.Web_Period);
+    }
+
+    /**
+     * 合作企业下一张监听
+     */
+    public void companyNext(){
+        companyCount++;
+    }
+
+    /**
+     * 合作企业上一张监听
+     */
+    public void companyBefore(){
+        companyCount--;
+    }
+
+    /**
+     * 三间及以上活动下一张监听
+     */
+    public void threeRoomsNext(){
+        threeRoomsCount++;
+    }
+
+    /**
+     * 三间及以上活动上一张监听
+     */
+    public void threeRoomsBefore(){
+        threeRoomsCount--;
+    }
+
+    /**
+     * 显示编辑生日特惠界面
+     */
     public void onClickedEditPromotionBirthday() {
         promptionType = 1;
         paneInfoPromotionBirthday.setVisible(false);
         paneEditPromotion.setVisible(true);
     }
 
+    /**
+     * 显示编辑双十一活动界面
+     */
     public void onClickedEditPromotionDoubleOne() {
         promptionType = 2;
         paneInfoPromotionDoubleOne.setVisible(false);
         paneEditPromotion.setVisible(true);
     }
 
+    /**
+     * 显示编辑合作企业界面
+     */
     public void onClickedEditPromotionCompany() {
         promptionType = 3;
         paneInfoPromotionCompany.setVisible(false);
         paneEditPromotion.setVisible(true);
     }
 
+    /**
+     * 显示编辑三间及以上特惠活动界面
+     */
     public void onClickedEditPromotionThreeRooms() {
         promptionType = 4;
         paneInfoPromotionThreeRooms.setVisible(false);
@@ -228,10 +349,6 @@ public class uiHotelSaleStrategyController {
     public void onClickedNewPromotion() {
         menuButtonEdit_ChoosePromotionType.setVisible(false);
         textFieldPromotionName.setVisible(true);
-        labelPromotionBeginTime.setVisible(false);
-        labelPromotionEndTime.setVisible(false);
-        textFieldPromotionBeginTime.setVisible(true);
-        textFieldPromotionEndTime.setVisible(true);
         //TODO
     }
 
@@ -272,10 +389,6 @@ public class uiHotelSaleStrategyController {
     public void onClickedCancelEditPromotion() {
         menuButtonEdit_ChoosePromotionType.setVisible(true);
         textFieldPromotionName.setVisible(false);
-        labelPromotionBeginTime.setVisible(true);
-        labelPromotionEndTime.setVisible(true);
-        textFieldPromotionBeginTime.setVisible(false);
-        textFieldPromotionEndTime.setVisible(false);
 
         if(promptionType == 1){
             paneInfoPromotionBirthday.setVisible(true);

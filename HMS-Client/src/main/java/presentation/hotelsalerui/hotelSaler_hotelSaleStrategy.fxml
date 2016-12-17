@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
@@ -51,12 +52,12 @@
             </ImageView>
             <AnchorPane fx:id="paneInfoPromotionBirthday" layoutY="257.0" prefHeight="360.0" prefWidth="752.0">
                <children>
-                  <ImageView layoutX="650.0" layoutY="142.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView layoutX="650.0" layoutY="142.0" onMouseClicked="#birthdayNext" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../../../graphics/hotelsalerui/right.png" />
                      </image>
                   </ImageView>
-                  <ImageView layoutX="75.0" layoutY="142.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView layoutX="75.0" layoutY="142.0" onMouseClicked="#birthdayBefore" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../../../graphics/hotelsalerui/left.png" />
                      </image>
@@ -127,12 +128,12 @@
             </ImageView>
             <AnchorPane fx:id="paneInfoPromotionDoubleOne" layoutY="257.0" prefHeight="360.0" prefWidth="752.0">
                <children>
-                  <ImageView layoutX="650.0" layoutY="142.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView layoutX="650.0" layoutY="142.0" onMouseClicked="#doubleOneNext" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../../../graphics/hotelsalerui/right.png" />
                      </image>
                   </ImageView>
-                  <ImageView layoutX="75.0" layoutY="142.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView layoutX="75.0" layoutY="142.0" onMouseClicked="#doubleOneBefore" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../../../graphics/hotelsalerui/left.png" />
                      </image>
@@ -203,12 +204,12 @@
             </ImageView>
             <AnchorPane fx:id="paneInfoPromotionCompany" layoutY="257.0" prefHeight="360.0" prefWidth="752.0">
                <children>
-                  <ImageView layoutX="650.0" layoutY="142.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView layoutX="650.0" layoutY="142.0" onMouseClicked="#companyNext" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../../../graphics/hotelsalerui/right.png" />
                      </image>
                   </ImageView>
-                  <ImageView layoutX="75.0" layoutY="142.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView layoutX="75.0" layoutY="142.0" onMouseClicked="#companyBefore" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../../../graphics/hotelsalerui/left.png" />
                      </image>
@@ -279,12 +280,12 @@
             </ImageView>
             <AnchorPane fx:id="paneInfoPromotionThreeRooms" layoutY="257.0" prefHeight="360.0" prefWidth="752.0">
                <children>
-                  <ImageView layoutX="650.0" layoutY="142.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView layoutX="650.0" layoutY="142.0" onMouseClicked="#threeRoomsNext" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../../../graphics/hotelsalerui/right.png" />
                      </image>
                   </ImageView>
-                  <ImageView layoutX="75.0" layoutY="142.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView layoutX="75.0" layoutY="142.0" onMouseClicked="#threeRoomsBefore" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../../../graphics/hotelsalerui/left.png" />
                      </image>
@@ -425,27 +426,7 @@
                   <Font size="16.0" />
                </font>
             </Label>
-            <Label fx:id="labelPromotionBeginTime" layoutX="163.0" layoutY="71.0" prefHeight="34.0" prefWidth="155.0">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Label>
-            <TextField fx:id="textFieldPromotionBeginTime" layoutX="163.0" layoutY="71.0" prefHeight="34.0" prefWidth="155.0" visible="false">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </TextField>
             <TextField fx:id="textFieldPromotionName" layoutX="83.0" layoutY="30.0" prefHeight="34.0" prefWidth="188.0" promptText="输入活动名称" visible="false">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </TextField>
-            <Label fx:id="labelPromotionEndTime" layoutX="418.0" layoutY="71.0" prefHeight="34.0" prefWidth="155.0">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Label>
-            <TextField fx:id="textFieldPromotionEndTime" layoutX="418.0" layoutY="71.0" prefHeight="34.0" prefWidth="155.0" visible="false">
                <font>
                   <Font size="16.0" />
                </font>
@@ -455,6 +436,8 @@
                   <Font size="16.0" />
                </font>
             </Label>
+            <DatePicker fx:id="datePickerBeginTime" layoutX="163.0" layoutY="76.0" prefHeight="24.0" prefWidth="161.0" />
+            <DatePicker fx:id="datePickerEndTime" layoutX="416.0" layoutY="77.0" prefHeight="23.0" prefWidth="161.0" />
          </children>
       </AnchorPane>
    </children>

@@ -5,9 +5,11 @@ import businesslogicservice.hotelsalerblservice.HotelinfoblService;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import vo.HotelinfoVO;
 
 import java.io.IOException;
 import java.net.URL;
+import java.rmi.RemoteException;
 import java.util.ResourceBundle;
 
 /**
@@ -16,7 +18,49 @@ import java.util.ResourceBundle;
 public class uiHotelInfoController implements Initializable{
 
     private SceneJump sceneJump = new SceneJump();
+    HotelinfoblService hotelInfobl = new HotelSalerController();
 
+    /**
+     * 星级label
+     */
+    @FXML
+    private Label labelStarLevel;
+
+    /**
+     * 商圈label
+     */
+    @FXML
+    private Label labelTradeArea;
+
+    /**
+     * 地址label
+     */
+    @FXML
+    private Label labelAddress;
+
+    /**
+     * 详细地址label
+     */
+    @FXML
+    private Label labelDetailAddress;
+
+    /**
+     * 电话label
+     */
+    @FXML
+    private Label labelTelephoneNum;
+
+    /**
+     * 介绍label
+     */
+    @FXML
+    private Label labelIntroduction;
+
+    /**
+     * 设施label
+     */
+    @FXML
+    private  Label labelService;
 
     /**
      * 登出按钮
@@ -101,6 +145,18 @@ public class uiHotelInfoController implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        try {
+            HotelinfoVO vo = hotelInfobl.getHotelinfo();
+            labelTitle.setText(vo.getHotelname());
+            labelStarLevel.setText(String.valueOf(vo.getStar()));
+            labelTradeArea.setText(vo.getTradeArea().toString());
+            labelAddress.setText(vo.getAddress().toString());
+            labelDetailAddress.setText(vo.getDetailAddress());
+            labelTelephoneNum.setText(vo.getContactNumber());
+            labelIntroduction.setText(vo.getIntroduction());
+            labelService.setText(vo.getService());
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
     }
 }

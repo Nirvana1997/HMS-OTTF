@@ -1,13 +1,18 @@
 package presentation.hotelsalerui;
 
+import businesslogic.hotelsalerbl.HotelSalerController;
+import businesslogicservice.hotelsalerblservice.HotelinfoblService;
+import businesslogicservice.hotelsalerblservice.HotelsalerblService;
+import enumData.Address;
+import enumData.TradeArea;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import vo.HotelinfoVO;
 
 import java.io.IOException;
 import java.net.URL;
+import java.rmi.RemoteException;
 import java.util.ResourceBundle;
 
 /**
@@ -15,8 +20,15 @@ import java.util.ResourceBundle;
  */
 public class uiEditInfoController implements Initializable{
 
+    private String tradeArea = "";
+    private String address = "";
+    private String hotelID = "";
+    private int star = 0;
+    private double grade = 0;
+    private double minPrice = 0;
     private SceneJump sceneJump = new SceneJump();
-
+    HotelinfoblService hotelInfobl = new HotelSalerController();
+    HotelsalerblService hotelsalerbl = new HotelSalerController();
     /**
      * 登出按钮
      */
@@ -33,6 +45,10 @@ public class uiEditInfoController implements Initializable{
     private TextArea textAreaHotelIntroduction;
     @FXML
     private TextArea textAreaHotelFacility;
+    @FXML
+    private MenuButton menuButtonChooseTradeArea;
+    @FXML
+    private MenuButton menuButtonAddresss;
 
     /**
      * 酒店房间按钮点击监听
@@ -85,9 +101,8 @@ public class uiEditInfoController implements Initializable{
         String telNumber = textFieldTelNumber.getText();
         String hotelIntroduction = textAreaHotelIntroduction.getText();
         String hotelFacility = textAreaHotelFacility.getText();
-
-        //TODO
-
+        HotelinfoVO vo = new HotelinfoVO(hotelID,hotelName,TradeArea.valueOf(tradeArea),Address.valueOf(address),detailAddress,telNumber,hotelIntroduction,hotelFacility,star,grade,minPrice);
+        hotelsalerbl.modifyHotelInfo(vo);
         sceneJump.jumpToSceneHotelInfo();
     }
 
@@ -100,6 +115,38 @@ public class uiEditInfoController implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        try {
+            HotelinfoVO vo = hotelInfobl.getHotelinfo();
+            this.hotelID = vo.getHotelID();
+            star = vo.getStar();
+            textFieldHotelName.setText(vo.getHotelname());
+            textFieldDetailAddress.setText(vo.getDetailAddress());
+            textFieldTelNumber.setText(vo.getContactNumber());
+            textAreaHotelIntroduction.setText(vo.getIntroduction());
+            textAreaHotelFacility.setText(vo.getService());
+            this.grade = vo.getGrade();
+            this.minPrice = vo.getMinPrice();
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
 
+        // 初始化选择商圈menuButton
+        for(TradeArea area:TradeArea.values()){
+            MenuItem menuItem = new MenuItem(area.toString());
+            menuButtonChooseTradeArea.getItems().add(menuItem);
+            menuItem.setOnAction(event -> {
+                this.tradeArea = area.toString();
+                menuButtonChooseTradeArea.setText(this.tradeArea);
+            });
+        }
+        // 初始化选择地址menuButton
+        for(Address temp:Address.values()){
+            MenuItem menuItem = new MenuItem(temp.toString());
+            menuButtonAddresss.getItems().add(menuItem);
+            menuItem.setOnAction(event -> {
+                this.address = temp.toString();
+                menuButtonAddresss.setText(this.address);
+            });
+        }
     }
 }
