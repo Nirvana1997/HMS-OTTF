@@ -3,6 +3,7 @@ package businesslogicservice.hotelsalerblservice;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
+import enumData.OrderState;
 import enumData.PromotionType;
 import enumData.ResultMessage;
 import vo.HotelinfoVO;
@@ -22,10 +23,11 @@ public interface HotelsalerblService {
     /**
      * 浏览登录帐号对应酒店订单
      *
+     * @param orderState 订单状态
      * @return 酒店订单列表
      * @throws RemoteException
      */
-    public ArrayList<OrderVO> readOrder() throws RemoteException;
+    public ArrayList<OrderVO> readOrder(OrderState orderState) throws RemoteException;
 
     /**
      * 更新订单信息
@@ -35,6 +37,14 @@ public interface HotelsalerblService {
      * @throws RemoteException
      */
     public ResultMessage updateOrder(OrderVO orderVO) throws RemoteException;
+
+    /**
+     * 执行订单
+     *
+     * @param orderID 订单ID
+     * @throws RemoteException
+     */
+    public void executeOrder(String orderID) throws RemoteException;
 
     /**
      * 获取当前酒店的营销策略

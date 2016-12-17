@@ -20,7 +20,7 @@ public class PromotionPVChanger {
         if(po.getStartDate()!=null)
             return new PromotionVO(po.getName(),po.getDescription(),po.getPromotionType(),po.getHotelID(),DateOperation.stringToDate(po.getStartDate()),DateOperation.stringToDate(po.getEndDate()),po.getTradeArea(),po.getRoomNumber(),po.getVipLevel(),po.getDiscount(),po.getCompanyID());
         else
-            return new PromotionVO(po.getName(),po.getDescription(),po.getPromotionType(),po.getHotelID(),po.getDiscount());
+            return new PromotionVO(po.getName(),po.getDescription(),po.getPromotionType(),po.getDiscount());
     }
 
     /**

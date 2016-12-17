@@ -92,16 +92,17 @@ public class OrderDataImpl implements UserOrderInfo, HotelOrderInfo,ExceptionOrd
     }
 
     /**
-     * 获得一个酒店的所有订单列表
+     * 获得一个酒店的对应类型的订单列表
      *
-     * @param hotelID 酒店ID
+     * @param hotelID    酒店ID
+     * @param orderState 订单状态
      * @return 酒店订单列表
      */
-    @Override
-    public ArrayList<OrderVO> getHotelOrders(String hotelID) throws RemoteException {
+    public ArrayList<OrderVO> getHotelOrders(String hotelID, OrderState orderState) throws RemoteException {
         ArrayList<OrderVO> res = new ArrayList<OrderVO>();
         for (OrderPO po : orderDataService.getOrderList(hotelID, IDType.hotelID)) {
-            res.add(OrderPVChanger.orderP2V(po));
+            if(po.getOrderState().equals(orderState))
+                res.add(OrderPVChanger.orderP2V(po));
         }
         return res;
     }

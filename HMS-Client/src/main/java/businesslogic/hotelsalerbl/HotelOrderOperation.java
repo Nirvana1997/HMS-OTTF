@@ -2,6 +2,7 @@ package businesslogic.hotelsalerbl;
 
 import businesslogic.logbl.Login;
 import businesslogic.orderbl.impl.OrderDataImpl;
+import enumData.OrderState;
 import enumData.ResultMessage;
 import utility.OrderPVChanger;
 import vo.OrderVO;
@@ -26,10 +27,11 @@ public class HotelOrderOperation {
     /**
      * 浏览登录帐号对应酒店订单
      *
+     * @param orderState 订单状态
      * @return 对应酒店订单信息
      */
-    public ArrayList<OrderVO> readOrder() throws RemoteException {
-        return hotelOrderInfo.getHotelOrders(Login.getNowUserID());
+    public ArrayList<OrderVO> readOrder(OrderState orderState) throws RemoteException {
+        return hotelOrderInfo.getHotelOrders(Login.getNowUserID(),orderState);
     }
 
     /**

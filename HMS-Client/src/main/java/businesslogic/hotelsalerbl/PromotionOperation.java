@@ -48,6 +48,7 @@ public class PromotionOperation {
      * @throws RemoteException
      */
     public void addPromotion(PromotionVO vo) throws RemoteException{
+        vo.setHotelID(Login.getNowUserID());
         hotelPromotionInfo.addPromotion(vo);
     }
 
