@@ -39,7 +39,7 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label layoutX="421.0" layoutY="138.0" text="所在街道：">
+            <Label layoutX="421.0" layoutY="138.0" text="所在地址：">
                <font>
                   <Font size="18.0" />
                </font>
@@ -49,7 +49,7 @@
                   <Font size="14.0" />
                </font>
             </TextField>
-            <MenuButton layoutX="179.0" layoutY="135.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="180.0" style="-fx-background-color: #FFFFFF;" text="选择商圈">
+            <MenuButton fx:id="menuButtonChooseTradeArea" layoutX="179.0" layoutY="135.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="180.0" style="-fx-background-color: #FFFFFF;" text="选择商圈">
               <items>
                 <MenuItem mnemonicParsing="false" text="Action 1" />
                 <MenuItem mnemonicParsing="false" text="Action 2" />
@@ -58,7 +58,7 @@
                   <Font size="14.0" />
                </font>
             </MenuButton>
-            <MenuButton layoutX="527.0" layoutY="135.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="180.0" style="-fx-background-color: #FFFFFF;" text="选择街道">
+            <MenuButton fx:id="menuButtonAddresss" layoutX="527.0" layoutY="135.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="180.0" style="-fx-background-color: #FFFFFF;" text="选择地址">
               <items>
                 <MenuItem mnemonicParsing="false" text="Action 1" />
                 <MenuItem mnemonicParsing="false" text="Action 2" />
@@ -87,20 +87,6 @@
                   <Font size="14.0" />
                </font>
             </TextField>
-            <Label layoutX="457.0" layoutY="236.0" text="星级：">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <MenuButton layoutX="527.0" layoutY="234.0" mnemonicParsing="false" style="-fx-background-color: #FFFFFF;" text="选择星级">
-              <items>
-                <MenuItem mnemonicParsing="false" text="Action 1" />
-                <MenuItem mnemonicParsing="false" text="Action 2" />
-              </items>
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </MenuButton>
             <Label layoutX="63.0" layoutY="287.0" text="酒店简介：">
                <font>
                   <Font size="18.0" />

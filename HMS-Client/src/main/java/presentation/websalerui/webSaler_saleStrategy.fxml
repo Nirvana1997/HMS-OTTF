@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.TextArea?>
@@ -110,7 +111,7 @@
                                     <Font size="16.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="labelTradeArea" layoutX="86.0" layoutY="62.0" prefHeight="22.0" prefWidth="146.0">
+                              <Label fx:id="labelTradeArea" layoutX="86.0" layoutY="58.0" prefHeight="29.0" prefWidth="146.0">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
@@ -259,21 +260,11 @@
                               <Font size="16.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="textFieldPromotionBeginTime" layoutX="129.0" layoutY="83.0" prefHeight="29.0" prefWidth="137.0" promptText="例：2016_7_17">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </TextField>
                         <Label layoutX="275.0" layoutY="80.0" prefHeight="34.0" prefWidth="83.0" text="结束时间：">
                            <font>
                               <Font size="16.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="textFieldPromotionEndTime" layoutX="363.0" layoutY="83.0" prefHeight="29.0" prefWidth="137.0" promptText="例：2016_7_18">
-                           <font>
-                              <Font size="14.0" />
-                           </font>
-                        </TextField>
                         <Label layoutX="276.0" layoutY="42.0" text="活动折扣：">
                            <font>
                               <Font size="16.0" />
@@ -323,6 +314,8 @@
                               <Font size="14.0" />
                            </font>
                         </MenuButton>
+                        <DatePicker fx:id="datePickerPromotionBeginTime" layoutX="129.0" layoutY="86.0" prefHeight="23.0" prefWidth="139.0" />
+                        <DatePicker fx:id="datePickerPromotionEndTime" layoutX="362.0" layoutY="86.0" prefHeight="23.0" prefWidth="139.0" />
                      </children></AnchorPane>
                </children>
             </AnchorPane>

@@ -1,5 +1,6 @@
 package businesslogic.userbl.impl;
 
+import businesslogic.hotelsalerbl.CreditInfoForHotel;
 import businesslogic.logbl.UserInfoAdder;
 import businesslogic.webmanagerbl.UserInfoForManagement;
 import businesslogic.websalerbl.CreditInfo;
@@ -19,7 +20,7 @@ import java.util.ArrayList;
  * @author qzh
  * Created by user on 2016/12/3.
  */
-public class UserDataImpl implements UserInfoForManagement,CreditInfo,UserInfoAdder {
+public class UserDataImpl implements UserInfoForManagement,CreditInfo,UserInfoAdder,CreditInfoForHotel {
     /**
      * 用户数据模块
      */

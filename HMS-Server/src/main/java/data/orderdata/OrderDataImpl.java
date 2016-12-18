@@ -3,7 +3,7 @@ package data.orderdata;
 import database.DataBaseHelper;
 import dataservice.orderdataservice.OrderDataService;
 import enumData.*;
-import po.OrderExceptionPO;
+import po.CanceledExceptionOrderPO;
 import po.OrderPO;
 
 import java.rmi.RemoteException;
@@ -150,9 +150,9 @@ public class OrderDataImpl extends UnicastRemoteObject implements OrderDataServi
      * @throws RemoteException
      */
     @Override
-    public ResultMessage addOrderExceptionInfo(OrderExceptionPO po) throws RemoteException {
-        DataBaseHelper.in("insert into OrderExceptionInfo (orderID,cancelDate,cancelTime,cancelReason,haveCanceled) values ('" + po.getOrderID() +
-                "','" + po.getCancelDate() + "','" + po.getCancelTime() + "','" + po.getCancelReason() + "','" + po.isHaveCanceled() + "')");
+    public ResultMessage addOrderExceptionInfo(CanceledExceptionOrderPO po) throws RemoteException {
+        DataBaseHelper.in("insert into CanceledExceptionOrder (orderID,cancelDate,cancelTime,cancelReason) values ('" + po.getOrderID() +
+                "','" + po.getCancelDate() + "','" + po.getCancelTime() + "','" + po.getCancelReason() +  "')");
         return ResultMessage.Correct;
     }
 
@@ -163,12 +163,11 @@ public class OrderDataImpl extends UnicastRemoteObject implements OrderDataServi
      * @throws RemoteException
      */
     @Override
-    public OrderExceptionPO getOrderExceptionInfo(String orderID) throws RemoteException {
+    public CanceledExceptionOrderPO getOrderExceptionInfo(String orderID) throws RemoteException {
         String cancelDate = DataBaseHelper.outSingle("OrderExceptionInfo","cancelDate","orderID",orderID);
         String cancelTime = DataBaseHelper.outSingle("OrderExceptionInfo","cancelTime","orderID",orderID);
         String cancelReason = DataBaseHelper.outSingle("OrderExceptionInfo","cancelReason","orderID",orderID);
-        String haveCanceled = DataBaseHelper.outSingle("OrderExceptionInfo","haveCanceled","orderID",orderID);
-        return new OrderExceptionPO(orderID,cancelDate,cancelTime,cancelReason,Boolean.getBoolean(haveCanceled));
+        return new CanceledExceptionOrderPO(orderID,cancelDate,cancelTime,cancelReason);
     }
 
     /**
@@ -177,15 +176,14 @@ public class OrderDataImpl extends UnicastRemoteObject implements OrderDataServi
      * @throws RemoteException
      */
     @Override
-    public ArrayList<OrderExceptionPO> getOrderExceptionInfo() throws RemoteException {
-        ArrayList<OrderExceptionPO> orderExceptionPOs = new ArrayList<OrderExceptionPO>();
+    public ArrayList<CanceledExceptionOrderPO> getOrderExceptionInfo() throws RemoteException {
+        ArrayList<CanceledExceptionOrderPO> orderExceptionPOs = new ArrayList<CanceledExceptionOrderPO>();
         ArrayList<String> orderIDList = DataBaseHelper.out("select orderID from OrderException","orderID");
         ArrayList<String> cancelDateList = DataBaseHelper.out("select cancelDate from OrderException","cancelDate");
         ArrayList<String> cancelTimeList = DataBaseHelper.out("select cancelTime from OrderException","cancelTime");
         ArrayList<String> cancelReasonList = DataBaseHelper.out("select cancelReason from OrderException","cancelReason");
-        ArrayList<String> haveCanceledList = DataBaseHelper.out("select haveCanceled from OrderException","haveCanceled");
         for(int i=0;i<orderIDList.size();i++){
-            orderExceptionPOs.add(new OrderExceptionPO(orderIDList.get(i),cancelDateList.get(i),cancelTimeList.get(i),cancelReasonList.get(i),Boolean.getBoolean(haveCanceledList.get(i))));
+            orderExceptionPOs.add(new CanceledExceptionOrderPO(orderIDList.get(i),cancelDateList.get(i),cancelTimeList.get(i),cancelReasonList.get(i)));
         }
         return null;
     }

@@ -18,7 +18,7 @@ public class HotelroomDataImpl_stub implements HotelroomDataService {
 	HotelroomPO hotelroomPO3 = new HotelroomPO("0200001", RoomType.SingleRoom,100,5);
 	RoomNumPO roomNumPO1 = new RoomNumPO("0200001","2016_11_12",19,RoomType.SingleRoom);
 	RoomNumPO roomNumPO2 = new RoomNumPO("0200001","2016_11_12",9,RoomType.DisabledRoom);
-	RoomNumPO roomNumPO3 = new RoomNumPO("0200001","2016_11_12",2,RoomType.SingleRoom);
+	RoomNumPO roomNumPO3 = new RoomNumPO("0200001","2016_11_12",2,RoomType.DoubleRoom);
 
 	public HotelroomDataImpl_stub() {
 		hotelroomPOs.add(hotelroomPO1);

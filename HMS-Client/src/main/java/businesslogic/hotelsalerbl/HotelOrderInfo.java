@@ -1,5 +1,6 @@
 package businesslogic.hotelsalerbl;
 
+import enumData.OrderState;
 import enumData.ResultMessage;
 import po.OrderPO;
 import vo.OrderVO;
@@ -15,17 +16,27 @@ import java.util.ArrayList;
  */
 public interface HotelOrderInfo {
     /**
-     * 获得一个酒店的所有订单列表
+     * 获得一个酒店的对应类型的订单列表
      *
-     * @param hotelID 酒店ID
+     * @param hotelID    酒店ID
+     * @param orderState 订单状态
      * @return 酒店订单列表
      */
-    public ArrayList<OrderVO> getHotelOrders(String hotelID)throws RemoteException;
+    public ArrayList<OrderVO> getHotelOrdersByState(String hotelID, OrderState orderState) throws RemoteException;
+
+    /**
+     * 获得一个酒店的对应类型的订单列表
+     *
+     * @param hotelID    酒店ID
+     * @return 酒店订单列表
+     */
+    public ArrayList<OrderVO> getHotelOrders(String hotelID) throws RemoteException;
 
     /**
      * 更新订单信息
+     *
      * @param po 订单信息
      * @return 是否成功
      */
-    public ResultMessage setOrder(OrderPO po)throws RemoteException;
+    public ResultMessage setOrder(OrderPO po) throws RemoteException;
 }

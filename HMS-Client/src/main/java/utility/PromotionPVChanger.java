@@ -17,7 +17,10 @@ public class PromotionPVChanger {
      * @return 促销策略VO
      */
     public static PromotionVO promotionP2V(PromotionPO po){
-        return new PromotionVO(po.getName(),po.getDescription(),po.getPromotionType(),po.getHotelID(),DateOperation.stringToDate(po.getStartDate()),DateOperation.stringToDate(po.getEndDate()),po.getTradeArea(),po.getRoomNumber(),po.getVipLevel(),po.getDiscount(),po.getCompanyID());
+        if(po.getStartDate()!=null)
+            return new PromotionVO(po.getName(),po.getDescription(),po.getPromotionType(),po.getHotelID(),DateOperation.stringToDate(po.getStartDate()),DateOperation.stringToDate(po.getEndDate()),po.getTradeArea(),po.getRoomNumber(),po.getVipLevel(),po.getDiscount(),po.getCompanyID());
+        else
+            return new PromotionVO(po.getName(),po.getDescription(),po.getPromotionType(),po.getDiscount());
     }
 
     /**
@@ -26,6 +29,9 @@ public class PromotionPVChanger {
      * @return 用户信息PO
      */
     public static PromotionPO promotionV2P(PromotionVO vo){
-        return new PromotionPO(vo.getPromotionName(),vo.getDescription(),vo.getPromotionType(),vo.getHotelID(),DateOperation.dateToString(vo.getStartDate()), DateOperation.dateToString(vo.getEndDate()),vo.getTradeArea(),vo.getRoomNumber(),vo.getVipLevel(),vo.getDiscount(),vo.getCompanyID());
+        if(vo.getStartDate()!=null)
+            return new PromotionPO(vo.getPromotionName(),vo.getDescription(),vo.getPromotionType(),vo.getHotelID(),DateOperation.dateToString(vo.getStartDate()), DateOperation.dateToString(vo.getEndDate()),vo.getTradeArea(),vo.getRoomNumber(),vo.getVipLevel(),vo.getDiscount(),vo.getCompanyID());
+        else
+            return new PromotionPO(vo.getPromotionName(),vo.getDescription(),vo.getPromotionType(),vo.getHotelID(),null, null,vo.getTradeArea(),vo.getRoomNumber(),vo.getVipLevel(),vo.getDiscount(),vo.getCompanyID());
     }
 }

@@ -1,8 +1,7 @@
 import businesslogic.hotelsalerbl.HotelSalerController;
 import businesslogic.logbl.LogController;
-import businesslogic.logbl.Login;
-import com.sun.org.apache.xpath.internal.operations.Or;
-import enumData.AccountType;
+import enumData.OrderState;
+import enumData.PromotionType;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.Before;
@@ -11,9 +10,9 @@ import utility.DateOperation;
 import vo.AccountVO;
 import vo.HotelinfoVO;
 import vo.OrderVO;
+import vo.PromotionVO;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 /**
  * HotelSalerController Tester.
@@ -59,12 +58,14 @@ public class HotelSalerControllerTest {
     }
 
     /**
-     * Method: readOrder(String hotelID)
+     * Method: readOrderByState(String hotelID)
      */
     @Test
     public void testReadOrder() throws Exception {
-        ArrayList<OrderVO> orders = hotelSalerController.readOrder();
+        ArrayList<OrderVO> orders = hotelSalerController.readOrderByState(OrderState.executing);
         Assert.assertEquals(2,orders.size());
+        orders = hotelSalerController.readOrderByState(OrderState.executed);
+        Assert.assertEquals(0,orders.size());
     }
 
     /**
@@ -72,10 +73,10 @@ public class HotelSalerControllerTest {
      */
     @Test
     public void testUpdateOrder() throws Exception {
-        OrderVO vo = hotelSalerController.readOrder().get(0);
+        OrderVO vo = hotelSalerController.readOrderByState(OrderState.executing).get(0);
         vo.setCheckOutDate(DateOperation.stringToDate("2016_01_01"));
         hotelSalerController.updateOrder(vo);
-        Assert.assertEquals("2016_01_01", DateOperation.dateToString(hotelSalerController.readOrder().get(0).getCheckOutDate()));
+        Assert.assertEquals("2016_01_01", DateOperation.dateToString(hotelSalerController.readOrderByState(OrderState.executing).get(0).getCheckOutDate()));
     }
 
     /**
@@ -116,5 +117,30 @@ public class HotelSalerControllerTest {
     @Test
     public void testGetRoomInfo() throws Exception {
         Assert.assertEquals(200,hotelSalerController.getRoomInfo().get(0).getPrice(),0.1);
+    }
+
+    @Test
+    public void testGetPromotion() throws Exception {
+        Assert.assertEquals("Birthday discount",hotelSalerController.getPromotion(PromotionType.Hotel_Birth).get(0).getPromotionName());
+    }
+
+    @Test
+    public void testDeletePromotion() throws Exception {
+        hotelSalerController.deletePromotion("Birthday discount");
+        Assert.assertEquals(0,hotelSalerController.getPromotion(PromotionType.Hotel_Birth).size());
+    }
+
+    @Test
+    public void testAddPromotion() throws Exception {
+        hotelSalerController.addPromotion(new PromotionVO("haha","heihei",PromotionType.Hotel_Birth,0.8));
+        Assert.assertEquals(2,hotelSalerController.getPromotion(PromotionType.Hotel_Birth).size());
+    }
+
+    @Test
+    public void testSetPromotion() throws Exception {
+        PromotionVO vo = hotelSalerController.getPromotion(PromotionType.Hotel_Birth).get(0);
+        vo.setDescription("haha");
+        hotelSalerController.setPromotion(vo);
+        Assert.assertEquals("haha",hotelSalerController.getPromotion(PromotionType.Hotel_Birth).get(0).getDescription());
     }
 } 

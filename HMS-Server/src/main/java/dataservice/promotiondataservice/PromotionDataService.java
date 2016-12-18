@@ -31,6 +31,14 @@ public interface PromotionDataService extends Remote {
 	public ResultMessage changePromotion(PromotionPO po)throws RemoteException;
 
 	/**
+	 * 根据策略名字，获得对应营销策略的详细信息（po）
+	 * @param promotionName 营销策略名字
+	 * @return 营销策略PO
+	 * @throws RemoteException
+     */
+	public PromotionPO getPromotionInfo(String promotionName)throws RemoteException;
+
+	/**
 	 * 根据策略类型，获取营销策略列表
 	 * @param type 营销策略的类型
 	 * @return 营销策略PO的列表

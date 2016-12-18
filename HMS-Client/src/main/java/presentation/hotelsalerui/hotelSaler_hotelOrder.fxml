@@ -3,6 +3,8 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -81,5 +83,17 @@
             </Label>
          </children>
       </VBox>
+      <AnchorPane layoutX="250.0" prefHeight="618.0" prefWidth="750.0" style="-fx-background-color: #FFFFFF;">
+         <children>
+            <TableView layoutX="51.0" layoutY="84.0" prefHeight="450.0" prefWidth="636.0">
+              <columns>
+                <TableColumn prefWidth="102.0" text="订单编号" />
+                <TableColumn prefWidth="105.0" text="用户ID" />
+                  <TableColumn prefWidth="102.0" text="房间类型" />
+                  <TableColumn prefWidth="108.0" text="订单状态" />
+              </columns>
+            </TableView>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

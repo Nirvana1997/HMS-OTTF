@@ -48,7 +48,7 @@ public class Promotion {
     public PromotionVO getPromotion(String promotionID) {
         //TODO
 //		promotionDataService = new PromotionDataImpl_stub();
-//		PromotionPO po = promotionDataService.getPromotion(promotionID);
+//		PromotionPO po = promotionDataService.getPromotions(promotionID);
 //		if(po!=null) {
 //			PromotionVO vo = new PromotionVO(po.getName(), po.getPromotionType(), po.getStartDate(), po.getEndDate(), po.getValidRange(), po.getMemberDiscount(), po.getNormalDiscount());
 //			return vo;
