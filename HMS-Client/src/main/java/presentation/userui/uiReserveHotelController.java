@@ -1,5 +1,6 @@
 package presentation.userui;
 
+import businesslogic.logbl.LogController;
 import businesslogic.userbl.UserController;
 import businesslogicservice.userblservice.HotelOrderBlService;
 import javafx.fxml.FXML;
@@ -114,7 +115,8 @@ public class uiReserveHotelController implements Initializable{
      * @throws IOException
      */
     public void LogOut() throws IOException{
-        //TODO 清空账号
+        LogController logController = new LogController();
+        logController.logOut();
         jump.gotoLogin();
     }
     @FXML

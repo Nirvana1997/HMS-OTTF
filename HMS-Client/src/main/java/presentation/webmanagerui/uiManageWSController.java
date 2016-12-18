@@ -1,5 +1,6 @@
 package presentation.webmanagerui;
 
+import businesslogic.logbl.LogController;
 import businesslogic.webmanagerbl.WebmanagerController;
 import com.sun.javafx.robot.impl.FXRobotHelper;
 import javafx.collections.FXCollections;
@@ -130,7 +131,8 @@ public class uiManageWSController implements Initializable{
      * @throws IOException
      */
     public void LogOut() throws IOException{
-        //TODO 登出账号
+        LogController logController = new LogController();
+        logController.logOut();
         jump.gotoLogin();
     }
     @FXML

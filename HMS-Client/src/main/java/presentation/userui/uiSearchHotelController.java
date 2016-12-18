@@ -1,5 +1,6 @@
 package presentation.userui;
 
+import businesslogic.logbl.LogController;
 import businesslogic.userbl.UserController;
 import businesslogicservice.userblservice.HotelOrderBlService;
 import enumData.Address;
@@ -116,7 +117,8 @@ public class uiSearchHotelController implements Initializable{
      * @throws IOException
      */
     public void LogOut() throws IOException{
-        //TODO 清空账号
+        LogController logController = new LogController();
+        logController.logOut();
         jump.gotoLogin();
     }
     @FXML
@@ -197,7 +199,6 @@ public class uiSearchHotelController implements Initializable{
             LimitVO KeywordLimit = new LimitVO(LimitCriterion.KeywordCriterion, KeyWord.getText());
             SearchList.add(KeywordLimit);
         }
-        //TODO 将列表存入搜索酒店
         HotelOrderBlService hotelOrderBlService = new UserController();
         ArrayList<HotelListItemVO> searchHotelList = hotelOrderBlService.searchHotel(UiFormatChanger.getArea(textCircle), UiFormatChanger.getAddress(textAddress),SearchList);
         searchHotelPane.setVisible(false);

@@ -1,5 +1,6 @@
 package presentation.webmanagerui;
 
+import businesslogic.logbl.LogController;
 import businesslogic.webmanagerbl.WebmanagerController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -111,7 +112,8 @@ public class uiManageUserController implements Initializable{
      * @throws IOException
      */
     public void LogOut() throws IOException{
-        //TODO 登出账号
+        LogController logController = new LogController();
+        logController.logOut();
         jump.gotoLogin();
     }
 
