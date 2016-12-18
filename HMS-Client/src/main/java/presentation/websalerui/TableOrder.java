@@ -11,18 +11,16 @@ public class TableOrder {
     private final SimpleStringProperty UserID = new SimpleStringProperty();
     private final SimpleStringProperty HotelID = new SimpleStringProperty();
     private final SimpleStringProperty State = new SimpleStringProperty();
-    private final SimpleStringProperty Reason = new SimpleStringProperty();
 
-    public TableOrder(String orderid, String userid, String hotelid, String state, String reason) {
+    public TableOrder(String orderid, String userid, String hotelid, String state) {
         setOrderID(orderid);
         setUserID(userid);
         setHotelID(hotelid);
         setState(state);
-        setReason(reason);
     }
 
     /**
-     *
+     * 获取/设置订单编号
      */
     public String getOrderID() {
         return OrderID.get();
@@ -35,7 +33,7 @@ public class TableOrder {
     }
 
     /**
-     *
+     * 获取/设置用户编号
      */
     public String getUserID() {
         return UserID.get();
@@ -48,7 +46,7 @@ public class TableOrder {
     }
 
     /**
-     *
+     * 获取/设置酒店编号
      */
     public String getHotelID() {
         return HotelID.get();
@@ -61,7 +59,7 @@ public class TableOrder {
     }
 
     /**
-     *
+     * 获取/设置订单状态
      */
     public String getState(){
         return State.get();
@@ -73,16 +71,4 @@ public class TableOrder {
         return State;
     }
 
-    /**
-     *
-     */
-    public String getReason(){
-        return Reason.get();
-    }
-    public void setReason(String Reason){
-        this.Reason.set(Reason);
-    }
-    public StringProperty ReasonProperty(){
-        return Reason;
-    }
 }

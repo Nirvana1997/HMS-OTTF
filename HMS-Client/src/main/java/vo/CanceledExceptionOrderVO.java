@@ -19,6 +19,11 @@ public class CanceledExceptionOrderVO {
         this.cancelReason = cancelReason;
     }
 
+    public CanceledExceptionOrderVO(String orderID, String cancelReason) {
+        this.orderID = orderID;
+        this.cancelReason = cancelReason;
+    }
+
     public String getOrderID() {
         return orderID;
     }

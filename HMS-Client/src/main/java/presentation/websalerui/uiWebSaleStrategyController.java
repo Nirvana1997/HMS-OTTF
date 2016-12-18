@@ -1,5 +1,7 @@
 package presentation.websalerui;
 
+import businesslogic.logbl.LogController;
+import businesslogicservice.logblservice.LogBlService;
 import enumData.TradeArea;
 import businesslogic.websalerbl.WebsalerController;
 import businesslogicservice.websalerblservice.WebsalerblService;
@@ -9,6 +11,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import utility.UiFormatChanger;
 import vo.PromotionVO;
 
 import java.io.IOException;
@@ -28,6 +31,7 @@ public class uiWebSaleStrategyController implements Initializable{
     private SceneJump sceneJump = new SceneJump();
 
     private WebsalerblService websalerbl;
+    LogBlService logBl = new LogController();
 
     private String tradeArea = "";
 
@@ -41,21 +45,13 @@ public class uiWebSaleStrategyController implements Initializable{
     private ArrayList<PromotionVO> promotionMember;
     private int lengthPromotionMember;
 
+    public uiWebSaleStrategyController() throws RemoteException {
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         websalerbl = new WebsalerController();
-        // 获取list对象
-        try {
-            promotionDoubleOne = websalerbl.getPromotionList(PromotionType.Web_Period);
-            promotionVIP = websalerbl.getPromotionList(PromotionType.Web_TradeArea);
-            promotionMember = websalerbl.getPromotionList(PromotionType.Web_Vip);
-        } catch (RemoteException e) {
-            e.printStackTrace();
-        }
-        lengthPromotionDoubleOne = promotionDoubleOne.size();
-        lengthPromotionVIP = promotionVIP.size();
-        lengthPromotionMember = promotionMember.size();
-
+        this.initPromotionList();
         //初始化promotion面板
         this.initPromotionContent(0, PromotionType.Web_Period);
         this.initPromotionContent(0, PromotionType.Web_TradeArea);
@@ -70,6 +66,20 @@ public class uiWebSaleStrategyController implements Initializable{
                 this.tradeArea = area.toString();
             });
         }
+    }
+
+    private void initPromotionList(){
+        // 获取list对象
+        try {
+            promotionDoubleOne = websalerbl.getPromotionList(PromotionType.Web_Period);
+            promotionVIP = websalerbl.getPromotionList(PromotionType.Web_TradeArea);
+            promotionMember = websalerbl.getPromotionList(PromotionType.Web_Vip);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+        lengthPromotionDoubleOne = promotionDoubleOne.size();
+        lengthPromotionVIP = promotionVIP.size();
+        lengthPromotionMember = promotionMember.size();
     }
 
     /**
@@ -302,21 +312,23 @@ public class uiWebSaleStrategyController implements Initializable{
      * @param promotionType
      */
     private void initPromotionContent(int n, PromotionType promotionType) {
+        this.initPromotionList();
         if(promotionType == PromotionType.Web_Period){
+            // TODO
             labelNamePromotionDoubleOne.setText(promotionDoubleOne.get(n).getPromotionName());
             labelInfoPromotionDoubleOne.setText(promotionDoubleOne.get(n).getDescription());
-            labelDatePromotionDoubleOne.setText(promotionDoubleOne.get(n).getStartDate() + "~" + promotionDoubleOne.get(n).getEndDate());
+            labelDatePromotionDoubleOne.setText(UiFormatChanger.dateToString(promotionDoubleOne.get(n).getStartDate()) + "~" + UiFormatChanger.dateToString(promotionDoubleOne.get(n).getEndDate()));
         }
         else if(promotionType == PromotionType.Web_TradeArea){
             labelNamePromotionVIP.setText(promotionVIP.get(n).getPromotionName());
             labelInfoPromotionVIP.setText(promotionVIP.get(n).getDescription());
-            labelDatePromotionVIP.setText(promotionVIP.get(n).getStartDate() + "~" + promotionVIP.get(n).getEndDate());
+            labelDatePromotionVIP.setText(UiFormatChanger.dateToString(promotionVIP.get(n).getStartDate()) + "~" + UiFormatChanger.dateToString(promotionVIP.get(n).getEndDate()));
             labelTradeArea.setText(String.valueOf(promotionVIP.get(n).getTradeArea()));
         }
         else if(promotionType == PromotionType.Web_Vip){
             labelNamePromotionMember.setText(promotionMember.get(n).getPromotionName());
             labelInfoPromotionMember.setText(promotionMember.get(n).getDescription());
-            labelDatePromotionMember.setText(promotionMember.get(n).getStartDate() + "~" + promotionMember.get(n).getEndDate());
+            labelDatePromotionMember.setText(UiFormatChanger.dateToString(promotionMember.get(n).getStartDate()) + "~" + UiFormatChanger.dateToString(promotionMember.get(n).getEndDate()));
             for(int i = 0; i < promotionMember.size(); i++){
                 int level = promotionMember.get(i).getVipLevel();
                 if(level == 1){
@@ -330,16 +342,6 @@ public class uiWebSaleStrategyController implements Initializable{
                 }
             }
         }
-    }
-
-    /**
-     * 获取日期
-     * @param ld 日期选取器
-     * @return Date格式的日期
-     */
-    public static Date getDate(DatePicker ld) throws ParseException {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        return sdf.parse(ld.getValue().toString());
     }
 
     /**
@@ -373,7 +375,7 @@ public class uiWebSaleStrategyController implements Initializable{
      * 特定商圈活动上一张监听
      */
     public void vipBefore() {
-        VIPCount++;
+        VIPCount--;
         int n = Math.abs(VIPCount % lengthPromotionVIP);
         this.initPromotionContent(n, PromotionType.Web_TradeArea);
     }
@@ -415,6 +417,7 @@ public class uiWebSaleStrategyController implements Initializable{
      */
     public void onClickedLabelExit() throws IOException {
         sceneJump.backToLogin();
+        logBl.logOut();
     }
 
     /**
@@ -473,6 +476,7 @@ public class uiWebSaleStrategyController implements Initializable{
         datePickerPromotionBeginTime.setValue(null);
         datePickerPromotionEndTime.setValue(null);
         isClickedButtonNew = true;
+        menuButtonTradeArea.setText("选择商圈");
     }
 
     /**
@@ -503,8 +507,8 @@ public class uiWebSaleStrategyController implements Initializable{
         Date beginTime = null;
         Date endTime = null;
         try {
-            beginTime = getDate(datePickerPromotionBeginTime);
-            endTime = getDate(datePickerPromotionEndTime);
+            beginTime = UiFormatChanger.getDate(datePickerPromotionBeginTime);
+            endTime = UiFormatChanger.getDate(datePickerPromotionEndTime);
         } catch (ParseException e) {
             e.printStackTrace();
         }

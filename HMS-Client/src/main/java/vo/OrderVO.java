@@ -79,6 +79,13 @@ public class OrderVO {
         this.roomID = roomID;
     }
 
+    public OrderVO(String userID, double price, Date begin, Date end) {
+        this.userID = userID;
+        this.price = price;
+        this.checkInDate = begin;
+        this.checkOutDate = end;
+    }
+
     public String getHotelID() {
         return hotelID;
     }

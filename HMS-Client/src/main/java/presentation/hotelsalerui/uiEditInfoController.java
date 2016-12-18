@@ -1,8 +1,10 @@
 package presentation.hotelsalerui;
 
 import businesslogic.hotelsalerbl.HotelSalerController;
+import businesslogic.logbl.LogController;
 import businesslogicservice.hotelsalerblservice.HotelinfoblService;
 import businesslogicservice.hotelsalerblservice.HotelsalerblService;
+import businesslogicservice.logblservice.LogBlService;
 import enumData.Address;
 import enumData.TradeArea;
 import javafx.fxml.FXML;
@@ -29,6 +31,9 @@ public class uiEditInfoController implements Initializable{
     private SceneJump sceneJump = new SceneJump();
     HotelinfoblService hotelInfobl = new HotelSalerController();
     HotelsalerblService hotelsalerbl = new HotelSalerController();
+
+    LogBlService logBl = new LogController();
+
     /**
      * 登出按钮
      */
@@ -49,6 +54,9 @@ public class uiEditInfoController implements Initializable{
     private MenuButton menuButtonChooseTradeArea;
     @FXML
     private MenuButton menuButtonAddresss;
+
+    public uiEditInfoController() throws RemoteException {
+    }
 
     /**
      * 酒店房间按钮点击监听
@@ -90,6 +98,7 @@ public class uiEditInfoController implements Initializable{
      */
     public void onClickedLabelExit() throws IOException {
         sceneJump.backToLogin();
+        logBl.logOut();
     }
 
     /**
