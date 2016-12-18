@@ -1,8 +1,5 @@
 package presentation.webmanagerui;
 
-import com.sun.org.apache.xerces.internal.util.TeeXMLDocumentFilterImpl;
-import com.sun.org.apache.xml.internal.security.Init;
-import com.sun.org.glassfish.gmbal.DescriptorFields;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.text.Text;
