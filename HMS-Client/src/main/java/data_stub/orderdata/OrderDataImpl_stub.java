@@ -48,6 +48,12 @@ public class OrderDataImpl_stub implements OrderDataService {
     }
 
     @Override
+    public ArrayList<OrderPO> getOrderList(OrderState orderState) throws RemoteException {
+        //TODO
+        return null;
+    }
+
+    @Override
     public ResultMessage addOrder(OrderPO po) {
         orderList.add(po);
         return ResultMessage.Correct;
