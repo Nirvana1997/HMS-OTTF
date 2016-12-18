@@ -1,5 +1,6 @@
 package presentation.userui;
 
+import businesslogic.logbl.LogController;
 import businesslogic.userbl.UserController;
 import businesslogicservice.hotelsalerblservice.HotelinfoblService;
 import com.sun.org.apache.xpath.internal.operations.Or;
@@ -123,7 +124,8 @@ public class uiMyOrderController implements Initializable{
      * @throws IOException
      */
     public void LogOut() throws IOException{
-        //TODO 清空账号
+        LogController logController = new LogController();
+        logController.logOut();
         jump.gotoLogin();
     }
 
@@ -219,11 +221,10 @@ public class uiMyOrderController implements Initializable{
      */
     public void SearchOrder() throws IOException {
         if(textSearch.getText()!=null) {
-           //TODO 如果输入的ID不存在怎么办
                 setOrderID(textSearch.getText());
                 jump.gotoOrder();
-
         }
+        else System.out.println("滚！");
     }
     @FXML
     private TableView<tableOrder> orderList;

@@ -115,7 +115,8 @@ public class uiUserInfoController implements Initializable {
      * @throws IOException
      */
     public void LogOut() throws IOException{
-        //TODO 清空账号
+        LogController logController = new LogController();
+        logController.logOut();
         jump.gotoLogin();
     }
     @FXML
@@ -137,6 +138,11 @@ public class uiUserInfoController implements Initializable {
 
     @FXML
     private Button buttonSave;
+
+    /**
+     * 修改账号信息
+     * @throws IOException
+     */
     public void Save() throws IOException {
         String UserID = textUserID.getText();
         String RealName = textRealName.getText();
@@ -150,6 +156,10 @@ public class uiUserInfoController implements Initializable {
         jump.ModifySuccess();
     }
 
+    /**
+     * 初始化用户信息
+     * @throws RemoteException
+     */
     public void init() throws RemoteException {
         InfoBlService infoBlService = new UserController();
         UserInfoVO vo = infoBlService.showUserInfo();
@@ -169,6 +179,11 @@ public class uiUserInfoController implements Initializable {
     }
     public void gotoModifyPassword() throws IOException{
         jump.gotoModifyPassword();
+    }
+    @FXML
+    private Text gotoCreditHistory;
+    public void gotoCreditHistory() throws IOException{
+        jump.gotoCreditHistory();
     }
 
     @Override

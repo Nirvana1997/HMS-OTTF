@@ -1,5 +1,6 @@
 package presentation.userui;
 
+import businesslogic.logbl.LogController;
 import businesslogic.userbl.UserController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -115,7 +116,8 @@ public class uiCreditHistoryController implements Initializable{
      * @throws IOException
      */
     public void LogOut() throws IOException{
-        //TODO 清空账号
+        LogController logController = new LogController();
+        logController.logOut();
         jump.gotoLogin();
     }
 

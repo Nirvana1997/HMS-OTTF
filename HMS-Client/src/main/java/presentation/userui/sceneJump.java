@@ -127,6 +127,15 @@ public class sceneJump {
         stage.get(0).setScene(scene);
     }
     /**
+     * 信用历史记录
+     * @throws IOException
+     */
+    public void gotoCreditHistory() throws IOException{
+        ObservableList<Stage> stage = FXRobotHelper.getStages();
+        Scene scene = new Scene((Parent) FXMLLoader.load(getClass().getResource("sceneCreditHistory.fxml")));
+        stage.get(0).setScene(scene);
+    }
+    /**
      * 跳出警告窗口
      * @throws IOException
      */
@@ -190,8 +199,6 @@ public class sceneJump {
         secondWindow.setScene(scene);
         secondWindow.show();
     }
-
-
 
 
     /**
