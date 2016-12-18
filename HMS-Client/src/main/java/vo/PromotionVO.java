@@ -1,9 +1,8 @@
 package vo;
 
-import java.util.ArrayList;
 import java.util.Date;
 
-import cfg.Temp;
+import cfg.CfgReader;
 import enumData.PromotionType;
 import enumData.TradeArea;
 
@@ -15,7 +14,7 @@ public class PromotionVO {
 	Date startDate;
 	Date endDate;
 	TradeArea tradeArea;
-	int roomNumber = Temp.DISCOUNT_NUM;
+	int roomNumber = Integer.valueOf(CfgReader.getInstance().getProperty("discountNum"));
 	int vipLevel;
 	double discount;
 	String companyID;

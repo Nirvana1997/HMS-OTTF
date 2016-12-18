@@ -1,7 +1,7 @@
 package businesslogic.websalerbl;
 
 import businesslogic.userbl.impl.UserDataImpl;
-import cfg.Temp;
+import cfg.CfgReader;
 import enumData.CreditRecoverWay;
 import enumData.OrderState;
 import po.CreditChangePO;
@@ -57,8 +57,8 @@ public class WebsalerOrderOperation {
         orderVO.setOrderState(OrderState.canceled);
         //恢复全部信用
         if(creditRecoverWay.equals(CreditRecoverWay.All))
-            creditInfo.addCredit(new CreditChangePO(orderVO.getUserID(),vo.getOrderID(),vo.getCancelDate(), Temp.reasonOfCancelException,(int)orderVO.getPrice()));
+            creditInfo.addCredit(new CreditChangePO(orderVO.getUserID(),vo.getOrderID(),vo.getCancelDate(), CfgReader.getInstance().getProperty("cancelException"),(int)orderVO.getPrice()));
         else if(creditRecoverWay.equals(CreditRecoverWay.Half))
-            creditInfo.addCredit(new CreditChangePO(orderVO.getUserID(),vo.getOrderID(),vo.getCancelDate(), Temp.reasonOfCancelException,(int)orderVO.getPrice()/2));
+            creditInfo.addCredit(new CreditChangePO(orderVO.getUserID(),vo.getOrderID(),vo.getCancelDate(), CfgReader.getInstance().getProperty("cancelException"),(int)orderVO.getPrice()/2));
     }
 }

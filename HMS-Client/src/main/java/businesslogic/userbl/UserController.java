@@ -3,7 +3,7 @@ package businesslogic.userbl;
 import businesslogic.logbl.Login;
 import businesslogicservice.userblservice.HotelOrderBlService;
 import businesslogicservice.userblservice.InfoBlService;
-import cfg.Temp;
+import cfg.CfgReader;
 import enumData.*;
 import vo.*;
 
@@ -78,7 +78,7 @@ public class UserController implements InfoBlService, HotelOrderBlService {
      */
     @Override
     public ArrayList<HotelListItemVO> searchHotel(TradeArea tradeArea, Address address) throws RemoteException {
-        return hotelList.searchHotelInArea(tradeArea, address, Temp.sortway);
+        return hotelList.searchHotelInArea(tradeArea, address, SortWay.valueOf(CfgReader.getInstance().getProperty("defaultSortway")));
     }
 
     /**
@@ -92,7 +92,7 @@ public class UserController implements InfoBlService, HotelOrderBlService {
      */
     @Override
     public ArrayList<HotelListItemVO> searchHotel(TradeArea tradeArea, Address address, ArrayList<LimitVO> limits) throws RemoteException {
-        return hotelList.hotelFilter(hotelList.searchHotelInArea(tradeArea, address, Temp.sortway), limits);
+        return hotelList.hotelFilter(hotelList.searchHotelInArea(tradeArea, address,  SortWay.valueOf(CfgReader.getInstance().getProperty("defaultSortway"))), limits);
     }
 
     /**

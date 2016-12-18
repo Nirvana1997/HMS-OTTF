@@ -113,7 +113,7 @@ public class WebsalerBlTest {
      */
     @Test
     public void testAddCredit() throws Exception {
-        websalerblService.addCredit("0100001",100);
+        websalerblService.addCredit("0100001",1);
         Assert.assertEquals(1300,websalerblService.getCredit("0100001"));
     }
 

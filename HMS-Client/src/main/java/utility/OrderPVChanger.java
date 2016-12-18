@@ -1,6 +1,6 @@
 package utility;
 
-import cfg.Temp;
+import cfg.CfgReader;
 import po.CanceledExceptionOrderPO;
 import po.OrderPO;
 import vo.BelowLineOrderVO;
@@ -25,7 +25,7 @@ public class OrderPVChanger {
             return null;
         }
         Date ddl = DateOperation.stringToDate(po.getCheckInDate());
-        ddl.setHours(Temp.HOUR);
+        ddl.setHours(Integer.valueOf(CfgReader.getInstance().getProperty("deadline")));
         return new OrderVO(po.getHotelID(),po.getHotelName(),po.getTradeArea(),po.getAddress(),po.getDetailAddress(),po.getRoomNumber(),po.getPeopleNumber(), DateOperation.stringToDate(po.getCheckInDate()),DateOperation.stringToDate(po.getCheckOutDate()),po.getRoomType(),po.isHaveChild(),po.getOrderID(),po.getUserID(),po.getOrderState(),ddl,po.getPrice(),po.getPromotionName(),po.getRoomID());
     }
 
