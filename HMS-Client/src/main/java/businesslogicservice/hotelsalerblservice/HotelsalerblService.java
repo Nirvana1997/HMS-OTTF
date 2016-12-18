@@ -27,7 +27,15 @@ public interface HotelsalerblService {
      * @return 酒店订单列表
      * @throws RemoteException
      */
-    public ArrayList<OrderVO> readOrder(OrderState orderState) throws RemoteException;
+    public ArrayList<OrderVO> readOrderByState(OrderState orderState) throws RemoteException;
+
+    /**
+     * 浏览登录帐号对应酒店订单
+     *
+     * @return 酒店订单列表
+     * @throws RemoteException
+     */
+    public ArrayList<OrderVO> readOrder() throws RemoteException;
 
     /**
      * 更新订单信息

@@ -1,17 +1,9 @@
 package businesslogic.hotelsalerbl;
 
-import businesslogic.logbl.Login;
-import businesslogic.userbl.HotelOrder;
 import businesslogicservice.hotelsalerblservice.HotelinfoblService;
 import businesslogicservice.hotelsalerblservice.HotelroomblService;
 import businesslogicservice.hotelsalerblservice.HotelsalerblService;
-import com.sun.org.apache.xpath.internal.operations.Or;
-import data_stub.hotelsalerdata.HotelroomDataImpl_stub;
-import dataservice.hotelsalerdataservice.HotelroomDataService;
 import enumData.*;
-import po.HotelinfoPO;
-import po.HotelroomPO;
-import po.OrderExceptionPO;
 import vo.*;
 
 import java.rmi.RemoteException;
@@ -79,8 +71,13 @@ public class HotelSalerController implements HotelsalerblService,HotelinfoblServ
      * @return 对应酒店订单信息
      */
     @Override
-    public ArrayList<OrderVO> readOrder(OrderState orderState) throws RemoteException{
+    public ArrayList<OrderVO> readOrderByState(OrderState orderState) throws RemoteException{
         return hotelOrderOperation.readOrder(orderState);
+    }
+
+    @Override
+    public ArrayList<OrderVO> readOrder() throws RemoteException {
+        return null;
     }
 
     /**

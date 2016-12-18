@@ -1,8 +1,5 @@
 import businesslogic.hotelsalerbl.HotelSalerController;
 import businesslogic.logbl.LogController;
-import businesslogic.logbl.Login;
-import com.sun.org.apache.xpath.internal.operations.Or;
-import enumData.AccountType;
 import enumData.OrderState;
 import enumData.PromotionType;
 import org.junit.Assert;
@@ -16,7 +13,6 @@ import vo.OrderVO;
 import vo.PromotionVO;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 /**
  * HotelSalerController Tester.
@@ -62,13 +58,13 @@ public class HotelSalerControllerTest {
     }
 
     /**
-     * Method: readOrder(String hotelID)
+     * Method: readOrderByState(String hotelID)
      */
     @Test
     public void testReadOrder() throws Exception {
-        ArrayList<OrderVO> orders = hotelSalerController.readOrder(OrderState.executing);
+        ArrayList<OrderVO> orders = hotelSalerController.readOrderByState(OrderState.executing);
         Assert.assertEquals(2,orders.size());
-        orders = hotelSalerController.readOrder(OrderState.executed);
+        orders = hotelSalerController.readOrderByState(OrderState.executed);
         Assert.assertEquals(0,orders.size());
     }
 
@@ -77,10 +73,10 @@ public class HotelSalerControllerTest {
      */
     @Test
     public void testUpdateOrder() throws Exception {
-        OrderVO vo = hotelSalerController.readOrder(OrderState.executing).get(0);
+        OrderVO vo = hotelSalerController.readOrderByState(OrderState.executing).get(0);
         vo.setCheckOutDate(DateOperation.stringToDate("2016_01_01"));
         hotelSalerController.updateOrder(vo);
-        Assert.assertEquals("2016_01_01", DateOperation.dateToString(hotelSalerController.readOrder(OrderState.executing).get(0).getCheckOutDate()));
+        Assert.assertEquals("2016_01_01", DateOperation.dateToString(hotelSalerController.readOrderByState(OrderState.executing).get(0).getCheckOutDate()));
     }
 
     /**

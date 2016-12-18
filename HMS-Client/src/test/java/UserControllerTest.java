@@ -99,7 +99,7 @@ public class UserControllerTest {
     }
 
     /**
-     * Method: readOrder(String userID)
+     * Method: readOrderByState(String userID)
      */
     @Test
     public void testReadOrder() throws Exception {

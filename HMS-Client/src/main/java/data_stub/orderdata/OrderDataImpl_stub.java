@@ -2,7 +2,7 @@ package data_stub.orderdata;
 
 import dataservice.orderdataservice.OrderDataService;
 import enumData.*;
-import po.OrderExceptionPO;
+import po.CanceledExceptionOrderPO;
 import po.OrderPO;
 
 import java.rmi.RemoteException;
@@ -63,17 +63,17 @@ public class OrderDataImpl_stub implements OrderDataService {
     }
 
     @Override
-    public ResultMessage addOrderExceptionInfo(OrderExceptionPO po) throws RemoteException {
+    public ResultMessage addOrderExceptionInfo(CanceledExceptionOrderPO po) throws RemoteException {
         return null;
     }
 
     @Override
-    public OrderExceptionPO getOrderExceptionInfo(String orderID) throws RemoteException {
+    public CanceledExceptionOrderPO getOrderExceptionInfo(String orderID) throws RemoteException {
         return null;
     }
 
     @Override
-    public ArrayList<OrderExceptionPO> getOrderExceptionInfo() throws RemoteException {
+    public ArrayList<CanceledExceptionOrderPO> getOrderExceptionInfo() throws RemoteException {
         return null;
     }
 

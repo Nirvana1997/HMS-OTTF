@@ -1,8 +1,10 @@
 package utility;
 
 import cfg.Temp;
+import po.CanceledExceptionOrderPO;
 import po.OrderPO;
 import vo.BelowLineOrderVO;
+import vo.CanceledExceptionOrderVO;
 import vo.OrderVO;
 
 import java.util.Date;
@@ -40,5 +42,23 @@ public class OrderPVChanger {
      */
     public static OrderPO belowLineOrderV2P(BelowLineOrderVO vo){
         return new OrderPO(vo.getHotelID(),DateOperation.dateToString(vo.getCheckInDate()),DateOperation.dateToString(vo.getCheckOutDate()),vo.getRoomType(),vo.getRoomNumber());
+    }
+
+    /**
+     * 撤销异常订单信息PO转VO
+     * @param po 撤销异常订单信息PO
+     * @return 撤销异常订单信息VO
+     */
+    public static CanceledExceptionOrderVO canceledExceptionOrderP2V(CanceledExceptionOrderPO po){
+        return new CanceledExceptionOrderVO(po.getOrderID(),po.getCancelDate(),po.getCancelTime(),po.getCancelReason());
+    }
+
+    /**
+     * 撤销异常订单信息VO转PO
+     * @param vo 撤销异常订单信息VO
+     * @return 撤销异常订单信息PO
+     */
+    public static CanceledExceptionOrderPO canceledExceptionOrderV2P(CanceledExceptionOrderVO vo){
+        return new CanceledExceptionOrderPO(vo.getOrderID(),vo.getCancelDate(),vo.getCancelTime(),vo.getCancelReason());
     }
 }

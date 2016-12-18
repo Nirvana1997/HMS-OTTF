@@ -22,7 +22,15 @@ public interface HotelOrderInfo {
      * @param orderState 订单状态
      * @return 酒店订单列表
      */
-    public ArrayList<OrderVO> getHotelOrders(String hotelID, OrderState orderState) throws RemoteException;
+    public ArrayList<OrderVO> getHotelOrdersByState(String hotelID, OrderState orderState) throws RemoteException;
+
+    /**
+     * 获得一个酒店的对应类型的订单列表
+     *
+     * @param hotelID    酒店ID
+     * @return 酒店订单列表
+     */
+    public ArrayList<OrderVO> getHotelOrders(String hotelID) throws RemoteException;
 
     /**
      * 更新订单信息

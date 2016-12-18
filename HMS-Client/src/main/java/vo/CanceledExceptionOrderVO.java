@@ -1,21 +1,22 @@
-package po;
+package vo;
 
 /**
- * Created by mac on 2016/12/15.
+ * 已取消的异常订单信息
+ *
+ * @author qzh
+ *         Created by user on 2016/12/18.
  */
-public class OrderExceptionPO {
+public class CanceledExceptionOrderVO {
     String orderID;
     String cancelDate;
     String cancelTime;
     String cancelReason;
-    boolean haveCanceled;
 
-    public OrderExceptionPO(String orderID, String cancelDate, String cancelTime, String cancelReason, boolean haveCanceled) {
+    public CanceledExceptionOrderVO(String orderID, String cancelDate, String cancelTime, String cancelReason) {
         this.orderID = orderID;
         this.cancelDate = cancelDate;
         this.cancelTime = cancelTime;
         this.cancelReason = cancelReason;
-        this.haveCanceled = haveCanceled;
     }
 
     public String getOrderID() {
@@ -48,13 +49,5 @@ public class OrderExceptionPO {
 
     public void setCancelReason(String cancelReason) {
         this.cancelReason = cancelReason;
-    }
-
-    public boolean isHaveCanceled() {
-        return haveCanceled;
-    }
-
-    public void setHaveCanceled(boolean haveCanceled) {
-        this.haveCanceled = haveCanceled;
     }
 }

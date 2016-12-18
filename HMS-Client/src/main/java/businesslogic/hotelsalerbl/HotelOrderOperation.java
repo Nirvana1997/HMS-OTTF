@@ -38,7 +38,7 @@ public class HotelOrderOperation {
      * @return 对应酒店订单信息
      */
     public ArrayList<OrderVO> readOrder(OrderState orderState) throws RemoteException {
-        return hotelOrderInfo.getHotelOrders(Login.getNowUserID(), orderState);
+        return hotelOrderInfo.getHotelOrdersByState(Login.getNowUserID(), orderState);
     }
 
     /**

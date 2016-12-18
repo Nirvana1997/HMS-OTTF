@@ -68,7 +68,7 @@ public class DateOperation {
      * @return 对应字符串
      */
     public static String dateToString(Date date) {
-        DateFormat df = new SimpleDateFormat("yyyy_MM_dd");
+        DateFormat df = new SimpleDateFormat("yyyy_M_d");
         return df.format(date);
     }
 
@@ -80,7 +80,7 @@ public class DateOperation {
      * @return date对象
      */
     public static Date stringToDate(String string) {
-        DateFormat df = new SimpleDateFormat("yyyy_MM_dd");
+        DateFormat df = new SimpleDateFormat("yyyy_M_d");
         try {
             return df.parse(string);
         }catch (ParseException e){
