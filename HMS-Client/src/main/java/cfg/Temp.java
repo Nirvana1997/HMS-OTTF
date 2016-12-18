@@ -47,4 +47,8 @@ public class Temp {
     public static final int days = 30;
 
     public static final int minCredit = 0;
+
+    public static final String reasonOfCancelException = "撤销异常订单申诉成功";
+
+    public static final String reasonOfRecharge = "充值成功";
 }

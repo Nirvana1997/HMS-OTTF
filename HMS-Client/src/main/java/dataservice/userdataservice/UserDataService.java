@@ -1,6 +1,7 @@
 package dataservice.userdataservice;
 
 import enumData.ResultMessage;
+import po.CreditChangePO;
 import po.CreditRecordPO;
 import po.UserInfoPO;
 
@@ -50,23 +51,19 @@ public interface UserDataService extends Remote{
 
 	/**
 	 * 增加用户信用值
-	 * @param userID 用户ID
-	 * @param value 增加的信息值
-	 * @param date 变更的日期
+	 * @param po 信用变化PO
 	 * @return 结果信息
 	 * @throws RemoteException
      */
-	public ResultMessage addCredit(String userID, int value, String date) throws RemoteException;
+	public ResultMessage addCredit(CreditChangePO po) throws RemoteException;
 
 	/**
 	 * 减少用户信用值
-	 * @param userID 用户ID
-	 * @param value 减少的信用值
-	 * @param date 变更的日期
+	 * @param po 信用变化PO
 	 * @return 结果信息
 	 * @throws RemoteException
      */
-	public ResultMessage subCredit(String userID, int value, String date) throws RemoteException;
+	public ResultMessage subCredit(CreditChangePO po) throws RemoteException;
 
 	/**
 	 * 查看信用记录
