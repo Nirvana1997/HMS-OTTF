@@ -1,6 +1,7 @@
 package dataservice.orderdataservice;
 
 import enumData.IDType;
+import enumData.OrderState;
 import enumData.ResultMessage;
 import po.CanceledExceptionOrderPO;
 import po.OrderPO;
@@ -15,7 +16,7 @@ public interface OrderDataService extends Remote{
 	 * @param orderID 订单ID
 	 * @return 订单PO
      */
-	public OrderPO getOrderInfo(String orderID) throws RemoteException;
+	public OrderPO getOrderInfo(String orderID)throws RemoteException;
 
 	/**
 	 * 修改订单信息
@@ -23,6 +24,14 @@ public interface OrderDataService extends Remote{
 	 * @return 结果信息
      */
 	public ResultMessage setOrderInfo(OrderPO po)throws RemoteException;
+
+	/**
+	 * 根据订单状态，去搜索相应的订单
+	 * @param orderState 订单状态
+	 * @return 订单信息的列表
+	 * @throws RemoteException
+     */
+	public ArrayList<OrderPO> getOrderList(OrderState orderState)throws RemoteException;
 
 	/**
 	 * 根据ID类型和ID，去搜索相应的订单

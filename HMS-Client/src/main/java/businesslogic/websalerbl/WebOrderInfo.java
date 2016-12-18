@@ -32,6 +32,14 @@ public interface WebOrderInfo {
     public OrderVO getOrder(String orderID) throws RemoteException;
 
     /**
+     * 修改订单信息
+     *
+     * @param vo 订单信息
+     * @throws RemoteException
+     */
+    public void setOrder(OrderVO vo) throws RemoteException;
+
+    /**
      * 返回所有撤销的异常订单
      *
      * @return 撤销的异常订单列表
@@ -51,5 +59,5 @@ public interface WebOrderInfo {
      * @param vo 撤销的异常订单信息
      * @throws RemoteException
      */
-    public void updateExceptionOrder(CanceledExceptionOrderVO vo) throws RemoteException;
+    public void addExceptionOrder(CanceledExceptionOrderVO vo) throws RemoteException;
 }

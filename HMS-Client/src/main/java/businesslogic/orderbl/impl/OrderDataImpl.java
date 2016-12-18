@@ -3,13 +3,16 @@ package businesslogic.orderbl.impl;
 import businesslogic.hotelsalerbl.HotelOrderInfo;
 import businesslogic.logbl.Login;
 import businesslogic.userbl.interfaces.UserOrderInfo;
+import businesslogic.websalerbl.WebOrderInfo;
 import data_stub.orderdata.OrderDataImpl_stub;
 import dataservice.orderdataservice.OrderDataService;
 import enumData.IDType;
 import enumData.OrderState;
 import enumData.ResultMessage;
+import po.CanceledExceptionOrderPO;
 import po.OrderPO;
 import utility.OrderPVChanger;
+import vo.CanceledExceptionOrderVO;
 import vo.OrderVO;
 
 import java.rmi.RemoteException;
@@ -21,7 +24,7 @@ import java.util.ArrayList;
  * @author qzh
  *         Created by user on 2016/12/2.
  */
-public class OrderDataImpl implements UserOrderInfo, HotelOrderInfo {
+public class OrderDataImpl implements UserOrderInfo, HotelOrderInfo,WebOrderInfo {
     /**
      * 订单数据模块
      */
@@ -124,4 +127,41 @@ public class OrderDataImpl implements UserOrderInfo, HotelOrderInfo {
         return orderDataService.setOrderInfo(po);
     }
 
+    @Override
+    public ArrayList<OrderVO> getOrderByState(OrderState orderState) throws RemoteException {
+        ArrayList<OrderVO> res = new ArrayList<>();
+        for(OrderPO po:orderDataService.getOrderList(orderState)){
+            res.add(OrderPVChanger.orderP2V(po));
+        }
+        return res;
+    }
+
+    @Override
+    public OrderVO getOrder(String orderID) throws RemoteException {
+        return OrderPVChanger.orderP2V(orderDataService.getOrderInfo(orderID));
+    }
+
+    @Override
+    public void setOrder(OrderVO vo) throws RemoteException {
+        orderDataService.setOrderInfo(OrderPVChanger.orderV2P(vo));
+    }
+
+    @Override
+    public ArrayList<CanceledExceptionOrderVO> getCanceledExceptionOrders() throws RemoteException {
+        ArrayList<CanceledExceptionOrderVO> res = new ArrayList<>();
+        for(CanceledExceptionOrderPO po:orderDataService.getOrderExceptionInfo()){
+            res.add(OrderPVChanger.canceledExceptionOrderP2V(po));
+        }
+        return res;
+    }
+
+    @Override
+    public CanceledExceptionOrderVO getCanceledExceptionOrder(String orderID) throws RemoteException {
+        return OrderPVChanger.canceledExceptionOrderP2V(orderDataService.getOrderExceptionInfo(orderID));
+    }
+
+    @Override
+    public void addExceptionOrder(CanceledExceptionOrderVO vo) throws RemoteException {
+        orderDataService.addOrderExceptionInfo(OrderPVChanger.canceledExceptionOrderV2P(vo));
+    }
 }

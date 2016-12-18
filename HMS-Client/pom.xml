@@ -64,6 +64,11 @@
             <scope>system</scope>
             <systemPath>${project.basedir}/.idea/libraries/javafx-8.0.65-b17.jar</systemPath>
         </dependency>
+        <dependency>
+            <groupId>dom4j</groupId>
+            <artifactId>dom4j</artifactId>
+            <version>1.6.1</version>
+        </dependency>
     </dependencies>
 
     <properties>
