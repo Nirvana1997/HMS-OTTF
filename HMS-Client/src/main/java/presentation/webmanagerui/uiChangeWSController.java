@@ -8,8 +8,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import vo.WebsalerInfoVO;
-
-import javax.naming.spi.InitialContextFactory;
 import java.io.IOException;
 import java.net.URL;
 import java.rmi.RemoteException;
@@ -18,97 +16,112 @@ import java.util.ResourceBundle;
 /**
  * Created by Administrator on 2016/12/1.
  */
-public class uiChangeWSController implements Initializable{
+public class uiChangeWSController implements Initializable {
+    /**
+     * 网站管理员界面控制器
+     */
     WebmanagerController webmanagerController = new WebmanagerController();
+
     /**
      * 界面跳转的类
      */
     sceneJump jump = new sceneJump();
-    @FXML
+
     /**
      * 用户管理按钮
      */
-            Button buttonManageUser;
     @FXML
+    Button buttonManageUser;
+
     /**
      * 酒店管理按钮
      */
-            Button buttonManageHS;
     @FXML
+    Button buttonManageHS;
+
     /**
      * 网站管理按钮
      */
-            Button buttonManageWS;
-
-    public uiChangeWSController() throws RemoteException {
-    }
+    @FXML
+    Button buttonManageWS;
 
     /**
-     * 跳转到用户管理界面
-     * @throws IOException
+     * 网站营销人员编号
      */
-    public void gotoManageUser() throws IOException {
-        jump.gotoManageUser();
-    }
-    /**
-     * 跳转到酒店管理界面
-     * @throws IOException
-     */
-    public void gotoManageHS() throws IOException{
-        jump.gotoManageHS();
-    }
-    /**
-     * 跳转到网站管理界面
-     * @throws IOException
-     */
-    public void gotoManageWS() throws IOException{
-        jump.gotoManageWS();
-    }
+    @FXML
+    private Text textWSID;
 
+    /**
+     * 网站营销人员账号
+     */
+    @FXML
+    private Text textWSAccount;
+
+    /**
+     * 网站营销人员联系方式
+     */
+    @FXML
+    private TextField textWSNumber;
 
     /**
      * 返回网站管理界面
      */
     @FXML
     Text textManageWS;
-    public void returntoManageWS()throws IOException{
-        jump.gotoManageWS();
+
+    public uiChangeWSController() throws RemoteException {
     }
-    @FXML
-    private Text buttonLogOut;
+
     /**
-     * 点击登出，返回到登录界面并清空账号
+     * 跳转到用户管理界面
+     *
      * @throws IOException
      */
-    public void LogOut() throws IOException{
+    public void gotoManageUser() throws IOException {
+        jump.gotoManageUser();
+    }
+
+    /**
+     * 跳转到酒店管理界面
+     *
+     * @throws IOException
+     */
+    public void gotoManageHS() throws IOException {
+        jump.gotoManageHS();
+    }
+
+    /**
+     * 跳转到网站管理界面
+     *
+     * @throws IOException
+     */
+    public void gotoManageWS() throws IOException {
+        jump.gotoManageWS();
+    }
+
+    /**
+     * 返回网站管理界面
+     *
+     * @throws IOException
+     */
+    public void returntoManageWS() throws IOException {
+        jump.gotoManageWS();
+    }
+
+    /**
+     * 点击登出，返回到登录界面并清空账号
+     *
+     * @throws IOException
+     */
+    public void LogOut() throws IOException {
         LogController logController = new LogController();
         logController.logOut();
         jump.gotoLogin();
     }
-//    @FXML
-//    private Text buttonModifyPassword;
-//    /**
-//     * 点击修改密码，跳出修改密码窗口
-//     * @throws IOException
-//     */
-//    public void gotoModifyPassword() throws IOException{
-//        jump.gotoModifyPassword();
-//    }
-    @FXML
-    private Text textWSID;
-    @FXML
-    private Text textWSAccount;
-    @FXML
-    private TextField textWSNumber;
-    @FXML
-    private Button buttonDelete;
-    @FXML
-    private Button buttonSave;
-    @FXML
-    private Button buttonCancel;
 
     /**
-     * 修改WS信息
+     * 修改网站营销人员信息
+     *
      * @throws RemoteException
      */
     public void Save() throws RemoteException {
@@ -117,7 +130,8 @@ public class uiChangeWSController implements Initializable{
     }
 
     /**
-     * 删除WS信息
+     * 删除网站营销人员信息
+     *
      * @throws IOException
      */
     public void Delete() throws IOException {
@@ -129,7 +143,8 @@ public class uiChangeWSController implements Initializable{
 
 
     /**
-     * 初始化内容
+     * 初始化网站营销人员信息
+     *
      * @throws IOException
      */
     public void init() throws RemoteException {
@@ -138,6 +153,13 @@ public class uiChangeWSController implements Initializable{
         textWSAccount.setText(webmanagerController.getAccount(vo.getWebsalerID()));
         textWSNumber.setText(vo.getContactNumber());
     }
+
+    /**
+     * 初始化
+     *
+     * @param location
+     * @param resources
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         try {
