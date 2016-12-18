@@ -31,6 +31,18 @@ public class WebsalerOrderOperation {
         return webOrderInfo.getOrderByState(orderState);
     }
 
+    public OrderVO getOrderByID(String orderID) throws RemoteException {
+        return webOrderInfo.getOrder(orderID);
+    }
+
+    public ArrayList<OrderVO> getCanceledExceptionOrderInfos() throws RemoteException{
+        ArrayList<OrderVO> res = new ArrayList<>();
+        for(CanceledExceptionOrderVO vo:getCanceledExceptionOrders()){
+            res.add(getOrderByID(vo.getOrderID()));
+        }
+        return res;
+    }
+
     public ArrayList<CanceledExceptionOrderVO> getCanceledExceptionOrders() throws RemoteException {
         return webOrderInfo.getCanceledExceptionOrders();
     }

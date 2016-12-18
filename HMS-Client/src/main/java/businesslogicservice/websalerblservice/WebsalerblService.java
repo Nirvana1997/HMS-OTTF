@@ -72,7 +72,22 @@ public interface WebsalerblService {
     public ArrayList<OrderVO> getOrderByState(OrderState orderState) throws RemoteException;
 
     /**
-     * 返回所有撤销的异常订单
+     * 根据订单ID返回对应订单信息
+     * @param orderID 订单编号
+     * @return 订单信息
+     * @throws RemoteException
+     */
+    public OrderVO getOrderByID(String orderID)throws RemoteException;
+
+    /**
+     * 返回所有撤销的异常订单的详细信息
+     * @return 撤销的异常订单的详细信息列表
+     * @throws RemoteException
+     */
+    public ArrayList<OrderVO> getCanceledExceptionOrderInfos()throws RemoteException;
+
+    /**
+     * 返回所有撤销的异常订单的撤销情况
      *
      * @return 撤销的异常订单列表
      */
