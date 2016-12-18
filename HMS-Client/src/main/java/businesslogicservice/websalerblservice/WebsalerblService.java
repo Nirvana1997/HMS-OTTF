@@ -1,5 +1,6 @@
 package businesslogicservice.websalerblservice;
 
+import enumData.CreditRecoverWay;
 import enumData.OrderState;
 import enumData.PromotionType;
 import enumData.ResultMessage;
@@ -87,8 +88,9 @@ public interface WebsalerblService {
     /**
      * 撤销异常订单、更新撤销信息并恢复信用值
      *
-     * @param vo
+     * @param vo               撤销的异常订单信息
+     * @param creditRecoverWay 信用恢复方式
      * @throws RemoteException
      */
-    public void cancelExceptionOrder(CanceledExceptionOrderVO vo) throws RemoteException;
+    public void cancelExceptionOrder(CanceledExceptionOrderVO vo, CreditRecoverWay creditRecoverWay) throws RemoteException;
 }

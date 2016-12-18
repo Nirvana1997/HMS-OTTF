@@ -62,7 +62,7 @@
             <artifactId>javafx</artifactId>
             <version>8.0.65-b17</version>
             <scope>system</scope>
-            <systemPath>${project.basedir}/.idea/libraries/javaFX.jar</systemPath>
+            <systemPath>${project.basedir}/.idea/libraries/javafx-8.0.65-b17.jar</systemPath>
         </dependency>
     </dependencies>
 

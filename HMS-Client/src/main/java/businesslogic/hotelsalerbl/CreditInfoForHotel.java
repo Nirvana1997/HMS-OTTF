@@ -1,6 +1,7 @@
 package businesslogic.hotelsalerbl;
 
 import enumData.ResultMessage;
+import po.CreditChangePO;
 
 import java.rmi.RemoteException;
 
@@ -10,12 +11,11 @@ import java.rmi.RemoteException;
  */
 public interface CreditInfoForHotel {
     /**
-     * 增加用户信用
+     * 为用户增加信用值
      *
-     * @param userID 用户编号
-     * @param value  增加值
+     * @param po 信用值变化情况
      * @return 是否成功
      */
-    public ResultMessage addCredit(String userID, int value)throws RemoteException;
+    public ResultMessage addCredit(CreditChangePO po) throws RemoteException;
 
 }

@@ -4,6 +4,8 @@ package businesslogic.userbl;
 
 import businesslogic.logbl.Login;
 import cfg.Temp;
+import po.CreditRecordPO;
+import utility.CreditRecordPVChanger;
 import utility.VipInfo;
 import businesslogic.websalerbl.impl.VipDataImpl;
 import data_stub.userdata.UserDataImpl_stub;
@@ -11,9 +13,11 @@ import dataservice.userdataservice.UserDataService;
 import enumData.ResultMessage;
 import po.UserInfoPO;
 import utility.UserPVChanger;
+import vo.CreditRecordVO;
 import vo.UserInfoVO;
 
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 
 /**
  * 用户信息操作模块
@@ -65,5 +69,19 @@ public  class UserInfo{
 		else{
 			return false;
 		}
+	}
+
+	/**
+	 * 显示用户信用记录
+	 *
+	 * @return 用户信用记录列表
+	 * @throws RemoteException
+	 */
+	public ArrayList<CreditRecordVO> showCreditRecords() throws RemoteException{
+		ArrayList<CreditRecordVO> res = new ArrayList<>();
+		for(CreditRecordPO po:userDataService.checkCreditRecord(Login.getNowUserID())){
+			res.add(CreditRecordPVChanger.creditRecordP2V(po));
+		}
+		return res;
 	}
 }
