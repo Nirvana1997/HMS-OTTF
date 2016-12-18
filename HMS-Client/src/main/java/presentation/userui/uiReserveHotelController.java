@@ -7,6 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.text.Text;
 import javafx.util.Callback;
+import utility.UiFormatChanger;
 import vo.HotelinfoVO;
 import vo.OrderVO;
 
@@ -164,8 +165,8 @@ public class uiReserveHotelController implements Initializable{
             //设置订单信息
             OrderVO reserveOrder = new OrderVO(currentHotel.getHotelID(), currentHotel.getHotelname(), currentHotel.getTradeArea(),
                     currentHotel.getAddress(), currentHotel.getDetailAddress(), Integer.parseInt(textRoomNumber.getText()), Integer.parseInt(textPeopleNumber.getText()),
-                    getDate(checkinDate), getDate(checkoutDate), getRoomType(RoomType), (HaveChild.getSelectedToggle() == haveChild));
-            if(hotelOrderBlService.haveEnoughRoom(reserveOrder)) {
+                    UiFormatChanger.getDate(checkinDate),  UiFormatChanger.getDate(checkoutDate), getRoomType(RoomType), (HaveChild.getSelectedToggle() == haveChild));
+            if(hotelOrderBlService.haveEnoughRoom(reserveOrder)&&hotelOrderBlService.hasEnoughCredit()) {
                 OrderVO confirmOrder = hotelOrderBlService.makeOrder(reserveOrder);
                 setCurrentOrder(confirmOrder);
                 //确认预订
@@ -174,22 +175,13 @@ public class uiReserveHotelController implements Initializable{
             else if(!hotelOrderBlService.haveEnoughRoom(reserveOrder)){
                 warningRoom.setVisible(true);
             }
-            else{
+            else if(!hotelOrderBlService.hasEnoughCredit()){
                 warningCredit.setVisible(true);
             }
         }
     }
     public void Cancel() throws IOException{
         jump.gotoHotel();
-    }
-    /**
-     * 获取日期
-     * @param ld 日期选取器
-     * @return Date格式的日期
-     */
-    public static Date getDate(DatePicker ld) throws ParseException {
-        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
-        return sdf.parse(ld.getValue().toString());
     }
 
     /**

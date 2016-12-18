@@ -24,9 +24,9 @@ public class ManageRoomNum {
                         " set @m = month(date_sub(curdate(),interval -" + day + " day));" +
                         " set @d = day(date_sub(curdate(),interval -" + day + " day));" +
                         " set @sqlCreate = concat('create table " + hotelID + "_'" + ",@y,'_',@m,'_',@d,'( type varchar(50),emptyNum int )');" +
-                        " set @sql1 = concat('insert into " + hotelID + "_'" + ",@y,'_',@m,'_',@d,' (type,emptyNum) values ('SingleRoom','" + roomTotalNum[0] + "')');" +
-                        " set @sql2 = concat('insert into " + hotelID + "_'" + ",@y,'_',@m,'_',@d,' (type,emptyNum) values ('DoubleRoom','" + roomTotalNum[1] + "')');" +
-                        " set @sql3 = concat('insert into " + hotelID + "_'" + ",@y,'_',@m,'_',@d,' (type,emptyNum) values ('DisabledRoom','" + roomTotalNum[2] + "')');" +
+                        " set @sql1 = concat(\"insert into " + hotelID + "_\"" + ",@y,\"_\",@m,\"_\",@d,\" (type,emptyNum) values ('SingleRoom','" + roomTotalNum[0] + "' )\");" +
+                        " set @sql2 = concat(\"insert into " + hotelID + "_\"" + ",@y,\"_\",@m,\"_\",@d,\" (type,emptyNum) values ('DoubleRoom','" + roomTotalNum[1] + "' )\");" +
+                        " set @sql3 = concat(\"insert into " + hotelID + "_\"" + ",@y,\"_\",@m,\"_\",@d,\" (type,emptyNum) values ('DisabledRoom','" + roomTotalNum[2] + "' )\");" +
                         " set @y = year(date_sub(curdate(),interval 1 day));" +
                         " set @m = month(date_sub(curdate(),interval 1 day));" +
                         " set @d = day(date_sub(curdate(),interval 1 day));" +

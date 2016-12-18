@@ -62,6 +62,36 @@ public class PromotionDataImpl extends UnicastRemoteObject implements PromotionD
     }
 
     /**
+     * 根据策略名字，获得对应营销策略的详细信息（po）
+     * @param promotionName 营销策略名字
+     * @return
+     * @throws RemoteException
+     */
+    @Override
+    public PromotionPO getPromotionInfo(String promotionName) throws RemoteException {
+        String type_ = DataBaseHelper.outSingle("PromotionInfo","type","name",promotionName);
+        String startDate= DataBaseHelper.outSingle("PromotionInfo","startDate","name",promotionName);
+        String endDate = DataBaseHelper.outSingle("PromotionInfo","endDate","name",promotionName);
+        String tradeArea_ = DataBaseHelper.outSingle("PromotionInfo","tradeArea","name",promotionName);
+        String roomNumber = DataBaseHelper.outSingle("PromotionInfo","roomNumber","name",promotionName);
+        String vipLevel = DataBaseHelper.outSingle("PromotionInfo","vipLevel","name",promotionName);
+        String discount = DataBaseHelper.outSingle("PromotionInfo","discount","name",promotionName);
+        String hotelID = DataBaseHelper.outSingle("PromotionInfo","hotelID","name",promotionName);
+        String description = DataBaseHelper.outSingle("PromotionInfo","description","name",promotionName);
+        String companyID = DataBaseHelper.outSingle("PromotionInfo","companyID","name",promotionName);
+        PromotionType type = null;
+        TradeArea tradeArea = null;
+        try {
+            type = Enum.valueOf(PromotionType.class,type_.trim());
+            tradeArea = Enum.valueOf(TradeArea.class,tradeArea_.trim());
+        }catch (IllegalArgumentException ex){
+            ex.printStackTrace();
+        }
+        return new PromotionPO(promotionName,type,startDate,endDate,tradeArea,Integer.parseInt(roomNumber),
+                Integer.parseInt(vipLevel),Double.parseDouble(discount),hotelID,description,companyID);
+    }
+
+    /**
      * 根据策略类型，获取营销策略列表
      * @param type
      * @return

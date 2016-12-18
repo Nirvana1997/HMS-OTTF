@@ -60,22 +60,17 @@
                   <Font size="15.0" />
                </font>
             </Text>
-            <Text layoutX="68.0" layoutY="163.0" strokeType="OUTSIDE" strokeWidth="0.0" text="账号：">
+            <Text layoutX="68.0" layoutY="169.0" strokeType="OUTSIDE" strokeWidth="0.0" text="账号：">
                <font>
                   <Font size="15.0" />
                </font>
             </Text>
-            <Text layoutX="68.0" layoutY="206.0" strokeType="OUTSIDE" strokeWidth="0.0" text="密码：">
+            <Text layoutX="68.0" layoutY="223.0" strokeType="OUTSIDE" strokeWidth="0.0" text="联系方式：">
                <font>
                   <Font size="15.0" />
                </font>
             </Text>
-            <Text layoutX="68.0" layoutY="250.0" strokeType="OUTSIDE" strokeWidth="0.0" text="联系方式：">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Text>
-            <TextField fx:id="textWSNumber" layoutX="152.0" layoutY="230.0">
+            <TextField fx:id="textWSNumber" layoutX="152.0" layoutY="203.0">
                <font>
                   <Font size="14.0" />
                </font>
@@ -121,12 +116,7 @@
                   <Font size="15.0" />
                </font>
             </Text>
-            <Text fx:id="buttonModifyPassword" fill="#4477a4" layoutX="130.0" layoutY="206.0" onMouseClicked="#gotoModifyPassword" strokeType="OUTSIDE" strokeWidth="0.0" text="修改密码" underline="true">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Text>
-            <Text fx:id="textWSAccount" layoutX="130.0" layoutY="163.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00000023">
+            <Text fx:id="textWSAccount" layoutX="130.0" layoutY="169.0" strokeType="OUTSIDE" strokeWidth="0.0" text="00000023">
                <font>
                   <Font size="15.0" />
                </font>

@@ -137,17 +137,17 @@ public class uiUserInfoController implements Initializable {
 
     @FXML
     private Button buttonSave;
-    public void Save() throws RemoteException {
+    public void Save() throws IOException {
         String UserID = textUserID.getText();
         String RealName = textRealName.getText();
         String PhoneNumber = textPhoneNumber.getText();
         int VIPLevel = Integer.parseInt(textVIPLevel.getText());
         int Credit = Integer.parseInt(textCredit.getText());
         String Identity = textIdentity.getText();
-        System.out.print(UserID);
         UserInfoVO vo = new UserInfoVO(UserID, RealName, Identity,PhoneNumber,Credit,Birthday,CompanyID,userType,VIPLevel);
         InfoBlService infoBlService = new UserController() ;
         infoBlService.modifyUserInfo(vo);
+        jump.ModifySuccess();
     }
 
     public void init() throws RemoteException {

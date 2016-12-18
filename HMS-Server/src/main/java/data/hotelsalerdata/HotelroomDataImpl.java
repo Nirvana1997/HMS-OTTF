@@ -83,8 +83,8 @@ public class HotelroomDataImpl extends UnicastRemoteObject implements HotelroomD
      */
     private ResultMessage initializeRoomInfo(HotelroomPO po) {
         if(!DataBaseHelper.in("show tables like '" + po.getHotelID() +"_roomInfo" + "'"))
-            DataBaseHelper.in("create table " + po.getHotelID() + "_roomInfo" +
-                    "(type varchar(50),price float,number varchar(20)");
+            DataBaseHelper.in("create table " + po.getHotelID() + "_roomInfo " +
+                    "(type varchar(50),price float,number varchar(20))");
         boolean exist = false;
         ArrayList<String> judge = DataBaseHelper.out("select type from " + po.getHotelID() + "_roomInfo","type");
         for(int i=0;i<judge.size();i++)

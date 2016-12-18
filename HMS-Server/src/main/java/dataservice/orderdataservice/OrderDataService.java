@@ -52,7 +52,7 @@ public interface OrderDataService extends Remote{
 	 * @return 结果信息
 	 * @throws RemoteException
      */
-	public ResultMessage addOrderExceptionInfo(OrderExceptionPO po)throws RemoteException;
+	public ResultMessage addOrderExceptionInfo(CanceledExceptionOrderPO po)throws RemoteException;
 
 	/**
 	 * 获取订单异常信息（根据订单ID，获取单个）
@@ -60,12 +60,12 @@ public interface OrderDataService extends Remote{
 	 * @return 订单异常信息PO
 	 * @throws RemoteException
      */
-	public OrderExceptionPO getOrderExceptionInfo(String orderID)throws RemoteException;
+	public CanceledExceptionOrderPO getOrderExceptionInfo(String orderID)throws RemoteException;
 
 	/**
 	 * 获取订单异常信息（所有）
 	 * @return 订单异常信息POList
 	 * @throws RemoteException
      */
-	public ArrayList<OrderExceptionPO> getOrderExceptionInfo()throws RemoteException;
+	public ArrayList<CanceledExceptionOrderPO> getOrderExceptionInfo()throws RemoteException;
 }

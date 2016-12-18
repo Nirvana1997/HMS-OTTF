@@ -1,17 +1,24 @@
 package presentation.logui;
 
+import businesslogic.logbl.LogController;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.rmi.RemoteException;
 
 /**
  * Created by Administrator on 2016/12/3.
  */
 public class uiModifyPasswordController {
+    LogController logController = new LogController();
     @FXML
     private PasswordField textNew;
     @FXML
@@ -26,6 +33,9 @@ public class uiModifyPasswordController {
     private Text newWrong;
     @FXML
     private Text cfmWrong;
+
+    public uiModifyPasswordController() throws RemoteException {
+    }
 
     /**
      * 点击原密码输入框，隐藏警告。
@@ -65,8 +75,13 @@ public class uiModifyPasswordController {
             cfmWrong.setVisible(true);
         }
         else{
-            //TODO
-            System.out.println("success");
+
+            logController.modifyPassword(textNew.getText());
+            Stage secondWindow=new Stage();
+            Scene scene=new Scene((Parent) FXMLLoader.load(getClass().getResource("sceneModifySuccess.fxml")));
+            secondWindow.setTitle("Success!");
+            secondWindow.setScene(scene);
+            secondWindow.show();
             buttonConfirm.getScene().getWindow().hide();
         }
     }
