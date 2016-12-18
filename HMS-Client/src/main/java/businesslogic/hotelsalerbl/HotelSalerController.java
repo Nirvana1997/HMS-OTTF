@@ -77,7 +77,7 @@ public class HotelSalerController implements HotelsalerblService,HotelinfoblServ
 
     @Override
     public ArrayList<OrderVO> readOrder() throws RemoteException {
-        return null;
+        return hotelOrderOperation.readOrder();
     }
 
     /**

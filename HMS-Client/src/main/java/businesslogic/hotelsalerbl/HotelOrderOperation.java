@@ -32,13 +32,22 @@ public class HotelOrderOperation {
     }
 
     /**
-     * 浏览登录帐号对应酒店订单
+     * 浏览登录帐号对应状态的酒店订单
      *
      * @param orderState 订单状态
      * @return 对应酒店订单信息
      */
     public ArrayList<OrderVO> readOrder(OrderState orderState) throws RemoteException {
         return hotelOrderInfo.getHotelOrdersByState(Login.getNowUserID(), orderState);
+    }
+
+    /**
+     * 浏览登录帐号对应酒店订单
+     *
+     * @return 对应酒店订单信息
+     */
+    public ArrayList<OrderVO> readOrder() throws RemoteException {
+        return hotelOrderInfo.getHotelOrders(Login.getNowUserID());
     }
 
     /**
