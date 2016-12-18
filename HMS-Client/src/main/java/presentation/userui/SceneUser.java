@@ -13,6 +13,11 @@ import java.io.IOException;
  * Created by Administrator on 2016/12/3.
  */
 public class SceneUser {
+    /**
+     * 初始化用户主界面
+     *
+     * @throws IOException
+     */
     public void initUI() throws IOException {
         ObservableList<Stage> stage = FXRobotHelper.getStages();
         Scene scene = new Scene((Parent) FXMLLoader.load(getClass().getResource("sceneHomePage.fxml")));

@@ -2,11 +2,7 @@ package presentation.userui;
 
 import businesslogic.logbl.LogController;
 import businesslogic.userbl.UserController;
-import businesslogicservice.userblservice.HotelOrderBlService;
-import enumData.Address;
-import enumData.OrderState;
 import enumData.RoomType;
-import enumData.TradeArea;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -19,57 +15,236 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import utility.UiFormatChanger;
 import vo.*;
-
 import java.io.IOException;
 import java.net.URL;
 import java.rmi.RemoteException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.ResourceBundle;
 
 /**
  * Created by Administrator on 2016/12/8.
  */
-public class uiHotelController implements Initializable{
+public class uiHotelController implements Initializable {
+    /**
+     * 用户界面控制器
+     */
     UserController userController = new UserController();
-    @FXML
-    /**
-     * 跳转到首页的按钮
-     */
-    private Button buttonHomePage;
-    @FXML
-    /**
-     * 跳转到我的订单的按钮
-     */
-    private Button buttonMyOrder;
-    @FXML
-    /**
-     * 跳转到浏览酒店的按钮
-     */
-    private Button buttonReadHotel;
-    @FXML
-    /**
-     * 跳转到搜索酒店的按钮
-     */
-    private Button buttonSearchHotel;
-    @FXML
-    /**
-     * 跳转到个人信息的按钮
-     */
-    private Button buttonUserInfo;
-    @FXML
-    /**
-     * 登出按钮
-     */
-    private Label buttonLogOut;
+
 
     /**
-     * 搜索按钮
+     * 酒店基本信息按钮
      */
     @FXML
-    private Button buttonSearch;
+    private Button buttonInfo;
+
+    /**
+     * 酒店房间类型按钮
+     */
+    @FXML
+    private Button buttonRoom;
+
+    /**
+     * 酒店的用户评价按钮
+     */
+    @FXML
+    private Button buttonComment;
+
+    /**
+     * 用户在酒店的历史订单按钮
+     */
+    @FXML
+    private Button buttonHistoryOrder;
+
+    /**
+     * 酒店基本信息板块
+     */
+    @FXML
+    private AnchorPane HotelInfoPane;
+
+    /**
+     * 酒店房间类型板块
+     */
+    @FXML
+    private AnchorPane HotelRoomPane;
+
+    /**
+     * 酒店的用户评价板块
+     */
+    @FXML
+    private AnchorPane UserCommentPane;
+
+    /**
+     * 用户在该酒店的历史订单板块
+     */
+    @FXML
+    private AnchorPane HistoryOrderPane;
+
+    /**
+     * 历史订单列表
+     */
+    @FXML
+    private TableView<tableDetailOrder> orderList;
+
+    /**
+     * 订单编号列
+     */
+    @FXML
+    private TableColumn<tableDetailOrder, String> columnID;
+
+    /**
+     * 入住时间列
+     */
+    @FXML
+    private TableColumn<tableDetailOrder, String> columnTime;
+
+    /**
+     * 订单状态列
+     */
+    @FXML
+    private TableColumn<tableDetailOrder, String> columnState;
+
+    /**
+     * 房间类型列
+     */
+    @FXML
+    private TableColumn<tableDetailOrder, String> columnRoomType;
+
+    /**
+     * 入住人数列
+     */
+    @FXML
+    private TableColumn<tableDetailOrder, Number> columnPeopleNumber;
+
+    /**
+     * 价格列
+     */
+    @FXML
+    private TableColumn<tableDetailOrder, Number> columnPrice;
+
+    /**
+     * 有无儿童列
+     */
+    @FXML
+    private TableColumn<tableDetailOrder, String> columnHaveChild;
+
+    /**
+     * 历史订单列表填充数据
+     */
+    private ObservableList<tableDetailOrder> Data = FXCollections.observableArrayList();
+
+    /**
+     * 酒店名称（大标题）
+     */
+    @FXML
+    private Label textHotelTitle;
+
+    /**
+     * 酒店信息——名称
+     */
+    @FXML
+    private Text textHotelName;
+
+    /**
+     * 酒店信息——详细地址
+     */
+    @FXML
+    private Text textDetailAddress;
+
+    /**
+     * 酒店信息——联系方式
+     */
+    @FXML
+    private Text textContactNumber;
+
+    /**
+     * 酒店信息——评分
+     */
+    @FXML
+    private Text textGrade;
+
+    /**
+     * 酒店信息——星级
+     */
+    @FXML
+    private Text textStar;
+
+    /**
+     * 酒店信息——简介
+     */
+    @FXML
+    private Text textIntroduction;
+
+    /**
+     * 单人房价格
+     */
+    @FXML
+    private Text singlePrice;
+
+    /**
+     * 单人房数量
+     */
+    @FXML
+    private Text singleNum;
+
+    /**
+     * 双人房价格
+     */
+    @FXML
+    private Text doublePrice;
+
+    /**
+     * 双人房数量
+     */
+    @FXML
+    private Text doubleNum;
+
+    /**
+     * 无障碍客房价格
+     */
+    @FXML
+    private Text disabledPrice;
+
+    /**
+     * 无障碍客房数量
+     */
+    @FXML
+    private Text disabledNum;
+
+    /**
+     * 第一条评价模块
+     */
+    @FXML
+    private AnchorPane comment1;
+
+    /**
+     * 第二条评价模块
+     */
+    @FXML
+    private AnchorPane comment2;
+
+    /**
+     * 第三条评价模块
+     */
+    @FXML
+    private AnchorPane comment3;
+
+    /**
+     * 第一条评价
+     */
+    @FXML
+    private Text textComment1;
+
+    /**
+     * 第二条评价
+     */
+    @FXML
+    private Text textComment2;
+
+    /**
+     * 第三条评价
+     */
+    @FXML
+    private Text textComment3;
 
     /**
      * 跳转界面的类
@@ -81,6 +256,7 @@ public class uiHotelController implements Initializable{
 
     /**
      * 跳转到首页
+     *
      * @throws IOException
      */
     public void gotoHomePage() throws IOException {
@@ -89,63 +265,57 @@ public class uiHotelController implements Initializable{
 
     /**
      * 跳转到我的订单
+     *
      * @throws IOException
      */
-    public void gotoMyOrder() throws IOException{
+    public void gotoMyOrder() throws IOException {
         jump.gotoMyOrder();
     }
 
     /**
      * 跳转到浏览酒店
+     *
      * @throws IOException
      */
-    public void gotoReadHotel() throws IOException{
+    public void gotoReadHotel() throws IOException {
         jump.gotoReadHotel();
     }
 
     /**
      * 跳转到搜索酒店
+     *
      * @throws IOException
      */
-    public void gotoSearchHotel() throws IOException{
+    public void gotoSearchHotel() throws IOException {
         jump.gotoSearchHotel();
     }
 
     /**
      * 跳转到个人信息
+     *
      * @throws IOException
      */
-    public void gotoUserInfo() throws IOException{
+    public void gotoUserInfo() throws IOException {
         jump.gotoUserInfo();
     }
 
     /**
      * 清空账号信息，并跳转回登录界面
+     *
      * @throws IOException
      */
-    public void LogOut() throws IOException{
+    public void LogOut() throws IOException {
         LogController logController = new LogController();
         logController.logOut();
         jump.gotoLogin();
     }
 
-    @FXML
-    private Button buttonInfo;
-    @FXML
-    private Button buttonRoom;
-    @FXML
-    private Button buttonComment;
-    @FXML
-    private Button buttonHistoryOrder;
-    @FXML
-    private AnchorPane HotelInfoPane;
-    @FXML
-    private AnchorPane HotelRoomPane;
-    @FXML
-    private AnchorPane UserCommentPane;
-    @FXML
-    private AnchorPane HistoryOrderPane;
-    public void showInfo() throws IOException{
+    /**
+     * 显示酒店的基本信息
+     *
+     * @throws IOException
+     */
+    public void showInfo() throws IOException {
         buttonInfo.setVisible(false);
         buttonRoom.setVisible(true);
         buttonComment.setVisible(true);
@@ -155,7 +325,13 @@ public class uiHotelController implements Initializable{
         UserCommentPane.setVisible(false);
         HistoryOrderPane.setVisible(false);
     }
-    public void showRoom() throws IOException{
+
+    /**
+     * 显示酒店的房间信息
+     *
+     * @throws IOException
+     */
+    public void showRoom() throws IOException {
         buttonInfo.setVisible(true);
         buttonRoom.setVisible(false);
         buttonComment.setVisible(true);
@@ -165,7 +341,13 @@ public class uiHotelController implements Initializable{
         UserCommentPane.setVisible(false);
         HistoryOrderPane.setVisible(false);
     }
-    public void showComment() throws IOException{
+
+    /**
+     * 显示酒店的用户评价
+     *
+     * @throws IOException
+     */
+    public void showComment() throws IOException {
         buttonInfo.setVisible(true);
         buttonRoom.setVisible(true);
         buttonComment.setVisible(false);
@@ -175,7 +357,13 @@ public class uiHotelController implements Initializable{
         UserCommentPane.setVisible(true);
         HistoryOrderPane.setVisible(false);
     }
-    public void showHistoryOrder() throws IOException{
+
+    /**
+     * 显示该用户在酒店的历史订单
+     *
+     * @throws IOException
+     */
+    public void showHistoryOrder() throws IOException {
         buttonInfo.setVisible(true);
         buttonRoom.setVisible(true);
         buttonComment.setVisible(true);
@@ -185,54 +373,34 @@ public class uiHotelController implements Initializable{
         UserCommentPane.setVisible(false);
         HistoryOrderPane.setVisible(true);
     }
-    @FXML
-    private Button buttonReserve;
 
     /**
-     *跳转到预订酒店界面
+     * 跳转到预订酒店界面
+     *
      * @throws IOException
      */
-    public void gotoReserveHotel() throws IOException{
+    public void gotoReserveHotel() throws IOException {
         jump.gotoReserveHotel();
     }
 
 
-    @FXML
-    private TableView<tableDetailOrder> orderList;
-    @FXML
-    private TableColumn<tableDetailOrder,String> columnID;
-    @FXML
-    private TableColumn<tableDetailOrder,String> columnTime;
-    @FXML
-    private TableColumn<tableDetailOrder,String> columnState;
-    @FXML
-    private TableColumn<tableDetailOrder,String> columnRoomType;
-    @FXML
-    private TableColumn<tableDetailOrder,Number> columnPeopleNumber;
-    @FXML
-    private TableColumn<tableDetailOrder,Number> columnPrice;
-    @FXML
-    private TableColumn<tableDetailOrder,String> columnHaveChild;
-
-
-    private ObservableList<tableDetailOrder> Data = FXCollections.observableArrayList();
-
     /**
      * 初始化订单信息
+     *
      * @param list 订单列表
      * @throws RemoteException
      */
     public void initTable(ArrayList<OrderVO> list) throws RemoteException {
         ObservableList<tableDetailOrder> orderData = FXCollections.observableArrayList();
-        for(int i = 0; i < list.size(); i++){
-            HotelinfoVO hotel = userController.readHotel(list.get(i).getHotelID());
+        for (int i = 0; i < list.size(); i++) {
             String date = "";
-            date = UiFormatChanger.dateToString(list.get(i).getCheckInDate())+" 至 "+ UiFormatChanger.dateToString(list.get(i).getCheckOutDate());
-            String havecd ;
-            if(list.get(i).isHaveChild()){havecd = "是";}
-            else havecd = "否";
-            orderData.add(new tableDetailOrder(list.get(i).getOrderID(),date, UiFormatChanger.stateTOstring(list.get(i).getOrderState())
-            ,list.get(i).getPeopleNumber(),list.get(i).getPrice(),havecd,UiFormatChanger.typeTOstring(list.get(i).getRoomType())));
+            date = UiFormatChanger.dateToString(list.get(i).getCheckInDate()) + " 至 " + UiFormatChanger.dateToString(list.get(i).getCheckOutDate());
+            String havecd;
+            if (list.get(i).isHaveChild()) {
+                havecd = "是";
+            } else havecd = "否";
+            orderData.add(new tableDetailOrder(list.get(i).getOrderID(), date, UiFormatChanger.stateTOstring(list.get(i).getOrderState())
+                    , list.get(i).getPeopleNumber(), list.get(i).getPrice(), havecd, UiFormatChanger.typeTOstring(list.get(i).getRoomType())));
         }
         orderList.setItems(orderData);
         columnID.setCellValueFactory(cellData -> cellData.getValue().OrderIDProperty());
@@ -245,27 +413,12 @@ public class uiHotelController implements Initializable{
         Data = orderData;
     }
 
-
-    @FXML
-    private Label textHotelTitle;
-    @FXML
-    private Text textHotelName;
-    @FXML
-    private Text textDetailAddress;
-    @FXML
-    private Text textContactNumber;
-    @FXML
-    private Text textGrade;
-    @FXML
-    private Text textStar;
-    @FXML
-    private Text textIntroduction;
-
     /**
      * 初始化酒店基本信息
+     *
      * @param currentHotel 当前酒店
      */
-    public void initHotelInfo(HotelinfoVO currentHotel){
+    public void initHotelInfo(HotelinfoVO currentHotel) {
         textHotelTitle.setText(currentHotel.getHotelname());
         textHotelName.setText(currentHotel.getHotelname());
         textDetailAddress.setText(currentHotel.getDetailAddress());
@@ -274,63 +427,49 @@ public class uiHotelController implements Initializable{
         textStar.setText(String.valueOf(currentHotel.getStar()));
         textIntroduction.setText(currentHotel.getIntroduction());
     }
-    @FXML
-    private Text singlePrice;
-    @FXML
-    private Text singleNum;
-    @FXML
-    private Text doublePrice;
-    @FXML
-    private Text doubleNum;
-    @FXML
-    private Text disabledPrice;
-    @FXML
-    private Text disabledNum;
 
     /**
      * 初始化房间信息
+     *
      * @param roomlist 房间信息列表
      */
-    public void initRoomInfo(ArrayList<HotelroomVO> roomlist){
-        for(int i = 0; i < roomlist.size(); i++){
-            if(roomlist.get(i).getRoomType()==RoomType.SingleRoom){
+    public void initRoomInfo(ArrayList<HotelroomVO> roomlist) {
+        for (int i = 0; i < roomlist.size(); i++) {
+            if (roomlist.get(i).getRoomType() == RoomType.SingleRoom) {
                 singlePrice.setText(String.valueOf(roomlist.get(i).getPrice()));
                 singleNum.setText(String.valueOf(roomlist.get(i).getRoomNumber()));
-            }if(roomlist.get(i).getRoomType()==RoomType.DoubleRoom){
+            }
+            if (roomlist.get(i).getRoomType() == RoomType.DoubleRoom) {
                 doublePrice.setText(String.valueOf(roomlist.get(i).getPrice()));
                 doubleNum.setText(String.valueOf(roomlist.get(i).getRoomNumber()));
-            }if(roomlist.get(i).getRoomType()==RoomType.DisabledRoom){
+            }
+            if (roomlist.get(i).getRoomType() == RoomType.DisabledRoom) {
                 disabledPrice.setText(String.valueOf(roomlist.get(i).getPrice()));
                 disabledNum.setText(String.valueOf(roomlist.get(i).getRoomNumber()));
             }
         }
     }
-    @FXML
-    private AnchorPane comment1;
-    @FXML
-    private AnchorPane comment2;
-    @FXML
-    private AnchorPane comment3;
-    @FXML
-    private Text textComment1;
-    @FXML
-    private Text textComment2;
-    @FXML
-    private Text textComment3;
 
-    public void initComment(ArrayList<CommentVO> list){
-
-        if(list.size()==1){
+    /**
+     * 初始化评价信息
+     *
+     * @param list 评价列表
+     */
+    public void initComment(ArrayList<CommentVO> list) {
+        //如果该酒店只有一条评价，则只显示第一条评价模块
+        if (list.size() == 1) {
             comment1.setVisible(true);
             textComment1.setText(list.get(0).getComment());
         }
-        if(list.size()==2){
+        //如果该酒店只有两条评价，则只显示第一条、第二条评价模块
+        if (list.size() == 2) {
             comment1.setVisible(true);
             textComment1.setText(list.get(0).getComment());
             comment2.setVisible(true);
             textComment2.setText(list.get(1).getComment());
         }
-        if(list.size()>=3){
+        //如果该酒店有三条及以上评价，显示最新三条评价
+        if (list.size() >= 3) {
             comment1.setVisible(true);
             textComment1.setText(list.get(0).getComment());
             comment2.setVisible(true);
@@ -340,11 +479,17 @@ public class uiHotelController implements Initializable{
         }
     }
 
+    /**
+     * 初始化酒店信息
+     *
+     * @param location
+     * @param resources
+     */
     @Override
-    public void initialize (URL location, ResourceBundle resources) {
+    public void initialize(URL location, ResourceBundle resources) {
 
         try {
-            HotelinfoVO currentHotel  = userController.readHotel(jump.getHotelID());
+            HotelinfoVO currentHotel = userController.readHotel(jump.getHotelID());
             ArrayList<OrderVO> orderlist = userController.getHotelOrderByUserID(jump.getHotelID());
             ArrayList<HotelroomVO> roomlist = userController.getRooms(jump.getHotelID());
             ArrayList<CommentVO> commentlist = userController.getComments(jump.getHotelID());
@@ -355,7 +500,7 @@ public class uiHotelController implements Initializable{
         } catch (RemoteException e) {
             e.printStackTrace();
         }
-
+        //默认首页为酒店基本信息
         buttonInfo.setVisible(false);
     }
 }

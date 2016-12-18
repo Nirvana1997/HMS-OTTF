@@ -58,6 +58,13 @@
             <version>RELEASE</version>
         </dependency>
         <dependency>
+            <groupId>com.sun</groupId>
+            <artifactId>tools</artifactId>
+            <version>1.6</version>
+            <scope>system</scope>
+            <systemPath>${java.home}/../lib/tools.jar</systemPath>
+        </dependency>
+        <dependency>
             <groupId>com.oracle</groupId>
             <artifactId>javafx</artifactId>
             <version>8.0.65-b17</version>
