@@ -8,6 +8,7 @@ import po.OrderPO;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.AbstractList;
 import java.util.ArrayList;
 
 /**
@@ -67,6 +68,49 @@ public class OrderDataImpl extends UnicastRemoteObject implements OrderDataServi
         DataBaseHelper.in("update OrderInfo set address = '" + po.getAddress() + "' where orderID = '" + po.getOrderID() +"'");
         DataBaseHelper.in("update OrderInfo set detailAddress = '" + po.getDetailAddress() + "' where orderID = '" + po.getOrderID() +"'");
         return ResultMessage.Correct;
+    }
+
+    /**
+     * 根据订单状态，去搜索相应的订单
+     * @param orderState 订单状态
+     * @return
+     * @throws RemoteException
+     */
+    @Override
+    public ArrayList<OrderPO> getOrderList(OrderState orderState) throws RemoteException {
+        ArrayList<OrderPO> orderPOs = new ArrayList<OrderPO>();
+        ArrayList<String> orderIDList = DataBaseHelper.out("select orderID from OrderInfo where orderState ='" + orderState + "'","orderID");
+        ArrayList<String> hotelIDList = DataBaseHelper.out("select hotelID from OrderInfo where orderState ='" + orderState + "'","hotelID");
+        ArrayList<String> userIDList = DataBaseHelper.out("select userID from OrderInfo where orderState ='" + orderState + "'","userID");
+        ArrayList<String> roomIDList = DataBaseHelper.out("select roomID from OrderInfo where orderState ='" + orderState + "'","roomID");
+        ArrayList<String> roomNumberList = DataBaseHelper.out("select roomNumber from OrderInfo where orderState ='" + orderState + "'","roomNumber");
+        ArrayList<String> peopleNumberList = DataBaseHelper.out("select peopleNumber from OrderInfo where orderState ='" + orderState + "'","peopleNumber");
+        ArrayList<String> checkInDateList = DataBaseHelper.out("select checkInDate from OrderInfo where orderState ='" + orderState + "'","checkInDate");
+        ArrayList<String> checkOutDateList = DataBaseHelper.out("select checkOutDate from OrderInfo where orderState ='" + orderState + "'","checkOutDate");
+        ArrayList<String> roomTypeList = DataBaseHelper.out("select roomType from OrderInfo where orderState ='" + orderState + "'","roomType");
+        ArrayList<String> priceList = DataBaseHelper.out("select price from OrderInfo where orderState ='" + orderState + "'","price");
+        ArrayList<String> haveChildList = DataBaseHelper.out("select haveChild from OrderInfo where orderState ='" + orderState + "'","haveChild");
+        ArrayList<String> hotelNameList = DataBaseHelper.out("select hotelName from OrderInfo where orderState ='" + orderState + "'","hotelName");
+        ArrayList<String> promotionNameList = DataBaseHelper.out("select promotionName from OrderInfo where orderState ='" + orderState + "'","promotionName");
+        ArrayList<String> tradeAreaList = DataBaseHelper.out("select tradeArea from OrderInfo where orderState ='" + orderState + "'","tradeArea");
+        ArrayList<String> addressList = DataBaseHelper.out("select address from OrderInfo where orderState ='" + orderState + "'","address");
+        ArrayList<String> detailAddressList = DataBaseHelper.out("select detailAddress from OrderInfo where orderState ='" + orderState + "'","detailAddress");
+        for(int i=0;i<orderIDList.size();i++){
+            RoomType roomType = null;
+            TradeArea tradeArea = null;
+            Address address = null;
+            try {
+                roomType = Enum.valueOf(RoomType.class,roomTypeList.get(i).trim());
+                tradeArea = Enum.valueOf(TradeArea.class,tradeAreaList.get(i).trim());
+                address = Enum.valueOf(Address.class,addressList.get(i).trim());
+            }catch (IllegalArgumentException ex){
+                ex.printStackTrace();
+            }
+            orderPOs.add(new OrderPO(orderIDList.get(i),hotelIDList.get(i),userIDList.get(i),roomIDList.get(i),Integer.parseInt(roomNumberList.get(i)),Integer.parseInt(peopleNumberList.get(i)),
+                    orderState,checkInDateList.get(i),checkOutDateList.get(i),roomType,Double.parseDouble(priceList.get(i)),Boolean.getBoolean(haveChildList.get(i)),
+                    hotelNameList.get(i),promotionNameList.get(i),tradeArea,address,detailAddressList.get(i)));
+        }
+        return orderPOs;
     }
 
     /**

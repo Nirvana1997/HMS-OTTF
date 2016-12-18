@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configs>
+    <order>
+        <!--最晚执行时间（小时）-->
+        <latestTime h="20"/>
+        <!--距离最晚执行时间不足h小时数时撤销订单，扣除p比例的信用值-->
+        <cancelPunishment h="6" p="0.5"/>
+        <!--单次订单超过该数量，则有特惠-->
+        <discountNum n="3"/>
+        <!--最低可预定信用-->
+        <minCredit min="0"/>
+    </order>
+
+    <log>
+        <!--各类人员的编号标识位-->
+        <IDsignal webmanager="00" user="00" hotelsaler="02" websaler="03"/>
+    </log>
+
+    <websaler>
+        <!--最大会员等级-->
+        <maxVipLevel level="3"/>
+        <!--充值时1元对应的信用值-->
+        <rate r="100"/>
+    </websaler>
+
+    <user>
+        <!--常见导致信用变化的原因-->
+        <reason cancelException="撤销异常订单申诉成功" recharge="充值成功" execute="执行订单" delay="延时入住" late="在离最晚执行时间不足6小时内撤销订单"/>
+    </user>
+</configs>

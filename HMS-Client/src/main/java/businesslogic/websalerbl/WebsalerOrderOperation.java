@@ -52,8 +52,9 @@ public class WebsalerOrderOperation {
     }
 
     public void cancelExceptionOrder(CanceledExceptionOrderVO vo, CreditRecoverWay creditRecoverWay) throws RemoteException {
-        webOrderInfo.updateExceptionOrder(vo);
+        webOrderInfo.addExceptionOrder(vo);
         OrderVO orderVO = webOrderInfo.getOrder(vo.getOrderID());
+        orderVO.setOrderState(OrderState.canceled);
         //恢复全部信用
         if(creditRecoverWay.equals(CreditRecoverWay.All))
             creditInfo.addCredit(new CreditChangePO(orderVO.getUserID(),vo.getOrderID(),vo.getCancelDate(), Temp.reasonOfCancelException,(int)orderVO.getPrice()));
