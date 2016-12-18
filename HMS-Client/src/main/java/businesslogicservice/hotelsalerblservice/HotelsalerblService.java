@@ -41,6 +41,22 @@ public interface HotelsalerblService {
     /**
      * 执行订单
      *
+     * @param vo 订单信息
+     * @throws RemoteException
+     */
+    public void executeOrder(OrderVO vo) throws RemoteException;
+
+    /**
+     * 更新订单的入住和退房时间、置为未执行订单
+     *
+     * @param vo
+     * @throws RemoteException
+     */
+    public void delayOrder(OrderVO vo) throws RemoteException;
+
+    /**
+     * 执行订单
+     *
      * @param orderID 订单ID
      * @throws RemoteException
      */

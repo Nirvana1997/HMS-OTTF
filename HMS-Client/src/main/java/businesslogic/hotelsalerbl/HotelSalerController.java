@@ -95,6 +95,16 @@ public class HotelSalerController implements HotelsalerblService,HotelinfoblServ
     }
 
     @Override
+    public void executeOrder(OrderVO vo) throws RemoteException {
+        hotelOrderOperation.executeOrder(vo);
+    }
+
+    @Override
+    public void delayOrder(OrderVO vo) throws RemoteException {
+        hotelOrderOperation.delayOrder(vo);
+    }
+
+    @Override
     public void executeOrder(String orderID) throws RemoteException {
 //        kk
     }
