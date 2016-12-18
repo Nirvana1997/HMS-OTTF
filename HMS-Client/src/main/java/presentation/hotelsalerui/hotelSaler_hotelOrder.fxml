@@ -9,6 +9,7 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -87,7 +88,7 @@
             </Label>
          </children>
       </VBox>
-      <AnchorPane fx:id="paneTable" layoutX="250.0" prefHeight="618.0" prefWidth="750.0" style="-fx-background-color: #FFFFFF;">
+      <AnchorPane fx:id="paneTable" layoutX="250.0" prefHeight="618.0" prefWidth="750.0" style="-fx-background-color: #FFFFFF;" visible="false">
          <children>
             <TableView fx:id="orderList" layoutX="51.0" layoutY="84.0" prefHeight="450.0" prefWidth="636.0">
               <columns>
@@ -118,7 +119,7 @@
             </MenuButton>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="paneDetailedOrder" layoutX="250.0" prefHeight="618.0" prefWidth="750.0" style="-fx-background-color: #FFFFFF;" visible="false">
+      <AnchorPane fx:id="paneDetailedOrder" layoutX="250.0" prefHeight="618.0" prefWidth="750.0" style="-fx-background-color: #FFFFFF;">
          <children>
             <Label layoutX="37.0" layoutY="79.0" text="订单编号：">
                <font>
@@ -266,6 +267,41 @@
                   <Font size="18.0" />
                </font>
             </Label>
+            <Button layoutX="349.0" layoutY="503.0" mnemonicParsing="false" onAction="#excuteOrder" text="执行订单">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <AnchorPane fx:id="paneExcuteOrder" layoutX="41.0" layoutY="423.0" prefHeight="142.0" prefWidth="625.0" visible="false">
+               <children>
+                  <Label layoutY="29.0" text="房间号：">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="textFieldRoomID" layoutX="72.0" layoutY="23.0" prefHeight="36.0" prefWidth="126.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </TextField>
+                  <Button layoutX="118.0" layoutY="78.0" mnemonicParsing="false" onAction="#confirmExcuteOrder" text="确认">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="214.0" layoutY="79.0" mnemonicParsing="false" onAction="#cancelExcuteOrder" text="取消">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Button>
+                  <DatePicker fx:id="datePickerCheckInTime" layoutX="378.0" layoutY="25.0" prefHeight="32.0" prefWidth="186.0" />
+                  <Label layoutX="244.0" layoutY="29.0" text="实际入住时间：">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
          </children>
       </AnchorPane>
    </children>
