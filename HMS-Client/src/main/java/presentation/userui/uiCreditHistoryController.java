@@ -10,6 +10,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import utility.UiFormatChanger;
+import vo.CreditRecordVO;
 import vo.HotelinfoVO;
 import vo.OrderVO;
 
@@ -138,10 +139,11 @@ public class uiCreditHistoryController implements Initializable{
      * @param list 信用变化
      * @throws RemoteException
      */
-    public void initTable(ArrayList<OrderVO> list) throws RemoteException {
+    public void initTable(ArrayList<CreditRecordVO> list) throws RemoteException {
         ObservableList<tableCredit> creditData = FXCollections.observableArrayList();
         for(int i = 0; i < list.size(); i++) {
-
+            creditData.add(new tableCredit(list.get(i).getDate(), list.get(i).getOrderID(),list.get(i).getReason(),
+                    list.get(i).getChange(),list.get(i).getFinalCredit()));
         }
         creditList.setItems(creditData);
         columnID.setCellValueFactory(cellData -> cellData.getValue().orderIDProperty());
@@ -155,5 +157,13 @@ public class uiCreditHistoryController implements Initializable{
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         //TODO 初始化信用变化记录
+        ArrayList<CreditRecordVO> creditlist = null;
+        try {
+            creditlist = userController.showCreditRecords();
+            initTable(creditlist);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+
     }
 }
