@@ -1,7 +1,9 @@
 package presentation.hotelsalerui;
 
 import businesslogic.hotelsalerbl.HotelSalerController;
+import businesslogic.logbl.LogController;
 import businesslogicservice.hotelsalerblservice.HotelroomblService;
+import businesslogicservice.logblservice.LogBlService;
 import com.sun.javafx.robot.impl.FXRobotHelper;
 import enumData.RoomType;
 import javafx.collections.ObservableList;
@@ -9,6 +11,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+import utility.UiFormatChanger;
 import vo.BelowLineOrderVO;
 import vo.HotelroomVO;
 
@@ -29,6 +32,7 @@ public class uiHotelRoomController implements Initializable{
     private SceneJump sceneJump = new SceneJump();
     String hotelID = "";
     HotelroomblService hotelroombl = new HotelSalerController();
+    LogBlService logBl = new LogController();
     ArrayList<HotelroomVO> roomArray;
     RoomType roomType;
 
@@ -104,14 +108,7 @@ public class uiHotelRoomController implements Initializable{
     @FXML
     private DatePicker datePickerEndTime;
 
-    /**
-     * 获取日期
-     * @param ld 日期选取器
-     * @return Date格式的日期
-     */
-    public static Date getDate(DatePicker ld) throws ParseException {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        return sdf.parse(ld.getValue().toString());
+    public uiHotelRoomController() throws RemoteException {
     }
 
     /**
@@ -328,6 +325,7 @@ public class uiHotelRoomController implements Initializable{
      */
     public void onClickedLabelExit() throws IOException {
         sceneJump.backToLogin();
+        logBl.logOut();
     }
 
     /**
@@ -368,8 +366,8 @@ public class uiHotelRoomController implements Initializable{
     public void confirmOffLine(){
         if(checkBoxCheckIn.isSelected()){
             try {
-                Date dateBegin = getDate(datePickerBeginTime);
-                Date dateEnd = getDate(datePickerEndTime);
+                Date dateBegin = UiFormatChanger.getDate(datePickerBeginTime);
+                Date dateEnd = UiFormatChanger.getDate(datePickerEndTime);
                 BelowLineOrderVO vo = new BelowLineOrderVO(hotelID, dateBegin, dateEnd, roomType, Integer.parseInt(textFieldRoomNum.getText()));
                 try {
                     hotelroombl.setOrdered(vo);
@@ -383,8 +381,8 @@ public class uiHotelRoomController implements Initializable{
 
         if(checkBoxCheckOut.isSelected()){
             try {
-                Date dateBegin = getDate(datePickerBeginTime);
-                Date dateEnd = getDate(datePickerEndTime);
+                Date dateBegin = UiFormatChanger.getDate(datePickerBeginTime);
+                Date dateEnd = UiFormatChanger.getDate(datePickerEndTime);
                 BelowLineOrderVO vo = new BelowLineOrderVO(hotelID, dateBegin, dateEnd, roomType, Integer.parseInt(textFieldRoomNum.getText()));
                 try {
                     hotelroombl.setEmpty(vo);

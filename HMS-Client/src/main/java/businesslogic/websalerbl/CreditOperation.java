@@ -1,9 +1,13 @@
 package businesslogic.websalerbl;
 
 import businesslogic.userbl.impl.UserDataImpl;
+import com.sun.org.apache.xalan.internal.xsltc.compiler.util.ResultTreeType;
 import enumData.ResultMessage;
+import po.CreditChangePO;
+import po.CreditRecordPO;
 
 import java.rmi.RemoteException;
+import java.util.ResourceBundle;
 
 /**
  * 信用值操作模块
@@ -25,12 +29,11 @@ public class CreditOperation {
     /**
      * 为用户增加信用值
      *
-     * @param userID 用户ID
-     * @param value  增加的值
+     * @param po 信用记录PO
      * @return 是否成功
      */
-    public ResultMessage addCredit(String userID,int value) throws RemoteException {
-        return creditInfo.addCredit(userID,value);
+    public ResultMessage addCredit(CreditChangePO po) throws RemoteException {
+        return creditInfo.addCredit(po);
     }
 
     /**

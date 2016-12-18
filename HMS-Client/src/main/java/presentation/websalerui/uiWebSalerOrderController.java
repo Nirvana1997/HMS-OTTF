@@ -1,5 +1,11 @@
 package presentation.websalerui;
 
+import businesslogic.logbl.LogController;
+import businesslogic.websalerbl.WebsalerController;
+import businesslogicservice.logblservice.LogBlService;
+import businesslogicservice.websalerblservice.WebsalerblService;
+import enumData.CreditRecoverWay;
+import enumData.OrderState;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -7,10 +13,15 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import presentation.websalerui.TableOrder;
+import utility.UiFormatChanger;
+import vo.CanceledExceptionOrderVO;
+import vo.OrderVO;
 
 import java.io.IOException;
 import java.net.URL;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 /**
@@ -19,6 +30,8 @@ import java.util.ResourceBundle;
 public class uiWebSalerOrderController implements Initializable {
 
     private SceneJump sceneJump = new SceneJump();
+    WebsalerblService websalerbl = new WebsalerController();
+    LogBlService logBl = new LogController();
 
     /**
      * 登出按钮
@@ -33,18 +46,6 @@ public class uiWebSalerOrderController implements Initializable {
     private MenuButton menuButtonChooseOrderState;
 
     /**
-     * 订单编号输入textField
-     */
-    @FXML
-    private TextField textFieldOrderId;
-
-    /**
-     * 订单不存在warning
-     */
-    @FXML
-    private Label labelWarning;
-
-    /**
      * 订单表格pane
      */
     @FXML
@@ -56,6 +57,18 @@ public class uiWebSalerOrderController implements Initializable {
     @FXML
     private AnchorPane paneDetailedOrder;
 
+    /**
+     * 恢复全部信用checkBox
+     */
+    @FXML
+    private CheckBox checkBoxAllCredit;
+
+    /**
+     * 恢复一半信用checkBox
+     */
+    @FXML
+    private CheckBox checkBoxHalfCredit;
+
     @FXML
     private TableView<TableOrder> orderList;
     @FXML
@@ -65,12 +78,15 @@ public class uiWebSalerOrderController implements Initializable {
     @FXML
     private TableColumn<TableOrder,String> columnHotelID;
     @FXML
-    private TableColumn<TableOrder,String> columnReason;
-    @FXML
     private TableColumn<TableOrder,String> columnState;
 
-    private ObservableList<TableOrder> orderData = FXCollections.observableArrayList();
-    private ArrayList<TableOrder> orderArray = new ArrayList<>();
+    private ObservableList<TableOrder> unCancledOrderData = FXCollections.observableArrayList();
+    private ObservableList<TableOrder> cancledOrderData = FXCollections.observableArrayList();
+    private ArrayList<TableOrder> uncancledOrderArray = new ArrayList<>();
+    private ArrayList<TableOrder> cancledOrderArray = new ArrayList<>();
+
+    public uiWebSalerOrderController() throws RemoteException {
+    }
 
     /**
      * 跳转到销售策略界面
@@ -80,22 +96,57 @@ public class uiWebSalerOrderController implements Initializable {
     }
 
     /**
+     * 将orderVO对象转化为TableOrder对象
+     * @param vo
+     * @return
+     */
+    private TableOrder transVoTOTableOrder(OrderVO vo){
+        String orderid = vo.getOrderID();
+        String userid = vo.getUserID();
+        String hotelid = vo.getHotelID();
+        String state = UiFormatChanger.stateTOstring(vo.getOrderState());
+        TableOrder tableOrder = new TableOrder(orderid,userid,hotelid,state);
+        return  tableOrder;
+    }
+
+    /**
      * 初始化：获取用户列表，并显示
      * @param location
      * @param resources
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        orderArray.add(new TableOrder("UR151250064","萱萱","萱萱大酒店","未撤销","酒店信息与实际有误"));
-        orderArray.add(new TableOrder("UR151250045","蝶蝶","萱萱大酒店","已撤销","酒店信息与实际有误"));
-        for (int i = 0; i < orderArray.size(); i++) {
-            orderData.add(orderArray.get(i));
+        try {
+            // 未撤销订单
+            ArrayList<OrderVO> tempList = websalerbl.getOrderByState(OrderState.abnormal);
+            for (int i = 0; i < tempList.size(); i++) {
+                TableOrder tempTableOrder = this.transVoTOTableOrder(tempList.get(i));
+                uncancledOrderArray.add(tempTableOrder);
+            }
+            // 已撤销订单
+            ArrayList<OrderVO> tempList2 = websalerbl.getCanceledExceptionOrderInfos();
+            for (int i = 0; i < tempList2.size(); i++) {
+                TableOrder tempTableOrder = this.transVoTOTableOrder(tempList2.get(i));
+                cancledOrderArray.add(tempTableOrder);
+            }
+        } catch (RemoteException e) {
+            e.printStackTrace();
         }
-        orderList.setItems(orderData);
+
+        // 未撤销订单
+        for (int i = 0; i < uncancledOrderArray.size(); i++) {
+            unCancledOrderData.add(uncancledOrderArray.get(i));
+        }
+
+        // 已撤销订单
+        for (int i = 0; i < cancledOrderArray.size(); i++) {
+            cancledOrderData.add(cancledOrderArray.get(i));
+        }
+
+        orderList.setItems(unCancledOrderData);
         columnOrderID.setCellValueFactory(cellData -> cellData.getValue().OrderIDProperty());
         columnUserID.setCellValueFactory(cellData -> cellData.getValue().UserIDProperty());
         columnHotelID.setCellValueFactory(cellData -> cellData.getValue().HotelIDProperty());
-        columnReason.setCellValueFactory(cellData -> cellData.getValue().ReasonProperty());
         columnState.setCellValueFactory(cellData -> cellData.getValue().StateProperty());
     }
 
@@ -136,22 +187,13 @@ public class uiWebSalerOrderController implements Initializable {
      */
     public void onClickedLabelExit() throws IOException {
         sceneJump.backToLogin();
-    }
-
-    /**
-     * 选择查看全部订单
-     */
-    public void checkAllOrder() {
-        textFieldOrderId.setText("");
-        menuButtonChooseOrderState.setText("全部订单");
-        this.refreshTable("全部订单");
+        logBl.logOut();
     }
 
     /**
      * 选择查看撤销订单
      */
     public void checkRevokeOrder() {
-        textFieldOrderId.setText("");
         menuButtonChooseOrderState.setText("撤销订单");
         this.refreshTable("已撤销");
     }
@@ -160,56 +202,23 @@ public class uiWebSalerOrderController implements Initializable {
      * 选择查看未撤销订单
      */
     public void checkNotRevokeOrder() {
-        textFieldOrderId.setText("");
         menuButtonChooseOrderState.setText("未撤销订单");
         this.refreshTable("未撤销");
-    }
-
-    /**
-     * 根据订单编号查询
-     */
-    public void searchByOrderId(){
-        String id = textFieldOrderId.getText();
-        orderData = FXCollections.observableArrayList();
-        boolean isFound = false;
-        for (int i = 0; i < orderArray.size(); i++) {
-            if (orderArray.get(i).getOrderID().equals(id)) {
-                orderData.add(orderArray.get(i));
-                isFound = true;
-                labelWarning.setVisible(false);
-            }
-        }
-        if(isFound){
-            orderList.setItems(orderData);
-            columnOrderID.setCellValueFactory(cellData -> cellData.getValue().OrderIDProperty());
-            columnUserID.setCellValueFactory(cellData -> cellData.getValue().UserIDProperty());
-            columnHotelID.setCellValueFactory(cellData -> cellData.getValue().HotelIDProperty());
-            columnReason.setCellValueFactory(cellData -> cellData.getValue().ReasonProperty());
-            columnState.setCellValueFactory(cellData -> cellData.getValue().StateProperty());
-        }else {
-            labelWarning.setVisible(true);
-        }
     }
 
     /**
      * 刷新表单信息
      */
     private void refreshTable(String state) {
-        if(state.equals("全部订单")){
-            orderList.setItems(orderData);
+        if (state.equals("未撤销")){
+            orderList.setItems(unCancledOrderData);
         }
-        else{
-            orderData = FXCollections.observableArrayList();
-            for (int i = 0; i < orderArray.size(); i++) {
-                if (orderArray.get(i).getState().equals(state))
-                    orderData.add(orderArray.get(i));
-            }
-            orderList.setItems(orderData);
+        else if(state.equals("已撤销")){
+            orderList.setItems(cancledOrderData);
         }
         columnOrderID.setCellValueFactory(cellData -> cellData.getValue().OrderIDProperty());
         columnUserID.setCellValueFactory(cellData -> cellData.getValue().UserIDProperty());
         columnHotelID.setCellValueFactory(cellData -> cellData.getValue().HotelIDProperty());
-        columnReason.setCellValueFactory(cellData -> cellData.getValue().ReasonProperty());
         columnState.setCellValueFactory(cellData -> cellData.getValue().StateProperty());
     }
 
@@ -237,40 +246,62 @@ public class uiWebSalerOrderController implements Initializable {
     private AnchorPane paneChooseCredit;
     @FXML
     private AnchorPane paneRevokeTime;
+    @FXML
+    private Label labelCreditWarning;
 
     /**
      * 查看详细订单
      */
     public void checkDetailedOrder(){
-        for(int i = 0; i < orderData.size();i++){
-            if(orderList.getSelectionModel().isSelected(i)){
-                break;
-            }
-        }
+//        for(int i = 0; i < unCancledOrderData.size();i++){
+//            if(orderList.getSelectionModel().isSelected(i)){
+//                break;
+//            }
+//        }
         String orderId = orderList.getSelectionModel().getSelectedItem().getOrderID();
         String state = orderList.getSelectionModel().getSelectedItem().getState();
 
         if(state.equals("未撤销")){
             paneChooseCredit.setVisible(true);
             paneRevokeTime.setVisible(false);
+            this.initPaneDetailedOrder(orderId, "未撤销");
         }
         else if(state.equals("已撤销")){
             paneChooseCredit.setVisible(false);
             paneRevokeTime.setVisible(true);
+            this.initPaneDetailedOrder(orderId, "已撤销");
         }
         paneOrderTable.setVisible(false);
         paneDetailedOrder.setVisible(true);
-        this.initPaneDetailedOrder(orderId);
+        labelCreditWarning.setVisible(false);
     }
 
     /**
      * 初始化详细订单界面
      */
-    public void initPaneDetailedOrder(String orderId) {
-        for (int i = 0; i < orderArray.size(); i++) {
-            if(orderArray.get(i).getOrderID().equals(orderId)){
-                //
+    public void initPaneDetailedOrder(String orderId, String state) {
+        try {
+            OrderVO vo = websalerbl.getOrderByID(orderId);
+            labelOrderId.setText(vo.getOrderID());
+            lanelUserId.setText(vo.getUserID());
+            labelOrderState.setText(UiFormatChanger.stateTOstring(vo.getOrderState()));
+            labelHotelName.setText(vo.getHotelname());
+            labelRoomType.setText(UiFormatChanger.typeTOstring(vo.getRoomType()));
+            labelRoomNum.setText(String.valueOf(vo.getRoomNumber()));
+            labelBookedTime.setText(UiFormatChanger.dateToString(vo.getCheckInDate()));
+            labelTotalMoney.setText(String.valueOf(vo.getPrice()));
+
+            if (state.equals("已撤销")){
+                CanceledExceptionOrderVO vo2 = websalerbl.getCanceledExceptionOrder(orderId);
+                textAreaReason.setText(vo2.getCancelReason());
+                labelRevokeTime.setText(vo2.getCancelDate() + vo2.getCancelTime());
             }
+            else if (state.equals("未撤销")){
+                textAreaReason.setText("");
+                labelRevokeTime.setText("");
+            }
+        } catch (RemoteException e) {
+            e.printStackTrace();
         }
     }
 
@@ -281,4 +312,39 @@ public class uiWebSalerOrderController implements Initializable {
         paneOrderTable.setVisible(true);
         paneDetailedOrder.setVisible(false);
     }
+
+    public void chooseAllCredit(){
+        checkBoxAllCredit.setSelected(true);
+        checkBoxHalfCredit.setSelected(false);
+    }
+    public void chooseHalfCredit(){
+        checkBoxHalfCredit.setSelected(true);
+        checkBoxAllCredit.setSelected(false);
+    }
+
+    /**
+     * 撤销方法
+     */
+    public void revokeOrder(){
+        if(checkBoxHalfCredit.isSelected()){
+            CanceledExceptionOrderVO vo = new CanceledExceptionOrderVO(labelOrderId.getText(), textAreaReason.getText());
+            try {
+                websalerbl.cancelExceptionOrder(vo, CreditRecoverWay.Half);
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
+        }
+        else if(checkBoxAllCredit.isSelected()){
+            CanceledExceptionOrderVO vo = new CanceledExceptionOrderVO(labelOrderId.getText(), textAreaReason.getText());
+            try {
+                websalerbl.cancelExceptionOrder(vo, CreditRecoverWay.All);
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
+        }
+        else{
+            labelCreditWarning.setVisible(true);
+        }
+    }
+
 }

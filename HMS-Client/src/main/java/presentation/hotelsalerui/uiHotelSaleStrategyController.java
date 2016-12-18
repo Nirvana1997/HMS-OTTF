@@ -1,25 +1,77 @@
 package presentation.hotelsalerui;
 
+import businesslogic.hotelsalerbl.HotelSalerController;
+import businesslogic.logbl.LogController;
+import businesslogicservice.hotelsalerblservice.HotelsalerblService;
+import businesslogicservice.logblservice.LogBlService;
 import enumData.PromotionType;
 import javafx.fxml.FXML;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
-import javafx.scene.control.MenuButton;
-import javafx.scene.control.TextField;
+import javafx.fxml.Initializable;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+import utility.UiFormatChanger;
+import vo.PromotionVO;
 
 import java.io.IOException;
+import java.net.URL;
+import java.rmi.RemoteException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.ResourceBundle;
 
 /**
  * Created by thinkpad on 2016/12/3.
  */
-public class uiHotelSaleStrategyController {
+public class uiHotelSaleStrategyController implements Initializable{
 
     private SceneJump sceneJump = new SceneJump();
+    private HotelsalerblService hotelsalerblService;
+    LogBlService logBl = new LogController();
 
+    /**
+     * 促销策略arraylist和其长度
+     */
+    private ArrayList<PromotionVO> promotionBirthday;
+    private int lengthPromotionBirthday;
+    private ArrayList<PromotionVO> promotionDoubleOne;
+    private int lengthPromotionDoubleOne;
+    private ArrayList<PromotionVO> promotionCompany;
+    private int lengthPromotionCompany;
+    private ArrayList<PromotionVO> promotionThreeRooms;
+    private int lengthPromotionThreeRooms;
+
+    public uiHotelSaleStrategyController() throws RemoteException {
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        hotelsalerblService = new HotelSalerController();
+        this.initPromotionList();
+
+        //初始化promotion面板
+        this.initPromotionContent(0, PromotionType.Hotel_Birth);
+        this.initPromotionContent(0, PromotionType.Hotel_Period);
+        this.initPromotionContent(0, PromotionType.Hotel_Company);
+        this.initPromotionContent(0, PromotionType.Hotel_Num);
+    }
+
+    private void initPromotionList(){
+        // 获取list对象
+        try {
+            promotionBirthday = hotelsalerblService.getPromotion(PromotionType.Hotel_Birth);
+            promotionDoubleOne = hotelsalerblService.getPromotion(PromotionType.Hotel_Period);
+            promotionCompany = hotelsalerblService.getPromotion(PromotionType.Hotel_Company);
+            promotionThreeRooms = hotelsalerblService.getPromotion(PromotionType.Hotel_Num);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+        lengthPromotionBirthday = promotionBirthday.size();
+        lengthPromotionDoubleOne = promotionDoubleOne.size();
+        lengthPromotionCompany = promotionCompany.size();
+        lengthPromotionThreeRooms = promotionThreeRooms.size();
+    }
 
     /**
      * 编辑按钮代号
@@ -37,6 +89,11 @@ public class uiHotelSaleStrategyController {
     private static int doubleOneCount = 0;
     private static int companyCount = 0;
     private static int threeRoomsCount = 0;
+
+    /**
+     * 是否新建promotion
+     */
+    private boolean isNewPromotion;
 
     /**
      * 登出按钮
@@ -99,16 +156,22 @@ public class uiHotelSaleStrategyController {
     private AnchorPane paneEditPromotion;
 
     /**
-     * 编辑promotion界面————选择修改活动类型menuButton
-     */
-    @FXML
-    private MenuButton menuButtonEdit_ChoosePromotionType;
-
-    /**
-     * 新建promotion界面————活动名字textField
+     * 编辑活动名字textField
      */
     @FXML
     private TextField textFieldPromotionName;
+
+    /**
+     * 折扣textField
+     */
+    @FXML
+    private TextField textFieldDiscount;
+
+    /**
+     * 编辑活动内容textArea
+     */
+    @FXML
+    private TextArea textAreaPromotionContent;
 
     /**
      * promotion开始时间datePicker
@@ -121,6 +184,34 @@ public class uiHotelSaleStrategyController {
      */
     @FXML
     private DatePicker datePickerEndTime;
+
+    @FXML
+    private Label labelPromotionBirthdayName;
+    @FXML
+    private Label labelPromotionBirthdayTime;
+    @FXML
+    private Label labelPromotionBirthdayContent;
+
+    @FXML
+    private Label labelPromotionDoubleOneName;
+    @FXML
+    private Label labelPromotionDoubleOneTime;
+    @FXML
+    private Label labelPromotionDoubleOneContent;
+
+    @FXML
+    private Label labelPromotionCompanyName;
+    @FXML
+    private Label labelPromotionCompanyTime;
+    @FXML
+    private Label labelPromotionCompanyContent;
+
+    @FXML
+    private Label labelPromotionThreeRoomsName;
+    @FXML
+    private Label labelPromotionThreeRoomsTime;
+    @FXML
+    private Label labelPromotionThreeRoomsContent;
 
     /**
      * 酒店信息按钮点击监听
@@ -162,6 +253,7 @@ public class uiHotelSaleStrategyController {
      */
     public void onClickedLabelExit() throws IOException {
         sceneJump.backToLogin();
+        logBl.logOut();
     }
 
     /**
@@ -224,24 +316,26 @@ public class uiHotelSaleStrategyController {
      * @param promotionType
      */
     private void initPromotionContent(int n, PromotionType promotionType) {
+        this.initPromotionList();
         if(promotionType == PromotionType.Hotel_Birth){
-//            labelNamePromotionDoubleOne.setText(promotionDoubleOne.get(n).getPromotionName());
-//            labelInfoPromotionDoubleOne.setText(promotionDoubleOne.get(n).getDescription());
-//            labelDatePromotionDoubleOne.setText(promotionDoubleOne.get(n).getStartDate() + "~" + promotionDoubleOne.get(n).getEndDate());
+            labelPromotionBirthdayName.setText(promotionBirthday.get(n).getPromotionName());
+            labelPromotionBirthdayTime.setText(UiFormatChanger.dateToString(promotionBirthday.get(n).getStartDate()) + "~" + UiFormatChanger.dateToString(promotionBirthday.get(n).getEndDate()));
+            labelPromotionBirthdayContent.setText(promotionBirthday.get(n).getDescription());
         }
         else if(promotionType == PromotionType.Hotel_Period){
-//            labelNamePromotionVIP.setText(promotionVIP.get(n).getPromotionName());
-//            labelInfoPromotionVIP.setText(promotionVIP.get(n).getDescription());
-//            labelDatePromotionVIP.setText(promotionVIP.get(n).getStartDate() + "~" + promotionVIP.get(n).getEndDate());
-//            labelTradeArea.setText(String.valueOf(promotionVIP.get(n).getTradeArea()));
+            labelPromotionDoubleOneName.setText(promotionDoubleOne.get(n).getPromotionName());
+            labelPromotionDoubleOneTime.setText(UiFormatChanger.dateToString(promotionDoubleOne.get(n).getStartDate()) + "~" + UiFormatChanger.dateToString(promotionDoubleOne.get(n).getEndDate()));
+            labelPromotionDoubleOneContent.setText(promotionDoubleOne.get(n).getDescription());
         }
         else if(promotionType == PromotionType.Hotel_Company){
-//            labelNamePromotionMember.setText(promotionMember.get(n).getPromotionName());
-//            labelInfoPromotionMember.setText(promotionMember.get(n).getDescription());
-//            labelDatePromotionMember.setText(promotionMember.get(n).getStartDate() + "~" + promotionMember.get(n).getEndDate());
+            labelPromotionCompanyName.setText(promotionCompany.get(n).getPromotionName());
+            labelPromotionCompanyTime.setText(UiFormatChanger.dateToString(promotionCompany.get(n).getStartDate()) + "~" + UiFormatChanger.dateToString(promotionDoubleOne.get(n).getEndDate()));
+            labelPromotionCompanyContent.setText(promotionCompany.get(n).getDescription());
         }
         else if(promotionType == PromotionType.Hotel_Num){
-
+            labelPromotionThreeRoomsName.setText(promotionThreeRooms.get(n).getPromotionName());
+            labelPromotionThreeRoomsTime.setText(UiFormatChanger.dateToString(promotionThreeRooms.get(n).getStartDate()) + "~" + UiFormatChanger.dateToString(promotionDoubleOne.get(n).getEndDate()));
+            labelPromotionThreeRoomsContent.setText(promotionThreeRooms.get(n).getDescription());
         }
     }
 
@@ -250,7 +344,8 @@ public class uiHotelSaleStrategyController {
      */
     public void birthdayNext() {
         birthdayCount++;
-
+        int n = Math.abs(birthdayCount % lengthPromotionBirthday);
+        this.initPromotionContent(n, PromotionType.Hotel_Birth);
     }
 
     /**
@@ -258,6 +353,8 @@ public class uiHotelSaleStrategyController {
      */
     public void birthdayBefore() {
         birthdayCount--;
+        int n = Math.abs(birthdayCount % lengthPromotionBirthday);
+        this.initPromotionContent(n, PromotionType.Hotel_Birth);
     }
 
 
@@ -266,8 +363,8 @@ public class uiHotelSaleStrategyController {
      */
     public void doubleOneNext(){
         doubleOneCount++;
-//        int n = Math.abs(doubleOneCount % lengthPromotionDoubleOne);
-//        this.initPromotionContent(n, PromotionType.Web_Period);
+        int n = Math.abs(doubleOneCount % lengthPromotionDoubleOne);
+        this.initPromotionContent(n, PromotionType.Web_Period);
     }
 
     /**
@@ -275,8 +372,8 @@ public class uiHotelSaleStrategyController {
      */
     public void doubleOneBefore() {
         doubleOneCount--;
-//        int n = Math.abs(doubleOneCount % lengthPromotionDoubleOne);
-//        this.initPromotionContent(n,PromotionType.Web_Period);
+        int n = Math.abs(doubleOneCount % lengthPromotionDoubleOne);
+        this.initPromotionContent(n, PromotionType.Web_Period);
     }
 
     /**
@@ -284,6 +381,8 @@ public class uiHotelSaleStrategyController {
      */
     public void companyNext(){
         companyCount++;
+        int n = Math.abs(companyCount % lengthPromotionCompany);
+        this.initPromotionContent(n, PromotionType.Hotel_Company);
     }
 
     /**
@@ -291,6 +390,8 @@ public class uiHotelSaleStrategyController {
      */
     public void companyBefore(){
         companyCount--;
+        int n = Math.abs(companyCount % lengthPromotionCompany);
+        this.initPromotionContent(n, PromotionType.Hotel_Company);
     }
 
     /**
@@ -298,6 +399,8 @@ public class uiHotelSaleStrategyController {
      */
     public void threeRoomsNext(){
         threeRoomsCount++;
+        int n = Math.abs(threeRoomsCount % lengthPromotionThreeRooms);
+        this.initPromotionContent(n, PromotionType.Hotel_Num);
     }
 
     /**
@@ -305,6 +408,8 @@ public class uiHotelSaleStrategyController {
      */
     public void threeRoomsBefore(){
         threeRoomsCount--;
+        int n = Math.abs(threeRoomsCount % lengthPromotionThreeRooms);
+        this.initPromotionContent(n, PromotionType.Hotel_Num);
     }
 
     /**
@@ -312,6 +417,14 @@ public class uiHotelSaleStrategyController {
      */
     public void onClickedEditPromotionBirthday() {
         promptionType = 1;
+        datePickerBeginTime.setValue(null);
+        datePickerEndTime.setValue(null);
+        textAreaPromotionContent.setText(labelPromotionBirthdayContent.getText());
+        textFieldPromotionName.setText(labelPromotionBirthdayName.getText());
+        for(int i = 0; i < lengthPromotionBirthday; i++){
+            if(promotionBirthday.get(i).getPromotionName().equals(labelPromotionBirthdayName.getText()))
+                textFieldDiscount.setText(String.valueOf(promotionBirthday.get(i).getDiscount()));
+        }
         paneInfoPromotionBirthday.setVisible(false);
         paneEditPromotion.setVisible(true);
     }
@@ -321,6 +434,14 @@ public class uiHotelSaleStrategyController {
      */
     public void onClickedEditPromotionDoubleOne() {
         promptionType = 2;
+        datePickerBeginTime.setValue(null);
+        datePickerEndTime.setValue(null);
+        textAreaPromotionContent.setText(labelPromotionDoubleOneContent.getText());
+        textFieldPromotionName.setText(labelPromotionDoubleOneName.getText());
+        for(int i = 0; i < lengthPromotionDoubleOne; i++){
+            if(promotionDoubleOne.get(i).getPromotionName().equals(labelPromotionDoubleOneName.getText()))
+                textFieldDiscount.setText(String.valueOf(promotionDoubleOne.get(i).getDiscount()));
+        }
         paneInfoPromotionDoubleOne.setVisible(false);
         paneEditPromotion.setVisible(true);
     }
@@ -330,6 +451,14 @@ public class uiHotelSaleStrategyController {
      */
     public void onClickedEditPromotionCompany() {
         promptionType = 3;
+        datePickerBeginTime.setValue(null);
+        datePickerEndTime.setValue(null);
+        textAreaPromotionContent.setText(labelPromotionCompanyContent.getText());
+        textFieldPromotionName.setText(labelPromotionCompanyName.getText());
+        for(int i = 0; i < lengthPromotionCompany; i++){
+            if(promotionCompany.get(i).getPromotionName().equals(labelPromotionCompanyName.getText()))
+                textFieldDiscount.setText(String.valueOf(promotionCompany.get(i).getDiscount()));
+        }
         paneInfoPromotionCompany.setVisible(false);
         paneEditPromotion.setVisible(true);
     }
@@ -339,6 +468,14 @@ public class uiHotelSaleStrategyController {
      */
     public void onClickedEditPromotionThreeRooms() {
         promptionType = 4;
+        datePickerBeginTime.setValue(null);
+        datePickerEndTime.setValue(null);
+        textAreaPromotionContent.setText(labelPromotionThreeRoomsContent.getText());
+        textFieldPromotionName.setText(labelPromotionThreeRoomsName.getText());
+        for(int i = 0; i < lengthPromotionThreeRooms; i++){
+            if(promotionThreeRooms.get(i).getPromotionName().equals(labelPromotionThreeRoomsName.getText()))
+                textFieldDiscount.setText(String.valueOf(promotionThreeRooms.get(i).getDiscount()));
+        }
         paneInfoPromotionThreeRooms.setVisible(false);
         paneEditPromotion.setVisible(true);
     }
@@ -347,9 +484,12 @@ public class uiHotelSaleStrategyController {
      * 新建promotion按钮监听
      */
     public void onClickedNewPromotion() {
-        menuButtonEdit_ChoosePromotionType.setVisible(false);
-        textFieldPromotionName.setVisible(true);
-        //TODO
+        isNewPromotion = true;
+        datePickerBeginTime.setValue(null);
+        datePickerEndTime.setValue(null);
+        textAreaPromotionContent.setText("");
+        textFieldPromotionName.setText("");
+        textFieldDiscount.setText("");
     }
 
     /**
@@ -359,7 +499,18 @@ public class uiHotelSaleStrategyController {
         sceneJump.jumpToDeletePromotion();
         boolean isDeletePromotion = sceneJump.getIsDeletePromotion();
         if(isDeletePromotion) {
-            // TODO
+            if(promptionType == 1){
+                hotelsalerblService.deletePromotion(labelPromotionBirthdayName.getText());
+            }
+            else if(promptionType == 2){
+                hotelsalerblService.deletePromotion(labelPromotionDoubleOneName.getText());
+            }
+            else if(promptionType == 3){
+                hotelsalerblService.deletePromotion(labelPromotionCompanyName.getText());
+            }
+            else if(promptionType == 4){
+                hotelsalerblService.deletePromotion(labelPromotionThreeRoomsName.getText());
+            }
         }
     }
 
@@ -367,19 +518,89 @@ public class uiHotelSaleStrategyController {
      * 确认修改promotion按钮监听
      */
     public void onClickedConfirmEditPromotion() {
-        // TODO
-        if(promptionType == 1){
+        String name = textFieldPromotionName.getText();
+        double discount = Double.parseDouble(textFieldDiscount.getText());
+        Date beginTime = null;
+        Date endTime = null;
+        String description = textAreaPromotionContent.getText();
 
+        try {
+            beginTime = getDate(datePickerBeginTime);
+            endTime = getDate(datePickerEndTime);
+        } catch (ParseException e) {
+            e.printStackTrace();
         }
-        else if(promptionType == 2){
 
+        if (isNewPromotion){
+            if(promptionType == 1){
+                PromotionVO vo = new PromotionVO(name, description, PromotionType.Hotel_Birth, beginTime, endTime, discount);
+                try {
+                    hotelsalerblService.addPromotion(vo);
+                } catch (RemoteException e) {
+                    e.printStackTrace();
+                }
+            }
+            else if(promptionType == 2){
+                PromotionVO vo = new PromotionVO(name, description, PromotionType.Hotel_Period, beginTime, endTime, discount);
+                try {
+                    hotelsalerblService.addPromotion(vo);
+                } catch (RemoteException e) {
+                    e.printStackTrace();
+                }
+            }
+            else if(promptionType == 3){
+                PromotionVO vo = new PromotionVO(name, description, PromotionType.Hotel_Company, beginTime, endTime, discount);
+                try {
+                    hotelsalerblService.addPromotion(vo);
+                } catch (RemoteException e) {
+                    e.printStackTrace();
+                }
+            }
+            else if(promptionType == 4){
+                PromotionVO vo = new PromotionVO(name, description, PromotionType.Hotel_Num, beginTime, endTime, discount);
+                try {
+                    hotelsalerblService.addPromotion(vo);
+                } catch (RemoteException e) {
+                    e.printStackTrace();
+                }
+            }
         }
-        else if(promptionType == 3){
-
+        // 修改营销策略
+        else {
+            if(promptionType == 1){
+                PromotionVO vo = new PromotionVO(name, description, PromotionType.Hotel_Birth, beginTime, endTime, discount);
+                try {
+                    hotelsalerblService.setPromotion(vo);
+                } catch (RemoteException e) {
+                    e.printStackTrace();
+                }
+            }
+            else if(promptionType == 2){
+                PromotionVO vo = new PromotionVO(name, description, PromotionType.Hotel_Period, beginTime, endTime, discount);
+                try {
+                    hotelsalerblService.setPromotion(vo);
+                } catch (RemoteException e) {
+                    e.printStackTrace();
+                }
+            }
+            else if(promptionType == 3){
+                PromotionVO vo = new PromotionVO(name, description, PromotionType.Hotel_Company, beginTime, endTime, discount);
+                try {
+                    hotelsalerblService.setPromotion(vo);
+                } catch (RemoteException e) {
+                    e.printStackTrace();
+                }
+            }
+            else if(promptionType == 4){
+                PromotionVO vo = new PromotionVO(name, description, PromotionType.Hotel_Num, beginTime, endTime, discount);
+                try {
+                    hotelsalerblService.setPromotion(vo);
+                } catch (RemoteException e) {
+                    e.printStackTrace();
+                }
+            }
         }
-        else if(promptionType == 4){
-
-        }
+        this.initPromotionList();
         this.onClickedCancelEditPromotion();
     }
 
@@ -387,8 +608,7 @@ public class uiHotelSaleStrategyController {
      * 取消修改promotion按钮监听
      */
     public void onClickedCancelEditPromotion() {
-        menuButtonEdit_ChoosePromotionType.setVisible(true);
-        textFieldPromotionName.setVisible(false);
+        isNewPromotion = false;
 
         if(promptionType == 1){
             paneInfoPromotionBirthday.setVisible(true);
@@ -407,6 +627,5 @@ public class uiHotelSaleStrategyController {
             paneEditPromotion.setVisible(false);
         }
     }
-
 
 }

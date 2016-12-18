@@ -1,50 +1,31 @@
 package presentation.userui;
 
+import businesslogic.logbl.LogController;
+import businesslogic.userbl.UserController;
 import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
 import enumData.OrderState;
+import enumData.RoomType;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.text.Text;
+import utility.UiFormatChanger;
+import vo.OrderVO;
 
 import java.io.IOException;
 import java.net.URL;
+import java.rmi.RemoteException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 /**
  * Created by Administrator on 2016/12/5.
  */
 public class uiOrderController implements Initializable{
-    @FXML
-    private Text orderID;
-    @FXML
-    private Text orderState;
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        if(uiMyOrderController.getOrderState()== OrderState.executed){
-            buttonComment.setVisible(true);
-        }
-        else if(uiMyOrderController.getOrderState() == OrderState.executing){
-            buttonRevoke.setVisible(true);
-        }
-        orderID.setText(uiMyOrderController.getOrderID());
-        String state;
-        //根据订单状态显示相应字符
-        if(uiMyOrderController.getOrderState() == OrderState.abnormal){
-            state = "异常";
-        }
-        else if(uiMyOrderController.getOrderState() == OrderState.executed){
-            state = "已执行";
-        }
-        else if(uiMyOrderController.getOrderState() == OrderState.executing){
-            state = "未执行";
-        }
-        else{
-            state = "已撤销";
-        }
-        orderState.setText(state);
-    }
+    UserController userController = new UserController();
 
 
     @FXML
@@ -134,7 +115,8 @@ public class uiOrderController implements Initializable{
      * @throws IOException
      */
     public void LogOut() throws IOException{
-        //TODO 清空账号
+        LogController logController = new LogController();
+        logController.logOut();
         jump.gotoLogin();
     }
 
@@ -148,11 +130,70 @@ public class uiOrderController implements Initializable{
      * @throws IOException
      */
     public void RevokeOrder() throws IOException{
-        //TODO
+        userController.cancelOrder(uiMyOrderController.getOrderID());
+        jump.gotoOrder();
+        jump.RevokeSuccess();
     }
     @FXML
     private Button buttonComment;
     public void gotoCommentOrder() throws IOException{
         jump.gotoCommentOrder();
     }
+    @FXML
+    private Text orderID;
+    @FXML
+    private Text orderState;
+    @FXML
+    private Text orderHotel;
+    @FXML
+    private Text orderRoom;
+    @FXML
+    private Text orderRoomNumber;
+    @FXML
+    private Text orderPeopleNumber;
+    @FXML
+    private Text orderTime;
+    @FXML
+    private Text orderPrice;
+    @FXML
+    private Text orderHaveChild;
+
+    public uiOrderController() throws RemoteException {
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        OrderVO vo = null;
+        try {
+            vo = userController.getOrderInfo(uiMyOrderController.getOrderID());
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+        if(vo.getOrderState()== OrderState.executed){
+            buttonComment.setVisible(true);
+        }
+        else if(vo.getOrderState() == OrderState.executing){
+            buttonRevoke.setVisible(true);
+        }
+        orderID.setText(vo.getOrderID());
+        orderState.setText(UiFormatChanger.stateTOstring(vo.getOrderState()));
+        try {
+            orderHotel.setText(userController.readHotel(vo.getHotelID()).getHotelname());
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+        orderRoom.setText(UiFormatChanger.typeTOstring(vo.getRoomType()));
+        orderRoomNumber.setText(String.valueOf(vo.getRoomNumber()));
+        orderPeopleNumber.setText(String.valueOf(vo.getPeopleNumber()));
+        String date = "";
+        date = UiFormatChanger.dateToString(vo.getCheckInDate())+" 至 " + UiFormatChanger.dateToString(vo.getCheckOutDate());
+        orderTime.setText(date);
+        orderPrice.setText(String.valueOf(vo.getPrice()));
+        if(vo.isHaveChild())
+            orderHaveChild.setText("是");
+        else
+            orderHaveChild.setText("否");
+    }
+
+
 }

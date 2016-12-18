@@ -1,5 +1,6 @@
 package presentation.webmanagerui;
 
+import businesslogic.logbl.LogController;
 import businesslogic.webmanagerbl.WebmanagerController;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -80,18 +81,19 @@ public class uiChangeWSController implements Initializable{
      * @throws IOException
      */
     public void LogOut() throws IOException{
-        //TODO 登出账号
+        LogController logController = new LogController();
+        logController.logOut();
         jump.gotoLogin();
     }
-    @FXML
-    private Text buttonModifyPassword;
-    /**
-     * 点击修改密码，跳出修改密码窗口
-     * @throws IOException
-     */
-    public void gotoModifyPassword() throws IOException{
-        jump.gotoModifyPassword();
-    }
+//    @FXML
+//    private Text buttonModifyPassword;
+//    /**
+//     * 点击修改密码，跳出修改密码窗口
+//     * @throws IOException
+//     */
+//    public void gotoModifyPassword() throws IOException{
+//        jump.gotoModifyPassword();
+//    }
     @FXML
     private Text textWSID;
     @FXML

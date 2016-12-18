@@ -7,10 +7,14 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.text.Text;
+import utility.UiFormatChanger;
 import vo.OrderVO;
 
 import java.io.IOException;
 import java.net.URL;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 /**
@@ -40,10 +44,11 @@ public class uiConfirmOrderController implements Initializable{
         buttonCancel.getScene().getWindow().hide();
     }
     OrderVO orderVO;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         orderVO = uiReserveHotelController.getCurrentOrder();
-        textDDL.setText(orderVO.getDdl().toString());
+        textDDL.setText(UiFormatChanger.dateToString(orderVO.getDdl()));
         textPrice.setText(String.valueOf(orderVO.getPrice()));
     }
 }

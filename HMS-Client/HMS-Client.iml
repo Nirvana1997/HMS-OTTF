@@ -16,7 +16,7 @@
     <orderEntry type="module-library">
       <library name="Maven: com.oracle:javafx:8.0.65-b17">
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/.idea/libraries/javaFX.jar!/" />
+          <root url="jar://$MODULE_DIR$/.idea/libraries/javafx-8.0.65-b17.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

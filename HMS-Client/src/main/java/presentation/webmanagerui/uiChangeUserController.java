@@ -1,5 +1,6 @@
 package presentation.webmanagerui;
 
+import businesslogic.logbl.LogController;
 import businesslogic.webmanagerbl.WebmanagerController;
 import enumData.UserType;
 import javafx.fxml.FXML;
@@ -92,37 +93,17 @@ public class uiChangeUserController implements Initializable{
 
 
     @FXML
-    /**
-     * 超链接进入信用变化记录
-     */
-    Text textCreditHistory;
-
-    /**
-     * 进入信用变化记录界面
-     * @throws IOException
-     */
-    public void gotoCreditHistory() throws IOException{
-        //TODO
-    }
-    @FXML
     private Text buttonLogOut;
     /**
      * 点击登出，返回到登录界面并清空账号
      * @throws IOException
      */
     public void LogOut() throws IOException{
-        //TODO 登出账号
+        LogController logController = new LogController();
+        logController.logOut();
         jump.gotoLogin();
     }
-    @FXML
-    private Text buttonModifyPassword;
-    /**
-     * 点击修改密码，跳出修改密码窗口
-     * @throws IOException
-     */
-    public void gotoModifyPassword() throws IOException{
-        jump.gotoModifyPassword();
-    }
+
     @FXML
     private Button buttonSave;
 

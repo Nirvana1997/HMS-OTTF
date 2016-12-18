@@ -10,7 +10,6 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -24,16 +23,14 @@
          <children>
             <TableView fx:id="orderList" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="48.0" layoutY="117.0" prefHeight="407.0" prefWidth="656.0" scaleShape="false">
               <columns>
-                <TableColumn fx:id="columnOrderID" prefWidth="106.0" text="订单编号" />
-                <TableColumn fx:id="columnUserID" minWidth="5.0" prefWidth="110.0" text="用户ID" />
-                  <TableColumn fx:id="columnHotelID" prefWidth="116.0" text="酒店名称" />
-                  <TableColumn fx:id="columnState" prefWidth="110.0" text="订单状态" />
-                  <TableColumn fx:id="columnReason" prefWidth="213.0" sortable="false" text="撤销原因" />
+                <TableColumn fx:id="columnOrderID" prefWidth="152.0" text="订单编号" />
+                <TableColumn fx:id="columnUserID" minWidth="5.0" prefWidth="139.0" text="用户ID" />
+                  <TableColumn fx:id="columnHotelID" prefWidth="176.0" text="酒店名称" />
+                  <TableColumn fx:id="columnState" prefWidth="188.0" text="订单状态" />
               </columns>
             </TableView>
             <MenuButton fx:id="menuButtonChooseOrderState" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="48.0" layoutY="48.0" mnemonicParsing="false" scaleShape="false" text="未撤销订单">
               <items>
-                  <MenuItem mnemonicParsing="false" onAction="#checkAllOrder" text="全部订单" />
                 <MenuItem mnemonicParsing="false" onAction="#checkNotRevokeOrder" text="未撤销订单" />
                 <MenuItem mnemonicParsing="false" onAction="#checkRevokeOrder" text="已撤销订单" />
               </items>
@@ -41,26 +38,11 @@
                   <Font size="16.0" />
                </font>
             </MenuButton>
-            <TextField fx:id="textFieldOrderId" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="423.0" layoutY="48.0" prefHeight="34.0" prefWidth="194.0" promptText="输入订单编号搜索" scaleShape="false">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </TextField>
-            <Button cacheShape="false" centerShape="false" focusTraversable="false" layoutX="650.0" layoutY="48.0" mnemonicParsing="false" onAction="#searchByOrderId" scaleShape="false" text="搜索">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Button>
             <Button layoutX="617.0" layoutY="549.0" mnemonicParsing="false" onAction="#checkDetailedOrder" onMouseClicked="#checkDetailedOrder" text="查看详细">
                <font>
                   <Font size="16.0" />
                </font>
             </Button>
-            <Label fx:id="labelWarning" layoutX="533.0" layoutY="89.0" text="订单不存在！" textFill="RED" visible="false">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
          </children>
       </AnchorPane>
       <AnchorPane fx:id="paneDetailedOrder" layoutX="250.0" prefHeight="618.0" prefWidth="751.0" style="-fx-background-color: #FFFFFF;" visible="false">
@@ -150,43 +132,43 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <Button cacheShape="false" centerShape="false" focusTraversable="false" layoutX="346.0" layoutY="518.0" mnemonicParsing="false" scaleShape="false" text="撤销">
+            <Button cacheShape="false" centerShape="false" focusTraversable="false" layoutX="451.0" layoutY="518.0" mnemonicParsing="false" onMouseClicked="#revokeOrder" scaleShape="false" text="撤销">
                <font>
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button cacheShape="false" centerShape="false" focusTraversable="false" layoutX="468.0" layoutY="518.0" mnemonicParsing="false" scaleShape="false" text="驳回">
+            <Button cacheShape="false" centerShape="false" focusTraversable="false" layoutX="585.0" layoutY="518.0" mnemonicParsing="false" onAction="#backToPaneOrderTable" onMouseClicked="#backToPaneOrderTable" scaleShape="false" text="返回">
                <font>
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button cacheShape="false" centerShape="false" focusTraversable="false" layoutX="585.0" layoutY="518.0" mnemonicParsing="false" onAction="#backToPaneOrderTable" scaleShape="false" text="返回">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Button>
-            <TextArea fx:id="textAreaReason" cacheShape="false" centerShape="false" editable="false" focusTraversable="false" layoutX="185.0" layoutY="276.0" prefHeight="147.0" prefWidth="460.0" scaleShape="false" wrapText="true">
+            <TextArea fx:id="textAreaReason" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="185.0" layoutY="276.0" prefHeight="147.0" prefWidth="460.0" scaleShape="false" wrapText="true">
                <font>
                   <Font size="18.0" />
                </font>
             </TextArea>
-            <AnchorPane fx:id="paneChooseCredit" layoutX="54.0" layoutY="438.0" prefHeight="73.0" prefWidth="407.0" visible="false">
+            <AnchorPane fx:id="paneChooseCredit" layoutX="54.0" layoutY="438.0" prefHeight="73.0" prefWidth="515.0">
                <children>
                   <Label layoutX="30.0" layoutY="26.0" text="恢复信用：">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <CheckBox layoutX="239.0" layoutY="25.0" mnemonicParsing="false" text="一半">
+                  <CheckBox fx:id="checkBoxHalfCredit" layoutX="239.0" layoutY="25.0" mnemonicParsing="false" onMouseClicked="#chooseHalfCredit" text="一半">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </CheckBox>
-                  <CheckBox layoutX="135.0" layoutY="25.0" mnemonicParsing="false" text="全部">
+                  <CheckBox fx:id="checkBoxAllCredit" layoutX="135.0" layoutY="25.0" mnemonicParsing="false" onMouseClicked="#chooseAllCredit" text="全部">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </CheckBox>
+                  <Label fx:id="labelCreditWarning" layoutX="340.0" layoutY="29.0" text="请选择要恢复的信用值！" textFill="RED" visible="false">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
                </children>
             </AnchorPane>
             <AnchorPane fx:id="paneRevokeTime" layoutX="76.0" layoutY="438.0" prefHeight="73.0" prefWidth="364.0" visible="false">

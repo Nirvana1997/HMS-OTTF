@@ -1,7 +1,9 @@
 package presentation.hotelsalerui;
 
 import businesslogic.hotelsalerbl.HotelSalerController;
+import businesslogic.logbl.LogController;
 import businesslogicservice.hotelsalerblservice.HotelinfoblService;
+import businesslogicservice.logblservice.LogBlService;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -19,6 +21,7 @@ public class uiHotelInfoController implements Initializable{
 
     private SceneJump sceneJump = new SceneJump();
     HotelinfoblService hotelInfobl = new HotelSalerController();
+    LogBlService logBl = new LogController();
 
     /**
      * 星级label
@@ -80,6 +83,9 @@ public class uiHotelInfoController implements Initializable{
     @FXML
     private Label labelEdit;
 
+    public uiHotelInfoController() throws RemoteException {
+    }
+
     /**
      * 酒店房间按钮点击监听
      */
@@ -120,6 +126,7 @@ public class uiHotelInfoController implements Initializable{
      */
     public void onClickedLabelExit() throws IOException {
         sceneJump.backToLogin();
+        logBl.logOut();
     }
 
     /**

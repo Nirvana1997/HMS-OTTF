@@ -47,4 +47,17 @@ public class Temp {
     public static final int days = 30;
 
     public static final int minCredit = 0;
+
+    public static final String reasonOfCancelException = "撤销异常订单申诉成功";
+
+    public static final String reasonOfRecharge = "充值成功";
+
+    public static final String reasonOfExecuting = "执行订单";
+
+    public static final String reasonOfDelaying = "延时入住";
+
+    public static final String reasonOfLate = "在离最晚执行时间不足6小时内撤销订单";
+
+    public static final int proportion = 100;
+
 }

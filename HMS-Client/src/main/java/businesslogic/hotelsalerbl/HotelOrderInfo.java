@@ -39,4 +39,13 @@ public interface HotelOrderInfo {
      * @return 是否成功
      */
     public ResultMessage setOrder(OrderPO po) throws RemoteException;
+
+    /**
+     * 根据订单ID返回对应订单
+     *
+     * @param orderID
+     * @return
+     * @throws RemoteException
+     */
+    public OrderPO getOrderInfo(String orderID) throws RemoteException;
 }

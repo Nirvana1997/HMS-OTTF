@@ -1,6 +1,8 @@
 package presentation.websalerui;
 
+import businesslogic.logbl.LogController;
 import businesslogic.websalerbl.WebsalerController;
+import businesslogicservice.logblservice.LogBlService;
 import businesslogicservice.websalerblservice.WebsalerblService;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -22,6 +24,7 @@ public class uiWebSalerCreditController {
     private SceneJump sceneJump = new SceneJump();
 
     private WebsalerblService websalerbl = new WebsalerController();
+    LogBlService logBl = new LogController();
 
     /**
      * 登出按钮
@@ -100,6 +103,9 @@ public class uiWebSalerCreditController {
      */
     @FXML
     private Label labelSuccessCreditPresent;
+
+    public uiWebSalerCreditController() throws RemoteException {
+    }
 
     /**
      * 跳转到销售策略界面
@@ -191,6 +197,7 @@ public class uiWebSalerCreditController {
      */
     public void onClickedLabelExit() throws IOException {
         sceneJump.backToLogin();
+        logBl.logOut();
     }
 
 }

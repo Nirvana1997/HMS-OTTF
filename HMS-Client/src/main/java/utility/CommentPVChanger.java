@@ -15,6 +15,9 @@ public class CommentPVChanger {
      * @return 评价VO
      */
     public static CommentVO commentP2V(CommentPO po){
+        if(po==null){
+            return null;
+        }
         return new CommentVO(po.getHotelID(),po.getUserID(),po.getComment(),po.getGrade());
     }
 
@@ -24,6 +27,9 @@ public class CommentPVChanger {
      * @return 评价
      */
     public static CommentPO commentV2P(CommentVO vo){
+        if(vo==null){
+            return null;
+        }
         return new CommentPO(vo.getHotelID(),vo.getUserID(),vo.getComment(),vo.getGrade());
     }
 }

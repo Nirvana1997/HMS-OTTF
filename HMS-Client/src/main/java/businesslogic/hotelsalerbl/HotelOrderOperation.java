@@ -3,13 +3,17 @@ package businesslogic.hotelsalerbl;
 import businesslogic.logbl.Login;
 import businesslogic.orderbl.impl.OrderDataImpl;
 import businesslogic.userbl.impl.UserDataImpl;
+import cfg.Temp;
 import enumData.OrderState;
 import enumData.ResultMessage;
+import po.CreditChangePO;
+import utility.DateOperation;
 import utility.OrderPVChanger;
 import vo.OrderVO;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * 酒店订单操作
@@ -51,6 +55,17 @@ public class HotelOrderOperation {
     }
 
     /**
+     * 根据订单ID返回对应订单
+     *
+     * @param orderID
+     * @return
+     * @throws RemoteException
+     */
+    public OrderVO readOrderByID(String orderID) throws RemoteException{
+        return OrderPVChanger.orderP2V(hotelOrderInfo.getOrderInfo(orderID));
+    }
+
+    /**
      * 更新订单信息
      *
      * @param vo 订单信息
@@ -70,7 +85,7 @@ public class HotelOrderOperation {
         vo.setOrderState(OrderState.executed);
         hotelOrderInfo.setOrder(OrderPVChanger.orderV2P(vo));
         //为对应用户添加信用值
-        creditInfoForHotel.addCredit(vo.getUserID(), (int) vo.getPrice());
+        creditInfoForHotel.addCredit(new CreditChangePO(vo.getUserID(),vo.getOrderID(), DateOperation.dateToString(new Date()), Temp.reasonOfExecuting,(int)vo.getPrice()));
     }
 
     /**
@@ -83,6 +98,6 @@ public class HotelOrderOperation {
         vo.setOrderState(OrderState.executing);
         hotelOrderInfo.setOrder(OrderPVChanger.orderV2P(vo));
         //恢复用户信用值
-        creditInfoForHotel.addCredit(vo.getUserID(),(int)vo.getPrice());
+        creditInfoForHotel.addCredit(new CreditChangePO(vo.getUserID(),vo.getOrderID(), DateOperation.dateToString(new Date()), Temp.reasonOfDelaying,(int)vo.getPrice()));
     }
 }

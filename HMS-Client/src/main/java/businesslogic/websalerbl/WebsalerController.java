@@ -2,14 +2,22 @@ package businesslogic.websalerbl;
 
 import businesslogic.userbl.impl.UserDataImpl;
 import businesslogicservice.websalerblservice.WebsalerblService;
+import cfg.Temp;
+import enumData.CreditRecoverWay;
+import enumData.OrderState;
 import enumData.PromotionType;
 import enumData.ResultMessage;
+import po.CreditChangePO;
 import po.PromotionPO;
+import utility.DateOperation;
 import utility.PromotionPVChanger;
+import vo.CanceledExceptionOrderVO;
+import vo.OrderVO;
 import vo.PromotionVO;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * 网站营销人员业务逻辑控制模块
@@ -28,9 +36,16 @@ public class WebsalerController implements WebsalerblService {
      */
     CreditInfo creditInfo;
 
+    /**
+     * 酒店工作人员订单模块
+     */
+    WebsalerOrderOperation websalerOrderOperation;
+
     public WebsalerController() {
         this.webPromotion = new WebPromotion();
+        //TODO
         this.creditInfo = new UserDataImpl();
+        this.websalerOrderOperation = new WebsalerOrderOperation();
     }
 
     /**
@@ -82,12 +97,12 @@ public class WebsalerController implements WebsalerblService {
      * 为用户增加信用值
      *
      * @param userID 用户ID
-     * @param value  增加的值
+     * @param money  冲的钱
      * @return 是否成功
      */
     @Override
-    public ResultMessage addCredit(String userID, int value) throws RemoteException {
-        return creditInfo.addCredit(userID,value);
+    public ResultMessage addCredit(String userID, int money) throws RemoteException {
+        return creditInfo.addCredit(new CreditChangePO(userID,null, DateOperation.dateToString(new Date()), Temp.reasonOfRecharge,Temp.proportion*money));
     }
 
     /**
@@ -99,5 +114,35 @@ public class WebsalerController implements WebsalerblService {
     @Override
     public int getCredit(String userID) throws RemoteException{
         return creditInfo.getCredit(userID);
+    }
+
+    @Override
+    public ArrayList<OrderVO> getOrderByState(OrderState orderState) throws RemoteException {
+        return websalerOrderOperation.getOrderByState(orderState);
+    }
+
+    @Override
+    public OrderVO getOrderByID(String orderID) throws RemoteException {
+        return websalerOrderOperation.getOrderByID(orderID);
+    }
+
+    @Override
+    public ArrayList<OrderVO> getCanceledExceptionOrderInfos() throws RemoteException {
+        return websalerOrderOperation.getCanceledExceptionOrderInfos();
+    }
+
+    @Override
+    public ArrayList<CanceledExceptionOrderVO> getCanceledExceptionOrders() throws RemoteException {
+        return websalerOrderOperation.getCanceledExceptionOrders();
+    }
+
+    @Override
+    public CanceledExceptionOrderVO getCanceledExceptionOrder(String orderID) throws RemoteException {
+        return websalerOrderOperation.getCanceledExceptionOrder(orderID);
+    }
+
+    @Override
+    public void cancelExceptionOrder(CanceledExceptionOrderVO vo, CreditRecoverWay creditRecoverWay) throws RemoteException {
+        websalerOrderOperation.cancelExceptionOrder(vo,creditRecoverWay);
     }
 }

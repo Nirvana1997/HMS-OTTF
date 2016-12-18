@@ -107,12 +107,12 @@
                   <Font size="14.0" />
                </font>
             </TextArea>
-            <Button layoutX="539.0" layoutY="550.0" mnemonicParsing="false" onMouseClicked="#onClickedConfirmEditHotelInfo" text="确认">
+            <Button layoutX="539.0" layoutY="550.0" mnemonicParsing="false" onAction="#onClickedConfirmEditHotelInfo" text="确认">
                <font>
                   <Font size="16.0" />
                </font>
             </Button>
-            <Button layoutX="631.0" layoutY="550.0" mnemonicParsing="false" onMouseClicked="#onClickedCancelEditHotelInfo" text="取消">
+            <Button layoutX="631.0" layoutY="550.0" mnemonicParsing="false" onAction="#onClickedCancelEditHotelInfo" text="取消">
                <font>
                   <Font size="16.0" />
                </font>

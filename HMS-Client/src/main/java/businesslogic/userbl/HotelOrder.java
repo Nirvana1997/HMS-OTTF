@@ -11,6 +11,7 @@ import cfg.Temp;
 import data_stub.userdata.UserDataImpl_stub;
 import dataservice.userdataservice.UserDataService;
 import enumData.*;
+import po.CreditChangePO;
 import po.HotelroomPO;
 import po.OrderPO;
 import utility.DateOperation;
@@ -172,7 +173,7 @@ public class HotelOrder {
             Date subCreditDdl = DateOperation.addHours(DateOperation.stringToDate(po.getCheckInDate()), Temp.HOUR - Temp.H);
             //判断是否在规定时间前取消，若超过规定时间，则减少一定的信用值
             if (new Date().after(subCreditDdl)) {
-                userDataService.subCredit(Login.getNowUserID(), (int) (po.getPrice() * Temp.CREDIT_CUT), DateOperation.dateToString(new Date()));
+                userDataService.subCredit(new CreditChangePO(po.getUserID(),po.getOrderID(),DateOperation.dateToString(new Date()),Temp.reasonOfLate,(int)po.getPrice()));
             }
             return ResultMessage.Correct;
         } else {

@@ -1,5 +1,6 @@
 package presentation.userui;
 
+import businesslogic.logbl.LogController;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -97,7 +98,8 @@ public class uiHomePageController {
      * @throws IOException
      */
     public void LogOut() throws IOException{
-        //TODO 清空账号
+        LogController logController = new LogController();
+        logController.logOut();
         jump.gotoLogin();
     }
 

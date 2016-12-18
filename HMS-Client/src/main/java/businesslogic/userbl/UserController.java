@@ -62,6 +62,11 @@ public class UserController implements InfoBlService, HotelOrderBlService {
         return userInfo.showUserInfo(Login.getNowUserID());
     }
 
+    @Override
+    public ArrayList<CreditRecordVO> showCreditRecords() throws RemoteException {
+        return userInfo.showCreditRecords();
+    }
+
     /**
      * 返回固定商圈、地址中的所有酒店并生成列表项
      * 默认以评分降序排列

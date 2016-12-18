@@ -18,6 +18,9 @@ public class HotelPVChanger {
      * @return 酒店信息PO
      */
     public static HotelinfoPO hotelV2P(HotelinfoVO vo){
+        if(vo==null){
+            return null;
+        }
         return new HotelinfoPO(vo.getHotelID(),vo.getHotelname(),vo.getTradeArea(),vo.getAddress(),vo.getDetailAddress(),vo.getIntroduction(),vo.getService(),vo.getContactNumber(),vo.getStar(),vo.getGrade(),vo.getMinPrice());
     }
 
@@ -27,6 +30,9 @@ public class HotelPVChanger {
      * @return 酒店信息VO
      */
     public static HotelinfoVO hotelP2V(HotelinfoPO po){
+        if(po==null){
+            return null;
+        }
         return new HotelinfoVO(po.getHotelID(),po.getHotelname(),po.getTradeArea(),po.getAddress(),po.getDetailAddress(), po.getContactNumber(),po.getIntroduction(),po.getService(),po.getStar(),po.getGrade(),po.getMinPrice());
     }
 
@@ -36,6 +42,9 @@ public class HotelPVChanger {
      * @return 房间信息PO
      */
     public static HotelroomPO hotelroomV2P(HotelroomVO vo){
+        if(vo==null){
+            return null;
+        }
         return new HotelroomPO(vo.getHotelID(),vo.getRoomType(),vo.getPrice(),vo.getRoomNumber());
     }
 
@@ -45,6 +54,9 @@ public class HotelPVChanger {
      * @return 房间信息VO
      */
     public static HotelroomVO hotelroomP2V(HotelroomPO po){
+        if(po==null){
+            return null;
+        }
         return new HotelroomVO(po.getHotelID(),po.getRoomType(),po.getPrice(),po.getRoomNumber());
     }
 }

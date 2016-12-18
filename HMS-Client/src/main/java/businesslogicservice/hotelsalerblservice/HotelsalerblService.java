@@ -30,6 +30,15 @@ public interface HotelsalerblService {
     public ArrayList<OrderVO> readOrderByState(OrderState orderState) throws RemoteException;
 
     /**
+     * 根据订单ID返回对应订单
+     *
+     * @param orderID
+     * @return
+     * @throws RemoteException
+     */
+    public OrderVO readOrderByID(String orderID) throws RemoteException;
+
+    /**
      * 浏览登录帐号对应酒店订单
      *
      * @return 酒店订单列表

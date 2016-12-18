@@ -127,6 +127,15 @@ public class sceneJump {
         stage.get(0).setScene(scene);
     }
     /**
+     * 信用历史记录
+     * @throws IOException
+     */
+    public void gotoCreditHistory() throws IOException{
+        ObservableList<Stage> stage = FXRobotHelper.getStages();
+        Scene scene = new Scene((Parent) FXMLLoader.load(getClass().getResource("sceneCreditHistory.fxml")));
+        stage.get(0).setScene(scene);
+    }
+    /**
      * 跳出警告窗口
      * @throws IOException
      */
@@ -154,6 +163,43 @@ public class sceneJump {
         secondWindow.setScene(scene);
         secondWindow.show();
     }
+
+    /**
+     * 评价成功
+     * @throws IOException
+     */
+    public void CommentSuccess() throws IOException{
+        Stage secondWindow=new Stage();
+        Scene scene=new Scene((Parent) FXMLLoader.load(getClass().getResource("sceneCommentSuccess.fxml")));
+        secondWindow.setTitle("Success!");
+        secondWindow.setScene(scene);
+        secondWindow.show();
+    }
+
+    /**
+     * 修改成功
+     * @throws IOException
+     */
+    public void ModifySuccess() throws IOException{
+        Stage secondWindow=new Stage();
+        Scene scene=new Scene((Parent) FXMLLoader.load(getClass().getResource("sceneModifySuccess.fxml")));
+        secondWindow.setTitle("Success!");
+        secondWindow.setScene(scene);
+        secondWindow.show();
+    }
+
+    /**
+     * 撤回成功
+     * @throws IOException
+     */
+    public void RevokeSuccess() throws IOException{
+        Stage secondWindow=new Stage();
+        Scene scene=new Scene((Parent) FXMLLoader.load(getClass().getResource("sceneRevokeSuccess.fxml")));
+        secondWindow.setTitle("Success!");
+        secondWindow.setScene(scene);
+        secondWindow.show();
+    }
+
 
     /**
      * 确认预订
