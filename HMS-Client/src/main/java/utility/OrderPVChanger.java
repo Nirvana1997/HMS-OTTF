@@ -21,6 +21,9 @@ public class OrderPVChanger {
      * @return 订单VO
      */
     public static OrderVO orderP2V(OrderPO po){
+        if(po==null){
+            return null;
+        }
         Date ddl = DateOperation.stringToDate(po.getCheckInDate());
         ddl.setHours(Temp.HOUR);
         return new OrderVO(po.getHotelID(),po.getHotelName(),po.getTradeArea(),po.getAddress(),po.getDetailAddress(),po.getRoomNumber(),po.getPeopleNumber(), DateOperation.stringToDate(po.getCheckInDate()),DateOperation.stringToDate(po.getCheckOutDate()),po.getRoomType(),po.isHaveChild(),po.getOrderID(),po.getUserID(),po.getOrderState(),ddl,po.getPrice(),po.getPromotionName(),po.getRoomID());
@@ -32,6 +35,9 @@ public class OrderPVChanger {
      * @return 订单
      */
     public static OrderPO orderV2P(OrderVO vo){
+        if(vo==null){
+            return null;
+        }
         return new OrderPO(vo.getHotelID(),vo.getHotelname(),vo.getTradeArea(),vo.getAddress(),vo.getDetailAddress(),vo.getRoomNumber(),vo.getPeopleNumber(), DateOperation.dateToString(vo.getCheckInDate()),DateOperation.dateToString(vo.getCheckOutDate()),vo.getRoomType(),vo.isHaveChild(),vo.getOrderID(),vo.getUserID(),vo.getOrderState(),vo.getPrice(),vo.getPromotionName(),vo.getRoomID());
     }
 
@@ -41,6 +47,9 @@ public class OrderPVChanger {
      * @return 订单PO
      */
     public static OrderPO belowLineOrderV2P(BelowLineOrderVO vo){
+        if(vo==null){
+            return null;
+        }
         return new OrderPO(vo.getHotelID(),DateOperation.dateToString(vo.getCheckInDate()),DateOperation.dateToString(vo.getCheckOutDate()),vo.getRoomType(),vo.getRoomNumber());
     }
 
@@ -50,6 +59,9 @@ public class OrderPVChanger {
      * @return 撤销异常订单信息VO
      */
     public static CanceledExceptionOrderVO canceledExceptionOrderP2V(CanceledExceptionOrderPO po){
+        if(po==null){
+            return null;
+        }
         return new CanceledExceptionOrderVO(po.getOrderID(),po.getCancelDate(),po.getCancelTime(),po.getCancelReason());
     }
 
@@ -59,6 +71,9 @@ public class OrderPVChanger {
      * @return 撤销异常订单信息PO
      */
     public static CanceledExceptionOrderPO canceledExceptionOrderV2P(CanceledExceptionOrderVO vo){
+        if(vo==null){
+            return null;
+        }
         return new CanceledExceptionOrderPO(vo.getOrderID(),vo.getCancelDate(),vo.getCancelTime(),vo.getCancelReason());
     }
 }

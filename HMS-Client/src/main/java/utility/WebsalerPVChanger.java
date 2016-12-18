@@ -17,6 +17,9 @@ public class WebsalerPVChanger {
      * @return 网站营销人员VO
      */
     public static WebsalerInfoVO websalerInfoP2V(WebsalerInfoPO po) {
+        if(po==null){
+            return null;
+        }
         return new WebsalerInfoVO(po.getWebsalerID(), po.getContactNumber());
     }
 
@@ -27,6 +30,9 @@ public class WebsalerPVChanger {
      * @return 网站营销人员PO
      */
     public static WebsalerInfoPO websalerInfoV2P(WebsalerInfoVO vo) {
+        if(vo==null){
+            return null;
+        }
         return new WebsalerInfoPO(vo.getWebsalerID(), vo.getContactNumber());
     }
 }
