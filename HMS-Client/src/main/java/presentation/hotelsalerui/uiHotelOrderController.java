@@ -243,6 +243,13 @@ public class uiHotelOrderController implements Initializable{
     private AnchorPane paneDetailedOrder;
     @FXML
     private AnchorPane paneDelayTime;
+    @FXML
+    private AnchorPane paneExcuteOrder;
+    @FXML
+    private TextField textFieldRoomID;
+    @FXML
+    private DatePicker datePickerCheckInTime;
+
     String orderId = "";
 
     /**
@@ -276,6 +283,8 @@ public class uiHotelOrderController implements Initializable{
         }
         paneTable.setVisible(false);
         paneDetailedOrder.setVisible(true);
+        paneExcuteOrder.setVisible(false);
+        paneDelayTime.setVisible(false);
     }
 
     /**
@@ -312,6 +321,7 @@ public class uiHotelOrderController implements Initializable{
         } catch (ParseException e) {
             e.printStackTrace();
         }
+        this.cancelDelay();
     }
 
     /**
@@ -320,4 +330,38 @@ public class uiHotelOrderController implements Initializable{
     public void cancelDelay(){
         paneDelayTime.setVisible(false);
     }
+
+    /**
+     * 显示执行订单界面
+     */
+    public void excuteOrder(){
+        paneExcuteOrder.setVisible(true);
+    }
+
+    /**
+     * 取消执行订单
+     */
+    public void cancelExcuteOrder(){
+        paneExcuteOrder.setVisible(false);
+    }
+
+    /**
+     * 确认执行订单
+     */
+    public void confirmExcuteOrder(){
+        try {
+            OrderVO vo = hotelsalerbl.readOrderByID(labelOrderId.getText());
+            String roomId = textFieldRoomID.getText();
+            Date date = UiFormatChanger.getDate(datePickerCheckInTime);
+            vo.setCheckInDate(date);
+            vo.setRoomID(roomId);
+            hotelsalerbl.executeOrder(vo);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        this.cancelExcuteOrder();
+    }
+
 }
