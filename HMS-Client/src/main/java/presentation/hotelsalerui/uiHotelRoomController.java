@@ -1,21 +1,36 @@
 package presentation.hotelsalerui;
 
+import businesslogic.hotelsalerbl.HotelSalerController;
+import businesslogicservice.hotelsalerblservice.HotelroomblService;
 import com.sun.javafx.robot.impl.FXRobotHelper;
+import enumData.RoomType;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.fxml.Initializable;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
+import vo.BelowLineOrderVO;
+import vo.HotelroomVO;
 
 import java.io.IOException;
+import java.net.URL;
+import java.rmi.RemoteException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.ResourceBundle;
 
 /**
  * Created by thinkpad on 2016/12/3.
  */
-public class uiHotelRoomController {
+public class uiHotelRoomController implements Initializable{
 
     private SceneJump sceneJump = new SceneJump();
+    String hotelID = "";
+    HotelroomblService hotelroombl = new HotelSalerController();
+    ArrayList<HotelroomVO> roomArray;
+    RoomType roomType;
 
     /**
      * 编辑房间的按钮
@@ -72,6 +87,32 @@ public class uiHotelRoomController {
     private Button buttonConfirmDisabledRoom;
     @FXML
     private Button buttonCancelDisabledRoom;
+    @FXML
+    private CheckBox checkBoxCheckIn;
+    @FXML
+    private CheckBox checkBoxCheckOut;
+    @FXML
+    private CheckBox checkBoxSingleRoom;
+    @FXML
+    private CheckBox checkBoxDoubleRoom;
+    @FXML
+    private CheckBox checkBoxDisabledRoom;
+    @FXML
+    private TextField textFieldRoomNum;
+    @FXML
+    private DatePicker datePickerBeginTime;
+    @FXML
+    private DatePicker datePickerEndTime;
+
+    /**
+     * 获取日期
+     * @param ld 日期选取器
+     * @return Date格式的日期
+     */
+    public static Date getDate(DatePicker ld) throws ParseException {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        return sdf.parse(ld.getValue().toString());
+    }
 
     /**
      * 登出按钮
@@ -182,8 +223,18 @@ public class uiHotelRoomController {
      * 确认修改单人房监听
      */
     public void confirmEditSingleRoom(){
+        double price = Integer.parseInt(textFieldSingleRoomPrice.getText());
+        HotelroomVO vo = new HotelroomVO(hotelID, RoomType.SingleRoom, price, roomArray.get(0).getRoomNumber());
+        ArrayList<HotelroomVO> temp = new ArrayList<>();
+        temp.add(vo);
+        temp.add(roomArray.get(1));
+        temp.add(roomArray.get(2));
+        try {
+            hotelroombl.setRoomInfo(temp);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
         cancelEditSingleRoom();
-        // TODO
     }
 
     /**
@@ -202,8 +253,18 @@ public class uiHotelRoomController {
      * 确认修改双人房监听
      */
     public void confirmEditDoubleRoom(){
+        double price = Integer.parseInt(textFieldDoubleRoomPrice.getText());
+        HotelroomVO vo = new HotelroomVO(hotelID, RoomType.DoubleRoom, price, roomArray.get(1).getRoomNumber());
+        ArrayList<HotelroomVO> temp = new ArrayList<>();
+        temp.add(roomArray.get(0));
+        temp.add(vo);
+        temp.add(roomArray.get(2));
+        try {
+            hotelroombl.setRoomInfo(temp);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
         cancelEditDoubleRoom();
-        // TODO
     }
 
     /**
@@ -222,8 +283,18 @@ public class uiHotelRoomController {
      * 确认修改残疾人房监听
      */
     public void confirmEditDisabledRoom(){
+        double price = Integer.parseInt(textFieldDisabledRoomPrice.getText());
+        HotelroomVO vo = new HotelroomVO(hotelID, RoomType.DisabledRoom, price, roomArray.get(2).getRoomNumber());
+        ArrayList<HotelroomVO> temp = new ArrayList<>();
+        temp.add(roomArray.get(0));
+        temp.add(roomArray.get(1));
+        temp.add(vo);
+        try {
+            hotelroombl.setRoomInfo(temp);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
         cancelEditDisabledRoom();
-        // TODO
     }
 
     /**
@@ -257,5 +328,112 @@ public class uiHotelRoomController {
      */
     public void onClickedLabelExit() throws IOException {
         sceneJump.backToLogin();
+    }
+
+    /**
+     * 点击入住监听
+     */
+    public void onClickedCheckIn() {
+        checkBoxCheckOut.setSelected(false);
+    }
+
+    /**
+     * 点击退房监听
+     */
+    public void onClickedCheckOut() {
+        checkBoxCheckIn.setSelected(false);
+    }
+
+    public void onClickedBookSingleRoom(){
+        checkBoxDoubleRoom.setSelected(false);
+        checkBoxDisabledRoom.setSelected(false);
+        roomType = RoomType.SingleRoom;
+    }
+
+    public void onClickedBookDoubleRoom(){
+        checkBoxSingleRoom.setSelected(false);
+        checkBoxDisabledRoom.setSelected(false);
+        roomType = RoomType.DoubleRoom;
+    }
+
+    public void onClickedBookDisabledRoom(){
+        checkBoxSingleRoom.setSelected(false);
+        checkBoxDoubleRoom.setSelected(false);
+        roomType = RoomType.DisabledRoom;
+    }
+
+    /**
+     * 用户线下登记确认信息填写
+     */
+    public void confirmOffLine(){
+        if(checkBoxCheckIn.isSelected()){
+            try {
+                Date dateBegin = getDate(datePickerBeginTime);
+                Date dateEnd = getDate(datePickerEndTime);
+                BelowLineOrderVO vo = new BelowLineOrderVO(hotelID, dateBegin, dateEnd, roomType, Integer.parseInt(textFieldRoomNum.getText()));
+                try {
+                    hotelroombl.setOrdered(vo);
+                } catch (RemoteException e) {
+                    e.printStackTrace();
+                }
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+        }
+
+        if(checkBoxCheckOut.isSelected()){
+            try {
+                Date dateBegin = getDate(datePickerBeginTime);
+                Date dateEnd = getDate(datePickerEndTime);
+                BelowLineOrderVO vo = new BelowLineOrderVO(hotelID, dateBegin, dateEnd, roomType, Integer.parseInt(textFieldRoomNum.getText()));
+                try {
+                    hotelroombl.setEmpty(vo);
+                } catch (RemoteException e) {
+                    e.printStackTrace();
+                }
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    /**
+     * 用户线下登记取消信息填写
+     */
+    public void cancelOffLine(){
+        checkBoxCheckIn.setSelected(false);
+        checkBoxCheckOut.setSelected(false);
+        checkBoxSingleRoom.setSelected(false);
+        checkBoxDoubleRoom.setSelected(false);
+        checkBoxDisabledRoom.setSelected(false);
+        textFieldRoomNum.setText("");
+        // TODO
+        datePickerBeginTime.setValue(null);
+        datePickerEndTime.setValue(null);
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        try {
+            roomArray = hotelroombl.getRoomInfo();
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+        if(roomArray.size() == 0){
+            labelSingleRoomNum.setText("0");
+            labelSingleRoomPrice.setText("0");
+            labelDoubleRoomNum.setText("0");
+            labelDoubleRoomPrice.setText("0");
+            labelDisabledRoomNum.setText("0");
+            labelDisabledRoomPrice.setText("0");
+        }else {
+            this.hotelID = roomArray.get(0).getHotelID();
+            labelSingleRoomNum.setText(String.valueOf(roomArray.get(0).getRoomNumber()));
+            labelSingleRoomPrice.setText(String.valueOf(roomArray.get(0).getPrice()));
+            labelDoubleRoomNum.setText(String.valueOf(roomArray.get(1).getRoomNumber()));
+            labelDoubleRoomPrice.setText(String.valueOf(roomArray.get(1).getPrice()));
+            labelDisabledRoomNum.setText(String.valueOf(roomArray.get(2).getRoomNumber()));
+            labelDisabledRoomPrice.setText(String.valueOf(roomArray.get(2).getPrice()));
+        }
     }
 }

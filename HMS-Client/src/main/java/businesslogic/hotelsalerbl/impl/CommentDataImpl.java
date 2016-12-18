@@ -3,10 +3,12 @@ package businesslogic.hotelsalerbl.impl;
 import businesslogic.userbl.interfaces.CommentInfo;
 import data_stub.hotelsalerdata.HotelinfoDataImpl_stub;
 import dataservice.hotelsalerdataservice.HotelinfoDataService;
+import po.CommentPO;
 import utility.CommentPVChanger;
 import vo.CommentVO;
 
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 
 /**
  * 评价信息实现
@@ -27,5 +29,20 @@ public class CommentDataImpl implements CommentInfo{
     @Override
     public void makeComment(CommentVO vo) throws RemoteException {
         hotelinfoDataService.addComments(CommentPVChanger.commentV2P(vo));
+    }
+
+    /**
+     * 获得对应酒店评价信息
+     * @param hotelID 酒店id
+     * @return 酒店评价信息
+     * @throws RemoteException
+     */
+    @Override
+    public ArrayList<CommentVO> getComments(String hotelID) throws RemoteException {
+        ArrayList<CommentVO> res = new ArrayList<>();
+        for(CommentPO po:hotelinfoDataService.getComments(hotelID)){
+            res.add(CommentPVChanger.commentP2V(po));
+        }
+        return res;
     }
 }

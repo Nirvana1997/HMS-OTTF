@@ -1,5 +1,7 @@
 package businesslogic.promotionbl.impl;
 
+import businesslogic.hotelsalerbl.HotelPromotionInfo;
+import businesslogic.promotionbl.Promotion;
 import businesslogic.promotionbl.strategies.Strategy;
 import businesslogic.userbl.interfaces.PromotionInfo;
 import businesslogic.websalerbl.WebPromotionInfo;
@@ -24,7 +26,7 @@ import java.util.ArrayList;
  * @author qzh
  *         Created by user on 2016/12/4.
  */
-public class PromotionDataImpl implements PromotionInfo, WebPromotionInfo {
+public class PromotionDataImpl implements PromotionInfo, WebPromotionInfo,HotelPromotionInfo {
     //TODO
     /**
      * 营销策略模块
@@ -86,6 +88,24 @@ public class PromotionDataImpl implements PromotionInfo, WebPromotionInfo {
     }
 
     /**
+     * 根据酒店ID获得对应营销策略
+     *
+     * @param hotelID 酒店ID
+     * @return 酒店营销策略
+     * @throws RemoteException
+     */
+    @Override
+    public ArrayList<PromotionPO> getHotelPromotion(String hotelID) throws RemoteException {
+        ArrayList<PromotionPO> res = new ArrayList<>();
+
+        for(PromotionType type:PromotionType.values()){
+            mergeList(res, promotionDataService.getPromotionList(type,hotelID));
+        }
+
+        return res;
+    }
+
+    /**
      * 获得对应类型网站营销策略
      *
      * @return 所有对应类型网站营销策略
@@ -102,15 +122,8 @@ public class PromotionDataImpl implements PromotionInfo, WebPromotionInfo {
         return res;
     }
 
-    /**
-     * 获得应对名称的促销策略
-     *
-     * @param promotionName 营销策略名称
-     * @return 营销策略信息
-     */
     @Override
     public PromotionPO getPromotion(String promotionName) {
-        //TODO
         return null;
     }
 
@@ -123,6 +136,20 @@ public class PromotionDataImpl implements PromotionInfo, WebPromotionInfo {
     public void addPromotion(PromotionVO vo) throws RemoteException {
         PromotionPO po = PromotionPVChanger.promotionV2P(vo);
         promotionDataService.addPromotion(po);
+    }
+
+    @Override
+    public void setPromotion(PromotionVO vo) throws RemoteException {
+        promotionDataService.changePromotion(PromotionPVChanger.promotionV2P(vo));
+    }
+
+    @Override
+    public ArrayList<PromotionVO> getPromotions(String hotelID,PromotionType promotionType) throws RemoteException {
+        ArrayList<PromotionVO> res = new ArrayList<>();
+        for(PromotionPO po:promotionDataService.getPromotionList(promotionType,hotelID)){
+            res.add(PromotionPVChanger.promotionP2V(po));
+        }
+        return res;
     }
 
     /**

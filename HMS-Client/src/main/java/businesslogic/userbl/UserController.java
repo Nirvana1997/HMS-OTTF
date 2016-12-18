@@ -163,6 +163,11 @@ public class UserController implements InfoBlService, HotelOrderBlService {
         return hotelOrder.getOrderInfo(orderID);
     }
 
+    @Override
+    public ArrayList<OrderVO> getHotelOrderByUserID( String hotelID) throws RemoteException {
+        return hotelOrder.getHotelOrderByUser(hotelID);
+    }
+
     /**
      * 根据订单ID取消该订单
      * 若超出规定时间，会扣除一定信用
@@ -183,5 +188,28 @@ public class UserController implements InfoBlService, HotelOrderBlService {
     @Override
     public void comment(CommentVO vo) throws RemoteException {
         hotelOrder.comment(vo);
+    }
+
+    /**
+     * 获得对应酒店评价信息
+     * @param hotelID 酒店id
+     * @return 酒店评价信息
+     * @throws RemoteException
+     */
+    @Override
+    public ArrayList<CommentVO> getComments(String hotelID) throws RemoteException{
+        return hotelOrder.getComments(hotelID);
+    }
+
+    /**
+     * 获得酒店房间信息
+     *
+     * @param hotelID 酒店id
+     * @return 酒店房间信息
+     * @throws RemoteException
+     */
+    @Override
+    public ArrayList<HotelroomVO> getRooms(String hotelID) throws RemoteException{
+        return hotelOrder.getRooms(hotelID);
     }
 }

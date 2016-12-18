@@ -119,7 +119,7 @@ public class uiChangeHSController implements Initializable{
      * @throws IOException
      */
     public void Delete() throws IOException{
-        webmanagerController.deleteHotelinfo(textHSID.getText());
+        webmanagerController.deleteHotelinfoAndAccount(textHSID.getText());
         jump.gotoManageHS();
         jump.deleteSuccess();
 

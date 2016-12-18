@@ -3,7 +3,6 @@ package businesslogic.orderbl.impl;
 import businesslogic.hotelsalerbl.HotelOrderInfo;
 import businesslogic.logbl.Login;
 import businesslogic.userbl.interfaces.UserOrderInfo;
-import com.sun.org.apache.xpath.internal.operations.Or;
 import data_stub.orderdata.OrderDataImpl_stub;
 import dataservice.orderdataservice.OrderDataService;
 import enumData.IDType;
@@ -90,15 +89,25 @@ public class OrderDataImpl implements UserOrderInfo, HotelOrderInfo {
     }
 
     /**
-     * 获得一个酒店的所有订单列表
+     * 获得一个酒店的对应类型的订单列表
      *
-     * @param hotelID 酒店ID
+     * @param hotelID    酒店ID
+     * @param orderState 订单状态
      * @return 酒店订单列表
      */
-    @Override
-    public ArrayList<OrderVO> getHotelOrders(String hotelID) throws RemoteException {
+    public ArrayList<OrderVO> getHotelOrdersByState(String hotelID, OrderState orderState) throws RemoteException {
         ArrayList<OrderVO> res = new ArrayList<OrderVO>();
         for (OrderPO po : orderDataService.getOrderList(hotelID, IDType.hotelID)) {
+            if(po.getOrderState().equals(orderState))
+                res.add(OrderPVChanger.orderP2V(po));
+        }
+        return res;
+    }
+
+    @Override
+    public ArrayList<OrderVO> getHotelOrders(String hotelID) throws RemoteException {
+        ArrayList<OrderVO> res = new ArrayList<>();
+        for(OrderPO po:orderDataService.getOrderList(hotelID,IDType.hotelID)){
             res.add(OrderPVChanger.orderP2V(po));
         }
         return res;
@@ -114,4 +123,5 @@ public class OrderDataImpl implements UserOrderInfo, HotelOrderInfo {
     public ResultMessage setOrder(OrderPO po) throws RemoteException {
         return orderDataService.setOrderInfo(po);
     }
+
 }

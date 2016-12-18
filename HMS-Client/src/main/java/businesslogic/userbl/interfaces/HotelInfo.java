@@ -8,6 +8,7 @@ import po.HotelroomPO;
 import po.RoomNumPO;
 import vo.HotelListItemVO;
 import vo.HotelinfoVO;
+import vo.HotelroomVO;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
@@ -35,4 +36,13 @@ public interface HotelInfo {
      * @return 酒店信息
      */
     public HotelinfoPO getHotelInfo(String hotelID) throws RemoteException;
+
+    /**
+     * 获得酒店房间信息
+     *
+     * @param hotelID 酒店id
+     * @return 酒店房间信息
+     * @throws RemoteException
+     */
+    public ArrayList<HotelroomPO> getRooms(String hotelID) throws RemoteException;
 }

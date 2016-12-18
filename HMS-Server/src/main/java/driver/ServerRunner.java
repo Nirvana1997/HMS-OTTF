@@ -33,6 +33,7 @@ public class ServerRunner {
      */
     public void initServer(){
         try {
+//            System.setProperty("java.rmi.server.hostname","");
             LocateRegistry.createRegistry(8888);
             Naming.bind("rmi://localhost:8888/HotelinfoDataService",  new HotelinfoDataImpl());
             Naming.bind("rmi://localhost:8888/HotelroomDataService",  new HotelroomDataImpl());

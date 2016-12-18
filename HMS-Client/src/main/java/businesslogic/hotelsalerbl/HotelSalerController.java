@@ -1,22 +1,10 @@
 package businesslogic.hotelsalerbl;
 
-import businesslogic.logbl.Login;
-import businesslogic.userbl.HotelOrder;
 import businesslogicservice.hotelsalerblservice.HotelinfoblService;
 import businesslogicservice.hotelsalerblservice.HotelroomblService;
 import businesslogicservice.hotelsalerblservice.HotelsalerblService;
-import data_stub.hotelsalerdata.HotelroomDataImpl_stub;
-import dataservice.hotelsalerdataservice.HotelroomDataService;
-import enumData.Address;
-import enumData.ResultMessage;
-import enumData.SortWay;
-import enumData.TradeArea;
-import po.HotelinfoPO;
-import po.HotelroomPO;
-import vo.BelowLineOrderVO;
-import vo.HotelinfoVO;
-import vo.HotelroomVO;
-import vo.OrderVO;
+import enumData.*;
+import vo.*;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
@@ -43,10 +31,16 @@ public class HotelSalerController implements HotelsalerblService,HotelinfoblServ
      */
     HotelOrderOperation hotelOrderOperation;
 
+    /**
+     * 酒店营销策略操作
+     */
+    PromotionOperation promotionOperation;
+
     public HotelSalerController() {
         hotelInfoOperation = new HotelInfoOperation();
         hotelroomOperation = new HotelroomOperation();
         hotelOrderOperation = new HotelOrderOperation();
+        promotionOperation = new PromotionOperation();
     }
 
     /**
@@ -73,10 +67,16 @@ public class HotelSalerController implements HotelsalerblService,HotelinfoblServ
     /**
      * 浏览登录帐号对应酒店订单
      *
+     * @param orderState 订单状态
      * @return 对应酒店订单信息
      */
     @Override
-    public ArrayList<OrderVO> readOrder() throws RemoteException{
+    public ArrayList<OrderVO> readOrderByState(OrderState orderState) throws RemoteException{
+        return hotelOrderOperation.readOrder(orderState);
+    }
+
+    @Override
+    public ArrayList<OrderVO> readOrder() throws RemoteException {
         return hotelOrderOperation.readOrder();
     }
 
@@ -89,6 +89,36 @@ public class HotelSalerController implements HotelsalerblService,HotelinfoblServ
     @Override
     public ResultMessage updateOrder(OrderVO vo) throws RemoteException {
         return hotelOrderOperation.updateOrder(vo);
+    }
+
+    @Override
+    public void executeOrder(OrderVO vo) throws RemoteException {
+        hotelOrderOperation.executeOrder(vo);
+    }
+
+    @Override
+    public void delayOrder(OrderVO vo) throws RemoteException {
+        hotelOrderOperation.delayOrder(vo);
+    }
+
+    @Override
+    public ArrayList<PromotionVO> getPromotion(PromotionType promotionType) throws RemoteException {
+        return promotionOperation.getPromotions(promotionType);
+    }
+
+    @Override
+    public void deletePromotion(String promotionName) throws RemoteException {
+        promotionOperation.deletePromotion(promotionName);
+    }
+
+    @Override
+    public void addPromotion(PromotionVO vo) throws RemoteException {
+        promotionOperation.addPromotion(vo);
+    }
+
+    @Override
+    public void setPromotion(PromotionVO vo) throws RemoteException {
+        promotionOperation.setPromotion(vo);
     }
 
     /**

@@ -90,11 +90,21 @@ public interface HotelOrderBlService {
 
     /**
      * 返回订单信息
+     *
      * @param orderID 订单编号
      * @return 订单
      * @throws RemoteException
      */
-    public OrderVO getOrderInfo(String orderID)throws RemoteException;
+    public OrderVO getOrderInfo(String orderID) throws RemoteException;
+
+    /**
+     * 根据酒店ID和当前登录用户ID返回用户在该酒店的订单信息
+     *
+     * @param hotelID 酒店id
+     * @return 对应订单list
+     * @throws RemoteException
+     */
+    public ArrayList<OrderVO> getHotelOrderByUserID(String hotelID) throws RemoteException;
 
     /**
      * 根据订单ID取消该订单
@@ -111,4 +121,22 @@ public interface HotelOrderBlService {
      * @param vo 评价信息
      */
     public void comment(CommentVO vo) throws RemoteException;
+
+    /**
+     * 获得对应酒店评价信息
+     *
+     * @param hotelID 酒店id
+     * @return 酒店评价信息
+     * @throws RemoteException
+     */
+    public ArrayList<CommentVO> getComments(String hotelID) throws RemoteException;
+
+    /**
+     * 获得酒店房间信息
+     *
+     * @param hotelID 酒店id
+     * @return 酒店房间信息
+     * @throws RemoteException
+     */
+    public ArrayList<HotelroomVO> getRooms(String hotelID) throws RemoteException;
 }

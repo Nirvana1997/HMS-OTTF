@@ -11,8 +11,10 @@ import cfg.Temp;
 import data_stub.userdata.UserDataImpl_stub;
 import dataservice.userdataservice.UserDataService;
 import enumData.*;
+import po.HotelroomPO;
 import po.OrderPO;
 import utility.DateOperation;
+import utility.HotelPVChanger;
 import utility.OrderPVChanger;
 import vo.*;
 
@@ -68,7 +70,22 @@ public class HotelOrder {
      * @return 房间数目是否足够
      */
     public boolean haveEnoughRoom(OrderVO vo) throws RemoteException {
-        return roomNumJudger.haveEnoughRoom(vo.getHotelID(),vo.getCheckInDate(),vo.getCheckOutDate(),vo.getRoomType(),vo.getRoomNumber());
+        return roomNumJudger.haveEnoughRoom(vo.getHotelID(), vo.getCheckInDate(), vo.getCheckOutDate(), vo.getRoomType(), vo.getRoomNumber());
+    }
+
+    /**
+     * 获得酒店房间信息
+     *
+     * @param hotelID 酒店id
+     * @return 酒店房间信息
+     * @throws RemoteException
+     */
+    public ArrayList<HotelroomVO> getRooms(String hotelID) throws RemoteException{
+        ArrayList<HotelroomVO> res = new ArrayList<>();
+        for(HotelroomPO po:hotelInfo.getRooms(hotelID)){
+            res.add(HotelPVChanger.hotelroomP2V(po));
+        }
+        return res;
     }
 
     /**
@@ -89,18 +106,19 @@ public class HotelOrder {
      * @param vo 订单信息
      * @return 是否成功
      */
-    public boolean orderHotel(OrderVO vo) throws RemoteException{
+    public boolean orderHotel(OrderVO vo) throws RemoteException {
         userOrderInfo.addOrder(OrderPVChanger.orderV2P(vo));
         return true;
     }
 
     /**
      * 返回订单信息
+     *
      * @param orderID 订单编号
      * @return 订单
      * @throws RemoteException
      */
-    public OrderVO getOrderInfo(String orderID)throws RemoteException{
+    public OrderVO getOrderInfo(String orderID) throws RemoteException {
         return OrderPVChanger.orderP2V(userOrderInfo.getOrderInfo(orderID));
     }
 
@@ -113,8 +131,25 @@ public class HotelOrder {
     public ArrayList<OrderVO> readOrder(OrderState orderState) throws RemoteException {
         //结果数组
         ArrayList<OrderVO> res = new ArrayList<OrderVO>();
-        for(OrderPO po:userOrderInfo.getOrderListByState(orderState)){
+        for (OrderPO po : userOrderInfo.getOrderListByState(orderState)) {
             res.add(OrderPVChanger.orderP2V(po));
+        }
+        return res;
+    }
+
+    /**
+     * 根据酒店ID和登录用户ID返回用户在该酒店的订单信息
+     *
+     * @param hotelID 酒店id
+     * @return 对应订单list
+     * @throws RemoteException
+     */
+    public ArrayList<OrderVO> getHotelOrderByUser(String hotelID) throws RemoteException {
+        //结果数组
+        ArrayList<OrderVO> res = new ArrayList<OrderVO>();
+        for (OrderPO po : userOrderInfo.getOrderList()) {
+            if (po.getHotelID().equals(hotelID))
+                res.add(OrderPVChanger.orderP2V(po));
         }
         return res;
     }
@@ -126,7 +161,7 @@ public class HotelOrder {
      * @param orderID 订单ID
      * @return 若成功则返回Correct，若发生错误则返回Incorrect
      */
-    public ResultMessage cancelOrder(String orderID) throws RemoteException{
+    public ResultMessage cancelOrder(String orderID) throws RemoteException {
         OrderPO po = userOrderInfo.getOrderInfo(orderID);
         //判断是否为未执行的订单
         if (po.getOrderState().equals(OrderState.executing)) {
@@ -134,13 +169,13 @@ public class HotelOrder {
             userOrderInfo.setOrderInfo(po);
 
             //计算扣除信用的规定时间
-            Date subCreditDdl = DateOperation.addHours(DateOperation.stringToDate(po.getCheckInDate()), Temp.HOUR-Temp.H);
+            Date subCreditDdl = DateOperation.addHours(DateOperation.stringToDate(po.getCheckInDate()), Temp.HOUR - Temp.H);
             //判断是否在规定时间前取消，若超过规定时间，则减少一定的信用值
-            if(new Date().after(subCreditDdl)){
-                userDataService.subCredit(Login.getNowUserID(),(int)(po.getPrice()*Temp.CREDIT_CUT),DateOperation.dateToString(new Date()));
+            if (new Date().after(subCreditDdl)) {
+                userDataService.subCredit(Login.getNowUserID(), (int) (po.getPrice() * Temp.CREDIT_CUT), DateOperation.dateToString(new Date()));
             }
             return ResultMessage.Correct;
-        }else{
+        } else {
             return ResultMessage.InCorrect;
         }
     }
@@ -154,4 +189,14 @@ public class HotelOrder {
         commentInfo.makeComment(vo);
     }
 
+    /**
+     * 获得对应酒店评价信息
+     *
+     * @param hotelID 酒店id
+     * @return 酒店评价信息
+     * @throws RemoteException
+     */
+    public ArrayList<CommentVO> getComments(String hotelID) throws RemoteException {
+        return commentInfo.getComments(hotelID);
+    }
 }
