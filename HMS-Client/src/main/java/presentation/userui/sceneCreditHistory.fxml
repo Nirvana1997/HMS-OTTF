@@ -78,13 +78,13 @@
             <Font name="SimHei" size="16.0" />
          </font>
       </Label>
-      <TableView layoutX="329.0" layoutY="121.0" prefHeight="452.0" prefWidth="628.0">
+      <TableView fx:id="creditList" layoutX="329.0" layoutY="121.0" prefHeight="452.0" prefWidth="628.0">
         <columns>
-          <TableColumn prefWidth="144.0" text="时间" />
-          <TableColumn prefWidth="148.0" text="订单号" />
-            <TableColumn prefWidth="116.0" text="动作" />
-            <TableColumn prefWidth="109.0" text="信用度变化" />
-            <TableColumn prefWidth="110.0" text="信用度结果" />
+          <TableColumn fx:id="columnDate" prefWidth="144.0" text="时间" />
+          <TableColumn fx:id="columnID" prefWidth="148.0" text="订单号" />
+            <TableColumn fx:id="columnReason" prefWidth="116.0" text="变更原因" />
+            <TableColumn fx:id="columnChange" prefWidth="109.0" text="信用度变化" />
+            <TableColumn fx:id="columnResult" prefWidth="110.0" text="信用度结果" />
         </columns>
       </TableView>
    </children>

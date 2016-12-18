@@ -78,7 +78,6 @@ public class uiMyOrderController implements Initializable{
     public uiMyOrderController() throws RemoteException {
     }
 
-
     /**
      * 跳转到首页
      * @throws IOException
@@ -213,6 +212,11 @@ public class uiMyOrderController implements Initializable{
     private ImageView searchOrder;
     @FXML
     private TextField textSearch;
+
+    /**
+     * 根据输入的ID查询订单并跳转到订单界面
+     * @throws IOException
+     */
     public void SearchOrder() throws IOException {
         if(textSearch.getText()!=null) {
            //TODO 如果输入的ID不存在怎么办
@@ -234,6 +238,11 @@ public class uiMyOrderController implements Initializable{
 
     private ObservableList<tableOrder> Data = FXCollections.observableArrayList();
 
+    /**
+     * 根据订单列表初始化Tableview
+     * @param list 订单列表
+     * @throws RemoteException
+     */
     public void initTable(ArrayList<OrderVO> list) throws RemoteException {
         ObservableList<tableOrder> orderData = FXCollections.observableArrayList();
         for(int i = 0; i < list.size(); i++){
@@ -259,7 +268,38 @@ public class uiMyOrderController implements Initializable{
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        ArrayList<OrderVO> inglist = null;
+        ArrayList<OrderVO> edlist = null;
+        ArrayList<OrderVO> calist = null;
+        ArrayList<OrderVO> ablist = null;
 
+        try {
+            inglist = userController.readOrder(OrderState.executing);
+            edlist = userController.readOrder(OrderState.executed);
+            calist = userController.readOrder(OrderState.canceled);
+            ablist = userController.readOrder(OrderState.abnormal);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+
+        ArrayList<OrderVO> orderlist = new ArrayList<OrderVO>();
+        for(int i = 0;i < ablist.size(); i++){
+            orderlist.add(ablist.get(i));
+        }
+        for(int i = 0;i < inglist.size(); i++){
+            orderlist.add(inglist.get(i));
+        }
+        for(int j = 0;j < edlist.size(); j++){
+            orderlist.add(edlist.get(j));
+        }
+        for(int i = 0;i < calist.size(); i++){
+            orderlist.add(calist.get(i));
+        }
+        try {
+            initTable(orderlist);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
     }
 
     /**

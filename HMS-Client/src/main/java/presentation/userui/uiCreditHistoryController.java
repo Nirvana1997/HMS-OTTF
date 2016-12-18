@@ -1,18 +1,29 @@
 package presentation.userui;
 
+import businesslogic.userbl.UserController;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import utility.UiFormatChanger;
+import vo.HotelinfoVO;
+import vo.OrderVO;
 
 import java.io.IOException;
 import java.net.URL;
+import java.rmi.RemoteException;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 /**
  * Created by Administrator on 2016/12/14.
  */
 public class uiCreditHistoryController implements Initializable{
+    UserController userController = new UserController();
     @FXML
     /**
      * 跳转到首页的按钮
@@ -54,6 +65,9 @@ public class uiCreditHistoryController implements Initializable{
      * 跳转界面的类
      */
     sceneJump jump = new sceneJump();
+
+    public uiCreditHistoryController() throws RemoteException {
+    }
 
     /**
      * 跳转到首页
@@ -104,6 +118,39 @@ public class uiCreditHistoryController implements Initializable{
         jump.gotoLogin();
     }
 
+    @FXML
+    private TableView<tableCredit> creditList;
+    @FXML
+    private TableColumn<tableCredit,String> columnID;
+    @FXML
+    private TableColumn<tableCredit,String> columnDate;
+    @FXML
+    private TableColumn<tableCredit,String> columnReason;
+    @FXML
+    private TableColumn<tableCredit,Number> columnChange;
+    @FXML
+    private TableColumn<tableCredit,Number> columnResult;
+
+    private ObservableList<tableCredit> Data = FXCollections.observableArrayList();
+
+    /**
+     * 初始化信用变化记录
+     * @param list 信用变化
+     * @throws RemoteException
+     */
+    public void initTable(ArrayList<OrderVO> list) throws RemoteException {
+        ObservableList<tableCredit> creditData = FXCollections.observableArrayList();
+        for(int i = 0; i < list.size(); i++) {
+
+        }
+        creditList.setItems(creditData);
+        columnID.setCellValueFactory(cellData -> cellData.getValue().orderIDProperty());
+        columnDate.setCellValueFactory(cellData -> cellData.getValue().dateProperty());
+        columnReason.setCellValueFactory(cellData -> cellData.getValue().reasonProperty());
+        columnChange.setCellValueFactory(cellData -> cellData.getValue().changeProperty());
+        columnResult.setCellValueFactory(cellData -> cellData.getValue().resultProperty());
+        Data = creditData;
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
