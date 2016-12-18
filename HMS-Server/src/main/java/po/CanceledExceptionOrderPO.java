@@ -3,19 +3,17 @@ package po;
 /**
  * Created by mac on 2016/12/15.
  */
-public class OrderExceptionPO {
+public class CanceledExceptionOrderPO {
     String orderID;
     String cancelDate;
     String cancelTime;
     String cancelReason;
-    boolean haveCanceled;
 
-    public OrderExceptionPO(String orderID, String cancelDate, String cancelTime, String cancelReason, boolean haveCanceled) {
+    public CanceledExceptionOrderPO(String orderID, String cancelDate, String cancelTime, String cancelReason) {
         this.orderID = orderID;
         this.cancelDate = cancelDate;
         this.cancelTime = cancelTime;
         this.cancelReason = cancelReason;
-        this.haveCanceled = haveCanceled;
     }
 
     public String getOrderID() {
@@ -48,13 +46,5 @@ public class OrderExceptionPO {
 
     public void setCancelReason(String cancelReason) {
         this.cancelReason = cancelReason;
-    }
-
-    public boolean isHaveCanceled() {
-        return haveCanceled;
-    }
-
-    public void setHaveCanceled(boolean haveCanceled) {
-        this.haveCanceled = haveCanceled;
     }
 }
