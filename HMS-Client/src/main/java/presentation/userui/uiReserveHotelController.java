@@ -165,7 +165,7 @@ public class uiReserveHotelController implements Initializable{
             OrderVO reserveOrder = new OrderVO(currentHotel.getHotelID(), currentHotel.getHotelname(), currentHotel.getTradeArea(),
                     currentHotel.getAddress(), currentHotel.getDetailAddress(), Integer.parseInt(textRoomNumber.getText()), Integer.parseInt(textPeopleNumber.getText()),
                     getDate(checkinDate), getDate(checkoutDate), getRoomType(RoomType), (HaveChild.getSelectedToggle() == haveChild));
-            if(hotelOrderBlService.haveEnoughRoom(reserveOrder)) {
+            if(hotelOrderBlService.haveEnoughRoom(reserveOrder)&&hotelOrderBlService.hasEnoughCredit()) {
                 OrderVO confirmOrder = hotelOrderBlService.makeOrder(reserveOrder);
                 setCurrentOrder(confirmOrder);
                 //确认预订
@@ -174,7 +174,7 @@ public class uiReserveHotelController implements Initializable{
             else if(!hotelOrderBlService.haveEnoughRoom(reserveOrder)){
                 warningRoom.setVisible(true);
             }
-            else{
+            else if(!hotelOrderBlService.hasEnoughCredit()){
                 warningCredit.setVisible(true);
             }
         }

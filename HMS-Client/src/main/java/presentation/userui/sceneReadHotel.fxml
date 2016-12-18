@@ -19,7 +19,7 @@
             <Image url="@../../../../../graphics/userui/bc.png" />
          </image>
       </ImageView>
-      <Button fx:id="buttonHomePage" layoutX="25.0" layoutY="221.0" mnemonicParsing="false" onAction="#gotoHomePage" prefHeight="64.0" prefWidth="170.0" text="Button">
+      <Button fx:id="buttonHomePage" layoutX="79.0" layoutY="199.0" mnemonicParsing="false" onAction="#gotoHomePage" prefHeight="46.0" prefWidth="116.0" text="Button">
          <effect>
             <ImageInput>
                <source>
@@ -28,7 +28,7 @@
             </ImageInput>
          </effect>
       </Button>
-      <Button fx:id="buttonUserInfo" layoutX="91.0" layoutY="285.0" mnemonicParsing="false" onAction="#gotoUserInfo" prefHeight="64.0" prefWidth="170.0" text="Button">
+      <Button fx:id="buttonUserInfo" layoutX="79.0" layoutY="256.0" mnemonicParsing="false" onAction="#gotoUserInfo" prefHeight="46.0" prefWidth="116.0" text="Button">
          <effect>
             <ImageInput>
                <source>
@@ -37,7 +37,7 @@
             </ImageInput>
          </effect>
       </Button>
-      <Button fx:id="buttonMyOrder" layoutX="25.0" layoutY="349.0" mnemonicParsing="false" onAction="#gotoMyOrder" prefHeight="64.0" prefWidth="170.0" text="Button">
+      <Button fx:id="buttonMyOrder" layoutX="79.0" layoutY="315.0" mnemonicParsing="false" onAction="#gotoMyOrder" prefHeight="46.0" prefWidth="116.0" text="Button">
          <effect>
             <ImageInput>
                <source>
@@ -46,7 +46,7 @@
             </ImageInput>
          </effect>
       </Button>
-      <Button fx:id="buttonReadHotel" layoutX="91.0" layoutY="413.0" mnemonicParsing="false" onAction="#gotoReadHotel" prefHeight="64.0" prefWidth="170.0" text="Button">
+      <Button fx:id="buttonReadHotel" layoutX="79.0" layoutY="374.0" mnemonicParsing="false" onAction="#gotoReadHotel" prefHeight="46.0" prefWidth="116.0" text="Button">
          <effect>
             <ImageInput>
                <source>
@@ -55,7 +55,7 @@
             </ImageInput>
          </effect>
       </Button>
-      <Button fx:id="buttonSearchHotel" layoutX="25.0" layoutY="477.0" mnemonicParsing="false" onAction="#gotoSearchHotel" prefHeight="64.0" prefWidth="170.0" text="Button">
+      <Button fx:id="buttonSearchHotel" layoutX="79.0" layoutY="433.0" mnemonicParsing="false" onAction="#gotoSearchHotel" prefHeight="46.0" prefWidth="116.0" text="Button">
          <effect>
             <ImageInput>
                <source>
@@ -69,12 +69,12 @@
             <Image url="@../../../../../graphics/userui/icon.png" />
          </image>
       </ImageView>
-      <Text fx:id="UserName" fill="#de5749" layoutX="151.0" layoutY="147.0" smooth="false" strokeType="OUTSIDE" strokeWidth="0.0" text="萌萌">
+      <Text fx:id="UserName" fill="#9ad739" layoutX="151.0" layoutY="147.0" smooth="false" strokeType="OUTSIDE" strokeWidth="0.0" text="萌萌">
          <font>
             <Font size="24.0" />
          </font>
       </Text>
-      <Label fx:id="buttonLogOut" layoutX="219.0" layoutY="576.0" onMouseClicked="#LogOut" prefHeight="20.0" prefWidth="36.0" text="登出" textFill="#da6952" underline="true">
+      <Label fx:id="buttonLogOut" layoutX="219.0" layoutY="576.0" onMouseClicked="#LogOut" prefHeight="20.0" prefWidth="36.0" text="登出" textFill="#9ad739" underline="true">
          <font>
             <Font name="SimHei" size="16.0" />
          </font>

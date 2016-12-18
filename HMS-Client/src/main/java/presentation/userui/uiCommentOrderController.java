@@ -1,15 +1,23 @@
 package presentation.userui;
 
+import businesslogic.userbl.UserController;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
+import vo.CommentVO;
+import vo.OrderVO;
 
 import java.io.IOException;
+import java.rmi.RemoteException;
 
 /**
  * Created by Administrator on 2016/12/5.
  */
 public class uiCommentOrderController {
+    UserController userController = new UserController();
     @FXML
     /**
      * 跳转到首页的按钮
@@ -51,6 +59,9 @@ public class uiCommentOrderController {
      * 跳转界面的类
      */
     sceneJump jump = new sceneJump();
+
+    public uiCommentOrderController() throws RemoteException {
+    }
 
     /**
      * 跳转到首页
@@ -113,12 +124,22 @@ public class uiCommentOrderController {
     }
     @FXML
     private Button buttonComment;
-
+    @FXML
+    private Text orderHotel;
+    @FXML
+    private TextField textGrade;
+    @FXML
+    private TextArea textComment;
     /**
      * 评价订单
      * @throws IOException
      */
     public void CommentOrder() throws IOException{
-        //TODO
+        OrderVO ordervo = userController.getOrderInfo(uiMyOrderController.getOrderID());
+        CommentVO commentvo = new CommentVO(ordervo.getHotelID(),userController.showUserInfo().getUserID(),
+                textComment.getText(),Integer.parseInt(textGrade.getText()));
+        userController.comment(commentvo);
+        jump.gotoOrder();
+        jump.CommentSuccess();
     }
 }

@@ -156,6 +156,45 @@ public class sceneJump {
     }
 
     /**
+     * 评价成功
+     * @throws IOException
+     */
+    public void CommentSuccess() throws IOException{
+        Stage secondWindow=new Stage();
+        Scene scene=new Scene((Parent) FXMLLoader.load(getClass().getResource("sceneCommentSuccess.fxml")));
+        secondWindow.setTitle("Success!");
+        secondWindow.setScene(scene);
+        secondWindow.show();
+    }
+
+    /**
+     * 修改成功
+     * @throws IOException
+     */
+    public void ModifySuccess() throws IOException{
+        Stage secondWindow=new Stage();
+        Scene scene=new Scene((Parent) FXMLLoader.load(getClass().getResource("sceneModifySuccess.fxml")));
+        secondWindow.setTitle("Success!");
+        secondWindow.setScene(scene);
+        secondWindow.show();
+    }
+
+    /**
+     * 撤回成功
+     * @throws IOException
+     */
+    public void RevokeSuccess() throws IOException{
+        Stage secondWindow=new Stage();
+        Scene scene=new Scene((Parent) FXMLLoader.load(getClass().getResource("sceneRevokeSuccess.fxml")));
+        secondWindow.setTitle("Success!");
+        secondWindow.setScene(scene);
+        secondWindow.show();
+    }
+
+
+
+
+    /**
      * 确认预订
      * @throws IOException
      */

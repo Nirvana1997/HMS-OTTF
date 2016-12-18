@@ -11,7 +11,6 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import vo.HotelListItemVO;
-import vo.HotelVO;
 
 import java.io.IOException;
 import java.net.URL;

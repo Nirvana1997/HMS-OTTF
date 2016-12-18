@@ -1,50 +1,29 @@
 package presentation.userui;
 
+import businesslogic.userbl.UserController;
 import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
 import enumData.OrderState;
+import enumData.RoomType;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.text.Text;
+import vo.OrderVO;
 
 import java.io.IOException;
 import java.net.URL;
+import java.rmi.RemoteException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 /**
  * Created by Administrator on 2016/12/5.
  */
 public class uiOrderController implements Initializable{
-    @FXML
-    private Text orderID;
-    @FXML
-    private Text orderState;
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        if(uiMyOrderController.getOrderState()== OrderState.executed){
-            buttonComment.setVisible(true);
-        }
-        else if(uiMyOrderController.getOrderState() == OrderState.executing){
-            buttonRevoke.setVisible(true);
-        }
-        orderID.setText(uiMyOrderController.getOrderID());
-        String state;
-        //根据订单状态显示相应字符
-        if(uiMyOrderController.getOrderState() == OrderState.abnormal){
-            state = "异常";
-        }
-        else if(uiMyOrderController.getOrderState() == OrderState.executed){
-            state = "已执行";
-        }
-        else if(uiMyOrderController.getOrderState() == OrderState.executing){
-            state = "未执行";
-        }
-        else{
-            state = "已撤销";
-        }
-        orderState.setText(state);
-    }
+    UserController userController = new UserController();
 
 
     @FXML
@@ -149,10 +128,102 @@ public class uiOrderController implements Initializable{
      */
     public void RevokeOrder() throws IOException{
         //TODO
+        userController.cancelOrder(uiMyOrderController.getOrderID());
+        jump.gotoOrder();
+        jump.RevokeSuccess();
     }
     @FXML
     private Button buttonComment;
     public void gotoCommentOrder() throws IOException{
         jump.gotoCommentOrder();
+    }
+    @FXML
+    private Text orderID;
+    @FXML
+    private Text orderState;
+    @FXML
+    private Text orderHotel;
+    @FXML
+    private Text orderRoom;
+    @FXML
+    private Text orderRoomNumber;
+    @FXML
+    private Text orderPeopleNumber;
+    @FXML
+    private Text orderTime;
+    @FXML
+    private Text orderPrice;
+    @FXML
+    private Text orderHaveChild;
+
+    public uiOrderController() throws RemoteException {
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        OrderVO vo = null;
+        try {
+            vo = userController.getOrderInfo(uiMyOrderController.getOrderID());
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+        if(vo.getOrderState()== OrderState.executed){
+            buttonComment.setVisible(true);
+        }
+        else if(vo.getOrderState() == OrderState.executing){
+            buttonRevoke.setVisible(true);
+        }
+        orderID.setText(vo.getOrderID());
+        orderState.setText(stateTOstring(vo.getOrderState()));
+        try {
+            orderHotel.setText(userController.readHotel(vo.getHotelID()).getHotelname());
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+        orderRoom.setText(typeTOstring(vo.getRoomType()));
+        orderRoomNumber.setText(String.valueOf(vo.getRoomNumber()));
+        orderPeopleNumber.setText(String.valueOf(vo.getPeopleNumber()));
+        String date = "";
+        date = dateToString(vo.getCheckInDate())+" 至 " +dateToString(vo.getCheckOutDate());
+        orderTime.setText(date);
+        orderPrice.setText(String.valueOf(vo.getPrice()));
+        if(vo.isHaveChild())
+            orderHaveChild.setText("是");
+        else
+            orderHaveChild.setText("否");
+    }
+    /**
+     * 日期转字符串
+     * @param date 日期
+     * @return yyyy_MM.dd格式的日期
+     */
+    public String dateToString(Date date){
+        DateFormat df = new SimpleDateFormat("yyyy_MM_dd");
+        return df.format(date);
+    }
+    /**
+     * 根据订单状态返回字符串
+     * @param state 订单状态
+     * @return 中文字符串格式的订单状态
+     */
+    public String stateTOstring(OrderState state){
+        if(state == OrderState.abnormal){ return "异常"; }
+        if(state == OrderState.executed){ return "已执行";}
+        if(state == OrderState.executing){ return "未执行";}
+        if(state == OrderState.canceled){ return "已撤销";}
+        if(state == OrderState.noOrder){ return "不存在";}
+        else return null;
+    }
+
+    /**
+     * 根据房间类型返回字符串
+     * @param type 房间类型
+     * @return 字符串格式的房间类型
+     */
+    public String typeTOstring(RoomType type){
+        if(type == RoomType.SingleRoom) { return "单人房";}
+        if(type == RoomType.DoubleRoom) {return "双人房";}
+        if(type == RoomType.DisabledRoom) {return "无障碍客房";}
+        else return null;
     }
 }

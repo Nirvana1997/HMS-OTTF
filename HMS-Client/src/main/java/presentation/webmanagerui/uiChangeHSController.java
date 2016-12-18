@@ -89,15 +89,15 @@ public class uiChangeHSController implements Initializable{
         //TODO 登出账号
         jump.gotoLogin();
     }
-    @FXML
-    private Text buttonModifyPassword;
-    /**
-     * 点击修改密码，跳出修改密码窗口
-     * @throws IOException
-     */
-    public void gotoModifyPassword() throws IOException{
-        jump.gotoModifyPassword();
-    }
+//    @FXML
+//    private Text buttonModifyPassword;
+//    /**
+//     * 点击修改密码，跳出修改密码窗口
+//     * @throws IOException
+//     */
+//    public void gotoModifyPassword() throws IOException{
+//        jump.gotoModifyPassword();
+//    }
 
     @FXML
     private Button buttonSave;
