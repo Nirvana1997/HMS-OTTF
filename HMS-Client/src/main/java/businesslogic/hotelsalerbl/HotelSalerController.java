@@ -105,11 +105,6 @@ public class HotelSalerController implements HotelsalerblService,HotelinfoblServ
     }
 
     @Override
-    public void executeOrder(String orderID) throws RemoteException {
-//        kk
-    }
-
-    @Override
     public ArrayList<PromotionVO> getPromotion(PromotionType promotionType) throws RemoteException {
         return promotionOperation.getPromotions(promotionType);
     }

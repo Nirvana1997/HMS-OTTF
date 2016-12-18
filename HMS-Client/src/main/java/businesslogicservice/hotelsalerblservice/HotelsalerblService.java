@@ -55,14 +55,6 @@ public interface HotelsalerblService {
     public void delayOrder(OrderVO vo) throws RemoteException;
 
     /**
-     * 执行订单
-     *
-     * @param orderID 订单ID
-     * @throws RemoteException
-     */
-    public void executeOrder(String orderID) throws RemoteException;
-
-    /**
      * 获取当前酒店的营销策略
      *
      * @param promotionType 营销策略类型
