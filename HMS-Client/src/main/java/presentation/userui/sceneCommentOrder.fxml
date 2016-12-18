@@ -22,7 +22,7 @@
          <effect>
             <ImageInput>
                <source>
-                  <Image url="file:/D:/HMS-OTTF的副本/HMS-OTTF的副本/HMS-Client/graphics/userui/首页1.png" />
+                  <Image url="@../../../../../graphics/userui/首页1.png" />
                </source>
             </ImageInput>
          </effect>

@@ -241,7 +241,7 @@
                <effect>
                   <ImageInput>
                      <source>
-                        <Image url="file:/D:/HMS-OTTF的副本/HMS-OTTF的副本/HMS-Client/graphics/userui/搜索.png" />
+                        <Image url="@../../../../../graphics/userui/搜索.png" />
                      </source>
                   </ImageInput>
                </effect>
@@ -265,7 +265,7 @@
                <effect>
                   <ImageInput>
                      <source>
-                        <Image url="file:/D:/HMS-OTTF的副本/HMS-OTTF的副本/HMS-Client/graphics/userui/预订酒店.png" />
+                        <Image url="@../../../../../graphics/userui/预订酒店.png" />
                      </source>
                   </ImageInput>
                </effect></Button>
@@ -273,7 +273,7 @@
                <effect>
                   <ImageInput>
                      <source>
-                        <Image url="file:/D:/HMS-OTTF的副本/HMS-OTTF的副本/HMS-Client/graphics/userui/查看详情.png" />
+                        <Image url="@../../../../../graphics/userui/查看详情.png" />
                      </source>
                   </ImageInput>
                </effect></Button>
