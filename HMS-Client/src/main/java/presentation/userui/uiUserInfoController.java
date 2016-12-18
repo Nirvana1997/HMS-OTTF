@@ -2,23 +2,13 @@ package presentation.userui;
 
 import businesslogic.logbl.LogController;
 import businesslogic.userbl.UserController;
-import businesslogicservice.logblservice.LogBlService;
 import businesslogicservice.userblservice.InfoBlService;
-import enumData.ResultMessage;
 import enumData.UserType;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
-import presentation.logui.uiRegister1Controller;
-import vo.PasswordComfirmVO;
 import vo.UserInfoVO;
-
-import javax.naming.InitialContext;
-import javax.sound.midi.MidiDevice;
 import java.io.IOException;
 import java.net.URL;
 import java.rmi.RemoteException;
@@ -28,42 +18,57 @@ import java.util.ResourceBundle;
  * Created by Administrator on 2016/12/3.
  */
 public class uiUserInfoController implements Initializable {
-    @FXML
     /**
-     * 跳转到首页的按钮
+     * 用户ID
      */
-    private Button buttonHomePage;
     @FXML
-    /**
-     * 跳转到我的订单的按钮
-     */
-    private Button buttonMyOrder;
-    @FXML
-    /**
-     * 跳转到浏览酒店的按钮
-     */
-    private Button buttonReadHotel;
-    @FXML
-    /**
-     * 跳转到搜索酒店的按钮
-     */
-    private Button buttonSearchHotel;
-    @FXML
-    /**
-     * 跳转到个人信息的按钮
-     */
-    private Button buttonUserInfo;
-    @FXML
-    /**
-     * 登出按钮
-     */
-    private Label buttonLogOut;
+    private Text textUserID;
 
     /**
-     * 搜索按钮
+     * 用户真实姓名
      */
     @FXML
-    private Button buttonSearch;
+    private TextField textRealName;
+
+    /**
+     * 用户联系方式
+     */
+    @FXML
+    private TextField textPhoneNumber;
+
+    /**
+     * 用户身份证
+     */
+    @FXML
+    private Text textIdentity;
+
+    /**
+     * 用户信用
+     */
+    @FXML
+    private Text textCredit;
+
+    /**
+     * 用户VIP等级
+     */
+    @FXML
+    private Text textVIPLevel;
+
+    /**
+     * 当前用户的生日（暂存，不显示）
+     */
+    String Birthday;
+
+    /**
+     * 当前用户的企业ID（暂存，不显示）
+     */
+    String CompanyID;
+
+    /**
+     * 当前用户的用户类型（暂存，不显示）
+     */
+    UserType userType;
+
 
     /**
      * 跳转界面的类
@@ -72,6 +77,7 @@ public class uiUserInfoController implements Initializable {
 
     /**
      * 跳转到首页
+     *
      * @throws IOException
      */
     public void gotoHomePage() throws IOException {
@@ -80,67 +86,55 @@ public class uiUserInfoController implements Initializable {
 
     /**
      * 跳转到我的订单
+     *
      * @throws IOException
      */
-    public void gotoMyOrder() throws IOException{
+    public void gotoMyOrder() throws IOException {
         jump.gotoMyOrder();
     }
 
     /**
      * 跳转到浏览酒店
+     *
      * @throws IOException
      */
-    public void gotoReadHotel() throws IOException{
+    public void gotoReadHotel() throws IOException {
         jump.gotoReadHotel();
     }
 
     /**
      * 跳转到搜索酒店
+     *
      * @throws IOException
      */
-    public void gotoSearchHotel() throws IOException{
+    public void gotoSearchHotel() throws IOException {
         jump.gotoSearchHotel();
     }
 
     /**
      * 跳转到个人信息
+     *
      * @throws IOException
      */
-    public void gotoUserInfo() throws IOException{
+    public void gotoUserInfo() throws IOException {
         jump.gotoUserInfo();
     }
 
     /**
      * 清空账号信息，并跳转回登录界面
+     *
      * @throws IOException
      */
-    public void LogOut() throws IOException{
+    public void LogOut() throws IOException {
         LogController logController = new LogController();
         logController.logOut();
         jump.gotoLogin();
     }
-    @FXML
-    private Text textUserID;
-    @FXML
-    private TextField textRealName;
-    @FXML
-    private TextField textPhoneNumber;
-    @FXML
-    private Text textIdentity;
-    @FXML
-    private Text textCredit;
-    @FXML
-    private Text textVIPLevel;
 
-    String Birthday;
-    String CompanyID;
-    UserType userType;
-
-    @FXML
-    private Button buttonSave;
 
     /**
      * 修改账号信息
+     *
      * @throws IOException
      */
     public void Save() throws IOException {
@@ -150,14 +144,15 @@ public class uiUserInfoController implements Initializable {
         int VIPLevel = Integer.parseInt(textVIPLevel.getText());
         int Credit = Integer.parseInt(textCredit.getText());
         String Identity = textIdentity.getText();
-        UserInfoVO vo = new UserInfoVO(UserID, RealName, Identity,PhoneNumber,Credit,Birthday,CompanyID,userType,VIPLevel);
-        InfoBlService infoBlService = new UserController() ;
+        UserInfoVO vo = new UserInfoVO(UserID, RealName, Identity, PhoneNumber, Credit, Birthday, CompanyID, userType, VIPLevel);
+        InfoBlService infoBlService = new UserController();
         infoBlService.modifyUserInfo(vo);
         jump.ModifySuccess();
     }
 
     /**
      * 初始化用户信息
+     *
      * @throws RemoteException
      */
     public void init() throws RemoteException {
@@ -174,18 +169,39 @@ public class uiUserInfoController implements Initializable {
 
     }
 
-    public void Cancel() throws  IOException{
+    /**
+     * 取消（回到最初界面）
+     *
+     * @throws IOException
+     */
+    public void Cancel() throws IOException {
         init();
     }
-    public void gotoModifyPassword() throws IOException{
+
+    /**
+     * 跳转到修改密码界面
+     *
+     * @throws IOException
+     */
+    public void gotoModifyPassword() throws IOException {
         jump.gotoModifyPassword();
     }
-    @FXML
-    private Text gotoCreditHistory;
-    public void gotoCreditHistory() throws IOException{
+
+    /**
+     * 跳转到信用变化记录界面
+     *
+     * @throws IOException
+     */
+    public void gotoCreditHistory() throws IOException {
         jump.gotoCreditHistory();
     }
 
+    /**
+     * 初始化
+     *
+     * @param location
+     * @param resources
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         try {

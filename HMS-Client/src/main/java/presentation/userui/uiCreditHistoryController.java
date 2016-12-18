@@ -6,15 +6,9 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import utility.UiFormatChanger;
 import vo.CreditRecordVO;
-import vo.HotelinfoVO;
-import vo.OrderVO;
-
 import java.io.IOException;
 import java.net.URL;
 import java.rmi.RemoteException;
@@ -24,55 +18,64 @@ import java.util.ResourceBundle;
 /**
  * Created by Administrator on 2016/12/14.
  */
-public class uiCreditHistoryController implements Initializable{
+public class uiCreditHistoryController implements Initializable {
+    /**
+     * 用户界面控制器
+     */
     UserController userController = new UserController();
-    @FXML
-    /**
-     * 跳转到首页的按钮
-     */
-    private Button buttonHomePage;
-    @FXML
-    /**
-     * 跳转到我的订单的按钮
-     */
-    private Button buttonMyOrder;
-    @FXML
-    /**
-     * 跳转到浏览酒店的按钮
-     */
-    private Button buttonReadHotel;
-    @FXML
-    /**
-     * 跳转到搜索酒店的按钮
-     */
-    private Button buttonSearchHotel;
-    @FXML
-    /**
-     * 跳转到个人信息的按钮
-     */
-    private Button buttonUserInfo;
-    @FXML
-    /**
-     * 登出按钮
-     */
-    private Label buttonLogOut;
-
-    /**
-     * 搜索按钮
-     */
-    @FXML
-    private Button buttonSearch;
 
     /**
      * 跳转界面的类
      */
     sceneJump jump = new sceneJump();
 
+    /**
+     * 信用变化记录列表
+     */
+    @FXML
+    private TableView<tableCredit> creditList;
+
+    /**
+     * 订单编号列
+     */
+    @FXML
+    private TableColumn<tableCredit, String> columnID;
+
+    /**
+     * 日期列
+     */
+    @FXML
+    private TableColumn<tableCredit, String> columnDate;
+
+    /**
+     * 变更原因列
+     */
+    @FXML
+    private TableColumn<tableCredit, String> columnReason;
+
+    /**
+     * 信用变化列
+     */
+    @FXML
+    private TableColumn<tableCredit, Number> columnChange;
+
+    /**
+     * 信用变化结果列
+     */
+    @FXML
+    private TableColumn<tableCredit, Number> columnResult;
+
+    /**
+     * 信用变化记录填充数据
+     */
+    private ObservableList<tableCredit> Data = FXCollections.observableArrayList();
+
     public uiCreditHistoryController() throws RemoteException {
     }
 
     /**
      * 跳转到首页
+     *
      * @throws IOException
      */
     public void gotoHomePage() throws IOException {
@@ -81,71 +84,63 @@ public class uiCreditHistoryController implements Initializable{
 
     /**
      * 跳转到我的订单
+     *
      * @throws IOException
      */
-    public void gotoMyOrder() throws IOException{
+    public void gotoMyOrder() throws IOException {
         jump.gotoMyOrder();
     }
 
     /**
      * 跳转到浏览酒店
+     *
      * @throws IOException
      */
-    public void gotoReadHotel() throws IOException{
+    public void gotoReadHotel() throws IOException {
         jump.gotoReadHotel();
     }
 
     /**
      * 跳转到搜索酒店
+     *
      * @throws IOException
      */
-    public void gotoSearchHotel() throws IOException{
+    public void gotoSearchHotel() throws IOException {
         jump.gotoSearchHotel();
     }
 
     /**
      * 跳转到个人信息
+     *
      * @throws IOException
      */
-    public void gotoUserInfo() throws IOException{
+    public void gotoUserInfo() throws IOException {
         jump.gotoUserInfo();
     }
 
     /**
      * 清空账号信息，并跳转回登录界面
+     *
      * @throws IOException
      */
-    public void LogOut() throws IOException{
+    public void LogOut() throws IOException {
         LogController logController = new LogController();
         logController.logOut();
         jump.gotoLogin();
     }
 
-    @FXML
-    private TableView<tableCredit> creditList;
-    @FXML
-    private TableColumn<tableCredit,String> columnID;
-    @FXML
-    private TableColumn<tableCredit,String> columnDate;
-    @FXML
-    private TableColumn<tableCredit,String> columnReason;
-    @FXML
-    private TableColumn<tableCredit,Number> columnChange;
-    @FXML
-    private TableColumn<tableCredit,Number> columnResult;
-
-    private ObservableList<tableCredit> Data = FXCollections.observableArrayList();
 
     /**
-     * 初始化信用变化记录
+     * 初始化信用变化记录列表
+     *
      * @param list 信用变化
      * @throws RemoteException
      */
     public void initTable(ArrayList<CreditRecordVO> list) throws RemoteException {
         ObservableList<tableCredit> creditData = FXCollections.observableArrayList();
-        for(int i = 0; i < list.size(); i++) {
-            creditData.add(new tableCredit(list.get(i).getDate(), list.get(i).getOrderID(),list.get(i).getReason(),
-                    list.get(i).getChange(),list.get(i).getFinalCredit()));
+        for (int i = 0; i < list.size(); i++) {
+            creditData.add(new tableCredit(list.get(i).getDate(), list.get(i).getOrderID(), list.get(i).getReason(),
+                    list.get(i).getChange(), list.get(i).getFinalCredit()));
         }
         creditList.setItems(creditData);
         columnID.setCellValueFactory(cellData -> cellData.getValue().orderIDProperty());
@@ -156,9 +151,14 @@ public class uiCreditHistoryController implements Initializable{
         Data = creditData;
     }
 
+    /**
+     * 初始化
+     *
+     * @param location
+     * @param resources
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        //TODO 初始化信用变化记录
         ArrayList<CreditRecordVO> creditlist = null;
         try {
             creditlist = userController.showCreditRecords();

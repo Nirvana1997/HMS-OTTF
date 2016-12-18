@@ -2,35 +2,55 @@ package presentation.userui;
 
 import businesslogic.userbl.UserController;
 import businesslogicservice.userblservice.HotelOrderBlService;
-import com.sun.org.apache.bcel.internal.generic.IndexedInstruction;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.text.Text;
 import utility.UiFormatChanger;
 import vo.OrderVO;
-
 import java.io.IOException;
 import java.net.URL;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.ResourceBundle;
 
 /**
  * Created by Administrator on 2016/12/10.
  */
-public class uiConfirmOrderController implements Initializable{
+public class uiConfirmOrderController implements Initializable {
+
+    /**
+     * 确认的订单价格
+     */
     @FXML
     private Text textPrice;
+
+    /**
+     * 确认的订单最终期限
+     */
     @FXML
     private Text textDDL;
-    @FXML
-    private Button buttonConfirm;
+
+    /**
+     * 取消按钮
+     */
     @FXML
     private Button buttonCancel;
+
+    /**
+     * 类的声明
+     */
     sceneJump jump = new sceneJump();
-    public void ConfirmOrder() throws IOException{
+
+    /**
+     * 当前订单
+     */
+    OrderVO orderVO;
+
+    /**
+     * 确认生成订单
+     *
+     * @throws IOException
+     */
+    public void ConfirmOrder() throws IOException {
         HotelOrderBlService hotelOrderBlService = new UserController();
         hotelOrderBlService.orderHotel(orderVO);
         //返回酒店界面
@@ -40,11 +60,22 @@ public class uiConfirmOrderController implements Initializable{
         //关闭当前窗口
         buttonCancel.getScene().getWindow().hide();
     }
-    public void Cancel() throws IOException{
+
+    /**
+     * 取消生成订单
+     *
+     * @throws IOException
+     */
+    public void Cancel() throws IOException {
         buttonCancel.getScene().getWindow().hide();
     }
-    OrderVO orderVO;
 
+    /**
+     * 初始化显示订单数据
+     *
+     * @param location
+     * @param resources
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         orderVO = uiReserveHotelController.getCurrentOrder();

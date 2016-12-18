@@ -16,8 +16,9 @@ public class tableDetailOrder {
     private final SimpleDoubleProperty Price = new SimpleDoubleProperty();
     private final SimpleStringProperty HaveChild = new SimpleStringProperty();
     private final SimpleStringProperty RoomType = new SimpleStringProperty();
+
     public tableDetailOrder(String orderid, String ordertime, String state, int peoplenumber, double price,
-                                String havechild, String roomtype){
+                            String havechild, String roomtype) {
         setOrderID(orderid);
         setOrderTime(ordertime);
         setState(state);
@@ -26,31 +27,88 @@ public class tableDetailOrder {
         setHaveChild(havechild);
         setRoomType(roomtype);
     }
-    public String getOrderID(){ return OrderID.get();}
-    public void setOrderID(String OrderID){ this.OrderID.set(OrderID); }
-    public StringProperty OrderIDProperty(){ return OrderID;}
 
-    public String getOrderTime(){ return OrderTime.get();}
-    public void setOrderTime(String OrderTime){ this.OrderTime.set(OrderTime); }
-    public StringProperty OrderTimeProperty(){ return OrderTime;}
+    public String getOrderID() {
+        return OrderID.get();
+    }
 
-    public String getState(){ return State.get();}
-    public void setState(String State){ this.State.set(State); }
-    public StringProperty StateProperty(){ return State;}
+    public void setOrderID(String OrderID) {
+        this.OrderID.set(OrderID);
+    }
 
-    public int getPeopleNumber() {return PeopleNumber.get();}
-    public SimpleIntegerProperty peopleNumberProperty() {return PeopleNumber;}
-    public void setPeopleNumber(int peopleNumber) {this.PeopleNumber.set(peopleNumber);}
+    public StringProperty OrderIDProperty() {
+        return OrderID;
+    }
 
-    public double getPrice() {return Price.get();}
-    public SimpleDoubleProperty priceProperty() {return Price;}
-    public void setPrice(double price) {this.Price.set(price);}
+    public String getOrderTime() {
+        return OrderTime.get();
+    }
 
-    public String getHaveChild() {return HaveChild.get();}
-    public SimpleStringProperty haveChildProperty() {return HaveChild;}
-    public void setHaveChild(String haveChild) {this.HaveChild.set(haveChild);}
+    public void setOrderTime(String OrderTime) {
+        this.OrderTime.set(OrderTime);
+    }
 
-    public String getRoomType() {return RoomType.get();}
-    public SimpleStringProperty roomTypeProperty() {return RoomType;}
-    public void setRoomType(String roomType) {this.RoomType.set(roomType);}
+    public StringProperty OrderTimeProperty() {
+        return OrderTime;
+    }
+
+    public String getState() {
+        return State.get();
+    }
+
+    public void setState(String State) {
+        this.State.set(State);
+    }
+
+    public StringProperty StateProperty() {
+        return State;
+    }
+
+    public int getPeopleNumber() {
+        return PeopleNumber.get();
+    }
+
+    public SimpleIntegerProperty peopleNumberProperty() {
+        return PeopleNumber;
+    }
+
+    public void setPeopleNumber(int peopleNumber) {
+        this.PeopleNumber.set(peopleNumber);
+    }
+
+    public double getPrice() {
+        return Price.get();
+    }
+
+    public SimpleDoubleProperty priceProperty() {
+        return Price;
+    }
+
+    public void setPrice(double price) {
+        this.Price.set(price);
+    }
+
+    public String getHaveChild() {
+        return HaveChild.get();
+    }
+
+    public SimpleStringProperty haveChildProperty() {
+        return HaveChild;
+    }
+
+    public void setHaveChild(String haveChild) {
+        this.HaveChild.set(haveChild);
+    }
+
+    public String getRoomType() {
+        return RoomType.get();
+    }
+
+    public SimpleStringProperty roomTypeProperty() {
+        return RoomType;
+    }
+
+    public void setRoomType(String roomType) {
+        this.RoomType.set(roomType);
+    }
 }
