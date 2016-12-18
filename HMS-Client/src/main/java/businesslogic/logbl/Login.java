@@ -48,6 +48,15 @@ public class Login {
     }
 
     /**
+     * 登出
+     *
+     * @throws RemoteException
+     */
+    public void logOut() throws RemoteException {
+        nowUserID = null;
+    }
+
+    /**
      * 返回对应用户帐号类型，若不存在，则返回null
      *
      * @param account 帐号
@@ -79,4 +88,5 @@ public class Login {
     public static String getNowUserID() {
         return nowUserID;
     }
+
 }

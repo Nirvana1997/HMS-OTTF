@@ -22,6 +22,13 @@ public interface LogBlService {
     public ResultMessage isCorrectAndLogin(AccountVO vo) throws RemoteException;
 
     /**
+     * 登出
+     *
+     * @throws RemoteException
+     */
+    public void logOut() throws RemoteException;
+
+    /**
      * 返回用户类型，若不存在，则返回null
      *
      * @param account

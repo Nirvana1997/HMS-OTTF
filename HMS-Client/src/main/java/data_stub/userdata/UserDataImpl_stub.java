@@ -3,6 +3,7 @@ package data_stub.userdata;
 import dataservice.userdataservice.UserDataService;
 import enumData.ResultMessage;
 import enumData.UserType;
+import po.CreditChangePO;
 import po.CreditRecordPO;
 import po.UserInfoPO;
 
@@ -66,20 +67,20 @@ public class UserDataImpl_stub implements UserDataService {
 	}
 
 	@Override
-	public ResultMessage addCredit(String userID, int value, String date) throws RemoteException {
+	public ResultMessage addCredit(CreditChangePO po) throws RemoteException {
 		for(int i=0;i<userInfoPOs.size();i++){
-			if(userInfoPOs.get(i).getUserID().equals(userID)) {
-				userInfoPOs.get(i).setCredit(userInfoPOs.get(i).getCredit() + value);
-				creditRecordPOs.add(new CreditRecordPO(date,value,userInfoPOs.get(i).getCredit()));
+			if(userInfoPOs.get(i).getUserID().equals(po.getUserID())) {
+				userInfoPOs.get(i).setCredit(userInfoPOs.get(i).getCredit() + po.getValue());
+				creditRecordPOs.add(new CreditRecordPO(po.getDate(),po.getValue(),userInfoPOs.get(i).getCredit(),"",""));
 			}
 		}
 		return ResultMessage.Correct;
 	}
 
 	@Override
-	public ResultMessage subCredit(String userID, int value, String date) throws RemoteException {
-		value = 0 - value;
-		addCredit(userID,value,date);
+	public ResultMessage subCredit(CreditChangePO po) throws RemoteException {
+		po.setValue(-po.getValue());
+		addCredit(po);
 		return ResultMessage.Correct;
 	}
 

@@ -41,6 +41,11 @@ public class LogController implements LogBlService{
         return login.isCorrectAndLogin(vo);
     }
 
+    @Override
+    public void logOut() throws RemoteException {
+        login.logOut();
+    }
+
     /**
      * 返回用户类型，若不存在，则返回null
      * @param account
