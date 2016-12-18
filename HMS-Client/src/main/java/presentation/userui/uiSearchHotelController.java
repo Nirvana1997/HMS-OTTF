@@ -12,6 +12,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.util.Callback;
+import utility.UiFormatChanger;
 import vo.HotelListItemVO;
 import vo.LimitVO;
 
@@ -177,7 +178,8 @@ public class uiSearchHotelController implements Initializable{
         else if(RoomType.getSelectedToggle()!=null && PriceMin.getText().length()!=0 && PriceMax.getText().length()!=0&&
                 RoomNum.getText().length()!=0 && checkinDate.getValue()!=null && checkoutDate.getValue()!=null){
             try{
-                LimitVO RoomLimit = new LimitVO(LimitCriterion.RoomCriterion, getRoomType(RoomType), Double.parseDouble(PriceMin.getText()), Double.parseDouble(PriceMax.getText()), Integer.parseInt(RoomNum.getText()), getDate(checkinDate), getDate(checkoutDate));
+                LimitVO RoomLimit = new LimitVO(LimitCriterion.RoomCriterion, getRoomType(RoomType), Double.parseDouble(PriceMin.getText()), Double.parseDouble(PriceMax.getText()),
+                        Integer.parseInt(RoomNum.getText()), UiFormatChanger.getDate(checkinDate), UiFormatChanger.getDate(checkoutDate));
                 SearchList.add(RoomLimit);
             }catch (Exception e){
                 setIsValid(false);
@@ -197,7 +199,7 @@ public class uiSearchHotelController implements Initializable{
         }
         //TODO 将列表存入搜索酒店
         HotelOrderBlService hotelOrderBlService = new UserController();
-        ArrayList<HotelListItemVO> searchHotelList = hotelOrderBlService.searchHotel(getArea(textCircle), getAddress(textAddress),SearchList);
+        ArrayList<HotelListItemVO> searchHotelList = hotelOrderBlService.searchHotel(UiFormatChanger.getArea(textCircle), UiFormatChanger.getAddress(textAddress),SearchList);
         searchHotelPane.setVisible(false);
         initTable(searchHotelList);
         hotelListPane.setVisible(true);
@@ -256,15 +258,7 @@ public class uiSearchHotelController implements Initializable{
             jump.warning();
         }
     }
-    /**
-     * 获取日期
-     * @param ld 日期选取器
-     * @return Date格式的日期
-     */
-    public static Date getDate(DatePicker ld) throws ParseException {
-        SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
-        return sdf.parse(ld.getValue().toString());
-    }
+
 
     /**
      * 获取房间类型
@@ -277,40 +271,7 @@ public class uiSearchHotelController implements Initializable{
         else if(bt.getSelectedToggle()==StandardRoom){return enumData.RoomType.DisabledRoom;}
         else return null;
     }
-    /**
-     * 根据选择框内容确定商圈
-     * @param cb 选择框
-     * @return
-     */
-    public TradeArea getArea(ComboBox cb){
-        if(cb.getSelectionModel().getSelectedItem()=="长江")
-            return TradeArea.Changjiang;
-        if(cb.getSelectionModel().getSelectedItem()=="黄河")
-            return TradeArea.Huanghe;
-        if(cb.getSelectionModel().getSelectedItem()=="南海")
-            return TradeArea.Nanhai;
-        return null;
-    }
-    /**
-     * 根据选择框内容确定地址
-     * @param cb 选择框
-     * @return
-     */
-    public Address getAddress(ComboBox cb){
-        if(cb.getSelectionModel().getSelectedItem()=="南京")
-            return Address.Nanjing;
-        if(cb.getSelectionModel().getSelectedItem()=="上海")
-            return Address.Shanghai;
-        if(cb.getSelectionModel().getSelectedItem()=="北京")
-            return Address.Beijing;
-        if(cb.getSelectionModel().getSelectedItem()=="天津")
-            return Address.Tianjing;
-        if(cb.getSelectionModel().getSelectedItem()=="广东")
-            return Address.Guangdong;
-        if(cb.getSelectionModel().getSelectedItem()=="澳门")
-            return Address.Aomen;
-        return null;
-    }
+
     @FXML
     private ComboBox textCircle;
     @FXML

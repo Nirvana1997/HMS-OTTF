@@ -16,6 +16,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
+import utility.UiFormatChanger;
 import vo.*;
 
 import java.io.IOException;
@@ -224,12 +225,12 @@ public class uiHotelController implements Initializable{
         for(int i = 0; i < list.size(); i++){
             HotelinfoVO hotel = userController.readHotel(list.get(i).getHotelID());
             String date = "";
-            date = dateToString(list.get(i).getCheckInDate())+" 至 "+dateToString(list.get(i).getCheckOutDate());
+            date = UiFormatChanger.dateToString(list.get(i).getCheckInDate())+" 至 "+ UiFormatChanger.dateToString(list.get(i).getCheckOutDate());
             String havecd ;
             if(list.get(i).isHaveChild()){havecd = "是";}
             else havecd = "否";
-            orderData.add(new tableDetailOrder(list.get(i).getOrderID(),date, stateTOstring(list.get(i).getOrderState())
-            ,list.get(i).getPeopleNumber(),list.get(i).getPrice(),havecd,typeTOstring(list.get(i).getRoomType())));
+            orderData.add(new tableDetailOrder(list.get(i).getOrderID(),date, UiFormatChanger.stateTOstring(list.get(i).getOrderState())
+            ,list.get(i).getPeopleNumber(),list.get(i).getPrice(),havecd,UiFormatChanger.typeTOstring(list.get(i).getRoomType())));
         }
         orderList.setItems(orderData);
         columnID.setCellValueFactory(cellData -> cellData.getValue().OrderIDProperty());
@@ -242,39 +243,7 @@ public class uiHotelController implements Initializable{
         Data = orderData;
     }
 
-    /**
-     * 日期转字符串
-     * @param date 日期
-     * @return yyyy_MM.dd格式的日期
-     */
-    public String dateToString(Date date){
-        DateFormat df = new SimpleDateFormat("yyyy_MM_dd");
-        return df.format(date);
-    }
-    /**
-     * 根据订单状态返回字符串
-     * @param state 订单状态
-     * @return 中文字符串格式的订单状态
-     */
-    public String stateTOstring(OrderState state){
-        if(state == OrderState.abnormal){ return "异常"; }
-        if(state == OrderState.executed){ return "已执行";}
-        if(state == OrderState.executing){ return "未执行";}
-        if(state == OrderState.canceled){ return "已撤销";}
-        if(state == OrderState.noOrder){ return "不存在";}
-        else return null;
-    }
-    /**
-     * 根据房间类型返回字符串
-     * @param type 房间类型
-     * @return 字符串格式的房间类型
-     */
-    public String typeTOstring(RoomType type){
-        if(type == RoomType.SingleRoom) { return "单人房";}
-        if(type == RoomType.DoubleRoom) {return "双人房";}
-        if(type == RoomType.DisabledRoom) {return "无障碍客房";}
-        else return null;
-    }
+
     @FXML
     private Label textHotelTitle;
     @FXML

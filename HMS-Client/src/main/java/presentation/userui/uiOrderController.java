@@ -9,6 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.text.Text;
+import utility.UiFormatChanger;
 import vo.OrderVO;
 
 import java.io.IOException;
@@ -127,7 +128,6 @@ public class uiOrderController implements Initializable{
      * @throws IOException
      */
     public void RevokeOrder() throws IOException{
-        //TODO
         userController.cancelOrder(uiMyOrderController.getOrderID());
         jump.gotoOrder();
         jump.RevokeSuccess();
@@ -174,17 +174,17 @@ public class uiOrderController implements Initializable{
             buttonRevoke.setVisible(true);
         }
         orderID.setText(vo.getOrderID());
-        orderState.setText(stateTOstring(vo.getOrderState()));
+        orderState.setText(UiFormatChanger.stateTOstring(vo.getOrderState()));
         try {
             orderHotel.setText(userController.readHotel(vo.getHotelID()).getHotelname());
         } catch (RemoteException e) {
             e.printStackTrace();
         }
-        orderRoom.setText(typeTOstring(vo.getRoomType()));
+        orderRoom.setText(UiFormatChanger.typeTOstring(vo.getRoomType()));
         orderRoomNumber.setText(String.valueOf(vo.getRoomNumber()));
         orderPeopleNumber.setText(String.valueOf(vo.getPeopleNumber()));
         String date = "";
-        date = dateToString(vo.getCheckInDate())+" 至 " +dateToString(vo.getCheckOutDate());
+        date = UiFormatChanger.dateToString(vo.getCheckInDate())+" 至 " + UiFormatChanger.dateToString(vo.getCheckOutDate());
         orderTime.setText(date);
         orderPrice.setText(String.valueOf(vo.getPrice()));
         if(vo.isHaveChild())
@@ -192,38 +192,6 @@ public class uiOrderController implements Initializable{
         else
             orderHaveChild.setText("否");
     }
-    /**
-     * 日期转字符串
-     * @param date 日期
-     * @return yyyy_MM.dd格式的日期
-     */
-    public String dateToString(Date date){
-        DateFormat df = new SimpleDateFormat("yyyy_MM_dd");
-        return df.format(date);
-    }
-    /**
-     * 根据订单状态返回字符串
-     * @param state 订单状态
-     * @return 中文字符串格式的订单状态
-     */
-    public String stateTOstring(OrderState state){
-        if(state == OrderState.abnormal){ return "异常"; }
-        if(state == OrderState.executed){ return "已执行";}
-        if(state == OrderState.executing){ return "未执行";}
-        if(state == OrderState.canceled){ return "已撤销";}
-        if(state == OrderState.noOrder){ return "不存在";}
-        else return null;
-    }
 
-    /**
-     * 根据房间类型返回字符串
-     * @param type 房间类型
-     * @return 字符串格式的房间类型
-     */
-    public String typeTOstring(RoomType type){
-        if(type == RoomType.SingleRoom) { return "单人房";}
-        if(type == RoomType.DoubleRoom) {return "双人房";}
-        if(type == RoomType.DisabledRoom) {return "无障碍客房";}
-        else return null;
-    }
+
 }

@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.text.Text;
+import utility.UiFormatChanger;
 import vo.OrderVO;
 
 import java.io.IOException;
@@ -43,19 +44,11 @@ public class uiConfirmOrderController implements Initializable{
         buttonCancel.getScene().getWindow().hide();
     }
     OrderVO orderVO;
-    /**
-     * 日期转字符串
-     * @param date 日期
-     * @return yyyy_MM.dd格式的日期
-     */
-    public String dateToString(Date date){
-        DateFormat df = new SimpleDateFormat("yyyy_MM_dd");
-        return df.format(date);
-    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         orderVO = uiReserveHotelController.getCurrentOrder();
-        textDDL.setText(dateToString(orderVO.getDdl()));
+        textDDL.setText(UiFormatChanger.dateToString(orderVO.getDdl()));
         textPrice.setText(String.valueOf(orderVO.getPrice()));
     }
 }

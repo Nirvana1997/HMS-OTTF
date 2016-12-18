@@ -14,6 +14,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import presentation.webmanagerui.tableMember;
+import utility.UiFormatChanger;
 import vo.HotelinfoVO;
 import vo.OrderVO;
 
@@ -127,17 +128,6 @@ public class uiMyOrderController implements Initializable{
         jump.gotoLogin();
     }
 
-    /**
-     * 当前选择的订单状态
-     */
-    static OrderState orderState;
-    public void setOrderState(OrderState state){
-        orderState = state;
-    }
-    public static OrderState getOrderState(){
-        return orderState;
-    }
-
 
     @FXML
     private Button buttonNormal;
@@ -155,7 +145,6 @@ public class uiMyOrderController implements Initializable{
         buttonNormal.setVisible(false);
         buttonAbnormal.setVisible(true);
         buttonRevoke.setVisible(true);
-        setOrderState(OrderState.executed);
         ArrayList<OrderVO> inglist = userController.readOrder(OrderState.executing);
         ArrayList<OrderVO> edlist = userController.readOrder(OrderState.executed);
         ArrayList<OrderVO> orderlist = new ArrayList<OrderVO>();
@@ -250,9 +239,9 @@ public class uiMyOrderController implements Initializable{
         for(int i = 0; i < list.size(); i++){
             HotelinfoVO hotel = userController.readHotel(list.get(i).getHotelID());
             String date = "";
-            date = dateToString(list.get(i).getCheckInDate())+" 至 "+dateToString(list.get(i).getCheckOutDate());
+            date = UiFormatChanger.dateToString(list.get(i).getCheckInDate())+" 至 "+UiFormatChanger.dateToString(list.get(i).getCheckOutDate());
             orderData.add(new tableOrder(list.get(i).getOrderID(),hotel.getHotelname() ,date,
-                    stateTOstring(list.get(i).getOrderState())));
+                    UiFormatChanger.stateTOstring(list.get(i).getOrderState())));
         }
         orderList.setItems(orderData);
         columnID.setCellValueFactory(cellData -> cellData.getValue().OrderIDProperty());
@@ -262,28 +251,7 @@ public class uiMyOrderController implements Initializable{
         Data = orderData;
     }
 
-    /**
-     * 日期转字符串
-     * @param date 日期
-     * @return yyyy_MM.dd格式的日期
-     */
-    public String dateToString(Date date){
-        DateFormat df = new SimpleDateFormat("yyyy_MM_dd");
-        return df.format(date);
-    }
-    /**
-     * 根据订单状态返回字符串
-     * @param state 订单状态
-     * @return 中文字符串格式的订单状态
-     */
-    public String stateTOstring(OrderState state){
-        if(state == OrderState.abnormal){ return "异常"; }
-        if(state == OrderState.executed){ return "已执行";}
-        if(state == OrderState.executing){ return "未执行";}
-        if(state == OrderState.canceled){ return "已撤销";}
-        if(state == OrderState.noOrder){ return "不存在";}
-        else return null;
-    }
+
     /**
      * 初始化：获取用户列表，并显示
      * @param location

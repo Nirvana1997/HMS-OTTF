@@ -8,6 +8,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import utility.UiFormatChanger;
 import vo.HotelListItemVO;
 
 import java.io.IOException;
@@ -165,7 +166,7 @@ public class uiReadHotelController implements Initializable {
     }
     public void showHotel() throws IOException{
         UserController userController = new UserController();
-        ArrayList<HotelListItemVO> list = userController.searchHotel(getArea(textCircle),getAddress(textAddress));
+        ArrayList<HotelListItemVO> list = userController.searchHotel(UiFormatChanger.getArea(textCircle),UiFormatChanger.getAddress(textAddress));
         initTable(list);
     }
     @FXML
@@ -217,40 +218,7 @@ public class uiReadHotelController implements Initializable {
         columnHasCanceled.setCellValueFactory(cellData -> cellData.getValue().hasCanceledProperty());
     }
 
-    /**
-     * 根据选择框内容确定商圈
-     * @param cb 选择框
-     * @return
-     */
-    public TradeArea getArea(ComboBox cb){
-        if(cb.getSelectionModel().getSelectedItem()=="长江")
-            return TradeArea.Changjiang;
-        if(cb.getSelectionModel().getSelectedItem()=="黄河")
-            return TradeArea.Huanghe;
-        if(cb.getSelectionModel().getSelectedItem()=="南海")
-            return TradeArea.Nanhai;
-        return null;
-    }
-    /**
-     * 根据选择框内容确定地址
-     * @param cb 选择框
-     * @return
-     */
-    public Address getAddress(ComboBox cb){
-        if(cb.getSelectionModel().getSelectedItem()=="南京")
-            return Address.Nanjing;
-        if(cb.getSelectionModel().getSelectedItem()=="上海")
-            return Address.Shanghai;
-        if(cb.getSelectionModel().getSelectedItem()=="北京")
-            return Address.Beijing;
-        if(cb.getSelectionModel().getSelectedItem()=="天津")
-            return Address.Tianjing;
-        if(cb.getSelectionModel().getSelectedItem()=="广东")
-            return Address.Guangdong;
-        if(cb.getSelectionModel().getSelectedItem()=="澳门")
-            return Address.Aomen;
-        return null;
-    }
+
     @FXML
     private ComboBox textCircle;
     @FXML
