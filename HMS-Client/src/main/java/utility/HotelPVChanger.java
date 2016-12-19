@@ -33,7 +33,7 @@ public class HotelPVChanger {
         if(po==null){
             return null;
         }
-        return new HotelinfoVO(po.getHotelID(),po.getHotelname(),po.getTradeArea(),po.getAddress(),po.getDetailAddress(), po.getContactNumber(),po.getIntroduction(),po.getService(),po.getStar(),po.getGrade(),po.getMinPrice());
+        return new HotelinfoVO(po.getHotelID(),po.getHotelName(),po.getTradeArea(),po.getAddress(),po.getDetailAddress(), po.getContactNumber(),po.getIntroduction(),po.getService(),po.getStar(),po.getGrade(),po.getMinPrice());
     }
 
     /**

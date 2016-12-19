@@ -68,7 +68,7 @@ public class HotelList {
             //判断是否预定过该酒店
             boolean[] hasOrdered = orderStates(po.getHotelID(),orders);
             //添加列表项
-            hotelListItemList.add(new HotelListItemVO(po.getHotelID(),po.getHotelname(),po.getDetailAddress(),po.getStar(),po.getGrade(),po.getMinPrice(),hasOrdered[0],hasOrdered[1],hasOrdered[2]));
+            hotelListItemList.add(new HotelListItemVO(po.getHotelID(),po.getHotelName(),po.getDetailAddress(),po.getStar(),po.getGrade(),po.getMinPrice(),hasOrdered[0],hasOrdered[1],hasOrdered[2]));
         }
         return hotelListItemList;
     }
