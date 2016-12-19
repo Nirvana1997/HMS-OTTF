@@ -180,6 +180,7 @@ public class uiChangeHSController implements Initializable {
         HotelinfoVO newvo = new HotelinfoVO(oldvo.getHotelID(), textHotelName.getText(), getArea(textCircle), getAddress(textAddress),
                 textDetailAddress.getText(), textHSNumber.getText(), oldvo.getIntroduction(), oldvo.getService(), Integer.parseInt(textStar.getText()), oldvo.getGrade(), oldvo.getMinPrice());
         webmanagerController.setHotelinfo(newvo);
+        jump.changeSuccess();
     }
 
     /**

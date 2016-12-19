@@ -134,6 +134,29 @@ public class sceneJump {
         secondWindow.show();
     }
 
+    /**
+     * 添加成功
+     * @throws IOException
+     */
+    public void addSuccess() throws  IOException{
+        Stage secondWindow=new Stage();
+        Scene scene=new Scene((Parent) FXMLLoader.load(getClass().getResource("sceneAddSuccess.fxml")));
+        secondWindow.setTitle("Success!");
+        secondWindow.setScene(scene);
+        secondWindow.show();
+    }
+
+    /**
+     * 修改成功
+     * @throws IOException
+     */
+    public void changeSuccess() throws  IOException{
+        Stage secondWindow=new Stage();
+        Scene scene=new Scene((Parent) FXMLLoader.load(getClass().getResource("sceneChangeSuccess.fxml")));
+        secondWindow.setTitle("Success!");
+        secondWindow.setScene(scene);
+        secondWindow.show();
+    }
     public static String currentUserID;
     public static String currentHSID;
     public static String currentWSID;

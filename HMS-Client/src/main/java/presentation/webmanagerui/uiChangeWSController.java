@@ -124,9 +124,10 @@ public class uiChangeWSController implements Initializable {
      *
      * @throws RemoteException
      */
-    public void Save() throws RemoteException {
+    public void Save() throws IOException {
         WebsalerInfoVO vo = webmanagerController.getWebsalerInfo(jump.currentWSID);
         vo.setContactNumber(textWSNumber.getText());
+        jump.changeSuccess();
     }
 
     /**

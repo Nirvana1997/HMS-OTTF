@@ -7,10 +7,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.text.Text;
+import utility.UiFormatChanger;
 import vo.UserInfoVO;
 import java.io.IOException;
 import java.net.URL;
 import java.rmi.RemoteException;
+import java.text.ParseException;
 import java.util.ResourceBundle;
 
 /**
@@ -165,13 +167,13 @@ public class uiChangeUserController implements Initializable {
      *
      * @throws IOException
      */
-    public void SaveUser() throws IOException {
+    public void SaveUser() throws IOException, ParseException {
         UserInfoVO vo = webmanagerController.getUserInfo(jump.currentUserID);
         vo.setName(textRealName.getText());
         vo.setContactNumber(textPhoneNumber.getText());
         if (userType.getSelectedToggle() == typePersonal) {
             vo.setUserType(UserType.Person);
-            vo.setBirthday(dateBirthday.getPromptText());
+            vo.setBirthday(UiFormatChanger.dateToString(UiFormatChanger.getDate(dateBirthday)));
             vo.setCompanyID("");
         } else {
             vo.setUserType(UserType.Company);
@@ -179,6 +181,7 @@ public class uiChangeUserController implements Initializable {
             vo.setCompanyID(nameEnterprise.getText());
         }
         webmanagerController.setUserInfo(vo);
+        jump.changeSuccess();
     }
 
     /**
