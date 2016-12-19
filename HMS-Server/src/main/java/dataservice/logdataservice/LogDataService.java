@@ -1,6 +1,7 @@
 package dataservice.logdataservice;
 
 import enumData.AccountType;
+import enumData.LogState;
 import enumData.ResultMessage;
 import po.AccountPO;
 
@@ -60,11 +61,11 @@ public interface LogDataService extends Remote{
 
 	/**
 	 * 在数据库中删除一个账户
-	 * @param account 账户ID
+	 * @param  ID ID
 	 * @return 结果信息
 	 * @throws RemoteException
 	 */
-	public ResultMessage deleteAccount(String account) throws RemoteException;
+	public ResultMessage deleteAccount(String ID) throws RemoteException;
 
 	/**
 	 * 根据账户ID得到相应账户类型
@@ -81,5 +82,29 @@ public interface LogDataService extends Remote{
 	 * @throws RemoteException
      */
 	public int getTypeNum(AccountType type)throws RemoteException;
+
+	/**
+	 * 将相应帐号的状态置为登陆
+	 * @param account 账号
+	 * @return 结果信息
+	 * @throws RemoteException
+     */
+	public ResultMessage setLogin(String account)throws RemoteException;
+
+	/**
+	 * 将相应帐号的状态置为离线
+	 * @param account 帐号
+	 * @return 结果信息
+	 * @throws RemoteException
+     */
+	public ResultMessage setLogout(String account)throws RemoteException;
+
+	/**
+	 * 根据帐号,返回登陆状态
+	 * @param account
+	 * @return 登陆状态
+	 * @throws RemoteException
+     */
+	public LogState getLogState(String account)throws RemoteException;
 
 }
