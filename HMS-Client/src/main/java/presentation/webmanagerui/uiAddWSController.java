@@ -124,6 +124,11 @@ public class uiAddWSController {
         if (!webmanagerController.addWebsalerInfoAndAccount(addVo, textWSAccount.getText(), textWSPassword.getText())) {
             warningAccount.setVisible(true);
         }
+        else{
+            jump.gotoManageHS();
+            jump.addSuccess();
+        }
+
     }
 
     /**

@@ -179,6 +179,7 @@ public class uiChangeUserController implements Initializable {
             vo.setCompanyID(nameEnterprise.getText());
         }
         webmanagerController.setUserInfo(vo);
+        jump.changeSuccess();
     }
 
     /**

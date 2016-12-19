@@ -160,12 +160,15 @@ public class uiAddHotelController implements Initializable {
      *
      * @throws RemoteException
      */
-    public void Save() throws RemoteException {
+    public void Save() throws IOException {
         HotelinfoVO vo = new HotelinfoVO(null, textHotelName.getText(), getArea(textCircle), getAddress(textAddress),
                 textDetailAddress.getText(), textHSNumber.getText(), "", "", Integer.parseInt(textStar.getText()), 0, 0);
         WebmanagerController webmanagerController = new WebmanagerController();
         if (!webmanagerController.addHotelinfoAndAccount(vo, textHSAccount.getText(), textHSPassword.getText())) {
             warningAccount.setVisible(true);
+        }else{
+            jump.gotoManageHS();
+            jump.addSuccess();
         }
     }
 
