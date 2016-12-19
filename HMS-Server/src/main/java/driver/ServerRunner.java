@@ -2,7 +2,9 @@ package driver;
 
 import data.factoryImpl.DataFactoryImpl;
 
+import java.net.InetAddress;
 import java.net.MalformedURLException;
+import java.net.UnknownHostException;
 import java.rmi.AlreadyBoundException;
 import java.rmi.Naming;
 import java.rmi.RemoteException;
@@ -13,29 +15,27 @@ import java.rmi.registry.LocateRegistry;
  */
 public class ServerRunner {
 
-    public ServerRunner(){
+    public ServerRunner() throws UnknownHostException {
         initServer();
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws UnknownHostException {
         ServerRunner serverRunner = new ServerRunner();
     }
 
     /**
      * 初始化服务器
      */
-    public void initServer(){
+    public void initServer() throws UnknownHostException {
+        //自动获取本机IP地址
+        InetAddress localhost = InetAddress.getLocalHost();
+        System.out.println ("localhost: "+localhost.getHostAddress());
+        System.out.println ("localhost: "+localhost.getHostName());
+        String IP = localhost.getHostAddress();
         try {
-            System.setProperty("java.rmi.server.hostname","172.25.179.199");
+            System.setProperty("java.rmi.server.hostname",IP);
             LocateRegistry.createRegistry(1099);
-//            Naming.bind("rmi://localhost:8888/HotelinfoDataService",  new HotelinfoDataImpl());
-//            Naming.bind("rmi://localhost:8888/HotelroomDataService",  new HotelroomDataImpl());
-//            Naming.bind("rmi://172.25.179.199:1099/LogDataService",  new LogDataImpl());
-//            Naming.bind("rmi://localhost:8888/OrderDataService",  new OrderDataImpl());
-//            Naming.bind("rmi://localhost:8888/PromotionDataService",  new PromotionDataImpl());
-//            Naming.bind("rmi://localhost:8888/UserDataService",  new UserDataImpl());
-//            Naming.bind("rmi://localhost:8888/WebsalerDataService",  new WebsalerDataImpl());
-            Naming.bind("rmi://172.16.141.2:1099/DataFactory", new DataFactoryImpl());
+            Naming.bind("rmi://"+ IP +":1099/DataFactory", new DataFactoryImpl());
 
         } catch (RemoteException e) {
             e.printStackTrace();
