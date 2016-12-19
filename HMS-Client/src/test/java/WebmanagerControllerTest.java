@@ -1,5 +1,4 @@
 import businesslogic.logbl.LogController;
-import businesslogic.userbl.UserInfo;
 import businesslogic.webmanagerbl.WebmanagerController;
 import enumData.AccountType;
 import enumData.Address;
@@ -9,7 +8,6 @@ import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import po.UserInfoPO;
 import vo.AccountVO;
 import vo.HotelinfoVO;
 import vo.UserInfoVO;

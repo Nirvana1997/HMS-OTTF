@@ -11,6 +11,7 @@ import enumData.OrderState;
 import enumData.ResultMessage;
 import po.CanceledExceptionOrderPO;
 import po.OrderPO;
+import rmi.RemoteHelper;
 import utility.OrderPVChanger;
 import vo.CanceledExceptionOrderVO;
 import vo.OrderVO;
@@ -31,7 +32,9 @@ public class OrderDataImpl implements UserOrderInfo, HotelOrderInfo,WebOrderInfo
     OrderDataService orderDataService;
 
     public OrderDataImpl() {
-    orderDataService = new OrderDataImpl_stub();
+        //TODO
+//    orderDataService = new OrderDataImpl_stub();
+        orderDataService = RemoteHelper.getInstance().getOrderDataService();
     }
 
     /**

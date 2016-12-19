@@ -1,9 +1,11 @@
 package po;
 
+import java.io.Serializable;
+
 /**
  * Created by mac on 2016/12/15.
  */
-public class CanceledExceptionOrderPO {
+public class CanceledExceptionOrderPO implements Serializable{
     String orderID;
     String cancelDate;
     String cancelTime;

@@ -112,7 +112,6 @@ public class LogDataImpl_stub extends UnicastRemoteObject implements LogDataServ
 	 * @param account 帐号
 	 * @return
 	 */
-	@Override
 	public boolean hasExisted(String account) throws RemoteException {
 		if(accountMap.get(account)==null)
 			return false;

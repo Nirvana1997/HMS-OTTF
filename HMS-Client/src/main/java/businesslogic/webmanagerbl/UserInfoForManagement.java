@@ -1,8 +1,6 @@
 package businesslogic.webmanagerbl;
 
-import businesslogic.userbl.UserInfo;
 import po.UserInfoPO;
-import vo.UserInfoVO;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;

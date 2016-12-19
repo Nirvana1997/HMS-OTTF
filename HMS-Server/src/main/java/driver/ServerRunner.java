@@ -1,7 +1,11 @@
 package driver;
 
 import data.factoryImpl.DataFactoryImpl;
+import data.logdata.LogDataImpl;
 import database.DataBaseHelper;
+import dataservice.logdataservice.LogDataService;
+import enumData.AccountType;
+import po.AccountPO;
 
 import java.net.InetAddress;
 import java.net.MalformedURLException;
@@ -20,7 +24,7 @@ public class ServerRunner {
         initServer();
     }
 
-    public static void main(String[] args) throws UnknownHostException {
+    public static void main(String[] args) throws Exception {
         ServerRunner serverRunner = new ServerRunner();
     }
 

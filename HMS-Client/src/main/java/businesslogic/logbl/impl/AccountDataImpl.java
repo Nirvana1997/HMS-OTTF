@@ -6,6 +6,7 @@ import data_stub.logdata.LogDataImpl_stub;
 import dataservice.logdataservice.LogDataService;
 import enumData.AccountType;
 import po.AccountPO;
+import rmi.RemoteHelper;
 import utility.AccountPVChanger;
 import vo.AccountVO;
 
@@ -30,7 +31,8 @@ public class AccountDataImpl implements AccountInfo {
 
     public AccountDataImpl() throws RemoteException {
         //TODO
-        this.logDataService = new LogDataImpl_stub();
+//        this.logDataService = new LogDataImpl_stub();
+        logDataService = RemoteHelper.getInstance().getLogDataService();
         register = new Register();
     }
 

@@ -2,10 +2,12 @@ package po;
 
 import enumData.RoomType;
 
+import java.io.Serializable;
+
 /**
  * Created by mac on 2016/11/30.
  */
-public class RoomNumPO {
+public class RoomNumPO implements Serializable {
     String hotelID;
     String date;
     int emptyNum;

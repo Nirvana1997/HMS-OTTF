@@ -1,10 +1,10 @@
 package businesslogic.webmanagerbl;
 
+import po.UserInfoPO;
 import utility.VipInfo;
 import businesslogic.userbl.impl.UserDataImpl;
 import utility.UserPVChanger;
 import businesslogic.websalerbl.impl.VipDataImpl;
-import po.UserInfoPO;
 import vo.UserInfoVO;
 
 import java.rmi.RemoteException;

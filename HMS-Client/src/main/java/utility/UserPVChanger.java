@@ -29,7 +29,7 @@ public class UserPVChanger {
         if(vo==null){
             return null;
         }
-        return new UserInfoPO(vo.getUserID(), vo.getName(), vo.getIdentity(), vo.getContactNumber(), vo.getCredit(), vo.getBirthday(), vo.getBirthday(), vo.getUserType());
+        return new UserInfoPO(vo.getUserID(), vo.getName(), vo.getIdentity(), vo.getContactNumber(), vo.getCredit(), vo.getBirthday(), vo.getCompanyID()!=null?vo.getCompanyID():null, vo.getUserType());
     }
 
     /**

@@ -1,9 +1,11 @@
 package po;
 
+import java.io.Serializable;
+
 /**
  * Created by mac on 2016/12/14.
  */
-public class CreditChangePO {
+public class CreditChangePO implements Serializable {
     String userID;
     String orderID;
     String date;

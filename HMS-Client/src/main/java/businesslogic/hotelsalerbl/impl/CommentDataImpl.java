@@ -4,6 +4,7 @@ import businesslogic.userbl.interfaces.CommentInfo;
 import data_stub.hotelsalerdata.HotelinfoDataImpl_stub;
 import dataservice.hotelsalerdataservice.HotelinfoDataService;
 import po.CommentPO;
+import rmi.RemoteHelper;
 import utility.CommentPVChanger;
 import vo.CommentVO;
 
@@ -19,7 +20,9 @@ public class CommentDataImpl implements CommentInfo{
     HotelinfoDataService hotelinfoDataService;
 
     public CommentDataImpl() {
-        hotelinfoDataService = new HotelinfoDataImpl_stub();
+        //TODO
+//        hotelinfoDataService = new HotelinfoDataImpl_stub();
+        hotelinfoDataService = RemoteHelper.getInstance().getHotelinfoDataService();
     }
 
     /**

@@ -8,6 +8,7 @@ import enumData.ResultMessage;
 import po.HotelroomPO;
 import po.OrderPO;
 import po.RoomNumPO;
+import rmi.RemoteHelper;
 import utility.DateOperation;
 import utility.HotelPVChanger;
 import utility.OrderPVChanger;
@@ -28,7 +29,8 @@ public class HotelroomOperation {
 
     public HotelroomOperation() {
         //TODO
-        hotelroomDataService = new HotelroomDataImpl_stub();
+//        hotelroomDataService = new HotelroomDataImpl_stub();
+        hotelroomDataService = RemoteHelper.getInstance().getHotelroomDataService();
     }
 
     /**

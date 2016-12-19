@@ -5,11 +5,11 @@ package businesslogic.userbl;
 import businesslogic.logbl.Login;
 import cfg.CfgReader;
 import po.CreditRecordPO;
+import po.UserInfoPO;
+import rmi.RemoteHelper;
 import utility.CreditRecordPVChanger;
-import data_stub.userdata.UserDataImpl_stub;
 import dataservice.userdataservice.UserDataService;
 import enumData.ResultMessage;
-import po.UserInfoPO;
 import utility.UserPVChanger;
 import vo.CreditRecordVO;
 import vo.UserInfoVO;
@@ -29,7 +29,9 @@ public  class UserInfo{
 	UserDataService userDataService;
 
 	public UserInfo() {
-		userDataService = new UserDataImpl_stub();
+		//TODO
+//		userDataService = new UserDataImpl_stub();
+		userDataService = RemoteHelper.getInstance().getUserDataService();
 	}
 
 	/**

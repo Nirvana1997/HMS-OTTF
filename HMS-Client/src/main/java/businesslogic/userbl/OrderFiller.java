@@ -6,11 +6,11 @@ import businesslogic.promotionbl.impl.PromotionDataImpl;
 import businesslogic.userbl.interfaces.HotelRoom;
 import businesslogic.userbl.interfaces.PromotionInfo;
 import cfg.CfgReader;
-import data_stub.userdata.UserDataImpl_stub;
 import dataservice.userdataservice.UserDataService;
 import enumData.OrderState;
 import po.HotelroomPO;
 import po.UserInfoPO;
+import rmi.RemoteHelper;
 import utility.UserPVChanger;
 import vo.OrderVO;
 import vo.UserInfoVO;
@@ -42,7 +42,7 @@ public class OrderFiller {
      */
     HotelRoom hotelRoom;
 
-    /**TODO
+    /**
      * 用户数据接口
      */
     UserDataService userDataService;
@@ -51,7 +51,9 @@ public class OrderFiller {
         this.orderVO = orderVO;
         promotionInfo = new PromotionDataImpl();
         hotelRoom = new HotelDataImpl();
-        userDataService = new UserDataImpl_stub();
+        //TODO
+//        userDataService = new UserDataImpl_stub();
+        userDataService = RemoteHelper.getInstance().getUserDataService();
     }
 
     /**

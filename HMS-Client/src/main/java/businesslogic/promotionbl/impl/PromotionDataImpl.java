@@ -9,6 +9,7 @@ import data_stub.promotiondata.PromotionDataImpl_stub;
 import dataservice.promotiondataservice.PromotionDataService;
 import enumData.PromotionType;
 import po.PromotionPO;
+import rmi.RemoteHelper;
 import utility.PromotionPVChanger;
 import vo.OrderVO;
 import vo.PromotionVO;
@@ -26,12 +27,17 @@ import java.util.ArrayList;
  * @author qzh
  *         Created by user on 2016/12/4.
  */
-public class PromotionDataImpl implements PromotionInfo, WebPromotionInfo,HotelPromotionInfo {
-    //TODO
+public class PromotionDataImpl implements PromotionInfo, WebPromotionInfo, HotelPromotionInfo {
+
     /**
      * 营销策略模块
      */
-    PromotionDataService promotionDataService = new PromotionDataImpl_stub();
+    PromotionDataService promotionDataService;
+
+    //TODO
+    public PromotionDataImpl() {
+        promotionDataService = RemoteHelper.getInstance().getPromotionDataService();
+    }
 
     /**
      * 获得最优营销策略
@@ -98,8 +104,8 @@ public class PromotionDataImpl implements PromotionInfo, WebPromotionInfo,HotelP
     public ArrayList<PromotionPO> getHotelPromotion(String hotelID) throws RemoteException {
         ArrayList<PromotionPO> res = new ArrayList<>();
 
-        for(PromotionType type:PromotionType.values()){
-            mergeList(res, promotionDataService.getPromotionList(type,hotelID));
+        for (PromotionType type : PromotionType.values()) {
+            mergeList(res, promotionDataService.getPromotionList(type, hotelID));
         }
 
         return res;
@@ -114,9 +120,9 @@ public class PromotionDataImpl implements PromotionInfo, WebPromotionInfo,HotelP
     public ArrayList<PromotionPO> getWebPromotions() throws RemoteException {
         ArrayList<PromotionPO> res = new ArrayList<PromotionPO>();
         //获得网站的营销策略
-        for(PromotionType type:PromotionType.values()){
+        for (PromotionType type : PromotionType.values()) {
             //判断是否为网站营销策略
-            if(type.toString().startsWith("Web"))
+            if (type.toString().startsWith("Web"))
                 mergeList(res, promotionDataService.getPromotionList(type));
         }
         return res;
@@ -144,9 +150,9 @@ public class PromotionDataImpl implements PromotionInfo, WebPromotionInfo,HotelP
     }
 
     @Override
-    public ArrayList<PromotionVO> getPromotions(String hotelID,PromotionType promotionType) throws RemoteException {
+    public ArrayList<PromotionVO> getPromotions(String hotelID, PromotionType promotionType) throws RemoteException {
         ArrayList<PromotionVO> res = new ArrayList<>();
-        for(PromotionPO po:promotionDataService.getPromotionList(promotionType,hotelID)){
+        for (PromotionPO po : promotionDataService.getPromotionList(promotionType, hotelID)) {
             res.add(PromotionPVChanger.promotionP2V(po));
         }
         return res;
@@ -172,7 +178,7 @@ public class PromotionDataImpl implements PromotionInfo, WebPromotionInfo,HotelP
     private ArrayList<PromotionPO> getUsablePromotions(String hotelID) throws RemoteException {
         ArrayList<PromotionPO> res = new ArrayList<PromotionPO>();
         //获得各种类型可使用的营销策略
-        for(PromotionType type:PromotionType.values()){
+        for (PromotionType type : PromotionType.values()) {
             mergeList(res, promotionDataService.getPromotionList(type));
         }
         return res;

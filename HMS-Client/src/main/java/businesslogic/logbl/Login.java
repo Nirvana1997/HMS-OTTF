@@ -4,6 +4,7 @@ import data_stub.logdata.LogDataImpl_stub;
 import dataservice.logdataservice.LogDataService;
 import enumData.AccountType;
 import enumData.ResultMessage;
+import rmi.RemoteHelper;
 import vo.AccountVO;
 
 import java.rmi.RemoteException;
@@ -26,8 +27,8 @@ public class Login {
     private static String nowUserID;
 
     public Login() throws RemoteException {
-//		logDataService = RemoteHelper.getInstance().getLogDataService();
-        logDataService = new LogDataImpl_stub();
+		logDataService = RemoteHelper.getInstance().getLogDataService();
+//        logDataService = new LogDataImpl_stub();
     }
 
     /**
@@ -64,11 +65,7 @@ public class Login {
      * @throws RemoteException
      */
     public AccountType accoutType(String account) throws RemoteException {
-        if (logDataService.hasExisted(account))
-            return logDataService.getAccountType(account);
-        else {
-            return null;
-        }
+        return logDataService.getAccountType(account);
     }
 
     /**

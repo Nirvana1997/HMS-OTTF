@@ -8,6 +8,9 @@ import javafx.stage.Stage;
 import presentation.logui.SceneLog;
 import presentation.logui.uiLogController;
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+
 /**
  * Created by thinkpad on 2016/11/16.
  */
@@ -15,8 +18,8 @@ public class Main extends Application{
 
     private SceneLog sceneLog;
 
-    public static void main(String[] args) {
-//        ClientRunner clientRunner = new ClientRunner();
+    public static void main(String[] args) throws UnknownHostException {
+        ClientRunner clientRunner = new ClientRunner();
         launch(args);
     }
 

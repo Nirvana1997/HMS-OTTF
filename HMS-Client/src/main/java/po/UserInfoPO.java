@@ -1,9 +1,10 @@
 package po;
 
-import businesslogic.promotionbl.strategies.Strategy;
 import enumData.UserType;
 
-public class UserInfoPO {
+import java.io.Serializable;
+
+public class UserInfoPO implements Serializable{
 	String userID;
 	String name;
 	String identity;
@@ -13,8 +14,9 @@ public class UserInfoPO {
 	String companyID;
 	UserType type;
 
+
 	public UserInfoPO(String userID, String name, String identity, String contactNumber,
-					  int credit, String birthday, String companyID, UserType type) {
+                      int credit, String birthday, String companyID, UserType type) {
 		this.userID = userID;
 		this.name = name;
 		this.identity = identity;
@@ -25,7 +27,7 @@ public class UserInfoPO {
 		this.type = type;
 	}
 
-    public String getUserID() {
+	public String getUserID() {
 		return userID;
 	}
 
