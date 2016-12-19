@@ -1,4 +1,4 @@
-package dataFactory;
+package dataservice.factory;
 import dataservice.hotelsalerdataservice.HotelinfoDataService;
 import dataservice.hotelsalerdataservice.HotelroomDataService;
 import dataservice.logdataservice.LogDataService;

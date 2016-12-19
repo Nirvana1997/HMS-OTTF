@@ -1,4 +1,4 @@
-package dataFactory;
+package data.factoryImpl;
 
 import data.hotelsalerdata.HotelinfoDataImpl;
 import data.hotelsalerdata.HotelroomDataImpl;
@@ -7,6 +7,7 @@ import data.orderdata.OrderDataImpl;
 import data.promotiondata.PromotionDataImpl;
 import data.userdata.UserDataImpl;
 import data.websalerdata.WebsalerDataImpl;
+import dataservice.factory.DataFactory;
 import dataservice.hotelsalerdataservice.HotelinfoDataService;
 import dataservice.hotelsalerdataservice.HotelroomDataService;
 import dataservice.logdataservice.LogDataService;
@@ -21,7 +22,7 @@ import java.rmi.server.UnicastRemoteObject;
 /**
  * Created by mac on 2016/12/19.
  */
-public class DataFactoryImpl extends UnicastRemoteObject implements DataFactory{
+public class DataFactoryImpl extends UnicastRemoteObject implements DataFactory {
     public DataFactoryImpl() throws RemoteException {
     }
 
