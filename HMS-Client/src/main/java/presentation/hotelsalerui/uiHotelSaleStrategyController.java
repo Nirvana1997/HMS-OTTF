@@ -51,19 +51,19 @@ public class uiHotelSaleStrategyController implements Initializable{
         this.initPromotionList();
 
         //初始化promotion面板
-        this.initPromotionContent(0, PromotionType.Hotel_Birth);
-        this.initPromotionContent(0, PromotionType.Hotel_Period);
-        this.initPromotionContent(0, PromotionType.Hotel_Company);
-        this.initPromotionContent(0, PromotionType.Hotel_Num);
+        this.initPromotionContent(0, PromotionType.Hotel_birth);
+        this.initPromotionContent(0, PromotionType.Hotel_period);
+        this.initPromotionContent(0, PromotionType.Hotel_company);
+        this.initPromotionContent(0, PromotionType.Hotel_num);
     }
 
     private void initPromotionList(){
         // 获取list对象
         try {
-            promotionBirthday = hotelsalerblService.getPromotion(PromotionType.Hotel_Birth);
-            promotionDoubleOne = hotelsalerblService.getPromotion(PromotionType.Hotel_Period);
-            promotionCompany = hotelsalerblService.getPromotion(PromotionType.Hotel_Company);
-            promotionThreeRooms = hotelsalerblService.getPromotion(PromotionType.Hotel_Num);
+            promotionBirthday = hotelsalerblService.getPromotion(PromotionType.Hotel_birth);
+            promotionDoubleOne = hotelsalerblService.getPromotion(PromotionType.Hotel_period);
+            promotionCompany = hotelsalerblService.getPromotion(PromotionType.Hotel_company);
+            promotionThreeRooms = hotelsalerblService.getPromotion(PromotionType.Hotel_num);
         } catch (RemoteException e) {
             e.printStackTrace();
         }
@@ -317,22 +317,22 @@ public class uiHotelSaleStrategyController implements Initializable{
      */
     private void initPromotionContent(int n, PromotionType promotionType) {
         this.initPromotionList();
-        if(promotionType == PromotionType.Hotel_Birth){
+        if(promotionType == PromotionType.Hotel_birth){
             labelPromotionBirthdayName.setText(promotionBirthday.get(n).getPromotionName());
             labelPromotionBirthdayTime.setText(UiFormatChanger.dateToString(promotionBirthday.get(n).getStartDate()) + "~" + UiFormatChanger.dateToString(promotionBirthday.get(n).getEndDate()));
             labelPromotionBirthdayContent.setText(promotionBirthday.get(n).getDescription());
         }
-        else if(promotionType == PromotionType.Hotel_Period){
+        else if(promotionType == PromotionType.Hotel_period){
             labelPromotionDoubleOneName.setText(promotionDoubleOne.get(n).getPromotionName());
             labelPromotionDoubleOneTime.setText(UiFormatChanger.dateToString(promotionDoubleOne.get(n).getStartDate()) + "~" + UiFormatChanger.dateToString(promotionDoubleOne.get(n).getEndDate()));
             labelPromotionDoubleOneContent.setText(promotionDoubleOne.get(n).getDescription());
         }
-        else if(promotionType == PromotionType.Hotel_Company){
+        else if(promotionType == PromotionType.Hotel_company){
             labelPromotionCompanyName.setText(promotionCompany.get(n).getPromotionName());
             labelPromotionCompanyTime.setText(UiFormatChanger.dateToString(promotionCompany.get(n).getStartDate()) + "~" + UiFormatChanger.dateToString(promotionDoubleOne.get(n).getEndDate()));
             labelPromotionCompanyContent.setText(promotionCompany.get(n).getDescription());
         }
-        else if(promotionType == PromotionType.Hotel_Num){
+        else if(promotionType == PromotionType.Hotel_num){
             labelPromotionThreeRoomsName.setText(promotionThreeRooms.get(n).getPromotionName());
             labelPromotionThreeRoomsTime.setText(UiFormatChanger.dateToString(promotionThreeRooms.get(n).getStartDate()) + "~" + UiFormatChanger.dateToString(promotionDoubleOne.get(n).getEndDate()));
             labelPromotionThreeRoomsContent.setText(promotionThreeRooms.get(n).getDescription());
@@ -345,7 +345,7 @@ public class uiHotelSaleStrategyController implements Initializable{
     public void birthdayNext() {
         birthdayCount++;
         int n = Math.abs(birthdayCount % lengthPromotionBirthday);
-        this.initPromotionContent(n, PromotionType.Hotel_Birth);
+        this.initPromotionContent(n, PromotionType.Hotel_birth);
     }
 
     /**
@@ -354,7 +354,7 @@ public class uiHotelSaleStrategyController implements Initializable{
     public void birthdayBefore() {
         birthdayCount--;
         int n = Math.abs(birthdayCount % lengthPromotionBirthday);
-        this.initPromotionContent(n, PromotionType.Hotel_Birth);
+        this.initPromotionContent(n, PromotionType.Hotel_birth);
     }
 
 
@@ -364,7 +364,7 @@ public class uiHotelSaleStrategyController implements Initializable{
     public void doubleOneNext(){
         doubleOneCount++;
         int n = Math.abs(doubleOneCount % lengthPromotionDoubleOne);
-        this.initPromotionContent(n, PromotionType.Web_Period);
+        this.initPromotionContent(n, PromotionType.Web_period);
     }
 
     /**
@@ -373,7 +373,7 @@ public class uiHotelSaleStrategyController implements Initializable{
     public void doubleOneBefore() {
         doubleOneCount--;
         int n = Math.abs(doubleOneCount % lengthPromotionDoubleOne);
-        this.initPromotionContent(n, PromotionType.Web_Period);
+        this.initPromotionContent(n, PromotionType.Web_period);
     }
 
     /**
@@ -382,7 +382,7 @@ public class uiHotelSaleStrategyController implements Initializable{
     public void companyNext(){
         companyCount++;
         int n = Math.abs(companyCount % lengthPromotionCompany);
-        this.initPromotionContent(n, PromotionType.Hotel_Company);
+        this.initPromotionContent(n, PromotionType.Hotel_company);
     }
 
     /**
@@ -391,7 +391,7 @@ public class uiHotelSaleStrategyController implements Initializable{
     public void companyBefore(){
         companyCount--;
         int n = Math.abs(companyCount % lengthPromotionCompany);
-        this.initPromotionContent(n, PromotionType.Hotel_Company);
+        this.initPromotionContent(n, PromotionType.Hotel_company);
     }
 
     /**
@@ -400,7 +400,7 @@ public class uiHotelSaleStrategyController implements Initializable{
     public void threeRoomsNext(){
         threeRoomsCount++;
         int n = Math.abs(threeRoomsCount % lengthPromotionThreeRooms);
-        this.initPromotionContent(n, PromotionType.Hotel_Num);
+        this.initPromotionContent(n, PromotionType.Hotel_num);
     }
 
     /**
@@ -409,7 +409,7 @@ public class uiHotelSaleStrategyController implements Initializable{
     public void threeRoomsBefore(){
         threeRoomsCount--;
         int n = Math.abs(threeRoomsCount % lengthPromotionThreeRooms);
-        this.initPromotionContent(n, PromotionType.Hotel_Num);
+        this.initPromotionContent(n, PromotionType.Hotel_num);
     }
 
     /**
@@ -533,7 +533,7 @@ public class uiHotelSaleStrategyController implements Initializable{
 
         if (isNewPromotion){
             if(promptionType == 1){
-                PromotionVO vo = new PromotionVO(name, description, PromotionType.Hotel_Birth, beginTime, endTime, discount);
+                PromotionVO vo = new PromotionVO(name, description, PromotionType.Hotel_birth, beginTime, endTime, discount);
                 try {
                     hotelsalerblService.addPromotion(vo);
                 } catch (RemoteException e) {
@@ -541,7 +541,7 @@ public class uiHotelSaleStrategyController implements Initializable{
                 }
             }
             else if(promptionType == 2){
-                PromotionVO vo = new PromotionVO(name, description, PromotionType.Hotel_Period, beginTime, endTime, discount);
+                PromotionVO vo = new PromotionVO(name, description, PromotionType.Hotel_period, beginTime, endTime, discount);
                 try {
                     hotelsalerblService.addPromotion(vo);
                 } catch (RemoteException e) {
@@ -549,7 +549,7 @@ public class uiHotelSaleStrategyController implements Initializable{
                 }
             }
             else if(promptionType == 3){
-                PromotionVO vo = new PromotionVO(name, description, PromotionType.Hotel_Company, beginTime, endTime, discount);
+                PromotionVO vo = new PromotionVO(name, description, PromotionType.Hotel_company, beginTime, endTime, discount);
                 try {
                     hotelsalerblService.addPromotion(vo);
                 } catch (RemoteException e) {
@@ -557,7 +557,7 @@ public class uiHotelSaleStrategyController implements Initializable{
                 }
             }
             else if(promptionType == 4){
-                PromotionVO vo = new PromotionVO(name, description, PromotionType.Hotel_Num, beginTime, endTime, discount);
+                PromotionVO vo = new PromotionVO(name, description, PromotionType.Hotel_num, beginTime, endTime, discount);
                 try {
                     hotelsalerblService.addPromotion(vo);
                 } catch (RemoteException e) {
@@ -568,7 +568,7 @@ public class uiHotelSaleStrategyController implements Initializable{
         // 修改营销策略
         else {
             if(promptionType == 1){
-                PromotionVO vo = new PromotionVO(name, description, PromotionType.Hotel_Birth, beginTime, endTime, discount);
+                PromotionVO vo = new PromotionVO(name, description, PromotionType.Hotel_birth, beginTime, endTime, discount);
                 try {
                     hotelsalerblService.setPromotion(vo);
                 } catch (RemoteException e) {
@@ -576,7 +576,7 @@ public class uiHotelSaleStrategyController implements Initializable{
                 }
             }
             else if(promptionType == 2){
-                PromotionVO vo = new PromotionVO(name, description, PromotionType.Hotel_Period, beginTime, endTime, discount);
+                PromotionVO vo = new PromotionVO(name, description, PromotionType.Hotel_period, beginTime, endTime, discount);
                 try {
                     hotelsalerblService.setPromotion(vo);
                 } catch (RemoteException e) {
@@ -584,7 +584,7 @@ public class uiHotelSaleStrategyController implements Initializable{
                 }
             }
             else if(promptionType == 3){
-                PromotionVO vo = new PromotionVO(name, description, PromotionType.Hotel_Company, beginTime, endTime, discount);
+                PromotionVO vo = new PromotionVO(name, description, PromotionType.Hotel_company, beginTime, endTime, discount);
                 try {
                     hotelsalerblService.setPromotion(vo);
                 } catch (RemoteException e) {
@@ -592,7 +592,7 @@ public class uiHotelSaleStrategyController implements Initializable{
                 }
             }
             else if(promptionType == 4){
-                PromotionVO vo = new PromotionVO(name, description, PromotionType.Hotel_Num, beginTime, endTime, discount);
+                PromotionVO vo = new PromotionVO(name, description, PromotionType.Hotel_num, beginTime, endTime, discount);
                 try {
                     hotelsalerblService.setPromotion(vo);
                 } catch (RemoteException e) {

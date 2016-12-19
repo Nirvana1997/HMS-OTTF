@@ -1,6 +1,6 @@
 package enumData;
 
 public enum PromotionType {
-	Hotel_Birth,Hotel_Num, Hotel_Company,Hotel_Period,
-	Web_Period,Web_TradeArea,Web_Vip
+	Hotel_birth, Hotel_num, Hotel_company, Hotel_period,
+	Web_period, Web_tradeArea, Web_VIP
 }

@@ -1,6 +1,5 @@
 package data_stub.promotiondata;
 
-import businesslogic.promotionbl.Promotion;
 import dataservice.promotiondataservice.PromotionDataService;
 import enumData.PromotionType;
 import enumData.ResultMessage;
@@ -9,17 +8,16 @@ import po.PromotionPO;
 
 
 import java.util.ArrayList;
-import java.util.Date;
 
 public class PromotionDataImpl_stub implements PromotionDataService {
 	ArrayList<PromotionPO> promotionPOs = new ArrayList<PromotionPO>();
-	PromotionPO promotion1 = new PromotionPO("Birthday discount","When it is user's birthday,the user can have a discount",PromotionType.Hotel_Birth,"0200001",null,null,null,0,0,0.8,null);
-	PromotionPO promotion2 = new PromotionPO("TradeArea discount","In the certain tradeArea,the users can have a discount",PromotionType.Web_TradeArea,null,null,null,TradeArea.Changjiang,0,1,0.9,null);
-	PromotionPO promotion3 = new PromotionPO("RoomNumber discount","When the number of rooms is up to a standard,the users can have a discount",PromotionType.Hotel_Num,"0200001",null,null,null,3,0,0.8,null);
-	PromotionPO promotion4 = new PromotionPO("Hotel Period discount","During some periods,discount",PromotionType.Hotel_Period,"0200001","2015_01_01","2016_12_12",null,0,0,0.6,null);
-	PromotionPO promotion5 = new PromotionPO("Company discount","With the cooperation,someone may have a discount",PromotionType.Hotel_Company,"0200001",null,null,null,0,0,0.7,"007");
-	PromotionPO promotion6 = new PromotionPO("Web Period","During some periods,discount",PromotionType.Web_Period,null,"2015_01_01","2020_11_12",null,0,0,0.5,null);
-	PromotionPO promotion7 = new PromotionPO("Web Vip","Vip level is equivalent to discount",PromotionType.Web_Vip,null,null,null,null,0,3,0.7,null);
+	PromotionPO promotion1 = new PromotionPO("Birthday discount","When it is user's birthday,the user can have a discount",PromotionType.Hotel_birth,"0200001",null,null,null,0,0,0.8,null);
+	PromotionPO promotion2 = new PromotionPO("TradeArea discount","In the certain tradeArea,the users can have a discount",PromotionType.Web_tradeArea,null,null,null,TradeArea.Changjiang,0,1,0.9,null);
+	PromotionPO promotion3 = new PromotionPO("RoomNumber discount","When the number of rooms is up to a standard,the users can have a discount",PromotionType.Hotel_num,"0200001",null,null,null,3,0,0.8,null);
+	PromotionPO promotion4 = new PromotionPO("Hotel Period discount","During some periods,discount",PromotionType.Hotel_period,"0200001","2015_01_01","2016_12_12",null,0,0,0.6,null);
+	PromotionPO promotion5 = new PromotionPO("Company discount","With the cooperation,someone may have a discount",PromotionType.Hotel_company,"0200001",null,null,null,0,0,0.7,"007");
+	PromotionPO promotion6 = new PromotionPO("Web Period","During some periods,discount",PromotionType.Web_period,null,"2015_01_01","2020_11_12",null,0,0,0.5,null);
+	PromotionPO promotion7 = new PromotionPO("Web Vip","Vip level is equivalent to discount",PromotionType.Web_VIP,null,null,null,null,0,3,0.7,null);
 
 	public PromotionDataImpl_stub() {
 		promotionPOs.add(promotion1);
