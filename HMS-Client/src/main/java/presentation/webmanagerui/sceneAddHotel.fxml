@@ -128,8 +128,8 @@
                   <Font size="14.0" />
                </font>
             </TextField>
-            <ComboBox fx:id="textCircle" layoutX="147.0" layoutY="233.0" onAction="#initAddress" onMouseExited="#initAddress" prefHeight="30.0" prefWidth="189.0" promptText="请选择商圈" visibleRowCount="0" />
-            <ComboBox fx:id="textAddress" layoutX="147.0" layoutY="273.0" prefHeight="30.0" prefWidth="189.0" promptText="请选择地址" visibleRowCount="0" />
+            <ComboBox fx:id="textCircle" layoutX="147.0" layoutY="233.0" onAction="#initAddress" onMouseExited="#initAddress" prefHeight="30.0" prefWidth="189.0" promptText="请选择商圈" />
+            <ComboBox fx:id="textAddress" layoutX="147.0" layoutY="273.0" prefHeight="30.0" prefWidth="189.0" promptText="请选择地址" />
             <Button fx:id="buttonSave" layoutX="440.0" layoutY="389.0" mnemonicParsing="false" onAction="#Save" prefHeight="36.0" prefWidth="89.0" text="确认录入">
                <font>
                   <Font size="18.0" />

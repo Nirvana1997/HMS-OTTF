@@ -98,7 +98,7 @@ public void uiLogController(){
                 sceneUser.initUI();
             }else if(result == ResultMessage.hasLogined){
                 wrongHasLogined.setVisible(true);
-            }else{
+            }else if(result == ResultMessage.InCorrect){
                 wrongPassword.setVisible(true);
             }
 
