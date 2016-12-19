@@ -65,7 +65,9 @@ public class LogController implements LogBlService{
      */
     @Override
     public ResultMessage register(AccountVO vo) throws RemoteException {
-        return register.register(vo);
+        ResultMessage resultMessage = register.register(vo);
+        login.loginAfterRegister(vo.getAccount());
+        return resultMessage;
     }
 
     /**
@@ -95,4 +97,5 @@ public class LogController implements LogBlService{
     public void modifyPassword(String password) throws RemoteException{
         login.modifyPassword(password);
     }
+
 }

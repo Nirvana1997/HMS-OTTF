@@ -3,6 +3,7 @@ package businesslogic.logbl;
 import data_stub.logdata.LogDataImpl_stub;
 import dataservice.logdataservice.LogDataService;
 import enumData.AccountType;
+import enumData.LogState;
 import enumData.ResultMessage;
 import rmi.RemoteHelper;
 import vo.AccountVO;
@@ -40,12 +41,27 @@ public class Login {
      */
     public ResultMessage isCorrectAndLogin(AccountVO vo) throws RemoteException {
         String password = logDataService.getPassword(vo.getAccount());
+        //判断密码是否正确
         if (vo.getPassword().equals(password)) {
-            nowUserID = logDataService.getID(vo.getAccount());
-            return ResultMessage.Correct;
+            //判断是否已经登录
+            if(logDataService.getLogState(logDataService.getID(vo.getAccount())).equals(LogState.out)) {
+                nowUserID = logDataService.getID(vo.getAccount());
+                return ResultMessage.Correct;
+            }
+            else{
+                return ResultMessage.hasLogined;
+            }
         } else {
             return ResultMessage.InCorrect;
         }
+    }
+
+    /**
+     * 登录（注册完成之后自动根据帐号登录）
+     */
+    public void loginAfterRegister(String account) throws RemoteException {
+        nowUserID = account;
+        logDataService.setLogin(account);
     }
 
     /**
@@ -55,6 +71,7 @@ public class Login {
      */
     public void logOut() throws RemoteException {
         nowUserID = null;
+        logDataService.setLogout(nowUserID);
     }
 
     /**
