@@ -2,5 +2,5 @@ package enumData;
 
 public enum TradeArea {
 	//TODO
-	Xianlin,Gulou
+	Changjiang ,Huanghe ,Nanhai
 }

@@ -2,6 +2,7 @@ package data.factoryImpl;
 
 import data.hotelsalerdata.HotelinfoDataImpl;
 import data.hotelsalerdata.HotelroomDataImpl;
+import data.logdata.LogDataImpl;
 import data.orderdata.OrderDataImpl;
 import data.promotiondata.PromotionDataImpl;
 import data.userdata.UserDataImpl;

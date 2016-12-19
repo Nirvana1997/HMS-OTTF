@@ -18,9 +18,8 @@ public class HotelinfoPO implements Serializable{
 	double grade;
 	double minPrice;
 
-	public HotelinfoPO(String hotelID, String hotelName, TradeArea tradeArea, Address address,
-					   String detailAddress, String introduction, String service,
-					   String contactNumber, int star, double grade, double minPrice) {
+	public HotelinfoPO(String hotelID, String hotelName, TradeArea tradeArea, Address address, String detailAddress,
+					   String introduction, String service, String contactNumber, int star, double grade, double minPrice) {
 		this.hotelID = hotelID;
 		this.hotelName = hotelName;
 		this.tradeArea = tradeArea;

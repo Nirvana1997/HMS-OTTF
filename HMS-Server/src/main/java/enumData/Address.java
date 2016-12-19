@@ -1,6 +1,6 @@
 package enumData;
 
 public enum Address {
-//TODO
-    Xianlin,Gulou
+    //TODO
+    Shanghai, Beijing, Nanjing,Tianjing,Guangdong,Aomen
 }

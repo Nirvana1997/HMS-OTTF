@@ -60,6 +60,7 @@ public class LogDataImpl extends UnicastRemoteObject implements LogDataService  
     @Override
     public String getAccount(String ID) throws RemoteException {
         String account = DataBaseHelper.outSingle("Account","account","ID",ID);
+        account = desUtils.de(account);
         return account;
     }
 
@@ -178,8 +179,7 @@ public class LogDataImpl extends UnicastRemoteObject implements LogDataService  
      * @return
      * @throws RemoteException
      */
-    @Override
-    public boolean hasExisted(String account) throws RemoteException {
+    private boolean hasExisted(String account) throws RemoteException {
         ArrayList<String> accountList =  DataBaseHelper.out("select account from Account", "account");
         for(int i=0;i<accountList.size();i++)
             if(accountList.get(i).equals(account))
