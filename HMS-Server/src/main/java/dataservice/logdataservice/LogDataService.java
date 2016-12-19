@@ -85,26 +85,26 @@ public interface LogDataService extends Remote{
 
 	/**
 	 * 将相应帐号的状态置为登陆
-	 * @param account 账号
+	 * @param ID ID
 	 * @return 结果信息
 	 * @throws RemoteException
      */
-	public ResultMessage setLogin(String account)throws RemoteException;
+	public ResultMessage setLogin(String ID)throws RemoteException;
 
 	/**
 	 * 将相应帐号的状态置为离线
-	 * @param account 帐号
+	 * @param ID ID
 	 * @return 结果信息
 	 * @throws RemoteException
      */
-	public ResultMessage setLogout(String account)throws RemoteException;
+	public ResultMessage setLogout(String ID)throws RemoteException;
 
 	/**
 	 * 根据帐号,返回登陆状态
-	 * @param account
+	 * @param ID ID
 	 * @return 登陆状态
 	 * @throws RemoteException
      */
-	public LogState getLogState(String account)throws RemoteException;
+	public LogState getLogState(String ID)throws RemoteException;
 
 }
