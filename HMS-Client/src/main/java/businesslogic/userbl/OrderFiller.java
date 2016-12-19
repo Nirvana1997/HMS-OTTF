@@ -5,7 +5,7 @@ import businesslogic.logbl.Login;
 import businesslogic.promotionbl.impl.PromotionDataImpl;
 import businesslogic.userbl.interfaces.HotelRoom;
 import businesslogic.userbl.interfaces.PromotionInfo;
-import cfg.Temp;
+import cfg.CfgReader;
 import data_stub.userdata.UserDataImpl_stub;
 import dataservice.userdataservice.UserDataService;
 import enumData.OrderState;
@@ -97,7 +97,7 @@ public class OrderFiller {
     private void fillDDL(){
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(orderVO.getCheckInDate());
-        calendar.add(Calendar.HOUR,Temp.HOUR);
+        calendar.add(Calendar.HOUR, Integer.valueOf(CfgReader.getInstance().getProperty("deadline")));
         orderVO.setDdl(calendar.getTime());
     }
 

@@ -2,15 +2,13 @@ package businesslogic.websalerbl;
 
 import businesslogic.userbl.impl.UserDataImpl;
 import businesslogicservice.websalerblservice.WebsalerblService;
-import cfg.Temp;
+import cfg.CfgReader;
 import enumData.CreditRecoverWay;
 import enumData.OrderState;
 import enumData.PromotionType;
 import enumData.ResultMessage;
 import po.CreditChangePO;
-import po.PromotionPO;
 import utility.DateOperation;
-import utility.PromotionPVChanger;
 import vo.CanceledExceptionOrderVO;
 import vo.OrderVO;
 import vo.PromotionVO;
@@ -102,7 +100,7 @@ public class WebsalerController implements WebsalerblService {
      */
     @Override
     public ResultMessage addCredit(String userID, int money) throws RemoteException {
-        return creditInfo.addCredit(new CreditChangePO(userID,null, DateOperation.dateToString(new Date()), Temp.reasonOfRecharge,Temp.proportion*money));
+        return creditInfo.addCredit(new CreditChangePO(userID,null, DateOperation.dateToString(new Date()), CfgReader.getInstance().getProperty("recharge"),Integer.valueOf( CfgReader.getInstance().getProperty("rechargeRate"))*money));
     }
 
     /**

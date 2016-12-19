@@ -3,11 +3,9 @@ package businesslogic.userbl;
 
 
 import businesslogic.logbl.Login;
-import cfg.Temp;
+import cfg.CfgReader;
 import po.CreditRecordPO;
 import utility.CreditRecordPVChanger;
-import utility.VipInfo;
-import businesslogic.websalerbl.impl.VipDataImpl;
 import data_stub.userdata.UserDataImpl_stub;
 import dataservice.userdataservice.UserDataService;
 import enumData.ResultMessage;
@@ -63,7 +61,7 @@ public  class UserInfo{
 	 * @throws RemoteException
 	 */
 	public boolean hasEnoughCredit() throws RemoteException {
-		if(userDataService.getUserInfo(Login.getNowUserID()).getCredit()>= Temp.minCredit){
+		if(userDataService.getUserInfo(Login.getNowUserID()).getCredit()>= Integer.valueOf(CfgReader.getInstance().getProperty("minCredit"))){
 			return true;
 		}
 		else{

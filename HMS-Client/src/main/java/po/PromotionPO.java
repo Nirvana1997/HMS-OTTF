@@ -1,6 +1,6 @@
 package po;
 
-import cfg.Temp;
+import cfg.CfgReader;
 import enumData.PromotionType;
 import enumData.TradeArea;
 
@@ -12,7 +12,7 @@ public class PromotionPO {
 	String startDate;
 	String endDate;
 	TradeArea tradeArea;
-	int roomNumber = Temp.DISCOUNT_NUM;
+	int roomNumber = Integer.valueOf(CfgReader.getInstance().getProperty("discountNum"));
 	int vipLevel;
 	double discount;
     String companyID;

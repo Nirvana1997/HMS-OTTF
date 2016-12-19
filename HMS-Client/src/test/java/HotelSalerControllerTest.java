@@ -76,7 +76,7 @@ public class HotelSalerControllerTest {
         OrderVO vo = hotelSalerController.readOrderByState(OrderState.executing).get(0);
         vo.setCheckOutDate(DateOperation.stringToDate("2016_01_01"));
         hotelSalerController.updateOrder(vo);
-        Assert.assertEquals("2016_01_01", DateOperation.dateToString(hotelSalerController.readOrderByState(OrderState.executing).get(0).getCheckOutDate()));
+        Assert.assertEquals("2016_1_1", DateOperation.dateToString(hotelSalerController.readOrderByState(OrderState.executing).get(0).getCheckOutDate()));
     }
 
     /**

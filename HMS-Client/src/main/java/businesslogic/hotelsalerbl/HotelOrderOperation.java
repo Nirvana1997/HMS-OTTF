@@ -3,7 +3,7 @@ package businesslogic.hotelsalerbl;
 import businesslogic.logbl.Login;
 import businesslogic.orderbl.impl.OrderDataImpl;
 import businesslogic.userbl.impl.UserDataImpl;
-import cfg.Temp;
+import cfg.CfgReader;
 import enumData.OrderState;
 import enumData.ResultMessage;
 import po.CreditChangePO;
@@ -85,7 +85,7 @@ public class HotelOrderOperation {
         vo.setOrderState(OrderState.executed);
         hotelOrderInfo.setOrder(OrderPVChanger.orderV2P(vo));
         //为对应用户添加信用值
-        creditInfoForHotel.addCredit(new CreditChangePO(vo.getUserID(),vo.getOrderID(), DateOperation.dateToString(new Date()), Temp.reasonOfExecuting,(int)vo.getPrice()));
+        creditInfoForHotel.addCredit(new CreditChangePO(vo.getUserID(),vo.getOrderID(), DateOperation.dateToString(new Date()), CfgReader.getInstance().getProperty("executing"),(int)vo.getPrice()));
     }
 
     /**
@@ -98,6 +98,6 @@ public class HotelOrderOperation {
         vo.setOrderState(OrderState.executing);
         hotelOrderInfo.setOrder(OrderPVChanger.orderV2P(vo));
         //恢复用户信用值
-        creditInfoForHotel.addCredit(new CreditChangePO(vo.getUserID(),vo.getOrderID(), DateOperation.dateToString(new Date()), Temp.reasonOfDelaying,(int)vo.getPrice()));
+        creditInfoForHotel.addCredit(new CreditChangePO(vo.getUserID(),vo.getOrderID(), DateOperation.dateToString(new Date()), CfgReader.getInstance().getProperty("delaying"),(int)vo.getPrice()));
     }
 }
