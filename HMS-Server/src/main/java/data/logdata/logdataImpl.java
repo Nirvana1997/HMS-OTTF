@@ -118,6 +118,9 @@ public class LogDataImpl extends UnicastRemoteObject implements LogDataService  
         String password = desUtils.en(po.getPassword());
         String type = po.getType().toString();
 
+        //在登陆记录表里面，生成对应ID和状态
+        DataBaseHelper.in("insert into LoginInfo (ID,logState) values ('" + ID + "','in')");
+
         if(hasExisted(account))
             return ResultMessage.HasExist;
 
