@@ -4,6 +4,7 @@ import database.DataBaseHelper;
 import dataservice.logdataservice.LogDataService;
 import encryption.DesUtils;
 import enumData.AccountType;
+import enumData.LogState;
 import enumData.ResultMessage;
 import po.AccountPO;
 import java.rmi.RemoteException;
@@ -127,18 +128,14 @@ public class LogDataImpl extends UnicastRemoteObject implements LogDataService  
 
     /**
      * 在数据库中删除一个账户
-     * @param account
+     * @param ID
      * @return
      * @throws RemoteException
      */
     @Override
-    public ResultMessage deleteAccount(String account) throws RemoteException {
-        account = desUtils.en(account);
-        if(hasExisted(account)) {
-            DataBaseHelper.in("delete from Account where account = '" + account + "'");
-            return ResultMessage.Correct;
-        }else
-            return ResultMessage.NotExist;
+    public ResultMessage deleteAccount(String ID) throws RemoteException {
+        DataBaseHelper.in("delete from Account where ID = '" + ID + "'");
+        return ResultMessage.Correct;
     }
 
     /**
@@ -171,6 +168,51 @@ public class LogDataImpl extends UnicastRemoteObject implements LogDataService  
     public int getTypeNum(AccountType type) throws RemoteException {
         ArrayList<String> num = DataBaseHelper.out("select account from Account where type = '" + type + "'","account");
         return num.size();
+    }
+
+    /**
+     * 将相应帐号的状态置为登陆
+     * @param account 账号
+     * @return
+     * @throws RemoteException
+     */
+    @Override
+    public ResultMessage setLogin(String account) throws RemoteException {
+        account = desUtils.en(account);
+        DataBaseHelper.in("update LoginInfo set logState = '" + LogState.in + "' where account = '" + account + "'");
+        return ResultMessage.Correct;
+    }
+
+    /**
+     * 将相应帐号的状态置为离线
+     * @param account 帐号
+     * @return
+     * @throws RemoteException
+     */
+    @Override
+    public ResultMessage setLogout(String account) throws RemoteException {
+        account = desUtils.en(account);
+        DataBaseHelper.in("update LoginInfo set logState = '" + LogState.out + "' where account = '" + account + "'");
+        return ResultMessage.Correct;
+    }
+
+    /**
+     * 根据帐号,返回登陆状态
+     * @param account
+     * @return
+     * @throws RemoteException
+     */
+    @Override
+    public LogState getLogState(String account) throws RemoteException {
+        account = desUtils.en(account);
+        String state_ = DataBaseHelper.outSingle("LoginInfo","logState","account",account);
+        LogState state = null;
+        try {
+            state = Enum.valueOf(LogState.class,state_.trim());
+        }catch (IllegalArgumentException ex){
+            ex.printStackTrace();
+        }
+        return state;
     }
 
     /**

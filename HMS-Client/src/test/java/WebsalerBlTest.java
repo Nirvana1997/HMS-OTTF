@@ -6,12 +6,10 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.Before;
 import org.junit.After;
-import po.PromotionPO;
 import utility.DateOperation;
 import vo.PromotionVO;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 /**
  * WebsalerController Tester.
@@ -38,10 +36,10 @@ public class WebsalerBlTest {
      */
     @Test
     public void testMakePromotion() throws Exception {
-        PromotionVO vo = new PromotionVO("haha","2333",PromotionType.Web_Period, DateOperation.stringToDate("2016_1_4"),DateOperation.stringToDate("2016_1_7"), TradeArea.Changjiang,0.5);
+        PromotionVO vo = new PromotionVO("haha","2333",PromotionType.Web_period, DateOperation.stringToDate("2016_1_4"),DateOperation.stringToDate("2016_1_7"), TradeArea.Changjiang,0.5);
         websalerblService.makePromotion(vo);
         boolean exist = false;
-        for(PromotionVO v:websalerblService.getPromotionList(PromotionType.Web_Period)){
+        for(PromotionVO v:websalerblService.getPromotionList(PromotionType.Web_period)){
             if(v.getPromotionName().equals("haha")){
                 exist = true;
                 break;
@@ -56,11 +54,11 @@ public class WebsalerBlTest {
     @Test
     public void testMakeListPromotion() throws Exception {
         ArrayList<PromotionVO> vips = new ArrayList<PromotionVO>();
-        vips.add(new PromotionVO("vip","discount if you are vip",PromotionType.Web_Vip,DateOperation.stringToDate("2016_11_11"),DateOperation.stringToDate("2016_12_12"),1,0.9));
-        vips.add(new PromotionVO("vip","discount if you are vip",PromotionType.Web_Vip,DateOperation.stringToDate("2016_11_11"),DateOperation.stringToDate("2016_12_12"),2,0.8));
-        vips.add(new PromotionVO("vip","discount if you are vip",PromotionType.Web_Vip,DateOperation.stringToDate("2016_11_11"),DateOperation.stringToDate("2016_12_12"),3,0.7));
+        vips.add(new PromotionVO("vip","discount if you are vip",PromotionType.Web_VIP,DateOperation.stringToDate("2016_11_11"),DateOperation.stringToDate("2016_12_12"),1,0.9));
+        vips.add(new PromotionVO("vip","discount if you are vip",PromotionType.Web_VIP,DateOperation.stringToDate("2016_11_11"),DateOperation.stringToDate("2016_12_12"),2,0.8));
+        vips.add(new PromotionVO("vip","discount if you are vip",PromotionType.Web_VIP,DateOperation.stringToDate("2016_11_11"),DateOperation.stringToDate("2016_12_12"),3,0.7));
         websalerblService.makeListPromotion(vips);
-        for(PromotionVO v:websalerblService.getPromotionList(PromotionType.Web_Vip)){
+        for(PromotionVO v:websalerblService.getPromotionList(PromotionType.Web_VIP)){
             if(v.getPromotionName().equals("vip")||v.getVipLevel()==3){
                 Assert.assertEquals(0.7,v.getDiscount(),0.01);
                 break;
@@ -88,7 +86,7 @@ public class WebsalerBlTest {
     @Test
     public void testCancelPromotion() throws Exception {
         boolean exist = false;
-        for(PromotionVO v:websalerblService.getPromotionList(PromotionType.Web_Period)){
+        for(PromotionVO v:websalerblService.getPromotionList(PromotionType.Web_period)){
             if(v.getPromotionName().equals("Web Period")){
                 exist = true;
                 break;
@@ -99,7 +97,7 @@ public class WebsalerBlTest {
         websalerblService.cancelPromotion("Web Period");
 
         exist = false;
-        for(PromotionVO v:websalerblService.getPromotionList(PromotionType.Web_Period)){
+        for(PromotionVO v:websalerblService.getPromotionList(PromotionType.Web_period)){
             if(v.getPromotionName().equals("Web Period")){
                 exist = true;
                 break;
