@@ -110,7 +110,9 @@ public void uiLogController(){
             if (result == ResultMessage.Correct){
                 SceneHotelSaler sceneHotelSaler = new SceneHotelSaler();
                 sceneHotelSaler.initUI();
-            }else{
+            }else if(result == ResultMessage.hasLogined){
+                wrongHasLogined.setVisible(true);
+            }else if(result == ResultMessage.InCorrect){
                 wrongPassword.setVisible(true);
             }
         }
@@ -120,7 +122,9 @@ public void uiLogController(){
             if (result == ResultMessage.Correct){
                 SceneWebSaler sceneWebSaler = new SceneWebSaler();
                 sceneWebSaler.initUI();
-            }else{
+            }else if(result == ResultMessage.hasLogined){
+                wrongHasLogined.setVisible(true);
+            }else if(result == ResultMessage.InCorrect){
                 wrongPassword.setVisible(true);
             }
         }
@@ -130,7 +134,9 @@ public void uiLogController(){
             if (result == ResultMessage.Correct){
                 SceneWebManager sceneWebManager = new SceneWebManager();
                 sceneWebManager.initUI();
-            }else{
+            }else if(result == ResultMessage.hasLogined){
+                wrongHasLogined.setVisible(true);
+            }else if(result == ResultMessage.InCorrect){
                 wrongPassword.setVisible(true);
             }
         }
@@ -144,10 +150,12 @@ public void uiLogController(){
     public void clearUser() throws IOException{
         wrongPassword.setVisible(false);
         notExist.setVisible(false);
+        wrongHasLogined.setVisible(false);
     }
     public void clearPassword() throws IOException{
         wrongPassword.setVisible(false);
         notExist.setVisible(false);
+        wrongHasLogined.setVisible(false);
     }
 
 }
