@@ -41,11 +41,13 @@ public class Login {
      */
     public ResultMessage isCorrectAndLogin(AccountVO vo) throws RemoteException {
         String password = logDataService.getPassword(vo.getAccount());
+        String userID = logDataService.getID(vo.getAccount());
         //判断密码是否正确
         if (vo.getPassword().equals(password)) {
             //判断是否已经登录
-            if(logDataService.getLogState(logDataService.getID(vo.getAccount())).equals(LogState.out)) {
+            if(logDataService.getLogState(userID).equals(LogState.out)) {
                 nowUserID = logDataService.getID(vo.getAccount());
+                logDataService.setLogin(userID);
                 return ResultMessage.Correct;
             }
             else{

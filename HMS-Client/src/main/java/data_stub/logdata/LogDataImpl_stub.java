@@ -2,6 +2,7 @@ package data_stub.logdata;
 
 import dataservice.logdataservice.LogDataService;
 import enumData.AccountType;
+import enumData.LogState;
 import enumData.ResultMessage;
 import po.AccountPO;
 import po.PromotionPO;
@@ -105,6 +106,21 @@ public class LogDataImpl_stub extends UnicastRemoteObject implements LogDataServ
 	@Override
 	public int getTypeNum(AccountType type) throws RemoteException {
 		return accountMap.size();
+	}
+
+	@Override
+	public ResultMessage setLogin(String account) throws RemoteException {
+		return null;
+	}
+
+	@Override
+	public ResultMessage setLogout(String account) throws RemoteException {
+		return null;
+	}
+
+	@Override
+	public LogState getLogState(String account) throws RemoteException {
+		return null;
 	}
 
 	/**
