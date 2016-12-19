@@ -150,10 +150,12 @@ public void uiLogController(){
     public void clearUser() throws IOException{
         wrongPassword.setVisible(false);
         notExist.setVisible(false);
+        wrongHasLogined.setVisible(false);
     }
     public void clearPassword() throws IOException{
         wrongPassword.setVisible(false);
         notExist.setVisible(false);
+        wrongHasLogined.setVisible(false);
     }
 
 }
