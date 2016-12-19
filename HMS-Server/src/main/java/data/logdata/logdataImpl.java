@@ -6,7 +6,6 @@ import encryption.DesUtils;
 import enumData.AccountType;
 import enumData.ResultMessage;
 import po.AccountPO;
-
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
@@ -47,6 +46,7 @@ public class LogDataImpl extends UnicastRemoteObject implements LogDataService  
      */
     @Override
     public String getID(String account) throws RemoteException {
+        account = desUtils.en(account);
         String ID = DataBaseHelper.outSingle("Account","ID","account",account);
         return ID;
     }
@@ -120,7 +120,7 @@ public class LogDataImpl extends UnicastRemoteObject implements LogDataService  
             return ResultMessage.HasExist;
 
         DataBaseHelper.in("insert into Account (ID,account,password,type) values ('" + ID + "','" +
-                 account + "','" + password + "','" + type + "')");
+                account + "','" + password + "','" + type + "')");
         return ResultMessage.Correct;
     }
 
