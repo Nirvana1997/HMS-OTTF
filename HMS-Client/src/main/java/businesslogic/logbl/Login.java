@@ -72,8 +72,8 @@ public class Login {
      * @throws RemoteException
      */
     public void logOut() throws RemoteException {
-        nowUserID = null;
         logDataService.setLogout(nowUserID);
+        nowUserID = null;
     }
 
     /**
