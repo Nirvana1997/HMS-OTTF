@@ -79,7 +79,7 @@
             <Font size="24.0" />
          </font>
       </Text>
-      <Label fx:id="buttonLogOut" layoutX="209.0" layoutY="566.0" onMouseClicked="#LogOut" prefHeight="20.0" prefWidth="36.0" text="登出" textFill="#9ad739" underline="true">
+      <Label fx:id="buttonLogOut" layoutX="219.0" layoutY="576.0" onMouseClicked="#LogOut" prefHeight="20.0" prefWidth="36.0" text="登出" textFill="#9ad739" underline="true">
          <font>
             <Font name="SimHei" size="16.0" />
          </font>
