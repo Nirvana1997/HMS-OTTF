@@ -13,6 +13,7 @@ import enumData.*;
 import po.CreditChangePO;
 import po.HotelroomPO;
 import po.OrderPO;
+import rmi.RemoteHelper;
 import utility.DateOperation;
 import utility.HotelPVChanger;
 import utility.OrderPVChanger;
@@ -60,7 +61,8 @@ public class HotelOrder {
         userOrderInfo = new OrderDataImpl();
         commentInfo = new CommentDataImpl();
         //TODO
-        userDataService = new UserDataImpl_stub();
+//        userDataService = new UserDataImpl_stub();
+        userDataService = RemoteHelper.getInstance().getUserDataService();
     }
 
     /**

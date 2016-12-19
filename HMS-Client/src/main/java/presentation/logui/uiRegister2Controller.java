@@ -51,13 +51,15 @@ public class uiRegister2Controller {
             userType = null;
         }
         String Birthday = dateBirthday.getPromptText();
+        //TODO
+        System.out.println(Birthday);
         String Company = comboEnterprise.getAccessibleText();
         LogBlService logBlService = new LogController();
         UserInfoVO userInfoVO = new UserInfoVO(uiRegister1Controller.getUserID(), RealName, Identity, PhoneNumber,0,Birthday,Company,userType,0);
         logBlService.addUserInfo(userInfoVO);
 
-        //控制台输出当前存入的Userid
-        System.out.print(uiRegister1Controller.getUserID());
+        //控制台输出当前存入的Userid TODO
+//        System.out.print(uiRegister1Controller.getUserID());
 
         ObservableList<Stage> stage = FXRobotHelper.getStages();
         Scene scene = new Scene((Parent) FXMLLoader.load(getClass().getResource("sceneRegister3.fxml")));

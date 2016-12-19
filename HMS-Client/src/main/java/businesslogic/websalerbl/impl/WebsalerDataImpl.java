@@ -4,6 +4,7 @@ import businesslogic.webmanagerbl.WebsalerInfoForManagement;
 import data_stub.websalerdata.WebsalerDataImpl_stub;
 import dataservice.websalerdataservice.WebsalerDataService;
 import po.WebsalerInfoPO;
+import rmi.RemoteHelper;
 import utility.WebsalerPVChanger;
 import vo.WebsalerInfoVO;
 
@@ -21,7 +22,8 @@ public class WebsalerDataImpl implements WebsalerInfoForManagement{
 
     public WebsalerDataImpl() throws RemoteException{
         //TODO
-        this.websalerDataService = new WebsalerDataImpl_stub();
+//        this.websalerDataService = new WebsalerDataImpl_stub();
+        websalerDataService = RemoteHelper.getInstance().getWebsalerDataService();
     }
 
     @Override

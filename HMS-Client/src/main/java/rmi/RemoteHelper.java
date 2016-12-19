@@ -1,5 +1,6 @@
 package rmi;
 
+import dataservice.factory.DataFactory;
 import dataservice.hotelsalerdataservice.HotelinfoDataService;
 import dataservice.hotelsalerdataservice.HotelroomDataService;
 import dataservice.logdataservice.LogDataService;
@@ -24,6 +25,7 @@ public class RemoteHelper {
      */
     private boolean connected = false;
 
+    private DataFactory dataFactory;
     private LogDataService logDataService;
     private HotelinfoDataService hotelinfoDataService;
     private HotelroomDataService hotelroomDataService;
@@ -59,7 +61,15 @@ public class RemoteHelper {
      */
     private void linkToServer(){
         try {
-            logDataService = (LogDataService)Naming.lookup("rmi://localhost:8888/LogDataService");
+            dataFactory = (DataFactory)Naming.lookup("rmi://172.28.159.89:1099/DataFactory");
+            logDataService = dataFactory.getLogDataImpl();
+            hotelinfoDataService = dataFactory.getHotelinfoDataImpl();
+            hotelroomDataService = dataFactory.getHotelroomDataImpl();
+            orderDataService = dataFactory.getOrderDataImpl();
+            promotionDataService = dataFactory.getPromotionDataImpl();
+            userDataService = dataFactory.getUserDataImpl();
+            websalerDataService = dataFactory.getWebsalerDataImpl();
+//            logDataService = (LogDataService)Naming.lookup("rmi://localhost:1099/LogDataService");
 //            hotelinfoDataService = (HotelinfoDataService)Naming.lookup("rmi://localhost:8888/HotelinfoDataService");
 //            hotelroomDataService = (HotelroomDataService)Naming.lookup("rmi://localhost:8888/HotelroomDataService");
 //            hotelsalerDataService = (HotelsalerDataService)Naming.lookup("rmi://localhost:8888/HotelsalerDataService");
@@ -74,6 +84,8 @@ public class RemoteHelper {
         } catch (NotBoundException e) {
             e.printStackTrace();
         } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

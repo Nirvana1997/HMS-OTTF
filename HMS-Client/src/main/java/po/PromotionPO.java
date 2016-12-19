@@ -4,7 +4,9 @@ import cfg.CfgReader;
 import enumData.PromotionType;
 import enumData.TradeArea;
 
-public class PromotionPO {
+import java.io.Serializable;
+
+public class PromotionPO implements Serializable {
 	String name;
 	String description;
 	PromotionType promotionType;

@@ -13,6 +13,7 @@ import enumData.TradeArea;
 import po.HotelinfoPO;
 import po.HotelroomPO;
 import po.RoomNumPO;
+import rmi.RemoteHelper;
 import vo.HotelroomVO;
 
 import java.rmi.RemoteException;
@@ -36,8 +37,11 @@ public class HotelDataImpl implements HotelInfo, HotelRoom,HotelInfoForManagemen
     HotelroomDataService hotelroomDataService;
 
     public HotelDataImpl() throws RemoteException {
-        hotelinfoDataService = new HotelinfoDataImpl_stub();
-        hotelroomDataService = new HotelroomDataImpl_stub();
+        //TODO
+//        hotelinfoDataService = new HotelinfoDataImpl_stub();
+//        hotelroomDataService = new HotelroomDataImpl_stub();
+        hotelinfoDataService = RemoteHelper.getInstance().getHotelinfoDataService();
+        hotelroomDataService = RemoteHelper.getInstance().getHotelroomDataService();
     }
 
     /**

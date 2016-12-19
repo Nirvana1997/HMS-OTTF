@@ -39,23 +39,6 @@ public class Promotion {
         return volist;
     }
 
-
-    /** 根据促销ID查看促销信息
-     *
-     * @param promotionID 促销ID
-     * @return
-     */
-    public PromotionVO getPromotion(String promotionID) {
-        //TODO
-//		promotionDataService = new PromotionDataImpl_stub();
-//		PromotionPO po = promotionDataService.getPromotions(promotionID);
-//		if(po!=null) {
-//			PromotionVO vo = new PromotionVO(po.getName(), po.getPromotionType(), po.getStartDate(), po.getEndDate(), po.getValidRange(), po.getMemberDiscount(), po.getNormalDiscount());
-//			return vo;
-//		}
-        return null;
-    }
-
     /** 更新促销信息
      *
      * @param vo 读入的促销信息

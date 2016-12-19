@@ -32,7 +32,6 @@ public class CfgReader {
 
     private CfgReader() {
         properties = new Properties();
-        System.out.println(CfgReader.class.getResource("/"));
         //获取配置文件路径
         String configFile = CfgReader.class.getResource("/").getPath().toString().replaceAll("file:/","")+ "config.properties";
         //读取配置文件

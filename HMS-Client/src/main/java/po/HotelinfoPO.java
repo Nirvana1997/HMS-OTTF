@@ -3,7 +3,9 @@ package po;
 import enumData.Address;
 import enumData.TradeArea;
 
-public class HotelinfoPO {
+import java.io.Serializable;
+
+public class HotelinfoPO implements Serializable {
 	String hotelID;
 	String hotelname;
 	TradeArea tradeArea;

@@ -4,11 +4,11 @@ import businesslogic.hotelsalerbl.CreditInfoForHotel;
 import businesslogic.logbl.UserInfoAdder;
 import businesslogic.webmanagerbl.UserInfoForManagement;
 import businesslogic.websalerbl.CreditInfo;
-import data_stub.userdata.UserDataImpl_stub;
 import dataservice.userdataservice.UserDataService;
 import enumData.ResultMessage;
 import po.CreditChangePO;
 import po.UserInfoPO;
+import rmi.RemoteHelper;
 import utility.UserPVChanger;
 import vo.UserInfoVO;
 
@@ -28,7 +28,9 @@ public class UserDataImpl implements UserInfoForManagement,CreditInfo,UserInfoAd
     UserDataService userDataService;
 
     public UserDataImpl() {
-        userDataService = new UserDataImpl_stub();
+        //TODO
+//        userDataService = new UserDataImpl_stub();
+        userDataService = RemoteHelper.getInstance().getUserDataService();
     }
 
     /**

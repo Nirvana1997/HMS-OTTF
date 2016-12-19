@@ -7,6 +7,7 @@ import dataservice.websalerdataservice.WebsalerDataService;
 import enumData.PromotionType;
 import enumData.ResultMessage;
 import po.PromotionPO;
+import rmi.RemoteHelper;
 import utility.PromotionPVChanger;
 import vo.PromotionVO;
 
@@ -32,8 +33,9 @@ public class WebPromotion {
 
     public WebPromotion() {
         //TODO
-        this.websalerDataService = new WebsalerDataImpl_stub();
+//        this.websalerDataService = new WebsalerDataImpl_stub();
         webPromotionInfo = new PromotionDataImpl();
+        websalerDataService = RemoteHelper.getInstance().getWebsalerDataService();
     }
 
     /**

@@ -1,6 +1,8 @@
 package po;
 
-public class WebsalerInfoPO {
+import java.io.Serializable;
+
+public class WebsalerInfoPO implements Serializable {
 	String websalerID;
 	String contactNumber;
 	

@@ -41,7 +41,6 @@ public class WebsalerController implements WebsalerblService {
 
     public WebsalerController() {
         this.webPromotion = new WebPromotion();
-        //TODO
         this.creditInfo = new UserDataImpl();
         this.websalerOrderOperation = new WebsalerOrderOperation();
     }

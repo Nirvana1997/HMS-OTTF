@@ -5,7 +5,9 @@ import enumData.OrderState;
 import enumData.RoomType;
 import enumData.TradeArea;
 
-public class OrderPO {
+import java.io.Serializable;
+
+public class OrderPO implements Serializable {
 	String hotelID;
 	String hotelName;
 	TradeArea tradeArea;
