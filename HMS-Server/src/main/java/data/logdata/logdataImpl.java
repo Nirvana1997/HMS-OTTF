@@ -172,40 +172,37 @@ public class LogDataImpl extends UnicastRemoteObject implements LogDataService  
 
     /**
      * 将相应帐号的状态置为登陆
-     * @param account 账号
+     * @param ID
      * @return
      * @throws RemoteException
      */
     @Override
-    public ResultMessage setLogin(String account) throws RemoteException {
-        account = desUtils.en(account);
-        DataBaseHelper.in("update LoginInfo set logState = '" + LogState.in + "' where account = '" + account + "'");
+    public ResultMessage setLogin(String ID) throws RemoteException {
+        DataBaseHelper.in("update LoginInfo set logState = '" + LogState.in + "' where ID = '" + ID + "'");
         return ResultMessage.Correct;
     }
 
     /**
      * 将相应帐号的状态置为离线
-     * @param account 帐号
+     * @param ID
      * @return
      * @throws RemoteException
      */
     @Override
-    public ResultMessage setLogout(String account) throws RemoteException {
-        account = desUtils.en(account);
-        DataBaseHelper.in("update LoginInfo set logState = '" + LogState.out + "' where account = '" + account + "'");
+    public ResultMessage setLogout(String ID) throws RemoteException {
+        DataBaseHelper.in("update LoginInfo set logState = '" + LogState.out + "' where ID = '" + ID + "'");
         return ResultMessage.Correct;
     }
 
     /**
      * 根据帐号,返回登陆状态
-     * @param account
+     * @param ID
      * @return
      * @throws RemoteException
      */
     @Override
-    public LogState getLogState(String account) throws RemoteException {
-        account = desUtils.en(account);
-        String state_ = DataBaseHelper.outSingle("LoginInfo","logState","account",account);
+    public LogState getLogState(String ID) throws RemoteException {
+        String state_ = DataBaseHelper.outSingle("LoginInfo","logState","ID",ID);
         LogState state = null;
         try {
             state = Enum.valueOf(LogState.class,state_.trim());
