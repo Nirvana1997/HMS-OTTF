@@ -125,7 +125,7 @@ public class uiAddWSController {
             warningAccount.setVisible(true);
         }
         else{
-            jump.gotoManageHS();
+            jump.gotoManageWS();
             jump.addSuccess();
         }
 
