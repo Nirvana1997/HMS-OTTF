@@ -26,6 +26,15 @@ public class ServerRunner {
 
     public static void main(String[] args) throws Exception {
         ServerRunner serverRunner = new ServerRunner();
+        LogDataService logDataService = new LogDataImpl();
+        logDataService.addAccount(new AccountPO("0300001","wm151250119","123456",AccountType.webmanager));
+        logDataService.addAccount(new AccountPO("0300002","wm151250045","123456",AccountType.webmanager));
+        logDataService.addAccount(new AccountPO("0300003","wm151250064","123456",AccountType.webmanager));
+        logDataService.addAccount(new AccountPO("0300004","wm151250175","123456",AccountType.webmanager));
+        DataBaseHelper.in("insert into LoginInfo (ID,logState) values ('0300001','out')");
+        DataBaseHelper.in("insert into LoginInfo (ID,logState) values ('0300002','out')");
+        DataBaseHelper.in("insert into LoginInfo (ID,logState) values ('0300003','out')");
+        DataBaseHelper.in("insert into LoginInfo (ID,logState) values ('0300004','out')");
     }
 
     /**

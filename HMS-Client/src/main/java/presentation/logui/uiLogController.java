@@ -72,6 +72,8 @@ public void uiLogController(){
     private Text wrongPassword;
     @FXML
     private Text notExist;
+    @FXML
+    private Text wrongHasLogined;
 
     public void login() throws IOException {
 //        SceneUser sceneUser = new SceneUser();
@@ -94,6 +96,8 @@ public void uiLogController(){
             if (result == ResultMessage.Correct){
                 SceneUser sceneUser = new SceneUser();
                 sceneUser.initUI();
+            }else if(result == ResultMessage.hasLogined){
+                wrongHasLogined.setVisible(true);
             }else{
                 wrongPassword.setVisible(true);
             }

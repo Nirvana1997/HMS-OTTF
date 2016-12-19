@@ -47,5 +47,6 @@
       </Button>
       <Text fx:id="wrongPassword" fill="RED" layoutX="461.0" layoutY="415.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*账号密码错误" visible="false" />
       <Text fx:id="notExist" fill="RED" layoutX="461.0" layoutY="415.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*该账户不存在" visible="false" />
+      <Text fx:id="wrongHasLogined" fill="RED" layoutX="471.0" layoutY="425.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*该账户已登录" visible="false" />
    </children>
 </AnchorPane>
