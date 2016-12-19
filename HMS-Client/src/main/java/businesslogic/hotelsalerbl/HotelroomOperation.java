@@ -1,8 +1,7 @@
 package businesslogic.hotelsalerbl;
 
 import businesslogic.logbl.Login;
-import businesslogicservice.hotelsalerblservice.HotelroomblService;
-import cfg.Temp;
+import cfg.CfgReader;
 import data_stub.hotelsalerdata.HotelroomDataImpl_stub;
 import dataservice.hotelsalerdataservice.HotelroomDataService;
 import enumData.ResultMessage;
@@ -14,7 +13,6 @@ import utility.HotelPVChanger;
 import utility.OrderPVChanger;
 import vo.BelowLineOrderVO;
 import vo.HotelroomVO;
-import vo.OrderVO;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
@@ -76,7 +74,7 @@ public class HotelroomOperation {
             //构成房间数目PO
             ArrayList<RoomNumPO> roomNums = new ArrayList<RoomNumPO>();
             //获得从当前时间向后特定天数的日期
-            ArrayList<Date> dates = DateOperation.getDates(new Date(), DateOperation.addDays(new Date(), Temp.days));
+            ArrayList<Date> dates = DateOperation.getDates(new Date(), DateOperation.addDays(new Date(), Integer.valueOf(CfgReader.getInstance().getProperty("days"))));
             for (Date date : dates) {
                 for (HotelroomPO po : pos) {
                     roomNums.add(new RoomNumPO(Login.getNowUserID(), DateOperation.dateToString(date), po.getRoomNumber(), po.getRoomType()));
@@ -90,7 +88,7 @@ public class HotelroomOperation {
             //构成房间数目PO
             ArrayList<RoomNumPO> roomNums = new ArrayList<RoomNumPO>();
             //获得从当前时间向后特定天数的日期
-            ArrayList<Date> dates = DateOperation.getDates(new Date(), DateOperation.addDays(new Date(), Temp.days));
+            ArrayList<Date> dates = DateOperation.getDates(new Date(), DateOperation.addDays(new Date(), Integer.valueOf(CfgReader.getInstance().getProperty("days"))));
             for (Date date : dates) {
                 for (HotelroomPO po : pos) {
                     roomNums.add(new RoomNumPO(Login.getNowUserID(), DateOperation.dateToString(date), po.getRoomNumber(), po.getRoomType()));

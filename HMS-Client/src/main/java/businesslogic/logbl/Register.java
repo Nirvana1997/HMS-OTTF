@@ -1,17 +1,13 @@
 package businesslogic.logbl;
 
-import businesslogic.hotelsalerbl.impl.HotelDataImpl;
 import businesslogic.userbl.impl.UserDataImpl;
-import cfg.Temp;
+import cfg.CfgReader;
 import data_stub.logdata.LogDataImpl_stub;
-import data_stub.websalerdata.WebsalerDataImpl_stub;
 import dataservice.logdataservice.LogDataService;
-import dataservice.websalerdataservice.WebsalerDataService;
 import enumData.AccountType;
 import enumData.ResultMessage;
 import po.AccountPO;
 import vo.AccountVO;
-import vo.HotelinfoVO;
 import vo.PasswordComfirmVO;
 import vo.UserInfoVO;
 
@@ -67,18 +63,18 @@ public class Register {
         //获得某个类型数目，以便编成ID
         int num = logDataService.getTypeNum(vo.getType());
         String id = String.valueOf(num+1);
-        while (id.length()< Temp.ID_NUMBER_LENGTH) {
+        while (id.length()< Integer.valueOf(CfgReader.getInstance().getProperty("idLength"))) {
             id = "0" + id;
         }
         //前两位加上人员标识
         if(vo.getType().equals(AccountType.user))
-            id = Temp.USER+id;
+            id = CfgReader.getInstance().getProperty("userSignal")+id;
         else if(vo.getType().equals(AccountType.hotelsaler))
-            id = Temp.HOTELSALER+id;
+            id = CfgReader.getInstance().getProperty("hotelsalerSignal")+id;
         else if(vo.getType().equals(AccountType.webmanager))
-            id = Temp.WEB_MANAGER+id;
+            id = CfgReader.getInstance().getProperty("webmanagerSignal")+id;
         else if(vo.getType().equals(AccountType.websaler))
-            id = Temp.WEB_SALER+id;
+            id = CfgReader.getInstance().getProperty("websalerSignal")+id;
         logDataService.addAccount(new AccountPO(id,vo.getAccount(), vo.getPassword(), vo.getType()));
     }
 

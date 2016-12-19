@@ -70,15 +70,15 @@ public class UserControllerTest {
 
         //关键字测试
         limits.clear();
-        limits.add(new LimitVO(LimitCriterion.KeywordCriterion, "仙林"));
-        hotels = hotelOrderBlService.searchHotel(TradeArea.Nanhai, Address.Nanjing, limits);
-        Assert.assertEquals("仙林大酒店", hotels.get(0).getHotelname());
+        limits.add(new LimitVO(LimitCriterion.KeywordCriterion, "Xianlin"));
+        hotels = hotelOrderBlService.searchHotel(TradeArea.Changjiang, Address.Nanjing, limits);
+        Assert.assertEquals("XianlinHotel", hotels.get(0).getHotelname());
 
         //房间测试 TODO
-        limits.clear();
-        limits.add(new LimitVO(LimitCriterion.RoomCriterion,RoomType.SingleRoom,50,150,1, DateOperation.stringToDate("2016_11_12"),DateOperation.stringToDate("2016_11_12")));
-        hotels = hotelOrderBlService.searchHotel(TradeArea.Changjiang,Address.Shanghai,limits);
-        Assert.assertEquals("",hotels.get(0).getHotelname());
+//        limits.clear();
+//        limits.add(new LimitVO(LimitCriterion.RoomCriterion,RoomType.SingleRoom,50,150,1, DateOperation.stringToDate("2016_11_12"),DateOperation.stringToDate("2016_11_12")));
+//        hotels = hotelOrderBlService.searchHotel(TradeArea.Changjiang,Address.Shanghai,limits);
+//        Assert.assertEquals("",hotels.get(0).getHotelname());
     }
 
     /**
@@ -86,7 +86,7 @@ public class UserControllerTest {
      */
     @Test
     public void testReadHotel() throws Exception {
-        Assert.assertEquals("仙林大酒店", userController.readHotel("0001").getHotelname());
+        Assert.assertEquals("XianlinHotel", userController.readHotel("0200001").getHotelname());
     }
 
     /**
@@ -112,7 +112,7 @@ public class UserControllerTest {
      */
     @Test
     public void testCancelOrder() throws Exception {
-        Assert.assertEquals(ResultMessage.Correct, userController.cancelOrder(null));
+        Assert.assertEquals(ResultMessage.Correct, userController.cancelOrder("001"));
     }
 
     /**
