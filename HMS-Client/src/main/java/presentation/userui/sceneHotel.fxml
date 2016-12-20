@@ -50,7 +50,7 @@
          <effect>
             <ImageInput>
                <source>
-                  <Image url="file:/D:/HMS-OTTF的副本/HMS-OTTF的副本/HMS-Client/graphics/userui/浏览酒店1.png" />
+                  <Image url="file:/D:/HMS-OTTF/HMS-OTTF/HMS-Client/graphics/userui/浏览酒店1.png" />
                </source>
             </ImageInput>
          </effect>
@@ -189,7 +189,7 @@
                   <Font size="16.0" />
                </font>
             </Text>
-            <Text fx:id="textIntroduction" layoutX="97.0" layoutY="217.0" strokeType="OUTSIDE" strokeWidth="0.0" text="喋喋">
+            <Text fx:id="textIntroduction" layoutX="97.0" layoutY="216.0" strokeType="OUTSIDE" strokeWidth="0.0" text="喋喋" wrappingWidth="407.0">
                <font>
                   <Font size="16.0" />
                </font>
