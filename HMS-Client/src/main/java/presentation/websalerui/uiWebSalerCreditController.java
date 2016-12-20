@@ -69,6 +69,12 @@ public class uiWebSalerCreditController {
     private Label labelWarning;
 
     /**
+     * 用户名不存在警告
+     */
+    @FXML
+    private Label labelNotExisted;
+
+    /**
      * 信用充值界面
      */
     @FXML

@@ -309,7 +309,7 @@
                               </TextField>
                            </children>
                         </AnchorPane>
-                        <MenuButton fx:id="menuButtonTradeArea" cacheShape="false" centerShape="false" ellipsisString="" focusTraversable="false" layoutX="543.0" layoutY="38.0" mnemonicParsing="false" scaleShape="false" style="-fx-background-color: #FFFFFF;" text="选择商圈" visible="false" wrapText="true">
+                        <MenuButton fx:id="menuButtonTradeArea" cacheShape="false" centerShape="false" ellipsisString="" focusTraversable="false" layoutX="605.0" layoutY="38.0" mnemonicParsing="false" scaleShape="false" style="-fx-background-color: #FFFFFF;" text="选择商圈" visible="false">
                            <font>
                               <Font size="14.0" />
                            </font>
@@ -317,6 +317,11 @@
                         <DatePicker fx:id="datePickerPromotionBeginTime" layoutX="129.0" layoutY="86.0" prefHeight="23.0" prefWidth="139.0" />
                         <DatePicker fx:id="datePickerPromotionEndTime" layoutX="362.0" layoutY="86.0" prefHeight="23.0" prefWidth="139.0" />
                         <Label fx:id="labelPleasePromotion" layoutX="115.0" layoutY="291.0" prefHeight="34.0" prefWidth="167.0" text="请先新建活动策略！" textFill="RED" visible="false">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="labelPleaseTishi" layoutX="517.0" layoutY="42.0" text="请选择商圈：" visible="false">
                            <font>
                               <Font size="16.0" />
                            </font>

@@ -6,7 +6,6 @@ import enumData.RoomType;
 import enumData.TradeArea;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
-import javafx.scene.control.ToggleGroup;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -32,11 +31,10 @@ public class UiFormatChanger {
      * @return 中文字符串格式的订单状态
      */
     public static String stateTOstring(OrderState state){
-        if(state == OrderState.abnormal){ return "异常"; }
+        if(state == OrderState.exception){ return "异常"; }
         if(state == OrderState.executed){ return "已执行";}
         if(state == OrderState.executing){ return "未执行";}
         if(state == OrderState.canceled){ return "已撤销";}
-        if(state == OrderState.noOrder){ return "不存在";}
         else return null;
     }
     /**

@@ -1,5 +1,5 @@
 package enumData;
 
 public enum OrderState {
-	executing,executed,canceled, abnormal,noOrder
+	executing,executed,canceled, exception
 }
