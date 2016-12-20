@@ -316,6 +316,11 @@
                         </MenuButton>
                         <DatePicker fx:id="datePickerPromotionBeginTime" layoutX="129.0" layoutY="86.0" prefHeight="23.0" prefWidth="139.0" />
                         <DatePicker fx:id="datePickerPromotionEndTime" layoutX="362.0" layoutY="86.0" prefHeight="23.0" prefWidth="139.0" />
+                        <Label fx:id="labelPleasePromotion" layoutX="115.0" layoutY="291.0" prefHeight="34.0" prefWidth="167.0" text="请先新建活动策略！" textFill="RED" visible="false">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
                      </children></AnchorPane>
                </children>
             </AnchorPane>

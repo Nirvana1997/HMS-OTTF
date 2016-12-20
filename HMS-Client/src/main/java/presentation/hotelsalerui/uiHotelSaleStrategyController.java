@@ -53,7 +53,6 @@ public class uiHotelSaleStrategyController implements Initializable{
         // 如果初始化promotion时得到的list长度为0
         if(promotionBirthday.size() == 0 ||promotionDoubleOne.size() == 0 || promotionCompany.size() == 0 || promotionThreeRooms.size() == 0){
             labelPromotionBirthdayName.setText("");
-            labelPromotionBirthdayTime.setText("");
             labelPromotionBirthdayContent.setText("");
 
             labelPromotionDoubleOneName.setText("");
@@ -232,6 +231,8 @@ public class uiHotelSaleStrategyController implements Initializable{
     private Label labelPromotionThreeRoomsTime;
     @FXML
     private Label labelPromotionThreeRoomsContent;
+    @FXML
+    private Label labelPleaseNew;
 
     /**
      * 酒店信息按钮点击监听
@@ -339,7 +340,6 @@ public class uiHotelSaleStrategyController implements Initializable{
         this.initPromotionList();
         if(promotionType == PromotionType.Hotel_birth){
             labelPromotionBirthdayName.setText(promotionBirthday.get(n).getPromotionName());
-            labelPromotionBirthdayTime.setText(UiFormatChanger.dateToString(promotionBirthday.get(n).getStartDate()) + "~" + UiFormatChanger.dateToString(promotionBirthday.get(n).getEndDate()));
             labelPromotionBirthdayContent.setText(promotionBirthday.get(n).getDescription());
         }
         else if(promotionType == PromotionType.Hotel_period){
@@ -363,18 +363,22 @@ public class uiHotelSaleStrategyController implements Initializable{
      * 生日特惠活动下一张监听
      */
     public void birthdayNext() {
-        birthdayCount++;
-        int n = Math.abs(birthdayCount % lengthPromotionBirthday);
-        this.initPromotionContent(n, PromotionType.Hotel_birth);
+        if(lengthPromotionBirthday > 0){
+            birthdayCount++;
+            int n = Math.abs(birthdayCount % lengthPromotionBirthday);
+            this.initPromotionContent(n, PromotionType.Hotel_birth);
+        }
     }
 
     /**
      * 生日特惠活动上一张监听
      */
     public void birthdayBefore() {
-        birthdayCount--;
-        int n = Math.abs(birthdayCount % lengthPromotionBirthday);
-        this.initPromotionContent(n, PromotionType.Hotel_birth);
+        if(lengthPromotionBirthday > 0){
+            birthdayCount--;
+            int n = Math.abs(birthdayCount % lengthPromotionBirthday);
+            this.initPromotionContent(n, PromotionType.Hotel_birth);
+        }
     }
 
 
@@ -382,54 +386,66 @@ public class uiHotelSaleStrategyController implements Initializable{
      * 双11活动下一张监听
      */
     public void doubleOneNext(){
-        doubleOneCount++;
-        int n = Math.abs(doubleOneCount % lengthPromotionDoubleOne);
-        this.initPromotionContent(n, PromotionType.Web_period);
+        if(lengthPromotionDoubleOne > 0){
+            doubleOneCount++;
+            int n = Math.abs(doubleOneCount % lengthPromotionDoubleOne);
+            this.initPromotionContent(n, PromotionType.Web_period);
+        }
     }
 
     /**
      * 双11活动上一张监听
      */
     public void doubleOneBefore() {
-        doubleOneCount--;
-        int n = Math.abs(doubleOneCount % lengthPromotionDoubleOne);
-        this.initPromotionContent(n, PromotionType.Web_period);
+        if(lengthPromotionDoubleOne > 0){
+            doubleOneCount--;
+            int n = Math.abs(doubleOneCount % lengthPromotionDoubleOne);
+            this.initPromotionContent(n, PromotionType.Web_period);
+        }
     }
 
     /**
      * 合作企业下一张监听
      */
     public void companyNext(){
-        companyCount++;
-        int n = Math.abs(companyCount % lengthPromotionCompany);
-        this.initPromotionContent(n, PromotionType.Hotel_company);
+        if(lengthPromotionCompany > 0){
+            companyCount++;
+            int n = Math.abs(companyCount % lengthPromotionCompany);
+            this.initPromotionContent(n, PromotionType.Hotel_company);
+        }
     }
 
     /**
      * 合作企业上一张监听
      */
     public void companyBefore(){
-        companyCount--;
-        int n = Math.abs(companyCount % lengthPromotionCompany);
-        this.initPromotionContent(n, PromotionType.Hotel_company);
+        if(lengthPromotionCompany > 0){
+            companyCount--;
+            int n = Math.abs(companyCount % lengthPromotionCompany);
+            this.initPromotionContent(n, PromotionType.Hotel_company);
+        }
     }
 
     /**
      * 三间及以上活动下一张监听
      */
     public void threeRoomsNext(){
-        threeRoomsCount++;
-        int n = Math.abs(threeRoomsCount % lengthPromotionThreeRooms);
-        this.initPromotionContent(n, PromotionType.Hotel_num);
+        if(lengthPromotionThreeRooms > 0){
+            threeRoomsCount++;
+            int n = Math.abs(threeRoomsCount % lengthPromotionThreeRooms);
+            this.initPromotionContent(n, PromotionType.Hotel_num);
+        }
     }
 
     /**
      * 三间及以上活动上一张监听
      */
     public void threeRoomsBefore(){
-        threeRoomsCount--;
-        int n = Math.abs(threeRoomsCount % lengthPromotionThreeRooms);
-        this.initPromotionContent(n, PromotionType.Hotel_num);
+        if(lengthPromotionThreeRooms > 0){
+            threeRoomsCount--;
+            int n = Math.abs(threeRoomsCount % lengthPromotionThreeRooms);
+            this.initPromotionContent(n, PromotionType.Hotel_num);
+        }
     }
 
     /**
@@ -437,8 +453,8 @@ public class uiHotelSaleStrategyController implements Initializable{
      */
     public void onClickedEditPromotionBirthday() {
         promptionType = 1;
-        datePickerBeginTime.setValue(null);
-        datePickerEndTime.setValue(null);
+        datePickerBeginTime.setVisible(false);
+        datePickerEndTime.setVisible(false);
         textAreaPromotionContent.setText(labelPromotionBirthdayContent.getText());
         textFieldPromotionName.setText(labelPromotionBirthdayName.getText());
         for(int i = 0; i < lengthPromotionBirthday; i++){
@@ -454,6 +470,8 @@ public class uiHotelSaleStrategyController implements Initializable{
      */
     public void onClickedEditPromotionDoubleOne() {
         promptionType = 2;
+        datePickerBeginTime.setVisible(true);
+        datePickerEndTime.setVisible(true);
         datePickerBeginTime.setValue(null);
         datePickerEndTime.setValue(null);
         textAreaPromotionContent.setText(labelPromotionDoubleOneContent.getText());
@@ -471,6 +489,8 @@ public class uiHotelSaleStrategyController implements Initializable{
      */
     public void onClickedEditPromotionCompany() {
         promptionType = 3;
+        datePickerBeginTime.setVisible(true);
+        datePickerEndTime.setVisible(true);
         datePickerBeginTime.setValue(null);
         datePickerEndTime.setValue(null);
         textAreaPromotionContent.setText(labelPromotionCompanyContent.getText());
@@ -488,6 +508,8 @@ public class uiHotelSaleStrategyController implements Initializable{
      */
     public void onClickedEditPromotionThreeRooms() {
         promptionType = 4;
+        datePickerBeginTime.setVisible(true);
+        datePickerEndTime.setVisible(true);
         datePickerBeginTime.setValue(null);
         datePickerEndTime.setValue(null);
         textAreaPromotionContent.setText(labelPromotionThreeRoomsContent.getText());
@@ -553,7 +575,7 @@ public class uiHotelSaleStrategyController implements Initializable{
 
         if (isNewPromotion){
             if(promptionType == 1){
-                PromotionVO vo = new PromotionVO(name, description, PromotionType.Hotel_birth, beginTime, endTime, discount);
+                PromotionVO vo = new PromotionVO(name, description, PromotionType.Hotel_birth, null, null, discount);
                 try {
                     hotelsalerblService.addPromotion(vo);
                 } catch (RemoteException e) {
@@ -587,15 +609,15 @@ public class uiHotelSaleStrategyController implements Initializable{
         }
         // 修改营销策略
         else {
-            if(promptionType == 1){
-                PromotionVO vo = new PromotionVO(name, description, PromotionType.Hotel_birth, beginTime, endTime, discount);
+            if(promptionType == 1 && promotionBirthday.size() > 0){
+                PromotionVO vo = new PromotionVO(name, description, PromotionType.Hotel_birth, null, null, discount);
                 try {
                     hotelsalerblService.setPromotion(vo);
                 } catch (RemoteException e) {
                     e.printStackTrace();
                 }
             }
-            else if(promptionType == 2){
+            else if(promptionType == 2 && promotionDoubleOne.size() > 0){
                 PromotionVO vo = new PromotionVO(name, description, PromotionType.Hotel_period, beginTime, endTime, discount);
                 try {
                     hotelsalerblService.setPromotion(vo);
@@ -603,7 +625,7 @@ public class uiHotelSaleStrategyController implements Initializable{
                     e.printStackTrace();
                 }
             }
-            else if(promptionType == 3){
+            else if(promptionType == 3 && promotionCompany.size() > 0){
                 PromotionVO vo = new PromotionVO(name, description, PromotionType.Hotel_company, beginTime, endTime, discount);
                 try {
                     hotelsalerblService.setPromotion(vo);
@@ -611,13 +633,16 @@ public class uiHotelSaleStrategyController implements Initializable{
                     e.printStackTrace();
                 }
             }
-            else if(promptionType == 4){
+            else if(promptionType == 4 && promotionThreeRooms.size() > 0){
                 PromotionVO vo = new PromotionVO(name, description, PromotionType.Hotel_num, beginTime, endTime, discount);
                 try {
                     hotelsalerblService.setPromotion(vo);
                 } catch (RemoteException e) {
                     e.printStackTrace();
                 }
+            }
+            else {
+                labelPleaseNew.setVisible(true);
             }
         }
         this.initPromotionList();
@@ -629,7 +654,7 @@ public class uiHotelSaleStrategyController implements Initializable{
      */
     public void onClickedCancelEditPromotion() {
         isNewPromotion = false;
-        
+        labelPleaseNew.setVisible(false);
 
         if(promptionType == 1){
             paneInfoPromotionBirthday.setVisible(true);

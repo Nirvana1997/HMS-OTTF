@@ -230,6 +230,12 @@ public class uiWebSaleStrategyController implements Initializable{
     private TextField textFieldLevel3;
 
     /**
+     * 新建活动警告
+     */
+    @FXML
+    private Label labelPleasePromotion;
+
+    /**
      * 下一张图片的点击次数
      */
     private static int doubleOneCount = 0;
@@ -367,54 +373,66 @@ public class uiWebSaleStrategyController implements Initializable{
      * 双11活动下一张监听
      */
     public void doubleOneNext(){
-        doubleOneCount++;
-        int n = Math.abs(doubleOneCount % lengthPromotionDoubleOne);
-        this.initPromotionContent(n,PromotionType.Web_period);
+        if(lengthPromotionDoubleOne > 0){
+            doubleOneCount++;
+            int n = Math.abs(doubleOneCount % lengthPromotionDoubleOne);
+            this.initPromotionContent(n,PromotionType.Web_period);
+        }
     }
 
     /**
      * 双11活动上一张监听
      */
     public void doubleOneBefore() {
-        doubleOneCount--;
-        int n = Math.abs(doubleOneCount % lengthPromotionDoubleOne);
-        this.initPromotionContent(n,PromotionType.Web_period);
+        if(lengthPromotionDoubleOne > 0){
+            doubleOneCount--;
+            int n = Math.abs(doubleOneCount % lengthPromotionDoubleOne);
+            this.initPromotionContent(n,PromotionType.Web_period);
+        }
     }
 
     /**
      * 特定商圈活动下一张监听
      */
     public void vipNext() {
-        VIPCount++;
-        int n = Math.abs(VIPCount % lengthPromotionVIP);
-        this.initPromotionContent(n, PromotionType.Web_tradeArea);
+        if(lengthPromotionVIP > 0){
+            VIPCount++;
+            int n = Math.abs(VIPCount % lengthPromotionVIP);
+            this.initPromotionContent(n, PromotionType.Web_tradeArea);
+        }
     }
 
     /**
      * 特定商圈活动上一张监听
      */
     public void vipBefore() {
-        VIPCount--;
-        int n = Math.abs(VIPCount % lengthPromotionVIP);
-        this.initPromotionContent(n, PromotionType.Web_tradeArea);
+        if(lengthPromotionVIP > 0){
+            VIPCount--;
+            int n = Math.abs(VIPCount % lengthPromotionVIP);
+            this.initPromotionContent(n, PromotionType.Web_tradeArea);
+        }
     }
 
     /**
      * member活动下一张监听
      */
     public void memberNext(){
-        memberCount++;
-        int n = Math.abs(memberCount % lengthPromotionMember);
-        this.initPromotionContent(n, PromotionType.Web_VIP);
+        if(lengthPromotionMember > 0){
+            memberCount++;
+            int n = Math.abs(memberCount % lengthPromotionMember);
+            this.initPromotionContent(n, PromotionType.Web_VIP);
+        }
     }
 
     /**
      * member活动上一张监听
      */
     public void memberBefore() {
-        memberCount--;
-        int n = Math.abs(memberCount % lengthPromotionMember);
-        this.initPromotionContent(n, PromotionType.Web_VIP);
+        if(lengthPromotionMember > 0){
+            memberCount--;
+            int n = Math.abs(memberCount % lengthPromotionMember);
+            this.initPromotionContent(n, PromotionType.Web_VIP);
+        }
     }
 
     /**
@@ -446,7 +464,9 @@ public class uiWebSaleStrategyController implements Initializable{
         paneDoubleOne.setVisible(false);
         paneVIP.setVisible(false);
         paneMember.setVisible(false);
-        paneEditPromotion.setVisible(false);
+        paneEditMember.setVisible(false);
+        menuButtonTradeArea.setVisible(false);
+        paneEditPromotion.setVisible(true);
     }
 
     /**
@@ -454,6 +474,8 @@ public class uiWebSaleStrategyController implements Initializable{
      */
     public void onClickedEditDoubleOne() {
         this.showEditPane();
+        datePickerPromotionEndTime.setVisible(true);
+        datePickerPromotionBeginTime.setVisible(true);
         textFieldPromotionName.setText(labelNamePromotionDoubleOne.getText());
         textAreaPromotonContent.setText(labelInfoPromotionDoubleOne.getText());
         labelEditNumber = 1;
@@ -465,6 +487,8 @@ public class uiWebSaleStrategyController implements Initializable{
     public void onClickedEditVIP() {
         this.showEditPane();
         menuButtonTradeArea.setVisible(true);
+        datePickerPromotionEndTime.setVisible(true);
+        datePickerPromotionBeginTime.setVisible(true);
         textFieldPromotionName.setText(labelNamePromotionVIP.getText());
         textAreaPromotonContent.setText(labelInfoPromotionVIP.getText());
         menuButtonTradeArea.setText(labelTradeArea.getText());
@@ -477,6 +501,8 @@ public class uiWebSaleStrategyController implements Initializable{
     public void onClickedEditMember() {
         this.showEditPane();
         paneEditMember.setVisible(true);
+        datePickerPromotionEndTime.setVisible(false);
+        datePickerPromotionBeginTime.setVisible(false);
         textFieldPromotionName.setText(labelNamePromotionMember.getText());
         textFieldLevel1.setText(labelLevel1.getText());
         textFieldLevel2.setText(labelLevel2.getText());
@@ -557,9 +583,9 @@ public class uiWebSaleStrategyController implements Initializable{
                 }
             }
             else if(labelEditNumber == 3){
-                PromotionVO vo1 = new PromotionVO(name, description, PromotionType.Web_VIP,beginTime,endTime,1, discountLevel1);
-                PromotionVO vo2 = new PromotionVO(name, description, PromotionType.Web_VIP,beginTime,endTime,2, discountLevel2);
-                PromotionVO vo3 = new PromotionVO(name, description, PromotionType.Web_VIP,beginTime,endTime,3, discountLevel3);
+                PromotionVO vo1 = new PromotionVO(name, description, PromotionType.Web_VIP,null,null,1, discountLevel1);
+                PromotionVO vo2 = new PromotionVO(name, description, PromotionType.Web_VIP,null,null,2, discountLevel2);
+                PromotionVO vo3 = new PromotionVO(name, description, PromotionType.Web_VIP,null,null,3, discountLevel3);
                 try {
                     websalerbl.makePromotion(vo1);
                     websalerbl.makePromotion(vo2);
@@ -571,7 +597,7 @@ public class uiWebSaleStrategyController implements Initializable{
         }
         // 修改营销策略
         else{
-            if(labelEditNumber == 1){
+            if(labelEditNumber == 1 && promotionDoubleOne.size() > 0){
                 PromotionVO vo = new PromotionVO(name,description,PromotionType.Web_period,beginTime,endTime,discount);
                 try {
                     websalerbl.cancelPromotion(labelNamePromotionDoubleOne.getText());
@@ -580,7 +606,7 @@ public class uiWebSaleStrategyController implements Initializable{
                     e.printStackTrace();
                 }
             }
-            else if(labelEditNumber == 2){
+            else if(labelEditNumber == 2 && promotionVIP.size() > 0){
                 PromotionVO vo = new PromotionVO(name,description,PromotionType.Web_tradeArea,beginTime,endTime,TradeArea.valueOf(tradeArea),discount);
                 try {
                     websalerbl.cancelPromotion(labelNamePromotionVIP.getText());
@@ -589,10 +615,10 @@ public class uiWebSaleStrategyController implements Initializable{
                     e.printStackTrace();
                 }
             }
-            else if(labelEditNumber == 3){
-                PromotionVO vo1 = new PromotionVO(name, description, PromotionType.Web_VIP,beginTime,endTime,1, discountLevel1);
-                PromotionVO vo2 = new PromotionVO(name, description, PromotionType.Web_VIP,beginTime,endTime,2, discountLevel2);
-                PromotionVO vo3 = new PromotionVO(name, description, PromotionType.Web_VIP,beginTime,endTime,3, discountLevel3);
+            else if(labelEditNumber == 3 && promotionVIP.size() > 0){
+                PromotionVO vo1 = new PromotionVO(name, description, PromotionType.Web_VIP,null,null,1, discountLevel1);
+                PromotionVO vo2 = new PromotionVO(name, description, PromotionType.Web_VIP,null,null,2, discountLevel2);
+                PromotionVO vo3 = new PromotionVO(name, description, PromotionType.Web_VIP,null,null,3, discountLevel3);
                 try {
                     websalerbl.cancelPromotion(labelNamePromotionMember.getText());
                     websalerbl.makePromotion(vo1);
@@ -601,6 +627,8 @@ public class uiWebSaleStrategyController implements Initializable{
                 } catch (RemoteException e) {
                     e.printStackTrace();
                 }
+            }else {
+                labelPleasePromotion.setVisible(true);
             }
         }
         this.onClickedCancelEditPromotion();
@@ -613,6 +641,7 @@ public class uiWebSaleStrategyController implements Initializable{
         isClickedButtonNew = false;
         paneEditMember.setVisible(false);
         menuButtonTradeArea.setVisible(false);
+        labelPleasePromotion.setVisible(false);
 
         if(labelEditNumber == 1){
             paneDoubleOne.setVisible(true);
