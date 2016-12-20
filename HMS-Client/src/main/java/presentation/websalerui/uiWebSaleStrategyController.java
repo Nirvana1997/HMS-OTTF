@@ -51,10 +51,34 @@ public class uiWebSaleStrategyController implements Initializable{
     public void initialize(URL location, ResourceBundle resources) {
         websalerbl = new WebsalerController();
         this.initPromotionList();
-        //初始化promotion面板
-        this.initPromotionContent(0, PromotionType.Web_period);
-        this.initPromotionContent(0, PromotionType.Web_tradeArea);
-        this.initPromotionContent(0, PromotionType.Web_VIP);
+
+        // 如果初始化promotion时得到的list长度为0
+        if(promotionDoubleOne.size() == 0 || promotionVIP.size() == 0 || promotionMember.size() == 0){
+            labelNamePromotionDoubleOne.setText("");
+            labelInfoPromotionDoubleOne.setText("");
+            labelDatePromotionDoubleOne.setText("");
+
+            labelNamePromotionVIP.setText("");
+            labelInfoPromotionVIP.setText("");
+            labelDatePromotionVIP.setText("");
+            labelTradeArea.setText("");
+
+            labelNamePromotionMember.setText("");
+            labelInfoPromotionMember.setText("");
+            labelDatePromotionMember.setText("");
+            labelLevel1.setText("");
+            labelLevel2.setText("");
+            labelLevel3.setText("");
+        }else{
+            lengthPromotionDoubleOne = promotionDoubleOne.size();
+            lengthPromotionVIP = promotionVIP.size();
+            lengthPromotionMember = promotionMember.size();
+
+            //初始化promotion面板
+            this.initPromotionContent(0, PromotionType.Web_period);
+            this.initPromotionContent(0, PromotionType.Web_tradeArea);
+            this.initPromotionContent(0, PromotionType.Web_VIP);
+        }
 
         // 初始化编辑界面选择商圈menuButton
         for(TradeArea area:TradeArea.values()){
@@ -73,14 +97,9 @@ public class uiWebSaleStrategyController implements Initializable{
             promotionDoubleOne = websalerbl.getPromotionList(PromotionType.Web_period);
             promotionVIP = websalerbl.getPromotionList(PromotionType.Web_tradeArea);
             promotionMember = websalerbl.getPromotionList(PromotionType.Web_VIP);
-            System.out.println(promotionDoubleOne==null);
         } catch (RemoteException e) {
-            System.out.println("aa");
             e.printStackTrace();
         }
-        lengthPromotionDoubleOne = promotionDoubleOne.size();
-        lengthPromotionVIP = promotionVIP.size();
-        lengthPromotionMember = promotionMember.size();
     }
 
     /**
@@ -315,7 +334,6 @@ public class uiWebSaleStrategyController implements Initializable{
     private void initPromotionContent(int n, PromotionType promotionType) {
         this.initPromotionList();
         if(promotionType == PromotionType.Web_period){
-            // TODO
             labelNamePromotionDoubleOne.setText(promotionDoubleOne.get(n).getPromotionName());
             labelInfoPromotionDoubleOne.setText(promotionDoubleOne.get(n).getDescription());
             labelDatePromotionDoubleOne.setText(UiFormatChanger.dateToString(promotionDoubleOne.get(n).getStartDate()) + "~" + UiFormatChanger.dateToString(promotionDoubleOne.get(n).getEndDate()));

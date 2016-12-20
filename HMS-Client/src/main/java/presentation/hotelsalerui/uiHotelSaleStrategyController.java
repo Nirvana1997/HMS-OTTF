@@ -50,11 +50,35 @@ public class uiHotelSaleStrategyController implements Initializable{
         hotelsalerblService = new HotelSalerController();
         this.initPromotionList();
 
-        //初始化promotion面板
-        this.initPromotionContent(0, PromotionType.Hotel_birth);
-        this.initPromotionContent(0, PromotionType.Hotel_period);
-        this.initPromotionContent(0, PromotionType.Hotel_company);
-        this.initPromotionContent(0, PromotionType.Hotel_num);
+        // 如果初始化promotion时得到的list长度为0
+        if(promotionBirthday.size() == 0 ||promotionDoubleOne.size() == 0 || promotionCompany.size() == 0 || promotionThreeRooms.size() == 0){
+            labelPromotionBirthdayName.setText("");
+            labelPromotionBirthdayTime.setText("");
+            labelPromotionBirthdayContent.setText("");
+
+            labelPromotionDoubleOneName.setText("");
+            labelPromotionDoubleOneTime.setText("");
+            labelPromotionDoubleOneContent.setText("");
+
+            labelPromotionCompanyName.setText("");
+            labelPromotionCompanyTime.setText("");
+            labelPromotionCompanyContent.setText("");
+
+            labelPromotionThreeRoomsName.setText("");
+            labelPromotionThreeRoomsTime.setText("");
+            labelPromotionThreeRoomsContent.setText("");
+        }else{
+            lengthPromotionBirthday = promotionBirthday.size();
+            lengthPromotionDoubleOne = promotionDoubleOne.size();
+            lengthPromotionCompany = promotionCompany.size();
+            lengthPromotionThreeRooms = promotionThreeRooms.size();
+
+            //初始化promotion面板
+            this.initPromotionContent(0, PromotionType.Hotel_birth);
+            this.initPromotionContent(0, PromotionType.Hotel_period);
+            this.initPromotionContent(0, PromotionType.Hotel_company);
+            this.initPromotionContent(0, PromotionType.Hotel_num);
+        }
     }
 
     private void initPromotionList(){
@@ -67,10 +91,6 @@ public class uiHotelSaleStrategyController implements Initializable{
         } catch (RemoteException e) {
             e.printStackTrace();
         }
-        lengthPromotionBirthday = promotionBirthday.size();
-        lengthPromotionDoubleOne = promotionDoubleOne.size();
-        lengthPromotionCompany = promotionCompany.size();
-        lengthPromotionThreeRooms = promotionThreeRooms.size();
     }
 
     /**
