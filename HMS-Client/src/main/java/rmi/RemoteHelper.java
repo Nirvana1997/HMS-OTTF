@@ -61,7 +61,7 @@ public class RemoteHelper {
      */
     private void linkToServer(){
         try {
-            dataFactory = (DataFactory)Naming.lookup("rmi://172.28.159.89:1099/DataFactory");
+            dataFactory = (DataFactory)Naming.lookup("rmi://172.27.151.3:1099/DataFactory");
             logDataService = dataFactory.getLogDataImpl();
             hotelinfoDataService = dataFactory.getHotelinfoDataImpl();
             hotelroomDataService = dataFactory.getHotelroomDataImpl();
