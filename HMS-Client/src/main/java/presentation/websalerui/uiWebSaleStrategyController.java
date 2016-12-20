@@ -81,11 +81,23 @@ public class uiWebSaleStrategyController implements Initializable{
         }
 
         // 初始化编辑界面选择商圈menuButton
+        menuButtonTradeArea.setText("选择商圈");
+        System.out.println("aaa");
         for(TradeArea area:TradeArea.values()){
-            MenuItem menuItem = new MenuItem(area.toString());
+            String text = "";
+            if(area == TradeArea.Changjiang){
+                text = "长江";
+            }
+            else if(area == TradeArea.Huanghe){
+                text = "黄河";
+            }
+            else if(area == TradeArea.Nanhai){
+                text = "南海";
+            }
+            MenuItem menuItem = new MenuItem(text);
             menuButtonTradeArea.getItems().add(menuItem);
             menuItem.setOnAction(event -> {
-                menuButtonTradeArea.setText(area.toString());
+                menuButtonTradeArea.setText(menuItem.getText());
                 this.tradeArea = area.toString();
             });
         }

@@ -309,7 +309,7 @@
                               </TextField>
                            </children>
                         </AnchorPane>
-                        <MenuButton fx:id="menuButtonTradeArea" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="543.0" layoutY="38.0" mnemonicParsing="false" scaleShape="false" style="-fx-background-color: #FFFFFF;" text="选择商圈" visible="false">
+                        <MenuButton fx:id="menuButtonTradeArea" cacheShape="false" centerShape="false" ellipsisString="" focusTraversable="false" layoutX="543.0" layoutY="38.0" mnemonicParsing="false" scaleShape="false" style="-fx-background-color: #FFFFFF;" text="选择商圈" visible="false" wrapText="true">
                            <font>
                               <Font size="14.0" />
                            </font>
