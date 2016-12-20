@@ -1,11 +1,8 @@
 package driver;
 
+import autoManage.ManageExceptionOrder;
 import data.factoryImpl.DataFactoryImpl;
-import data.logdata.LogDataImpl;
-import database.DataBaseHelper;
-import dataservice.logdataservice.LogDataService;
-import enumData.AccountType;
-import po.AccountPO;
+import initializingInfo.InitCompanyInfo;
 
 import java.net.InetAddress;
 import java.net.MalformedURLException;
@@ -26,15 +23,10 @@ public class ServerRunner {
 
     public static void main(String[] args) throws Exception {
         ServerRunner serverRunner = new ServerRunner();
-        LogDataService logDataService = new LogDataImpl();
-        logDataService.addAccount(new AccountPO("0300001","wm151250119","123456",AccountType.webmanager));
-        logDataService.addAccount(new AccountPO("0300002","wm151250045","123456",AccountType.webmanager));
-        logDataService.addAccount(new AccountPO("0300003","wm151250064","123456",AccountType.webmanager));
-        logDataService.addAccount(new AccountPO("0300004","wm151250175","123456",AccountType.webmanager));
-        DataBaseHelper.in("insert into LoginInfo (ID,logState) values ('0300001','out')");
-        DataBaseHelper.in("insert into LoginInfo (ID,logState) values ('0300002','out')");
-        DataBaseHelper.in("insert into LoginInfo (ID,logState) values ('0300003','out')");
-        DataBaseHelper.in("insert into LoginInfo (ID,logState) values ('0300004','out')");
+        //java定时器，自动处理异常订单
+        ManageExceptionOrder.init();
+        //初始化合作企业信息
+        InitCompanyInfo.init();
     }
 
     /**

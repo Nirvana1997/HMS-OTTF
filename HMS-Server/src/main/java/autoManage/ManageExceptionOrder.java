@@ -33,7 +33,7 @@ public class ManageExceptionOrder {
                     e.printStackTrace();
                 }
                 //将该执行未执行的订单，置为异常
-                DataBaseHelper.in("update OrderInfo set orderState = 'exception' where orderState = 'executing'");
+                DataBaseHelper.in("update OrderInfo set orderState = 'exception' where orderState = 'executing' and where checkInDate ='" + todayDate + "'");
                 ArrayList<String> userIDList = DataBaseHelper.out("select userID from OrderInfo where orderState = 'exception'","userID");
                 ArrayList<String> orderIDList = DataBaseHelper.out("select orderID from OrderInfo where orderState = 'exception'","orderID");
                 ArrayList<String> priceList = DataBaseHelper.out("select price from OrderInfo where orderState = 'exception'","price");
@@ -75,6 +75,6 @@ public class ManageExceptionOrder {
     }
 
     public static void main(String[] args) {
-        //showTimer();
+        showTimer();
     }
 }
