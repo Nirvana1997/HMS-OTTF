@@ -38,7 +38,7 @@ public class OrderPVChanger {
         if(vo==null){
             return null;
         }
-        return new OrderPO(vo.getHotelID(),vo.getHotelname(),vo.getTradeArea(),vo.getAddress(),vo.getDetailAddress(),vo.getRoomNumber(),vo.getPeopleNumber(), DateOperation.dateToString(vo.getCheckInDate()),DateOperation.dateToString(vo.getCheckOutDate()),vo.getRoomType(),vo.isHaveChild(),vo.getOrderID(),vo.getUserID(),vo.getOrderState(),vo.getPrice(),vo.getPromotionName(),vo.getRoomID());
+        return new OrderPO(vo.getOrderID(),vo.getHotelID(),vo.getUserID(),vo.getRoomID(),vo.getRoomNumber(),vo.getPeopleNumber(),vo.getOrderState(),DateOperation.dateToString(vo.getCheckInDate()),DateOperation.dateToString(vo.getCheckOutDate()),vo.getRoomType(),vo.getPrice(),vo.isHaveChild(),vo.getHotelname(),vo.getPromotionName(),vo.getTradeArea(),vo.getAddress(),vo.getDetailAddress());
     }
 
     /**
@@ -50,7 +50,7 @@ public class OrderPVChanger {
         if(vo==null){
             return null;
         }
-        return new OrderPO(vo.getHotelID(),DateOperation.dateToString(vo.getCheckInDate()),DateOperation.dateToString(vo.getCheckOutDate()),vo.getRoomType(),vo.getRoomNumber());
+        return new OrderPO(null,vo.getHotelID(),null,null,vo.getRoomNumber(),0,null,DateOperation.dateToString(vo.getCheckInDate()),DateOperation.dateToString(vo.getCheckOutDate()),vo.getRoomType(),0,false,null,null,null,null,null);
     }
 
     /**

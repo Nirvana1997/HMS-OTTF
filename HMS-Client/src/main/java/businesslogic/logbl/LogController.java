@@ -11,10 +11,11 @@ import java.rmi.RemoteException;
 
 /**
  * 登录逻辑控制器
+ *
  * @author qzh
- * Created by user on 2016/11/25.
+ *         Created by user on 2016/11/25.
  */
-public class LogController implements LogBlService{
+public class LogController implements LogBlService {
     /**
      * 登录模块
      */
@@ -32,6 +33,7 @@ public class LogController implements LogBlService{
 
     /**
      * 密码是否正确,若正确则登录
+     *
      * @param vo 帐号信息
      * @return
      * @throws RemoteException
@@ -48,6 +50,7 @@ public class LogController implements LogBlService{
 
     /**
      * 返回用户类型，若不存在，则返回null
+     *
      * @param account
      * @return
      * @throws RemoteException
@@ -59,6 +62,7 @@ public class LogController implements LogBlService{
 
     /**
      * 添加用户
+     *
      * @param vo 用户信息
      * @return
      * @throws RemoteException
@@ -66,36 +70,42 @@ public class LogController implements LogBlService{
     @Override
     public ResultMessage register(AccountVO vo) throws RemoteException {
         ResultMessage resultMessage = register.register(vo);
-        login.loginAfterRegister(vo.getAccount());
         return resultMessage;
     }
 
     /**
      * 添加用户信息
+     *
      * @param vo 用户个人信息
      * @throws RemoteException
      */
     @Override
     public void addUserInfo(UserInfoVO vo) throws RemoteException {
         register.addUserInfo(vo);
+        login.loginAfterRegister(vo.getUserID());
     }
 
     /**
      * 判断两次密码是否一致以及是否已存在帐号
+     *
      * @param vo 帐号密码确认信息
      * @return
      */
-    public ResultMessage isValid(PasswordComfirmVO vo) throws RemoteException{
+    @Override
+    public ResultMessage isValid(PasswordComfirmVO vo) throws RemoteException {
         return register.isValid(vo);
     }
 
     /**
      * 修改密码
      *
-     * @param password 新密码
+     * @param oldpswd 旧密码
+     * @param newpswd 新密码
+     * @return 旧密码是否正确
      */
-    public void modifyPassword(String password) throws RemoteException{
-        login.modifyPassword(password);
+    @Override
+    public ResultMessage modifyPassword(String oldpswd, String newpswd) throws RemoteException {
+        return login.modifyPassword(oldpswd, newpswd);
     }
 
 }

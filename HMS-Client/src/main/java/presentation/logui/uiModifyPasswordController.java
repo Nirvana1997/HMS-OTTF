@@ -76,7 +76,7 @@ public class uiModifyPasswordController {
         }
         else{
 
-            logController.modifyPassword(textNew.getText());
+//            logController.modifyPassword(textNew.getText());
             Stage secondWindow=new Stage();
             Scene scene=new Scene((Parent) FXMLLoader.load(getClass().getResource("sceneModifySuccess.fxml")));
             secondWindow.setTitle("Success!");
