@@ -52,8 +52,8 @@ public class PromotionDataImpl implements PromotionInfo, WebPromotionInfo, Hotel
         OrderVO res = orderVO;
         //营销策略列表
         ArrayList<PromotionPO> promotions;
-        //最低价格，初始为正无穷
-        double leastPrice = Double.POSITIVE_INFINITY;
+        //最低价格，初始为原价
+        double leastPrice = orderVO.getPrice();
 
         //寻找最佳营销策略使用方案
         PromotionPO bestPromotion = null;
@@ -89,7 +89,7 @@ public class PromotionDataImpl implements PromotionInfo, WebPromotionInfo, Hotel
 
         //填充订单信息
         res.setPrice(leastPrice);
-        res.setPromotionName(bestPromotion.getName());
+        res.setPromotionName(bestPromotion==null?null:bestPromotion.getName());
         return res;
     }
 
