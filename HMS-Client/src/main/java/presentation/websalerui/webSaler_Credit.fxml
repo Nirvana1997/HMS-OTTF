@@ -63,6 +63,11 @@
                         <Font size="15.0" />
                      </font>
                   </Label>
+                  <Label fx:id="labelNotExisted" layoutX="383.0" layoutY="272.0" text="该用户名不存在！" textFill="RED" visible="false">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
                </children>
             </AnchorPane>
             <AnchorPane fx:id="paneCredit2" layoutX="68.0" prefHeight="619.0" prefWidth="820.0" visible="false">

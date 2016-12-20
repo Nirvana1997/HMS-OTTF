@@ -94,10 +94,10 @@ public class Login {
      */
     public ResultMessage modifyPassword(String oldpswd, String newpswd) throws RemoteException {
         //判断旧密码是否正确
-        if (oldpswd.equals(logDataService.getPassword(logDataService.getAccount(Login.nowUserID)))) {
+        if (!oldpswd.equals(logDataService.getPassword(logDataService.getAccount(Login.nowUserID)))) {
             return ResultMessage.InCorrect;
         } else {
-            logDataService.setPassword(nowUserID, newpswd);
+            logDataService.setPassword(logDataService.getAccount(Login.nowUserID), newpswd);
             return ResultMessage.Correct;
         }
     }

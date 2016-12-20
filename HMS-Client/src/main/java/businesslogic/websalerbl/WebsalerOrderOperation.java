@@ -1,5 +1,6 @@
 package businesslogic.websalerbl;
 
+import businesslogic.orderbl.impl.OrderDataImpl;
 import businesslogic.userbl.impl.UserDataImpl;
 import cfg.CfgReader;
 import enumData.CreditRecoverWay;
@@ -25,6 +26,7 @@ public class WebsalerOrderOperation {
     public WebsalerOrderOperation() {
 //        this.webOrderInfo = webOrderInfo;
         creditInfo = new UserDataImpl();
+        webOrderInfo = new OrderDataImpl();
     }
 
     public ArrayList<OrderVO> getOrderByState(OrderState orderState) throws RemoteException {

@@ -119,7 +119,7 @@ public class HotelList {
             if(order.getHotelID().equals(hotelID)){
                 if(order.getOrderState().equals(OrderState.executed)||order.getOrderState().equals(OrderState.executing))
                     res[0] = true;
-                else if(order.getOrderState().equals(OrderState.abnormal))
+                else if(order.getOrderState().equals(OrderState.exception))
                     res[1] = true;
                 else
                     res[2] = true;

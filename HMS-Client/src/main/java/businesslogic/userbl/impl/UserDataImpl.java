@@ -69,8 +69,14 @@ public class UserDataImpl implements UserInfoForManagement,CreditInfo,UserInfoAd
      * @return 是否成功
      */
     public ResultMessage addCredit(CreditChangePO po) throws RemoteException {
-        userDataService.addCredit(po);
-        return ResultMessage.Correct;
+        //判断用户是否存在
+        if(userDataService.getUserInfo(po.getUserID())!=null) {
+            userDataService.addCredit(po);
+            return ResultMessage.Correct;
+        }
+        else{
+            return ResultMessage.NotExist;
+        }
     }
 
     /**
