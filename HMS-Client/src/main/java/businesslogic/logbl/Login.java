@@ -28,7 +28,7 @@ public class Login {
     private static String nowUserID;
 
     public Login() throws RemoteException {
-		logDataService = RemoteHelper.getInstance().getLogDataService();
+        logDataService = RemoteHelper.getInstance().getLogDataService();
 //        logDataService = new LogDataImpl_stub();
     }
 
@@ -45,12 +45,11 @@ public class Login {
         //判断密码是否正确
         if (vo.getPassword().equals(password)) {
             //判断是否已经登录
-            if(logDataService.getLogState(userID).equals(LogState.out)) {
+            if (logDataService.getLogState(userID).equals(LogState.out)) {
                 nowUserID = logDataService.getID(vo.getAccount());
                 logDataService.setLogin(userID);
                 return ResultMessage.Correct;
-            }
-            else{
+            } else {
                 return ResultMessage.hasLogined;
             }
         } else {
@@ -90,10 +89,17 @@ public class Login {
     /**
      * 修改密码
      *
-     * @param password 新密码
+     * @param oldpswd 旧密码
+     * @param newpswd 新密码
      */
-    public void modifyPassword(String password) throws RemoteException {
-        logDataService.setPassword(nowUserID, password);
+    public ResultMessage modifyPassword(String oldpswd, String newpswd) throws RemoteException {
+        //判断旧密码是否正确
+        if (oldpswd.equals(logDataService.getPassword(logDataService.getAccount(Login.nowUserID)))) {
+            return ResultMessage.InCorrect;
+        } else {
+            logDataService.setPassword(nowUserID, newpswd);
+            return ResultMessage.Correct;
+        }
     }
 
     /**

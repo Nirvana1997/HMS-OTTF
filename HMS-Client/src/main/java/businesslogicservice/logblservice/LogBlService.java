@@ -66,7 +66,9 @@ public interface LogBlService {
     /**
      * 修改密码
      *
-     * @param password 新密码
+     * @param oldpswd 旧密码
+     * @param newpswd 新密码
+     * @return 旧密码是否正确
      */
-    public void modifyPassword(String password) throws RemoteException;
+    public ResultMessage modifyPassword(String oldpswd, String newpswd) throws RemoteException;
 }

@@ -69,14 +69,6 @@ public class RemoteHelper {
             promotionDataService = dataFactory.getPromotionDataImpl();
             userDataService = dataFactory.getUserDataImpl();
             websalerDataService = dataFactory.getWebsalerDataImpl();
-//            logDataService = (LogDataService)Naming.lookup("rmi://localhost:1099/LogDataService");
-//            hotelinfoDataService = (HotelinfoDataService)Naming.lookup("rmi://localhost:8888/HotelinfoDataService");
-//            hotelroomDataService = (HotelroomDataService)Naming.lookup("rmi://localhost:8888/HotelroomDataService");
-//            hotelsalerDataService = (HotelsalerDataService)Naming.lookup("rmi://localhost:8888/HotelsalerDataService");
-//            orderDataService = (OrderDataService)Naming.lookup("rmi://localhost:8888/OrderDataService");
-//            promotionDataService = (PromotionDataService)Naming.lookup("rmi://localhost:8888/PromotionDataService");
-//            userDataService = (UserDataService)Naming.lookup("rmi://localhost:8888/UserDataService");
-//            websalerDataService = (WebsalerDataService)Naming.lookup("rmi://localhost:8888/WebsalerDataService");
               System.out.println("linked");
               connected = true;
         } catch (RemoteException e) {

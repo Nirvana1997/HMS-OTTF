@@ -35,9 +35,6 @@ public class PromotionPVChanger {
         if(vo==null){
             return null;
         }
-        if(vo.getStartDate()!=null)
-            return new PromotionPO(vo.getPromotionName(),vo.getDescription(),vo.getPromotionType(),vo.getHotelID(),DateOperation.dateToString(vo.getStartDate()), DateOperation.dateToString(vo.getEndDate()),vo.getTradeArea(),vo.getRoomNumber(),vo.getVipLevel(),vo.getDiscount(),vo.getCompanyID());
-        else
-            return new PromotionPO(vo.getPromotionName(),vo.getDescription(),vo.getPromotionType(),vo.getHotelID(),null, null,vo.getTradeArea(),vo.getRoomNumber(),vo.getVipLevel(),vo.getDiscount(),vo.getCompanyID());
+        return new PromotionPO(vo.getPromotionName(),vo.getPromotionType(),vo.getStartDate()==null?null:DateOperation.dateToString(vo.getStartDate()),vo.getEndDate()==null?null:DateOperation.dateToString(vo.getEndDate()), vo.getTradeArea(),vo.getRoomNumber(),vo.getVipLevel(),vo.getDiscount(),vo.getHotelID(),vo.getDescription(),vo.getCompanyID());
     }
 }
