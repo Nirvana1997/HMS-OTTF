@@ -119,15 +119,19 @@ public class uiWebSalerOrderController implements Initializable {
         try {
             // 未撤销订单
             ArrayList<OrderVO> tempList = websalerbl.getOrderByState(OrderState.abnormal);
-            for (int i = 0; i < tempList.size(); i++) {
-                TableOrder tempTableOrder = this.transVoTOTableOrder(tempList.get(i));
-                uncancledOrderArray.add(tempTableOrder);
+            if(tempList.size() > 0){
+                for (int i = 0; i < tempList.size(); i++) {
+                    TableOrder tempTableOrder = this.transVoTOTableOrder(tempList.get(i));
+                    uncancledOrderArray.add(tempTableOrder);
+                }
             }
             // 已撤销订单
             ArrayList<OrderVO> tempList2 = websalerbl.getCanceledExceptionOrderInfos();
-            for (int i = 0; i < tempList2.size(); i++) {
-                TableOrder tempTableOrder = this.transVoTOTableOrder(tempList2.get(i));
-                cancledOrderArray.add(tempTableOrder);
+            if(tempList2.size() > 0){
+                for (int i = 0; i < tempList2.size(); i++) {
+                    TableOrder tempTableOrder = this.transVoTOTableOrder(tempList2.get(i));
+                    cancledOrderArray.add(tempTableOrder);
+                }
             }
         } catch (RemoteException e) {
             e.printStackTrace();
