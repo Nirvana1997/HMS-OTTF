@@ -1,4 +1,5 @@
 package dataservice.factory;
+import dataservice.companydataservice.CompanyDataService;
 import dataservice.hotelsalerdataservice.HotelinfoDataService;
 import dataservice.hotelsalerdataservice.HotelroomDataService;
 import dataservice.logdataservice.LogDataService;
@@ -60,4 +61,11 @@ public interface DataFactory extends Remote{
      * @throws Exception
      */
     public WebsalerDataService getWebsalerDataImpl()throws Exception;
+
+    /**
+     * 得到实现
+     * @return 接口（实现）
+     * @throws Exception
+     */
+    public CompanyDataService getCompanyDataImpl()throws Exception;
 }

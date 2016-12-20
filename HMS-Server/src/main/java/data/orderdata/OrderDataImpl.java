@@ -40,7 +40,7 @@ public class OrderDataImpl extends UnicastRemoteObject implements OrderDataServi
             ex.printStackTrace();
         }
         return new OrderPO(info.get(0),info.get(1),info.get(2),info.get(3),Integer.parseInt(info.get(4)),Integer.parseInt(info.get(5)),
-                orderState,info.get(7),info.get(8),roomType,Double.parseDouble(info.get(10)),Boolean.getBoolean(info.get(11)),
+                orderState,info.get(7),info.get(8),roomType,Double.parseDouble(info.get(10)),Boolean.parseBoolean(info.get(11)),
                 info.get(12),info.get(13),tradeArea,address,info.get(16));
     }
 
@@ -107,7 +107,7 @@ public class OrderDataImpl extends UnicastRemoteObject implements OrderDataServi
                 ex.printStackTrace();
             }
             orderPOs.add(new OrderPO(orderIDList.get(i),hotelIDList.get(i),userIDList.get(i),roomIDList.get(i),Integer.parseInt(roomNumberList.get(i)),Integer.parseInt(peopleNumberList.get(i)),
-                    orderState,checkInDateList.get(i),checkOutDateList.get(i),roomType,Double.parseDouble(priceList.get(i)),Boolean.getBoolean(haveChildList.get(i)),
+                    orderState,checkInDateList.get(i),checkOutDateList.get(i),roomType,Double.parseDouble(priceList.get(i)),Boolean.parseBoolean(haveChildList.get(i)),
                     hotelNameList.get(i),promotionNameList.get(i),tradeArea,address,detailAddressList.get(i)));
         }
         return orderPOs;
@@ -153,7 +153,7 @@ public class OrderDataImpl extends UnicastRemoteObject implements OrderDataServi
                 ex.printStackTrace();
             }
             orderPOs.add(new OrderPO(orderIDList.get(i),hotelIDList.get(i),userIDList.get(i),roomIDList.get(i),Integer.parseInt(roomNumberList.get(i)),Integer.parseInt(peopleNumberList.get(i)),
-                    orderState,checkInDateList.get(i),checkOutDateList.get(i),roomType,Double.parseDouble(priceList.get(i)),Boolean.getBoolean(haveChildList.get(i)),
+                    orderState,checkInDateList.get(i),checkOutDateList.get(i),roomType,Double.parseDouble(priceList.get(i)),Boolean.parseBoolean(haveChildList.get(i)),
                     hotelNameList.get(i),promotionNameList.get(i),tradeArea,address,detailAddressList.get(i)));
         }
         return orderPOs;

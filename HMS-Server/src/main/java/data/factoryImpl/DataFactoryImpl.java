@@ -1,5 +1,6 @@
 package data.factoryImpl;
 
+import data.companydata.CompanyDataImpl;
 import data.hotelsalerdata.HotelinfoDataImpl;
 import data.hotelsalerdata.HotelroomDataImpl;
 import data.logdata.LogDataImpl;
@@ -7,6 +8,7 @@ import data.orderdata.OrderDataImpl;
 import data.promotiondata.PromotionDataImpl;
 import data.userdata.UserDataImpl;
 import data.websalerdata.WebsalerDataImpl;
+import dataservice.companydataservice.CompanyDataService;
 import dataservice.factory.DataFactory;
 import dataservice.hotelsalerdataservice.HotelinfoDataService;
 import dataservice.hotelsalerdataservice.HotelroomDataService;
@@ -59,5 +61,10 @@ public class DataFactoryImpl extends UnicastRemoteObject implements DataFactory 
     @Override
     public WebsalerDataService getWebsalerDataImpl() throws Exception {
         return new WebsalerDataImpl();
+    }
+
+    @Override
+    public CompanyDataService getCompanyDataImpl() throws Exception {
+        return new CompanyDataImpl();
     }
 }
