@@ -8,6 +8,9 @@ public class HotelroomPO implements Serializable {
 	String hotelID;
 	RoomType roomType;
 	double price;
+	/**
+	 * 房间总数
+	 */
 	int roomNumber;
 
 	public HotelroomPO(String hotelID, RoomType roomType, double price,int roomNumber) {

@@ -8,6 +8,7 @@ import vo.*;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * 酒店工作人员业务逻辑控制器
@@ -157,6 +158,18 @@ public class HotelSalerController implements HotelsalerblService,HotelinfoblServ
     @Override
     public ArrayList<HotelroomVO> getRoomInfo() throws RemoteException{
         return hotelroomOperation.getRoomInfo();
+    }
+
+    /**
+     * 根据日期返回房间信息
+     *
+     * @param date 日期
+     * @return 房间信息
+     * @throws RemoteException
+     */
+    @Override
+    public ArrayList<RoomNumVO> getEmptyRoomByDate(Date date) throws RemoteException {
+        return hotelroomOperation.getEmptyRoomByDate(date);
     }
 
 }
