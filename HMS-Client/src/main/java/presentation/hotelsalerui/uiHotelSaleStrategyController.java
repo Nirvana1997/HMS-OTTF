@@ -629,6 +629,7 @@ public class uiHotelSaleStrategyController implements Initializable{
      */
     public void onClickedCancelEditPromotion() {
         isNewPromotion = false;
+        
 
         if(promptionType == 1){
             paneInfoPromotionBirthday.setVisible(true);

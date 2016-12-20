@@ -446,7 +446,7 @@ public class uiWebSaleStrategyController implements Initializable{
         paneDoubleOne.setVisible(false);
         paneVIP.setVisible(false);
         paneMember.setVisible(false);
-        paneEditPromotion.setVisible(true);
+        paneEditPromotion.setVisible(false);
     }
 
     /**

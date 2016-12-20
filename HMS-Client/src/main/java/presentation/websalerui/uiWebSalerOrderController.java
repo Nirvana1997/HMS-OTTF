@@ -82,8 +82,6 @@ public class uiWebSalerOrderController implements Initializable {
 
     private ObservableList<TableOrder> unCancledOrderData = FXCollections.observableArrayList();
     private ObservableList<TableOrder> cancledOrderData = FXCollections.observableArrayList();
-    private ArrayList<TableOrder> uncancledOrderArray = new ArrayList<>();
-    private ArrayList<TableOrder> cancledOrderArray = new ArrayList<>();
 
     public uiWebSalerOrderController() throws RemoteException {
     }
@@ -116,37 +114,29 @@ public class uiWebSalerOrderController implements Initializable {
      */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        // 未撤销订单
+        ArrayList<OrderVO> unRevokeList = null;
+        // 已撤销订单
+        ArrayList<OrderVO> revokeList = null;
+
         try {
-            // 未撤销订单
-            ArrayList<OrderVO> tempList = websalerbl.getOrderByState(OrderState.abnormal);
-            if(tempList.size() > 0){
-                for (int i = 0; i < tempList.size(); i++) {
-                    TableOrder tempTableOrder = this.transVoTOTableOrder(tempList.get(i));
-                    uncancledOrderArray.add(tempTableOrder);
-                }
-            }
-            // 已撤销订单
-            ArrayList<OrderVO> tempList2 = websalerbl.getCanceledExceptionOrderInfos();
-            if(tempList2.size() > 0){
-                for (int i = 0; i < tempList2.size(); i++) {
-                    TableOrder tempTableOrder = this.transVoTOTableOrder(tempList2.get(i));
-                    cancledOrderArray.add(tempTableOrder);
-                }
-            }
+            unRevokeList = websalerbl.getOrderByState(OrderState.abnormal);
+            revokeList = websalerbl.getCanceledExceptionOrderInfos();
         } catch (RemoteException e) {
             e.printStackTrace();
         }
 
         // 未撤销订单
-        for (int i = 0; i < uncancledOrderArray.size(); i++) {
-            unCancledOrderData.add(uncancledOrderArray.get(i));
+        for (int i = 0; i < unRevokeList.size(); i++) {
+            TableOrder tempTableOrder = this.transVoTOTableOrder(unRevokeList.get(i));
+            unCancledOrderData.add(tempTableOrder);
         }
 
         // 已撤销订单
-        for (int i = 0; i < cancledOrderArray.size(); i++) {
-            cancledOrderData.add(cancledOrderArray.get(i));
+        for (int i = 0; i < revokeList.size(); i++) {
+            TableOrder tempTableOrder = this.transVoTOTableOrder(revokeList.get(i));
+            cancledOrderData.add(tempTableOrder);
         }
-
         orderList.setItems(unCancledOrderData);
         columnOrderID.setCellValueFactory(cellData -> cellData.getValue().OrderIDProperty());
         columnUserID.setCellValueFactory(cellData -> cellData.getValue().UserIDProperty());
