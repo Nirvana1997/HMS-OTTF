@@ -181,7 +181,7 @@ public class uiMyOrderController implements Initializable {
         buttonNormal.setVisible(true);
         buttonAbnormal.setVisible(false);
         buttonRevoke.setVisible(true);
-        ArrayList<OrderVO> orderlist = userController.readOrder(OrderState.abnormal);
+        ArrayList<OrderVO> orderlist = userController.readOrder(OrderState.exception);
         initTable(orderlist);
     }
 
@@ -279,7 +279,7 @@ public class uiMyOrderController implements Initializable {
             inglist = userController.readOrder(OrderState.executing);
             edlist = userController.readOrder(OrderState.executed);
             calist = userController.readOrder(OrderState.canceled);
-            ablist = userController.readOrder(OrderState.abnormal);
+            ablist = userController.readOrder(OrderState.exception);
         } catch (RemoteException e) {
             e.printStackTrace();
         }
