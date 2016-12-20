@@ -23,7 +23,7 @@ public class ManageExceptionOrder {
     private static void showTimer(){
         TimerTask task = new TimerTask() {
             @Override
-            public void run()  {
+            public void run() {
                 //执行的动作
                 String todayDate = getNowDate();
                 UserDataService userDataService = null;
@@ -33,16 +33,19 @@ public class ManageExceptionOrder {
                     e.printStackTrace();
                 }
                 //将该执行未执行的订单，置为异常
-                DataBaseHelper.in("update OrderInfo set orderState = 'exception' where orderState = 'executing' and checkInDate ='" + todayDate + "'");
-                ArrayList<String> userIDList = DataBaseHelper.out("select userID from OrderInfo where orderState = 'exception'","userID");
-                ArrayList<String> orderIDList = DataBaseHelper.out("select orderID from OrderInfo where orderState = 'exception'","orderID");
-                ArrayList<String> priceList = DataBaseHelper.out("select price from OrderInfo where orderState = 'exception'","price");
-                for(int i=0;i<userIDList.size();i++){
-                    try {
-                        //扣除信用值
-                        userDataService.subCredit(new CreditChangePO(userIDList.get(i),orderIDList.get(i),todayDate,"没有按时执行",(int)Double.parseDouble(priceList.get(i))));
-                    } catch (RemoteException e) {
-                        e.printStackTrace();
+                ArrayList<String> num = DataBaseHelper.out("select orderID from OrderInfo where orderState = 'executing' and checkInDate = '" + todayDate + "'", "orderID");
+                if (num.size() != 0) {
+                    DataBaseHelper.in("update OrderInfo set orderState = 'exception' where orderState = 'executing' and checkInDate ='" + todayDate + "'");
+                    ArrayList<String> userIDList = DataBaseHelper.out("select userID from OrderInfo where orderState = 'exception'", "userID");
+                    ArrayList<String> orderIDList = DataBaseHelper.out("select orderID from OrderInfo where orderState = 'exception'", "orderID");
+                    ArrayList<String> priceList = DataBaseHelper.out("select price from OrderInfo where orderState = 'exception'", "price");
+                    for (int i = 0; i < userIDList.size(); i++) {
+                        try {
+                            //扣除信用值
+                            userDataService.subCredit(new CreditChangePO(userIDList.get(i), orderIDList.get(i), todayDate, "没有按时执行", (int) Double.parseDouble(priceList.get(i))));
+                        } catch (RemoteException e) {
+                            e.printStackTrace();
+                        }
                     }
                 }
             }
