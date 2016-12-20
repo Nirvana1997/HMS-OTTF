@@ -1,5 +1,7 @@
 package rmi;
 
+import businesslogic.promotionbl.strategies.Company;
+import dataservice.companydataservice.CompanyDataService;
 import dataservice.factory.DataFactory;
 import dataservice.hotelsalerdataservice.HotelinfoDataService;
 import dataservice.hotelsalerdataservice.HotelroomDataService;
@@ -33,6 +35,7 @@ public class RemoteHelper {
     private PromotionDataService promotionDataService;
     private UserDataService userDataService;
     private WebsalerDataService websalerDataService;
+    private CompanyDataService companyDataService;
 
     /**
      * 获得用例
@@ -69,6 +72,7 @@ public class RemoteHelper {
             promotionDataService = dataFactory.getPromotionDataImpl();
             userDataService = dataFactory.getUserDataImpl();
             websalerDataService = dataFactory.getWebsalerDataImpl();
+            companyDataService = dataFactory.getCompanyDataImpl();
               System.out.println("linked");
               connected = true;
         } catch (RemoteException e) {
@@ -108,5 +112,9 @@ public class RemoteHelper {
 
     public WebsalerDataService getWebsalerDataService() {
         return websalerDataService;
+    }
+
+    public CompanyDataService getCompanyDataService() {
+        return companyDataService;
     }
 }

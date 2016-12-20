@@ -79,7 +79,8 @@ public class OrderVO {
         this.roomID = roomID;
     }
 
-    public OrderVO(String userID, double price, Date begin, Date end) {
+    public OrderVO(String orderID, String userID, double price, Date begin, Date end) {
+        this.orderID = orderID;
         this.userID = userID;
         this.price = price;
         this.checkInDate = begin;

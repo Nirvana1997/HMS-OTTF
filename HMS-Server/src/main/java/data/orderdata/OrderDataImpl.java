@@ -40,7 +40,7 @@ public class OrderDataImpl extends UnicastRemoteObject implements OrderDataServi
             ex.printStackTrace();
         }
         return new OrderPO(info.get(0),info.get(1),info.get(2),info.get(3),Integer.parseInt(info.get(4)),Integer.parseInt(info.get(5)),
-                orderState,info.get(7),info.get(8),roomType,Double.parseDouble(info.get(10)),Boolean.getBoolean(info.get(11)),
+                orderState,info.get(7),info.get(8),roomType,Double.parseDouble(info.get(10)),Boolean.parseBoolean(info.get(11)),
                 info.get(12),info.get(13),tradeArea,address,info.get(16));
     }
 
@@ -107,7 +107,7 @@ public class OrderDataImpl extends UnicastRemoteObject implements OrderDataServi
                 ex.printStackTrace();
             }
             orderPOs.add(new OrderPO(orderIDList.get(i),hotelIDList.get(i),userIDList.get(i),roomIDList.get(i),Integer.parseInt(roomNumberList.get(i)),Integer.parseInt(peopleNumberList.get(i)),
-                    orderState,checkInDateList.get(i),checkOutDateList.get(i),roomType,Double.parseDouble(priceList.get(i)),Boolean.getBoolean(haveChildList.get(i)),
+                    orderState,checkInDateList.get(i),checkOutDateList.get(i),roomType,Double.parseDouble(priceList.get(i)),Boolean.parseBoolean(haveChildList.get(i)),
                     hotelNameList.get(i),promotionNameList.get(i),tradeArea,address,detailAddressList.get(i)));
         }
         return orderPOs;
@@ -153,7 +153,7 @@ public class OrderDataImpl extends UnicastRemoteObject implements OrderDataServi
                 ex.printStackTrace();
             }
             orderPOs.add(new OrderPO(orderIDList.get(i),hotelIDList.get(i),userIDList.get(i),roomIDList.get(i),Integer.parseInt(roomNumberList.get(i)),Integer.parseInt(peopleNumberList.get(i)),
-                    orderState,checkInDateList.get(i),checkOutDateList.get(i),roomType,Double.parseDouble(priceList.get(i)),Boolean.getBoolean(haveChildList.get(i)),
+                    orderState,checkInDateList.get(i),checkOutDateList.get(i),roomType,Double.parseDouble(priceList.get(i)),Boolean.parseBoolean(haveChildList.get(i)),
                     hotelNameList.get(i),promotionNameList.get(i),tradeArea,address,detailAddressList.get(i)));
         }
         return orderPOs;
@@ -208,9 +208,9 @@ public class OrderDataImpl extends UnicastRemoteObject implements OrderDataServi
      */
     @Override
     public CanceledExceptionOrderPO getOrderExceptionInfo(String orderID) throws RemoteException {
-        String cancelDate = DataBaseHelper.outSingle("OrderExceptionInfo","cancelDate","orderID",orderID);
-        String cancelTime = DataBaseHelper.outSingle("OrderExceptionInfo","cancelTime","orderID",orderID);
-        String cancelReason = DataBaseHelper.outSingle("OrderExceptionInfo","cancelReason","orderID",orderID);
+        String cancelDate = DataBaseHelper.outSingle("CanceledExceptionOrder","cancelDate","orderID",orderID);
+        String cancelTime = DataBaseHelper.outSingle("CanceledExceptionOrder","cancelTime","orderID",orderID);
+        String cancelReason = DataBaseHelper.outSingle("CanceledExceptionOrder","cancelReason","orderID",orderID);
         return new CanceledExceptionOrderPO(orderID,cancelDate,cancelTime,cancelReason);
     }
 
@@ -222,10 +222,10 @@ public class OrderDataImpl extends UnicastRemoteObject implements OrderDataServi
     @Override
     public ArrayList<CanceledExceptionOrderPO> getOrderExceptionInfo() throws RemoteException {
         ArrayList<CanceledExceptionOrderPO> orderExceptionPOs = new ArrayList<CanceledExceptionOrderPO>();
-        ArrayList<String> orderIDList = DataBaseHelper.out("select orderID from OrderException","orderID");
-        ArrayList<String> cancelDateList = DataBaseHelper.out("select cancelDate from OrderException","cancelDate");
-        ArrayList<String> cancelTimeList = DataBaseHelper.out("select cancelTime from OrderException","cancelTime");
-        ArrayList<String> cancelReasonList = DataBaseHelper.out("select cancelReason from OrderException","cancelReason");
+        ArrayList<String> orderIDList = DataBaseHelper.out("select orderID from CanceledExceptionOrder","orderID");
+        ArrayList<String> cancelDateList = DataBaseHelper.out("select cancelDate from CanceledExceptionOrder","cancelDate");
+        ArrayList<String> cancelTimeList = DataBaseHelper.out("select cancelTime from CanceledExceptionOrder","cancelTime");
+        ArrayList<String> cancelReasonList = DataBaseHelper.out("select cancelReason from CanceledExceptionOrder","cancelReason");
         for(int i=0;i<orderIDList.size();i++){
             orderExceptionPOs.add(new CanceledExceptionOrderPO(orderIDList.get(i),cancelDateList.get(i),cancelTimeList.get(i),cancelReasonList.get(i)));
         }

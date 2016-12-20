@@ -108,6 +108,19 @@ public class uiHotelRoomController implements Initializable{
     @FXML
     private DatePicker datePickerEndTime;
 
+    @FXML
+    private Label labelSingleRoomTotal;
+    @FXML
+    private Label labelDoubleRoomTotal;
+    @FXML
+    private Label labelDisabledRoomTotal;
+    @FXML
+    private TextField textFieldSingleRoomTotal;
+    @FXML
+    private TextField textFieldDoubleRoomTotal;
+    @FXML
+    private TextField textFieldDisabledRoomTotal;
+
     public uiHotelRoomController() throws RemoteException {
     }
 
@@ -162,6 +175,8 @@ public class uiHotelRoomController implements Initializable{
         labelEditSingleRoom.setVisible(false);
         buttonConfirmSingleRoom.setVisible(true);
         buttonCancelSingleRoom.setVisible(true);
+        labelSingleRoomTotal.setVisible(false);
+        textFieldSingleRoomTotal.setVisible(true);
     }
 
     /**
@@ -188,6 +203,8 @@ public class uiHotelRoomController implements Initializable{
         labelEditDoubleRoom.setVisible(false);
         buttonConfirmDoubleRoom.setVisible(true);
         buttonCancelDoubleRoom.setVisible(true);
+        labelDoubleRoomTotal.setVisible(false);
+        textFieldDoubleRoomTotal.setVisible(true);
     }
 
     /**
@@ -214,6 +231,8 @@ public class uiHotelRoomController implements Initializable{
         labelEditDisabledRoom.setVisible(false);
         buttonConfirmDisabledRoom.setVisible(true);
         buttonCancelDisabledRoom.setVisible(true);
+        labelDisabledRoomTotal.setVisible(false);
+        textFieldDisabledRoomTotal.setVisible(true);
     }
 
     /**

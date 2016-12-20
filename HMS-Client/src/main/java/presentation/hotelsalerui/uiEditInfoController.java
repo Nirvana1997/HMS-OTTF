@@ -171,12 +171,16 @@ public class uiEditInfoController implements Initializable {
             menuItem.setOnAction(event -> {
                 this.tradeArea = area.toString();
                 menuButtonChooseTradeArea.setText(menuItem.getText());
+                menuButtonAddresss.getItems().clear();
                 // 根据选择不同的商圈显示不同可选的地址
                 if (menuItem.getText().equals("长江")) {
+                    menuButtonAddresss.setText("上海");
                     this.setAddress("Shanghai", "Nanjing", "上海", "南京");
                 } else if (menuItem.getText().equals("黄河")) {
+                    menuButtonAddresss.setText("北京");
                     this.setAddress("Beijing", "Tianjing", "北京", "天津");
                 } else if (menuItem.getText().equals("南海")) {
+                    menuButtonAddresss.setText("广东");
                     this.setAddress("Guangdong", "Aomen", "广东", "澳门");
                 }
             });
