@@ -14,6 +14,7 @@ import utility.HotelPVChanger;
 import utility.OrderPVChanger;
 import vo.BelowLineOrderVO;
 import vo.HotelroomVO;
+import vo.RoomNumVO;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
@@ -112,6 +113,21 @@ public class HotelroomOperation {
         ArrayList<HotelroomVO> res = new ArrayList<HotelroomVO>();
         for (HotelroomPO po : hotelroomDataService.getRoomList(Login.getNowUserID())) {
             res.add(HotelPVChanger.hotelroomP2V(po));
+        }
+        return res;
+    }
+
+    /**
+     * 根据日期返回房间信息
+     *
+     * @param date 日期
+     * @return 房间信息
+     * @throws RemoteException
+     */
+    public ArrayList<RoomNumVO> getEmptyRoomByDate(Date date) throws RemoteException {
+        ArrayList<RoomNumVO> res = new ArrayList<>();
+        for (RoomNumPO po:hotelroomDataService.getEmptyrooms(Login.getNowUserID(),DateOperation.dateToString(date))){
+            res.add(HotelPVChanger.emptyRoomP2V(po));
         }
         return res;
     }
