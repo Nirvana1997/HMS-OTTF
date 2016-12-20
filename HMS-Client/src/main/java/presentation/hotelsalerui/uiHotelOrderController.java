@@ -313,7 +313,8 @@ public class uiHotelOrderController implements Initializable{
             try {
                 OrderVO vo = hotelsalerbl.readOrderByID(orderId);
                 double price = vo.getPrice();
-                OrderVO vo2 = new OrderVO(labelUserId.getText(), price, begin, end);
+                String orderId = vo.getOrderID();
+                OrderVO vo2 = new OrderVO(orderId, labelUserId.getText(), price, begin, end);
                 hotelsalerbl.delayOrder(vo2);
             } catch (RemoteException e) {
                 e.printStackTrace();
