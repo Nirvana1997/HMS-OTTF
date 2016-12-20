@@ -6,8 +6,6 @@
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.MenuButton?>
-<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -19,7 +17,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="618.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.60" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.hotelsalerui.uiHotelRoomController">
    <children>
-      <ScrollPane hbarPolicy="NEVER" layoutX="241.0" layoutY="-1.0" prefHeight="618.0" prefWidth="756.0" vvalue="1.0">
+      <ScrollPane hbarPolicy="NEVER" layoutX="241.0" layoutY="-1.0" prefHeight="618.0" prefWidth="756.0">
          <content>
             <AnchorPane prefHeight="800.0" prefWidth="794.0" style="-fx-background-color: #FFFFFF;">
                <children>
@@ -28,7 +26,7 @@
                         <Image url="@../../../../../graphics/hotelsalerui/bk.png" />
                      </image>
                   </ImageView>
-                  <ImageView layoutX="2.0" layoutY="-26.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView layoutX="2.0" layoutY="-27.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../../../graphics/hotelsalerui/bk4.png" />
                      </image>
@@ -45,12 +43,12 @@
                               <Font size="20.0" />
                            </font>
                         </Label>
-                        <Label layoutX="31.0" layoutY="149.0" text="空房数量：">
+                        <Label layoutX="25.0" layoutY="173.0" text="空房数量：">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Label>
-                        <Label layoutX="32.0" layoutY="211.0" text="价格：">
+                        <Label layoutX="25.0" layoutY="219.0" text="价格：">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -63,23 +61,23 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Label>
-                        <Label layoutX="149.0" layoutY="211.0" text="元/晚">
+                        <Label layoutX="151.0" layoutY="219.0" text="元/晚">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Label>
-                        <Label layoutX="175.0" layoutY="149.0" text="间">
+                        <Label layoutX="178.0" layoutY="173.0" text="间">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="textFieldSingleRoomPrice" layoutX="90.0" layoutY="212.0" prefHeight="23.0" prefWidth="54.0" visible="false" />
-                        <Label fx:id="labelSingleRoomNum" alignment="CENTER" layoutX="119.0" layoutY="149.0" prefHeight="24.0" prefWidth="54.0" textAlignment="CENTER">
+                        <TextField fx:id="textFieldSingleRoomPrice" layoutX="78.0" layoutY="220.0" prefHeight="23.0" prefWidth="66.0" visible="false" />
+                        <Label fx:id="labelSingleRoomNum" alignment="CENTER" layoutX="113.0" layoutY="173.0" prefHeight="24.0" prefWidth="60.0" textAlignment="CENTER">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Label>
-                        <Label fx:id="labelSingleRoomPrice" alignment="CENTER" layoutX="81.0" layoutY="211.0" prefHeight="24.0" prefWidth="63.0" textAlignment="CENTER">
+                        <Label fx:id="labelSingleRoomPrice" alignment="CENTER" layoutX="79.0" layoutY="219.0" prefHeight="24.0" prefWidth="63.0" textAlignment="CENTER">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -111,6 +109,22 @@
                               <Cursor fx:constant="DEFAULT" />
                            </cursor>
                         </Button>
+                        <Label layoutX="25.0" layoutY="134.0" text="房间总数：">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="178.0" layoutY="134.0" text="间">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="labelSingleRoomTotal" layoutX="113.0" layoutY="134.0" prefHeight="24.0" prefWidth="61.0">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="textFieldSingleRoomTotal" layoutX="111.0" layoutY="135.0" prefHeight="23.0" prefWidth="61.0" visible="false" />
                      </children>
                   </AnchorPane>
                   <AnchorPane layoutX="495.0" layoutY="140.0" prefHeight="322.0" prefWidth="239.0">
@@ -120,12 +134,12 @@
                               <Image url="@../../../../../graphics/hotelsalerui/Orderbk.png" />
                            </image>
                         </ImageView>
-                        <Label layoutX="31.0" layoutY="149.0" text="空房数量：">
+                        <Label layoutX="31.0" layoutY="169.0" text="空房数量：">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Label>
-                        <Label layoutX="32.0" layoutY="211.0" text="价格：">
+                        <Label layoutX="31.0" layoutY="216.0" text="价格：">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -138,23 +152,23 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Label>
-                        <Label layoutX="149.0" layoutY="211.0" text="元/晚">
+                        <Label layoutX="149.0" layoutY="216.0" text="元/晚">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Label>
-                        <Label layoutX="175.0" layoutY="149.0" text="间">
+                        <Label layoutX="173.0" layoutY="169.0" text="间">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="textFieldDisabledRoomPrice" layoutX="90.0" layoutY="212.0" prefHeight="23.0" prefWidth="54.0" visible="false" />
-                        <Label fx:id="labelDisabledRoomNum" alignment="CENTER" layoutX="119.0" layoutY="149.0" prefHeight="24.0" prefWidth="54.0" textAlignment="CENTER">
+                        <TextField fx:id="textFieldDisabledRoomPrice" layoutX="82.0" layoutY="217.0" prefHeight="23.0" prefWidth="62.0" visible="false" />
+                        <Label fx:id="labelDisabledRoomNum" alignment="CENTER" layoutX="116.0" layoutY="170.0" prefHeight="24.0" prefWidth="54.0" textAlignment="CENTER">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Label>
-                        <Label fx:id="labelDisabledRoomPrice" alignment="CENTER" layoutX="81.0" layoutY="211.0" prefHeight="24.0" prefWidth="63.0" textAlignment="CENTER">
+                        <Label fx:id="labelDisabledRoomPrice" alignment="CENTER" layoutX="82.0" layoutY="217.0" prefHeight="24.0" prefWidth="63.0" textAlignment="CENTER">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -186,6 +200,22 @@
                               <Cursor fx:constant="DEFAULT" />
                            </cursor>
                         </Button>
+                        <Label layoutX="31.0" layoutY="132.0" text="房间总数：">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="173.0" layoutY="132.0" text="间">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="labelDisabledRoomTotal" layoutX="118.0" layoutY="132.0" prefHeight="24.0" prefWidth="54.0">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="textFieldDisabledRoomTotal" layoutX="117.0" layoutY="133.0" prefHeight="23.0" prefWidth="54.0" visible="false" />
                      </children>
                   </AnchorPane>
                   <AnchorPane layoutX="254.0" layoutY="140.0" prefHeight="322.0" prefWidth="239.0">
@@ -195,12 +225,12 @@
                               <Image url="@../../../../../graphics/hotelsalerui/Orderbk.png" />
                            </image>
                         </ImageView>
-                        <Label layoutX="31.0" layoutY="149.0" text="空房数量：">
+                        <Label layoutX="30.0" layoutY="172.0" text="空房数量：">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Label>
-                        <Label layoutX="32.0" layoutY="211.0" text="价格：">
+                        <Label layoutX="31.0" layoutY="217.0" text="价格：">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -213,23 +243,23 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Label>
-                        <Label layoutX="149.0" layoutY="211.0" text="元/晚">
+                        <Label layoutX="149.0" layoutY="217.0" text="元/晚">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Label>
-                        <Label layoutX="175.0" layoutY="149.0" text="间">
+                        <Label layoutX="178.0" layoutY="172.0" text="间">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="textFieldDoubleRoomPrice" layoutX="90.0" layoutY="212.0" prefHeight="23.0" prefWidth="54.0" visible="false" />
-                        <Label fx:id="labelDoubleRoomNum" alignment="CENTER" layoutX="119.0" layoutY="149.0" prefHeight="24.0" prefWidth="54.0" textAlignment="CENTER">
+                        <TextField fx:id="textFieldDoubleRoomPrice" layoutX="81.0" layoutY="218.0" prefHeight="23.0" prefWidth="63.0" visible="false" />
+                        <Label fx:id="labelDoubleRoomNum" alignment="CENTER" layoutX="119.0" layoutY="172.0" prefHeight="24.0" prefWidth="54.0" textAlignment="CENTER">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </Label>
-                        <Label fx:id="labelDoubleRoomPrice" alignment="CENTER" layoutX="81.0" layoutY="211.0" prefHeight="24.0" prefWidth="63.0" textAlignment="CENTER">
+                        <Label fx:id="labelDoubleRoomPrice" alignment="CENTER" layoutX="81.0" layoutY="217.0" prefHeight="24.0" prefWidth="63.0" textAlignment="CENTER">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -261,18 +291,24 @@
                               <Cursor fx:constant="DEFAULT" />
                            </cursor>
                         </Button>
+                        <Label layoutX="30.0" layoutY="134.0" text="房间总数：">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="178.0" layoutY="134.0" text="间">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="labelDoubleRoomTotal" layoutX="116.0" layoutY="134.0" prefHeight="24.0" prefWidth="61.0">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="textFieldDoubleRoomTotal" layoutX="114.0" layoutY="135.0" prefHeight="23.0" prefWidth="61.0" visible="false" />
                      </children>
                   </AnchorPane>
-                  <MenuButton layoutX="33.0" layoutY="82.0" mnemonicParsing="false" style="-fx-background-color: #FFFFFF;" text="选择日期">
-                     <items>
-                        <MenuItem mnemonicParsing="false" />
-                        <MenuItem mnemonicParsing="false" />
-                        <MenuItem mnemonicParsing="false" />
-                     </items>
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </MenuButton>
                   <ImageView fitHeight="334.0" fitWidth="744.0" layoutX="4.0" layoutY="625.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../../../graphics/hotelsalerui/bkcopy.png" />
@@ -355,6 +391,12 @@
                   </Label>
                   <DatePicker fx:id="datePickerBeginTime" layoutX="172.0" layoutY="781.0" />
                   <DatePicker fx:id="datePickerEndTime" layoutX="420.0" layoutY="781.0" />
+                  <Label layoutX="28.0" layoutY="94.0" text="请选择查询日期：">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <DatePicker layoutX="186.0" layoutY="94.0" prefHeight="24.0" prefWidth="186.0" />
                </children>
             </AnchorPane>
          </content>

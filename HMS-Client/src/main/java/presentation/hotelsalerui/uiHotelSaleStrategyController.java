@@ -322,16 +322,6 @@ public class uiHotelSaleStrategyController implements Initializable{
     }
 
     /**
-     * 获取日期
-     * @param ld 日期选取器
-     * @return Date格式的日期
-     */
-    public static Date getDate(DatePicker ld) throws ParseException {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        return sdf.parse(ld.getValue().toString());
-    }
-
-    /**
      * 设置promotion面板内容
      * @param n
      * @param promotionType
@@ -566,13 +556,6 @@ public class uiHotelSaleStrategyController implements Initializable{
         Date endTime = null;
         String description = textAreaPromotionContent.getText();
 
-        try {
-            beginTime = getDate(datePickerBeginTime);
-            endTime = getDate(datePickerEndTime);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-
         if (isNewPromotion){
             if(promptionType == 1){
                 PromotionVO vo = new PromotionVO(name, description, PromotionType.Hotel_birth, null, null, discount);
@@ -583,6 +566,12 @@ public class uiHotelSaleStrategyController implements Initializable{
                 }
             }
             else if(promptionType == 2){
+                try {
+                    beginTime = UiFormatChanger.getDate(datePickerBeginTime);
+                    endTime = UiFormatChanger.getDate(datePickerEndTime);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
                 PromotionVO vo = new PromotionVO(name, description, PromotionType.Hotel_period, beginTime, endTime, discount);
                 try {
                     hotelsalerblService.addPromotion(vo);
@@ -591,6 +580,12 @@ public class uiHotelSaleStrategyController implements Initializable{
                 }
             }
             else if(promptionType == 3){
+                try {
+                    beginTime = UiFormatChanger.getDate(datePickerBeginTime);
+                    endTime = UiFormatChanger.getDate(datePickerEndTime);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
                 PromotionVO vo = new PromotionVO(name, description, PromotionType.Hotel_company, beginTime, endTime, discount);
                 try {
                     hotelsalerblService.addPromotion(vo);
@@ -599,6 +594,12 @@ public class uiHotelSaleStrategyController implements Initializable{
                 }
             }
             else if(promptionType == 4){
+                try {
+                    beginTime = UiFormatChanger.getDate(datePickerBeginTime);
+                    endTime = UiFormatChanger.getDate(datePickerEndTime);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
                 PromotionVO vo = new PromotionVO(name, description, PromotionType.Hotel_num, beginTime, endTime, discount);
                 try {
                     hotelsalerblService.addPromotion(vo);
@@ -606,6 +607,8 @@ public class uiHotelSaleStrategyController implements Initializable{
                     e.printStackTrace();
                 }
             }
+            this.onClickedCancelEditPromotion();
+            this.initPromotionList();
         }
         // 修改营销策略
         else {
@@ -616,37 +619,61 @@ public class uiHotelSaleStrategyController implements Initializable{
                 } catch (RemoteException e) {
                     e.printStackTrace();
                 }
+                this.onClickedCancelEditPromotion();
+                this.initPromotionList();
             }
             else if(promptionType == 2 && promotionDoubleOne.size() > 0){
+                try {
+                    beginTime = UiFormatChanger.getDate(datePickerBeginTime);
+                    endTime = UiFormatChanger.getDate(datePickerEndTime);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
                 PromotionVO vo = new PromotionVO(name, description, PromotionType.Hotel_period, beginTime, endTime, discount);
                 try {
                     hotelsalerblService.setPromotion(vo);
                 } catch (RemoteException e) {
                     e.printStackTrace();
                 }
+                this.onClickedCancelEditPromotion();
+                this.initPromotionList();
             }
             else if(promptionType == 3 && promotionCompany.size() > 0){
+                try {
+                    beginTime = UiFormatChanger.getDate(datePickerBeginTime);
+                    endTime = UiFormatChanger.getDate(datePickerEndTime);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
                 PromotionVO vo = new PromotionVO(name, description, PromotionType.Hotel_company, beginTime, endTime, discount);
                 try {
                     hotelsalerblService.setPromotion(vo);
                 } catch (RemoteException e) {
                     e.printStackTrace();
                 }
+                this.onClickedCancelEditPromotion();
+                this.initPromotionList();
             }
             else if(promptionType == 4 && promotionThreeRooms.size() > 0){
+                try {
+                    beginTime = UiFormatChanger.getDate(datePickerBeginTime);
+                    endTime = UiFormatChanger.getDate(datePickerEndTime);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
                 PromotionVO vo = new PromotionVO(name, description, PromotionType.Hotel_num, beginTime, endTime, discount);
                 try {
                     hotelsalerblService.setPromotion(vo);
                 } catch (RemoteException e) {
                     e.printStackTrace();
                 }
+                this.onClickedCancelEditPromotion();
+                this.initPromotionList();
             }
             else {
                 labelPleaseNew.setVisible(true);
             }
         }
-        this.initPromotionList();
-        this.onClickedCancelEditPromotion();
     }
 
     /**
