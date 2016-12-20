@@ -83,7 +83,8 @@ public class PromotionDataImpl extends UnicastRemoteObject implements PromotionD
         TradeArea tradeArea = null;
         try {
             type = Enum.valueOf(PromotionType.class,type_.trim());
-            tradeArea = Enum.valueOf(TradeArea.class,tradeArea_.trim());
+            if(tradeArea_!=null)
+                tradeArea = Enum.valueOf(TradeArea.class,tradeArea_.trim());
         }catch (IllegalArgumentException ex){
             ex.printStackTrace();
         }
@@ -112,7 +113,8 @@ public class PromotionDataImpl extends UnicastRemoteObject implements PromotionD
         for(int i=0;i<nameList.size();i++){
             TradeArea tradeArea = null;
             try {
-                tradeArea = Enum.valueOf(TradeArea.class,tradeAreaList.get(i).trim());
+                if(tradeAreaList.get(i)!=null)
+                    tradeArea = Enum.valueOf(TradeArea.class,tradeAreaList.get(i).trim());
             }catch (IllegalArgumentException ex){
                 ex.printStackTrace();
             }
