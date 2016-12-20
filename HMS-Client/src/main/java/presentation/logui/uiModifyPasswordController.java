@@ -1,6 +1,7 @@
 package presentation.logui;
 
 import businesslogic.logbl.LogController;
+import enumData.ResultMessage;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -65,24 +66,25 @@ public class uiModifyPasswordController {
         String Confirm = textConfirm.getText();
         int newSize = New.length();
 
-        if(Old.equals("exist")){
-            oldWrong.setVisible(true);
-        }
-        else if(newSize > temp.MAX_LENGTH || newSize < temp.MIN_LENGTH){
+
+        if(newSize > temp.MAX_LENGTH || newSize < temp.MIN_LENGTH){
             newWrong.setVisible(true);
         }
         else if(!New.equals(Confirm)){
             cfmWrong.setVisible(true);
         }
         else{
-
-//            logController.modifyPassword(textNew.getText());
-            Stage secondWindow=new Stage();
-            Scene scene=new Scene((Parent) FXMLLoader.load(getClass().getResource("sceneModifySuccess.fxml")));
-            secondWindow.setTitle("Success!");
-            secondWindow.setScene(scene);
-            secondWindow.show();
-            buttonConfirm.getScene().getWindow().hide();
+            if(logController.modifyPassword(Old,New)== ResultMessage.InCorrect){
+                oldWrong.setVisible(true);
+            }
+            else {
+                Stage secondWindow = new Stage();
+                Scene scene = new Scene((Parent) FXMLLoader.load(getClass().getResource("sceneModifySuccess.fxml")));
+                secondWindow.setTitle("Success!");
+                secondWindow.setScene(scene);
+                secondWindow.show();
+                buttonConfirm.getScene().getWindow().hide();
+            }
         }
     }
 
