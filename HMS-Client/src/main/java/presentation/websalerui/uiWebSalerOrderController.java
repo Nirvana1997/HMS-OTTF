@@ -12,7 +12,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
-import presentation.websalerui.TableOrder;
 import utility.UiFormatChanger;
 import vo.CanceledExceptionOrderVO;
 import vo.OrderVO;
@@ -21,7 +20,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.ResourceBundle;
 
 /**
@@ -120,7 +118,7 @@ public class uiWebSalerOrderController implements Initializable {
         ArrayList<OrderVO> revokeList = null;
 
         try {
-            unRevokeList = websalerbl.getOrderByState(OrderState.abnormal);
+            unRevokeList = websalerbl.getOrderByState(OrderState.exception);
             revokeList = websalerbl.getCanceledExceptionOrderInfos();
         } catch (RemoteException e) {
             e.printStackTrace();
