@@ -53,7 +53,7 @@ public class PromotionDataImpl implements PromotionInfo, WebPromotionInfo, Hotel
         //营销策略列表
         ArrayList<PromotionPO> promotions;
         //最低价格，初始为原价
-        double leastPrice = orderVO.getPrice();
+        double leastPrice = orderVO.getPrice()*orderVO.getRoomNumber();
 
         //寻找最佳营销策略使用方案
         PromotionPO bestPromotion = null;
