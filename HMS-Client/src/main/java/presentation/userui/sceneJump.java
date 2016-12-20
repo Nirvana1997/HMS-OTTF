@@ -162,7 +162,8 @@ public class sceneJump {
     public void warning() throws IOException {
         Stage secondWindow = new Stage();
         Scene scene = new Scene((Parent) FXMLLoader.load(getClass().getResource("sceneWarning.fxml")));
-        secondWindow.setTitle("Warning!");
+        secondWindow.initStyle(StageStyle.TRANSPARENT);
+        secondWindow.setAlwaysOnTop(true);
         secondWindow.setScene(scene);
         secondWindow.show();
         uiMyOrderController.chooseOrder = true;
