@@ -31,7 +31,7 @@ public class uiHotelRoomController implements Initializable{
 
     private SceneJump sceneJump = new SceneJump();
     String hotelID = "";
-    HotelroomblService hotelroombl = new HotelSalerController();
+    HotelSalerController hotelroombl = new HotelSalerController();
     LogBlService logBl = new LogController();
     ArrayList<HotelroomVO> roomArray;
     RoomType roomType;

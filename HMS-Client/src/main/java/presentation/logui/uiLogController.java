@@ -5,6 +5,7 @@ import businesslogicservice.logblservice.LogBlService;
 import com.sun.javafx.robot.impl.FXRobotHelper;
 import enumData.AccountType;
 import enumData.ResultMessage;
+import javafx.application.Platform;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -130,6 +131,22 @@ public class uiLogController {
         wrongPassword.setVisible(false);
         notExist.setVisible(false);
         wrongHasLogined.setVisible(false);
+    }
+    @FXML
+    private Text buttonX;
+    public void exit(){
+        Platform.exit();
+    }
+
+    @FXML
+    private Text buttonMin;
+    public void min(){
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                buttonMin.getScene().getWindow().hide();
+            }
+        });
     }
 
 }
