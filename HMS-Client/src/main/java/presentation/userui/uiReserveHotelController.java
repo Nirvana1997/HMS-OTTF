@@ -184,7 +184,7 @@ public class uiReserveHotelController implements Initializable {
             //设置订单信息
             OrderVO reserveOrder = new OrderVO(currentHotel.getHotelID(), currentHotel.getHotelname(), currentHotel.getTradeArea(),
                     currentHotel.getAddress(), currentHotel.getDetailAddress(), Integer.parseInt(textRoomNumber.getText()), Integer.parseInt(textPeopleNumber.getText()),
-                    UiFormatChanger.getDate(checkinDate), UiFormatChanger.getDate(checkoutDate), getRoomType(RoomType), (HaveChild.getSelectedToggle() == haveChild));
+                    UiFormatChanger.getDate(checkinDate), UiFormatChanger.getDate(checkoutDate), getRoomType(RoomType), haveChild.isSelected());
             if (userController.haveEnoughRoom(reserveOrder) && userController.hasEnoughCredit()) {
                 OrderVO confirmOrder = userController.makeOrder(reserveOrder);
                 setCurrentOrder(confirmOrder);
