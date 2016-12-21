@@ -4,6 +4,7 @@ import businesslogic.logbl.LogController;
 import businesslogic.webmanagerbl.WebmanagerController;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import vo.WebsalerInfoVO;
@@ -52,7 +53,7 @@ public class uiAddWSController {
      * 密码输入框
      */
     @FXML
-    private TextField textWSPassword;
+    private PasswordField textWSPassword;
 
     /**
      * 联系方式输入框

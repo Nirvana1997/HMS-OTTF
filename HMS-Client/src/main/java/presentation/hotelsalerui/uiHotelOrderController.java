@@ -156,7 +156,7 @@ public class uiHotelOrderController implements Initializable{
      */
     public void checkAllOrder() {
         menuButtonChooseOrder.setText("全部订单");
-        this.refreshTable("全部订单");
+        this.refreshTable("全部");
     }
 
     /**
@@ -191,18 +191,20 @@ public class uiHotelOrderController implements Initializable{
         this.refreshTable("已撤销");
     }
 
-    private void refreshTable(String state){
-        if(state.equals("全部订单")){
-            orderList.setItems(orderData);
+    private void refreshTable(String state) {
+        orderData = FXCollections.observableArrayList();
+        if (state.equals("全部")){
+            for (int i = 0; i < orderArray.size(); i++) {
+                orderData.add(orderArray.get(i));
+            }
         }
         else{
-            orderData = FXCollections.observableArrayList();
             for (int i = 0; i < orderArray.size(); i++) {
                 if (orderArray.get(i).getState().equals(state))
                     orderData.add(orderArray.get(i));
             }
-            orderList.setItems(orderData);
         }
+        orderList.setItems(orderData);
         columnOrderID.setCellValueFactory(cellData -> cellData.getValue().OrderIDProperty());
         columnUserID.setCellValueFactory(cellData -> cellData.getValue().UserIDProperty());
         columnRoomType.setCellValueFactory(cellData -> cellData.getValue().RoomTypeProperty());
@@ -249,6 +251,10 @@ public class uiHotelOrderController implements Initializable{
     private TextField textFieldRoomID;
     @FXML
     private DatePicker datePickerCheckInTime;
+    @FXML
+    private Button buttonExecuteOrder;
+    @FXML
+    private Button buttonDelayCheckIn;
 
     String orderId = "";
 
@@ -256,35 +262,36 @@ public class uiHotelOrderController implements Initializable{
      * 查看详细订单
      */
     public void checkDetailedOrder() {
-//        for (int i = 0; i < orderData.size(); i++) {
-//            if (orderList.getSelectionModel().isSelected(i)) {
-//                break;
-//            }
-//        }
-        orderId = orderList.getSelectionModel().getSelectedItem().getOrderID();
-        try {
-            OrderVO vo = hotelsalerbl.readOrderByID(orderId);
-            labelOrderId.setText(vo.getOrderID());
-            labelUserId.setText(vo.getUserID());
-            labelRoomType.setText(UiFormatChanger.typeTOstring(vo.getRoomType()));
-            labelOrderState.setText(UiFormatChanger.stateTOstring(vo.getOrderState()));
-            labelInTime.setText(UiFormatChanger.dateToString(vo.getCheckInDate()));
-            labelOutTime.setText(UiFormatChanger.dateToString(vo.getCheckOutDate()));
-            if(vo.isHaveChild())
-                labelIsChildren.setText("是");
-            else
-                labelIsChildren.setText("否");
-            labelPrice.setText(String.valueOf(vo.getPrice()));
-            labelRoomId.setText(vo.getRoomID());
-            labelRoomNum.setText(String.valueOf(vo.getRoomNumber()));
-            labelPeopleNum.setText(String.valueOf(vo.getPeopleNumber()));
-        } catch (RemoteException e) {
-            e.printStackTrace();
+        for (int i = 0; i < orderData.size(); i++) {
+            if (orderList.getSelectionModel().isSelected(i)) {
+                orderId = orderList.getSelectionModel().getSelectedItem().getOrderID();
+                try {
+                    OrderVO vo = hotelsalerbl.readOrderByID(orderId);
+                    labelOrderId.setText(vo.getOrderID());
+                    labelUserId.setText(vo.getUserID());
+                    labelRoomType.setText(UiFormatChanger.typeTOstring(vo.getRoomType()));
+                    labelOrderState.setText(UiFormatChanger.stateTOstring(vo.getOrderState()));
+                    labelInTime.setText(UiFormatChanger.dateToString(vo.getCheckInDate()));
+                    labelOutTime.setText(UiFormatChanger.dateToString(vo.getCheckOutDate()));
+                    if(vo.isHaveChild())
+                        labelIsChildren.setText("是");
+                    else
+                        labelIsChildren.setText("否");
+                    labelPrice.setText(String.valueOf(vo.getPrice()));
+                    labelRoomId.setText(vo.getRoomID());
+                    labelRoomNum.setText(String.valueOf(vo.getRoomNumber()));
+                    labelPeopleNum.setText(String.valueOf(vo.getPeopleNumber()));
+                } catch (RemoteException e) {
+                    e.printStackTrace();
+                }
+                paneTable.setVisible(false);
+                paneDetailedOrder.setVisible(true);
+                paneExcuteOrder.setVisible(false);
+                paneDelayTime.setVisible(false);
+
+                break;
+            }
         }
-        paneTable.setVisible(false);
-        paneDetailedOrder.setVisible(true);
-        paneExcuteOrder.setVisible(false);
-        paneDelayTime.setVisible(false);
     }
 
     /**
@@ -294,6 +301,8 @@ public class uiHotelOrderController implements Initializable{
         paneTable.setVisible(true);
         paneDetailedOrder.setVisible(false);
         paneDelayTime.setVisible(false);
+        buttonExecuteOrder.setVisible(true);
+        buttonDelayCheckIn.setVisible(true);
     }
 
     /**
@@ -301,6 +310,8 @@ public class uiHotelOrderController implements Initializable{
      */
     public void showDelayPane(){
         paneDelayTime.setVisible(true);
+        buttonExecuteOrder.setVisible(false);
+        buttonDelayCheckIn.setVisible(false);
     }
 
     /**
@@ -330,6 +341,8 @@ public class uiHotelOrderController implements Initializable{
      */
     public void cancelDelay(){
         paneDelayTime.setVisible(false);
+        buttonExecuteOrder.setVisible(true);
+        buttonDelayCheckIn.setVisible(true);
     }
 
     /**
@@ -337,6 +350,8 @@ public class uiHotelOrderController implements Initializable{
      */
     public void excuteOrder(){
         paneExcuteOrder.setVisible(true);
+        buttonExecuteOrder.setVisible(false);
+        buttonDelayCheckIn.setVisible(false);
     }
 
     /**
@@ -344,6 +359,8 @@ public class uiHotelOrderController implements Initializable{
      */
     public void cancelExcuteOrder(){
         paneExcuteOrder.setVisible(false);
+        buttonExecuteOrder.setVisible(true);
+        buttonDelayCheckIn.setVisible(true);
     }
 
     /**

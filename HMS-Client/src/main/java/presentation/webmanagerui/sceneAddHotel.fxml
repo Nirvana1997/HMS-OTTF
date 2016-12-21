@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.ImageInput?>
@@ -118,11 +119,6 @@
                   <Font size="14.0" />
                </font>
             </TextField>
-            <TextField fx:id="textHSPassword" layoutX="482.0" layoutY="230.0">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </TextField>
             <TextField fx:id="textHSNumber" layoutX="496.0" layoutY="274.0">
                <font>
                   <Font size="14.0" />
@@ -165,6 +161,11 @@
                </font>
             </TextField>
             <Text fx:id="warningAccount" fill="RED" layoutX="475.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*该酒店已存在" visible="false" />
+            <PasswordField fx:id="textHSPassword" layoutX="482.0" layoutY="230.0">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </PasswordField>
          </children>
       </AnchorPane>
       <Text fx:id="textManageHS" fill="#3a72d3" layoutX="293.0" layoutY="98.0" onMouseClicked="#returntoManageHS" strokeType="OUTSIDE" strokeWidth="0.0" text="酒店管理" underline="true">
