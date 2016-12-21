@@ -172,4 +172,26 @@ public class HotelSalerController implements HotelsalerblService,HotelinfoblServ
         return hotelroomOperation.getEmptyRoomByDate(date);
     }
 
+    /**
+     * 获得所有企业
+     *
+     * @return 所有企业名称
+     * @throws RemoteException
+     */
+    public ArrayList<String> showAllCompanys() throws RemoteException{
+        return promotionOperation.showAllCompanys();
+    }
+
+    /**
+     * 判断企业ID与企业名称是否对应
+     *
+     * @param companyID   企业ID
+     * @param companyName 企业名称
+     * @return 是否对应
+     * @throws RemoteException
+     */
+    public boolean isCompanyIDCorrect(String companyID, String companyName) throws RemoteException{
+        return promotionOperation.isCompanyIDCorrect(companyID,companyName);
+    }
+
 }
