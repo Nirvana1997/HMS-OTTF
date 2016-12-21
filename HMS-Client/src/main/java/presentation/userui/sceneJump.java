@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import presentation.logui.SceneLog;
 import presentation.logui.SceneModifyPassword;
 import java.io.IOException;
@@ -161,7 +162,8 @@ public class sceneJump {
     public void warning() throws IOException {
         Stage secondWindow = new Stage();
         Scene scene = new Scene((Parent) FXMLLoader.load(getClass().getResource("sceneWarning.fxml")));
-        secondWindow.setTitle("Warning!");
+        secondWindow.initStyle(StageStyle.TRANSPARENT);
+        secondWindow.setAlwaysOnTop(true);
         secondWindow.setScene(scene);
         secondWindow.show();
         uiMyOrderController.chooseOrder = true;
@@ -179,9 +181,11 @@ public class sceneJump {
     public void reserveSuccess() throws IOException {
         Stage secondWindow = new Stage();
         Scene scene = new Scene((Parent) FXMLLoader.load(getClass().getResource("sceneReserveSuccess.fxml")));
-        secondWindow.setTitle("Success!");
+        secondWindow.initStyle(StageStyle.TRANSPARENT);
+        secondWindow.setAlwaysOnTop(true);
         secondWindow.setScene(scene);
         secondWindow.show();
+
     }
 
     /**
@@ -192,7 +196,8 @@ public class sceneJump {
     public void CommentSuccess() throws IOException {
         Stage secondWindow = new Stage();
         Scene scene = new Scene((Parent) FXMLLoader.load(getClass().getResource("sceneCommentSuccess.fxml")));
-        secondWindow.setTitle("Success!");
+        secondWindow.initStyle(StageStyle.TRANSPARENT);
+        secondWindow.setAlwaysOnTop(true);
         secondWindow.setScene(scene);
         secondWindow.show();
     }
@@ -205,7 +210,8 @@ public class sceneJump {
     public void ModifySuccess() throws IOException {
         Stage secondWindow = new Stage();
         Scene scene = new Scene((Parent) FXMLLoader.load(getClass().getResource("sceneModifySuccess.fxml")));
-        secondWindow.setTitle("Success!");
+        secondWindow.initStyle(StageStyle.TRANSPARENT);
+        secondWindow.setAlwaysOnTop(true);
         secondWindow.setScene(scene);
         secondWindow.show();
     }
@@ -218,7 +224,8 @@ public class sceneJump {
     public void RevokeSuccess() throws IOException {
         Stage secondWindow = new Stage();
         Scene scene = new Scene((Parent) FXMLLoader.load(getClass().getResource("sceneRevokeSuccess.fxml")));
-        secondWindow.setTitle("Success!");
+        secondWindow.initStyle(StageStyle.TRANSPARENT);
+        secondWindow.setAlwaysOnTop(true);
         secondWindow.setScene(scene);
         secondWindow.show();
     }
@@ -231,7 +238,8 @@ public class sceneJump {
     public void ConfirmOrder() throws IOException {
         Stage secondWindow = new Stage();
         Scene scene = new Scene((Parent) FXMLLoader.load(getClass().getResource("sceneConfirmOrder.fxml")));
-        secondWindow.setTitle("Confirm");
+        secondWindow.initStyle(StageStyle.TRANSPARENT);
+        secondWindow.setAlwaysOnTop(true);
         secondWindow.setScene(scene);
         secondWindow.show();
     }

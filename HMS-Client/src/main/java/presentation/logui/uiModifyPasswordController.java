@@ -11,6 +11,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.rmi.RemoteException;
@@ -80,8 +81,9 @@ public class uiModifyPasswordController {
             else {
                 Stage secondWindow = new Stage();
                 Scene scene = new Scene((Parent) FXMLLoader.load(getClass().getResource("sceneModifySuccess.fxml")));
-                secondWindow.setTitle("Success!");
+                secondWindow.initStyle(StageStyle.TRANSPARENT);
                 secondWindow.setScene(scene);
+                secondWindow.setAlwaysOnTop(true);
                 secondWindow.show();
                 buttonConfirm.getScene().getWindow().hide();
             }

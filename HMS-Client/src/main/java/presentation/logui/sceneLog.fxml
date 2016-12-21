@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
@@ -48,5 +49,21 @@
       <Text fx:id="wrongPassword" fill="RED" layoutX="461.0" layoutY="415.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*账号密码错误" visible="false" />
       <Text fx:id="notExist" fill="RED" layoutX="461.0" layoutY="415.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*该账户不存在" visible="false" />
       <Text fx:id="wrongHasLogined" fill="RED" layoutX="471.0" layoutY="425.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*该账户已登录" visible="false" />
+      <Text fx:id="buttonX" fill="#b2d8eb" layoutX="968.0" layoutY="29.0" onMouseClicked="#exit" strokeType="OUTSIDE" strokeWidth="0.0" text="×">
+         <font>
+            <Font name="SimHei" size="24.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Text>
+      <Text fx:id="buttonMin" fill="#b2d8eb" layoutX="942.0" layoutY="26.0" onMouseClicked="#min" strokeType="OUTSIDE" strokeWidth="0.0" text="一">
+         <font>
+            <Font name="SimHei" size="18.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Text>
    </children>
 </AnchorPane>

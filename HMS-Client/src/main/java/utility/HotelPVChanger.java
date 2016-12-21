@@ -2,8 +2,10 @@ package utility;
 
 import po.HotelinfoPO;
 import po.HotelroomPO;
+import po.RoomNumPO;
 import vo.HotelinfoVO;
 import vo.HotelroomVO;
+import vo.RoomNumVO;
 
 /**
  * 酒店基本信息、房间信息PO、VO转换
@@ -58,5 +60,29 @@ public class HotelPVChanger {
             return null;
         }
         return new HotelroomVO(po.getHotelID(),po.getRoomType(),po.getPrice(),po.getRoomNumber());
+    }
+
+    /**
+     * 酒店房间信息PO转VO
+     * @param vo 空房信息VO
+     * @return 空房信息PO
+     */
+    public static RoomNumPO emptyRoomV2P(RoomNumVO vo){
+        if(vo==null){
+            return null;
+        }
+        return new RoomNumPO(vo.getHotelID(),vo.getDate(),vo.getEmptyNum(),vo.getRoomType());
+    }
+
+    /**
+     * 酒店空房信息VO转PO
+     * @param po 空房信息PO
+     * @return 空房信息VO
+     */
+    public static RoomNumVO emptyRoomP2V(RoomNumPO po){
+        if(po==null){
+            return null;
+        }
+        return new RoomNumVO(po.getHotelID(),po.getDate(),po.getEmptyNum(),po.getRoomType());
     }
 }

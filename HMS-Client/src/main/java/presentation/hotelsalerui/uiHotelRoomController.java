@@ -14,6 +14,7 @@ import javafx.stage.Stage;
 import utility.UiFormatChanger;
 import vo.BelowLineOrderVO;
 import vo.HotelroomVO;
+import vo.RoomNumVO;
 
 import java.io.IOException;
 import java.net.URL;
@@ -31,7 +32,7 @@ public class uiHotelRoomController implements Initializable{
 
     private SceneJump sceneJump = new SceneJump();
     String hotelID = "";
-    HotelroomblService hotelroombl = new HotelSalerController();
+    HotelSalerController hotelroombl = new HotelSalerController();
     LogBlService logBl = new LogController();
     ArrayList<HotelroomVO> roomArray;
     RoomType roomType;
@@ -108,6 +109,21 @@ public class uiHotelRoomController implements Initializable{
     @FXML
     private DatePicker datePickerEndTime;
 
+    @FXML
+    private Label labelSingleRoomTotal;
+    @FXML
+    private Label labelDoubleRoomTotal;
+    @FXML
+    private Label labelDisabledRoomTotal;
+    @FXML
+    private TextField textFieldSingleRoomTotal;
+    @FXML
+    private TextField textFieldDoubleRoomTotal;
+    @FXML
+    private TextField textFieldDisabledRoomTotal;
+    @FXML
+    private DatePicker datePicker;
+
     public uiHotelRoomController() throws RemoteException {
     }
 
@@ -162,6 +178,8 @@ public class uiHotelRoomController implements Initializable{
         labelEditSingleRoom.setVisible(false);
         buttonConfirmSingleRoom.setVisible(true);
         buttonCancelSingleRoom.setVisible(true);
+        labelSingleRoomTotal.setVisible(false);
+        textFieldSingleRoomTotal.setVisible(true);
     }
 
     /**
@@ -188,6 +206,8 @@ public class uiHotelRoomController implements Initializable{
         labelEditDoubleRoom.setVisible(false);
         buttonConfirmDoubleRoom.setVisible(true);
         buttonCancelDoubleRoom.setVisible(true);
+        labelDoubleRoomTotal.setVisible(false);
+        textFieldDoubleRoomTotal.setVisible(true);
     }
 
     /**
@@ -214,6 +234,8 @@ public class uiHotelRoomController implements Initializable{
         labelEditDisabledRoom.setVisible(false);
         buttonConfirmDisabledRoom.setVisible(true);
         buttonCancelDisabledRoom.setVisible(true);
+        labelDisabledRoomTotal.setVisible(false);
+        textFieldDisabledRoomTotal.setVisible(true);
     }
 
     /**
@@ -221,7 +243,7 @@ public class uiHotelRoomController implements Initializable{
      */
     public void confirmEditSingleRoom(){
         double price = Integer.parseInt(textFieldSingleRoomPrice.getText());
-        HotelroomVO vo = new HotelroomVO(hotelID, RoomType.SingleRoom, price, roomArray.get(0).getRoomNumber());
+        HotelroomVO vo = new HotelroomVO(hotelID, RoomType.SingleRoom, price, Integer.parseInt(textFieldSingleRoomTotal.getText()));
         ArrayList<HotelroomVO> temp = new ArrayList<>();
         temp.add(vo);
         temp.add(roomArray.get(1));
@@ -244,6 +266,8 @@ public class uiHotelRoomController implements Initializable{
         textFieldSingleRoomPrice.setVisible(false);
         labelSingleRoomNum.setVisible(true);
         labelSingleRoomPrice.setVisible(true);
+        labelSingleRoomTotal.setVisible(true);
+        textFieldSingleRoomTotal.setVisible(false);
     }
 
     /**
@@ -251,7 +275,7 @@ public class uiHotelRoomController implements Initializable{
      */
     public void confirmEditDoubleRoom(){
         double price = Integer.parseInt(textFieldDoubleRoomPrice.getText());
-        HotelroomVO vo = new HotelroomVO(hotelID, RoomType.DoubleRoom, price, roomArray.get(1).getRoomNumber());
+        HotelroomVO vo = new HotelroomVO(hotelID, RoomType.DoubleRoom, price, Integer.parseInt(textFieldDoubleRoomTotal.getText()));
         ArrayList<HotelroomVO> temp = new ArrayList<>();
         temp.add(roomArray.get(0));
         temp.add(vo);
@@ -274,6 +298,8 @@ public class uiHotelRoomController implements Initializable{
         textFieldDoubleRoomPrice.setVisible(false);
         labelDoubleRoomNum.setVisible(true);
         labelDoubleRoomPrice.setVisible(true);
+        labelDoubleRoomTotal.setVisible(true);
+        textFieldDoubleRoomTotal.setVisible(false);
     }
 
     /**
@@ -281,7 +307,7 @@ public class uiHotelRoomController implements Initializable{
      */
     public void confirmEditDisabledRoom(){
         double price = Integer.parseInt(textFieldDisabledRoomPrice.getText());
-        HotelroomVO vo = new HotelroomVO(hotelID, RoomType.DisabledRoom, price, roomArray.get(2).getRoomNumber());
+        HotelroomVO vo = new HotelroomVO(hotelID, RoomType.DisabledRoom, price, Integer.parseInt(textFieldDisabledRoomTotal.getText()));
         ArrayList<HotelroomVO> temp = new ArrayList<>();
         temp.add(roomArray.get(0));
         temp.add(roomArray.get(1));
@@ -304,6 +330,8 @@ public class uiHotelRoomController implements Initializable{
         textFieldDisabledRoomPrice.setVisible(false);
         labelDisabledRoomNum.setVisible(true);
         labelDisabledRoomPrice.setVisible(true);
+        labelDisabledRoomTotal.setVisible(true);
+        textFieldDisabledRoomTotal.setVisible(false);
     }
 
     /**
@@ -405,9 +433,29 @@ public class uiHotelRoomController implements Initializable{
         checkBoxDoubleRoom.setSelected(false);
         checkBoxDisabledRoom.setSelected(false);
         textFieldRoomNum.setText("");
-        // TODO
         datePickerBeginTime.setValue(null);
         datePickerEndTime.setValue(null);
+    }
+
+    /**
+     * 根据日期查询
+     */
+    public void checkRoomByDate(){
+        try {
+            Date date = UiFormatChanger.getDate(datePicker);
+            ArrayList<RoomNumVO> arrayList = hotelroombl.getEmptyRoomByDate(date);
+            int emptyRoom1 = arrayList.get(0).getEmptyNum();
+            int emptyRoom2 = arrayList.get(1).getEmptyNum();
+            int emptyRoom3 = arrayList.get(2).getEmptyNum();
+
+            labelSingleRoomNum.setText(String.valueOf(emptyRoom1));
+            labelDoubleRoomNum.setText(String.valueOf(emptyRoom2));
+            labelDisabledRoomNum.setText(String.valueOf(emptyRoom3));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -424,6 +472,9 @@ public class uiHotelRoomController implements Initializable{
             labelDoubleRoomPrice.setText("0");
             labelDisabledRoomNum.setText("0");
             labelDisabledRoomPrice.setText("0");
+            labelSingleRoomTotal.setText("0");
+            labelDoubleRoomTotal.setText("0");
+            labelDisabledRoomTotal.setText("0");
         }else {
             this.hotelID = roomArray.get(0).getHotelID();
             labelSingleRoomNum.setText(String.valueOf(roomArray.get(0).getRoomNumber()));
@@ -434,4 +485,5 @@ public class uiHotelRoomController implements Initializable{
             labelDisabledRoomPrice.setText(String.valueOf(roomArray.get(2).getPrice()));
         }
     }
+
 }

@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import presentation.logui.SceneLog;
 import presentation.logui.SceneModifyPassword;
 import presentation.userui.uiMyOrderController;
@@ -114,7 +115,8 @@ public class sceneJump {
     public void warning() throws IOException{
         Stage secondWindow=new Stage();
         Scene scene=new Scene((Parent) FXMLLoader.load(getClass().getResource("sceneWarning.fxml")));
-        secondWindow.setTitle("Warning!");
+        secondWindow.initStyle(StageStyle.TRANSPARENT);
+        secondWindow.setAlwaysOnTop(true);
         secondWindow.setScene(scene);
         secondWindow.show();
         uiManageHSController.choose = false;
@@ -129,7 +131,8 @@ public class sceneJump {
     public void deleteSuccess() throws  IOException{
         Stage secondWindow=new Stage();
         Scene scene=new Scene((Parent) FXMLLoader.load(getClass().getResource("sceneDeleteSuccess.fxml")));
-        secondWindow.setTitle("Success!");
+        secondWindow.initStyle(StageStyle.TRANSPARENT);
+        secondWindow.setAlwaysOnTop(true);
         secondWindow.setScene(scene);
         secondWindow.show();
     }
@@ -141,7 +144,8 @@ public class sceneJump {
     public void addSuccess() throws  IOException{
         Stage secondWindow=new Stage();
         Scene scene=new Scene((Parent) FXMLLoader.load(getClass().getResource("sceneAddSuccess.fxml")));
-        secondWindow.setTitle("Success!");
+        secondWindow.initStyle(StageStyle.TRANSPARENT);
+        secondWindow.setAlwaysOnTop(true);
         secondWindow.setScene(scene);
         secondWindow.show();
     }
@@ -153,7 +157,8 @@ public class sceneJump {
     public void changeSuccess() throws  IOException{
         Stage secondWindow=new Stage();
         Scene scene=new Scene((Parent) FXMLLoader.load(getClass().getResource("sceneChangeSuccess.fxml")));
-        secondWindow.setTitle("Success!");
+        secondWindow.initStyle(StageStyle.TRANSPARENT);
+        secondWindow.setAlwaysOnTop(true);
         secondWindow.setScene(scene);
         secondWindow.show();
     }

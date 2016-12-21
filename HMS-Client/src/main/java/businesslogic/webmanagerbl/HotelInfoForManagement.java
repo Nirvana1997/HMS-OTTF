@@ -43,4 +43,11 @@ public interface HotelInfoForManagement {
      * @throws RemoteException
      */
     public void deleteHotelInfo(String hotelID) throws RemoteException;
+
+    /**
+     *
+     * @param hotelID
+     * @throws RemoteException
+     */
+    public void initRoomNum(String hotelID)throws RemoteException;
 }

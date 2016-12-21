@@ -14,6 +14,7 @@ import utility.HotelPVChanger;
 import utility.OrderPVChanger;
 import vo.BelowLineOrderVO;
 import vo.HotelroomVO;
+import vo.RoomNumVO;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
@@ -69,36 +70,18 @@ public class HotelroomOperation {
         for (HotelroomVO vo : hotelrooms) {
             pos.add(HotelPVChanger.hotelroomV2P(vo));
         }
-        //判断是否是第一次设置
-        //若是第一次设置，则在数据库中初始化
-        if (hotelroomDataService.getRoomList(Login.getNowUserID()).size() == 0) {
-            hotelroomDataService.initializeRoomInfo(pos);
-            //构成房间数目PO
-            ArrayList<RoomNumPO> roomNums = new ArrayList<RoomNumPO>();
-            //获得从当前时间向后特定天数的日期
-            ArrayList<Date> dates = DateOperation.getDates(new Date(), DateOperation.addDays(new Date(), Integer.valueOf(CfgReader.getInstance().getProperty("days"))));
-            for (Date date : dates) {
-                for (HotelroomPO po : pos) {
-                    roomNums.add(new RoomNumPO(Login.getNowUserID(), DateOperation.dateToString(date), po.getRoomNumber(), po.getRoomType()));
-                }
-                hotelroomDataService.initializeRoomNum(roomNums);
-                //清空以添加下一天信息
-                roomNums.clear();
+        hotelroomDataService.setRoomInfo(pos);
+        //构成房间数目PO
+        ArrayList<RoomNumPO> roomNums = new ArrayList<RoomNumPO>();
+        //获得从当前时间向后特定天数的日期
+        ArrayList<Date> dates = DateOperation.getDates(new Date(), DateOperation.addDays(new Date(), Integer.valueOf(CfgReader.getInstance().getProperty("days"))));
+        for (Date date : dates) {
+            for (HotelroomPO po : pos) {
+                roomNums.add(new RoomNumPO(Login.getNowUserID(), DateOperation.dateToString(date), po.getRoomNumber(), po.getRoomType()));
             }
-        } else {
-            hotelroomDataService.setRoomInfo(pos);
-            //构成房间数目PO
-            ArrayList<RoomNumPO> roomNums = new ArrayList<RoomNumPO>();
-            //获得从当前时间向后特定天数的日期
-            ArrayList<Date> dates = DateOperation.getDates(new Date(), DateOperation.addDays(new Date(), Integer.valueOf(CfgReader.getInstance().getProperty("days"))));
-            for (Date date : dates) {
-                for (HotelroomPO po : pos) {
-                    roomNums.add(new RoomNumPO(Login.getNowUserID(), DateOperation.dateToString(date), po.getRoomNumber(), po.getRoomType()));
-                }
-                hotelroomDataService.setRoomNum(roomNums);
-                //清空以添加下一天信息
-                roomNums.clear();
-            }
+            hotelroomDataService.setRoomNum(roomNums);
+            //清空以添加下一天信息
+            roomNums.clear();
         }
     }
 
@@ -112,6 +95,21 @@ public class HotelroomOperation {
         ArrayList<HotelroomVO> res = new ArrayList<HotelroomVO>();
         for (HotelroomPO po : hotelroomDataService.getRoomList(Login.getNowUserID())) {
             res.add(HotelPVChanger.hotelroomP2V(po));
+        }
+        return res;
+    }
+
+    /**
+     * 根据日期返回房间信息
+     *
+     * @param date 日期
+     * @return 房间信息
+     * @throws RemoteException
+     */
+    public ArrayList<RoomNumVO> getEmptyRoomByDate(Date date) throws RemoteException {
+        ArrayList<RoomNumVO> res = new ArrayList<>();
+        for (RoomNumPO po : hotelroomDataService.getEmptyrooms(Login.getNowUserID(), DateOperation.dateToString(date))) {
+            res.add(HotelPVChanger.emptyRoomP2V(po));
         }
         return res;
     }

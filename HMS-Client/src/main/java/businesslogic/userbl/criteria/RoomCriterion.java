@@ -98,8 +98,9 @@ public class RoomCriterion implements Criterion {
                 break;
             }
         }
+
         //若不存在对应房间类型或价格不符合要求，直接返回false
-        if (roomPO == null && (roomPO.getPrice() > maxPrice || roomPO.getPrice() < minPrice)) {
+        if (roomPO == null || (roomPO.getPrice() > maxPrice || roomPO.getPrice() < minPrice)) {
             return false;
         }
 

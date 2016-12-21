@@ -3,12 +3,15 @@ package businesslogicservice.hotelsalerblservice;
 import enumData.ResultMessage;
 import enumData.RoomType;
 import po.HotelroomPO;
+import po.RoomNumPO;
 import vo.BelowLineOrderVO;
 import vo.HotelroomVO;
 import vo.OrderVO;
+import vo.RoomNumVO;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * 负责对酒店的房间状况进行计算和统计
@@ -46,4 +49,13 @@ public interface HotelroomblService {
      * @throws RemoteException
      */
     public ArrayList<HotelroomVO> getRoomInfo() throws RemoteException;
+
+    /**
+     * 根据日期返回房间信息
+     *
+     * @param date 日期
+     * @return 房间信息
+     * @throws RemoteException
+     */
+    public ArrayList<RoomNumVO> getEmptyRoomByDate(Date date) throws RemoteException;
 }

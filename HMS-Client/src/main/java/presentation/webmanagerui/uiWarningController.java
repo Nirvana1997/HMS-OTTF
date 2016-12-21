@@ -2,6 +2,7 @@ package presentation.webmanagerui;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.text.Text;
 
 import java.net.URL;
@@ -41,5 +42,10 @@ public class uiWarningController implements Initializable {
             warningChooseWS.setVisible(true);
         }
 
+    }
+    @FXML
+    private Button buttonOK;
+    public void OK(){
+        buttonOK.getScene().getWindow().hide();
     }
 }
