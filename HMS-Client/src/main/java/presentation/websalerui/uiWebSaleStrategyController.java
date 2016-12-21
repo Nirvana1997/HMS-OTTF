@@ -75,9 +75,9 @@ public class uiWebSaleStrategyController implements Initializable{
             lengthPromotionMember = promotionMember.size();
 
             //初始化promotion面板
-            this.initPromotionContent(0, PromotionType.Web_period);
-            this.initPromotionContent(0, PromotionType.Web_tradeArea);
-            this.initPromotionContent(0, PromotionType.Web_VIP);
+            this.initPromotionContent(0, PromotionType.Web_Period);
+            this.initPromotionContent(0, PromotionType.Web_TradeArea);
+            this.initPromotionContent(0, PromotionType.Web_Vip);
         }
 
         // 初始化编辑界面选择商圈menuButton
@@ -104,9 +104,9 @@ public class uiWebSaleStrategyController implements Initializable{
     private void initPromotionList(){
         // 获取list对象
         try {
-            promotionDoubleOne = websalerbl.getPromotionList(PromotionType.Web_period);
-            promotionVIP = websalerbl.getPromotionList(PromotionType.Web_tradeArea);
-            promotionMember = websalerbl.getPromotionList(PromotionType.Web_VIP);
+            promotionDoubleOne = websalerbl.getPromotionList(PromotionType.Web_Period);
+            promotionVIP = websalerbl.getPromotionList(PromotionType.Web_TradeArea);
+            promotionMember = websalerbl.getPromotionList(PromotionType.Web_Vip);
         } catch (RemoteException e) {
             e.printStackTrace();
         }
@@ -352,18 +352,18 @@ public class uiWebSaleStrategyController implements Initializable{
      */
     private void initPromotionContent(int n, PromotionType promotionType) {
         this.initPromotionList();
-        if(promotionType == PromotionType.Web_period){
+        if(promotionType == PromotionType.Web_Period){
             labelNamePromotionDoubleOne.setText(promotionDoubleOne.get(n).getPromotionName());
             labelInfoPromotionDoubleOne.setText(promotionDoubleOne.get(n).getDescription());
             labelDatePromotionDoubleOne.setText(UiFormatChanger.dateToString(promotionDoubleOne.get(n).getStartDate()) + "~" + UiFormatChanger.dateToString(promotionDoubleOne.get(n).getEndDate()));
         }
-        else if(promotionType == PromotionType.Web_tradeArea){
+        else if(promotionType == PromotionType.Web_TradeArea){
             labelNamePromotionVIP.setText(promotionVIP.get(n).getPromotionName());
             labelInfoPromotionVIP.setText(promotionVIP.get(n).getDescription());
             labelDatePromotionVIP.setText(UiFormatChanger.dateToString(promotionVIP.get(n).getStartDate()) + "~" + UiFormatChanger.dateToString(promotionVIP.get(n).getEndDate()));
             labelTradeArea.setText(String.valueOf(promotionVIP.get(n).getTradeArea()));
         }
-        else if(promotionType == PromotionType.Web_VIP){
+        else if(promotionType == PromotionType.Web_Vip){
             labelNamePromotionMember.setText(promotionMember.get(n).getPromotionName());
             labelInfoPromotionMember.setText(promotionMember.get(n).getDescription());
             labelDatePromotionMember.setText(UiFormatChanger.dateToString(promotionMember.get(n).getStartDate()) + "~" + UiFormatChanger.dateToString(promotionMember.get(n).getEndDate()));
@@ -389,7 +389,7 @@ public class uiWebSaleStrategyController implements Initializable{
         if(lengthPromotionDoubleOne > 0){
             doubleOneCount++;
             int n = Math.abs(doubleOneCount % lengthPromotionDoubleOne);
-            this.initPromotionContent(n,PromotionType.Web_period);
+            this.initPromotionContent(n,PromotionType.Web_Period);
         }
     }
 
@@ -400,7 +400,7 @@ public class uiWebSaleStrategyController implements Initializable{
         if(lengthPromotionDoubleOne > 0){
             doubleOneCount--;
             int n = Math.abs(doubleOneCount % lengthPromotionDoubleOne);
-            this.initPromotionContent(n,PromotionType.Web_period);
+            this.initPromotionContent(n,PromotionType.Web_Period);
         }
     }
 
@@ -411,7 +411,7 @@ public class uiWebSaleStrategyController implements Initializable{
         if(lengthPromotionVIP > 0){
             VIPCount++;
             int n = Math.abs(VIPCount % lengthPromotionVIP);
-            this.initPromotionContent(n, PromotionType.Web_tradeArea);
+            this.initPromotionContent(n, PromotionType.Web_TradeArea);
         }
     }
 
@@ -422,7 +422,7 @@ public class uiWebSaleStrategyController implements Initializable{
         if(lengthPromotionVIP > 0){
             VIPCount--;
             int n = Math.abs(VIPCount % lengthPromotionVIP);
-            this.initPromotionContent(n, PromotionType.Web_tradeArea);
+            this.initPromotionContent(n, PromotionType.Web_TradeArea);
         }
     }
 
@@ -433,7 +433,7 @@ public class uiWebSaleStrategyController implements Initializable{
         if(lengthPromotionMember > 0){
             memberCount++;
             int n = Math.abs(memberCount % lengthPromotionMember);
-            this.initPromotionContent(n, PromotionType.Web_VIP);
+            this.initPromotionContent(n, PromotionType.Web_Vip);
         }
     }
 
@@ -444,7 +444,7 @@ public class uiWebSaleStrategyController implements Initializable{
         if(lengthPromotionMember > 0){
             memberCount--;
             int n = Math.abs(memberCount % lengthPromotionMember);
-            this.initPromotionContent(n, PromotionType.Web_VIP);
+            this.initPromotionContent(n, PromotionType.Web_Vip);
         }
     }
 
@@ -577,7 +577,7 @@ public class uiWebSaleStrategyController implements Initializable{
                     e.printStackTrace();
                 }
 
-                PromotionVO vo = new PromotionVO(name,description,PromotionType.Web_period,beginTime,endTime,discount);
+                PromotionVO vo = new PromotionVO(name,description,PromotionType.Web_Period,beginTime,endTime,discount);
                 try {
                     websalerbl.makePromotion(vo);
                 } catch (RemoteException e) {
@@ -592,7 +592,7 @@ public class uiWebSaleStrategyController implements Initializable{
                     e.printStackTrace();
                 }
 
-                PromotionVO vo = new PromotionVO(name,description,PromotionType.Web_tradeArea,beginTime,endTime,TradeArea.valueOf(tradeArea),discount);
+                PromotionVO vo = new PromotionVO(name,description,PromotionType.Web_TradeArea,beginTime,endTime,TradeArea.valueOf(tradeArea),discount);
                 try {
                     websalerbl.makePromotion(vo);
                 } catch (RemoteException e) {
@@ -604,9 +604,9 @@ public class uiWebSaleStrategyController implements Initializable{
                 double discountLevel2 = Double.parseDouble(textFieldLevel2.getText());
                 double discountLevel3 = Double.parseDouble(textFieldLevel3.getText());
 
-                PromotionVO vo1 = new PromotionVO(name, description, PromotionType.Web_VIP,null,null,1, discountLevel1);
-                PromotionVO vo2 = new PromotionVO(name, description, PromotionType.Web_VIP,null,null,2, discountLevel2);
-                PromotionVO vo3 = new PromotionVO(name, description, PromotionType.Web_VIP,null,null,3, discountLevel3);
+                PromotionVO vo1 = new PromotionVO(name, description, PromotionType.Web_Vip,null,null,1, discountLevel1);
+                PromotionVO vo2 = new PromotionVO(name, description, PromotionType.Web_Vip,null,null,2, discountLevel2);
+                PromotionVO vo3 = new PromotionVO(name, description, PromotionType.Web_Vip,null,null,3, discountLevel3);
                 try {
                     websalerbl.makePromotion(vo1);
                     websalerbl.makePromotion(vo2);
@@ -627,7 +627,7 @@ public class uiWebSaleStrategyController implements Initializable{
                     e.printStackTrace();
                 }
 
-                PromotionVO vo = new PromotionVO(name,description,PromotionType.Web_period,beginTime,endTime,discount);
+                PromotionVO vo = new PromotionVO(name,description,PromotionType.Web_Period,beginTime,endTime,discount);
                 try {
                     websalerbl.cancelPromotion(labelNamePromotionDoubleOne.getText());
                     websalerbl.makePromotion(vo);
@@ -644,7 +644,7 @@ public class uiWebSaleStrategyController implements Initializable{
                     e.printStackTrace();
                 }
 
-                PromotionVO vo = new PromotionVO(name,description,PromotionType.Web_tradeArea,beginTime,endTime,TradeArea.valueOf(tradeArea),discount);
+                PromotionVO vo = new PromotionVO(name,description,PromotionType.Web_TradeArea,beginTime,endTime,TradeArea.valueOf(tradeArea),discount);
                 try {
                     websalerbl.cancelPromotion(labelNamePromotionVIP.getText());
                     websalerbl.makePromotion(vo);
@@ -658,9 +658,9 @@ public class uiWebSaleStrategyController implements Initializable{
                 double discountLevel2 = Double.parseDouble(textFieldLevel2.getText());
                 double discountLevel3 = Double.parseDouble(textFieldLevel3.getText());
 
-                PromotionVO vo1 = new PromotionVO(name, description, PromotionType.Web_VIP,null,null,1, discountLevel1);
-                PromotionVO vo2 = new PromotionVO(name, description, PromotionType.Web_VIP,null,null,2, discountLevel2);
-                PromotionVO vo3 = new PromotionVO(name, description, PromotionType.Web_VIP,null,null,3, discountLevel3);
+                PromotionVO vo1 = new PromotionVO(name, description, PromotionType.Web_Vip,null,null,1, discountLevel1);
+                PromotionVO vo2 = new PromotionVO(name, description, PromotionType.Web_Vip,null,null,2, discountLevel2);
+                PromotionVO vo3 = new PromotionVO(name, description, PromotionType.Web_Vip,null,null,3, discountLevel3);
                 try {
                     websalerbl.cancelPromotion(labelNamePromotionMember.getText());
                     websalerbl.makePromotion(vo1);
