@@ -111,12 +111,12 @@ public class LogController implements LogBlService {
 
     @Override
     public ArrayList<String> showAllCompanys() throws RemoteException {
-        return null;
+        return register.showAllCompanys();
     }
 
     @Override
     public boolean isCompanyIDCorrect(String companyID, String companyName) throws RemoteException {
-        return false;
+        return register.isCompanyIDCorrect(companyID,companyName);
     }
 
 }
