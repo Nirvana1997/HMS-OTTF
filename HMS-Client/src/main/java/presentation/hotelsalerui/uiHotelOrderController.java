@@ -278,7 +278,11 @@ public class uiHotelOrderController implements Initializable{
                     else
                         labelIsChildren.setText("否");
                     labelPrice.setText(String.valueOf(vo.getPrice()));
-                    labelRoomId.setText(vo.getRoomID());
+                    if(vo.getRoomID() == null){
+                        labelRoomId.setText("无");
+                    }else{
+                        labelRoomId.setText(vo.getRoomID());
+                    }
                     labelRoomNum.setText(String.valueOf(vo.getRoomNumber()));
                     labelPeopleNum.setText(String.valueOf(vo.getPeopleNumber()));
                 } catch (RemoteException e) {
@@ -323,10 +327,9 @@ public class uiHotelOrderController implements Initializable{
             Date end = UiFormatChanger.getDate(datePickerOutTime);
             try {
                 OrderVO vo = hotelsalerbl.readOrderByID(orderId);
-                double price = vo.getPrice();
-                String orderId = vo.getOrderID();
-                OrderVO vo2 = new OrderVO(orderId, labelUserId.getText(), price, begin, end);
-                hotelsalerbl.delayOrder(vo2);
+                vo.setCheckInDate(begin);
+                vo.setCheckOutDate(end);
+                hotelsalerbl.delayOrder(vo);
             } catch (RemoteException e) {
                 e.printStackTrace();
             }
