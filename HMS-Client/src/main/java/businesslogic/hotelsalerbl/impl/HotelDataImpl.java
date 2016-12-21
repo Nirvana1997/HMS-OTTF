@@ -13,6 +13,7 @@ import enumData.Address;
 import enumData.RoomType;
 import enumData.SortWay;
 import enumData.TradeArea;
+import po.CommentPO;
 import po.HotelinfoPO;
 import po.HotelroomPO;
 import po.RoomNumPO;
@@ -30,7 +31,7 @@ import java.util.Date;
  * @author qzh
  *         Created by personalUser on 2016/11/29.
  */
-public class HotelDataImpl implements HotelInfo, HotelRoom,HotelInfoForManagement {
+public class HotelDataImpl implements HotelInfo, HotelRoom, HotelInfoForManagement {
     /**
      * 酒店信息数据接口
      */
@@ -77,6 +78,7 @@ public class HotelDataImpl implements HotelInfo, HotelRoom,HotelInfoForManagemen
 
     /**
      * 设置酒店信息
+     *
      * @param po 酒店信息po
      * @throws RemoteException
      */
@@ -87,6 +89,7 @@ public class HotelDataImpl implements HotelInfo, HotelRoom,HotelInfoForManagemen
 
     /**
      * 获得所有酒店信息
+     *
      * @return 酒店信息列表
      * @throws RemoteException
      */
@@ -97,11 +100,14 @@ public class HotelDataImpl implements HotelInfo, HotelRoom,HotelInfoForManagemen
 
     /**
      * 添加酒店信息
+     *
      * @param po 酒店信息
      * @throws RemoteException
      */
     @Override
     public void addHotelInfo(HotelinfoPO po) throws RemoteException {
+        System.out.println("T"+po.getTradeArea().toString());
+        System.out.println("A"+po.getAddress().toString());
         hotelinfoDataService.addHotelinfo(po);
     }
 
@@ -114,8 +120,8 @@ public class HotelDataImpl implements HotelInfo, HotelRoom,HotelInfoForManagemen
     public void initRoomNum(String hotelID) throws RemoteException {
         ArrayList<HotelroomPO> pos = new ArrayList<HotelroomPO>();
         //初始化列表
-        for (RoomType roomType:RoomType.values()) {
-            pos.add(new HotelroomPO(Login.getNowUserID(),roomType,0,0));
+        for (RoomType roomType : RoomType.values()) {
+            pos.add(new HotelroomPO(hotelID, roomType, 0, 0));
         }
         hotelroomDataService.initializeRoomInfo(pos);
         //构成房间数目PO
@@ -163,7 +169,30 @@ public class HotelDataImpl implements HotelInfo, HotelRoom,HotelInfoForManagemen
      * @throws RemoteException
      */
     @Override
-    public ArrayList<HotelroomPO> getRooms(String hotelID) throws RemoteException{
+    public ArrayList<HotelroomPO> getRooms(String hotelID) throws RemoteException {
         return hotelroomDataService.getRoomList(hotelID);
+    }
+
+    /**
+     * 传入一个用户的评分并更新酒店评分
+     *
+     * @param hotelID 酒店编号
+     * @param grade   评分
+     * @throws RemoteException
+     */
+    @Override
+    public void updateGrade(String hotelID, double grade) throws RemoteException {
+        //所有评价信息
+        ArrayList<CommentPO> comments = hotelinfoDataService.getComments(hotelID);
+        //最终评分
+        double res = 0;
+        //计算总和
+        for(CommentPO po:comments){
+            res+=po.getGrade();
+        }
+        res = (res+grade)/(comments.size()+1);
+        HotelinfoPO hotelinfoPO = hotelinfoDataService.getHotelinfo(hotelID);
+        hotelinfoPO.setGrade(res);
+        hotelinfoDataService.setHotelinfo(hotelinfoPO);
     }
 }

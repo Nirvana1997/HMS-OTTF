@@ -8,6 +8,7 @@ import vo.PasswordComfirmVO;
 import vo.UserInfoVO;
 
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 
 /**
  * 登录逻辑控制器
@@ -106,6 +107,16 @@ public class LogController implements LogBlService {
     @Override
     public ResultMessage modifyPassword(String oldpswd, String newpswd) throws RemoteException {
         return login.modifyPassword(oldpswd, newpswd);
+    }
+
+    @Override
+    public ArrayList<String> showAllCompanys() throws RemoteException {
+        return null;
+    }
+
+    @Override
+    public boolean isCompanyIDCorrect(String companyID, String companyName) throws RemoteException {
+        return false;
     }
 
 }

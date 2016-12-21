@@ -174,7 +174,9 @@ public class HotelOrder {
             Date subCreditDdl = DateOperation.addHours(DateOperation.stringToDate(po.getCheckInDate()), Integer.valueOf(CfgReader.getInstance().getProperty("deadline")) - Integer.valueOf(CfgReader.getInstance().getProperty("time")));
             //判断是否在规定时间前取消，若超过规定时间，则减少一定的信用值
             if (new Date().after(subCreditDdl)) {
-                userDataService.subCredit(new CreditChangePO(po.getUserID(),po.getOrderID(),DateOperation.dateToString(new Date()),CfgReader.getInstance().getProperty("late"),(int)po.getPrice()));
+                //计算要被扣除的信用值
+                int toSub = (int)(po.getPrice()*Double.valueOf(CfgReader.getInstance().getProperty("creditSubRate")));
+                userDataService.subCredit(new CreditChangePO(po.getUserID(),po.getOrderID(),DateOperation.dateToString(new Date()),CfgReader.getInstance().getProperty("late"),toSub));
             }
             return ResultMessage.Correct;
         } else {
@@ -189,6 +191,7 @@ public class HotelOrder {
      */
     public void comment(CommentVO vo) throws RemoteException {
         commentInfo.makeComment(vo);
+        hotelInfo.updateGrade(vo.getHotelID(),vo.getGrade());
     }
 
     /**

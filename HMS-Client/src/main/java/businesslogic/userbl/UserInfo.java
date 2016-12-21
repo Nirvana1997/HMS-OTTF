@@ -2,9 +2,7 @@ package businesslogic.userbl;
 
 
 
-import businesslogic.companybl.CompanyDataImpl;
 import businesslogic.logbl.Login;
-import businesslogic.userbl.interfaces.UserCompanyInfo;
 import cfg.CfgReader;
 import po.CreditRecordPO;
 import po.UserInfoPO;
@@ -30,16 +28,10 @@ public  class UserInfo{
 	 */
 	UserDataService userDataService;
 
-	/**
-	 * 用户企业数据接口
-	 */
-	UserCompanyInfo userCompanyInfo;
-
 	public UserInfo() {
 		//TODO
 //		userDataService = new UserDataImpl_stub();
 		userDataService = RemoteHelper.getInstance().getUserDataService();
-		userCompanyInfo = new CompanyDataImpl();
 	}
 
 	/**
@@ -93,25 +85,4 @@ public  class UserInfo{
 		return res;
 	}
 
-	/**
-	 * 获得所有企业
-	 *
-	 * @return 所有企业名称
-	 * @throws RemoteException
-	 */
-	public ArrayList<String> showAllCompanys() throws RemoteException{
-		return userCompanyInfo.showAllCompanys();
-	}
-
-	/**
-	 * 判断企业ID与企业名称是否对应
-	 *
-	 * @param companyID   企业ID
-	 * @param companyName 企业名称
-	 * @return 是否对应
-	 * @throws RemoteException
-	 */
-	public boolean isCompanyIDCorrect(String companyID, String companyName) throws RemoteException{
-		return userCompanyInfo.isCompanyIDCorrect(companyID,companyName);
-	}
 }

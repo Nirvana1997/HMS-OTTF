@@ -7,6 +7,7 @@ import vo.PasswordComfirmVO;
 import vo.UserInfoVO;
 
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 
 /**
  * 负责登录及注册
@@ -71,4 +72,22 @@ public interface LogBlService {
      * @return 旧密码是否正确
      */
     public ResultMessage modifyPassword(String oldpswd, String newpswd) throws RemoteException;
+
+    /**
+     * 获得所有企业
+     *
+     * @return 所有企业名称
+     * @throws RemoteException
+     */
+    public ArrayList<String> showAllCompanys() throws RemoteException;
+
+    /**
+     * 判断企业ID与企业名称是否对应
+     *
+     * @param companyID   企业ID
+     * @param companyName 企业名称
+     * @return 是否对应
+     * @throws RemoteException
+     */
+    public boolean isCompanyIDCorrect(String companyID, String companyName) throws RemoteException;
 }

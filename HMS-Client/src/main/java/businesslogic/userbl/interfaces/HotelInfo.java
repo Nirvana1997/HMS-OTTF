@@ -16,15 +16,17 @@ import java.util.ArrayList;
 /**
  * 获取酒店信息的接口
  * 负责给user模块提供hotel模块的数据
+ *
  * @author qzh
- * Created by user on 2016/11/27.
+ *         Created by user on 2016/11/27.
  */
 public interface HotelInfo {
     /**
      * 根据条件按顺序返回酒店列表
+     *
      * @param tradeArea 商圈
-     * @param address 地址
-     * @param sortWay 排序方式
+     * @param address   地址
+     * @param sortWay   排序方式
      * @return
      * @throws RemoteException
      */
@@ -32,6 +34,7 @@ public interface HotelInfo {
 
     /**
      * 返回一个酒店的详细信息
+     *
      * @param hotelID 酒店编号
      * @return 酒店信息
      */
@@ -45,4 +48,13 @@ public interface HotelInfo {
      * @throws RemoteException
      */
     public ArrayList<HotelroomPO> getRooms(String hotelID) throws RemoteException;
+
+    /**
+     * 传入一个用户的评分并更新酒店评分
+     *
+     * @param hotelID 酒店编号
+     * @param grade   用户评分
+     * @throws RemoteException
+     */
+    public void updateGrade(String hotelID, double grade) throws RemoteException;
 }

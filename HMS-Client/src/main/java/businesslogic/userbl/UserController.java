@@ -67,16 +67,6 @@ public class UserController implements InfoBlService, HotelOrderBlService {
         return userInfo.showCreditRecords();
     }
 
-    @Override
-    public ArrayList<String> showAllCompanys() throws RemoteException {
-        return userInfo.showAllCompanys();
-    }
-
-    @Override
-    public boolean isCompanyIDCorrect(String companyID, String companyName) throws RemoteException {
-        return userInfo.isCompanyIDCorrect(companyID,companyName);
-    }
-
     /**
      * 返回固定商圈、地址中的所有酒店并生成列表项
      * 默认以评分降序排列

@@ -1,5 +1,6 @@
 package businesslogic.logbl;
 
+import businesslogic.companybl.CompanyDataImpl;
 import businesslogic.userbl.impl.UserDataImpl;
 import cfg.CfgReader;
 import data_stub.logdata.LogDataImpl_stub;
@@ -13,6 +14,7 @@ import vo.PasswordComfirmVO;
 import vo.UserInfoVO;
 
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 
 /**
  * 负责接收客户注册的信息并添加至数据层
@@ -21,14 +23,27 @@ import java.rmi.RemoteException;
  *         Created by user on 2016/11/25.
  */
 public class Register {
+    /**
+     * 登录模块
+     */
     LogDataService logDataService;
+
+    /**
+     * 用户信息添加接口
+     */
     UserInfoAdder userInfoAdder;
+
+    /**
+     * 用户企业信息接口
+     */
+    UserCompanyInfo userCompanyInfo;
 
     public Register() throws RemoteException {
         //TODO
 //        this.logDataService = new LogDataImpl_stub();
         logDataService = RemoteHelper.getInstance().getLogDataService();
         this.userInfoAdder = new UserDataImpl();
+        userCompanyInfo = new CompanyDataImpl();
 //        this.logDataService = RemoteHelper.getInstance().getLogDataService();
     }
 
@@ -100,5 +115,26 @@ public class Register {
         userInfoAdder.addUserInfo(vo);
     }
 
+    /**
+     * 获得所有企业
+     *
+     * @return 所有企业名称
+     * @throws RemoteException
+     */
+    public ArrayList<String> showAllCompanys() throws RemoteException{
+        return userCompanyInfo.showAllCompanys();
+    }
 
+
+    /**
+     * 判断企业ID与企业名称是否对应
+     *
+     * @param companyID   企业ID
+     * @param companyName 企业名称
+     * @return 是否对应
+     * @throws RemoteException
+     */
+    public boolean isCompanyIDCorrect(String companyID, String companyName) throws RemoteException{
+        return userCompanyInfo.isCompanyIDCorrect(companyID,companyName);
+    }
 }
