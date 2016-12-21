@@ -1,5 +1,6 @@
 package businesslogic.hotelsalerbl;
 
+import businesslogic.companybl.CompanyDataImpl;
 import businesslogic.logbl.Login;
 import businesslogic.promotionbl.impl.PromotionDataImpl;
 import enumData.PromotionType;
@@ -16,8 +17,11 @@ import java.util.ArrayList;
 public class PromotionOperation {
     HotelPromotionInfo hotelPromotionInfo;
 
+    HotelsalerCompanyInfo hotelsalerCompanyInfo;
+
     public PromotionOperation() {
         hotelPromotionInfo = new PromotionDataImpl();
+        hotelsalerCompanyInfo = new CompanyDataImpl();
     }
 
     /**
@@ -63,5 +67,27 @@ public class PromotionOperation {
         //填充hotelID
         vo.setHotelID(Login.getNowUserID());
         hotelPromotionInfo.setPromotion(vo);
+    }
+
+    /**
+     * 获得所有企业
+     *
+     * @return 所有企业名称
+     * @throws RemoteException
+     */
+    public ArrayList<String> showAllCompanys() throws RemoteException{
+        return hotelsalerCompanyInfo.showAllCompanys();
+    }
+
+    /**
+     * 判断企业ID与企业名称是否对应
+     *
+     * @param companyID   企业ID
+     * @param companyName 企业名称
+     * @return 是否对应
+     * @throws RemoteException
+     */
+    public boolean isCompanyIDCorrect(String companyID, String companyName) throws RemoteException{
+        return hotelsalerCompanyInfo.isCompanyIDCorrect(companyID,companyName);
     }
 }
