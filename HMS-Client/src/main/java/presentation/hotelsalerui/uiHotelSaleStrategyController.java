@@ -49,32 +49,43 @@ public class uiHotelSaleStrategyController implements Initializable{
         hotelsalerblService = new HotelSalerController();
         this.initPromotionList();
 
-        // 如果初始化promotion时得到的list长度为0
-        if(promotionBirthday.size() == 0 ||promotionDoubleOne.size() == 0 || promotionCompany.size() == 0 || promotionThreeRooms.size() == 0){
+        // 如果初始化生日promotion时得到的list长度为0
+        if(promotionBirthday.size() == 0){
             labelPromotionBirthdayName.setText("");
             labelPromotionBirthdayContent.setText("");
+        }else{
+            lengthPromotionBirthday = promotionBirthday.size();
+            //初始化promotion面板
+            this.initPromotionContent(0, PromotionType.Hotel_Birth);
+        }
 
+        // 如果初始化双十一promotion时得到的list长度为0
+        if(promotionDoubleOne.size() == 0){
             labelPromotionDoubleOneName.setText("");
             labelPromotionDoubleOneTime.setText("");
             labelPromotionDoubleOneContent.setText("");
+        }else{
+            lengthPromotionDoubleOne = promotionDoubleOne.size();
+            this.initPromotionContent(0, PromotionType.Hotel_Period);
+        }
 
+        // 如果初始化企业promotion时得到的list长度为0
+        if(promotionCompany.size() == 0){
             labelPromotionCompanyName.setText("");
             labelPromotionCompanyTime.setText("");
             labelPromotionCompanyContent.setText("");
+        }else{
+            lengthPromotionCompany = promotionCompany.size();
+            this.initPromotionContent(0, PromotionType.Hotel_Company);
+        }
 
+        // 如果初始化三间及以上promotion时得到的list长度为0
+        if(promotionThreeRooms.size() == 0){
             labelPromotionThreeRoomsName.setText("");
             labelPromotionThreeRoomsTime.setText("");
             labelPromotionThreeRoomsContent.setText("");
         }else{
-            lengthPromotionBirthday = promotionBirthday.size();
-            lengthPromotionDoubleOne = promotionDoubleOne.size();
-            lengthPromotionCompany = promotionCompany.size();
             lengthPromotionThreeRooms = promotionThreeRooms.size();
-
-            //初始化promotion面板
-            this.initPromotionContent(0, PromotionType.Hotel_Birth);
-            this.initPromotionContent(0, PromotionType.Hotel_Period);
-            this.initPromotionContent(0, PromotionType.Hotel_Company);
             this.initPromotionContent(0, PromotionType.Hotel_Num);
         }
     }
@@ -563,6 +574,8 @@ public class uiHotelSaleStrategyController implements Initializable{
                 } catch (RemoteException e) {
                     e.printStackTrace();
                 }
+                int n = Math.abs(birthdayCount % lengthPromotionBirthday);
+                this.initPromotionContent(n, PromotionType.Hotel_Birth);
             }
             else if(promptionType == 2){
                 try {
@@ -577,6 +590,8 @@ public class uiHotelSaleStrategyController implements Initializable{
                 } catch (RemoteException e) {
                     e.printStackTrace();
                 }
+                int n = Math.abs(doubleOneCount % lengthPromotionDoubleOne);
+                this.initPromotionContent(n, PromotionType.Web_Period);
             }
             else if(promptionType == 3){
                 try {
@@ -591,6 +606,8 @@ public class uiHotelSaleStrategyController implements Initializable{
                 } catch (RemoteException e) {
                     e.printStackTrace();
                 }
+                int n = Math.abs(companyCount % lengthPromotionCompany);
+                this.initPromotionContent(n, PromotionType.Hotel_Company);
             }
             else if(promptionType == 4){
                 try {
@@ -605,9 +622,10 @@ public class uiHotelSaleStrategyController implements Initializable{
                 } catch (RemoteException e) {
                     e.printStackTrace();
                 }
+                int n = Math.abs(threeRoomsCount % lengthPromotionThreeRooms);
+                this.initPromotionContent(n, PromotionType.Hotel_Num);
             }
             this.onClickedCancelEditPromotion();
-            this.initPromotionList();
         }
         // 修改营销策略
         else {
@@ -618,8 +636,9 @@ public class uiHotelSaleStrategyController implements Initializable{
                 } catch (RemoteException e) {
                     e.printStackTrace();
                 }
+                int n = Math.abs(birthdayCount % lengthPromotionBirthday);
+                this.initPromotionContent(n, PromotionType.Hotel_Birth);
                 this.onClickedCancelEditPromotion();
-                this.initPromotionList();
             }
             else if(promptionType == 2 && promotionDoubleOne.size() > 0){
                 try {
@@ -634,8 +653,9 @@ public class uiHotelSaleStrategyController implements Initializable{
                 } catch (RemoteException e) {
                     e.printStackTrace();
                 }
+                int n = Math.abs(doubleOneCount % lengthPromotionDoubleOne);
+                this.initPromotionContent(n, PromotionType.Web_Period);
                 this.onClickedCancelEditPromotion();
-                this.initPromotionList();
             }
             else if(promptionType == 3 && promotionCompany.size() > 0){
                 try {
@@ -650,8 +670,9 @@ public class uiHotelSaleStrategyController implements Initializable{
                 } catch (RemoteException e) {
                     e.printStackTrace();
                 }
+                int n = Math.abs(companyCount % lengthPromotionCompany);
+                this.initPromotionContent(n, PromotionType.Hotel_Company);
                 this.onClickedCancelEditPromotion();
-                this.initPromotionList();
             }
             else if(promptionType == 4 && promotionThreeRooms.size() > 0){
                 try {
@@ -666,8 +687,9 @@ public class uiHotelSaleStrategyController implements Initializable{
                 } catch (RemoteException e) {
                     e.printStackTrace();
                 }
+                int n = Math.abs(threeRoomsCount % lengthPromotionThreeRooms);
+                this.initPromotionContent(n, PromotionType.Hotel_Num);
                 this.onClickedCancelEditPromotion();
-                this.initPromotionList();
             }
             else {
                 labelPleaseNew.setVisible(true);
