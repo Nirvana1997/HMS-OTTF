@@ -5,6 +5,7 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import presentation.logui.SceneLog;
 import presentation.logui.uiLogController;
 
@@ -28,11 +29,10 @@ public class Main extends Application{
 
         sceneLog = new SceneLog();
 
-        primaryStage.setTitle("困了么");
+        primaryStage.initStyle(StageStyle.TRANSPARENT);
         primaryStage.setWidth(1000);
-        primaryStage.setHeight(645);
+        primaryStage.setHeight(618);
         primaryStage.setResizable(false);
-
         primaryStage.setScene(sceneLog.getSceneLog());
         primaryStage.show();
     }

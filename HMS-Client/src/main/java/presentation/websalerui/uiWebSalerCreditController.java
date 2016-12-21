@@ -154,9 +154,12 @@ public class uiWebSalerCreditController {
         int presentCredit = 0;
 
         if(userId.equals(confirmUserId) && !userId.equals("")){
+
             int money = Integer.parseInt(textFieldMoney.getText());
+
             try {
                 previousCredit = websalerbl.getCredit(userId);
+                System.out.println(userId+" "+money);
                 websalerbl.addCredit(userId,money);
                 presentCredit = websalerbl.getCredit(userId);
             } catch (RemoteException e) {

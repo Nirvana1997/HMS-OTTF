@@ -1,23 +1,28 @@
 package businesslogic.hotelsalerbl.impl;
 
+import businesslogic.logbl.Login;
 import businesslogic.userbl.interfaces.HotelInfo;
 import businesslogic.userbl.interfaces.HotelRoom;
 import businesslogic.webmanagerbl.HotelInfoForManagement;
+import cfg.CfgReader;
 import data_stub.hotelsalerdata.HotelinfoDataImpl_stub;
 import data_stub.hotelsalerdata.HotelroomDataImpl_stub;
 import dataservice.hotelsalerdataservice.HotelinfoDataService;
 import dataservice.hotelsalerdataservice.HotelroomDataService;
 import enumData.Address;
+import enumData.RoomType;
 import enumData.SortWay;
 import enumData.TradeArea;
 import po.HotelinfoPO;
 import po.HotelroomPO;
 import po.RoomNumPO;
 import rmi.RemoteHelper;
+import utility.DateOperation;
 import vo.HotelroomVO;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * 酒店信息接口实现
@@ -103,6 +108,28 @@ public class HotelDataImpl implements HotelInfo, HotelRoom,HotelInfoForManagemen
     @Override
     public void deleteHotelInfo(String hotelID) throws RemoteException {
         hotelinfoDataService.deleteHotelinfo(hotelID);
+    }
+
+    @Override
+    public void initRoomNum(String hotelID) throws RemoteException {
+        ArrayList<HotelroomPO> pos = new ArrayList<HotelroomPO>();
+        //初始化列表
+        for (RoomType roomType:RoomType.values()) {
+            pos.add(new HotelroomPO(Login.getNowUserID(),roomType,0,0));
+        }
+        hotelroomDataService.initializeRoomInfo(pos);
+        //构成房间数目PO
+        ArrayList<RoomNumPO> roomNums = new ArrayList<RoomNumPO>();
+        //获得从当前时间向后特定天数的日期
+        ArrayList<Date> dates = DateOperation.getDates(new Date(), DateOperation.addDays(new Date(), Integer.valueOf(CfgReader.getInstance().getProperty("days"))));
+        for (Date date : dates) {
+            for (HotelroomPO po : pos) {
+                roomNums.add(new RoomNumPO(Login.getNowUserID(), DateOperation.dateToString(date), po.getRoomNumber(), po.getRoomType()));
+            }
+            hotelroomDataService.initializeRoomNum(roomNums);
+            //清空以添加下一天信息
+            roomNums.clear();
+        }
     }
 
     /**
