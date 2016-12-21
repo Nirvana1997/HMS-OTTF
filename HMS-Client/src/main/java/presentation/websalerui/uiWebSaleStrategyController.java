@@ -621,6 +621,7 @@ public class uiWebSaleStrategyController implements Initializable{
                     e.printStackTrace();
                 }
             }
+            this.initPromotionList();
             this.onClickedCancelEditPromotion();
         }
         // 修改营销策略
@@ -640,6 +641,7 @@ public class uiWebSaleStrategyController implements Initializable{
                 } catch (RemoteException e) {
                     e.printStackTrace();
                 }
+                this.initPromotionList();
                 this.onClickedCancelEditPromotion();
             }
             else if(labelEditNumber == 2 && promotionVIP.size() > 0){
@@ -657,6 +659,7 @@ public class uiWebSaleStrategyController implements Initializable{
                 } catch (RemoteException e) {
                     e.printStackTrace();
                 }
+                this.initPromotionList();
                 this.onClickedCancelEditPromotion();
             }
             else if(labelEditNumber == 3 && promotionVIP.size() > 0){
@@ -675,6 +678,7 @@ public class uiWebSaleStrategyController implements Initializable{
                 } catch (RemoteException e) {
                     e.printStackTrace();
                 }
+                this.initPromotionList();
                 this.onClickedCancelEditPromotion();
             }else {
                 labelPleasePromotion.setVisible(true);

@@ -154,12 +154,12 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <CheckBox fx:id="checkBoxHalfCredit" layoutX="239.0" layoutY="25.0" mnemonicParsing="false" onMouseClicked="#chooseHalfCredit" text="一半">
+                  <CheckBox fx:id="checkBoxHalfCredit" focusTraversable="false" layoutX="239.0" layoutY="25.0" mnemonicParsing="false" onMouseClicked="#chooseHalfCredit" text="一半">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </CheckBox>
-                  <CheckBox fx:id="checkBoxAllCredit" layoutX="135.0" layoutY="25.0" mnemonicParsing="false" onMouseClicked="#chooseAllCredit" text="全部">
+                  <CheckBox fx:id="checkBoxAllCredit" focusTraversable="false" layoutX="135.0" layoutY="25.0" mnemonicParsing="false" onMouseClicked="#chooseAllCredit" text="全部">
                      <font>
                         <Font size="18.0" />
                      </font>
