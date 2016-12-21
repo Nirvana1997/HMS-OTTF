@@ -245,27 +245,43 @@ public class uiWebSalerOrderController implements Initializable {
      * 查看详细订单
      */
     public void checkDetailedOrder(){
-//        for(int i = 0; i < unCancledOrderData.size();i++){
-//            if(orderList.getSelectionModel().isSelected(i)){
-//                break;
-//            }
-//        }
-        String orderId = orderList.getSelectionModel().getSelectedItem().getOrderID();
-        String state = orderList.getSelectionModel().getSelectedItem().getState();
+        boolean isSelected = false;
 
-        if(state.equals("未撤销")){
-            paneChooseCredit.setVisible(true);
-            paneRevokeTime.setVisible(false);
-            this.initPaneDetailedOrder(orderId, "未撤销");
+        // 循环查找是否选中某一订单
+        for (int i = 0; i < unCancledOrderData.size(); i++) {
+            if (orderList.getSelectionModel().isSelected(i)) {
+                isSelected = true;
+                break;
+            }
         }
-        else if(state.equals("已撤销")){
-            paneChooseCredit.setVisible(false);
-            paneRevokeTime.setVisible(true);
-            this.initPaneDetailedOrder(orderId, "已撤销");
+        for (int i = 0; i < cancledOrderData.size(); i++) {
+            if (orderList.getSelectionModel().isSelected(i)) {
+                isSelected = true;
+                break;
+            }
         }
-        paneOrderTable.setVisible(false);
-        paneDetailedOrder.setVisible(true);
-        labelCreditWarning.setVisible(false);
+
+        if (isSelected){
+            checkBoxAllCredit.setSelected(false);
+            checkBoxHalfCredit.setSelected(false);
+
+            String orderId = orderList.getSelectionModel().getSelectedItem().getOrderID();
+            String state = orderList.getSelectionModel().getSelectedItem().getState();
+
+            if(state.equals("未撤销")){
+                paneChooseCredit.setVisible(true);
+                paneRevokeTime.setVisible(false);
+                this.initPaneDetailedOrder(orderId, "未撤销");
+            }
+            else if(state.equals("已撤销")){
+                paneChooseCredit.setVisible(false);
+                paneRevokeTime.setVisible(true);
+                this.initPaneDetailedOrder(orderId, "已撤销");
+            }
+            paneOrderTable.setVisible(false);
+            paneDetailedOrder.setVisible(true);
+            labelCreditWarning.setVisible(false);
+        }
     }
 
     /**
@@ -274,6 +290,7 @@ public class uiWebSalerOrderController implements Initializable {
     public void initPaneDetailedOrder(String orderId, String state) {
         try {
             OrderVO vo = websalerbl.getOrderByID(orderId);
+            System.out.println("aaa");
             labelOrderId.setText(vo.getOrderID());
             lanelUserId.setText(vo.getUserID());
             labelOrderState.setText(UiFormatChanger.stateTOstring(vo.getOrderState()));
