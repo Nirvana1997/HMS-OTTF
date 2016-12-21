@@ -6,6 +6,7 @@ import data.orderdata.OrderDataImpl;
 import dataservice.orderdataservice.OrderDataService;
 import enumData.IDType;
 import initializingInfo.InitCompanyInfo;
+import initializingInfo.InitWebManagerInfo;
 import po.OrderPO;
 
 import java.net.InetAddress;
@@ -32,6 +33,8 @@ public class ServerRunner {
         ManageExceptionOrder.init();
         //初始化合作企业信息
         InitCompanyInfo.init();
+        //初始化网管信息
+        InitWebManagerInfo.init();
     }
 
     /**

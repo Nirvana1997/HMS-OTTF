@@ -229,7 +229,7 @@ public class OrderDataImpl extends UnicastRemoteObject implements OrderDataServi
         for(int i=0;i<orderIDList.size();i++){
             orderExceptionPOs.add(new CanceledExceptionOrderPO(orderIDList.get(i),cancelDateList.get(i),cancelTimeList.get(i),cancelReasonList.get(i)));
         }
-        return null;
+        return orderExceptionPOs;
     }
 
     /**

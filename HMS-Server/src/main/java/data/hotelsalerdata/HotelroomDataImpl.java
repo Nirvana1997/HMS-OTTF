@@ -140,12 +140,8 @@ public class HotelroomDataImpl extends UnicastRemoteObject implements HotelroomD
                     + " values " + "('" + po.getRoomType().toString() + "','" + po.getEmptyNum() + "')");
         }
         //每次初始化酒店房间数量信息时，添加一个触发器去自动管理每日信息
-        int[] roomTotalNum = new int[3];//存放该酒店每种房间对应总数，用于初始化触发器
         String hotelID = list.get(0).getHotelID();
-        roomTotalNum[0] = Integer.parseInt(DataBaseHelper.outSingle(hotelID+"_roomInfo","number","type",RoomType.SingleRoom+""));
-        roomTotalNum[1] = Integer.parseInt(DataBaseHelper.outSingle(hotelID+"_roomInfo","number","type",RoomType.DoubleRoom+""));
-        roomTotalNum[2] = Integer.parseInt(DataBaseHelper.outSingle(hotelID+"_roomInfo","number","type",RoomType.DisabledRoom+""));
-        ManageRoomNum.update(30,roomTotalNum,hotelID);
+        ManageRoomNum.update(30,hotelID);
         return ResultMessage.Correct;
     }
 
