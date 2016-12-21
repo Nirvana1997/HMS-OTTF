@@ -51,6 +51,8 @@ public class HSmanagement{
         accountInfo.addAccount(account,password, AccountType.hotelsaler);
         vo.setHotelID(accountInfo.getID(account));
         hotelInfoForManagement.addHotelInfo(HotelPVChanger.hotelV2P(vo));
+        //初始化房间信息
+        hotelInfoForManagement.initRoomNum(vo.getHotelID());
     }
 
     public void deleteHotelAndAccount(String hotelID) throws RemoteException {
