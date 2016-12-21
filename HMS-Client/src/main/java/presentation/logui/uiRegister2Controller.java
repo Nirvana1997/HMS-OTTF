@@ -32,7 +32,6 @@ import java.util.ResourceBundle;
  */
 public class uiRegister2Controller implements Initializable{
     LogBlService logBlService = new LogController();
-    UserController userController = new UserController();
     @FXML
     public Button buttonFinish;
     @FXML
@@ -83,7 +82,7 @@ public class uiRegister2Controller implements Initializable{
         String CompanyID = textCompany.getText();
         String Company = comboCompany.getSelectionModel().getSelectedItem();
         //如果企业名称与ID匹配的话
-        if(userController.isCompanyIDCorrect(CompanyID,Company)) {
+        if(logBlService.isCompanyIDCorrect(CompanyID,Company)) {
             UserInfoVO userInfoVO = new UserInfoVO(uiRegister1Controller.getUserID(), RealName, Identity, PhoneNumber, 0, Birthday, CompanyID, userType, 0);
             logBlService.addUserInfo(userInfoVO);
             ObservableList<Stage> stage = FXRobotHelper.getStages();
@@ -116,7 +115,7 @@ public class uiRegister2Controller implements Initializable{
     public void initialize(URL location, ResourceBundle resources) {
         ArrayList<String> companylist = null;
         try {
-            companylist = userController.showAllCompanys();
+            companylist = logBlService.showAllCompanys();
         } catch (RemoteException e) {
             e.printStackTrace();
         }
