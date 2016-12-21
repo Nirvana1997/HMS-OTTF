@@ -69,30 +69,39 @@ public class uiRegister2Controller implements Initializable{
         boolean isPersonal = typePersonal.isSelected();
         boolean isEnterprise = typeEnterprise.isSelected();
         enumData.UserType userType;
+        String Birthday = "";
+        String CompanyID = "";
+        String Company = "";
         if(isPersonal){
             userType = enumData.UserType.Person;
-        }
-        else if(isEnterprise){
-            userType = enumData.UserType.Company;
-        }
-        else{
-            userType = null;
-        }
-        String Birthday = UiFormatChanger.dateToString(UiFormatChanger.getDate(dateBirthday));
-        String CompanyID = textCompany.getText();
-        String Company = comboCompany.getSelectionModel().getSelectedItem();
-        //如果企业名称与ID匹配的话
-        if(logBlService.isCompanyIDCorrect(CompanyID,Company)) {
+            Birthday = UiFormatChanger.dateToString(UiFormatChanger.getDate(dateBirthday));
             UserInfoVO userInfoVO = new UserInfoVO(uiRegister1Controller.getUserID(), RealName, Identity, PhoneNumber, 0, Birthday, CompanyID, userType, 0);
             logBlService.addUserInfo(userInfoVO);
             ObservableList<Stage> stage = FXRobotHelper.getStages();
             Scene scene = new Scene((Parent) FXMLLoader.load(getClass().getResource("sceneRegister3.fxml")));
             stage.get(0).setScene(scene);
         }
-        //如果不匹配，显示警告
-        else{
-            wrongCompany.setVisible(true);
+        else if(isEnterprise){
+            userType = enumData.UserType.Company;
+            CompanyID = textCompany.getText();
+            Company = comboCompany.getSelectionModel().getSelectedItem();
+            //如果企业名称与ID匹配的话
+            if(logBlService.isCompanyIDCorrect(CompanyID,Company)) {
+                UserInfoVO userInfoVO = new UserInfoVO(uiRegister1Controller.getUserID(), RealName, Identity, PhoneNumber, 0, Birthday, CompanyID, userType, 0);
+                logBlService.addUserInfo(userInfoVO);
+                ObservableList<Stage> stage = FXRobotHelper.getStages();
+                Scene scene = new Scene((Parent) FXMLLoader.load(getClass().getResource("sceneRegister3.fxml")));
+                stage.get(0).setScene(scene);
+            }
+            //如果不匹配，显示警告
+            else{
+                wrongCompany.setVisible(true);
+            }
         }
+        else{
+            userType = null;
+        }
+
     }
 
     /**
@@ -118,7 +127,8 @@ public class uiRegister2Controller implements Initializable{
             companylist = logBlService.showAllCompanys();
         } catch (RemoteException e) {
             e.printStackTrace();
-        }
+         }
+        System.out.println(companylist.get(0));
         for(int i = 0; i< companylist.size();i++){
             company.add(companylist.get(i));
         }

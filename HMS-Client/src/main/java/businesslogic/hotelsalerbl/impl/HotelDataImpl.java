@@ -128,7 +128,7 @@ public class HotelDataImpl implements HotelInfo, HotelRoom, HotelInfoForManageme
         ArrayList<Date> dates = DateOperation.getDates(new Date(), DateOperation.addDays(new Date(), Integer.valueOf(CfgReader.getInstance().getProperty("days"))));
         for (Date date : dates) {
             for (HotelroomPO po : pos) {
-                roomNums.add(new RoomNumPO(Login.getNowUserID(), DateOperation.dateToString(date), po.getRoomNumber(), po.getRoomType()));
+                roomNums.add(new RoomNumPO(hotelID, DateOperation.dateToString(date), po.getRoomNumber(), po.getRoomType()));
             }
             hotelroomDataService.initializeRoomNum(roomNums);
             //清空以添加下一天信息

@@ -277,6 +277,7 @@ public class uiSearchHotelController implements Initializable {
      */
     public void SearchHotel() throws IOException, ParseException {
         ArrayList<LimitVO> SearchList = new ArrayList<LimitVO>();
+
         try {
             LimitVO GradeLimit = new LimitVO(LimitCriterion.GradeCriterion, Double.parseDouble(GradeMin.getText()), Double.parseDouble(GradeMax.getText()));
             LimitVO StarLimit = new LimitVO(LimitCriterion.StarCriterion, Double.parseDouble(StarMin.getText()), Double.parseDouble(StarMax.getText()));

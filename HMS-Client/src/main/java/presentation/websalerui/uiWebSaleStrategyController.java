@@ -53,16 +53,27 @@ public class uiWebSaleStrategyController implements Initializable{
         this.initPromotionList();
 
         // 如果初始化promotion时得到的list长度为0
-        if(promotionDoubleOne.size() == 0 || promotionVIP.size() == 0 || promotionMember.size() == 0){
+        if(promotionDoubleOne.size() == 0){
             labelNamePromotionDoubleOne.setText("");
             labelInfoPromotionDoubleOne.setText("");
             labelDatePromotionDoubleOne.setText("");
+        }else{
+            lengthPromotionDoubleOne = promotionDoubleOne.size();
+            //初始化promotion面板
+            this.initPromotionContent(0, PromotionType.Web_period);
+        }
 
+        if(promotionVIP.size() == 0){
             labelNamePromotionVIP.setText("");
             labelInfoPromotionVIP.setText("");
             labelDatePromotionVIP.setText("");
             labelTradeArea.setText("");
+        }else{
+            lengthPromotionVIP = promotionVIP.size();
+            this.initPromotionContent(0, PromotionType.Web_tradeArea);
+        }
 
+        if(promotionMember.size() == 0){
             labelNamePromotionMember.setText("");
             labelInfoPromotionMember.setText("");
             labelDatePromotionMember.setText("");
@@ -73,10 +84,6 @@ public class uiWebSaleStrategyController implements Initializable{
             lengthPromotionDoubleOne = promotionDoubleOne.size();
             lengthPromotionVIP = promotionVIP.size();
             lengthPromotionMember = promotionMember.size();
-
-            //初始化promotion面板
-            this.initPromotionContent(0, PromotionType.Web_period);
-            this.initPromotionContent(0, PromotionType.Web_tradeArea);
             this.initPromotionContent(0, PromotionType.Web_VIP);
         }
 
@@ -598,6 +605,8 @@ public class uiWebSaleStrategyController implements Initializable{
                 } catch (RemoteException e) {
                     e.printStackTrace();
                 }
+                int n = Math.abs(VIPCount % lengthPromotionVIP);
+                this.initPromotionContent(n,PromotionType.Web_tradeArea);
             }
             else if(labelEditNumber == 3){
                 double discountLevel1 = Double.parseDouble(textFieldLevel1.getText());
@@ -614,6 +623,8 @@ public class uiWebSaleStrategyController implements Initializable{
                 } catch (RemoteException e) {
                     e.printStackTrace();
                 }
+                int n = Math.abs(memberCount % lengthPromotionMember);
+                this.initPromotionContent(n,PromotionType.Web_VIP);
             }
             this.onClickedCancelEditPromotion();
         }
@@ -634,6 +645,8 @@ public class uiWebSaleStrategyController implements Initializable{
                 } catch (RemoteException e) {
                     e.printStackTrace();
                 }
+                int n = Math.abs(doubleOneCount % lengthPromotionDoubleOne);
+                this.initPromotionContent(n,PromotionType.Web_period);
                 this.onClickedCancelEditPromotion();
             }
             else if(labelEditNumber == 2 && promotionVIP.size() > 0){
@@ -651,9 +664,11 @@ public class uiWebSaleStrategyController implements Initializable{
                 } catch (RemoteException e) {
                     e.printStackTrace();
                 }
+                int n = Math.abs(VIPCount % lengthPromotionVIP);
+                this.initPromotionContent(n,PromotionType.Web_tradeArea);
                 this.onClickedCancelEditPromotion();
             }
-            else if(labelEditNumber == 3 && promotionVIP.size() > 0){
+            else if(labelEditNumber == 3 && promotionMember.size() > 0){
                 double discountLevel1 = Double.parseDouble(textFieldLevel1.getText());
                 double discountLevel2 = Double.parseDouble(textFieldLevel2.getText());
                 double discountLevel3 = Double.parseDouble(textFieldLevel3.getText());
@@ -669,6 +684,8 @@ public class uiWebSaleStrategyController implements Initializable{
                 } catch (RemoteException e) {
                     e.printStackTrace();
                 }
+                int n = Math.abs(memberCount % lengthPromotionMember);
+                this.initPromotionContent(n,PromotionType.Web_VIP);
                 this.onClickedCancelEditPromotion();
             }else {
                 labelPleasePromotion.setVisible(true);

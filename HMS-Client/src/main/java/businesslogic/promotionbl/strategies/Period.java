@@ -6,6 +6,9 @@ import utility.DateOperation;
 import vo.OrderVO;
 import vo.UserInfoVO;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -32,8 +35,13 @@ public class Period implements Strategy{
 
     public Period(PromotionPO promotion) {
         this.promotion = promotion;
-        start = DateOperation.stringToDate(promotion.getStartDate());
-        end = DateOperation.stringToDate(promotion.getEndDate());
+        DateFormat df = new SimpleDateFormat("yyyy_M_d");
+        try {
+            start = df.parse(promotion.getStartDate());
+            end = df.parse(promotion.getEndDate());
+        }catch (ParseException e){
+            e.printStackTrace();
+        }
     }
 
     /**
