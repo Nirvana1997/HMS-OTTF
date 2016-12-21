@@ -118,7 +118,8 @@ public class uiRegister2Controller implements Initializable{
             companylist = logBlService.showAllCompanys();
         } catch (RemoteException e) {
             e.printStackTrace();
-        }
+         }
+        System.out.println(companylist.get(0));
         for(int i = 0; i< companylist.size();i++){
             company.add(companylist.get(i));
         }
