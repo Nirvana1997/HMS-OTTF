@@ -106,8 +106,6 @@ public class HotelDataImpl implements HotelInfo, HotelRoom, HotelInfoForManageme
      */
     @Override
     public void addHotelInfo(HotelinfoPO po) throws RemoteException {
-        System.out.println("T"+po.getTradeArea().toString());
-        System.out.println("A"+po.getAddress().toString());
         hotelinfoDataService.addHotelinfo(po);
     }
 
