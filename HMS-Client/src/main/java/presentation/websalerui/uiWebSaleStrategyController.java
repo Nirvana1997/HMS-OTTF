@@ -589,6 +589,8 @@ public class uiWebSaleStrategyController implements Initializable{
                 } catch (RemoteException e) {
                     e.printStackTrace();
                 }
+                int n = Math.abs(doubleOneCount % lengthPromotionDoubleOne);
+                this.initPromotionContent(n,PromotionType.Web_period);
             }
             else if(labelEditNumber == 2){
                 try {
@@ -604,6 +606,8 @@ public class uiWebSaleStrategyController implements Initializable{
                 } catch (RemoteException e) {
                     e.printStackTrace();
                 }
+                int n = Math.abs(VIPCount % lengthPromotionVIP);
+                this.initPromotionContent(n,PromotionType.Web_tradeArea);
             }
             else if(labelEditNumber == 3){
                 double discountLevel1 = Double.parseDouble(textFieldLevel1.getText());
@@ -620,8 +624,9 @@ public class uiWebSaleStrategyController implements Initializable{
                 } catch (RemoteException e) {
                     e.printStackTrace();
                 }
+                int n = Math.abs(memberCount % lengthPromotionMember);
+                this.initPromotionContent(n,PromotionType.Web_VIP);
             }
-            this.initPromotionList();
             this.onClickedCancelEditPromotion();
         }
         // 修改营销策略
@@ -641,7 +646,8 @@ public class uiWebSaleStrategyController implements Initializable{
                 } catch (RemoteException e) {
                     e.printStackTrace();
                 }
-                this.initPromotionList();
+                int n = Math.abs(doubleOneCount % lengthPromotionDoubleOne);
+                this.initPromotionContent(n,PromotionType.Web_period);
                 this.onClickedCancelEditPromotion();
             }
             else if(labelEditNumber == 2 && promotionVIP.size() > 0){
@@ -659,10 +665,11 @@ public class uiWebSaleStrategyController implements Initializable{
                 } catch (RemoteException e) {
                     e.printStackTrace();
                 }
-                this.initPromotionList();
+                int n = Math.abs(VIPCount % lengthPromotionVIP);
+                this.initPromotionContent(n,PromotionType.Web_tradeArea);
                 this.onClickedCancelEditPromotion();
             }
-            else if(labelEditNumber == 3 && promotionVIP.size() > 0){
+            else if(labelEditNumber == 3 && promotionMember.size() > 0){
                 double discountLevel1 = Double.parseDouble(textFieldLevel1.getText());
                 double discountLevel2 = Double.parseDouble(textFieldLevel2.getText());
                 double discountLevel3 = Double.parseDouble(textFieldLevel3.getText());
@@ -678,7 +685,8 @@ public class uiWebSaleStrategyController implements Initializable{
                 } catch (RemoteException e) {
                     e.printStackTrace();
                 }
-                this.initPromotionList();
+                int n = Math.abs(memberCount % lengthPromotionMember);
+                this.initPromotionContent(n,PromotionType.Web_VIP);
                 this.onClickedCancelEditPromotion();
             }else {
                 labelPleasePromotion.setVisible(true);
