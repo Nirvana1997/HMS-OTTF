@@ -319,6 +319,7 @@ public class uiSearchHotelController implements Initializable {
                 LimitVO RoomLimit = new LimitVO(LimitCriterion.RoomCriterion, getRoomType(RoomType), Double.parseDouble(PriceMin.getText()), Double.parseDouble(PriceMax.getText()),
                         Integer.parseInt(RoomNum.getText()), UiFormatChanger.getDate(checkinDate), UiFormatChanger.getDate(checkoutDate));
                 SearchList.add(RoomLimit);
+                System.out.println(getRoomType(RoomType));
             } catch (Exception e) {
                 setIsValid(false);
                 jump.warning();
@@ -337,6 +338,7 @@ public class uiSearchHotelController implements Initializable {
         }
         HotelOrderBlService hotelOrderBlService = new UserController();
         ArrayList<HotelListItemVO> getHotelList = hotelOrderBlService.searchHotel(UiFormatChanger.getArea(textCircle), UiFormatChanger.getAddress(textAddress), SearchList);
+
         searchHotelPane.setVisible(false);
         //如果不需要显示预订过的酒店，则直接显示所有列表
         if (!checkOrdered.isSelected()){
@@ -415,7 +417,7 @@ public class uiSearchHotelController implements Initializable {
      * @return 预订房间类型
      */
     public enumData.RoomType getRoomType(ToggleGroup bt) {
-        System.out.println(bt.getSelectedToggle());
+        System.out.println(bt.getSelectedToggle()+"转换");
         if (bt.getSelectedToggle() == SingleRoom) {
             return enumData.RoomType.SingleRoom;
         } else if (bt.getSelectedToggle() == DoubleRoom) {
