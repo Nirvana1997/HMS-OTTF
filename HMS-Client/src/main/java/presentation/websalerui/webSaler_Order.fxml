@@ -233,6 +233,11 @@
                   <Image url="@../../../../../graphics/websalerui/label5.png" />
                </image>
             </ImageView>
+            <ImageView onMouseClicked="#jumpToSceneMemberLevelUp" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../graphics/websalerui/levelup2.png" />
+               </image>
+            </ImageView>
             <Label fx:id="labelExit" onMouseClicked="#onClickedLabelExit" onMouseEntered="#enteredLabelExit" onMouseExited="#exitedLabelExit" text="登出">
                <cursor>
                   <Cursor fx:constant="HAND" />
@@ -241,7 +246,7 @@
                   <Font size="18.0" />
                </font>
                <VBox.margin>
-                  <Insets left="16.0" top="200.0" />
+                  <Insets left="16.0" top="120.0" />
                </VBox.margin>
             </Label>
          </children>

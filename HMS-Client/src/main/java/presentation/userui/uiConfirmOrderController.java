@@ -91,7 +91,7 @@ public class uiConfirmOrderController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         orderVO = uiReserveHotelController.getCurrentOrder();
-        textDDL.setText(UiFormatChanger.dateToString(orderVO.getDdl()));
+        textDDL.setText(UiFormatChanger.dateToString2(orderVO.getDdl()));
         textPrice.setText(String.valueOf(orderVO.getPrice()));
         if(orderVO.getPromotionName()!=null) {
             textPromotion.setText(orderVO.getPromotionName());

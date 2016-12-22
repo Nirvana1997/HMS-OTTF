@@ -143,6 +143,12 @@ public class uiSearchHotelController implements Initializable {
     private TextField KeyWord;
 
     /**
+     * 是否选择预订过的酒店
+     */
+    @FXML
+    private CheckBox checkOrdered;
+
+    /**
      * 房间类型组合
      */
     @FXML
@@ -314,9 +320,22 @@ public class uiSearchHotelController implements Initializable {
             SearchList.add(KeywordLimit);
         }
         HotelOrderBlService hotelOrderBlService = new UserController();
-        ArrayList<HotelListItemVO> searchHotelList = hotelOrderBlService.searchHotel(UiFormatChanger.getArea(textCircle), UiFormatChanger.getAddress(textAddress), SearchList);
+        ArrayList<HotelListItemVO> getHotelList = hotelOrderBlService.searchHotel(UiFormatChanger.getArea(textCircle), UiFormatChanger.getAddress(textAddress), SearchList);
         searchHotelPane.setVisible(false);
-        initTable(searchHotelList);
+        //如果不需要显示预订过的酒店，则直接显示所有列表
+        if (!checkOrdered.isSelected()){
+            initTable(getHotelList);
+        }
+        //如果需要显示预订过的酒店，则进行过滤筛选
+        else{
+            ArrayList<HotelListItemVO> searchHotelList = new ArrayList<HotelListItemVO>();
+            for(int i = 0; i < getHotelList.size();i++){
+                if(getHotelList.get(i).isHasAbnormalOrder()||getHotelList.get(i).isHasCanceledOrder()||getHotelList.get(i).isHasNormalOrder()){
+                    searchHotelList.add(getHotelList.get(i));
+                }
+            }
+            initTable(searchHotelList);
+        }
         hotelListPane.setVisible(true);
     }
 

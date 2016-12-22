@@ -56,6 +56,15 @@ public class SceneJump {
     }
 
     /**
+     * 跳转到制定等级策略界面
+     */
+    public void jumpToSceneMemberUp() throws IOException {
+        ObservableList<Stage> stage = FXRobotHelper.getStages();
+        Scene scene = new Scene((Parent) FXMLLoader.load(getClass().getResource("webSaler_MemberLevelUp.fxml")));
+        stage.get(0).setScene(scene);
+    }
+
+    /**
      * 删除界面
      */
     public void jumpToDeletePromotion() throws IOException {
