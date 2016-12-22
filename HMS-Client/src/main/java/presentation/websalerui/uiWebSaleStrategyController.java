@@ -296,6 +296,13 @@ public class uiWebSaleStrategyController implements Initializable{
     }
 
     /**
+     * 跳转到制定等级策略
+     */
+    public void jumpToSceneMemberLevelUp() throws IOException {
+        sceneJump.jumpToSceneMemberUp();
+    }
+
+    /**
      * 双十一优惠活动按钮监听
      */
     @FXML
