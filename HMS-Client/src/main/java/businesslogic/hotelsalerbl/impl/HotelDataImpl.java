@@ -1,12 +1,9 @@
 package businesslogic.hotelsalerbl.impl;
 
-import businesslogic.logbl.Login;
 import businesslogic.userbl.interfaces.HotelInfo;
 import businesslogic.userbl.interfaces.HotelRoom;
 import businesslogic.webmanagerbl.HotelInfoForManagement;
 import cfg.CfgReader;
-import data_stub.hotelsalerdata.HotelinfoDataImpl_stub;
-import data_stub.hotelsalerdata.HotelroomDataImpl_stub;
 import dataservice.hotelsalerdataservice.HotelinfoDataService;
 import dataservice.hotelsalerdataservice.HotelroomDataService;
 import enumData.Address;
@@ -19,7 +16,6 @@ import po.HotelroomPO;
 import po.RoomNumPO;
 import rmi.RemoteHelper;
 import utility.DateOperation;
-import vo.HotelroomVO;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
@@ -185,12 +181,38 @@ public class HotelDataImpl implements HotelInfo, HotelRoom, HotelInfoForManageme
         //最终评分
         double res = 0;
         //计算总和
-        for(CommentPO po:comments){
-            res+=po.getGrade();
+        for (CommentPO po : comments) {
+            res += po.getGrade();
         }
-        res = (res+grade)/(comments.size()+1);
+        res = (res + grade) / (comments.size() + 1);
         HotelinfoPO hotelinfoPO = hotelinfoDataService.getHotelinfo(hotelID);
         hotelinfoPO.setGrade(res);
         hotelinfoDataService.setHotelinfo(hotelinfoPO);
+    }
+
+    @Override
+    public void subRoom(String hotelID, Date start, Date end, RoomType roomType, int num) throws RemoteException {
+        changeRoom(hotelID,start,end,roomType,-num);
+    }
+
+    @Override
+    public void addRoom(String hotelID, Date start, Date end, RoomType roomType, int num) throws RemoteException {
+        changeRoom(hotelID,start,end,roomType,-num);
+    }
+
+    private void changeRoom(String hotelID, Date start, Date end, RoomType roomType, int num) throws RemoteException {
+        ArrayList<RoomNumPO> res = null;
+        //获得所有日期
+        ArrayList<Date> dates = DateOperation.getDates(start, end);
+        for (Date date : dates) {
+            res = hotelroomDataService.getEmptyrooms(hotelID, DateOperation.dateToString(date));
+            for (RoomNumPO po : res) {
+                if (po.getRoomType().equals(roomType)) {
+                    int emptyRoom = po.getEmptyNum() + num;
+                    po.setEmptyNum(emptyRoom);
+                }
+            }
+            hotelroomDataService.setRoomNum(res);
+        }
     }
 }

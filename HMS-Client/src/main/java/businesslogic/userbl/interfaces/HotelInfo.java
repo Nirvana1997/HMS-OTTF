@@ -1,6 +1,7 @@
 package businesslogic.userbl.interfaces;
 
 import enumData.Address;
+import enumData.RoomType;
 import enumData.SortWay;
 import enumData.TradeArea;
 import po.HotelinfoPO;
@@ -9,9 +10,11 @@ import po.RoomNumPO;
 import vo.HotelListItemVO;
 import vo.HotelinfoVO;
 import vo.HotelroomVO;
+import vo.OrderVO;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * 获取酒店信息的接口
@@ -57,4 +60,28 @@ public interface HotelInfo {
      * @throws RemoteException
      */
     public void updateGrade(String hotelID, double grade) throws RemoteException;
+
+    /**
+     * 减少房间数目
+     *
+     * @param hotelID  酒店编号
+     * @param start    开始日期
+     * @param end      结束日期
+     * @param roomType 房间类型
+     * @param num      数目
+     * @throws RemoteException
+     */
+    public void subRoom(String hotelID, Date start, Date end, RoomType roomType, int num) throws RemoteException;
+
+    /**
+     * 添加房间数目
+     *
+     * @param hotelID  酒店编号
+     * @param start    开始日期
+     * @param end      结束日期
+     * @param roomType 房间类型
+     * @param num      数目
+     * @throws RemoteException
+     */
+    public void addRoom(String hotelID, Date start, Date end, RoomType roomType, int num) throws RemoteException;
 }
