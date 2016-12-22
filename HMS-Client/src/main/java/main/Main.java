@@ -6,6 +6,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import presentation.logui.SceneInput;
 import presentation.logui.SceneLog;
 import presentation.logui.uiLogController;
 
@@ -17,7 +18,7 @@ import java.net.UnknownHostException;
  */
 public class Main extends Application{
 
-    private SceneLog sceneLog;
+    private SceneInput sceneInput;
 
     public static void main(String[] args) throws UnknownHostException {
         ClientRunner clientRunner = new ClientRunner();
@@ -27,13 +28,12 @@ public class Main extends Application{
     @Override
     public void start(Stage primaryStage) throws Exception {
 
-        sceneLog = new SceneLog();
+        sceneInput = new SceneInput();
 
-        primaryStage.initStyle(StageStyle.TRANSPARENT);
-        primaryStage.setWidth(1000);
-        primaryStage.setHeight(618);
+        primaryStage.setWidth(500);
+        primaryStage.setHeight(300);
         primaryStage.setResizable(false);
-        primaryStage.setScene(sceneLog.getSceneLog());
+        primaryStage.setScene(sceneInput.getSceneInput());
         primaryStage.show();
     }
 }
