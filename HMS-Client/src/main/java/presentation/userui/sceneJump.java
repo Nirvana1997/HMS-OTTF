@@ -35,6 +35,7 @@ public class sceneJump {
     public void gotoMyOrder() throws IOException {
         ObservableList<Stage> stage = FXRobotHelper.getStages();
         Scene scene = new Scene((Parent) FXMLLoader.load(getClass().getResource("sceneMyOrder.fxml")));
+//        scene.getStylesheets().add(getClass().getResource("tableview.css").toString());
         stage.get(0).setScene(scene);
     }
 

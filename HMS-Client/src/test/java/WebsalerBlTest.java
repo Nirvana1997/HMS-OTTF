@@ -33,6 +33,7 @@ public class WebsalerBlTest {
 
     /**
      * Method: makePromotion(PromotionVO vo)
+     *
      */
     @Test
     public void testMakePromotion() throws Exception {

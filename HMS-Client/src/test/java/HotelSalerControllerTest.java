@@ -124,6 +124,7 @@ public class HotelSalerControllerTest {
         Assert.assertEquals("Birthday discount",hotelSalerController.getPromotion(PromotionType.Hotel_Birth).get(0).getPromotionName());
     }
 
+
     @Test
     public void testDeletePromotion() throws Exception {
         hotelSalerController.deletePromotion("Birthday discount");
