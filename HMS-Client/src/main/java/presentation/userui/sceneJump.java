@@ -96,6 +96,7 @@ public class sceneJump {
         primaryStage.setWidth(500);
         primaryStage.setHeight(320);
         primaryStage.setResizable(false);
+        primaryStage.setAlwaysOnTop(true);
         primaryStage.setScene(sceneModifyPassword.getSceneModifyPassword());
         primaryStage.show();
     }

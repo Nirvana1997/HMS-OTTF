@@ -178,6 +178,7 @@ public class uiUserInfoController implements Initializable {
         Birthday = vo.getBirthday();
         CompanyID = vo.getCompanyID();
         userType = vo.getUserType();
+        textVIPLevel.setText(String.valueOf(vo.getVipLevel()));
     }
 
     /**
