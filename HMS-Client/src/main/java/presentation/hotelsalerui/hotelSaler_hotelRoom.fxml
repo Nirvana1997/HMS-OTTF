@@ -334,17 +334,17 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <CheckBox fx:id="checkBoxSingleRoom" layoutX="151.0" layoutY="671.0" mnemonicParsing="false" onMouseClicked="#onClickedBookSingleRoom" text="标准（单人）间">
+                  <CheckBox fx:id="checkBoxSingleRoom" focusTraversable="false" layoutX="151.0" layoutY="671.0" mnemonicParsing="false" onMouseClicked="#onClickedBookSingleRoom" text="标准（单人）间">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </CheckBox>
-                  <CheckBox fx:id="checkBoxDoubleRoom" layoutX="338.0" layoutY="671.0" mnemonicParsing="false" onMouseClicked="#onClickedBookDoubleRoom" text="标准（双人）间">
+                  <CheckBox fx:id="checkBoxDoubleRoom" focusTraversable="false" layoutX="338.0" layoutY="671.0" mnemonicParsing="false" onMouseClicked="#onClickedBookDoubleRoom" text="标准（双人）间">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </CheckBox>
-                  <CheckBox fx:id="checkBoxDisabledRoom" layoutX="536.0" layoutY="671.0" mnemonicParsing="false" onMouseClicked="#onClickedBookDisabledRoom" text="无障碍客房">
+                  <CheckBox fx:id="checkBoxDisabledRoom" focusTraversable="false" layoutX="536.0" layoutY="671.0" mnemonicParsing="false" onMouseClicked="#onClickedBookDisabledRoom" text="无障碍客房">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -359,22 +359,22 @@
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <CheckBox fx:id="checkBoxCheckIn" layoutX="196.0" layoutY="589.0" mnemonicParsing="false" onMouseClicked="#onClickedCheckIn" text="入住">
+                  <CheckBox fx:id="checkBoxCheckIn" focusTraversable="false" layoutX="196.0" layoutY="589.0" mnemonicParsing="false" onMouseClicked="#onClickedCheckIn" text="入住">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </CheckBox>
-                  <CheckBox fx:id="checkBoxCheckOut" layoutX="303.0" layoutY="589.0" mnemonicParsing="false" onMouseClicked="#onClickedCheckOut" text="退房">
+                  <CheckBox fx:id="checkBoxCheckOut" focusTraversable="false" layoutX="303.0" layoutY="589.0" mnemonicParsing="false" onMouseClicked="#onClickedCheckOut" text="退房">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </CheckBox>
-                  <Button layoutX="459.0" layoutY="849.0" mnemonicParsing="false" onMouseClicked="#confirmOffLine" text="确认">
+                  <Button focusTraversable="false" layoutX="459.0" layoutY="849.0" mnemonicParsing="false" onMouseClicked="#confirmOffLine" text="确认">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Button>
-                  <Button layoutX="579.0" layoutY="849.0" mnemonicParsing="false" onMouseClicked="#cancelOffLine" text="取消">
+                  <Button focusTraversable="false" layoutX="579.0" layoutY="849.0" mnemonicParsing="false" onMouseClicked="#cancelOffLine" text="取消">
                      <font>
                         <Font size="16.0" />
                      </font>

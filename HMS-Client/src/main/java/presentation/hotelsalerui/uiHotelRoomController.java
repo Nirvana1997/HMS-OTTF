@@ -180,6 +180,9 @@ public class uiHotelRoomController implements Initializable{
         buttonCancelSingleRoom.setVisible(true);
         labelSingleRoomTotal.setVisible(false);
         textFieldSingleRoomTotal.setVisible(true);
+
+        textFieldSingleRoomTotal.setText(labelSingleRoomTotal.getText());
+        textFieldSingleRoomPrice.setText(labelSingleRoomPrice.getText());
     }
 
     /**
@@ -208,6 +211,9 @@ public class uiHotelRoomController implements Initializable{
         buttonCancelDoubleRoom.setVisible(true);
         labelDoubleRoomTotal.setVisible(false);
         textFieldDoubleRoomTotal.setVisible(true);
+
+        textFieldDoubleRoomTotal.setText(labelDoubleRoomTotal.getText());
+        textFieldDoubleRoomPrice.setText(labelDoubleRoomPrice.getText());
     }
 
     /**
@@ -236,6 +242,9 @@ public class uiHotelRoomController implements Initializable{
         buttonCancelDisabledRoom.setVisible(true);
         labelDisabledRoomTotal.setVisible(false);
         textFieldDisabledRoomTotal.setVisible(true);
+
+        textFieldDisabledRoomTotal.setText(labelDisabledRoomTotal.getText());
+        textFieldDisabledRoomPrice.setText(labelDisabledRoomPrice.getText());
     }
 
     /**
