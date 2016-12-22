@@ -26,13 +26,10 @@ public class PromotionDataImpl extends UnicastRemoteObject implements PromotionD
      */
     @Override
     public ResultMessage addPromotion(PromotionPO po) {
-        if(!hasExisted(po.getName())){
             DataBaseHelper.in("insert into PromotionInfo (name,type,startDate,endDate,tradeArea,roomNumber,vipLevel,discount,hotelID,description,companyID) values ('"+
             po.getName() + "','" + po.getPromotionType().toString() + "','" + po.getStartDate() + "','" + po.getEndDate() + "','" +
             po.getTradeArea() + "','" + po.getRoomNumber() + "','" + po.getVipLevel() + "','" + po.getDiscount() + "','" + po.getHotelID() + "','" + po.getDescription() + "','" + po.getCompanyID() + "')");
             return ResultMessage.Correct;
-        }else
-            return ResultMessage.HasExist;
     }
 
     /**

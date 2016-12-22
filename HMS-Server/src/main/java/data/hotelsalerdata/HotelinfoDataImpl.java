@@ -233,6 +233,12 @@ public class HotelinfoDataImpl extends UnicastRemoteObject implements HotelinfoD
         return ResultMessage.Correct;
     }
 
+    /**
+     * 删除酒店信息
+     * @param hotelID 酒店ID
+     * @return
+     * @throws RemoteException
+     */
     @Override
     public ResultMessage deleteHotelinfo(String hotelID) throws RemoteException {
         if(hasExisted(hotelID)){
