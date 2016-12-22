@@ -181,8 +181,8 @@ public class uiHotelRoomController implements Initializable{
 
         textFieldSingleRoomTotal.setText(labelSingleRoomTotal.getText());
         textFieldSingleRoomPrice.setText(labelSingleRoomPrice.getText());
-        textFieldDoubleRoomTotal.setText(labelDisabledRoomTotal.getText());
-        textFieldDoubleRoomPrice.setText(labelDisabledRoomPrice.getText());
+        textFieldDoubleRoomTotal.setText(labelDoubleRoomTotal.getText());
+        textFieldDoubleRoomPrice.setText(labelDoubleRoomPrice.getText());
         textFieldDisabledRoomTotal.setText(labelDisabledRoomTotal.getText());
         textFieldDisabledRoomPrice.setText(labelDisabledRoomPrice.getText());
     }
@@ -197,7 +197,7 @@ public class uiHotelRoomController implements Initializable{
         int numDisable = Integer.valueOf(textFieldDisabledRoomTotal.getText());
         double priceSingle = Double.valueOf(textFieldSingleRoomPrice.getText());
         double priceDouble = Double.valueOf(textFieldDoubleRoomPrice.getText());
-        double priceDisable = Integer.parseInt(textFieldDisabledRoomPrice.getText());
+        double priceDisable = Double.parseDouble(textFieldDisabledRoomPrice.getText());
         ArrayList<HotelroomVO> temp = new ArrayList<>();
         try {
             roomArray = hotelroombl.getRoomInfo();
