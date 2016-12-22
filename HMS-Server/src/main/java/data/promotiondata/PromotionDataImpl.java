@@ -43,7 +43,7 @@ public class PromotionDataImpl extends UnicastRemoteObject implements PromotionD
     @Override
     public ResultMessage deletePromotion(String name) {
         if(hasExisted(name)){
-            DataBaseHelper.in("delete from PromotionInfo where promotionID = '" + name + "'");
+            DataBaseHelper.in("delete from PromotionInfo where name = '" + name + "'");
             return ResultMessage.Correct;
         }else
             return ResultMessage.NotExist;
@@ -83,7 +83,7 @@ public class PromotionDataImpl extends UnicastRemoteObject implements PromotionD
         TradeArea tradeArea = null;
         try {
             type = Enum.valueOf(PromotionType.class,type_.trim());
-            if(tradeArea_!=null)
+            if(!tradeArea_.equals("null"))
                 tradeArea = Enum.valueOf(TradeArea.class,tradeArea_.trim());
         }catch (IllegalArgumentException ex){
             ex.printStackTrace();
@@ -113,7 +113,7 @@ public class PromotionDataImpl extends UnicastRemoteObject implements PromotionD
         for(int i=0;i<nameList.size();i++){
             TradeArea tradeArea = null;
             try {
-                if(tradeAreaList.get(i)!=null)
+                if(!tradeAreaList.get(i).equals("null"))
                     tradeArea = Enum.valueOf(TradeArea.class,tradeAreaList.get(i).trim());
             }catch (IllegalArgumentException ex){
                 ex.printStackTrace();

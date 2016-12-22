@@ -121,26 +121,26 @@ public class HotelSalerControllerTest {
 
     @Test
     public void testGetPromotion() throws Exception {
-        Assert.assertEquals("Birthday discount",hotelSalerController.getPromotion(PromotionType.Hotel_birth).get(0).getPromotionName());
+        Assert.assertEquals("Birthday discount",hotelSalerController.getPromotion(PromotionType.Hotel_Birth).get(0).getPromotionName());
     }
 
     @Test
     public void testDeletePromotion() throws Exception {
         hotelSalerController.deletePromotion("Birthday discount");
-        Assert.assertEquals(0,hotelSalerController.getPromotion(PromotionType.Hotel_birth).size());
+        Assert.assertEquals(0,hotelSalerController.getPromotion(PromotionType.Hotel_Birth).size());
     }
 
     @Test
     public void testAddPromotion() throws Exception {
-        hotelSalerController.addPromotion(new PromotionVO("haha","heihei",PromotionType.Hotel_birth,0.8));
-        Assert.assertEquals(2,hotelSalerController.getPromotion(PromotionType.Hotel_birth).size());
+        hotelSalerController.addPromotion(new PromotionVO("haha","heihei",PromotionType.Hotel_Birth,0.8));
+        Assert.assertEquals(2,hotelSalerController.getPromotion(PromotionType.Hotel_Birth).size());
     }
 
     @Test
     public void testSetPromotion() throws Exception {
-        PromotionVO vo = hotelSalerController.getPromotion(PromotionType.Hotel_birth).get(0);
+        PromotionVO vo = hotelSalerController.getPromotion(PromotionType.Hotel_Birth).get(0);
         vo.setDescription("haha");
         hotelSalerController.setPromotion(vo);
-        Assert.assertEquals("haha",hotelSalerController.getPromotion(PromotionType.Hotel_birth).get(0).getDescription());
+        Assert.assertEquals("haha",hotelSalerController.getPromotion(PromotionType.Hotel_Birth).get(0).getDescription());
     }
 } 

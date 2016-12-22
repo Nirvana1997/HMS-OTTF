@@ -245,11 +245,14 @@ public class uiHotelRoomController implements Initializable{
         double price = Integer.parseInt(textFieldSingleRoomPrice.getText());
         HotelroomVO vo = new HotelroomVO(hotelID, RoomType.SingleRoom, price, Integer.parseInt(textFieldSingleRoomTotal.getText()));
         ArrayList<HotelroomVO> temp = new ArrayList<>();
-        temp.add(vo);
-        temp.add(roomArray.get(1));
-        temp.add(roomArray.get(2));
         try {
+            roomArray = hotelroombl.getRoomInfo();
+            temp.add(vo);
+            temp.add(roomArray.get(1));
+            temp.add(roomArray.get(2));
             hotelroombl.setRoomInfo(temp);
+            roomArray = hotelroombl.getRoomInfo();
+            this.setHotelInfo();
         } catch (RemoteException e) {
             e.printStackTrace();
         }
@@ -277,11 +280,14 @@ public class uiHotelRoomController implements Initializable{
         double price = Integer.parseInt(textFieldDoubleRoomPrice.getText());
         HotelroomVO vo = new HotelroomVO(hotelID, RoomType.DoubleRoom, price, Integer.parseInt(textFieldDoubleRoomTotal.getText()));
         ArrayList<HotelroomVO> temp = new ArrayList<>();
-        temp.add(roomArray.get(0));
-        temp.add(vo);
-        temp.add(roomArray.get(2));
         try {
+            roomArray = hotelroombl.getRoomInfo();
+            temp.add(roomArray.get(0));
+            temp.add(vo);
+            temp.add(roomArray.get(2));
             hotelroombl.setRoomInfo(temp);
+            roomArray = hotelroombl.getRoomInfo();
+            this.setHotelInfo();
         } catch (RemoteException e) {
             e.printStackTrace();
         }
@@ -309,11 +315,14 @@ public class uiHotelRoomController implements Initializable{
         double price = Integer.parseInt(textFieldDisabledRoomPrice.getText());
         HotelroomVO vo = new HotelroomVO(hotelID, RoomType.DisabledRoom, price, Integer.parseInt(textFieldDisabledRoomTotal.getText()));
         ArrayList<HotelroomVO> temp = new ArrayList<>();
-        temp.add(roomArray.get(0));
-        temp.add(roomArray.get(1));
-        temp.add(vo);
         try {
+            roomArray = hotelroombl.getRoomInfo();
+            temp.add(roomArray.get(0));
+            temp.add(roomArray.get(1));
+            temp.add(vo);
             hotelroombl.setRoomInfo(temp);
+            roomArray = hotelroombl.getRoomInfo();
+            this.setHotelInfo();
         } catch (RemoteException e) {
             e.printStackTrace();
         }
@@ -438,11 +447,10 @@ public class uiHotelRoomController implements Initializable{
     }
 
     /**
-     * 根据日期查询
+     * 根据日期显示空房数量
      */
-    public void checkRoomByDate(){
+    private void showEmptyRoomsByDate(Date date){
         try {
-            Date date = UiFormatChanger.getDate(datePicker);
             ArrayList<RoomNumVO> arrayList = hotelroombl.getEmptyRoomByDate(date);
             int emptyRoom1 = arrayList.get(0).getEmptyNum();
             int emptyRoom2 = arrayList.get(1).getEmptyNum();
@@ -451,9 +459,19 @@ public class uiHotelRoomController implements Initializable{
             labelSingleRoomNum.setText(String.valueOf(emptyRoom1));
             labelDoubleRoomNum.setText(String.valueOf(emptyRoom2));
             labelDisabledRoomNum.setText(String.valueOf(emptyRoom3));
-        } catch (ParseException e) {
-            e.printStackTrace();
         } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * 根据日期查询
+     */
+    public void checkRoomByDate(){
+        try {
+            Date date = UiFormatChanger.getDate(datePicker);
+            this.showEmptyRoomsByDate(date);
+        } catch (ParseException e) {
             e.printStackTrace();
         }
     }
@@ -465,25 +483,22 @@ public class uiHotelRoomController implements Initializable{
         } catch (RemoteException e) {
             e.printStackTrace();
         }
-        if(roomArray.size() == 0){
-            labelSingleRoomNum.setText("0");
-            labelSingleRoomPrice.setText("0");
-            labelDoubleRoomNum.setText("0");
-            labelDoubleRoomPrice.setText("0");
-            labelDisabledRoomNum.setText("0");
-            labelDisabledRoomPrice.setText("0");
-            labelSingleRoomTotal.setText("0");
-            labelDoubleRoomTotal.setText("0");
-            labelDisabledRoomTotal.setText("0");
-        }else {
-            this.hotelID = roomArray.get(0).getHotelID();
-            labelSingleRoomNum.setText(String.valueOf(roomArray.get(0).getRoomNumber()));
-            labelSingleRoomPrice.setText(String.valueOf(roomArray.get(0).getPrice()));
-            labelDoubleRoomNum.setText(String.valueOf(roomArray.get(1).getRoomNumber()));
-            labelDoubleRoomPrice.setText(String.valueOf(roomArray.get(1).getPrice()));
-            labelDisabledRoomNum.setText(String.valueOf(roomArray.get(2).getRoomNumber()));
-            labelDisabledRoomPrice.setText(String.valueOf(roomArray.get(2).getPrice()));
-        }
+        this.hotelID = roomArray.get(0).getHotelID();
+
+        Date date = new Date();
+        this.showEmptyRoomsByDate(date); // 初始化酒店空房
+        this.setHotelInfo(); // 初始化酒店房间总数和价格
     }
 
+    /**
+     * 设置酒店房间总数和价格
+     */
+    public void setHotelInfo(){
+        labelSingleRoomTotal.setText(String.valueOf(roomArray.get(0).getRoomNumber()));
+        labelSingleRoomPrice.setText(String.valueOf(roomArray.get(0).getPrice()));
+        labelDoubleRoomTotal.setText(String.valueOf(roomArray.get(1).getRoomNumber()));
+        labelDoubleRoomPrice.setText(String.valueOf(roomArray.get(1).getPrice()));
+        labelDisabledRoomTotal.setText(String.valueOf(roomArray.get(2).getRoomNumber()));
+        labelDisabledRoomPrice.setText(String.valueOf(roomArray.get(2).getPrice()));
+    }
 }
