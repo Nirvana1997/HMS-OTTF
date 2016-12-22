@@ -12,6 +12,7 @@ import utility.DateOperation;
 import vo.CanceledExceptionOrderVO;
 import vo.OrderVO;
 import vo.PromotionVO;
+import vo.VipUpVO;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
@@ -39,10 +40,16 @@ public class WebsalerController implements WebsalerblService {
      */
     WebsalerOrderOperation websalerOrderOperation;
 
+    /**
+     * 会员等级规则制定模块
+     */
+    VipOperation vipOperation;
+
     public WebsalerController() {
         this.webPromotion = new WebPromotion();
         this.creditInfo = new UserDataImpl();
         this.websalerOrderOperation = new WebsalerOrderOperation();
+        this.vipOperation = new VipOperation();
     }
 
     /**
@@ -111,6 +118,16 @@ public class WebsalerController implements WebsalerblService {
     @Override
     public int getCredit(String userID) throws RemoteException{
         return creditInfo.getCredit(userID);
+    }
+
+    @Override
+    public ArrayList<VipUpVO> getVipInfos() throws RemoteException {
+        return vipOperation.getVipInfos();
+    }
+
+    @Override
+    public void setVipInfos(ArrayList<VipUpVO> vipInfos) throws RemoteException {
+        vipOperation.setVipInfos(vipInfos);
     }
 
     @Override

@@ -291,7 +291,6 @@ public class uiSearchHotelController implements Initializable {
         //如果房间数据全部为空，不输入房间数据
         if (RoomType.getSelectedToggle() == null && PriceMin.getText().length() == 0 && PriceMax.getText().length() == 0 &&
                 RoomNum.getText().length() == 0 && checkinDate.getValue() == null && checkoutDate.getValue() == null) {
-            System.out.println("不存入房间信息");
         } else if (RoomType.getSelectedToggle() != null && PriceMin.getText().length() != 0 && PriceMax.getText().length() != 0 &&
                 RoomNum.getText().length() != 0 && checkinDate.getValue() != null && checkoutDate.getValue() != null) {
             try {

@@ -65,7 +65,7 @@
             <Font size="14.0" />
          </font>
       </TextField>
-      <TableView fx:id="websalerList" layoutX="300.0" layoutY="150.0" prefHeight="424.0" prefWidth="502.0">
+      <TableView fx:id="websalerList" layoutX="300.0" layoutY="150.0" prefHeight="424.0" prefWidth="502.0" stylesheets="@tableview.css">
          <columns>
             <TableColumn fx:id="columnID" prefWidth="180.0" text="网站管理人员编号" />
             <TableColumn fx:id="columnName" minWidth="0.0" prefWidth="140.0" text="账号" />

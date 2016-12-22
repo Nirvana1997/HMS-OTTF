@@ -10,13 +10,17 @@ import utility.UiFormatChanger;
 import vo.OrderVO;
 import java.io.IOException;
 import java.net.URL;
+import java.rmi.RemoteException;
 import java.util.ResourceBundle;
 
 /**
  * Created by Administrator on 2016/12/10.
  */
 public class uiConfirmOrderController implements Initializable {
-
+    /**
+     * 用户界面控制器
+     */
+    UserController userController = new UserController();
     /**
      * 确认的订单价格
      */
@@ -28,6 +32,12 @@ public class uiConfirmOrderController implements Initializable {
      */
     @FXML
     private Text textDDL;
+
+    /**
+     * 确认的订单的营销策略
+     */
+    @FXML
+    private Text textPromotion;
 
     /**
      * 取消按钮
@@ -45,14 +55,16 @@ public class uiConfirmOrderController implements Initializable {
      */
     OrderVO orderVO;
 
+    public uiConfirmOrderController() throws RemoteException {
+    }
+
     /**
      * 确认生成订单
      *
      * @throws IOException
      */
     public void ConfirmOrder() throws IOException {
-        HotelOrderBlService hotelOrderBlService = new UserController();
-        hotelOrderBlService.orderHotel(orderVO);
+        userController.orderHotel(orderVO);
         //返回酒店界面
         jump.gotoHotel();
         //提示预订成功
@@ -81,5 +93,8 @@ public class uiConfirmOrderController implements Initializable {
         orderVO = uiReserveHotelController.getCurrentOrder();
         textDDL.setText(UiFormatChanger.dateToString(orderVO.getDdl()));
         textPrice.setText(String.valueOf(orderVO.getPrice()));
+        if(orderVO.getPromotionName()!=null) {
+            textPromotion.setText(orderVO.getPromotionName());
+        }
     }
 }

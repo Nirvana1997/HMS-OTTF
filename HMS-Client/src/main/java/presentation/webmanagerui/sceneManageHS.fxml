@@ -55,7 +55,7 @@
             </ImageInput>
          </effect>
       </Button>
-      <TableView fx:id="hotelList" layoutX="300.0" layoutY="150.0" prefHeight="424.0" prefWidth="502.0">
+      <TableView fx:id="hotelList" layoutX="300.0" layoutY="150.0" prefHeight="424.0" prefWidth="502.0" stylesheets="@tableview.css">
          <columns>
             <TableColumn fx:id="columnID" prefWidth="180.0" text="酒店工作人员编号" />
             <TableColumn fx:id="columnName" minWidth="0.0" prefWidth="140.0" text="酒店名称" />
