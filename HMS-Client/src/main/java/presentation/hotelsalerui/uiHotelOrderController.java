@@ -383,6 +383,12 @@ public class uiHotelOrderController implements Initializable{
             e.printStackTrace();
         }
         this.cancelExcuteOrder();
+        try {
+            OrderVO vo = hotelsalerbl.readOrderByID(orderId);
+            labelOrderState.setText(UiFormatChanger.stateTOstring(vo.getOrderState()));
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
     }
 
 }
