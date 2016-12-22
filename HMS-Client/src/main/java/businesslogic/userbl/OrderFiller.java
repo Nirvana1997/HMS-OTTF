@@ -16,6 +16,7 @@ import vo.OrderVO;
 import vo.UserInfoVO;
 
 import java.rmi.RemoteException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -72,11 +73,11 @@ public class OrderFiller {
 
     /**
      * 填充订单编号
-     * 格式为userID+getTime
+     * 格式为userID+MMddHHmmss
      */
     private void fillOrderID(){
-        Date date = new Date();
-        orderVO.setOrderID(Login.getNowUserID()+date.getTime());
+        SimpleDateFormat df = new SimpleDateFormat("MMddHHmmss");
+        orderVO.setOrderID(Login.getNowUserID()+df.format(new Date()));
     }
 
     /**
