@@ -554,12 +554,43 @@ public class uiWebSaleStrategyController implements Initializable{
         if(isDeletePromotion) {
             if(labelEditNumber == 1){
                 websalerbl.cancelPromotion(labelNamePromotionDoubleOne.getText());
+                lengthPromotionDoubleOne--;
+                if(lengthPromotionDoubleOne == 0){
+                    labelNamePromotionDoubleOne.setText("");
+                    labelInfoPromotionDoubleOne.setText("");
+                    labelDatePromotionDoubleOne.setText("");
+                }else{
+                    int n = Math.abs(doubleOneCount % lengthPromotionDoubleOne);
+                    this.initPromotionContent(n,PromotionType.Web_Period);
+                }
             }
             else if(labelEditNumber == 2){
                 websalerbl.cancelPromotion(labelNamePromotionVIP.getText());
+                lengthPromotionVIP--;
+                if(lengthPromotionVIP == 0){
+                    labelNamePromotionVIP.setText("");
+                    labelInfoPromotionVIP.setText("");
+                    labelDatePromotionVIP.setText("");
+                    labelTradeArea.setText("");
+                }else{
+                    int n = Math.abs(VIPCount % lengthPromotionVIP);
+                    this.initPromotionContent(n,PromotionType.Web_TradeArea);
+                }
             }
             else if(labelEditNumber == 3){
                 websalerbl.cancelPromotion(labelNamePromotionMember.getText());
+                lengthPromotionMember--;
+                if(lengthPromotionMember == 0){
+                    labelNamePromotionMember.setText("");
+                    labelInfoPromotionMember.setText("");
+                    labelDatePromotionMember.setText("");
+                    labelLevel1.setText("");
+                    labelLevel2.setText("");
+                    labelLevel3.setText("");
+                }else{
+                    int n = Math.abs(memberCount % lengthPromotionMember);
+                    this.initPromotionContent(n,PromotionType.Web_Vip);
+                }
             }
         }
     }
@@ -569,7 +600,10 @@ public class uiWebSaleStrategyController implements Initializable{
      */
     public void onClickedConfirmEditPromotion() {
         String name = textFieldPromotionName.getText();
-        double discount = Double.parseDouble(textFieldDiscount.getText());
+        double discount = 1;
+        if(!textFieldDiscount.getText().equals("")){
+            discount = Double.parseDouble(textFieldDiscount.getText());
+        }
         Date beginTime = null;
         Date endTime = null;
         String description = textAreaPromotonContent.getText();
@@ -590,6 +624,8 @@ public class uiWebSaleStrategyController implements Initializable{
                 } catch (RemoteException e) {
                     e.printStackTrace();
                 }
+                int n = Math.abs(doubleOneCount % lengthPromotionDoubleOne);
+                this.initPromotionContent(n,PromotionType.Web_Period);
             }
             else if(labelEditNumber == 2){
                 try {
