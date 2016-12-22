@@ -208,7 +208,7 @@ public class HotelDataImpl implements HotelInfo, HotelRoom, HotelInfoForManageme
             res = hotelroomDataService.getEmptyrooms(hotelID, DateOperation.dateToString(date));
             for (RoomNumPO po : res) {
                 if (po.getRoomType().equals(roomType)) {
-                    int emptyRoom = po.getEmptyNum() - num;
+                    int emptyRoom = po.getEmptyNum() + num;
                     po.setEmptyNum(emptyRoom);
                 }
             }
