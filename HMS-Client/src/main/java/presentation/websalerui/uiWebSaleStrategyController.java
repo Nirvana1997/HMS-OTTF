@@ -380,17 +380,18 @@ public class uiWebSaleStrategyController implements Initializable{
         else if(promotionType == PromotionType.Web_Vip){
             labelNamePromotionMember.setText(promotionMember.get(n).getPromotionName());
             labelInfoPromotionMember.setText(promotionMember.get(n).getDescription());
-            labelDatePromotionMember.setText(UiFormatChanger.dateToString(promotionMember.get(n).getStartDate()) + "~" + UiFormatChanger.dateToString(promotionMember.get(n).getEndDate()));
+
             for(int i = 0; i < promotionMember.size(); i++){
                 int level = promotionMember.get(i).getVipLevel();
+                System.out.println(level);
                 if(level == 1){
-                    labelLevel1.setText(String.valueOf(promotionMember.get(i).getDiscount()));
+                    labelLevel1.setText(String.valueOf(promotionMember.get(i).getDiscount() * 10));
                 }
                 else if(level == 2){
-                    labelLevel2.setText(String.valueOf(promotionMember.get(i).getDiscount()));
+                    labelLevel2.setText(String.valueOf(promotionMember.get(i).getDiscount() * 10));
                 }
                 else if(level == 3){
-                    labelLevel3.setText(String.valueOf(promotionMember.get(i).getDiscount()));
+                    labelLevel3.setText(String.valueOf(promotionMember.get(i).getDiscount() * 10));
                 }
             }
         }
@@ -666,6 +667,8 @@ public class uiWebSaleStrategyController implements Initializable{
                 } catch (RemoteException e) {
                     e.printStackTrace();
                 }
+                initPromotionList();
+                lengthPromotionMember = promotionMember.size();
                 int n = Math.abs(memberCount % lengthPromotionMember);
                 this.initPromotionContent(n,PromotionType.Web_Vip);
             }

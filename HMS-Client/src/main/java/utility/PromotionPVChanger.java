@@ -20,8 +20,9 @@ public class PromotionPVChanger {
         if(po==null){
             return null;
         }
-        if(po.getStartDate()!=null)
-            return new PromotionVO(po.getName(),po.getDescription(),po.getPromotionType(),po.getHotelID(),DateOperation.stringToDate(po.getStartDate()),DateOperation.stringToDate(po.getEndDate()),po.getTradeArea(),po.getRoomNumber(),po.getVipLevel(),po.getDiscount(),po.getCompanyID());
+        if(!po.getStartDate().equals("null")) {
+            return new PromotionVO(po.getName(), po.getDescription(), po.getPromotionType(), po.getHotelID(), DateOperation.stringToDate(po.getStartDate()), DateOperation.stringToDate(po.getEndDate()), po.getTradeArea(), po.getRoomNumber(), po.getVipLevel(), po.getDiscount(), po.getCompanyID());
+        }
         else
             return new PromotionVO(po.getName(),po.getDescription(),po.getPromotionType(),po.getDiscount());
     }
