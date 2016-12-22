@@ -57,13 +57,5 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Text>
-      <Text fx:id="buttonMin" fill="#b2d8eb" layoutX="942.0" layoutY="26.0" onMouseClicked="#min" strokeType="OUTSIDE" strokeWidth="0.0" text="一">
-         <font>
-            <Font name="SimHei" size="18.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </Text>
    </children>
 </AnchorPane>

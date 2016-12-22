@@ -5,6 +5,7 @@ import cfg.CfgReader;
 import data_stub.hotelsalerdata.HotelroomDataImpl_stub;
 import dataservice.hotelsalerdataservice.HotelroomDataService;
 import enumData.ResultMessage;
+import enumData.RoomType;
 import po.HotelroomPO;
 import po.OrderPO;
 import po.RoomNumPO;
@@ -76,8 +77,13 @@ public class HotelroomOperation {
         //获得从当前时间向后特定天数的日期
         ArrayList<Date> dates = DateOperation.getDates(new Date(), DateOperation.addDays(new Date(), Integer.valueOf(CfgReader.getInstance().getProperty("days"))));
         for (Date date : dates) {
+            //日期字符串
+            String dateS = DateOperation.dateToString(date);
             for (HotelroomPO po : pos) {
-                roomNums.add(new RoomNumPO(Login.getNowUserID(), DateOperation.dateToString(date), po.getRoomNumber(), po.getRoomType()));
+                //加上差值计算新的空房数量
+                int roomNum = getRoomNumByTypeAndDate(po.getHotelID(),po.getRoomType(),po.getHotelID());
+                roomNum+=(po.getRoomNumber()-roomNum);
+                roomNums.add(new RoomNumPO(Login.getNowUserID(), DateOperation.dateToString(date),roomNum, po.getRoomType()));
             }
             hotelroomDataService.setRoomNum(roomNums);
             //清空以添加下一天信息
@@ -134,5 +140,23 @@ public class HotelroomOperation {
             }
             hotelroomDataService.setRoomNum(roomNums);
         }
+    }
+
+    /**
+     * 根据日期获得酒店对应数目
+     *
+     * @param hotelID  酒店编号
+     * @param roomType 房间类型
+     * @param date     日期
+     * @return 酒店数目
+     */
+    private int getRoomNumByTypeAndDate(String hotelID, RoomType roomType, String date) throws RemoteException {
+        ArrayList<RoomNumPO> roomNums = hotelroomDataService.getEmptyrooms(hotelID, date);
+        for (RoomNumPO po : roomNums) {
+            if (po.getRoomType().equals(roomType)) {
+                return po.getEmptyNum();
+            }
+        }
+        return 0;
     }
 }
