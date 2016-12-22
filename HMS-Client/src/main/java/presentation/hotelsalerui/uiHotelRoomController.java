@@ -41,10 +41,6 @@ public class uiHotelRoomController implements Initializable{
      * 编辑房间的按钮
      */
     @FXML
-    private Label labelEditSingleRoom;
-    @FXML
-    private Label labelEditDoubleRoom;
-    @FXML
     private Label labelEditDisabledRoom;
 
     /**
@@ -80,14 +76,6 @@ public class uiHotelRoomController implements Initializable{
     /**
      * 确认取消按钮
      */
-    @FXML
-    private Button buttonConfirmSingleRoom;
-    @FXML
-    private Button buttonCancelSingleRoom;
-    @FXML
-    private Button buttonConfirmDoubleRoom;
-    @FXML
-    private Button buttonCancelDoubleRoom;
     @FXML
     private Button buttonConfirmDisabledRoom;
     @FXML
@@ -155,170 +143,53 @@ public class uiHotelRoomController implements Initializable{
     }
 
     /**
-     * 鼠标进入编辑单人房按钮
-     */
-    public void onEnteredLabelEditSingleRoom(){
-        labelEditSingleRoom.setUnderline(true);
-    }
-
-    /**
-     * 鼠标移出编辑单人房按钮
-     */
-    public void onExitedLabelEditSingleRoom(){
-        labelEditSingleRoom.setUnderline(false);
-    }
-
-    /**
-     * 鼠标点击编辑单人房按钮
-     */
-    public void onClickedLabelEditSingleRoom(){
-        labelSingleRoomNum.setVisible(false);
-        labelSingleRoomPrice.setVisible(false);
-        textFieldSingleRoomPrice.setVisible(true);
-        labelEditSingleRoom.setVisible(false);
-        buttonConfirmSingleRoom.setVisible(true);
-        buttonCancelSingleRoom.setVisible(true);
-        labelSingleRoomTotal.setVisible(false);
-        textFieldSingleRoomTotal.setVisible(true);
-
-        textFieldSingleRoomTotal.setText(labelSingleRoomTotal.getText());
-        textFieldSingleRoomPrice.setText(labelSingleRoomPrice.getText());
-    }
-
-    /**
-     * 鼠标进入编辑双人房按钮
-     */
-    public void onEnteredLabelEditDoubleRoom(){
-        labelEditDoubleRoom.setUnderline(true);
-    }
-
-    /**
-     * 鼠标移出编辑双人房按钮
-     */
-    public void onExitedLabelEditDoubleRoom(){
-        labelEditDoubleRoom.setUnderline(false);
-    }
-
-    /**
-     * 鼠标点击编辑双人房按钮
-     */
-    public void onClickedLabelEditDoubleRoom(){
-        labelDoubleRoomNum.setVisible(false);
-        labelDoubleRoomPrice.setVisible(false);
-        textFieldDoubleRoomPrice.setVisible(true);
-        labelEditDoubleRoom.setVisible(false);
-        buttonConfirmDoubleRoom.setVisible(true);
-        buttonCancelDoubleRoom.setVisible(true);
-        labelDoubleRoomTotal.setVisible(false);
-        textFieldDoubleRoomTotal.setVisible(true);
-
-        textFieldDoubleRoomTotal.setText(labelDoubleRoomTotal.getText());
-        textFieldDoubleRoomPrice.setText(labelDoubleRoomPrice.getText());
-    }
-
-    /**
-     * 鼠标进入编辑残疾人房按钮
+     * 鼠标进入编辑按钮
      */
     public void onEnteredLabelEditDisabledRoom(){
         labelEditDisabledRoom.setUnderline(true);
     }
 
     /**
-     * 鼠标移出编辑残疾人房按钮
+     * 鼠标移出编辑按钮
      */
     public void onExitedLabelEditDisabledRoom(){
         labelEditDisabledRoom.setUnderline(false);
     }
 
     /**
-     * 鼠标点击编辑残疾人房按钮
+     * 鼠标点击编辑按钮
      */
     public void onClickedLabelEditDisabledRoom(){
-        labelDisabledRoomNum.setVisible(false);
-        labelDisabledRoomPrice.setVisible(false);
-        textFieldDisabledRoomPrice.setVisible(true);
         labelEditDisabledRoom.setVisible(false);
+
+        labelSingleRoomTotal.setVisible(false);
+        labelSingleRoomPrice.setVisible(false);
+        labelDisabledRoomTotal.setVisible(false);
+        labelDisabledRoomPrice.setVisible(false);
+        labelDoubleRoomTotal.setVisible(false);
+        labelDoubleRoomPrice.setVisible(false);
+
+        textFieldSingleRoomTotal.setVisible(true);
+        textFieldSingleRoomPrice.setVisible(true);
+        textFieldDoubleRoomTotal.setVisible(true);
+        textFieldDoubleRoomPrice.setVisible(true);
+        textFieldDisabledRoomTotal.setVisible(true);
+        textFieldDisabledRoomPrice.setVisible(true);
+
         buttonConfirmDisabledRoom.setVisible(true);
         buttonCancelDisabledRoom.setVisible(true);
-        labelDisabledRoomTotal.setVisible(false);
-        textFieldDisabledRoomTotal.setVisible(true);
 
+        textFieldSingleRoomTotal.setText(labelSingleRoomTotal.getText());
+        textFieldSingleRoomPrice.setText(labelSingleRoomPrice.getText());
+        textFieldDoubleRoomTotal.setText(labelDisabledRoomTotal.getText());
+        textFieldDoubleRoomPrice.setText(labelDisabledRoomPrice.getText());
         textFieldDisabledRoomTotal.setText(labelDisabledRoomTotal.getText());
         textFieldDisabledRoomPrice.setText(labelDisabledRoomPrice.getText());
     }
 
-    /**
-     * 确认修改单人房监听
-     */
-    public void confirmEditSingleRoom(){
-        double price = Integer.parseInt(textFieldSingleRoomPrice.getText());
-        HotelroomVO vo = new HotelroomVO(hotelID, RoomType.SingleRoom, price, Integer.parseInt(textFieldSingleRoomTotal.getText()));
-        ArrayList<HotelroomVO> temp = new ArrayList<>();
-        try {
-            roomArray = hotelroombl.getRoomInfo();
-            temp.add(vo);
-            temp.add(roomArray.get(1));
-            temp.add(roomArray.get(2));
-            hotelroombl.setRoomInfo(temp);
-            roomArray = hotelroombl.getRoomInfo();
-            this.setHotelInfo();
-        } catch (RemoteException e) {
-            e.printStackTrace();
-        }
-        cancelEditSingleRoom();
-    }
 
     /**
-     * 取消修改单人房监听
-     */
-    public void cancelEditSingleRoom(){
-        labelEditSingleRoom.setVisible(true);
-        buttonConfirmSingleRoom.setVisible(false);
-        buttonCancelSingleRoom.setVisible(false);
-        textFieldSingleRoomPrice.setVisible(false);
-        labelSingleRoomNum.setVisible(true);
-        labelSingleRoomPrice.setVisible(true);
-        labelSingleRoomTotal.setVisible(true);
-        textFieldSingleRoomTotal.setVisible(false);
-    }
-
-    /**
-     * 确认修改双人房监听
-     */
-    public void confirmEditDoubleRoom(){
-        double price = Integer.parseInt(textFieldDoubleRoomPrice.getText());
-        HotelroomVO vo = new HotelroomVO(hotelID, RoomType.DoubleRoom, price, Integer.parseInt(textFieldDoubleRoomTotal.getText()));
-        ArrayList<HotelroomVO> temp = new ArrayList<>();
-        try {
-            roomArray = hotelroombl.getRoomInfo();
-            temp.add(roomArray.get(0));
-            temp.add(vo);
-            temp.add(roomArray.get(2));
-            hotelroombl.setRoomInfo(temp);
-            roomArray = hotelroombl.getRoomInfo();
-            this.setHotelInfo();
-        } catch (RemoteException e) {
-            e.printStackTrace();
-        }
-        cancelEditDoubleRoom();
-    }
-
-    /**
-     * 取消修改双人房监听
-     */
-    public void cancelEditDoubleRoom(){
-        labelEditDoubleRoom.setVisible(true);
-        buttonConfirmDoubleRoom.setVisible(false);
-        buttonCancelDoubleRoom.setVisible(false);
-        textFieldDoubleRoomPrice.setVisible(false);
-        labelDoubleRoomNum.setVisible(true);
-        labelDoubleRoomPrice.setVisible(true);
-        labelDoubleRoomTotal.setVisible(true);
-        textFieldDoubleRoomTotal.setVisible(false);
-    }
-
-    /**
-     * 确认修改残疾人房监听
+     * 确认修改监听
      */
     public void confirmEditDisabledRoom(){
         int numSingle = Integer.valueOf(textFieldSingleRoomTotal.getText());
@@ -347,13 +218,23 @@ public class uiHotelRoomController implements Initializable{
      */
     public void cancelEditDisabledRoom(){
         labelEditDisabledRoom.setVisible(true);
+
+        labelSingleRoomTotal.setVisible(true);
+        labelSingleRoomPrice.setVisible(true);
+        labelDisabledRoomTotal.setVisible(true);
+        labelDisabledRoomPrice.setVisible(true);
+        labelDoubleRoomTotal.setVisible(true);
+        labelDoubleRoomPrice.setVisible(true);
+
+        textFieldSingleRoomTotal.setVisible(false);
+        textFieldSingleRoomPrice.setVisible(false);
+        textFieldDoubleRoomTotal.setVisible(false);
+        textFieldDoubleRoomPrice.setVisible(false);
+        textFieldDisabledRoomTotal.setVisible(false);
+        textFieldDisabledRoomPrice.setVisible(false);
+
         buttonConfirmDisabledRoom.setVisible(false);
         buttonCancelDisabledRoom.setVisible(false);
-        textFieldDisabledRoomPrice.setVisible(false);
-        labelDisabledRoomNum.setVisible(true);
-        labelDisabledRoomPrice.setVisible(true);
-        labelDisabledRoomTotal.setVisible(true);
-        textFieldDisabledRoomTotal.setVisible(false);
     }
 
     /**

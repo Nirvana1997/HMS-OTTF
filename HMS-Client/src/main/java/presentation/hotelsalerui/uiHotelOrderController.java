@@ -309,14 +309,36 @@ public class uiHotelOrderController implements Initializable{
      * 返回列表界面
      */
     public void backToPaneTable(){
+        // 重新获取orderArray
+        try {
+            orderArray = new ArrayList<>();
+            ArrayList<OrderVO> tempList = hotelsalerbl.readOrder();
+            for (int i = 0; i < tempList.size(); i++) {
+                TableOrder tempTabelOrder = this.transVoTOTableOrder(tempList.get(i));
+                orderArray.add(tempTabelOrder);
+            }
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+        String state = menuButtonChooseOrder.getText();
+        if(state.equals("全部订单")){
+            this.refreshTable("全部");
+        }
+        else if(state.equals("未执行订单")){
+            this.refreshTable("未执行");
+        }
+        else if(state.equals("已执行订单")){
+            this.refreshTable("已执行");
+        }
+        else if(state.equals("异常订单")){
+            this.refreshTable("异常");
+        }
+        else if(state.equals("已撤销订单")){
+            this.refreshTable("已撤销");
+        }
         paneTable.setVisible(true);
         paneDetailedOrder.setVisible(false);
         paneDelayTime.setVisible(false);
-        buttonExecuteOrder.setVisible(true);
-        buttonDelayCheckIn.setVisible(true);
-
-        String state = menuButtonChooseOrder.getText();
-        this.refreshTable(state);
     }
 
     /**
@@ -354,7 +376,6 @@ public class uiHotelOrderController implements Initializable{
      */
     public void cancelDelay(){
         paneDelayTime.setVisible(false);
-        buttonExecuteOrder.setVisible(true);
         buttonDelayCheckIn.setVisible(true);
     }
 
@@ -373,7 +394,6 @@ public class uiHotelOrderController implements Initializable{
     public void cancelExcuteOrder(){
         paneExcuteOrder.setVisible(false);
         buttonExecuteOrder.setVisible(true);
-        buttonDelayCheckIn.setVisible(true);
     }
 
     /**

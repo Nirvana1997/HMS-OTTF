@@ -90,22 +90,22 @@
       </VBox>
       <AnchorPane fx:id="paneTable" layoutX="250.0" prefHeight="618.0" prefWidth="750.0" style="-fx-background-color: #FFFFFF;">
          <children>
-            <TableView fx:id="orderList" layoutX="51.0" layoutY="84.0" prefHeight="450.0" prefWidth="636.0" stylesheets="@tableView.css">
+            <TableView fx:id="orderList" layoutX="31.0" layoutY="84.0" prefHeight="450.0" prefWidth="689.0" stylesheets="@tableView.css">
               <columns>
-                <TableColumn fx:id="columnOrderID" prefWidth="102.0" text="订单编号" />
-                <TableColumn fx:id="columnUserID" prefWidth="105.0" text="用户ID" />
-                  <TableColumn fx:id="columnRoomType" prefWidth="102.0" text="房间类型" />
-                  <TableColumn fx:id="columnState" prefWidth="108.0" text="订单状态" />
-                  <TableColumn fx:id="columnIntendTime" prefWidth="107.0" text="预计入住时间" />
-                  <TableColumn fx:id="columnPrice" prefWidth="111.0" text="价格" />
+                <TableColumn fx:id="columnOrderID" prefWidth="160.0" text="订单编号" />
+                <TableColumn fx:id="columnUserID" prefWidth="90.0" text="用户ID" />
+                  <TableColumn fx:id="columnRoomType" prefWidth="100.0" text="房间类型" />
+                  <TableColumn fx:id="columnState" prefWidth="118.0" text="订单状态" />
+                  <TableColumn fx:id="columnIntendTime" prefWidth="112.0" text="预计入住时间" />
+                  <TableColumn fx:id="columnPrice" prefWidth="108.0" text="价格" />
               </columns>
             </TableView>
-            <Button layoutX="611.0" layoutY="557.0" mnemonicParsing="false" onMouseClicked="#checkDetailedOrder" text="查看详细">
+            <Button layoutX="627.0" layoutY="557.0" mnemonicParsing="false" onMouseClicked="#checkDetailedOrder" text="查看详细">
                <font>
                   <Font size="14.0" />
                </font>
             </Button>
-            <MenuButton fx:id="menuButtonChooseOrder" layoutX="51.0" layoutY="35.0" mnemonicParsing="false" style="-fx-background-color: #FFFFFF;" text="选择订单状态">
+            <MenuButton fx:id="menuButtonChooseOrder" layoutX="31.0" layoutY="35.0" mnemonicParsing="false" style="-fx-background-color: #FFFFFF;" text="全部订单">
               <items>
                   <MenuItem mnemonicParsing="false" onAction="#checkAllOrder" text="全部订单" />
                 <MenuItem mnemonicParsing="false" onAction="#checkUnExcutedOrder" text="已执行订单" />
