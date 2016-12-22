@@ -127,6 +127,13 @@ public class uiWebSalerCreditController {
         sceneJump.jumpToSceneOrder();
     }
 
+    /**
+     * 跳转到制定等级策略
+     */
+    public void jumpToSceneMemberLevelUp() throws IOException {
+        sceneJump.jumpToSceneMemberUp();
+    }
+
     public void onConfirmEntered(){
         buttonConfirm1.setVisible(false);
         buttonConfirm2.setVisible(true);

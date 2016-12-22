@@ -158,10 +158,10 @@
       </AnchorPane>
       <TableView fx:id="orderList" editable="true" layoutX="315.0" layoutY="171.0" prefHeight="414.0" prefWidth="495.0" stylesheets="@tableview.css">
         <columns>
-          <TableColumn fx:id="columnID" prefWidth="130.0" text="订单编号" />
-          <TableColumn fx:id="columnHotel" editable="false" prefWidth="110.0" text="酒店名称" />
+          <TableColumn fx:id="columnID" prefWidth="162.0" text="订单编号" />
+          <TableColumn fx:id="columnHotel" editable="false" prefWidth="87.0" text="酒店名称" />
             <TableColumn fx:id="columnTime" prefWidth="162.0" text="入住时间" />
-            <TableColumn fx:id="columnState" prefWidth="92.0" text="订单状态" />
+            <TableColumn fx:id="columnState" prefWidth="83.0" text="订单状态" />
         </columns>
       </TableView>
       <TextField fx:id="textSearch" layoutX="739.0" layoutY="109.0" prefHeight="23.0" prefWidth="142.0" promptText="搜索订单">

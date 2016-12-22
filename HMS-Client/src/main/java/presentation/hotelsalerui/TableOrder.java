@@ -15,6 +15,7 @@ public class TableOrder {
     private final SimpleStringProperty Price = new SimpleStringProperty();
 
     public TableOrder(String orderid, String userid, String roomtype, String state, String intendTime, String price) {
+
         setOrderID(orderid);
         setUserID(userid);
         setRoomType(roomtype);
@@ -95,7 +96,7 @@ public class TableOrder {
         return Price.get();
     }
     public void setPrice(String price){
-        this.IntendTime.set(price);
+        this.Price.set(price);
     }
     public StringProperty PriceProperty(){
         return Price;

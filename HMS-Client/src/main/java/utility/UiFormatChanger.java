@@ -22,7 +22,16 @@ public class UiFormatChanger {
      * @return yyyy_MM.dd格式的日期
      */
     public static String dateToString(Date date){
-        DateFormat df = new SimpleDateFormat("yyyy_MM_dd");
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        return df.format(date);
+    }
+    /**
+     * 日期转字符串
+     * @param date 日期
+     * @return yyyy_MM.dd格式的日期
+     */
+    public static String dateToString2(Date date){
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm");
         return df.format(date);
     }
     /**
@@ -92,4 +101,39 @@ public class UiFormatChanger {
         return sdf.parse(ld.getValue().toString());
     }
 
+    /**
+     * 商圈转换为中文字符串
+     * @param tradeArea 商圈
+     * @return 字符串格式的商圈
+     */
+    public static String tradeAreaTOString(TradeArea tradeArea){
+        if(tradeArea==TradeArea.Changjiang)
+            return "长江";
+        else if(tradeArea==TradeArea.Huanghe)
+            return  "黄河";
+        else if(tradeArea==TradeArea.Nanhai)
+            return  "南海";
+        else return null;
+    }
+
+    /**
+     * 地址转换为中文字符串
+     * @param address 地址
+     * @return 中文字符串格式的地址
+     */
+    public static String addressTOString(Address address){
+        if(address==Address.Aomen)
+            return "澳门";
+        else if(address==Address.Beijing)
+            return  "北京";
+        else if(address==Address.Shanghai)
+            return "上海";
+        else if(address==Address.Guangdong)
+            return "广东";
+        else if(address==Address.Nanjing)
+            return "南京";
+        else if(address==Address.Tianjing)
+            return "天津";
+        else return null;
+    }
 }
