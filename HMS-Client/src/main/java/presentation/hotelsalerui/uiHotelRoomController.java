@@ -321,14 +321,18 @@ public class uiHotelRoomController implements Initializable{
      * 确认修改残疾人房监听
      */
     public void confirmEditDisabledRoom(){
-        double price = Integer.parseInt(textFieldDisabledRoomPrice.getText());
-        HotelroomVO vo = new HotelroomVO(hotelID, RoomType.DisabledRoom, price, Integer.parseInt(textFieldDisabledRoomTotal.getText()));
+        int numSingle = Integer.valueOf(textFieldSingleRoomTotal.getText());
+        int numDouble = Integer.valueOf(textFieldDoubleRoomTotal.getText());
+        int numDisable = Integer.valueOf(textFieldDisabledRoomTotal.getText());
+        double priceSingle = Double.valueOf(textFieldSingleRoomPrice.getText());
+        double priceDouble = Double.valueOf(textFieldDoubleRoomPrice.getText());
+        double priceDisable = Integer.parseInt(textFieldDisabledRoomPrice.getText());
         ArrayList<HotelroomVO> temp = new ArrayList<>();
         try {
             roomArray = hotelroombl.getRoomInfo();
-            temp.add(roomArray.get(0));
-            temp.add(roomArray.get(1));
-            temp.add(vo);
+            temp.add(new HotelroomVO(hotelID, RoomType.DoubleRoom, priceDouble, numDouble));
+            temp.add(new HotelroomVO(hotelID, RoomType.SingleRoom, priceSingle, numSingle));
+            temp.add(new HotelroomVO(hotelID, RoomType.DisabledRoom, priceDisable, numDisable));
             hotelroombl.setRoomInfo(temp);
             roomArray = hotelroombl.getRoomInfo();
             this.setHotelInfo();
