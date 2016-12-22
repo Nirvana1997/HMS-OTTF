@@ -138,15 +138,5 @@ public class uiLogController {
         Platform.exit();
     }
 
-    @FXML
-    private Text buttonMin;
-    public void min(){
-        Platform.runLater(new Runnable() {
-            @Override
-            public void run() {
-                buttonMin.getScene().getWindow().hide();
-            }
-        });
-    }
 
 }
