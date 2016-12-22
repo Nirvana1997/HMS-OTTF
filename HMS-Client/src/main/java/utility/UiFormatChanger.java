@@ -22,7 +22,16 @@ public class UiFormatChanger {
      * @return yyyy_MM.dd格式的日期
      */
     public static String dateToString(Date date){
-        DateFormat df = new SimpleDateFormat("yyyy_MM_dd");
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        return df.format(date);
+    }
+    /**
+     * 日期转字符串
+     * @param date 日期
+     * @return yyyy_MM.dd格式的日期
+     */
+    public static String dateToString2(Date date){
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd hh:mm");
         return df.format(date);
     }
     /**
