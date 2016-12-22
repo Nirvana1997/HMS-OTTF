@@ -221,7 +221,7 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <Button fx:id="buttonDelayCheckIn" focusTraversable="false" layoutX="477.0" layoutY="503.0" mnemonicParsing="false" onMouseClicked="#showDelayPane" prefHeight="36.0" prefWidth="124.0" text="延迟入住">
+            <Button fx:id="buttonDelayCheckIn" focusTraversable="false" layoutX="477.0" layoutY="503.0" mnemonicParsing="false" onMouseClicked="#showDelayPane" prefHeight="36.0" prefWidth="124.0" text="延迟入住" visible="false">
                <font>
                   <Font size="18.0" />
                </font>
@@ -267,7 +267,7 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <Button fx:id="buttonExecuteOrder" focusTraversable="false" layoutX="349.0" layoutY="503.0" mnemonicParsing="false" onAction="#excuteOrder" text="执行订单">
+            <Button fx:id="buttonExecuteOrder" focusTraversable="false" layoutX="505.0" layoutY="503.0" mnemonicParsing="false" onAction="#excuteOrder" text="执行订单" visible="false">
                <font>
                   <Font size="18.0" />
                </font>

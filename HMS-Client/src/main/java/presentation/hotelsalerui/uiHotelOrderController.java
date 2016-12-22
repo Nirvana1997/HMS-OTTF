@@ -4,6 +4,7 @@ import businesslogic.hotelsalerbl.HotelSalerController;
 import businesslogic.logbl.LogController;
 import businesslogicservice.hotelsalerblservice.HotelsalerblService;
 import businesslogicservice.logblservice.LogBlService;
+import enumData.OrderState;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -267,6 +268,12 @@ public class uiHotelOrderController implements Initializable{
                 orderId = orderList.getSelectionModel().getSelectedItem().getOrderID();
                 try {
                     OrderVO vo = hotelsalerbl.readOrderByID(orderId);
+                    if(vo.getOrderState() == OrderState.exception){
+                        buttonDelayCheckIn.setVisible(true);
+                    }
+                    else if(vo.getOrderState() == OrderState.executing){
+                        buttonExecuteOrder.setVisible(true);
+                    }
                     labelOrderId.setText(vo.getOrderID());
                     labelUserId.setText(vo.getUserID());
                     labelRoomType.setText(UiFormatChanger.typeTOstring(vo.getRoomType()));
@@ -307,6 +314,9 @@ public class uiHotelOrderController implements Initializable{
         paneDelayTime.setVisible(false);
         buttonExecuteOrder.setVisible(true);
         buttonDelayCheckIn.setVisible(true);
+
+        String state = menuButtonChooseOrder.getText();
+        this.refreshTable(state);
     }
 
     /**
