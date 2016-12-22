@@ -10,6 +10,7 @@ import dataservice.promotiondataservice.PromotionDataService;
 import enumData.PromotionType;
 import po.PromotionPO;
 import rmi.RemoteHelper;
+import utility.DateOperation;
 import utility.PromotionPVChanger;
 import vo.OrderVO;
 import vo.PromotionVO;
@@ -53,7 +54,8 @@ public class PromotionDataImpl implements PromotionInfo, WebPromotionInfo, Hotel
         //营销策略列表
         ArrayList<PromotionPO> promotions;
         //最低价格，初始为原价
-        double leastPrice = orderVO.getPrice()*orderVO.getRoomNumber();
+        int days = DateOperation.getDates(orderVO.getCheckInDate(),orderVO.getCheckOutDate()).size();
+        double leastPrice = orderVO.getPrice()*orderVO.getRoomNumber()*days;
 
         //寻找最佳营销策略使用方案
         PromotionPO bestPromotion = null;
@@ -180,7 +182,16 @@ public class PromotionDataImpl implements PromotionInfo, WebPromotionInfo, Hotel
         ArrayList<PromotionPO> res = new ArrayList<PromotionPO>();
         //获得各种类型可使用的营销策略
         for (PromotionType type : PromotionType.values()) {
-            mergeList(res, promotionDataService.getPromotionList(type));
+            ArrayList<PromotionPO> promotions = promotionDataService.getPromotionList(type);
+            //网站营销策略直接连接
+            if(type.toString().startsWith("Web"))
+                mergeList(res, promotions);
+            else{
+                for(PromotionPO po:promotions){
+                    if(po.getHotelID().equals(hotelID))
+                        res.add(po);
+                }
+            }
         }
         return res;
     }

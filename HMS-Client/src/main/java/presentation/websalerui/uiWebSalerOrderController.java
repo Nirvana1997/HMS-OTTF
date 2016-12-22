@@ -92,6 +92,13 @@ public class uiWebSalerOrderController implements Initializable {
     }
 
     /**
+     * 跳转到制定等级策略
+     */
+    public void jumpToSceneMemberLevelUp() throws IOException {
+        sceneJump.jumpToSceneMemberUp();
+    }
+
+    /**
      * 将orderVO对象转化为TableOrder对象
      * @param vo
      * @return
