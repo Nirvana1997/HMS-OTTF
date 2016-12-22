@@ -8,6 +8,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.text.Text;
 import utility.UiFormatChanger;
 import vo.HotelinfoVO;
 import vo.OrderVO;
@@ -25,6 +26,12 @@ public class uiMyOrderController implements Initializable {
      * 用户界面控制器
      */
     UserController userController = new UserController();
+
+    /**
+     * 用户真实姓名
+     */
+    @FXML
+    private Text UserName;
 
     /**
      * 正常订单按钮
@@ -280,6 +287,7 @@ public class uiMyOrderController implements Initializable {
             edlist = userController.readOrder(OrderState.executed);
             calist = userController.readOrder(OrderState.canceled);
             ablist = userController.readOrder(OrderState.exception);
+            UserName.setText(userController.showUserInfo().getName());
         } catch (RemoteException e) {
             e.printStackTrace();
         }

@@ -24,6 +24,12 @@ public class uiOrderController implements Initializable {
     UserController userController = new UserController();
 
     /**
+     * 用户真实姓名
+     */
+    @FXML
+    private Text UserName;
+
+    /**
      * 撤回按钮
      */
     @FXML
@@ -186,6 +192,7 @@ public class uiOrderController implements Initializable {
         OrderVO vo = null;
         try {
             vo = userController.getOrderInfo(uiMyOrderController.getOrderID());
+            UserName.setText(userController.showUserInfo().getName());
         } catch (RemoteException e) {
             e.printStackTrace();
         }

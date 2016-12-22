@@ -28,6 +28,12 @@ public class uiReserveHotelController implements Initializable {
     UserController userController = new UserController();
 
     /**
+     * 用户真实姓名
+     */
+    @FXML
+    private Text UserName;
+
+    /**
      * 酒店名称文本
      */
     @FXML
@@ -233,6 +239,7 @@ public class uiReserveHotelController implements Initializable {
         HotelinfoVO currentHotel = null;
         try {
             currentHotel = userController.readHotel(sceneJump.getHotelID());
+            UserName.setText(userController.showUserInfo().getName());
         } catch (RemoteException e) {
             e.printStackTrace();
         }

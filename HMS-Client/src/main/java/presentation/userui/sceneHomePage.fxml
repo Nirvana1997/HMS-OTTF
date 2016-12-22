@@ -76,7 +76,7 @@
             <Font name="SimHei" size="16.0" />
          </font>
       </Label>
-      <Button fx:id="buttonHot" layoutX="796.0" layoutY="491.0" mnemonicParsing="false" onAction="#gotoHotHotel" prefHeight="39.0" prefWidth="204.0" text="Button">
+      <Button fx:id="buttonHot" layoutX="796.0" layoutY="491.0" mnemonicParsing="false" onAction="#gotoHotHotel" prefHeight="39.0" prefWidth="204.0" text="Button" visible="false">
          <effect>
             <ImageInput>
                <source>
@@ -85,7 +85,7 @@
             </ImageInput>
          </effect>
       </Button>
-      <Button fx:id="buttonPromotion" layoutX="745.0" layoutY="554.0" mnemonicParsing="false" onAction="#gotoPromotion" prefHeight="39.0" prefWidth="255.0" text="Button">
+      <Button fx:id="buttonPromotion" layoutX="745.0" layoutY="554.0" mnemonicParsing="false" onAction="#gotoPromotion" prefHeight="39.0" prefWidth="255.0" text="Button" visible="false">
          <effect>
             <ImageInput>
                <source>

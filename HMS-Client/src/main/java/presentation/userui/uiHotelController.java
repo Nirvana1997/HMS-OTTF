@@ -30,6 +30,11 @@ public class uiHotelController implements Initializable {
      */
     UserController userController = new UserController();
 
+    /**
+     * 用户真实姓名
+     */
+    @FXML
+    private Text UserName;
 
     /**
      * 酒店基本信息按钮
@@ -407,6 +412,7 @@ public class uiHotelController implements Initializable {
             } else havecd = "否";
             orderData.add(new tableDetailOrder(list.get(i).getOrderID(), date, UiFormatChanger.stateTOstring(list.get(i).getOrderState())
                     , list.get(i).getPeopleNumber(), list.get(i).getPrice(), havecd, UiFormatChanger.typeTOstring(list.get(i).getRoomType())));
+            System.out.println(list.get(i).getPrice());
         }
         orderList.setItems(orderData);
         columnID.setCellValueFactory(cellData -> cellData.getValue().OrderIDProperty());
@@ -504,6 +510,7 @@ public class uiHotelController implements Initializable {
             initRoomInfo(roomlist);
             initTable(orderlist);
             initComment(commentlist);
+            UserName.setText(userController.showUserInfo().getName());
         } catch (RemoteException e) {
             e.printStackTrace();
         }

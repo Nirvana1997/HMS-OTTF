@@ -19,6 +19,16 @@ import java.util.ResourceBundle;
  */
 public class uiUserInfoController implements Initializable {
     /**
+     * 用户界面控制器
+     */
+    UserController userController = new UserController();
+    /**
+     * 用户真实姓名
+     */
+    @FXML
+    private Text UserName;
+
+    /**
      * 用户ID
      */
     @FXML
@@ -74,6 +84,9 @@ public class uiUserInfoController implements Initializable {
      * 跳转界面的类
      */
     sceneJump jump = new sceneJump();
+
+    public uiUserInfoController() throws RemoteException {
+    }
 
     /**
      * 跳转到首页
@@ -145,8 +158,7 @@ public class uiUserInfoController implements Initializable {
         int Credit = Integer.parseInt(textCredit.getText());
         String Identity = textIdentity.getText();
         UserInfoVO vo = new UserInfoVO(UserID, RealName, Identity, PhoneNumber, Credit, Birthday, CompanyID, userType, VIPLevel);
-        InfoBlService infoBlService = new UserController();
-        infoBlService.modifyUserInfo(vo);
+        userController.modifyUserInfo(vo);
         jump.ModifySuccess();
     }
 
@@ -205,6 +217,7 @@ public class uiUserInfoController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         try {
             init();
+            UserName.setText(userController.showUserInfo().getName());
         } catch (RemoteException e) {
             e.printStackTrace();
         }

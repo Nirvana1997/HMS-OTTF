@@ -7,6 +7,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.text.Text;
 import utility.UiFormatChanger;
 import vo.HotelListItemVO;
 import java.io.IOException;
@@ -23,6 +24,12 @@ public class uiReadHotelController implements Initializable {
      * 用户界面的控制器
      */
     UserController userController = new UserController();
+
+    /**
+     * 用户真实姓名
+     */
+    @FXML
+    private Text UserName;
 
     /**
      * 酒店列表
@@ -315,5 +322,10 @@ public class uiReadHotelController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         textCircle.setItems(circle);
+        try {
+            UserName.setText(userController.showUserInfo().getName());
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
     }
 }

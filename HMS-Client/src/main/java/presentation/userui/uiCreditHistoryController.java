@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.text.Text;
 import vo.CreditRecordVO;
 import java.io.IOException;
 import java.net.URL;
@@ -28,6 +29,12 @@ public class uiCreditHistoryController implements Initializable {
      * 跳转界面的类
      */
     sceneJump jump = new sceneJump();
+
+    /**
+     * 用户真实姓名
+     */
+    @FXML
+    private Text UserName;
 
     /**
      * 信用变化记录列表
@@ -162,10 +169,12 @@ public class uiCreditHistoryController implements Initializable {
         ArrayList<CreditRecordVO> creditlist = null;
         try {
             creditlist = userController.showCreditRecords();
+            UserName.setText(userController.showUserInfo().getName());
             initTable(creditlist);
         } catch (RemoteException e) {
             e.printStackTrace();
         }
+
 
     }
 }

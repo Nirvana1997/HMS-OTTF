@@ -3,18 +3,22 @@ package presentation.userui;
 import businesslogic.logbl.LogController;
 import businesslogic.userbl.UserController;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 import vo.CommentVO;
 import vo.OrderVO;
 
 import java.io.IOException;
+import java.net.URL;
 import java.rmi.RemoteException;
+import java.util.ResourceBundle;
 
 /**
  * Created by Administrator on 2016/12/5.
  */
-public class uiCommentOrderController {
+public class uiCommentOrderController implements Initializable{
     /**
      * 用户界面控制器
      */
@@ -24,6 +28,13 @@ public class uiCommentOrderController {
      * 跳转界面的类
      */
     sceneJump jump = new sceneJump();
+
+
+    /**
+     * 用户真实姓名
+     */
+    @FXML
+    private Text UserName;
 
     /**
      * 评分文本输入框
@@ -118,5 +129,15 @@ public class uiCommentOrderController {
         userController.comment(commentvo);
         jump.gotoOrder();
         jump.CommentSuccess();
+
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        try {
+            UserName.setText(userController.showUserInfo().getName());
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
     }
 }

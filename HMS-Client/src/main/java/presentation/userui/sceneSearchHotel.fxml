@@ -198,13 +198,14 @@
                   <Font size="14.0" />
                </font>
             </TextField>
-            <RadioButton fx:id="SingleRoom" layoutX="174.0" layoutY="203.0" mnemonicParsing="false" text="单人间">
+            <RadioButton fx:id="SingleRoom" layoutX="174.0" layoutY="203.0" mnemonicParsing="false" text="单人间" toggleGroup="$RoomType">
                <font>
                   <Font size="16.0" />
                </font>
                <toggleGroup>
                   <ToggleGroup fx:id="RoomType" />
                </toggleGroup>
+
             </RadioButton>
             <RadioButton fx:id="DoubleRoom" layoutX="283.0" layoutY="203.0" mnemonicParsing="false" text="双人间" toggleGroup="$RoomType">
                <font>

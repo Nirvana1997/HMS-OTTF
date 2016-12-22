@@ -1,14 +1,30 @@
 package presentation.userui;
 
 import businesslogic.logbl.LogController;
+import businesslogic.userbl.UserController;
+import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.text.Text;
 
 import java.io.IOException;
+import java.net.URL;
 import java.rmi.RemoteException;
+import java.util.ResourceBundle;
 
 /**
  * Created by Administrator on 2016/12/3.
  */
-public class uiHomePageController {
+public class uiHomePageController implements Initializable{
+    /**
+     * 用户界面控制器
+     */
+    UserController userController = new UserController();
+
+    /**
+     * 用户真实姓名
+     */
+    @FXML
+    private Text UserName;
 
     /**
      * 跳转界面的类
@@ -80,5 +96,14 @@ public class uiHomePageController {
 
     public void gotoPromotion(){
 
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        try {
+            UserName.setText(userController.showUserInfo().getName());
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
     }
 }

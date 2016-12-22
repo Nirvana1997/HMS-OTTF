@@ -10,12 +10,14 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
 import javafx.util.Callback;
 import utility.UiFormatChanger;
 import vo.HotelListItemVO;
 import vo.LimitVO;
 import java.io.IOException;
 import java.net.URL;
+import java.rmi.RemoteException;
 import java.text.ParseException;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -26,11 +28,25 @@ import java.util.ResourceBundle;
  */
 public class uiSearchHotelController implements Initializable {
 
+    /**
+     * 用户界面控制器
+     */
+    UserController userController = new UserController();
 
     /**
      * 跳转界面的类
      */
     sceneJump jump = new sceneJump();
+
+
+    /**
+     * 用户真实姓名
+     */
+    @FXML
+    private Text UserName;
+
+    public uiSearchHotelController() throws RemoteException {
+    }
 
     /**
      * 跳转到首页
@@ -452,6 +468,11 @@ public class uiSearchHotelController implements Initializable {
         };
         checkinDate.setDayCellFactory(dayCellFactoryin);
         textCircle.getItems().addAll(circle);
+        try {
+            UserName.setText(userController.showUserInfo().getName());
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
     }
 
     /**

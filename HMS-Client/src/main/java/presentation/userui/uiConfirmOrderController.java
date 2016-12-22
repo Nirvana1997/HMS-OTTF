@@ -21,6 +21,8 @@ public class uiConfirmOrderController implements Initializable {
      * 用户界面控制器
      */
     UserController userController = new UserController();
+
+
     /**
      * 确认的订单价格
      */
@@ -96,5 +98,6 @@ public class uiConfirmOrderController implements Initializable {
         if(orderVO.getPromotionName()!=null) {
             textPromotion.setText(orderVO.getPromotionName());
         }
+
     }
 }
