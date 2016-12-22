@@ -48,7 +48,6 @@ public class RemoteHelper {
     }
 
     private RemoteHelper() {
-        linkToServer();
     }
 
     /**
@@ -61,10 +60,11 @@ public class RemoteHelper {
 
     /**
      * 连接到服务器
+     * @param ipAddress 服务器ip地址
      */
-    private void linkToServer(){
+    public void linkToServer(String ipAddress){
         try {
-            dataFactory = (DataFactory)Naming.lookup("rmi://172.28.159.89:1099/DataFactory");
+            dataFactory = (DataFactory)Naming.lookup("rmi://"+ipAddress+":1099/DataFactory");
             logDataService = dataFactory.getLogDataImpl();
             hotelinfoDataService = dataFactory.getHotelinfoDataImpl();
             hotelroomDataService = dataFactory.getHotelroomDataImpl();
@@ -73,8 +73,7 @@ public class RemoteHelper {
             userDataService = dataFactory.getUserDataImpl();
             websalerDataService = dataFactory.getWebsalerDataImpl();
             companyDataService = dataFactory.getCompanyDataImpl();
-              System.out.println("linked");
-              connected = true;
+            connected = true;
         } catch (RemoteException e) {
             e.printStackTrace();
         } catch (NotBoundException e) {

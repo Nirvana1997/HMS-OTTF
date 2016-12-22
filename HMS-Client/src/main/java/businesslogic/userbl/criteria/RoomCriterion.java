@@ -103,7 +103,6 @@ public class RoomCriterion implements Criterion {
         if (roomPO == null || (roomPO.getPrice() > maxPrice || roomPO.getPrice() < minPrice)) {
             return false;
         }
-
         //判断数目是否符合条件
         RoomNumJudger roomNumJudger = new RoomNumJudger();
         return roomNumJudger.haveEnoughRoom(hotelID, startDate, endDate, roomType, num);

@@ -9,6 +9,7 @@ import javafx.stage.StageStyle;
 import presentation.logui.SceneInput;
 import presentation.logui.SceneLog;
 import presentation.logui.uiLogController;
+import rmi.RemoteHelper;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
@@ -21,7 +22,6 @@ public class Main extends Application{
     private SceneInput sceneInput;
 
     public static void main(String[] args) throws UnknownHostException {
-        ClientRunner clientRunner = new ClientRunner();
         launch(args);
     }
 

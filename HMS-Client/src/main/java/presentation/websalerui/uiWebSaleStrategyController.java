@@ -383,7 +383,6 @@ public class uiWebSaleStrategyController implements Initializable{
 
             for(int i = 0; i < promotionMember.size(); i++){
                 int level = promotionMember.get(i).getVipLevel();
-                System.out.println(level);
                 if(level == 1){
                     labelLevel1.setText(String.valueOf(promotionMember.get(i).getDiscount() * 10));
                 }

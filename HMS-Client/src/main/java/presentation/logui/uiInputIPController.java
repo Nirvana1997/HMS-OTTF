@@ -8,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import rmi.RemoteHelper;
 
 import java.io.IOException;
 
@@ -22,7 +23,7 @@ public class uiInputIPController {
     private Button buttonOK;
     public void Enter() throws IOException {
         String ip = textIP.getText();
-        //// TODO: 2016/12/22  
+        RemoteHelper.getInstance().linkToServer(ip);
         Stage secondWindow = new Stage();
         Scene scene = new Scene((Parent) FXMLLoader.load(getClass().getResource("sceneLog.fxml")));
         secondWindow.initStyle(StageStyle.TRANSPARENT);

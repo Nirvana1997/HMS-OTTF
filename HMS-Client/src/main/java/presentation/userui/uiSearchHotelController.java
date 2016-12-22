@@ -399,6 +399,7 @@ public class uiSearchHotelController implements Initializable {
      * @return 预订房间类型
      */
     public enumData.RoomType getRoomType(ToggleGroup bt) {
+        System.out.println(bt.getSelectedToggle());
         if (bt.getSelectedToggle() == SingleRoom) {
             return enumData.RoomType.SingleRoom;
         } else if (bt.getSelectedToggle() == DoubleRoom) {

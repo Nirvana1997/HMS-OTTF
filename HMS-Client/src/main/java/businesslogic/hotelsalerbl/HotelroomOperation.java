@@ -14,6 +14,7 @@ import utility.DateOperation;
 import utility.HotelPVChanger;
 import utility.OrderPVChanger;
 import vo.BelowLineOrderVO;
+import vo.HotelinfoVO;
 import vo.HotelroomVO;
 import vo.RoomNumVO;
 
@@ -72,6 +73,17 @@ public class HotelroomOperation {
             pos.add(HotelPVChanger.hotelroomV2P(vo));
         }
         hotelroomDataService.setRoomInfo(pos);
+        //修改酒店最低价格
+        double minPrice = Double.POSITIVE_INFINITY;
+        for(HotelroomPO po:pos){
+            if(po.getPrice()<minPrice)
+                minPrice = po.getPrice();
+        }
+       HotelInfoOperation hotelInfoOperation = new HotelInfoOperation();
+       HotelinfoVO hotelInfo = hotelInfoOperation.getHotelInfo();
+       hotelInfo.setMinPrice(minPrice);
+       hotelInfoOperation.modifyHotelInfo(hotelInfo);
+
         //构成房间数目PO
         ArrayList<RoomNumPO> roomNums = new ArrayList<RoomNumPO>();
         //获得从当前时间向后特定天数的日期
