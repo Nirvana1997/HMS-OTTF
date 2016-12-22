@@ -90,7 +90,7 @@
       </VBox>
       <AnchorPane fx:id="paneTable" layoutX="250.0" prefHeight="618.0" prefWidth="750.0" style="-fx-background-color: #FFFFFF;">
          <children>
-            <TableView fx:id="orderList" layoutX="51.0" layoutY="84.0" prefHeight="450.0" prefWidth="636.0">
+            <TableView fx:id="orderList" layoutX="51.0" layoutY="84.0" prefHeight="450.0" prefWidth="636.0" stylesheets="@tableView.css">
               <columns>
                 <TableColumn fx:id="columnOrderID" prefWidth="102.0" text="订单编号" />
                 <TableColumn fx:id="columnUserID" prefWidth="105.0" text="用户ID" />
@@ -105,7 +105,7 @@
                   <Font size="14.0" />
                </font>
             </Button>
-            <MenuButton fx:id="menuButtonChooseOrder" layoutX="51.0" layoutY="35.0" mnemonicParsing="false" text="选择订单状态">
+            <MenuButton fx:id="menuButtonChooseOrder" layoutX="51.0" layoutY="35.0" mnemonicParsing="false" style="-fx-background-color: #FFFFFF;" text="选择订单状态">
               <items>
                   <MenuItem mnemonicParsing="false" onAction="#checkAllOrder" text="全部订单" />
                 <MenuItem mnemonicParsing="false" onAction="#checkUnExcutedOrder" text="已执行订单" />
@@ -221,7 +221,7 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <Button fx:id="buttonDelayCheckIn" focusTraversable="false" layoutX="477.0" layoutY="503.0" mnemonicParsing="false" onMouseClicked="#showDelayPane" prefHeight="36.0" prefWidth="124.0" text="延迟入住">
+            <Button fx:id="buttonDelayCheckIn" focusTraversable="false" layoutX="477.0" layoutY="503.0" mnemonicParsing="false" onMouseClicked="#showDelayPane" prefHeight="36.0" prefWidth="124.0" text="延迟入住" visible="false">
                <font>
                   <Font size="18.0" />
                </font>
@@ -267,7 +267,7 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <Button fx:id="buttonExecuteOrder" focusTraversable="false" layoutX="349.0" layoutY="503.0" mnemonicParsing="false" onAction="#excuteOrder" text="执行订单">
+            <Button fx:id="buttonExecuteOrder" focusTraversable="false" layoutX="505.0" layoutY="503.0" mnemonicParsing="false" onAction="#excuteOrder" text="执行订单" visible="false">
                <font>
                   <Font size="18.0" />
                </font>

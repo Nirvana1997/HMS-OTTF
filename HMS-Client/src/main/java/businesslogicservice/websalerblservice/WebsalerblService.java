@@ -4,9 +4,11 @@ import enumData.CreditRecoverWay;
 import enumData.OrderState;
 import enumData.PromotionType;
 import enumData.ResultMessage;
+import po.VipUpPO;
 import vo.CanceledExceptionOrderVO;
 import vo.OrderVO;
 import vo.PromotionVO;
+import vo.VipUpVO;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
@@ -63,6 +65,22 @@ public interface WebsalerblService {
     public int getCredit(String userID) throws RemoteException;
 
     /**
+     * 获得每级会员所需要的信用值
+     *
+     * @return 获得信用值列表
+     * @throws RemoteException
+     */
+    public ArrayList<VipUpVO> getVipInfos() throws RemoteException;
+
+    /**
+     * 设置每级会员升级所需信用值
+     *
+     * @param vipInfos vip信用值列表
+     * @throws RemoteException
+     */
+    public void setVipInfos(ArrayList<VipUpVO> vipInfos) throws RemoteException;
+
+    /**
      * 根据状态返回对应订单
      *
      * @param orderState 订单状态
@@ -73,18 +91,20 @@ public interface WebsalerblService {
 
     /**
      * 根据订单ID返回对应订单信息
+     *
      * @param orderID 订单编号
      * @return 订单信息
      * @throws RemoteException
      */
-    public OrderVO getOrderByID(String orderID)throws RemoteException;
+    public OrderVO getOrderByID(String orderID) throws RemoteException;
 
     /**
      * 返回所有撤销的异常订单的详细信息
+     *
      * @return 撤销的异常订单的详细信息列表
      * @throws RemoteException
      */
-    public ArrayList<OrderVO> getCanceledExceptionOrderInfos()throws RemoteException;
+    public ArrayList<OrderVO> getCanceledExceptionOrderInfos() throws RemoteException;
 
     /**
      * 返回所有撤销的异常订单的撤销情况
