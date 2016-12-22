@@ -103,13 +103,14 @@ public class HotelOrder {
     }
 
     /**
-     * 确认订单
+     * 确认订单并更新房间数目
      *
      * @param vo 订单信息
      * @return 是否成功
      */
     public boolean orderHotel(OrderVO vo) throws RemoteException {
         userOrderInfo.addOrder(OrderPVChanger.orderV2P(vo));
+        hotelInfo.subRoom(vo.getHotelID(),vo.getCheckInDate(),vo.getCheckInDate(),vo.getRoomType(),vo.getRoomNumber());
         return true;
     }
 
@@ -178,6 +179,8 @@ public class HotelOrder {
                 int toSub = (int)(po.getPrice()*Double.valueOf(CfgReader.getInstance().getProperty("creditSubRate")));
                 userDataService.subCredit(new CreditChangePO(po.getUserID(),po.getOrderID(),DateOperation.dateToString(new Date()),CfgReader.getInstance().getProperty("late"),toSub));
             }
+            //添加酒店房间数目
+            hotelInfo.addRoom(po.getHotelID(),DateOperation.stringToDate(po.getCheckInDate()),DateOperation.stringToDate(po.getCheckOutDate()),po.getRoomType(),po.getRoomNumber());
             return ResultMessage.Correct;
         } else {
             return ResultMessage.InCorrect;

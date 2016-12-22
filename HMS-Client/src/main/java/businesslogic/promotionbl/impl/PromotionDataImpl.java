@@ -122,8 +122,9 @@ public class PromotionDataImpl implements PromotionInfo, WebPromotionInfo, Hotel
         //获得网站的营销策略
         for (PromotionType type : PromotionType.values()) {
             //判断是否为网站营销策略
-            if (type.toString().startsWith("Web"))
+            if (type.toString().startsWith("Web")) {
                 mergeList(res, promotionDataService.getPromotionList(type));
+            }
         }
         return res;
     }

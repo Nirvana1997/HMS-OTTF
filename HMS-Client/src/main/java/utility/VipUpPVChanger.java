@@ -4,6 +4,8 @@ import po.VipUpPO;
 import vo.VipUpVO;
 
 /**
+ * 会员等级规则PO、VO转化
+ * @author qzh
  * Created by user on 2016/12/22.
  */
 public class VipUpPVChanger {
