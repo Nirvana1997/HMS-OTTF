@@ -31,7 +31,7 @@ public class UiFormatChanger {
      * @return yyyy_MM.dd格式的日期
      */
     public static String dateToString2(Date date){
-        DateFormat df = new SimpleDateFormat("yyyy-MM-dd hh:mm");
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm");
         return df.format(date);
     }
     /**
