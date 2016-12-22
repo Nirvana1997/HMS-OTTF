@@ -126,7 +126,7 @@
             <Image url="@../../../../../graphics/userui/ReadHotel/升序.png" />
          </image>
       </ImageView>
-      <TableView fx:id="hotelList" layoutX="311.0" layoutY="167.0" prefHeight="384.0" prefWidth="557.0">
+      <TableView fx:id="hotelList" layoutX="311.0" layoutY="167.0" prefHeight="384.0" prefWidth="557.0" stylesheets="@tableview.css">
         <columns>
           <TableColumn fx:id="columnHotelName" prefWidth="131.0" text="酒店名称" />
             <TableColumn fx:id="columnPrice" prefWidth="60.0" text="价格" />

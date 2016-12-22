@@ -175,6 +175,12 @@ public class uiHotelController implements Initializable {
     private Text textIntroduction;
 
     /**
+     * 酒店信息——设施
+     */
+    @FXML
+    private Text textFacility;
+
+    /**
      * 单人房价格
      */
     @FXML
@@ -426,6 +432,7 @@ public class uiHotelController implements Initializable {
         textGrade.setText(String.valueOf(currentHotel.getGrade()));
         textStar.setText(String.valueOf(currentHotel.getStar()));
         textIntroduction.setText(currentHotel.getIntroduction());
+        textFacility.setText(currentHotel.getService());
     }
 
     /**
@@ -471,11 +478,11 @@ public class uiHotelController implements Initializable {
         //如果该酒店有三条及以上评价，显示最新三条评价
         if (list.size() >= 3) {
             comment1.setVisible(true);
-            textComment1.setText(list.get(0).getComment());
+            textComment1.setText(list.get(list.size()-1).getComment());
             comment2.setVisible(true);
-            textComment2.setText(list.get(1).getComment());
+            textComment2.setText(list.get(list.size()-2).getComment());
             comment3.setVisible(true);
-            textComment3.setText(list.get(3).getComment());
+            textComment3.setText(list.get(list.size()-3).getComment());
         }
     }
 

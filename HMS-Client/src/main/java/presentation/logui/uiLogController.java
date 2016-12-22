@@ -51,13 +51,10 @@ public class uiLogController {
     private Text wrongHasLogined;
 
     public void login() throws IOException {
-//        SceneWebSaler sceneUser = new SceneWebSaler();
-//        sceneUser.initUI();
         // 获取用户名
         String userID = textUserID.getText();
         // 获取密码
         String password = textPassword.getText();
-
         LogBlService logbl = new LogController();
         AccountType accountType = logbl.accoutType(userID);
         if(accountType == null){
@@ -67,7 +64,6 @@ public class uiLogController {
         else if(accountType == AccountType.user){
             // TODO
             ResultMessage result = logbl.isCorrectAndLogin(this.createAccountVo(userID, password, accountType));
-            System.out.println(result);
             if (result == ResultMessage.Correct){
                 SceneUser sceneUser = new SceneUser();
                 sceneUser.initUI();
@@ -81,7 +77,6 @@ public class uiLogController {
 
         else if(accountType == AccountType.hotelsaler){
             ResultMessage result = logbl.isCorrectAndLogin(this.createAccountVo(userID, password, accountType));
-            System.out.println(result);
             if (result == ResultMessage.Correct){
                 SceneHotelSaler sceneHotelSaler = new SceneHotelSaler();
                 sceneHotelSaler.initUI();
@@ -132,8 +127,7 @@ public class uiLogController {
         notExist.setVisible(false);
         wrongHasLogined.setVisible(false);
     }
-    @FXML
-    private Text buttonX;
+
     public void exit(){
         Platform.exit();
     }

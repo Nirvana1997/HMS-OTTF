@@ -12,6 +12,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
+import utility.UiFormatChanger;
 import vo.HotelinfoVO;
 import java.io.IOException;
 import java.net.URL;
@@ -177,7 +178,7 @@ public class uiChangeHSController implements Initializable {
      */
     public void Save() throws IOException {
         HotelinfoVO oldvo = webmanagerController.getHotelinfo(jump.currentHSID);
-        HotelinfoVO newvo = new HotelinfoVO(oldvo.getHotelID(), textHotelName.getText(), getArea(textCircle), getAddress(textAddress),
+        HotelinfoVO newvo = new HotelinfoVO(oldvo.getHotelID(), textHotelName.getText(), UiFormatChanger.getArea(textCircle), UiFormatChanger.getAddress(textAddress),
                 textDetailAddress.getText(), textHSNumber.getText(), oldvo.getIntroduction(), oldvo.getService(), Integer.parseInt(textStar.getText()), oldvo.getGrade(), oldvo.getMinPrice());
         webmanagerController.setHotelinfo(newvo);
         jump.changeSuccess();
@@ -204,44 +205,6 @@ public class uiChangeHSController implements Initializable {
         init();
     }
 
-
-    /**
-     * 根据选择框内容确定商圈
-     *
-     * @param cb 选择框
-     * @return 选择的商圈
-     */
-    public TradeArea getArea(ComboBox cb) {
-        if (cb.getSelectionModel().getSelectedItem() == "长江")
-            return TradeArea.Changjiang;
-        if (cb.getSelectionModel().getSelectedItem() == "黄河")
-            return TradeArea.Huanghe;
-        if (cb.getSelectionModel().getSelectedItem() == "南海")
-            return TradeArea.Nanhai;
-        return null;
-    }
-
-    /**
-     * 根据选择框内容确定地址
-     *
-     * @param cb 选择框
-     * @return 选择的地址
-     */
-    public Address getAddress(ComboBox cb) {
-        if (cb.getSelectionModel().getSelectedItem() == "南京")
-            return Address.Nanjing;
-        if (cb.getSelectionModel().getSelectedItem() == "上海")
-            return Address.Shanghai;
-        if (cb.getSelectionModel().getSelectedItem() == "北京")
-            return Address.Beijing;
-        if (cb.getSelectionModel().getSelectedItem() == "天津")
-            return Address.Tianjing;
-        if (cb.getSelectionModel().getSelectedItem() == "广东")
-            return Address.Guangdong;
-        if (cb.getSelectionModel().getSelectedItem() == "澳门")
-            return Address.Aomen;
-        return null;
-    }
 
     /**
      * 根据选择的商圈初始化地址
@@ -271,6 +234,9 @@ public class uiChangeHSController implements Initializable {
         textStar.setText(String.valueOf(currentHotel.getStar()));
         textHSID.setText(currentHotel.getHotelID());
         textHSNumber.setText(currentHotel.getContactNumber());
+        textCircle.getItems().setAll(circle);
+        textCircle.setPromptText(UiFormatChanger.tradeAreaTOString(currentHotel.getTradeArea()));
+        textAddress.setPromptText(UiFormatChanger.addressTOString(currentHotel.getAddress()));
     }
 
     @Override

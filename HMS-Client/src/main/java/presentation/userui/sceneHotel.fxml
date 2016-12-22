@@ -132,7 +132,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <AnchorPane fx:id="HotelInfoPane" layoutX="324.0" layoutY="181.0" prefHeight="319.0" prefWidth="595.0">
+      <AnchorPane fx:id="HotelInfoPane" layoutX="333.0" layoutY="181.0" prefHeight="362.0" prefWidth="586.0">
          <children>
             <Text layoutX="42.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="酒店名称：">
                <font>
@@ -189,7 +189,17 @@
                   <Font size="16.0" />
                </font>
             </Text>
-            <Text fx:id="textIntroduction" layoutX="97.0" layoutY="216.0" strokeType="OUTSIDE" strokeWidth="0.0" text="喋喋" wrappingWidth="407.0">
+            <Text fx:id="textIntroduction" layoutX="97.0" layoutY="218.0" strokeType="OUTSIDE" strokeWidth="0.0" text="喋喋" wrappingWidth="407.0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Text>
+            <Text layoutX="42.0" layoutY="305.0" strokeType="OUTSIDE" strokeWidth="0.0" text="设施：">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Text>
+            <Text fx:id="textFacility" layoutX="97.0" layoutY="306.0" strokeType="OUTSIDE" strokeWidth="0.0" text="喋喋" wrappingWidth="407.0">
                <font>
                   <Font size="16.0" />
                </font>
@@ -259,7 +269,7 @@
             </Text>
             <Text fx:id="singlePrice" fill="#8c8c8c" layoutX="98.0" layoutY="178.0" strokeType="OUTSIDE" strokeWidth="0.0" text="----">
                <font>
-                  <Font size="22.0" />
+                  <Font size="20.0" />
                </font>
             </Text>
             <Text fx:id="singleNum" fill="#8c8c8c" layoutX="115.0" layoutY="230.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
@@ -267,9 +277,9 @@
                   <Font size="24.0" />
                </font>
             </Text>
-            <Text fx:id="doublePrice" fill="#8c8c8c" layoutX="311.0" layoutY="266.0" strokeType="OUTSIDE" strokeWidth="0.0" text="----">
+            <Text fx:id="doublePrice" fill="#8c8c8c" layoutX="311.0" layoutY="264.0" strokeType="OUTSIDE" strokeWidth="0.0" text="----">
                <font>
-                  <Font size="22.0" />
+                  <Font size="20.0" />
                </font>
             </Text>
             <Text fx:id="doubleNum" fill="#8c8c8c" layoutX="328.0" layoutY="317.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0">
@@ -279,7 +289,7 @@
             </Text>
             <Text fx:id="disabledPrice" fill="#8c8c8c" layoutX="523.0" layoutY="177.0" strokeType="OUTSIDE" strokeWidth="0.0" text="----">
                <font>
-                  <Font size="22.0" />
+                  <Font size="20.0" />
                </font>
             </Text>
             <Text fx:id="disabledNum" fill="#8c8c8c" layoutX="540.0" layoutY="230.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0">

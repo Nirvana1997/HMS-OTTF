@@ -74,28 +74,6 @@
                               <Font name="System Bold" size="20.0" />
                            </font>
                         </Label>
-                        <Button fx:id="buttonConfirmSingleRoom" alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" graphicTextGap="0.0" layoutX="76.0" layoutY="254.0" mnemonicParsing="false" onMouseClicked="#confirmEditSingleRoom" text="确认" textAlignment="CENTER" visible="false">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                           <opaqueInsets>
-                              <Insets />
-                           </opaqueInsets>
-                           <cursor>
-                              <Cursor fx:constant="DEFAULT" />
-                           </cursor>
-                        </Button>
-                        <Button fx:id="buttonCancelSingleRoom" alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" graphicTextGap="0.0" layoutX="144.0" layoutY="254.0" mnemonicParsing="false" onMouseClicked="#cancelEditSingleRoom" text="取消" textAlignment="CENTER" visible="false">
-                           <font>
-                              <Font size="16.0" />
-                           </font>
-                           <opaqueInsets>
-                              <Insets />
-                           </opaqueInsets>
-                           <cursor>
-                              <Cursor fx:constant="DEFAULT" />
-                           </cursor>
-                        </Button>
                         <Label focusTraversable="false" layoutX="25.0" layoutY="134.0" text="房间总数：">
                            <font>
                               <Font size="18.0" />
@@ -241,7 +219,7 @@
                         <Image url="@../../../../../graphics/hotelsalerui/bkcopy.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="24.0" fitWidth="564.0" layoutX="82.0" layoutY="505.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="24.0" fitWidth="564.0" layoutX="82.0" layoutY="519.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../../../graphics/hotelsalerui/line.png" />
                      </image>
@@ -327,7 +305,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Label>
-                  <Button fx:id="buttonConfirmDisabledRoom" alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" graphicTextGap="0.0" layoutX="536.0" layoutY="473.0" mnemonicParsing="false" onMouseClicked="#confirmEditDisabledRoom" text="确认" textAlignment="CENTER" visible="false">
+                  <Button fx:id="buttonConfirmDisabledRoom" alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" graphicTextGap="0.0" layoutX="552.0" layoutY="473.0" mnemonicParsing="false" onMouseClicked="#confirmEditDisabledRoom" text="确认" textAlignment="CENTER" visible="false">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -338,7 +316,7 @@
                         <Cursor fx:constant="DEFAULT" />
                      </cursor>
                   </Button>
-                  <Button fx:id="buttonCancelDisabledRoom" alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" graphicTextGap="0.0" layoutX="606.0" layoutY="473.0" mnemonicParsing="false" onMouseClicked="#cancelEditDisabledRoom" text="取消" textAlignment="CENTER" visible="false">
+                  <Button fx:id="buttonCancelDisabledRoom" alignment="CENTER" contentDisplay="CENTER" focusTraversable="false" graphicTextGap="0.0" layoutX="662.0" layoutY="473.0" mnemonicParsing="false" onMouseClicked="#cancelEditDisabledRoom" text="取消" textAlignment="CENTER" visible="false">
                      <font>
                         <Font size="16.0" />
                      </font>
