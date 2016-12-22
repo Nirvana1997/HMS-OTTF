@@ -17,12 +17,12 @@ public class WebsalerDataImpl_stub implements WebsalerDataService {
 	VipUpPO vipUpPO1 = new VipUpPO(1,100);
 	VipUpPO vipUpPO2 = new VipUpPO(2,200);
 	VipUpPO vipUpPO3 = new VipUpPO(3,400);
-//	VipUpPO vipUpPO4 = new VipUpPO(4,800);
-//	VipUpPO vipUpPO5 = new VipUpPO(5,1600);
-//	VipUpPO vipUpPO6 = new VipUpPO(6,3200);
-//	VipUpPO vipUpPO7 = new VipUpPO(7,6400);
-//	VipUpPO vipUpPO8 = new VipUpPO(8,8000);
-//	VipUpPO vipUpPO9 = new VipUpPO(9,10000);
+//	VipUpVO vipUpPO4 = new VipUpVO(4,800);
+//	VipUpVO vipUpPO5 = new VipUpVO(5,1600);
+//	VipUpVO vipUpPO6 = new VipUpVO(6,3200);
+//	VipUpVO vipUpPO7 = new VipUpVO(7,6400);
+//	VipUpVO vipUpPO8 = new VipUpVO(8,8000);
+//	VipUpVO vipUpPO9 = new VipUpVO(9,10000);
 
 	public WebsalerDataImpl_stub() {
 		websalerInfoPOs.add(websalerInfoPO1);

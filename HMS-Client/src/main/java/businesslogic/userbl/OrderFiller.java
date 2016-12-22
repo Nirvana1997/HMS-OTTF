@@ -11,6 +11,7 @@ import enumData.OrderState;
 import po.HotelroomPO;
 import po.UserInfoPO;
 import rmi.RemoteHelper;
+import utility.DateOperation;
 import utility.UserPVChanger;
 import vo.OrderVO;
 import vo.UserInfoVO;
@@ -120,8 +121,9 @@ public class OrderFiller {
                 break;
             }
         }
+        int days = DateOperation.getDates(orderVO.getCheckInDate(),orderVO.getCheckOutDate()).size();
         //设定初始价格
-        orderVO.setPrice(price);
+        orderVO.setPrice(price*orderVO.getRoomNumber()*days);
         //获得用户信息
         UserInfoPO userInfoPO = userDataService.getUserInfo(orderVO.getUserID());
         UserInfoVO userInfoVO = UserPVChanger.userInfoP2V(userInfoPO);

@@ -1,5 +1,6 @@
 package businesslogic.websalerbl.impl;
 
+import rmi.RemoteHelper;
 import utility.VipInfo;
 import data_stub.websalerdata.WebsalerDataImpl_stub;
 import dataservice.websalerdataservice.WebsalerDataService;
@@ -17,7 +18,11 @@ public class VipDataImpl implements VipInfo{
     /**
      * 网站营销人员数据接口
      */
-    WebsalerDataService websalerDataService = new WebsalerDataImpl_stub();
+    WebsalerDataService websalerDataService;
+
+    public VipDataImpl() {
+        websalerDataService = RemoteHelper.getInstance().getWebsalerDataService();
+    }
 
     /**
      * 计算会员等级
