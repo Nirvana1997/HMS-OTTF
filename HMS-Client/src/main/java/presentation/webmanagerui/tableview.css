@@ -13,7 +13,7 @@
 
 
 .table-view .column-header-background{
-    -fx-background-color: linear-gradient(#7ba632 0%, #b3db57 100%);
+    -fx-background-color: linear-gradient(#c1dadf 0%, #daedf1 100%);
 }
 
 .table-view .column-header-background .label{
@@ -37,13 +37,12 @@
 }
 
 .table-row-cell:odd{
-    -fx-background-color: -fx-table-cell-border-color, #d3e488;
     -fx-background-insets: 0, 0 0 1 0;
     -fx-padding: 0.0em; /* 0 */
 }
 
 .table-row-cell:selected {
-    -fx-background-color: #fefab1;
+    -fx-background-color: #daedf1;
     -fx-background-insets: 0;
     -fx-background-radius: 1;
 }

@@ -250,7 +250,7 @@
       </AnchorPane>
       <AnchorPane fx:id="hotelListPane" layoutX="306.0" layoutY="98.0" prefHeight="512.0" prefWidth="684.0" visible="false">
          <children>
-            <TableView fx:id="hotelList" layoutX="20.0" layoutY="29.0" prefHeight="454.0" prefWidth="513.0">
+            <TableView fx:id="hotelList" layoutX="20.0" layoutY="29.0" prefHeight="454.0" prefWidth="513.0" stylesheets="@tableview.css">
                <columns>
                   <TableColumn fx:id="columnHotelName" prefWidth="131.0" text="酒店名称" />
                   <TableColumn fx:id="columnPrice" prefWidth="60.0" text="价格" />
