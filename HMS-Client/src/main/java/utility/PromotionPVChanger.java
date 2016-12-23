@@ -3,8 +3,6 @@ package utility;
 import po.PromotionPO;
 import vo.PromotionVO;
 
-import java.util.Date;
-
 /**
  * 负责营销策略PO，VO互相转化
  * @author qzh
@@ -32,6 +30,8 @@ public class PromotionPVChanger {
         if(vo==null){
             return null;
         }
-        return new PromotionPO(vo.getPromotionName(),vo.getPromotionType(),vo.getStartDate()==null?null:DateOperation.dateToString(vo.getStartDate()),vo.getEndDate()==null?null:DateOperation.dateToString(vo.getEndDate()), vo.getTradeArea(),vo.getRoomNumber(),vo.getVipLevel(),vo.getDiscount(),vo.getHotelID(),vo.getDescription(),vo.getCompanyID());
+        //计算折扣
+        double discount = vo.getDiscountTenRate()/10;
+        return new PromotionPO(vo.getPromotionName(),vo.getPromotionType(),vo.getStartDate()==null?null:DateOperation.dateToString(vo.getStartDate()),vo.getEndDate()==null?null:DateOperation.dateToString(vo.getEndDate()), vo.getTradeArea(),vo.getRoomNumber(),vo.getVipLevel(),discount,vo.getHotelID(),vo.getDescription(),vo.getCompanyID());
     }
 }

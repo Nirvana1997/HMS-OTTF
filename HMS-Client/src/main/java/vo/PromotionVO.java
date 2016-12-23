@@ -16,10 +16,10 @@ public class PromotionVO {
 	TradeArea tradeArea;
 	int roomNumber = Integer.valueOf(CfgReader.getInstance().getProperty("discountNum"));
 	int vipLevel;
-	double discount;
+	double discountTenRate;
 	String companyID;
 
-	public PromotionVO(String promotionName, String description, PromotionType promotionType, String hotelID, Date startDate, Date endDate, TradeArea tradeArea, int roomNumber, int vipLevel, double discount,String companyID) {
+	public PromotionVO(String promotionName, String description, PromotionType promotionType, String hotelID, Date startDate, Date endDate, TradeArea tradeArea, int roomNumber, int vipLevel, double discountTenRate, String companyID) {
 		this.promotionName = promotionName;
 		this.description = description;
 		this.promotionType = promotionType;
@@ -29,7 +29,7 @@ public class PromotionVO {
 		this.tradeArea = tradeArea;
 		this.roomNumber = roomNumber;
 		this.vipLevel = vipLevel;
-		this.discount = discount;
+		this.discountTenRate = discountTenRate;
 		this.companyID = companyID;
 	}
 
@@ -38,13 +38,13 @@ public class PromotionVO {
 	 * @param promotionName
 	 * @param description
 	 * @param promotionType
-	 * @param discount
+	 * @param discountTenRate
 	 */
-	public PromotionVO(String promotionName, String description, PromotionType promotionType, double discount) {
+	public PromotionVO(String promotionName, String description, PromotionType promotionType, double discountTenRate) {
 		this.promotionName = promotionName;
 		this.description = description;
 		this.promotionType = promotionType;
-		this.discount = discount;
+		this.discountTenRate = discountTenRate;
 	}
 
 	/**
@@ -54,15 +54,15 @@ public class PromotionVO {
 	 * @param web_period
 	 * @param beginTime
 	 * @param endTime
-	 * @param discount
+	 * @param discountTenRate
 	 */
-	public PromotionVO(String name, String description, PromotionType web_period, Date beginTime, Date endTime, double discount) {
+	public PromotionVO(String name, String description, PromotionType web_period, Date beginTime, Date endTime, double discountTenRate) {
         this.promotionName = name;
         this.description = description;
         this.promotionType = web_period;
         this.startDate = beginTime;
         this.endDate = endTime;
-        this.discount = discount;
+        this.discountTenRate = discountTenRate;
     }
 
     /**
@@ -73,16 +73,16 @@ public class PromotionVO {
      * @param beginTime
      * @param endTime
      * @param tradeArea
-     * @param discount
+     * @param discountTenRate
      */
-    public PromotionVO(String name, String description, PromotionType web_tradeArea, Date beginTime, Date endTime, TradeArea tradeArea, double discount) {
+    public PromotionVO(String name, String description, PromotionType web_tradeArea, Date beginTime, Date endTime, TradeArea tradeArea, double discountTenRate) {
         this.promotionName = name;
         this.description = description;
         this.promotionType = web_tradeArea;
         this.startDate = beginTime;
         this.endDate = endTime;
         this.tradeArea = tradeArea;
-        this.discount = discount;
+        this.discountTenRate = discountTenRate;
     }
 
     /**
@@ -93,16 +93,16 @@ public class PromotionVO {
      * @param beginTime
      * @param endTime
      * @param vipLevel
-     * @param discount
+     * @param discountTenRate
      */
-    public PromotionVO(String name, String description, PromotionType web_vip, Date beginTime, Date endTime, int vipLevel, double discount) {
+    public PromotionVO(String name, String description, PromotionType web_vip, Date beginTime, Date endTime, int vipLevel, double discountTenRate) {
         this.promotionName = name;
         this.description = description;
         this.promotionType = web_vip;
         this.startDate = beginTime;
         this.endDate = endTime;
         this.vipLevel = vipLevel;
-        this.discount = discount;
+        this.discountTenRate = discountTenRate;
     }
 
     public String getPromotionName() {
@@ -173,12 +173,12 @@ public class PromotionVO {
 		this.vipLevel = vipLevel;
 	}
 
-	public double getDiscount() {
-		return discount;
+	public double getDiscountTenRate() {
+		return discountTenRate;
 	}
 
-	public void setDiscount(double discount) {
-		this.discount = discount;
+	public void setDiscountTenRate(double discountTenRate) {
+		this.discountTenRate = discountTenRate;
 	}
 
 	public String getCompanyID() {
