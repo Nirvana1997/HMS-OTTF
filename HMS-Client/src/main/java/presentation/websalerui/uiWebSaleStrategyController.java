@@ -631,6 +631,8 @@ public class uiWebSaleStrategyController implements Initializable{
                 } catch (RemoteException e) {
                     e.printStackTrace();
                 }
+                this.initPromotionList();
+                lengthPromotionDoubleOne = promotionDoubleOne.size();
                 int n = Math.abs(doubleOneCount % lengthPromotionDoubleOne);
                 this.initPromotionContent(n,PromotionType.Web_Period);
             }
@@ -648,6 +650,8 @@ public class uiWebSaleStrategyController implements Initializable{
                 } catch (RemoteException e) {
                     e.printStackTrace();
                 }
+                this.initPromotionList();
+                lengthPromotionVIP = promotionVIP.size();
                 int n = Math.abs(VIPCount % lengthPromotionVIP);
                 this.initPromotionContent(n,PromotionType.Web_TradeArea);
             }
@@ -690,6 +694,8 @@ public class uiWebSaleStrategyController implements Initializable{
                 } catch (RemoteException e) {
                     e.printStackTrace();
                 }
+                this.initPromotionList();
+                lengthPromotionDoubleOne = promotionDoubleOne.size();
                 int n = Math.abs(doubleOneCount % lengthPromotionDoubleOne);
                 this.initPromotionContent(n,PromotionType.Web_Period);
                 this.onClickedCancelEditPromotion();
@@ -709,6 +715,8 @@ public class uiWebSaleStrategyController implements Initializable{
                 } catch (RemoteException e) {
                     e.printStackTrace();
                 }
+                this.initPromotionList();
+                lengthPromotionVIP = promotionVIP.size();
                 int n = Math.abs(VIPCount % lengthPromotionVIP);
                 this.initPromotionContent(n,PromotionType.Web_TradeArea);
                 this.onClickedCancelEditPromotion();
@@ -729,6 +737,8 @@ public class uiWebSaleStrategyController implements Initializable{
                 } catch (RemoteException e) {
                     e.printStackTrace();
                 }
+                initPromotionList();
+                lengthPromotionMember = promotionMember.size();
                 int n = Math.abs(memberCount % lengthPromotionMember);
                 this.initPromotionContent(n,PromotionType.Web_Vip);
                 this.onClickedCancelEditPromotion();

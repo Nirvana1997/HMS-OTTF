@@ -393,7 +393,7 @@ public class uiHotelSaleStrategyController implements Initializable{
         if(lengthPromotionDoubleOne > 0){
             doubleOneCount++;
             int n = Math.abs(doubleOneCount % lengthPromotionDoubleOne);
-            this.initPromotionContent(n, PromotionType.Web_Period);
+            this.initPromotionContent(n, PromotionType.Hotel_Period);
         }
     }
 
@@ -404,7 +404,7 @@ public class uiHotelSaleStrategyController implements Initializable{
         if(lengthPromotionDoubleOne > 0){
             doubleOneCount--;
             int n = Math.abs(doubleOneCount % lengthPromotionDoubleOne);
-            this.initPromotionContent(n, PromotionType.Web_Period);
+            this.initPromotionContent(n, PromotionType.Hotel_Period);
         }
     }
 
@@ -547,15 +547,54 @@ public class uiHotelSaleStrategyController implements Initializable{
         if(isDeletePromotion) {
             if(promptionType == 1){
                 hotelsalerblService.deletePromotion(labelPromotionBirthdayName.getText());
+                lengthPromotionBirthday--;
+                if(lengthPromotionBirthday == 0){
+                    labelPromotionBirthdayName.setText("");
+                    labelPromotionBirthdayContent.setText("");
+                }
+                else {
+                    int n = Math.abs(birthdayCount % lengthPromotionBirthday);
+                    this.initPromotionContent(n, PromotionType.Hotel_Birth);
+                }
             }
             else if(promptionType == 2){
                 hotelsalerblService.deletePromotion(labelPromotionDoubleOneName.getText());
+                lengthPromotionDoubleOne--;
+                if(lengthPromotionDoubleOne == 0){
+                    labelPromotionDoubleOneName.setText("");
+                    labelPromotionDoubleOneContent.setText("");
+                    labelPromotionDoubleOneTime.setText("");
+                }
+                else{
+                    int n = Math.abs(doubleOneCount % lengthPromotionDoubleOne);
+                    this.initPromotionContent(n, PromotionType.Hotel_Period);
+                }
             }
             else if(promptionType == 3){
                 hotelsalerblService.deletePromotion(labelPromotionCompanyName.getText());
+                lengthPromotionCompany--;
+                if(lengthPromotionCompany == 0){
+                    labelPromotionCompanyName.setText("");
+                    labelPromotionCompanyContent.setText("");
+                    labelPromotionCompanyTime.setText("");
+                }
+                else{
+                    int n = Math.abs(companyCount % lengthPromotionCompany);
+                    this.initPromotionContent(n, PromotionType.Hotel_Company);
+                }
             }
             else if(promptionType == 4){
                 hotelsalerblService.deletePromotion(labelPromotionThreeRoomsName.getText());
+                lengthPromotionThreeRooms--;
+                if(lengthPromotionThreeRooms == 0){
+                    labelPromotionThreeRoomsName.setText("");
+                    labelPromotionThreeRoomsContent.setText("");
+                    labelPromotionThreeRoomsTime.setText("");
+                }
+                else{
+                    int n = Math.abs(threeRoomsCount % lengthPromotionThreeRooms);
+                    this.initPromotionContent(n, PromotionType.Hotel_Num);
+                }
             }
         }
     }
@@ -578,6 +617,8 @@ public class uiHotelSaleStrategyController implements Initializable{
                 } catch (RemoteException e) {
                     e.printStackTrace();
                 }
+                this.initPromotionList();
+                lengthPromotionBirthday = promotionBirthday.size();
                 int n = Math.abs(birthdayCount % lengthPromotionBirthday);
                 this.initPromotionContent(n, PromotionType.Hotel_Birth);
             }
@@ -594,6 +635,8 @@ public class uiHotelSaleStrategyController implements Initializable{
                 } catch (RemoteException e) {
                     e.printStackTrace();
                 }
+                this.initPromotionList();
+                lengthPromotionDoubleOne = promotionDoubleOne.size();
                 int n = Math.abs(doubleOneCount % lengthPromotionDoubleOne);
                 this.initPromotionContent(n, PromotionType.Web_Period);
             }
@@ -610,6 +653,8 @@ public class uiHotelSaleStrategyController implements Initializable{
                 } catch (RemoteException e) {
                     e.printStackTrace();
                 }
+                this.initPromotionList();
+                lengthPromotionCompany = promotionCompany.size();
                 int n = Math.abs(companyCount % lengthPromotionCompany);
                 this.initPromotionContent(n, PromotionType.Hotel_Company);
             }
@@ -626,6 +671,8 @@ public class uiHotelSaleStrategyController implements Initializable{
                 } catch (RemoteException e) {
                     e.printStackTrace();
                 }
+                this.initPromotionList();
+                lengthPromotionThreeRooms = promotionThreeRooms.size();
                 int n = Math.abs(threeRoomsCount % lengthPromotionThreeRooms);
                 this.initPromotionContent(n, PromotionType.Hotel_Num);
             }
@@ -640,6 +687,8 @@ public class uiHotelSaleStrategyController implements Initializable{
                 } catch (RemoteException e) {
                     e.printStackTrace();
                 }
+                this.initPromotionList();
+                lengthPromotionBirthday = promotionBirthday.size();
                 int n = Math.abs(birthdayCount % lengthPromotionBirthday);
                 this.initPromotionContent(n, PromotionType.Hotel_Birth);
                 this.onClickedCancelEditPromotion();
@@ -657,6 +706,8 @@ public class uiHotelSaleStrategyController implements Initializable{
                 } catch (RemoteException e) {
                     e.printStackTrace();
                 }
+                this.initPromotionList();
+                lengthPromotionDoubleOne = promotionDoubleOne.size();
                 int n = Math.abs(doubleOneCount % lengthPromotionDoubleOne);
                 this.initPromotionContent(n, PromotionType.Web_Period);
                 this.onClickedCancelEditPromotion();
@@ -674,6 +725,8 @@ public class uiHotelSaleStrategyController implements Initializable{
                 } catch (RemoteException e) {
                     e.printStackTrace();
                 }
+                this.initPromotionList();
+                lengthPromotionCompany = promotionCompany.size();
                 int n = Math.abs(companyCount % lengthPromotionCompany);
                 this.initPromotionContent(n, PromotionType.Hotel_Company);
                 this.onClickedCancelEditPromotion();
@@ -691,6 +744,8 @@ public class uiHotelSaleStrategyController implements Initializable{
                 } catch (RemoteException e) {
                     e.printStackTrace();
                 }
+                this.initPromotionList();
+                lengthPromotionThreeRooms = promotionThreeRooms.size();
                 int n = Math.abs(threeRoomsCount % lengthPromotionThreeRooms);
                 this.initPromotionContent(n, PromotionType.Hotel_Num);
                 this.onClickedCancelEditPromotion();

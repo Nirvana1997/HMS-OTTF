@@ -98,7 +98,7 @@
                   <Font size="16.0" />
                </font>
             </Text>
-            <Text layoutX="196.0" layoutY="116.0" strokeType="OUTSIDE" strokeWidth="0.0" text="★  -">
+            <Text layoutX="204.0" layoutY="118.0" strokeType="OUTSIDE" strokeWidth="0.0" text="★  -">
                <font>
                   <Font size="18.0" />
                </font>
@@ -108,17 +108,17 @@
                   <Font size="16.0" />
                </font>
             </Text>
-            <Text layoutX="293.0" layoutY="116.0" strokeType="OUTSIDE" strokeWidth="0.0" text="★">
+            <Text layoutX="310.0" layoutY="116.0" strokeType="OUTSIDE" strokeWidth="0.0" text="★">
                <font>
                   <Font size="18.0" />
                </font>
             </Text>
-            <Text layoutX="196.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" text="❤  -">
+            <Text layoutX="204.0" layoutY="162.0" strokeType="OUTSIDE" strokeWidth="0.0" text="❤  -">
                <font>
                   <Font size="16.0" />
                </font>
             </Text>
-            <Text layoutX="293.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" text="❤">
+            <Text layoutX="309.0" layoutY="161.0" strokeType="OUTSIDE" strokeWidth="0.0" text="❤">
                <font>
                   <Font size="16.0" />
                </font>
@@ -168,12 +168,12 @@
                   <Font size="16.0" />
                </font>
             </Text>
-            <ComboBox fx:id="textCircle" layoutX="77.0" layoutY="36.0" onAction="#initAddress" prefHeight="30.0" prefWidth="109.0" promptText="请输入商圈">
+            <ComboBox fx:id="textCircle" layoutX="77.0" layoutY="36.0" onAction="#initAddress" prefHeight="30.0" prefWidth="109.0" promptText="商圈">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
             </ComboBox>
-            <ComboBox fx:id="textAddress" layoutX="240.0" layoutY="36.0" prefHeight="30.0" prefWidth="109.0" promptText="请输入地址">
+            <ComboBox fx:id="textAddress" layoutX="240.0" layoutY="36.0" prefHeight="30.0" prefWidth="109.0" promptText="地址">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -233,22 +233,22 @@
                   <Font size="16.0" />
                </font>
             </CheckBox>
-            <ComboBox fx:id="StarMin" layoutX="140.0" layoutY="95.0" prefHeight="29.0" prefWidth="48.0" promptText="0" >
+            <ComboBox fx:id="StarMin" layoutX="140.0" layoutY="95.0" prefHeight="29.0" prefWidth="57.0" promptText="0">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
             </ComboBox>
-            <ComboBox fx:id="StarMax" layoutX="235.0" layoutY="95.0" prefHeight="29.0" prefWidth="48.0" promptText="5" >
+            <ComboBox fx:id="StarMax" layoutX="246.0" layoutY="95.0" prefHeight="29.0" prefWidth="57.0" promptText="5">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
             </ComboBox>
-            <ComboBox fx:id="GradeMin" layoutX="140.0" layoutY="138.0" prefHeight="29.0" prefWidth="48.0" promptText="0" >
+            <ComboBox fx:id="GradeMin" layoutX="140.0" layoutY="138.0" prefHeight="29.0" prefWidth="57.0" promptText="0">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
             </ComboBox>
-            <ComboBox fx:id="GradeMax" layoutX="235.0" layoutY="139.0" prefHeight="29.0" prefWidth="48.0" promptText="5" >
+            <ComboBox fx:id="GradeMax" layoutX="246.0" layoutY="138.0" prefHeight="29.0" prefWidth="57.0" promptText="5">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -284,6 +284,7 @@
                      </source>
                   </ImageInput>
                </effect></Button>
+            <Text layoutX="293.0" layoutY="25.0" strokeType="OUTSIDE" strokeWidth="0.0" text="“√”表示有该类型订单，“×”表示无该类型订单" />
          </children>
       </AnchorPane>
    </children>
