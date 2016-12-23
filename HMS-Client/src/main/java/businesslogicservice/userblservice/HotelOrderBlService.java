@@ -8,6 +8,7 @@ import businesslogic.userbl.HotelList;
 import businesslogic.userbl.OrderFiller;
 import com.sun.org.apache.xpath.internal.operations.Or;
 import enumData.*;
+import po.RoomNumPO;
 import vo.*;
 
 /**
@@ -132,11 +133,11 @@ public interface HotelOrderBlService {
     public ArrayList<CommentVO> getComments(String hotelID) throws RemoteException;
 
     /**
-     * 获得酒店房间信息
+     * 获得当天酒店房间信息
      *
      * @param hotelID 酒店id
      * @return 酒店房间信息
      * @throws RemoteException
      */
-    public ArrayList<HotelroomVO> getRooms(String hotelID) throws RemoteException;
+    public ArrayList<RoomNumVO> getNowRooms(String hotelID) throws RemoteException;
 }

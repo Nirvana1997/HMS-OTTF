@@ -528,7 +528,7 @@ public class uiHotelController implements Initializable {
         try {
             HotelinfoVO currentHotel = userController.readHotel(jump.getHotelID());
             ArrayList<OrderVO> orderlist = userController.getHotelOrderByUserID(jump.getHotelID());
-            ArrayList<HotelroomVO> roomlist = userController.getRooms(jump.getHotelID());
+            ArrayList<HotelroomVO> roomlist = userController.getNowRooms(jump.getHotelID());
             ArrayList<CommentVO> commentlist = userController.getComments(jump.getHotelID());
             initHotelInfo(currentHotel);
             initRoomInfo(roomlist);

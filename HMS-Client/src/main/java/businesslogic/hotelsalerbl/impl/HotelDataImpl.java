@@ -159,12 +159,13 @@ public class HotelDataImpl implements HotelInfo, HotelRoom, HotelInfoForManageme
      * 获得酒店房间信息
      *
      * @param hotelID 酒店id
+     * @param date    日期
      * @return 酒店房间信息
      * @throws RemoteException
      */
     @Override
-    public ArrayList<HotelroomPO> getRooms(String hotelID) throws RemoteException {
-        return hotelroomDataService.getRoomList(hotelID);
+    public ArrayList<RoomNumPO> getRooms(String hotelID, Date date) throws RemoteException {
+        return hotelroomDataService.getEmptyrooms(hotelID, DateOperation.dateToString(date));
     }
 
     /**
@@ -194,12 +195,12 @@ public class HotelDataImpl implements HotelInfo, HotelRoom, HotelInfoForManageme
 
     @Override
     public void subRoom(String hotelID, Date start, Date end, RoomType roomType, int num) throws RemoteException {
-        changeRoom(hotelID,start,end,roomType,-num);
+        changeRoom(hotelID, start, end, roomType, -num);
     }
 
     @Override
     public void addRoom(String hotelID, Date start, Date end, RoomType roomType, int num) throws RemoteException {
-        changeRoom(hotelID,start,end,roomType,-num);
+        changeRoom(hotelID, start, end, roomType, num);
     }
 
     private void changeRoom(String hotelID, Date start, Date end, RoomType roomType, int num) throws RemoteException {
