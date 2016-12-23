@@ -178,26 +178,6 @@
                   <Insets />
                </opaqueInsets>
             </ComboBox>
-            <TextField fx:id="StarMin" layoutX="142.0" layoutY="95.0" prefHeight="29.0" prefWidth="48.0" text="0">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </TextField>
-            <TextField fx:id="StarMax" layoutX="236.0" layoutY="95.0" prefHeight="29.0" prefWidth="48.0" text="5">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </TextField>
-            <TextField fx:id="GradeMin" layoutX="142.0" layoutY="138.0" prefHeight="29.0" prefWidth="48.0" text="0">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </TextField>
-            <TextField fx:id="GradeMax" layoutX="236.0" layoutY="140.0" prefHeight="29.0" prefWidth="48.0" text="5">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </TextField>
             <RadioButton fx:id="SingleRoom" layoutX="174.0" layoutY="203.0" mnemonicParsing="false" text="单人间" toggleGroup="$RoomType">
                <font>
                   <Font size="16.0" />
@@ -253,6 +233,26 @@
                   <Font size="16.0" />
                </font>
             </CheckBox>
+            <ComboBox fx:id="StarMin" layoutX="140.0" layoutY="95.0" prefHeight="29.0" prefWidth="48.0" promptText="0" >
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </ComboBox>
+            <ComboBox fx:id="StarMax" layoutX="235.0" layoutY="95.0" prefHeight="29.0" prefWidth="48.0" promptText="5" >
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </ComboBox>
+            <ComboBox fx:id="GradeMin" layoutX="140.0" layoutY="138.0" prefHeight="29.0" prefWidth="48.0" promptText="0" >
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </ComboBox>
+            <ComboBox fx:id="GradeMax" layoutX="235.0" layoutY="139.0" prefHeight="29.0" prefWidth="48.0" promptText="5" >
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </ComboBox>
          </children>
       </AnchorPane>
       <AnchorPane fx:id="hotelListPane" layoutX="306.0" layoutY="98.0" prefHeight="512.0" prefWidth="684.0" visible="false">
