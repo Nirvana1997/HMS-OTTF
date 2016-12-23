@@ -114,25 +114,25 @@ public class uiSearchHotelController implements Initializable {
      * 最低星级
      */
     @FXML
-    private TextField StarMin;
+    private ComboBox<Integer> StarMin;
 
     /**
      * 最高星级
      */
     @FXML
-    private TextField StarMax;
+    private ComboBox<Integer> StarMax;
 
     /**
      * 最低评分
      */
     @FXML
-    private TextField GradeMin;
+    private ComboBox<Integer> GradeMin;
 
     /**
      * 最高评分
      */
     @FXML
-    private TextField GradeMax;
+    private ComboBox<Integer> GradeMax;
 
     /**
      * 最低价格
@@ -291,6 +291,7 @@ public class uiSearchHotelController implements Initializable {
      */
     private ObservableList<tableHotel> hotelData = FXCollections.observableArrayList();
 
+    private ObservableList<Integer> num = FXCollections.observableArrayList(0,1,2,3,4,5);
 
     /**
      * 搜索酒店
@@ -299,10 +300,19 @@ public class uiSearchHotelController implements Initializable {
      */
     public void SearchHotel() throws IOException, ParseException {
         ArrayList<LimitVO> SearchList = new ArrayList<LimitVO>();
-
+        int grademin = 0;
+        int grademax = 5;
+        int starmin = 0;
+        int starmax = 5;
         try {
-            LimitVO GradeLimit = new LimitVO(LimitCriterion.GradeCriterion, Double.parseDouble(GradeMin.getText()), Double.parseDouble(GradeMax.getText()));
-            LimitVO StarLimit = new LimitVO(LimitCriterion.StarCriterion, Double.parseDouble(StarMin.getText()), Double.parseDouble(StarMax.getText()));
+
+            grademin = GradeMin.getSelectionModel().getSelectedItem();
+            grademax = GradeMax.getSelectionModel().getSelectedItem();
+            starmax = StarMax.getSelectionModel().getSelectedItem();
+            starmin = StarMin.getSelectionModel().getSelectedItem();
+
+            LimitVO GradeLimit = new LimitVO(LimitCriterion.GradeCriterion, (double)grademin ,(double)grademax);
+            LimitVO StarLimit = new LimitVO(LimitCriterion.StarCriterion, (double)starmin , (double)starmax);
             SearchList.add(GradeLimit);
             SearchList.add(StarLimit);
         } catch (Exception e) {
@@ -338,7 +348,6 @@ public class uiSearchHotelController implements Initializable {
         }
         HotelOrderBlService hotelOrderBlService = new UserController();
         ArrayList<HotelListItemVO> getHotelList = hotelOrderBlService.searchHotel(UiFormatChanger.getArea(textCircle), UiFormatChanger.getAddress(textAddress), SearchList);
-
         searchHotelPane.setVisible(false);
         //如果不需要显示预订过的酒店，则直接显示所有列表
         if (!checkOrdered.isSelected()){
@@ -417,7 +426,6 @@ public class uiSearchHotelController implements Initializable {
      * @return 预订房间类型
      */
     public enumData.RoomType getRoomType(ToggleGroup bt) {
-        System.out.println(bt.getSelectedToggle()+"转换");
         if (bt.getSelectedToggle() == SingleRoom) {
             return enumData.RoomType.SingleRoom;
         } else if (bt.getSelectedToggle() == DoubleRoom) {
@@ -470,6 +478,14 @@ public class uiSearchHotelController implements Initializable {
         };
         checkinDate.setDayCellFactory(dayCellFactoryin);
         textCircle.getItems().addAll(circle);
+        StarMax.getItems().addAll(num);
+        StarMin.getItems().addAll(num);
+        GradeMax.getItems().addAll(num);
+        GradeMin.getItems().addAll(num);
+        StarMin.getSelectionModel().selectFirst();
+        StarMax.getSelectionModel().selectLast();
+        GradeMin.getSelectionModel().selectFirst();
+        GradeMax.getSelectionModel().selectLast();
         try {
             UserName.setText(userController.showUserInfo().getName());
         } catch (RemoteException e) {

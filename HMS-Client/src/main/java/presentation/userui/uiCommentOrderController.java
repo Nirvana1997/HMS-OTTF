@@ -4,6 +4,7 @@ import businesslogic.logbl.LogController;
 import businesslogic.userbl.UserController;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
@@ -36,17 +37,25 @@ public class uiCommentOrderController implements Initializable{
     @FXML
     private Text UserName;
 
-    /**
-     * 评分文本输入框
-     */
-    @FXML
-    private TextField textGrade;
 
     /**
      * 评价文本输入框
      */
     @FXML
     private TextArea textComment;
+
+    @FXML
+    private Button star1;
+    @FXML
+    private Button star2;
+    @FXML
+    private Button star3;
+    @FXML
+    private Button star4;
+    @FXML
+    private Button star5;
+    @FXML
+    private Text star;
 
 
     public uiCommentOrderController() throws RemoteException {
@@ -125,12 +134,59 @@ public class uiCommentOrderController implements Initializable{
     public void CommentOrder() throws IOException {
         OrderVO ordervo = userController.getOrderInfo(uiMyOrderController.getOrderID());
         CommentVO commentvo = new CommentVO(ordervo.getHotelID(), userController.showUserInfo().getUserID(),
-                textComment.getText(), Integer.parseInt(textGrade.getText()));
+                textComment.getText(), grade);
         userController.comment(commentvo);
         jump.gotoOrder();
         jump.CommentSuccess();
 
     }
+
+    public void commentStar1(){
+        star1.setVisible(true);
+        star2.setVisible(false);
+        star3.setVisible(false);
+        star4.setVisible(false);
+        star5.setVisible(false);
+        grade = 1;
+        star.setText("（1分，太差啦！）");
+    }
+    public void commentStar2(){
+        star1.setVisible(true);
+        star2.setVisible(true);
+        star3.setVisible(false);
+        star4.setVisible(false);
+        star5.setVisible(false);
+        grade = 2;
+        star.setText("（2分，一般般！）");
+    }
+    public void commentStar3(){
+        star1.setVisible(true);
+        star2.setVisible(true);
+        star3.setVisible(true);
+        star4.setVisible(false);
+        star5.setVisible(false);
+        grade = 3;
+        star.setText("（3分，还行吧！）");
+    }
+    public void commentStar4(){
+        star1.setVisible(true);
+        star2.setVisible(true);
+        star3.setVisible(true);
+        star4.setVisible(true);
+        star5.setVisible(false);
+        grade = 4;
+        star.setText("（4分，很不错！）");
+    }
+    public void commentStar5(){
+        star1.setVisible(true);
+        star2.setVisible(true);
+        star3.setVisible(true);
+        star4.setVisible(true);
+        star5.setVisible(true);
+        grade = 5;
+        star.setText("（5分，那你很棒棒哦~）");
+    }
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -140,4 +196,5 @@ public class uiCommentOrderController implements Initializable{
             e.printStackTrace();
         }
     }
+    int grade = 0;
 }

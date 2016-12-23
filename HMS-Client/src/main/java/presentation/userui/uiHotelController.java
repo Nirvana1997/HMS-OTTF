@@ -430,7 +430,6 @@ public class uiHotelController implements Initializable {
             } else havecd = "否";
             orderData.add(new tableDetailOrder(list.get(i).getOrderID(), date, UiFormatChanger.stateTOstring(list.get(i).getOrderState())
                     , list.get(i).getPeopleNumber(), list.get(i).getPrice(), havecd, UiFormatChanger.typeTOstring(list.get(i).getRoomType())));
-            System.out.println(list.get(i).getPrice());
         }
         orderList.setItems(orderData);
         columnID.setCellValueFactory(cellData -> cellData.getValue().OrderIDProperty());
