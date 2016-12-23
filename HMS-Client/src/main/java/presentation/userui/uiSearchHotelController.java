@@ -329,7 +329,6 @@ public class uiSearchHotelController implements Initializable {
                 LimitVO RoomLimit = new LimitVO(LimitCriterion.RoomCriterion, getRoomType(RoomType), Double.parseDouble(PriceMin.getText()), Double.parseDouble(PriceMax.getText()),
                         Integer.parseInt(RoomNum.getText()), UiFormatChanger.getDate(checkinDate), UiFormatChanger.getDate(checkoutDate));
                 SearchList.add(RoomLimit);
-                System.out.println(getRoomType(RoomType));
             } catch (Exception e) {
                 setIsValid(false);
                 jump.warning();
