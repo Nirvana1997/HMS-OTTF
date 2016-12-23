@@ -201,15 +201,15 @@ public class uiWebSalerOrderController implements Initializable {
      * 选择查看未撤销订单
      */
     public void checkNotRevokeOrder() {
-        menuButtonChooseOrderState.setText("未撤销订单");
-        this.refreshTable("未撤销");
+        menuButtonChooseOrderState.setText("异常订单");
+        this.refreshTable("异常");
     }
 
     /**
      * 刷新表单信息
      */
     private void refreshTable(String state) {
-        if (state.equals("未撤销")){
+        if (state.equals("异常")){
             orderList.setItems(unCancledOrderData);
         }
         else if(state.equals("已撤销")){
@@ -275,10 +275,10 @@ public class uiWebSalerOrderController implements Initializable {
             String orderId = orderList.getSelectionModel().getSelectedItem().getOrderID();
             String state = orderList.getSelectionModel().getSelectedItem().getState();
 
-            if(state.equals("未撤销")){
+            if(state.equals("异常")){
                 paneChooseCredit.setVisible(true);
                 paneRevokeTime.setVisible(false);
-                this.initPaneDetailedOrder(orderId, "未撤销");
+                this.initPaneDetailedOrder(orderId, "异常");
             }
             else if(state.equals("已撤销")){
                 paneChooseCredit.setVisible(false);
@@ -297,7 +297,6 @@ public class uiWebSalerOrderController implements Initializable {
     public void initPaneDetailedOrder(String orderId, String state) {
         try {
             OrderVO vo = websalerbl.getOrderByID(orderId);
-            System.out.println("aaa");
             labelOrderId.setText(vo.getOrderID());
             lanelUserId.setText(vo.getUserID());
             labelOrderState.setText(UiFormatChanger.stateTOstring(vo.getOrderState()));
@@ -312,7 +311,7 @@ public class uiWebSalerOrderController implements Initializable {
                 textAreaReason.setText(vo2.getCancelReason());
                 labelRevokeTime.setText(vo2.getCancelDate() + vo2.getCancelTime());
             }
-            else if (state.equals("未撤销")){
+            else if (state.equals("异常")){
                 textAreaReason.setText("");
                 labelRevokeTime.setText("");
             }
