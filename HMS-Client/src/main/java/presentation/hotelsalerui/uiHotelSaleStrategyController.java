@@ -44,6 +44,8 @@ public class uiHotelSaleStrategyController implements Initializable{
     public uiHotelSaleStrategyController() throws RemoteException {
     }
 
+    String companyId = "";
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         hotelsalerblService = new HotelSalerController();
@@ -87,6 +89,26 @@ public class uiHotelSaleStrategyController implements Initializable{
         }else{
             lengthPromotionThreeRooms = promotionThreeRooms.size();
             this.initPromotionContent(0, PromotionType.Hotel_Num);
+        }
+
+        // 初始化合作企业menuButton
+        try {
+            ArrayList<String> companyArray = hotelsalerblService.showAllCompanys();
+            for (int i = 0; i < companyArray.size(); i++) {
+                MenuItem menuItem = new MenuItem(companyArray.get(i));
+                menuButtonChooseCompany.getItems().add(menuItem);
+                menuItem.setOnAction(event -> {
+                    menuButtonChooseCompany.setText(menuItem.getText());
+                    try {
+                        this.companyId = hotelsalerblService.getCompanyID(menuItem.getText());
+                    } catch (RemoteException e) {
+                        e.printStackTrace();
+                    }
+                });
+            }
+
+        } catch (RemoteException e) {
+            e.printStackTrace();
         }
     }
 
@@ -243,6 +265,8 @@ public class uiHotelSaleStrategyController implements Initializable{
     private Label labelPromotionThreeRoomsContent;
     @FXML
     private Label labelPleaseNew;
+    @FXML
+    private MenuButton menuButtonChooseCompany;
 
     /**
      * 酒店信息按钮点击监听
@@ -647,7 +671,7 @@ public class uiHotelSaleStrategyController implements Initializable{
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
-                PromotionVO vo = new PromotionVO(name, description, PromotionType.Hotel_Company, beginTime, endTime, discount);
+                PromotionVO vo = new PromotionVO(name, description, PromotionType.Hotel_Company, beginTime, endTime, discount, companyId);
                 try {
                     hotelsalerblService.addPromotion(vo);
                 } catch (RemoteException e) {
@@ -719,7 +743,7 @@ public class uiHotelSaleStrategyController implements Initializable{
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
-                PromotionVO vo = new PromotionVO(name, description, PromotionType.Hotel_Company, beginTime, endTime, discount);
+                PromotionVO vo = new PromotionVO(name, description, PromotionType.Hotel_Company, beginTime, endTime, discount, companyId);
                 try {
                     hotelsalerblService.setPromotion(vo);
                 } catch (RemoteException e) {

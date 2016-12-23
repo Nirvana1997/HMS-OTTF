@@ -105,7 +105,27 @@ public class PromotionVO {
         this.discountTenRate = discountTenRate;
     }
 
-    public String getPromotionName() {
+	/**
+	 * 合作企业策略构造器
+	 * @param name
+	 * @param description
+	 * @param hotel_company
+	 * @param beginTime
+	 * @param endTime
+	 * @param discount
+	 * @param companyId
+	 */
+	public PromotionVO(String name, String description, PromotionType hotel_company, Date beginTime, Date endTime, double discount, String companyId) {
+		this.promotionName = name;
+		this.description = description;
+		this.promotionType = hotel_company;
+		this.startDate = beginTime;
+		this.endDate = endTime;
+		this.discountTenRate = discount;
+		this.companyID = companyId;
+	}
+
+	public String getPromotionName() {
 		return promotionName;
 	}
 
