@@ -28,8 +28,10 @@ public class Birth implements Strategy {
     public double calculateDiscountPrice(UserInfoVO userInfoVO, OrderVO orderVO) {
         //获得原价
         double originPrice = orderVO.getPrice();
+        //获得天数
+        int days = DateOperation.getDates(orderVO.getCheckInDate(),orderVO.getCheckOutDate()).size();
         //总价
-        double sum = 0;
+        double sum = orderVO.getPrice() * days * orderVO.getRoomNumber();
         ArrayList<Date> dates = DateOperation.getDates(orderVO.getCheckInDate(), orderVO.getCheckOutDate());
         for (Date date : dates) {
             //若用户生日在住房期间，当天价格打折

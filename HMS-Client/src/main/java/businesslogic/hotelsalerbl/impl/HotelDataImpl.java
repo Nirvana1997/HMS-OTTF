@@ -184,7 +184,9 @@ public class HotelDataImpl implements HotelInfo, HotelRoom, HotelInfoForManageme
         for (CommentPO po : comments) {
             res += po.getGrade();
         }
+        System.out.println(res);
         res = (res + grade) / (comments.size() + 1);
+        System.out.println(res);
         HotelinfoPO hotelinfoPO = hotelinfoDataService.getHotelinfo(hotelID);
         hotelinfoPO.setGrade(res);
         hotelinfoDataService.setHotelinfo(hotelinfoPO);

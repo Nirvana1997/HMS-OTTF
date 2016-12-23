@@ -24,10 +24,10 @@ public class Vip implements Strategy {
     @Override
     public double calculateDiscountPrice(UserInfoVO userInfoVO, OrderVO orderVO) {
         //获取天数
-        int days = DateOperation.getDates(orderVO.getCheckInDate(),orderVO.getCheckOutDate()).size();
+        int days = DateOperation.getDates(orderVO.getCheckInDate(), orderVO.getCheckOutDate()).size();
         //计算原价
-        double sum = orderVO.getPrice() * days;
-        if(userInfoVO.getVipLevel()==promotion.getVipLevel())
+        double sum = orderVO.getPrice() * days * orderVO.getRoomNumber();
+        if (userInfoVO.getVipLevel() == promotion.getVipLevel())
             sum *= promotion.getDiscount();
         return sum;
     }

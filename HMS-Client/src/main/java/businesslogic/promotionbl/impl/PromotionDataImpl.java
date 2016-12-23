@@ -19,6 +19,7 @@ import vo.UserInfoVO;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.rmi.RemoteException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 /**
@@ -90,8 +91,9 @@ public class PromotionDataImpl implements PromotionInfo, WebPromotionInfo, Hotel
         }
 
         //填充订单信息
-        res.setPrice(leastPrice);
-        res.setPromotionName(bestPromotion==null?null:bestPromotion.getName());
+        DecimalFormat df = new DecimalFormat("#.0");
+        res.setPrice(Double.valueOf(df.format(leastPrice)));
+        res.setPromotionName(bestPromotion==null?null:(bestPromotion.getName()+bestPromotion.getDiscount()));
         return res;
     }
 

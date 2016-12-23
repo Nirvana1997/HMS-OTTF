@@ -14,7 +14,7 @@ import java.util.Date;
  */
 public class DateOperation {
     /**
-     * 返回起始日期中间的所有日期
+     * 返回起始日期中间的所有日期（不包括结束日期）
      *
      * @param startDate 起始日期
      * @param endDate   结束日期
@@ -34,8 +34,6 @@ public class DateOperation {
             result.add(start.getTime());
             start.add(Calendar.DAY_OF_YEAR, 1);
         }
-        //补上最后一天
-        result.add(endDate);
 
         return result;
     }
