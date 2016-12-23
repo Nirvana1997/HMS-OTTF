@@ -378,9 +378,9 @@
             </AnchorPane>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="HistoryOrderPane" layoutX="324.0" layoutY="185.0" prefHeight="378.0" prefWidth="605.0">
+      <AnchorPane fx:id="HistoryOrderPane" layoutX="324.0" layoutY="185.0" prefHeight="378.0" prefWidth="605.0" visible="false">
          <children>
-            <TableView fx:id="orderList" layoutY="6.0" prefHeight="324.0" prefWidth="586.0">
+            <TableView fx:id="orderList" layoutY="6.0" prefHeight="324.0" prefWidth="586.0" stylesheets="@tableview.css">
               <columns>
                 <TableColumn fx:id="columnID" prefWidth="130.0" text="订单编号" />
                 <TableColumn fx:id="columnTime" prefWidth="128.0" text="入住时间" />
