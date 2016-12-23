@@ -153,5 +153,6 @@
                </source>
             </ImageInput>
          </effect></Button>
+      <Text layoutX="625.0" layoutY="158.0" strokeType="OUTSIDE" strokeWidth="0.0" text="“√”表示有该类型订单，“×”表示无该类型订单" />
    </children>
 </AnchorPane>
