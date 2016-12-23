@@ -9,6 +9,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import vo.CommentVO;
+import vo.HotelinfoVO;
 import vo.OrderVO;
 
 import java.io.IOException;
@@ -56,7 +57,8 @@ public class uiCommentOrderController implements Initializable{
     private Button star5;
     @FXML
     private Text star;
-
+    @FXML
+    private Text orderHotel;
 
     public uiCommentOrderController() throws RemoteException {
     }
@@ -192,6 +194,9 @@ public class uiCommentOrderController implements Initializable{
     public void initialize(URL location, ResourceBundle resources) {
         try {
             UserName.setText(userController.showUserInfo().getName());
+            OrderVO orderVO = userController.getOrderInfo(uiMyOrderController.getOrderID());
+            HotelinfoVO hotelvo = userController.readHotel(orderVO.getHotelID());
+            orderHotel.setText(hotelvo.getHotelname());
         } catch (RemoteException e) {
             e.printStackTrace();
         }
