@@ -196,7 +196,7 @@ public class uiCommentOrderController implements Initializable{
             UserName.setText(userController.showUserInfo().getName());
             OrderVO orderVO = userController.getOrderInfo(uiMyOrderController.getOrderID());
             HotelinfoVO hotelvo = userController.readHotel(orderVO.getHotelID());
-            orderHotel.setText(hotelvo.getHotelID());
+            orderHotel.setText(hotelvo.getHotelname());
         } catch (RemoteException e) {
             e.printStackTrace();
         }
