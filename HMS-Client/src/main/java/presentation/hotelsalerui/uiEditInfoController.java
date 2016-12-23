@@ -22,8 +22,8 @@ import java.util.ResourceBundle;
  */
 public class uiEditInfoController implements Initializable {
 
-    private String tradeArea = "";
-    private String address = "";
+    private String tradeArea = "长江";
+    private String address = "上海";
     private String hotelID = "";
     private int star = 0;
     private double grade = 0;

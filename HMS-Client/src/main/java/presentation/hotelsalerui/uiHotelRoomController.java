@@ -324,6 +324,11 @@ public class uiHotelRoomController implements Initializable{
                 e.printStackTrace();
             }
         }
+        Date date = new Date();
+        // 初始化酒店空房
+        this.showEmptyRoomsByDate(date);
+        // 初始化酒店房间总数和价格
+        this.setHotelInfo();
     }
 
     /**
@@ -380,8 +385,10 @@ public class uiHotelRoomController implements Initializable{
         this.hotelID = roomArray.get(0).getHotelID();
 
         Date date = new Date();
-        this.showEmptyRoomsByDate(date); // 初始化酒店空房
-        this.setHotelInfo(); // 初始化酒店房间总数和价格
+        // 初始化酒店空房
+        this.showEmptyRoomsByDate(date);
+        // 初始化酒店房间总数和价格
+        this.setHotelInfo();
     }
 
     /**
