@@ -88,6 +88,9 @@ public class HotelOrder {
         for(RoomNumPO po:hotelInfo.getRooms(hotelID,new Date())){
             res.add(HotelPVChanger.emptyRoomP2V(po));
         }
+        for(RoomNumVO vo:res){
+            vo.setDate(String.valueOf(hotelInfo.getRoomPrice(hotelID,vo.getRoomType())));
+        }
         return res;
     }
 

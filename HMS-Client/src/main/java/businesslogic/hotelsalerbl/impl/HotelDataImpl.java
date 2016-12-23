@@ -169,6 +169,24 @@ public class HotelDataImpl implements HotelInfo, HotelRoom, HotelInfoForManageme
     }
 
     /**
+     * 获得对应房间价格
+     *
+     * @param hotelID  酒店id
+     * @param roomType 房间类型
+     * @return 酒店房间信息
+     * @throws RemoteException
+     */
+    @Override
+    public double getRoomPrice(String hotelID, RoomType roomType) throws RemoteException{
+        for(HotelroomPO po:hotelroomDataService.getRoomList(hotelID)){
+            if(po.getRoomType().equals(roomType)){
+                return po.getPrice();
+            }
+        }
+        return 0;
+    }
+
+    /**
      * 传入一个用户的评分并更新酒店评分
      *
      * @param hotelID 酒店编号
