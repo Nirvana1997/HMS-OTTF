@@ -296,6 +296,7 @@ public class uiHotelSaleStrategyController implements Initializable{
         panePromotionCompany.setVisible(false);
         panePromotionThreeRooms.setVisible(false);
         paneEditPromotion.setVisible(false);
+        paneInfoPromotionBirthday.setVisible(true);
     }
 
     /**
@@ -307,6 +308,7 @@ public class uiHotelSaleStrategyController implements Initializable{
         panePromotionCompany.setVisible(false);
         panePromotionThreeRooms.setVisible(false);
         paneEditPromotion.setVisible(false);
+        paneInfoPromotionDoubleOne.setVisible(true);
     }
 
     /**
@@ -318,6 +320,7 @@ public class uiHotelSaleStrategyController implements Initializable{
         panePromotionCompany.setVisible(true);
         panePromotionThreeRooms.setVisible(false);
         paneEditPromotion.setVisible(false);
+        paneInfoPromotionCompany.setVisible(true);
     }
 
     /**
@@ -329,6 +332,7 @@ public class uiHotelSaleStrategyController implements Initializable{
         panePromotionCompany.setVisible(false);
         panePromotionThreeRooms.setVisible(true);
         paneEditPromotion.setVisible(false);
+        paneInfoPromotionThreeRooms.setVisible(true);
     }
 
     /**

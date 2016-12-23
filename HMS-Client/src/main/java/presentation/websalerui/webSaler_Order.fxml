@@ -31,7 +31,7 @@
             </TableView>
             <MenuButton fx:id="menuButtonChooseOrderState" cacheShape="false" centerShape="false" focusTraversable="false" layoutX="48.0" layoutY="48.0" mnemonicParsing="false" scaleShape="false" style="-fx-background-color: #FFFFFF;" text="未撤销订单">
               <items>
-                <MenuItem mnemonicParsing="false" onAction="#checkNotRevokeOrder" text="未撤销订单" />
+                <MenuItem mnemonicParsing="false" onAction="#checkNotRevokeOrder" text="异常订单" />
                 <MenuItem mnemonicParsing="false" onAction="#checkRevokeOrder" text="已撤销订单" />
               </items>
                <font>
@@ -52,7 +52,7 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label fx:id="labelOrderId" layoutX="185.0" layoutY="51.0" prefHeight="34.0" prefWidth="170.0" wrapText="true">
+            <Label fx:id="labelOrderId" layoutX="165.0" layoutY="51.0" prefHeight="34.0" prefWidth="218.0" wrapText="true">
                <font>
                   <Font size="18.0" />
                </font>
@@ -72,7 +72,7 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label fx:id="labelOrderState" layoutX="185.0" layoutY="103.0" prefHeight="34.0" prefWidth="170.0" wrapText="true">
+            <Label fx:id="labelOrderState" layoutX="173.0" layoutY="103.0" prefHeight="34.0" prefWidth="170.0" wrapText="true">
                <font>
                   <Font size="18.0" />
                </font>
@@ -92,7 +92,7 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label fx:id="labelRoomType" layoutX="185.0" layoutY="157.0" prefHeight="34.0" prefWidth="170.0" wrapText="true">
+            <Label fx:id="labelRoomType" layoutX="173.0" layoutY="157.0" prefHeight="34.0" prefWidth="170.0" wrapText="true">
                <font>
                   <Font size="18.0" />
                </font>
@@ -112,7 +112,7 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label fx:id="labelBookedTime" layoutX="185.0" layoutY="215.0" prefHeight="34.0" prefWidth="170.0" wrapText="true">
+            <Label fx:id="labelBookedTime" layoutX="173.0" layoutY="215.0" prefHeight="34.0" prefWidth="170.0" wrapText="true">
                <font>
                   <Font size="18.0" />
                </font>
@@ -196,17 +196,9 @@
                         <Image url="@../../../../../graphics/websalerui/portrait.png" />
                      </image>
                      <HBox.margin>
-                        <Insets left="40.0" top="40.0" />
+                        <Insets left="90.0" top="40.0" />
                      </HBox.margin>
                   </ImageView>
-                  <Label text="黄小萱">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets left="30.0" top="60.0" />
-                     </HBox.margin>
-                  </Label>
                </children>
                <VBox.margin>
                   <Insets />
