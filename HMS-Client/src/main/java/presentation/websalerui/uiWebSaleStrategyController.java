@@ -390,7 +390,7 @@ public class uiWebSaleStrategyController implements Initializable{
                     labelLevel2.setText(String.valueOf(promotionMember.get(i).getDiscountTenRate() * 10));
                 }
                 else if(level == 3){
-                    labelLevel3.setText(String.valueOf(promotionMember.get(i).getDiscountTenRate() * 10));
+                    labelLevel3.setText(String.valueOf(promotionMember.get(i).getDiscount() * 10));
                 }
             }
         }
