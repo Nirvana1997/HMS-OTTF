@@ -119,17 +119,9 @@
                         <Image url="@../../../../../graphics/websalerui/portrait.png" />
                      </image>
                      <HBox.margin>
-                        <Insets left="40.0" top="40.0" />
+                        <Insets left="90.0" top="40.0" />
                      </HBox.margin>
                   </ImageView>
-                  <Label text="黄小萱">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets left="30.0" top="60.0" />
-                     </HBox.margin>
-                  </Label>
                </children>
                <VBox.margin>
                   <Insets />
