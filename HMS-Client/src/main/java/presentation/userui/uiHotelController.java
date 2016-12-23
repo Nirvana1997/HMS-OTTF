@@ -15,6 +15,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import utility.UiFormatChanger;
 import vo.*;
+
 import java.io.IOException;
 import java.net.URL;
 import java.rmi.RemoteException;
@@ -256,6 +257,23 @@ public class uiHotelController implements Initializable {
      */
     @FXML
     private Text textComment3;
+    /**
+     * 第一个用户
+     */
+    @FXML
+    private Text textID1;
+
+    /**
+     * 第二个用户
+     */
+    @FXML
+    private Text textID2;
+
+    /**
+     * 第三个用户
+     */
+    @FXML
+    private Text textID3;
 
     /**
      * 跳转界面的类
@@ -473,22 +491,28 @@ public class uiHotelController implements Initializable {
         if (list.size() == 1) {
             comment1.setVisible(true);
             textComment1.setText(list.get(0).getComment());
+            textID1.setText(list.get(0).getUserID());
         }
         //如果该酒店只有两条评价，则只显示第一条、第二条评价模块
         if (list.size() == 2) {
             comment1.setVisible(true);
             textComment1.setText(list.get(0).getComment());
+            textID1.setText(list.get(0).getUserID());
             comment2.setVisible(true);
             textComment2.setText(list.get(1).getComment());
+            textID2.setText(list.get(1).getUserID());
         }
         //如果该酒店有三条及以上评价，显示最新三条评价
         if (list.size() >= 3) {
             comment1.setVisible(true);
-            textComment1.setText(list.get(list.size()-1).getComment());
+            textComment1.setText(list.get(list.size() - 1).getComment());
+            textID1.setText(list.get(list.size() - 1).getUserID());
             comment2.setVisible(true);
-            textComment2.setText(list.get(list.size()-2).getComment());
+            textComment2.setText(list.get(list.size() - 2).getComment());
+            textID2.setText(list.get(list.size() - 2).getUserID());
             comment3.setVisible(true);
-            textComment3.setText(list.get(list.size()-3).getComment());
+            textComment3.setText(list.get(list.size() - 3).getComment());
+            textID3.setText(list.get(list.size() - 3).getUserID());
         }
     }
 

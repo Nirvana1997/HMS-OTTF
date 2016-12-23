@@ -50,7 +50,7 @@
          <effect>
             <ImageInput>
                <source>
-                  <Image url="file:/D:/HMS-OTTF/HMS-OTTF/HMS-Client/graphics/userui/浏览酒店1.png" />
+                  <Image url="@../../../../../graphics/userui/浏览酒店1.png" />
                </source>
             </ImageInput>
          </effect>
@@ -132,7 +132,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <AnchorPane fx:id="HotelInfoPane" layoutX="333.0" layoutY="181.0" prefHeight="362.0" prefWidth="586.0">
+      <AnchorPane fx:id="HotelInfoPane" layoutX="333.0" layoutY="181.0" prefHeight="362.0" prefWidth="586.0" visible="false">
          <children>
             <Text layoutX="42.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="酒店名称：">
                <font>
@@ -299,11 +299,11 @@
             </Text>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="UserCommentPane" layoutX="294.0" layoutY="164.0" prefHeight="406.0" prefWidth="635.0" visible="false">
+      <AnchorPane fx:id="UserCommentPane" layoutX="294.0" layoutY="164.0" prefHeight="406.0" prefWidth="635.0">
          <children>
             <AnchorPane fx:id="comment1" layoutY="14.0" prefHeight="129.0" prefWidth="635.0">
                <children>
-                  <Text fill="#8cc64e" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="“">
+                  <Text fill="#8cc64e" layoutX="121.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="“">
                      <font>
                         <Font name="汉仪粗黑简" size="64.0" />
                      </font>
@@ -313,16 +313,22 @@
                         <Font name="汉仪粗黑简" size="64.0" />
                      </font>
                   </Text>
-                  <Text fx:id="textComment1" layoutX="82.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="该酒店暂时无更多评价哦" wrappingWidth="472.0">
+                  <Text fx:id="textComment1" layoutX="203.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="该酒店暂时无更多评价哦" wrappingWidth="472.0">
                      <font>
                         <Font name="SimHei" size="22.0" />
                      </font>
                   </Text>
+                  <ImageView layoutX="42.0" layoutY="11.0">
+                     <image>
+                        <Image url="@../../../../../graphics/userui/头像/1.png" />
+                     </image>
+                  </ImageView>
+                  <Text fx:id="textID1" layoutX="24.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="困了么小鸡" textAlignment="CENTER" wrappingWidth="107.0" />
                </children>
             </AnchorPane>
             <AnchorPane fx:id="comment2" layoutY="119.0" prefHeight="129.0" prefWidth="635.0" visible="false">
                <children>
-                  <Text fill="#b5c44e" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="“">
+                  <Text fill="#b5c44e" layoutX="123.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="“">
                      <font>
                         <Font name="汉仪粗黑简" size="64.0" />
                      </font>
@@ -332,16 +338,28 @@
                         <Font name="汉仪粗黑简" size="64.0" />
                      </font>
                   </Text>
-                  <Text fx:id="textComment2" layoutX="82.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="喋喋大酒店超级棒，不愧是全国第一的大酒店！" wrappingWidth="472.0">
+                  <Text fx:id="textComment2" layoutX="202.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="喋喋大酒店超级棒，不愧是全国第一的大酒店！" wrappingWidth="351.99999809265137">
                      <font>
                         <Font name="SimHei" size="22.0" />
                      </font>
                   </Text>
+                  <ImageView layoutX="42.0" layoutY="11.0">
+                     <image>
+                        <Image url="@../../../../../graphics/userui/头像/2.png" />
+                     </image>
+                  </ImageView>
+                  <Text fx:id="textID2" layoutX="24.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="困了么小鸡" textAlignment="CENTER" wrappingWidth="107.0" />
                </children>
             </AnchorPane>
             <AnchorPane fx:id="comment3" layoutX="5.0" layoutY="227.0" prefHeight="129.0" prefWidth="635.0" visible="false">
                <children>
-                  <Text fill="#c4af4e" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="“">
+                  <ImageView layoutX="42.0" layoutY="11.0">
+                     <image>
+                        <Image url="@../../../../../graphics/userui/头像/3.png" />
+                     </image>
+                  </ImageView>
+                  <Text fx:id="textID3" layoutX="24.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="困了么小鸡" textAlignment="CENTER" wrappingWidth="107.0" />
+                  <Text fill="#c4af4e" layoutX="120.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" text="“">
                      <font>
                         <Font name="汉仪粗黑简" size="64.0" />
                      </font>
@@ -351,7 +369,7 @@
                         <Font name="汉仪粗黑简" size="64.0" />
                      </font>
                   </Text>
-                  <Text fx:id="textComment3" layoutX="82.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="喋喋大酒店超级棒，不愧是全国第一的大酒店！" wrappingWidth="472.0">
+                  <Text fx:id="textComment3" layoutX="202.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="喋喋大酒店超级棒，不愧是全国第一的大酒店！" wrappingWidth="351.99999809265137">
                      <font>
                         <Font name="SimHei" size="22.0" />
                      </font>
