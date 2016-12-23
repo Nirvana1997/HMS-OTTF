@@ -99,7 +99,7 @@
                   </ImageInput>
                </effect>
             </Button>
-            <Button fx:id="buttonDelete" layoutX="331.0" layoutY="384.0" mnemonicParsing="false" onAction="#Delete" prefHeight="36.0" prefWidth="89.0" text="删除">
+            <Button fx:id="buttonDelete" layoutX="331.0" layoutY="384.0" mnemonicParsing="false" onAction="#Delete" prefHeight="36.0" prefWidth="89.0" text="删除" visible="false">
                <font>
                   <Font size="18.0" />
                </font>

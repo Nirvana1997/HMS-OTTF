@@ -67,7 +67,7 @@
                   <Font size="15.0" />
                </font>
             </Text>
-            <Text layoutX="68.0" layoutY="257.0" strokeType="OUTSIDE" strokeWidth="0.0" text="联系方式：">
+            <Text layoutX="68.0" layoutY="310.0" strokeType="OUTSIDE" strokeWidth="0.0" text="联系方式：">
                <font>
                   <Font size="15.0" />
                </font>
@@ -82,7 +82,7 @@
                   <Font size="14.0" />
                </font>
             </PasswordField>
-            <TextField fx:id="textWSNumber" layoutX="152.0" layoutY="237.0">
+            <TextField fx:id="textWSNumber" layoutX="152.0" layoutY="290.0">
                <font>
                   <Font size="14.0" />
                </font>
@@ -116,6 +116,16 @@
                   <Font size="13.0" />
                </font>
             </Text>
+            <Text layoutX="68.0" layoutY="252.0" strokeType="OUTSIDE" strokeWidth="0.0" text="确认密码：">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <PasswordField fx:id="textWSPassword1" layoutX="151.0" layoutY="232.0">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </PasswordField>
          </children>
       </AnchorPane>
       <Text fx:id="textManageWS" fill="#3a72d3" layoutX="303.0" layoutY="108.0" onMouseClicked="#returntoManageWS" strokeType="OUTSIDE" strokeWidth="0.0" text="网站管理" underline="true">

@@ -168,12 +168,12 @@
                   <Font size="16.0" />
                </font>
             </Text>
-            <ComboBox fx:id="textCircle" layoutX="77.0" layoutY="36.0" onAction="#initAddress" prefHeight="30.0" prefWidth="109.0" promptText="商圈">
+            <ComboBox fx:id="textCircle" layoutX="77.0" layoutY="36.0" onAction="#initAddress" prefHeight="30.0" prefWidth="109.0" promptText="商圈" stylesheets="@combobox.css">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
             </ComboBox>
-            <ComboBox fx:id="textAddress" layoutX="240.0" layoutY="36.0" prefHeight="30.0" prefWidth="109.0" promptText="地址">
+            <ComboBox fx:id="textAddress" layoutX="240.0" layoutY="36.0" prefHeight="30.0" prefWidth="109.0" promptText="地址" stylesheets="@combobox.css">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -233,22 +233,22 @@
                   <Font size="16.0" />
                </font>
             </CheckBox>
-            <ComboBox fx:id="StarMin" layoutX="140.0" layoutY="95.0" prefHeight="29.0" prefWidth="57.0" promptText="0">
+            <ComboBox fx:id="StarMin" layoutX="140.0" layoutY="95.0" prefHeight="29.0" prefWidth="57.0" promptText="0" stylesheets="@combobox.css">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
             </ComboBox>
-            <ComboBox fx:id="StarMax" layoutX="246.0" layoutY="95.0" prefHeight="29.0" prefWidth="57.0" promptText="5">
+            <ComboBox fx:id="StarMax" layoutX="246.0" layoutY="95.0" prefHeight="29.0" prefWidth="57.0" promptText="5" stylesheets="@combobox.css">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
             </ComboBox>
-            <ComboBox fx:id="GradeMin" layoutX="140.0" layoutY="138.0" prefHeight="29.0" prefWidth="57.0" promptText="0">
+            <ComboBox fx:id="GradeMin" layoutX="140.0" layoutY="138.0" prefHeight="29.0" prefWidth="57.0" promptText="0" stylesheets="@combobox.css">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
             </ComboBox>
-            <ComboBox fx:id="GradeMax" layoutX="246.0" layoutY="138.0" prefHeight="29.0" prefWidth="57.0" promptText="5">
+            <ComboBox fx:id="GradeMax" layoutX="246.0" layoutY="138.0" prefHeight="29.0" prefWidth="57.0" promptText="5" stylesheets="@combobox.css">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>

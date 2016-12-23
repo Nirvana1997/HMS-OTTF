@@ -89,12 +89,12 @@
                   <Font size="15.0" />
                </font>
             </Text>
-            <Text layoutX="413.0" layoutY="205.0" strokeType="OUTSIDE" strokeWidth="0.0" text="账号：">
+            <Text layoutX="413.0" layoutY="161.0" strokeType="OUTSIDE" strokeWidth="0.0" text="账号：">
                <font>
                   <Font size="15.0" />
                </font>
             </Text>
-            <Text layoutX="413.0" layoutY="250.0" strokeType="OUTSIDE" strokeWidth="0.0" text="密码：">
+            <Text layoutX="413.0" layoutY="250.0" strokeType="OUTSIDE" strokeWidth="0.0" text="确认密码：">
                <font>
                   <Font size="15.0" />
                </font>
@@ -114,7 +114,7 @@
                   <Font size="14.0" />
                </font>
             </TextField>
-            <TextField fx:id="textHSAccount" layoutX="482.0" layoutY="185.0" onMouseClicked="#notWarningAccount">
+            <TextField fx:id="textHSAccount" layoutX="482.0" layoutY="141.0" onMouseClicked="#notWarningAccount">
                <font>
                   <Font size="14.0" />
                </font>
@@ -161,7 +161,17 @@
                </font>
             </TextField>
             <Text fx:id="warningAccount" fill="RED" layoutX="475.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*该酒店已存在" visible="false" />
-            <PasswordField fx:id="textHSPassword" layoutX="482.0" layoutY="230.0">
+            <PasswordField fx:id="textHSPassword" layoutX="496.0" layoutY="230.0">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </PasswordField>
+            <Text layoutX="413.0" layoutY="205.0" strokeType="OUTSIDE" strokeWidth="0.0" text="密码：">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
+            <PasswordField fx:id="textHSPassword1" layoutX="482.0" layoutY="185.0">
                <font>
                   <Font size="14.0" />
                </font>

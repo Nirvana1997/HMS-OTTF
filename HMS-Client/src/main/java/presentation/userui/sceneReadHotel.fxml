@@ -79,8 +79,8 @@
             <Font name="SimHei" size="16.0" />
          </font>
       </Label>
-      <ComboBox fx:id="textCircle" layoutX="318.0" layoutY="108.0" onAction="#initAddress" prefHeight="30.0" prefWidth="85.0" promptText="商圈" />
-      <ComboBox fx:id="textAddress" layoutX="448.0" layoutY="108.0" onAction="#showHotel" prefHeight="30.0" prefWidth="85.0" promptText="地址" />
+      <ComboBox fx:id="textCircle" layoutX="318.0" layoutY="108.0" onAction="#initAddress" prefHeight="30.0" prefWidth="85.0" promptText="商圈" stylesheets="@combobox.css" />
+      <ComboBox fx:id="textAddress" layoutX="448.0" layoutY="108.0" onAction="#showHotel" prefHeight="30.0" prefWidth="85.0" promptText="地址" stylesheets="@combobox.css" />
       <ImageView layoutX="562.0" layoutY="109.0" visible="false">
          <image>
             <Image url="@../../../../../graphics/userui/ReadHotel/价格.png" />
