@@ -318,8 +318,8 @@ public class uiSearchHotelController implements Initializable {
             try {
                 LimitVO RoomLimit = new LimitVO(LimitCriterion.RoomCriterion, getRoomType(RoomType), Double.parseDouble(PriceMin.getText()), Double.parseDouble(PriceMax.getText()),
                         Integer.parseInt(RoomNum.getText()), UiFormatChanger.getDate(checkinDate), UiFormatChanger.getDate(checkoutDate));
-
                 SearchList.add(RoomLimit);
+                System.out.println(getRoomType(RoomType));
             } catch (Exception e) {
                 setIsValid(false);
                 jump.warning();
@@ -338,9 +338,7 @@ public class uiSearchHotelController implements Initializable {
         }
         HotelOrderBlService hotelOrderBlService = new UserController();
         ArrayList<HotelListItemVO> getHotelList = hotelOrderBlService.searchHotel(UiFormatChanger.getArea(textCircle), UiFormatChanger.getAddress(textAddress), SearchList);
-        for(int i = 0; i< SearchList.size();i++){
-            System.out.println(SearchList.get(i).getRoomType());
-        }
+
         searchHotelPane.setVisible(false);
         //如果不需要显示预订过的酒店，则直接显示所有列表
         if (!checkOrdered.isSelected()){

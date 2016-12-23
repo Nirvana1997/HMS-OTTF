@@ -26,7 +26,7 @@ public class Company implements Strategy{
         //获得天数
         int days = DateOperation.getDates(orderVO.getCheckInDate(),orderVO.getCheckOutDate()).size();
         //计算原价
-        double sum = orderVO.getPrice() * days;
+        double sum = orderVO.getPrice() * days * orderVO.getRoomNumber();
 
         //判断用户是否为企业帐号
         if(userInfoVO.getUserType().equals(UserType.Company)){

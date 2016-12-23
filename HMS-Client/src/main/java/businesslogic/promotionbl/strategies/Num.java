@@ -26,7 +26,7 @@ public class Num implements Strategy{
         //获得天数
         int days = DateOperation.getDates(orderVO.getCheckInDate(),orderVO.getCheckOutDate()).size();
         //计算原价
-        double sum = orderVO.getPrice() * days;
+        double sum = orderVO.getPrice() * days * orderVO.getRoomNumber();
         if(orderVO.getRoomNumber()>=promotion.getRoomNumber()){
             sum *= promotion.getDiscount();
         }

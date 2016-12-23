@@ -19,6 +19,7 @@ import vo.LimitVO;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.rmi.RemoteException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 /**
@@ -68,7 +69,8 @@ public class HotelList {
             //判断是否预定过该酒店
             boolean[] hasOrdered = orderStates(po.getHotelID(),orders);
             //添加列表项
-            hotelListItemList.add(new HotelListItemVO(po.getHotelID(),po.getHotelName(),po.getDetailAddress(),po.getStar(),po.getGrade(),po.getMinPrice(),hasOrdered[0],hasOrdered[1],hasOrdered[2]));
+            DecimalFormat df =new DecimalFormat("#.0");
+            hotelListItemList.add(new HotelListItemVO(po.getHotelID(),po.getHotelName(),po.getDetailAddress(),po.getStar(),Double.valueOf(df.format(po.getGrade())),po.getMinPrice(),hasOrdered[0],hasOrdered[1],hasOrdered[2]));
         }
         return hotelListItemList;
     }

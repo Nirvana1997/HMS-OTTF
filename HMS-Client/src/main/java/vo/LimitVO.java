@@ -82,6 +82,7 @@ public class LimitVO {
         this.num = num;
         this.startDate = startDate;
         this.endDate = endDate;
+        this.roomType = roomType;
     }
 
     /**

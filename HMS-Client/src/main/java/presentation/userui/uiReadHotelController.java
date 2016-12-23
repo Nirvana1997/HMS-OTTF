@@ -270,7 +270,7 @@ public class uiReadHotelController implements Initializable {
             } else {
                 signCa = "×";
             }
-
+            System.out.println(listItemVOs.get(i).getGrade());
             hotelData.add(new tableHotel(listItemVOs.get(i).getHotelID(), listItemVOs.get(i).getHotelname(), listItemVOs.get(i).getMinPrice(), listItemVOs.get(i).getStar(),
                     listItemVOs.get(i).getGrade(), signNo, signAb, signCa));
             Data = hotelData;
