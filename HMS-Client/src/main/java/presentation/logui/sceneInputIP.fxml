@@ -24,7 +24,7 @@
          <effect>
             <ImageInput>
                <source>
-                  <Image url="file:/D:/HMS-OTTF/HMS-OTTF/HMS-Client/graphics/logui/ok.png" />
+                  <Image url="@../../../../../graphics/logui/ok.png" />
                </source>
             </ImageInput>
          </effect>
