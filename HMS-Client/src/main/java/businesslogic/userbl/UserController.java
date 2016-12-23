@@ -5,6 +5,7 @@ import businesslogicservice.userblservice.HotelOrderBlService;
 import businesslogicservice.userblservice.InfoBlService;
 import cfg.CfgReader;
 import enumData.*;
+import po.RoomNumPO;
 import vo.*;
 
 import java.rmi.RemoteException;
@@ -207,14 +208,14 @@ public class UserController implements InfoBlService, HotelOrderBlService {
     }
 
     /**
-     * 获得酒店房间信息
+     * 获得当天酒店房间信息
      *
      * @param hotelID 酒店id
      * @return 酒店房间信息
      * @throws RemoteException
      */
     @Override
-    public ArrayList<HotelroomVO> getRooms(String hotelID) throws RemoteException{
+    public ArrayList<RoomNumVO> getNowRooms(String hotelID) throws RemoteException{
         return hotelOrder.getRooms(hotelID);
     }
 }

@@ -44,13 +44,23 @@ public interface HotelInfo {
     public HotelinfoPO getHotelInfo(String hotelID) throws RemoteException;
 
     /**
-     * 获得酒店房间信息
+     * 获得对应日期酒店房间信息
      *
      * @param hotelID 酒店id
      * @return 酒店房间信息
      * @throws RemoteException
      */
-    public ArrayList<HotelroomPO> getRooms(String hotelID) throws RemoteException;
+    public ArrayList<RoomNumPO> getRooms(String hotelID, Date date) throws RemoteException;
+
+    /**
+     * 获得对应房间价格
+     *
+     * @param hotelID  酒店id
+     * @param roomType 房间类型
+     * @return 酒店房间信息
+     * @throws RemoteException
+     */
+    public double getRoomPrice(String hotelID, RoomType roomType) throws RemoteException;
 
     /**
      * 传入一个用户的评分并更新酒店评分

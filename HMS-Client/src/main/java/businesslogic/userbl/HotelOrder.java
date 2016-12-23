@@ -13,6 +13,7 @@ import enumData.*;
 import po.CreditChangePO;
 import po.HotelroomPO;
 import po.OrderPO;
+import po.RoomNumPO;
 import rmi.RemoteHelper;
 import utility.DateOperation;
 import utility.HotelPVChanger;
@@ -76,16 +77,19 @@ public class HotelOrder {
     }
 
     /**
-     * 获得酒店房间信息
+     * 获得当天酒店房间信息
      *
      * @param hotelID 酒店id
      * @return 酒店房间信息
      * @throws RemoteException
      */
-    public ArrayList<HotelroomVO> getRooms(String hotelID) throws RemoteException{
-        ArrayList<HotelroomVO> res = new ArrayList<>();
-        for(HotelroomPO po:hotelInfo.getRooms(hotelID)){
-            res.add(HotelPVChanger.hotelroomP2V(po));
+    public ArrayList<RoomNumVO> getRooms(String hotelID) throws RemoteException{
+        ArrayList<RoomNumVO> res = new ArrayList<>();
+        for(RoomNumPO po:hotelInfo.getRooms(hotelID,new Date())){
+            res.add(HotelPVChanger.emptyRoomP2V(po));
+        }
+        for(RoomNumVO vo:res){
+            vo.setDate(String.valueOf(hotelInfo.getRoomPrice(hotelID,vo.getRoomType())));
         }
         return res;
     }
@@ -110,7 +114,7 @@ public class HotelOrder {
      */
     public boolean orderHotel(OrderVO vo) throws RemoteException {
         userOrderInfo.addOrder(OrderPVChanger.orderV2P(vo));
-        hotelInfo.subRoom(vo.getHotelID(),vo.getCheckInDate(),vo.getCheckInDate(),vo.getRoomType(),vo.getRoomNumber());
+        hotelInfo.subRoom(vo.getHotelID(),vo.getCheckInDate(),vo.getCheckOutDate(),vo.getRoomType(),vo.getRoomNumber());
         return true;
     }
 

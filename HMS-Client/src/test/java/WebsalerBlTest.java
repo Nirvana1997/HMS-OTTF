@@ -61,7 +61,7 @@ public class WebsalerBlTest {
         websalerblService.makeListPromotion(vips);
         for(PromotionVO v:websalerblService.getPromotionList(PromotionType.Web_Vip)){
             if(v.getPromotionName().equals("vip")||v.getVipLevel()==3){
-                Assert.assertEquals(0.7,v.getDiscount(),0.01);
+                Assert.assertEquals(0.7,v.getDiscountTenRate(),0.01);
                 break;
             }
         }

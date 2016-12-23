@@ -384,13 +384,13 @@ public class uiWebSaleStrategyController implements Initializable{
             for(int i = 0; i < promotionMember.size(); i++){
                 int level = promotionMember.get(i).getVipLevel();
                 if(level == 1){
-                    labelLevel1.setText(String.valueOf(promotionMember.get(i).getDiscount() * 10));
+                    labelLevel1.setText(String.valueOf(promotionMember.get(i).getDiscountTenRate() * 10));
                 }
                 else if(level == 2){
-                    labelLevel2.setText(String.valueOf(promotionMember.get(i).getDiscount() * 10));
+                    labelLevel2.setText(String.valueOf(promotionMember.get(i).getDiscountTenRate() * 10));
                 }
                 else if(level == 3){
-                    labelLevel3.setText(String.valueOf(promotionMember.get(i).getDiscount() * 10));
+                    labelLevel3.setText(String.valueOf(promotionMember.get(i).getDiscountTenRate() * 10));
                 }
             }
         }

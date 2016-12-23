@@ -60,7 +60,7 @@ public class DateOperation {
 
     /**
      * 把Date对象转化为String
-     * 格式为yyyy_MM_dd
+     * 格式为yyyy_M_d
      *
      * @param date date对象
      * @return 对应字符串
@@ -72,7 +72,7 @@ public class DateOperation {
 
     /**
      * 把String转化为date对象
-     * 格式为yyyy_MM_dd
+     * 格式为yyyy_M_d
      *
      * @param string 字符串
      * @return date对象

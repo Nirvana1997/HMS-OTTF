@@ -463,19 +463,19 @@ public class uiHotelController implements Initializable {
      *
      * @param roomlist 房间信息列表
      */
-    public void initRoomInfo(ArrayList<HotelroomVO> roomlist) {
+    public void initRoomInfo(ArrayList<RoomNumVO> roomlist) {
         for (int i = 0; i < roomlist.size(); i++) {
             if (roomlist.get(i).getRoomType() == RoomType.SingleRoom) {
-                singlePrice.setText(String.valueOf(roomlist.get(i).getPrice()));
-                singleNum.setText(String.valueOf(roomlist.get(i).getRoomNumber()));
+                singlePrice.setText(String.valueOf(roomlist.get(i).getDate()));
+                singleNum.setText(String.valueOf(roomlist.get(i).getEmptyNum()));
             }
             if (roomlist.get(i).getRoomType() == RoomType.DoubleRoom) {
-                doublePrice.setText(String.valueOf(roomlist.get(i).getPrice()));
-                doubleNum.setText(String.valueOf(roomlist.get(i).getRoomNumber()));
+                doublePrice.setText(String.valueOf(roomlist.get(i).getDate()));
+                doubleNum.setText(String.valueOf(roomlist.get(i).getEmptyNum()));
             }
             if (roomlist.get(i).getRoomType() == RoomType.DisabledRoom) {
-                disabledPrice.setText(String.valueOf(roomlist.get(i).getPrice()));
-                disabledNum.setText(String.valueOf(roomlist.get(i).getRoomNumber()));
+                disabledPrice.setText(String.valueOf(roomlist.get(i).getDate()));
+                disabledNum.setText(String.valueOf(roomlist.get(i).getEmptyNum()));
             }
         }
     }
@@ -527,7 +527,7 @@ public class uiHotelController implements Initializable {
         try {
             HotelinfoVO currentHotel = userController.readHotel(jump.getHotelID());
             ArrayList<OrderVO> orderlist = userController.getHotelOrderByUserID(jump.getHotelID());
-            ArrayList<HotelroomVO> roomlist = userController.getRooms(jump.getHotelID());
+            ArrayList<RoomNumVO> roomlist = userController.getNowRooms(jump.getHotelID());
             ArrayList<CommentVO> commentlist = userController.getComments(jump.getHotelID());
             initHotelInfo(currentHotel);
             initRoomInfo(roomlist);

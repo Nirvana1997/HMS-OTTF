@@ -463,7 +463,7 @@ public class uiHotelSaleStrategyController implements Initializable{
         textFieldPromotionName.setText(labelPromotionBirthdayName.getText());
         for(int i = 0; i < lengthPromotionBirthday; i++){
             if(promotionBirthday.get(i).getPromotionName().equals(labelPromotionBirthdayName.getText()))
-                textFieldDiscount.setText(String.valueOf(promotionBirthday.get(i).getDiscount()));
+                textFieldDiscount.setText(String.valueOf(promotionBirthday.get(i).getDiscountTenRate()));
         }
         paneInfoPromotionBirthday.setVisible(false);
         paneEditPromotion.setVisible(true);
@@ -482,7 +482,7 @@ public class uiHotelSaleStrategyController implements Initializable{
         textFieldPromotionName.setText(labelPromotionDoubleOneName.getText());
         for(int i = 0; i < lengthPromotionDoubleOne; i++){
             if(promotionDoubleOne.get(i).getPromotionName().equals(labelPromotionDoubleOneName.getText()))
-                textFieldDiscount.setText(String.valueOf(promotionDoubleOne.get(i).getDiscount()));
+                textFieldDiscount.setText(String.valueOf(promotionDoubleOne.get(i).getDiscountTenRate()));
         }
         paneInfoPromotionDoubleOne.setVisible(false);
         paneEditPromotion.setVisible(true);
@@ -501,7 +501,7 @@ public class uiHotelSaleStrategyController implements Initializable{
         textFieldPromotionName.setText(labelPromotionCompanyName.getText());
         for(int i = 0; i < lengthPromotionCompany; i++){
             if(promotionCompany.get(i).getPromotionName().equals(labelPromotionCompanyName.getText()))
-                textFieldDiscount.setText(String.valueOf(promotionCompany.get(i).getDiscount()));
+                textFieldDiscount.setText(String.valueOf(promotionCompany.get(i).getDiscountTenRate()));
         }
         paneInfoPromotionCompany.setVisible(false);
         paneEditPromotion.setVisible(true);
@@ -520,7 +520,7 @@ public class uiHotelSaleStrategyController implements Initializable{
         textFieldPromotionName.setText(labelPromotionThreeRoomsName.getText());
         for(int i = 0; i < lengthPromotionThreeRooms; i++){
             if(promotionThreeRooms.get(i).getPromotionName().equals(labelPromotionThreeRoomsName.getText()))
-                textFieldDiscount.setText(String.valueOf(promotionThreeRooms.get(i).getDiscount()));
+                textFieldDiscount.setText(String.valueOf(promotionThreeRooms.get(i).getDiscountTenRate()));
         }
         paneInfoPromotionThreeRooms.setVisible(false);
         paneEditPromotion.setVisible(true);
