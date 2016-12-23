@@ -132,7 +132,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <AnchorPane fx:id="HotelInfoPane" layoutX="333.0" layoutY="181.0" prefHeight="362.0" prefWidth="586.0" visible="false">
+      <AnchorPane fx:id="HotelInfoPane" layoutX="333.0" layoutY="181.0" prefHeight="362.0" prefWidth="586.0">
          <children>
             <Text layoutX="42.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="酒店名称：">
                <font>
@@ -299,7 +299,7 @@
             </Text>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="UserCommentPane" layoutX="294.0" layoutY="164.0" prefHeight="406.0" prefWidth="635.0">
+      <AnchorPane fx:id="UserCommentPane" layoutX="294.0" layoutY="164.0" prefHeight="406.0" prefWidth="635.0" visible="false">
          <children>
             <AnchorPane fx:id="comment1" layoutY="14.0" prefHeight="129.0" prefWidth="635.0">
                <children>
