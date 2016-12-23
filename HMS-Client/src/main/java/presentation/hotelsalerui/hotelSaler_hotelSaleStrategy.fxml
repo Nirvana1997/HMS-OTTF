@@ -65,17 +65,17 @@
                         <Image url="@../../../../../graphics/hotelsalerui/promotionBk.png" />
                      </image>
                   </ImageView>
-                  <Label fx:id="labelPromotionBirthdayName" layoutX="196.0" layoutY="55.0" prefHeight="34.0" prefWidth="131.0">
+                  <Label fx:id="labelPromotionBirthdayName" layoutX="196.0" layoutY="58.0" prefHeight="34.0" prefWidth="131.0">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <Label fx:id="labelPromotionBirthdayTime" layoutX="188.0" layoutY="92.0" prefHeight="34.0" prefWidth="260.0" wrapText="true">
+                  <Label fx:id="labelPromotionBirthdayTime" layoutX="188.0" layoutY="93.0" prefHeight="34.0" prefWidth="260.0" wrapText="true">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <Label fx:id="labelPromotionBirthdayContent" alignment="TOP_LEFT" layoutX="128.0" layoutY="158.0" prefHeight="145.0" prefWidth="497.0" wrapText="true">
+                  <Label fx:id="labelPromotionBirthdayContent" alignment="TOP_LEFT" layoutX="165.0" layoutY="135.0" prefHeight="145.0" prefWidth="497.0" wrapText="true">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -88,17 +88,12 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Label>
-                  <Label layoutX="132.0" layoutY="61.0" text="活动名：">
+                  <Label layoutX="132.0" layoutY="65.0" text="活动名：">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <Label layoutX="132.0" layoutY="98.0" text="时间：">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="132.0" layoutY="131.0" text="详细介绍：">
+                  <Label layoutX="132.0" layoutY="100.0" text="详细介绍：">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -156,17 +151,17 @@
                         <Image url="@../../../../../graphics/hotelsalerui/promotionBk.png" />
                      </image>
                   </ImageView>
-                  <Label fx:id="labelPromotionDoubleOneName" layoutX="208.0" layoutY="60.0" prefHeight="34.0" prefWidth="161.0">
+                  <Label fx:id="labelPromotionDoubleOneName" layoutX="208.0" layoutY="58.0" prefHeight="34.0" prefWidth="161.0">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <Label fx:id="labelPromotionDoubleOneTime" layoutX="200.0" layoutY="97.0" prefHeight="34.0" prefWidth="270.0" wrapText="true">
+                  <Label fx:id="labelPromotionDoubleOneTime" layoutX="200.0" layoutY="93.0" prefHeight="34.0" prefWidth="270.0" wrapText="true">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <Label fx:id="labelPromotionDoubleOneContent" alignment="TOP_LEFT" layoutX="130.0" layoutY="164.0" prefHeight="129.0" prefWidth="497.0" wrapText="true">
+                  <Label fx:id="labelPromotionDoubleOneContent" alignment="TOP_LEFT" layoutX="165.0" layoutY="170.0" prefHeight="129.0" prefWidth="497.0" wrapText="true">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -179,17 +174,17 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Label>
-                  <Label layoutX="136.0" layoutY="66.0" text="活动名：">
+                  <Label layoutX="132.0" layoutY="65.0" text="活动名：">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <Label layoutX="136.0" layoutY="102.0" text="时间：">
+                  <Label layoutX="132.0" layoutY="100.0" text="时间：">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <Label layoutX="136.0" layoutY="137.0" text="详细介绍：">
+                  <Label layoutX="132.0" layoutY="135.0" text="详细介绍：">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -247,17 +242,17 @@
                         <Image url="@../../../../../graphics/hotelsalerui/promotionBk.png" />
                      </image>
                   </ImageView>
-                  <Label fx:id="labelPromotionCompanyName" layoutX="197.0" layoutY="66.0" prefHeight="34.0" prefWidth="161.0">
+                  <Label fx:id="labelPromotionCompanyName" layoutX="197.0" layoutY="58.0" prefHeight="34.0" prefWidth="161.0">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <Label fx:id="labelPromotionCompanyTime" layoutX="191.0" layoutY="103.0" prefHeight="34.0" prefWidth="270.0">
+                  <Label fx:id="labelPromotionCompanyTime" layoutX="191.0" layoutY="93.0" prefHeight="34.0" prefWidth="270.0">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <Label fx:id="labelPromotionCompanyContent" alignment="TOP_LEFT" layoutX="132.0" layoutY="166.0" prefHeight="138.0" prefWidth="490.0">
+                  <Label fx:id="labelPromotionCompanyContent" alignment="TOP_LEFT" layoutX="165.0" layoutY="135.0" prefHeight="138.0" prefWidth="490.0">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -270,17 +265,12 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Label>
-                  <Label layoutX="133.0" layoutY="72.0" text="活动名：">
+                  <Label layoutX="132.0" layoutY="65.0" text="活动名：">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <Label layoutX="133.0" layoutY="109.0" text="时间：">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="132.0" layoutY="142.0" text="详细介绍：">
+                  <Label layoutX="132.0" layoutY="100.0" text="详细介绍：">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -338,7 +328,7 @@
                         <Image url="@../../../../../graphics/hotelsalerui/promotionBk.png" />
                      </image>
                   </ImageView>
-                  <Label fx:id="labelPromotionThreeRoomsName" layoutX="197.0" layoutY="55.0" prefHeight="34.0" prefWidth="161.0">
+                  <Label fx:id="labelPromotionThreeRoomsName" layoutX="197.0" layoutY="58.0" prefHeight="34.0" prefWidth="161.0">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -348,7 +338,7 @@
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <Label fx:id="labelPromotionThreeRoomsContent" alignment="TOP_LEFT" layoutX="136.0" layoutY="164.0" prefHeight="138.0" prefWidth="490.0" wrapText="true">
+                  <Label fx:id="labelPromotionThreeRoomsContent" alignment="TOP_LEFT" layoutX="165.0" layoutY="170.0" prefHeight="138.0" prefWidth="490.0" wrapText="true">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -361,17 +351,17 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Label>
-                  <Label layoutX="133.0" layoutY="61.0" text="活动名：">
+                  <Label layoutX="132.0" layoutY="65.0" text="活动名：">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <Label layoutX="136.0" layoutY="99.0" text="时间：">
+                  <Label layoutX="132.0" layoutY="100.0" text="时间：">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <Label layoutX="136.0" layoutY="135.0" text="详细介绍：">
+                  <Label layoutX="132.0" layoutY="135.0" text="详细介绍：">
                      <font>
                         <Font size="16.0" />
                      </font>
