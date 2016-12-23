@@ -45,7 +45,7 @@
                         </ImageView>
                         <AnchorPane layoutX="107.0" layoutY="33.0" prefHeight="262.0" prefWidth="506.0">
                            <children>
-                              <Label fx:id="labelInfoPromotionDoubleOne" layoutX="40.0" layoutY="84.0" prefHeight="147.0" prefWidth="431.0" wrapText="true">
+                              <Label fx:id="labelInfoPromotionDoubleOne" alignment="TOP_LEFT" layoutX="40.0" layoutY="84.0" prefHeight="147.0" prefWidth="431.0" wrapText="true">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
@@ -91,7 +91,7 @@
                         </ImageView>
                         <AnchorPane layoutX="107.0" layoutY="33.0" prefHeight="262.0" prefWidth="506.0">
                            <children>
-                              <Label fx:id="labelInfoPromotionVIP" layoutX="32.0" layoutY="91.0" prefHeight="147.0" prefWidth="431.0" wrapText="true">
+                              <Label fx:id="labelInfoPromotionVIP" alignment="TOP_LEFT" layoutX="32.0" layoutY="91.0" prefHeight="147.0" prefWidth="431.0" wrapText="true">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
@@ -147,7 +147,7 @@
                         </ImageView>
                         <AnchorPane layoutX="107.0" layoutY="33.0" prefHeight="262.0" prefWidth="506.0">
                            <children>
-                              <Label fx:id="labelInfoPromotionMember" layoutX="40.0" layoutY="84.0" prefHeight="147.0" prefWidth="281.0" wrapText="true">
+                              <Label fx:id="labelInfoPromotionMember" alignment="TOP_LEFT" layoutX="40.0" layoutY="84.0" prefHeight="147.0" prefWidth="281.0" wrapText="true">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
@@ -270,7 +270,7 @@
                               <Font size="16.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="textFieldDiscount" layoutX="363.0" layoutY="38.0" prefHeight="24.0" prefWidth="119.0" promptText="输入值为小数">
+                        <TextField fx:id="textFieldDiscount" layoutX="363.0" layoutY="38.0" prefHeight="29.0" prefWidth="73.0">
                            <font>
                               <Font size="14.0" />
                            </font>
@@ -292,21 +292,36 @@
                                     <Font size="16.0" />
                                  </font>
                               </Label>
-                              <TextField fx:id="textFieldLevel1" layoutX="87.0" layoutY="8.0" prefHeight="29.0" prefWidth="146.0" promptText="输入折扣，值为小数">
+                              <TextField fx:id="textFieldLevel1" layoutX="87.0" layoutY="8.0" prefHeight="29.0" prefWidth="96.0">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
                               </TextField>
-                              <TextField fx:id="textFieldLevel2" layoutX="87.0" layoutY="55.0" prefHeight="29.0" prefWidth="146.0" promptText="输入折扣，值为小数">
+                              <TextField fx:id="textFieldLevel2" layoutX="87.0" layoutY="55.0" prefHeight="29.0" prefWidth="96.0">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
                               </TextField>
-                              <TextField fx:id="textFieldLevel3" layoutX="87.0" layoutY="102.0" prefHeight="29.0" prefWidth="146.0" promptText="输入折扣，值为小数">
+                              <TextField fx:id="textFieldLevel3" layoutX="87.0" layoutY="102.0" prefHeight="29.0" prefWidth="96.0">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
                               </TextField>
+                              <Label layoutX="201.0" layoutY="11.0" text="折">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="201.0" layoutY="58.0" text="折">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="201.0" layoutY="105.0" text="折">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
                            </children>
                         </AnchorPane>
                         <MenuButton fx:id="menuButtonTradeArea" cacheShape="false" centerShape="false" ellipsisString="" focusTraversable="false" layoutX="605.0" layoutY="38.0" mnemonicParsing="false" scaleShape="false" style="-fx-background-color: #FFFFFF;" text="选择商圈" visible="false">
@@ -322,6 +337,11 @@
                            </font>
                         </Label>
                         <Label fx:id="labelPleaseTishi" layoutX="517.0" layoutY="42.0" text="请选择商圈：" visible="false">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="462.0" layoutY="41.0" text="折">
                            <font>
                               <Font size="16.0" />
                            </font>

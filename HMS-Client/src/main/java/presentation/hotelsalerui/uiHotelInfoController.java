@@ -7,6 +7,7 @@ import businesslogicservice.logblservice.LogBlService;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import utility.UiFormatChanger;
 import vo.HotelinfoVO;
 
 import java.io.IOException;
@@ -156,8 +157,8 @@ public class uiHotelInfoController implements Initializable{
             HotelinfoVO vo = hotelInfobl.getHotelinfo();
             labelTitle.setText(vo.getHotelname());
             labelStarLevel.setText(String.valueOf(vo.getStar()));
-            labelTradeArea.setText(vo.getTradeArea().toString());
-            labelAddress.setText(vo.getAddress().toString());
+            labelTradeArea.setText(UiFormatChanger.tradeAreaTOString(vo.getTradeArea()));
+            labelAddress.setText(UiFormatChanger.addressTOString(vo.getAddress()));
             labelDetailAddress.setText(vo.getDetailAddress());
             labelTelephoneNum.setText(vo.getContactNumber());
             labelIntroduction.setText(vo.getIntroduction());

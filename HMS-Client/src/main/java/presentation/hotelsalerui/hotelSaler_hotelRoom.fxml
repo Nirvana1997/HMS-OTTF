@@ -327,6 +327,16 @@
                         <Cursor fx:constant="DEFAULT" />
                      </cursor>
                   </Button>
+                  <Button layoutX="513.0" layoutY="872.0" mnemonicParsing="false" onMouseClicked="#confirmOffLine" text="确认">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="619.0" layoutY="872.0" mnemonicParsing="false" onMouseClicked="#cancelOffLine" text="取消">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Button>
                </children>
             </AnchorPane>
          </content>
