@@ -104,4 +104,20 @@ public interface HotelsalerblService {
      */
     public void setPromotion(PromotionVO vo) throws RemoteException;
 
+    /**
+     * 获得所有企业
+     *
+     * @return 所有企业名称
+     * @throws RemoteException
+     */
+    public ArrayList<String> showAllCompanys() throws RemoteException;
+
+    /**
+     * 判断企业ID与企业名称是否对应
+     *
+     * @param companyName 企业名称
+     * @return 是否对应
+     * @throws RemoteException
+     */
+    public boolean getCompanyID(String companyName) throws RemoteException;
 }

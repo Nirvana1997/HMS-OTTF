@@ -82,12 +82,11 @@ public class PromotionOperation {
     /**
      * 判断企业ID与企业名称是否对应
      *
-     * @param companyID   企业ID
      * @param companyName 企业名称
      * @return 是否对应
      * @throws RemoteException
      */
-    public boolean isCompanyIDCorrect(String companyID, String companyName) throws RemoteException{
-        return hotelsalerCompanyInfo.isCompanyIDCorrect(companyID,companyName);
+    public boolean getCompanyID(String companyName) throws RemoteException{
+        return hotelsalerCompanyInfo.getCompanyID(companyName);
     }
 }
