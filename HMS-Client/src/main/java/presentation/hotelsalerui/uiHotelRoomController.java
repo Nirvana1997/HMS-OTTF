@@ -28,7 +28,7 @@ import java.util.ResourceBundle;
 /**
  * Created by thinkpad on 2016/12/3.
  */
-public class uiHotelRoomController implements Initializable{
+public class uiHotelRoomController implements Initializable {
 
     private SceneJump sceneJump = new SceneJump();
     String hotelID = "";
@@ -145,21 +145,21 @@ public class uiHotelRoomController implements Initializable{
     /**
      * 鼠标进入编辑按钮
      */
-    public void onEnteredLabelEditDisabledRoom(){
+    public void onEnteredLabelEditDisabledRoom() {
         labelEditDisabledRoom.setUnderline(true);
     }
 
     /**
      * 鼠标移出编辑按钮
      */
-    public void onExitedLabelEditDisabledRoom(){
+    public void onExitedLabelEditDisabledRoom() {
         labelEditDisabledRoom.setUnderline(false);
     }
 
     /**
      * 鼠标点击编辑按钮
      */
-    public void onClickedLabelEditDisabledRoom(){
+    public void onClickedLabelEditDisabledRoom() {
         labelEditDisabledRoom.setVisible(false);
 
         labelSingleRoomTotal.setVisible(false);
@@ -191,7 +191,7 @@ public class uiHotelRoomController implements Initializable{
     /**
      * 确认修改监听
      */
-    public void confirmEditDisabledRoom(){
+    public void confirmEditDisabledRoom() {
         int numSingle = Integer.valueOf(textFieldSingleRoomTotal.getText());
         int numDouble = Integer.valueOf(textFieldDoubleRoomTotal.getText());
         int numDisable = Integer.valueOf(textFieldDisabledRoomTotal.getText());
@@ -216,7 +216,7 @@ public class uiHotelRoomController implements Initializable{
     /**
      * 取消修改残疾人房监听
      */
-    public void cancelEditDisabledRoom(){
+    public void cancelEditDisabledRoom() {
         labelEditDisabledRoom.setVisible(true);
 
         labelSingleRoomTotal.setVisible(true);
@@ -240,14 +240,14 @@ public class uiHotelRoomController implements Initializable{
     /**
      * 鼠标移入登出按钮监听
      */
-    public void enteredLabelExit(){
+    public void enteredLabelExit() {
         labelExit.setUnderline(true);
     }
 
     /**
      * 鼠标移出登出按钮监听
      */
-    public void exitedLabelExit(){
+    public void exitedLabelExit() {
         labelExit.setUnderline(false);
     }
 
@@ -273,19 +273,19 @@ public class uiHotelRoomController implements Initializable{
         checkBoxCheckIn.setSelected(false);
     }
 
-    public void onClickedBookSingleRoom(){
+    public void onClickedBookSingleRoom() {
         checkBoxDoubleRoom.setSelected(false);
         checkBoxDisabledRoom.setSelected(false);
         roomType = RoomType.SingleRoom;
     }
 
-    public void onClickedBookDoubleRoom(){
+    public void onClickedBookDoubleRoom() {
         checkBoxSingleRoom.setSelected(false);
         checkBoxDisabledRoom.setSelected(false);
         roomType = RoomType.DoubleRoom;
     }
 
-    public void onClickedBookDisabledRoom(){
+    public void onClickedBookDisabledRoom() {
         checkBoxSingleRoom.setSelected(false);
         checkBoxDoubleRoom.setSelected(false);
         roomType = RoomType.DisabledRoom;
@@ -294,8 +294,8 @@ public class uiHotelRoomController implements Initializable{
     /**
      * 用户线下登记确认信息填写
      */
-    public void confirmOffLine(){
-        if(checkBoxCheckIn.isSelected()){
+    public void confirmOffLine() {
+        if (checkBoxCheckIn.isSelected()) {
             try {
                 Date dateBegin = UiFormatChanger.getDate(datePickerBeginTime);
                 Date dateEnd = UiFormatChanger.getDate(datePickerEndTime);
@@ -310,7 +310,7 @@ public class uiHotelRoomController implements Initializable{
             }
         }
 
-        if(checkBoxCheckOut.isSelected()){
+        if (checkBoxCheckOut.isSelected()) {
             try {
                 Date dateBegin = UiFormatChanger.getDate(datePickerBeginTime);
                 Date dateEnd = UiFormatChanger.getDate(datePickerEndTime);
@@ -334,7 +334,7 @@ public class uiHotelRoomController implements Initializable{
     /**
      * 用户线下登记取消信息填写
      */
-    public void cancelOffLine(){
+    public void cancelOffLine() {
         checkBoxCheckIn.setSelected(false);
         checkBoxCheckOut.setSelected(false);
         checkBoxSingleRoom.setSelected(false);
@@ -348,7 +348,7 @@ public class uiHotelRoomController implements Initializable{
     /**
      * 根据日期显示空房数量
      */
-    private void showEmptyRoomsByDate(Date date){
+    private void showEmptyRoomsByDate(Date date) {
         try {
             ArrayList<RoomNumVO> arrayList = hotelroombl.getEmptyRoomByDate(date);
             int emptyRoom1 = arrayList.get(0).getEmptyNum();
@@ -366,7 +366,7 @@ public class uiHotelRoomController implements Initializable{
     /**
      * 根据日期查询
      */
-    public void checkRoomByDate(){
+    public void checkRoomByDate() {
         try {
             Date date = UiFormatChanger.getDate(datePicker);
             this.showEmptyRoomsByDate(date);
@@ -394,12 +394,27 @@ public class uiHotelRoomController implements Initializable{
     /**
      * 设置酒店房间总数和价格
      */
-    public void setHotelInfo(){
+    public void setHotelInfo() {
         labelSingleRoomTotal.setText(String.valueOf(roomArray.get(0).getRoomNumber()));
         labelSingleRoomPrice.setText(String.valueOf(roomArray.get(0).getPrice()));
         labelDoubleRoomTotal.setText(String.valueOf(roomArray.get(1).getRoomNumber()));
         labelDoubleRoomPrice.setText(String.valueOf(roomArray.get(1).getPrice()));
         labelDisabledRoomTotal.setText(String.valueOf(roomArray.get(2).getRoomNumber()));
         labelDisabledRoomPrice.setText(String.valueOf(roomArray.get(2).getPrice()));
+        for (HotelroomVO vo : roomArray) {
+            if (vo.getRoomType().equals(RoomType.SingleRoom)) {
+                labelSingleRoomTotal.setText(String.valueOf(vo.getRoomNumber()));
+                labelSingleRoomPrice.setText(String.valueOf(vo.getPrice()));
+            }
+            else if (vo.getRoomType().equals(RoomType.DisabledRoom)){
+                labelDisabledRoomTotal.setText(String.valueOf(vo.getRoomNumber()));
+                labelDisabledRoomPrice.setText(String.valueOf(vo.getPrice()));
+            }
+            else if(vo.getRoomType().equals(RoomType.DoubleRoom)){
+                labelDoubleRoomTotal.setText(String.valueOf(vo.getRoomNumber()));
+                labelDoubleRoomPrice.setText(String.valueOf(vo.getPrice()));
+            }
+
+        }
     }
 }
