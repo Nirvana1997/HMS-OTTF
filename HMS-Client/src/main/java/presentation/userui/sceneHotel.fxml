@@ -380,15 +380,15 @@
       </AnchorPane>
       <AnchorPane fx:id="HistoryOrderPane" layoutX="324.0" layoutY="185.0" prefHeight="378.0" prefWidth="605.0" visible="false">
          <children>
-            <TableView fx:id="orderList" layoutY="6.0" prefHeight="324.0" prefWidth="586.0">
+            <TableView fx:id="orderList" layoutY="6.0" prefHeight="324.0" prefWidth="586.0" stylesheets="@tableview.css">
               <columns>
-                <TableColumn fx:id="columnID" prefWidth="85.0" text="订单编号" />
-                <TableColumn fx:id="columnTime" prefWidth="165.0" text="入住时间" />
-                  <TableColumn fx:id="columnRoomType" prefWidth="74.0" text="房间类型" />
-                  <TableColumn fx:id="columnPeopleNumber" prefWidth="65.0" text="住房人数" />
-                  <TableColumn fx:id="columnPrice" prefWidth="54.0" text="价格" />
-                  <TableColumn fx:id="columnHaveChild" prefWidth="70.0" text="有无儿童" />
-                  <TableColumn fx:id="columnState" prefWidth="72.0" text="订单状态" />
+                <TableColumn fx:id="columnID" prefWidth="130.0" text="订单编号" />
+                <TableColumn fx:id="columnTime" prefWidth="128.0" text="入住时间" />
+                  <TableColumn fx:id="columnRoomType" prefWidth="71.0" text="房间类型" />
+                  <TableColumn fx:id="columnPeopleNumber" prefWidth="68.0" text="住房人数" />
+                  <TableColumn fx:id="columnPrice" prefWidth="46.0" text="价格" />
+                  <TableColumn fx:id="columnHaveChild" prefWidth="73.0" text="有无儿童" />
+                  <TableColumn fx:id="columnState" prefWidth="69.0" text="订单状态" />
               </columns>
             </TableView>
          </children>
