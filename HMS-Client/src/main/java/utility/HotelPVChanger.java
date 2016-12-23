@@ -7,6 +7,8 @@ import vo.HotelinfoVO;
 import vo.HotelroomVO;
 import vo.RoomNumVO;
 
+import java.text.DecimalFormat;
+
 /**
  * 酒店基本信息、房间信息PO、VO转换
  *
@@ -23,7 +25,7 @@ public class HotelPVChanger {
         if(vo==null){
             return null;
         }
-        return new HotelinfoPO(vo.getHotelID(),vo.getHotelname(),vo.getTradeArea(),vo.getAddress(),vo.getDetailAddress(),vo.getIntroduction(),vo.getService(),vo.getContactNumber(),vo.getStar(),vo.getGrade(),vo.getMinPrice());
+        return new HotelinfoPO(vo.getHotelID(),vo.getHotelname(),vo.getTradeArea(),vo.getAddress(),vo.getDetailAddress(),vo.getIntroduction(),vo.getService(),vo.getContactNumber(),vo.getStar(),dataFormat(vo.getGrade()),vo.getMinPrice());
     }
 
     /**
@@ -35,7 +37,7 @@ public class HotelPVChanger {
         if(po==null){
             return null;
         }
-        return new HotelinfoVO(po.getHotelID(),po.getHotelName(),po.getTradeArea(),po.getAddress(),po.getDetailAddress(), po.getContactNumber(),po.getIntroduction(),po.getService(),po.getStar(),po.getGrade(),po.getMinPrice());
+        return new HotelinfoVO(po.getHotelID(),po.getHotelName(),po.getTradeArea(),po.getAddress(),po.getDetailAddress(), po.getContactNumber(),po.getIntroduction(),po.getService(),po.getStar(),dataFormat(po.getGrade()),po.getMinPrice());
     }
 
     /**
@@ -84,5 +86,10 @@ public class HotelPVChanger {
             return null;
         }
         return new RoomNumVO(po.getHotelID(),po.getDate(),po.getEmptyNum(),po.getRoomType());
+    }
+
+    private static double dataFormat(double dou){
+        DecimalFormat df = new DecimalFormat("#.0");
+        return Double.valueOf(df.format(dou));
     }
 }
