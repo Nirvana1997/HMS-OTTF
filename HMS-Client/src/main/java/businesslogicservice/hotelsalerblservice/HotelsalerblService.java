@@ -119,5 +119,5 @@ public interface HotelsalerblService {
      * @return 是否对应
      * @throws RemoteException
      */
-    public boolean getCompanyID(String companyName) throws RemoteException;
+    public String getCompanyID(String companyName) throws RemoteException;
 }
