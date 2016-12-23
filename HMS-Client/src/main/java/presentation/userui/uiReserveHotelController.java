@@ -256,7 +256,7 @@ public class uiReserveHotelController implements Initializable {
                         super.updateItem(item, empty);
                         if (item.isBefore(LocalDate.now())) {
                             setDisable(true);
-                            setStyle("-fx-background-color: #ffc0cb;");
+                            setStyle("-fx-background-color: #b3db57;");
                         }
                     }
                 };
@@ -281,7 +281,7 @@ public class uiReserveHotelController implements Initializable {
                         super.updateItem(item, empty);
                         if (item.isBefore(checkinDate.getValue().plusDays(1))) {
                             setDisable(true);
-                            setStyle("-fx-background-color: #ffc0cb;");
+                            setStyle("-fx-background-color: #b3db57;");
                         }
                     }
                 };
