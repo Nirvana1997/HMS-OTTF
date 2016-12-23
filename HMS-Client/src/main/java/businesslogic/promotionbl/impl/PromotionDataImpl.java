@@ -93,7 +93,7 @@ public class PromotionDataImpl implements PromotionInfo, WebPromotionInfo, Hotel
         //填充订单信息
         DecimalFormat df = new DecimalFormat("#.0");
         res.setPrice(Double.valueOf(df.format(leastPrice)));
-        res.setPromotionName(bestPromotion==null?null:(bestPromotion.getName()+bestPromotion.getDiscount()));
+        res.setPromotionName(bestPromotion==null?null:(bestPromotion.getName()+" "+(bestPromotion.getDiscount()*10)+"折"));
         return res;
     }
 
