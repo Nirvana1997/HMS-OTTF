@@ -1,17 +1,9 @@
 package main;
 
-import driver.ClientRunner;
 import javafx.application.Application;
-import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import presentation.logui.SceneInput;
-import presentation.logui.SceneLog;
-import presentation.logui.uiLogController;
-import rmi.RemoteHelper;
 
-import java.net.InetAddress;
 import java.net.UnknownHostException;
 
 /**
