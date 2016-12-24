@@ -55,8 +55,8 @@ public class Period implements Strategy{
         ArrayList<Date> dates = DateOperation.getDates(orderVO.getCheckInDate(),orderVO.getCheckOutDate());
         //获得天数
         int days = DateOperation.getDates(orderVO.getCheckInDate(),orderVO.getCheckOutDate()).size();
-        //获得原价
-        double originPrice = orderVO.getPrice() * days * orderVO.getRoomNumber();
+        //获得原价（每天原价，不乘天数）
+        double originPrice = orderVO.getPrice()* orderVO.getRoomNumber();
         //总价
         double sum = 0;
         for(Date date:dates){

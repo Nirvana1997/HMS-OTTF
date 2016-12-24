@@ -183,7 +183,7 @@ public class HotelSalerController implements HotelsalerblService,HotelinfoblServ
     }
 
     @Override
-    public boolean getCompanyID(String companyName) throws RemoteException {
+    public String getCompanyID(String companyName) throws RemoteException {
         return promotionOperation.getCompanyID(companyName);
     }
 

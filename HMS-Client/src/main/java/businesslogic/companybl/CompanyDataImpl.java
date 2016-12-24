@@ -31,6 +31,11 @@ public class CompanyDataImpl implements UserCompanyInfo,HotelsalerCompanyInfo {
     }
 
     @Override
+    public String getCompanyID(String companyName) throws RemoteException {
+        return companyDataService.getCompanyID(companyName);
+    }
+
+    @Override
     public boolean isCompanyIDCorrect(String companyID, String companyName) throws RemoteException {
         //公司名不存在或者ID不对应
         if(companyDataService.getCompanyID(companyName)==null||(!companyDataService.getCompanyID(companyName).equals(companyID)))
