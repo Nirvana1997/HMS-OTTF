@@ -135,7 +135,7 @@ public class HotelSalerController implements HotelsalerblService,HotelinfoblServ
      * @return 是否成功
      */
     @Override
-    public ResultMessage setOrdered(BelowLineOrderVO vo) throws RemoteException {
+        public ResultMessage setOrdered(BelowLineOrderVO vo) throws RemoteException {
         return hotelroomOperation.setOrdered(vo);
     }
 

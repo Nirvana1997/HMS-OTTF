@@ -2,7 +2,7 @@ package businesslogic.hotelsalerbl;
 
 import businesslogic.companybl.CompanyDataImpl;
 import businesslogic.logbl.Login;
-import businesslogic.promotionbl.impl.PromotionDataImpl;
+import businesslogic.promotionbl.impl.PromotionInfoImpl;
 import enumData.PromotionType;
 import vo.PromotionVO;
 
@@ -20,7 +20,7 @@ public class PromotionOperation {
     HotelsalerCompanyInfo hotelsalerCompanyInfo;
 
     public PromotionOperation() {
-        hotelPromotionInfo = new PromotionDataImpl();
+        hotelPromotionInfo = new PromotionInfoImpl();
         hotelsalerCompanyInfo = new CompanyDataImpl();
     }
 

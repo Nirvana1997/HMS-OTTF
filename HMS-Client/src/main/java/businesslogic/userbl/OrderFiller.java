@@ -2,7 +2,7 @@ package businesslogic.userbl;
 
 import businesslogic.hotelsalerbl.impl.HotelDataImpl;
 import businesslogic.logbl.Login;
-import businesslogic.promotionbl.impl.PromotionDataImpl;
+import businesslogic.promotionbl.impl.PromotionInfoImpl;
 import businesslogic.userbl.interfaces.HotelRoom;
 import businesslogic.userbl.interfaces.PromotionInfo;
 import cfg.CfgReader;
@@ -11,7 +11,6 @@ import enumData.OrderState;
 import po.HotelroomPO;
 import po.UserInfoPO;
 import rmi.RemoteHelper;
-import utility.DateOperation;
 import utility.UserPVChanger;
 import vo.OrderVO;
 import vo.UserInfoVO;
@@ -51,7 +50,7 @@ public class OrderFiller {
 
     public OrderFiller(OrderVO orderVO) throws RemoteException {
         this.orderVO = orderVO;
-        promotionInfo = new PromotionDataImpl();
+        promotionInfo = new PromotionInfoImpl();
         hotelRoom = new HotelDataImpl();
         //TODO
 //        userDataService = new UserDataImpl_stub();

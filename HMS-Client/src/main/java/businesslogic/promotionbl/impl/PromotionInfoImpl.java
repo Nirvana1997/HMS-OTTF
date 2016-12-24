@@ -29,7 +29,7 @@ import java.util.ArrayList;
  * @author qzh
  *         Created by user on 2016/12/4.
  */
-public class PromotionDataImpl implements PromotionInfo, WebPromotionInfo, HotelPromotionInfo {
+public class PromotionInfoImpl implements PromotionInfo, WebPromotionInfo, HotelPromotionInfo {
 
     /**
      * 营销策略模块
@@ -37,7 +37,7 @@ public class PromotionDataImpl implements PromotionInfo, WebPromotionInfo, Hotel
     PromotionDataService promotionDataService;
 
     //TODO
-    public PromotionDataImpl() {
+    public PromotionInfoImpl() {
         promotionDataService = RemoteHelper.getInstance().getPromotionDataService();
     }
 
@@ -133,10 +133,6 @@ public class PromotionDataImpl implements PromotionInfo, WebPromotionInfo, Hotel
         return res;
     }
 
-    @Override
-    public PromotionPO getPromotion(String promotionName) {
-        return null;
-    }
 
     /**
      * 添加营销策略

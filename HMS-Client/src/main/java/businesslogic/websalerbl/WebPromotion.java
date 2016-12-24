@@ -1,8 +1,6 @@
 package businesslogic.websalerbl;
 
-import businesslogic.promotionbl.Promotion;
-import businesslogic.promotionbl.impl.PromotionDataImpl;
-import data_stub.websalerdata.WebsalerDataImpl_stub;
+import businesslogic.promotionbl.impl.PromotionInfoImpl;
 import dataservice.websalerdataservice.WebsalerDataService;
 import enumData.PromotionType;
 import enumData.ResultMessage;
@@ -34,7 +32,7 @@ public class WebPromotion {
     public WebPromotion() {
         //TODO
 //        this.websalerDataService = new WebsalerDataImpl_stub();
-        webPromotionInfo = new PromotionDataImpl();
+        webPromotionInfo = new PromotionInfoImpl();
         websalerDataService = RemoteHelper.getInstance().getWebsalerDataService();
     }
 

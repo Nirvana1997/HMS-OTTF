@@ -22,13 +22,6 @@ public interface WebPromotionInfo {
      */
     ArrayList<PromotionPO> getWebPromotions() throws RemoteException;
 
-    /**
-     * 获得应对名称的促销策略
-     *
-     * @param promotionName 营销策略名称
-     * @return 营销策略信息
-     */
-    PromotionPO getPromotion(String promotionName);
 
     /**
      * 添加营销策略
