@@ -1,11 +1,9 @@
 package businesslogic.promotionbl.impl;
 
 import businesslogic.hotelsalerbl.HotelPromotionInfo;
-import businesslogic.promotionbl.Promotion;
 import businesslogic.promotionbl.strategies.Strategy;
 import businesslogic.userbl.interfaces.PromotionInfo;
 import businesslogic.websalerbl.WebPromotionInfo;
-import data_stub.promotiondata.PromotionDataImpl_stub;
 import dataservice.promotiondataservice.PromotionDataService;
 import enumData.PromotionType;
 import po.PromotionPO;

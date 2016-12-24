@@ -1,4 +1,5 @@
 import businesslogic.logbl.LogController;
+import businesslogic.logbl.UserCompanyInfo;
 import businesslogic.userbl.UserController;
 import businesslogicservice.userblservice.HotelOrderBlService;
 import enumData.*;
@@ -6,11 +7,9 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.Before;
 import org.junit.After;
+import rmi.RemoteHelper;
 import utility.DateOperation;
-import vo.AccountVO;
-import vo.HotelListItemVO;
-import vo.LimitVO;
-import vo.OrderVO;
+import vo.*;
 
 import java.util.ArrayList;
 
@@ -28,6 +27,7 @@ public class UserControllerTest {
 
     @Before
     public void before() throws Exception {
+        RemoteHelper.getInstance().linkToServer(IP.ip);
         userController = new UserController();
         logController = new LogController();
         logController.isCorrectAndLogin(new AccountVO("151250001", "111111", null));
@@ -38,10 +38,74 @@ public class UserControllerTest {
     }
 
     /**
-     * Method: searchHotel(TradeArea tradeArea,Address address, ArrayList<LimitVO> limits)
+     * Method: readHotel(Address address, ConditionVO vo)
      */
     @Test
-    public void testSearchHotel() throws Exception {
+    public void testReadHotel() throws Exception {
+        Assert.assertEquals("XianlinHotel", userController.readHotel("0200001").getHotelname());
+    }
+
+    /**
+     * Method: orderHotel(OrderVO vo, String userID)
+     */
+    @Test
+    public void testOrderHotel() throws Exception {
+        OrderVO vo = new OrderVO("0200001","喋喋大酒店",TradeArea.Changjiang,Address.Nanjing,"南京大学旁",1,1,DateOperation.stringToDate("2016_12_23"),DateOperation.stringToDate("2016_12_24"),RoomType.DoubleRoom,true,"0200001","0100002",OrderState.canceled,null,1888,"",null);
+        Assert.assertEquals(true, userController.orderHotel(vo));
+    }
+
+    /**
+     * Method: readOrderByState(String userID)
+     */
+    @Test
+    public void testReadOrder() throws Exception {
+        Assert.assertEquals("0200001", userController.readOrder(OrderState.executing).get(0).getHotelID());
+        Assert.assertEquals(1, userController.readOrder(OrderState.executing).size());
+    }
+
+    /**
+     * Method: cancelOrder(String OrderID)
+     */
+    @Test
+    public void testCancelOrder() throws Exception {
+        Assert.assertEquals(ResultMessage.Correct, userController.cancelOrder("01000021223123035"));
+    }
+
+    /**
+     * Method: comment(CommentVO vo)
+     */
+    @Test
+    public void testComment() throws Exception {
+        userController.comment(new CommentVO("0200001","0100001","Great",5));
+        Assert.assertEquals("Great",userController.getComments("0200001").get(0).getComment());
+        Assert.assertEquals(5,userController.readHotel("0200001").getGrade(),0.1);
+    }
+
+
+    /**
+     * Method: modifyUserInfo(UserInfoVO vo)
+     */
+    @Test
+    public void testModifyUserInfo() throws Exception {
+        UserInfoVO vo = userController.showUserInfo();
+        vo.setIdentity("666");
+        userController.modifyUserInfo(vo);
+        Assert.assertEquals("666",userController.showUserInfo().getIdentity());
+    }
+
+    /**
+     * Method: showUserInfo()
+     */
+    @Test
+    public void testShowUserInfo() throws Exception {
+        Assert.assertEquals("xzh",userController.showUserInfo().getName());
+    }
+
+    /**
+     * Method: searchHotel(TradeArea tradeArea, Address address, ArrayList<LimitVO> limits)
+     */
+    @Test
+    public void testSearchHotelForTradeAreaAddressLimits() throws Exception {
         HotelOrderBlService hotelOrderBlService = new UserController();
         LimitVO limitVO = new LimitVO(LimitCriterion.GradeCriterion, 4, 5);
         ArrayList<LimitVO> limits = new ArrayList<LimitVO>();
@@ -73,87 +137,6 @@ public class UserControllerTest {
         limits.add(new LimitVO(LimitCriterion.KeywordCriterion, "Xianlin"));
         hotels = hotelOrderBlService.searchHotel(TradeArea.Changjiang, Address.Nanjing, limits);
         Assert.assertEquals("XianlinHotel", hotels.get(0).getHotelname());
-
-        //房间测试 TODO
-//        limits.clear();
-//        limits.add(new LimitVO(LimitCriterion.RoomCriterion,RoomType.SingleRoom,50,150,1, DateOperation.stringToDate("2016_11_12"),DateOperation.stringToDate("2016_11_12")));
-//        hotels = hotelOrderBlService.searchHotel(TradeArea.Changjiang,Address.Shanghai,limits);
-//        Assert.assertEquals("",hotels.get(0).getHotelname());
-    }
-
-    /**
-     * Method: readHotel(Address address, ConditionVO vo)
-     */
-    @Test
-    public void testReadHotel() throws Exception {
-        Assert.assertEquals("XianlinHotel", userController.readHotel("0200001").getHotelname());
-    }
-
-    /**
-     * Method: orderHotel(OrderVO vo, String userID)
-     */
-    @Test
-    public void testOrderHotel() throws Exception {
-        OrderVO orderVO = null;
-        Assert.assertEquals(true, userController.orderHotel(orderVO));
-    }
-
-    /**
-     * Method: readOrderByState(String userID)
-     */
-    @Test
-    public void testReadOrder() throws Exception {
-        Assert.assertEquals("0200001", userController.readOrder(OrderState.executing).get(0).getHotelID());
-        Assert.assertEquals(3, userController.readOrder(OrderState.executing).size());
-    }
-
-    /**
-     * Method: cancelOrder(String OrderID)
-     */
-    @Test
-    public void testCancelOrder() throws Exception {
-        Assert.assertEquals(ResultMessage.Correct, userController.cancelOrder("001"));
-    }
-
-    /**
-     * Method: comment(CommentVO vo)
-     */
-    @Test
-    public void testComment() throws Exception {
-//不需要测试
-    }
-
-
-    /**
-     * Method: modifyUserInfo(UserInfoVO vo)
-     */
-    @Test
-    public void testModifyUserInfo() throws Exception {
-//TODO: Test goes here... 
-    }
-
-    /**
-     * Method: showUserInfo()
-     */
-    @Test
-    public void testShowUserInfo() throws Exception {
-//TODO: Test goes here... 
-    }
-
-    /**
-     * Method: searchHotel(TradeArea tradeArea, Address address)
-     */
-    @Test
-    public void testSearchHotelForTradeAreaAddress() throws Exception {
-//TODO: Test goes here... 
-    }
-
-    /**
-     * Method: searchHotel(TradeArea tradeArea, Address address, ArrayList<LimitVO> limits)
-     */
-    @Test
-    public void testSearchHotelForTradeAreaAddressLimits() throws Exception {
-//TODO: Test goes here... 
     }
 
     /**
@@ -161,7 +144,7 @@ public class UserControllerTest {
      */
     @Test
     public void testHasEnoughCredit() throws Exception {
-//TODO: Test goes here... 
+        Assert.assertEquals(true,userController.hasEnoughCredit());
     }
 
     /**
@@ -169,7 +152,10 @@ public class UserControllerTest {
      */
     @Test
     public void testHaveEnoughRoom() throws Exception {
-//TODO: Test goes here... 
+        OrderVO vo = new OrderVO("0200001","喋喋大酒店",TradeArea.Changjiang,Address.Nanjing,"南京大学旁",1,1,DateOperation.stringToDate("2016_12_23"),DateOperation.stringToDate("2016_12_24"),RoomType.DoubleRoom,true,"0200001","0100002",OrderState.canceled,null,1888,"",null);
+        Assert.assertEquals(true,userController.haveEnoughRoom(vo));
+        OrderVO vo2 = new OrderVO("0200001","喋喋大酒店",TradeArea.Changjiang,Address.Nanjing,"南京大学旁",100,1,DateOperation.stringToDate("2016_12_23"),DateOperation.stringToDate("2016_12_24"),RoomType.DoubleRoom,true,"0200001","0100002",OrderState.canceled,null,1888,"",null);
+        Assert.assertEquals(false,userController.haveEnoughRoom(vo2));
     }
 
     /**
@@ -177,7 +163,8 @@ public class UserControllerTest {
      */
     @Test
     public void testMakeOrder() throws Exception {
-//TODO: Test goes here... 
+        OrderVO vo = new OrderVO("0200001","喋喋大酒店",TradeArea.Changjiang,Address.Nanjing,"南京大学旁",1,1,DateOperation.stringToDate("2016_12_23"),DateOperation.stringToDate("2016_12_24"),RoomType.DoubleRoom,true,"0200001","0100002",OrderState.canceled,null,1888,"",null);
+        Assert.assertEquals(150,userController.makeOrder(vo).getPrice(),0.1);
     }
 
     /**
@@ -185,8 +172,7 @@ public class UserControllerTest {
      */
     @Test
     public void testGetOrderInfo() throws Exception {
-        //TODO
-        Assert.assertEquals("ZHotel",userController.getOrderInfo("001").getHotelname());
+        Assert.assertEquals("0200001",userController.getOrderInfo("01000021223123035").getHotelID());
     }
 
 

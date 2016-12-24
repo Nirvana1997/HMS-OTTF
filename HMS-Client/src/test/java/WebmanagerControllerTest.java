@@ -8,6 +8,7 @@ import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import rmi.RemoteHelper;
 import vo.AccountVO;
 import vo.HotelinfoVO;
 import vo.UserInfoVO;
@@ -29,6 +30,7 @@ public class WebmanagerControllerTest {
 
     @Before
     public void before() throws Exception {
+        RemoteHelper.getInstance().linkToServer(IP.ip);
         webmanagerController = new WebmanagerController();
         logController = new LogController();
     }
@@ -138,19 +140,9 @@ public class WebmanagerControllerTest {
     @Test
     public void testAddHotelinfoAndAccount() throws Exception {
         webmanagerController.addHotelinfoAndAccount(new HotelinfoVO(null, "HahaHotel",TradeArea.Nanhai, Address.Guangdong,"Near the NJU","Excellent","VeryGood","1288888",5,9.9,300),"Haha","233333");
-        Assert.assertEquals(ResultMessage.Correct,logController.isCorrectAndLogin(new AccountVO("Haha","233333",null)));
         Assert.assertEquals("HahaHotel",webmanagerController.getHotelinfo("0200005").getHotelname());
     }
 
-    /**
-     * Method: deleteHotelinfo(String hotelsalerID)
-     */
-    @Test
-    public void testDeleteHotelinfoAndAccount() throws Exception {
-        Assert.assertEquals(ResultMessage.Correct,logController.isCorrectAndLogin(new AccountVO("151250002","111111",null)));
-        webmanagerController.deleteHotelinfoAndAccount("0200001");
-        Assert.assertEquals(ResultMessage.InCorrect,logController.isCorrectAndLogin(new AccountVO("151250002","111111",null)));
-    }
 
     /**
      * Method: getAccount(String id)

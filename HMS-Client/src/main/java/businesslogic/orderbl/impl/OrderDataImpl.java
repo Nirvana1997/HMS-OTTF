@@ -4,7 +4,6 @@ import businesslogic.hotelsalerbl.HotelOrderInfo;
 import businesslogic.logbl.Login;
 import businesslogic.userbl.interfaces.UserOrderInfo;
 import businesslogic.websalerbl.WebOrderInfo;
-import data_stub.orderdata.OrderDataImpl_stub;
 import dataservice.orderdataservice.OrderDataService;
 import enumData.IDType;
 import enumData.OrderState;

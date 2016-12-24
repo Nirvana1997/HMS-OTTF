@@ -1,6 +1,5 @@
 package businesslogic.logbl;
 
-import data_stub.logdata.LogDataImpl_stub;
 import dataservice.logdataservice.LogDataService;
 import enumData.AccountType;
 import enumData.LogState;

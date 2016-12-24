@@ -3,7 +3,6 @@ package businesslogic.logbl;
 import businesslogic.companybl.CompanyDataImpl;
 import businesslogic.userbl.impl.UserDataImpl;
 import cfg.CfgReader;
-import data_stub.logdata.LogDataImpl_stub;
 import dataservice.logdataservice.LogDataService;
 import enumData.AccountType;
 import enumData.ResultMessage;

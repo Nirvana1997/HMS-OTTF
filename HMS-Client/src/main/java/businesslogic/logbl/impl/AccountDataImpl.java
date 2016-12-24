@@ -2,12 +2,10 @@ package businesslogic.logbl.impl;
 
 import businesslogic.logbl.Register;
 import businesslogic.webmanagerbl.AccountInfo;
-import data_stub.logdata.LogDataImpl_stub;
 import dataservice.logdataservice.LogDataService;
 import enumData.AccountType;
 import po.AccountPO;
 import rmi.RemoteHelper;
-import utility.AccountPVChanger;
 import vo.AccountVO;
 
 import java.rmi.RemoteException;

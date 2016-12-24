@@ -6,6 +6,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.Before;
 import org.junit.After;
+import rmi.RemoteHelper;
 import utility.DateOperation;
 import vo.PromotionVO;
 
@@ -24,6 +25,7 @@ public class WebsalerBlTest {
 
     @Before
     public void before() throws Exception {
+        RemoteHelper.getInstance().linkToServer(IP.ip);
         websalerblService = new WebsalerController();
     }
 
@@ -113,7 +115,7 @@ public class WebsalerBlTest {
     @Test
     public void testAddCredit() throws Exception {
         websalerblService.addCredit("0100001",1);
-        Assert.assertEquals(1300,websalerblService.getCredit("0100001"));
+        Assert.assertEquals(100,websalerblService.getCredit("0100001"));
     }
 
     /**
@@ -121,8 +123,8 @@ public class WebsalerBlTest {
      */
     @Test
     public void testGetCredit() throws Exception {
-        Assert.assertEquals(1200,websalerblService.getCredit("0100001"));
-        Assert.assertEquals(2200,websalerblService.getCredit("0100002"));
+        Assert.assertEquals(0,websalerblService.getCredit("0100001"));
+        Assert.assertEquals(-2200,websalerblService.getCredit("0100002"));
         Assert.assertEquals(3200,websalerblService.getCredit("0100003"));
         Assert.assertEquals(2000,websalerblService.getCredit("0100004"));
 

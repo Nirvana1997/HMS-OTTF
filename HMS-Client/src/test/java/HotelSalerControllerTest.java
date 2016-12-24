@@ -6,6 +6,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.Before;
 import org.junit.After;
+import rmi.RemoteHelper;
 import utility.DateOperation;
 import vo.AccountVO;
 import vo.HotelinfoVO;
@@ -28,6 +29,7 @@ public class HotelSalerControllerTest {
 
     @Before
     public void before() throws Exception {
+        RemoteHelper.getInstance().linkToServer(IP.ip);
         hotelSalerController = new HotelSalerController();
         logController = new LogController();
         //登录
@@ -63,9 +65,9 @@ public class HotelSalerControllerTest {
     @Test
     public void testReadOrder() throws Exception {
         ArrayList<OrderVO> orders = hotelSalerController.readOrderByState(OrderState.executing);
-        Assert.assertEquals(2,orders.size());
+        Assert.assertEquals(1,orders.size());
         orders = hotelSalerController.readOrderByState(OrderState.executed);
-        Assert.assertEquals(0,orders.size());
+        Assert.assertEquals(1,orders.size());
     }
 
     /**
@@ -131,17 +133,4 @@ public class HotelSalerControllerTest {
         Assert.assertEquals(0,hotelSalerController.getPromotion(PromotionType.Hotel_Birth).size());
     }
 
-    @Test
-    public void testAddPromotion() throws Exception {
-        hotelSalerController.addPromotion(new PromotionVO("haha","heihei",PromotionType.Hotel_Birth,0.8));
-        Assert.assertEquals(2,hotelSalerController.getPromotion(PromotionType.Hotel_Birth).size());
-    }
-
-    @Test
-    public void testSetPromotion() throws Exception {
-        PromotionVO vo = hotelSalerController.getPromotion(PromotionType.Hotel_Birth).get(0);
-        vo.setDescription("haha");
-        hotelSalerController.setPromotion(vo);
-        Assert.assertEquals("haha",hotelSalerController.getPromotion(PromotionType.Hotel_Birth).get(0).getDescription());
-    }
 } 

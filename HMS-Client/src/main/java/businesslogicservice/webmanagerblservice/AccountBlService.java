@@ -1,4 +1,4 @@
-package businesslogicservice.webmanagerlogicservice;
+package businesslogicservice.webmanagerblservice;
 
 import java.rmi.RemoteException;
 

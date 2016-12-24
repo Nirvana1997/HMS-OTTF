@@ -1,6 +1,5 @@
-package businesslogicservice.webmanagerlogicservice;
+package businesslogicservice.webmanagerblservice;
 
-import enumData.ResultMessage;
 import vo.UserInfoVO;
 
 import java.rmi.RemoteException;

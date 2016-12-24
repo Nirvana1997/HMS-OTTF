@@ -11,6 +11,7 @@ import dataservice.promotiondataservice.PromotionDataService;
 import dataservice.userdataservice.UserDataService;
 import dataservice.websalerdataservice.WebsalerDataService;
 
+import javax.management.remote.rmi.RMIServer;
 import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
@@ -83,6 +84,10 @@ public class RemoteHelper {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public void breakLink(){
+
     }
 
     public LogDataService getLogDataService() {

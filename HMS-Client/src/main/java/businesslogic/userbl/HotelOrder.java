@@ -7,7 +7,6 @@ import businesslogic.userbl.interfaces.CommentInfo;
 import businesslogic.userbl.interfaces.HotelInfo;
 import businesslogic.userbl.interfaces.UserOrderInfo;
 import cfg.CfgReader;
-import data_stub.userdata.UserDataImpl_stub;
 import dataservice.userdataservice.UserDataService;
 import enumData.*;
 import po.CreditChangePO;

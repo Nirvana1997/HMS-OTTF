@@ -1,10 +1,10 @@
 package businesslogic.promotionbl;
 
-import data_stub.promotiondata.PromotionDataImpl_stub;
 import dataservice.promotiondataservice.PromotionDataService;
 import enumData.PromotionType;
 import enumData.ResultMessage;
 import po.PromotionPO;
+import rmi.RemoteHelper;
 import utility.PromotionPVChanger;
 import vo.PromotionVO;
 
@@ -28,7 +28,7 @@ public class Promotion {
      * @return 促销列表
      */
     public ArrayList<PromotionVO> getPromotionList(PromotionType type, String account) throws RemoteException {
-        promotionDataService = new PromotionDataImpl_stub();
+        promotionDataService = RemoteHelper.getInstance().getPromotionDataService();
         ArrayList<PromotionVO> volist = new ArrayList<PromotionVO>();
         ArrayList<PromotionPO> polist = new ArrayList<PromotionPO>();
         polist = promotionDataService.getPromotionList(type, account);
@@ -45,7 +45,7 @@ public class Promotion {
      * @return
      */
     public ResultMessage setPromotion(PromotionVO vo) throws RemoteException {
-        promotionDataService = new PromotionDataImpl_stub();
+        promotionDataService = RemoteHelper.getInstance().getPromotionDataService();
         PromotionPO po = PromotionPVChanger.promotionV2P(vo);
         ResultMessage result = promotionDataService.changePromotion(po);
         return result;
@@ -57,7 +57,7 @@ public class Promotion {
      * @return
      */
     public ResultMessage addPromotion(PromotionVO vo) throws RemoteException {
-        promotionDataService = new PromotionDataImpl_stub();
+        promotionDataService = RemoteHelper.getInstance().getPromotionDataService();
         PromotionPO po = PromotionPVChanger.promotionV2P(vo);
         ResultMessage result = promotionDataService.addPromotion(po);
         return result;
@@ -69,7 +69,7 @@ public class Promotion {
      * @return
      */
     public ResultMessage deletePromotion(String promotionID) throws RemoteException {
-        promotionDataService = new PromotionDataImpl_stub();
+        promotionDataService = RemoteHelper.getInstance().getPromotionDataService();
         ResultMessage result = promotionDataService.deletePromotion(promotionID);
         return result;
     }

@@ -2,7 +2,6 @@ package businesslogic.hotelsalerbl;
 
 import businesslogic.logbl.Login;
 import cfg.CfgReader;
-import data_stub.hotelsalerdata.HotelroomDataImpl_stub;
 import dataservice.hotelsalerdataservice.HotelroomDataService;
 import enumData.ResultMessage;
 import enumData.RoomType;

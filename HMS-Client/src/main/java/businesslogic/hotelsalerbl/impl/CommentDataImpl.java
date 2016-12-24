@@ -1,7 +1,6 @@
 package businesslogic.hotelsalerbl.impl;
 
 import businesslogic.userbl.interfaces.CommentInfo;
-import data_stub.hotelsalerdata.HotelinfoDataImpl_stub;
 import dataservice.hotelsalerdataservice.HotelinfoDataService;
 import po.CommentPO;
 import rmi.RemoteHelper;

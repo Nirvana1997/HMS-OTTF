@@ -1,9 +1,9 @@
 package businesslogic.webmanagerbl;
 
-import businesslogicservice.webmanagerlogicservice.AccountBlService;
-import businesslogicservice.webmanagerlogicservice.HSmanagementBlService;
-import businesslogicservice.webmanagerlogicservice.URmanagementBlService;
-import businesslogicservice.webmanagerlogicservice.WSmanagementBlService;
+import businesslogicservice.webmanagerblservice.AccountBlService;
+import businesslogicservice.webmanagerblservice.HSmanagementBlService;
+import businesslogicservice.webmanagerblservice.URmanagementBlService;
+import businesslogicservice.webmanagerblservice.WSmanagementBlService;
 import enumData.ResultMessage;
 import vo.HotelinfoVO;
 import vo.UserInfoVO;

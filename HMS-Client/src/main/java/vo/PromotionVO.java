@@ -40,11 +40,12 @@ public class PromotionVO {
 	 * @param promotionType
 	 * @param discountTenRate
 	 */
-	public PromotionVO(String promotionName, String description, PromotionType promotionType, double discountTenRate) {
+	public PromotionVO(String hotelID,String promotionName, String description, PromotionType promotionType, double discountTenRate) {
 		this.promotionName = promotionName;
 		this.description = description;
 		this.promotionType = promotionType;
 		this.discountTenRate = discountTenRate;
+		this.hotelID = hotelID;
 	}
 
 	/**

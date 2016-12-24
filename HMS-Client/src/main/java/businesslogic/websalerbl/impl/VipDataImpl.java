@@ -2,7 +2,6 @@ package businesslogic.websalerbl.impl;
 
 import rmi.RemoteHelper;
 import utility.VipInfo;
-import data_stub.websalerdata.WebsalerDataImpl_stub;
 import dataservice.websalerdataservice.WebsalerDataService;
 import po.VipUpPO;
 

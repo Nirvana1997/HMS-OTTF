@@ -1,5 +1,6 @@
 import businesslogic.logbl.LogController;
 import businesslogicservice.logblservice.LogBlService;
+import dataservice.logdataservice.LogDataService;
 import enumData.*;
 import org.junit.Assert;
 import org.junit.Test;
@@ -23,7 +24,7 @@ public class LogTest {
     @Before
     public void before() throws Exception {
         //TODO
-        RemoteHelper.getInstance().linkToServer("114.212.43.173");
+        RemoteHelper.getInstance().linkToServer(IP.ip);
         logBlService = new LogController();
     }
 
@@ -35,13 +36,11 @@ public class LogTest {
      * Method: isCorrectAndLogin(AccountVO vo)
      */
     @Test
-    public void testIsCorrect() throws Exception {
-        AccountVO vo1 = new AccountVO("hs151250119", "123456", AccountType.hotelsaler);
-        AccountVO vo2 = new AccountVO("ur151250119", "123456", AccountType.user);
-        AccountVO vo3 = new AccountVO("ur151250119", "111111", AccountType.user);
-        Assert.assertEquals(ResultMessage.Correct, logBlService.isCorrectAndLogin(vo1));
+    public void testIsCorrectAndLogin() throws Exception {
+        AccountVO vo1 = new AccountVO("151250001", "123456", null);
+        AccountVO vo2 = new AccountVO("151250001", "111111", null);
+        Assert.assertEquals(ResultMessage.InCorrect, logBlService.isCorrectAndLogin(vo1));
         Assert.assertEquals(ResultMessage.Correct, logBlService.isCorrectAndLogin(vo2));
-        Assert.assertEquals(ResultMessage.InCorrect, logBlService.isCorrectAndLogin(vo3));
     }
 
     /**
@@ -59,20 +58,8 @@ public class LogTest {
      */
     @Test
     public void testRegister() throws Exception {
-        ArrayList<RoomType> roomTypes = new ArrayList<RoomType>();
-        roomTypes.add(RoomType.SingleRoom);
-        ArrayList<Integer> prices = new ArrayList<Integer>();
-        prices.add(666);
-        ArrayList<String> userIDs = new ArrayList<String>();
-        userIDs.add("0001");
-        ArrayList<String> comments = new ArrayList<String>();
-        comments.add("good");
-        HotelinfoVO hvo = new HotelinfoVO("0001", "仙林大酒店", TradeArea.Changjiang, Address.Shanghai, "仙林", "1111 ", "VergGood", "GreatService", 5, 5, 93.6);
-        HotelsalerAccountVO vo1 = new HotelsalerAccountVO("151250119", "150809", AccountType.hotelsaler, hvo);
-        UserInfoVO uvo = new UserInfoVO("01", "钱志豪", "320581", "139136", 0, "1997_03_26", "", UserType.Person, 0);
-        AccountVO vo2 = new UserAccountVO("151250189", "150809", AccountType.user, uvo);
-//    Assert.assertEquals(ResultMessage.HasExist,logBlService.register(vo1));
-        Assert.assertEquals(ResultMessage.Correct, logBlService.register(vo2));
+        AccountVO vo = new AccountVO("151250001", "150809", AccountType.hotelsaler);
+        Assert.assertEquals(ResultMessage.Correct, logBlService.register(vo));
     }
 
 

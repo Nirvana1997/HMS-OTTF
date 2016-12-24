@@ -1,19 +1,13 @@
 package businesslogic.hotelsalerbl;
 
-import java.rmi.RemoteException;
-import java.util.ArrayList;
-
 import businesslogic.logbl.Login;
-import businesslogicservice.hotelsalerblservice.HotelsalerblService;
-
-import data_stub.hotelsalerdata.HotelinfoDataImpl_stub;
-import dataservice.factory.DataFactory;
 import dataservice.hotelsalerdataservice.HotelinfoDataService;
 import enumData.ResultMessage;
 import rmi.RemoteHelper;
 import utility.HotelPVChanger;
 import vo.HotelinfoVO;
-import vo.OrderVO;
+
+import java.rmi.RemoteException;
 
 /**
  * 酒店信息相关操作

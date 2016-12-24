@@ -25,9 +25,9 @@
 //import businesslogicservice.orderblservice.OrderBlService;
 //import businesslogicservice.promotionblservice.PromotionBlService;
 //import businesslogicservice.userblservice.HotelOrderBlService;
-//import businesslogicservice.webmanagerlogicservice.HSmanagementBlService;
-//import businesslogicservice.webmanagerlogicservice.URmanagementBlService;
-//import businesslogicservice.webmanagerlogicservice.WSmanagementBlService;
+//import businesslogicservice.webmanagerblservice.HSmanagementBlService;
+//import businesslogicservice.webmanagerblservice.URmanagementBlService;
+//import businesslogicservice.webmanagerblservice.WSmanagementBlService;
 //import businesslogicservice.websalerblservice.WebsalerblService;
 //import enumData.AccountType;
 //import enumData.TradeArea;
