@@ -267,6 +267,8 @@ public class uiHotelSaleStrategyController implements Initializable{
     private Label labelPleaseNew;
     @FXML
     private MenuButton menuButtonChooseCompany;
+    @FXML
+    private Label labelCooperationCompany;
 
     /**
      * 酒店信息按钮点击监听
@@ -379,6 +381,12 @@ public class uiHotelSaleStrategyController implements Initializable{
             labelPromotionCompanyName.setText(promotionCompany.get(n).getPromotionName());
             labelPromotionCompanyTime.setText(UiFormatChanger.dateToString(promotionCompany.get(n).getStartDate()) + "~" + UiFormatChanger.dateToString(promotionDoubleOne.get(n).getEndDate()));
             labelPromotionCompanyContent.setText(promotionCompany.get(n).getDescription());
+            try {
+                ArrayList<String> companyArrayList = hotelsalerblService.showAllCompanys();
+                labelCooperationCompany.setText(companyArrayList.get(0));
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
         }
         else if(promotionType == PromotionType.Hotel_Num){
             labelPromotionThreeRoomsName.setText(promotionThreeRooms.get(n).getPromotionName());
@@ -481,6 +489,7 @@ public class uiHotelSaleStrategyController implements Initializable{
      */
     public void onClickedEditPromotionBirthday() {
         promptionType = 1;
+        menuButtonChooseCompany.setVisible(false);
         datePickerBeginTime.setVisible(false);
         datePickerEndTime.setVisible(false);
         textAreaPromotionContent.setText(labelPromotionBirthdayContent.getText());
@@ -498,6 +507,7 @@ public class uiHotelSaleStrategyController implements Initializable{
      */
     public void onClickedEditPromotionDoubleOne() {
         promptionType = 2;
+        menuButtonChooseCompany.setVisible(false);
         datePickerBeginTime.setVisible(true);
         datePickerEndTime.setVisible(true);
         datePickerBeginTime.setValue(null);
@@ -517,6 +527,7 @@ public class uiHotelSaleStrategyController implements Initializable{
      */
     public void onClickedEditPromotionCompany() {
         promptionType = 3;
+        menuButtonChooseCompany.setVisible(true);
         datePickerBeginTime.setVisible(true);
         datePickerEndTime.setVisible(true);
         datePickerBeginTime.setValue(null);
@@ -536,6 +547,7 @@ public class uiHotelSaleStrategyController implements Initializable{
      */
     public void onClickedEditPromotionThreeRooms() {
         promptionType = 4;
+        menuButtonChooseCompany.setVisible(false);
         datePickerBeginTime.setVisible(true);
         datePickerEndTime.setVisible(true);
         datePickerBeginTime.setValue(null);
@@ -786,6 +798,7 @@ public class uiHotelSaleStrategyController implements Initializable{
     public void onClickedCancelEditPromotion() {
         isNewPromotion = false;
         labelPleaseNew.setVisible(false);
+        menuButtonChooseCompany.setVisible(false);
 
         if(promptionType == 1){
             paneInfoPromotionBirthday.setVisible(true);

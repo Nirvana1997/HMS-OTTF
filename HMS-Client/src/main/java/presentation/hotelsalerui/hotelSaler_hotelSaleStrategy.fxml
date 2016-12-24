@@ -243,7 +243,7 @@
                         <Image url="@../../../../../graphics/hotelsalerui/promotionBk.png" />
                      </image>
                   </ImageView>
-                  <Label fx:id="labelPromotionCompanyName" layoutX="197.0" layoutY="58.0" prefHeight="34.0" prefWidth="172.0">
+                  <Label fx:id="labelPromotionCompanyName" layoutX="197.0" layoutY="58.0" prefHeight="34.0" prefWidth="161.0">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -276,11 +276,16 @@
                         <Font size="16.0" />
                      </font>
                   </Label>
-                  <MenuButton fx:id="menuButtonChooseCompany" layoutX="377.0" layoutY="61.0" mnemonicParsing="false" style="-fx-background-color: #FFFFFF;" text="请选择企业">
+                  <Label layoutX="368.0" layoutY="64.0" text="合作企业：">
                      <font>
-                        <Font size="14.0" />
+                        <Font size="16.0" />
                      </font>
-                  </MenuButton>
+                  </Label>
+                  <Label fx:id="labelCooperationCompany" layoutX="458.0" layoutY="61.0" prefHeight="29.0" prefWidth="161.0">
+                     <font>
+                        <Font size="16.0" />
+                     </font>
+                  </Label>
                </children>
             </AnchorPane>
          </children>
@@ -485,7 +490,7 @@
                   <Font size="16.0" />
                </font>
             </Label>
-            <TextField fx:id="textFieldDiscount" focusTraversable="false" layoutX="405.0" layoutY="24.0" prefHeight="34.0" prefWidth="102.0">
+            <TextField fx:id="textFieldDiscount" focusTraversable="false" layoutX="405.0" layoutY="24.0" prefHeight="34.0" prefWidth="73.0">
                <font>
                   <Font size="16.0" />
                </font>
@@ -495,11 +500,16 @@
                   <Font size="16.0" />
                </font>
             </Label>
-            <Label layoutX="530.0" layoutY="30.0" text="折">
+            <Label layoutX="496.0" layoutY="30.0" text="折">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
+            <MenuButton fx:id="menuButtonChooseCompany" layoutX="538.0" layoutY="27.0" mnemonicParsing="false" style="-fx-background-color: #FFFFFF;" text="请选择企业">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </MenuButton>
          </children>
       </AnchorPane>
    </children>
