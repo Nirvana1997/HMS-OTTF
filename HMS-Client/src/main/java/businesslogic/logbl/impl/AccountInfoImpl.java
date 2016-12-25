@@ -16,7 +16,7 @@ import java.util.ArrayList;
  * @author qzh
  * Created by user on 2016/12/3.
  */
-public class AccountDataImpl implements AccountInfo {
+public class AccountInfoImpl implements AccountInfo {
     /**
      * 帐号数据模块
      */
@@ -27,7 +27,7 @@ public class AccountDataImpl implements AccountInfo {
      */
     private Register register;
 
-    public AccountDataImpl() throws RemoteException {
+    public AccountInfoImpl() throws RemoteException {
         //TODO
 //        this.logDataService = new LogDataImpl_stub();
         logDataService = RemoteHelper.getInstance().getLogDataService();

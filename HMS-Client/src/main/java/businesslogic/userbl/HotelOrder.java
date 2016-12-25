@@ -1,7 +1,7 @@
 package businesslogic.userbl;
 
 import businesslogic.hotelsalerbl.impl.HotelDataImpl;
-import businesslogic.hotelsalerbl.impl.CommentDataImpl;
+import businesslogic.hotelsalerbl.impl.CommentInfoImpl;
 import businesslogic.orderbl.impl.OrderDataImpl;
 import businesslogic.userbl.interfaces.CommentInfo;
 import businesslogic.userbl.interfaces.HotelInfo;
@@ -10,7 +10,6 @@ import cfg.CfgReader;
 import dataservice.userdataservice.UserDataService;
 import enumData.*;
 import po.CreditChangePO;
-import po.HotelroomPO;
 import po.OrderPO;
 import po.RoomNumPO;
 import rmi.RemoteHelper;
@@ -19,7 +18,6 @@ import utility.HotelPVChanger;
 import utility.OrderPVChanger;
 import vo.*;
 
-import java.awt.*;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.Date;
@@ -60,7 +58,7 @@ public class HotelOrder {
         hotelInfo = new HotelDataImpl();
         roomNumJudger = new RoomNumJudger();
         userOrderInfo = new OrderDataImpl();
-        commentInfo = new CommentDataImpl();
+        commentInfo = new CommentInfoImpl();
         //TODO
 //        userDataService = new UserDataImpl_stub();
         userDataService = RemoteHelper.getInstance().getUserDataService();

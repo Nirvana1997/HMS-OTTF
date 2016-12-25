@@ -13,13 +13,13 @@ import java.util.ArrayList;
  * @author qzh
  * Created by user on 2016/12/3.
  */
-public class VipDataImpl implements VipInfo{
+public class VipInfoImpl implements VipInfo{
     /**
      * 网站营销人员数据接口
      */
     WebsalerDataService websalerDataService;
 
-    public VipDataImpl() {
+    public VipInfoImpl() {
         websalerDataService = RemoteHelper.getInstance().getWebsalerDataService();
     }
 

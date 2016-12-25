@@ -15,10 +15,10 @@ import java.util.ArrayList;
  * @author qzh
  * Created by user on 2016/12/7.
  */
-public class CommentDataImpl implements CommentInfo{
+public class CommentInfoImpl implements CommentInfo{
     HotelinfoDataService hotelinfoDataService;
 
-    public CommentDataImpl() {
+    public CommentInfoImpl() {
         //TODO
 //        hotelinfoDataService = new HotelinfoDataImpl_stub();
         hotelinfoDataService = RemoteHelper.getInstance().getHotelinfoDataService();

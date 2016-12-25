@@ -1,6 +1,6 @@
 package businesslogic.webmanagerbl;
 
-import businesslogic.logbl.impl.AccountDataImpl;
+import businesslogic.logbl.impl.AccountInfoImpl;
 
 import java.rmi.RemoteException;
 
@@ -13,7 +13,7 @@ public class AccountOperation {
     AccountInfo accountInfo;
 
     public AccountOperation() throws RemoteException {
-        accountInfo = new AccountDataImpl();
+        accountInfo = new AccountInfoImpl();
     }
 
     public String getAccount(String id) throws RemoteException {

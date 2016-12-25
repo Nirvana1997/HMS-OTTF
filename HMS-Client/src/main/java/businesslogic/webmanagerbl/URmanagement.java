@@ -4,7 +4,7 @@ import po.UserInfoPO;
 import utility.VipInfo;
 import businesslogic.userbl.impl.UserDataImpl;
 import utility.UserPVChanger;
-import businesslogic.websalerbl.impl.VipDataImpl;
+import businesslogic.websalerbl.impl.VipInfoImpl;
 import vo.UserInfoVO;
 
 import java.rmi.RemoteException;
@@ -28,7 +28,7 @@ public class URmanagement {
 
     public URmanagement() {
         userInfoForManagement = new UserDataImpl();
-        vipInfo = new VipDataImpl();
+        vipInfo = new VipInfoImpl();
     }
 
     /**

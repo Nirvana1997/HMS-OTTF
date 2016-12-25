@@ -1,6 +1,6 @@
 package utility;
 
-import businesslogic.websalerbl.impl.VipDataImpl;
+import businesslogic.websalerbl.impl.VipInfoImpl;
 import po.UserInfoPO;
 import vo.UserInfoVO;
 
@@ -13,7 +13,7 @@ import java.rmi.RemoteException;
  *         Created by user on 2016/12/3.
  */
 public class UserPVChanger {
-    static VipInfo vipInfo = new VipDataImpl();
+    static VipInfo vipInfo = new VipInfoImpl();
 
     public UserPVChanger() {
 //        vipInfo = ;

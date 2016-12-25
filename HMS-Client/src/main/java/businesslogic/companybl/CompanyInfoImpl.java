@@ -15,13 +15,13 @@ import java.util.ArrayList;
  * @author qzh
  *         Created by user on 2016/12/21.
  */
-public class CompanyDataImpl implements UserCompanyInfo,HotelsalerCompanyInfo {
+public class CompanyInfoImpl implements UserCompanyInfo,HotelsalerCompanyInfo {
     /**
      * 企业数据接口
      */
     CompanyDataService companyDataService;
 
-    public CompanyDataImpl() {
+    public CompanyInfoImpl() {
         companyDataService = RemoteHelper.getInstance().getCompanyDataService();
     }
 

@@ -83,36 +83,6 @@ public class HotelSalerControllerTest {
 
     /**
      *
-     * Method: setOrdered(BelowLineOrderVO vo)
-     *
-     */
-    @Test
-    public void testSetOrdered() throws Exception {
-//TODO: Test goes here...
-    }
-
-    /**
-     *
-     * Method: setEmpty(BelowLineOrderVO vo)
-     *
-     */
-    @Test
-    public void testSetEmpty() throws Exception {
-//TODO: Test goes here...
-    }
-
-    /**
-     *
-     * Method: setRoomInfo(ArrayList<HotelroomVO> hotelrooms)
-     *
-     */
-    @Test
-    public void testSetRoomInfo() throws Exception {
-//TODO: Test goes here...
-    }
-
-    /**
-     *
      * Method: getRoomInfo()
      *
      */

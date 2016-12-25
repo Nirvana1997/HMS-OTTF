@@ -16,10 +16,10 @@ import java.util.ArrayList;
  * @author qzh
  *         Created by user on 2016/12/9.
  */
-public class WebsalerDataImpl implements WebsalerInfoForManagement{
+public class WebsalerInfoImpl implements WebsalerInfoForManagement{
     WebsalerDataService websalerDataService;
 
-    public WebsalerDataImpl() throws RemoteException{
+    public WebsalerInfoImpl() throws RemoteException{
         //TODO
 //        this.websalerDataService = new WebsalerDataImpl_stub();
         websalerDataService = RemoteHelper.getInstance().getWebsalerDataService();

@@ -1,7 +1,7 @@
 package businesslogic.webmanagerbl;
 
 import businesslogic.hotelsalerbl.impl.HotelDataImpl;
-import businesslogic.logbl.impl.AccountDataImpl;
+import businesslogic.logbl.impl.AccountInfoImpl;
 import enumData.AccountType;
 import po.HotelinfoPO;
 import utility.HotelPVChanger;
@@ -27,7 +27,7 @@ public class HSmanagement{
 
     public HSmanagement() throws RemoteException{
         hotelInfoForManagement = new HotelDataImpl();
-        accountInfo = new AccountDataImpl();
+        accountInfo = new AccountInfoImpl();
     }
 
 

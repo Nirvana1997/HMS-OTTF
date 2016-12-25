@@ -1,7 +1,7 @@
 package businesslogic.webmanagerbl;
 
-import businesslogic.logbl.impl.AccountDataImpl;
-import businesslogic.websalerbl.impl.WebsalerDataImpl;
+import businesslogic.logbl.impl.AccountInfoImpl;
+import businesslogic.websalerbl.impl.WebsalerInfoImpl;
 import enumData.AccountType;
 import enumData.ResultMessage;
 import vo.WebsalerInfoVO;
@@ -26,8 +26,8 @@ public class WSmanagement {
     AccountInfo accountInfo;
 
     public WSmanagement() throws RemoteException {
-        websalerInfoForManagement = new WebsalerDataImpl();
-        accountInfo = new AccountDataImpl();
+        websalerInfoForManagement = new WebsalerInfoImpl();
+        accountInfo = new AccountInfoImpl();
     }
 
     /**
