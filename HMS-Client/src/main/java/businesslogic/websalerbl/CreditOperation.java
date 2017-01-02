@@ -1,13 +1,11 @@
 package businesslogic.websalerbl;
 
 import businesslogic.userbl.impl.UserDataImpl;
-import com.sun.org.apache.xalan.internal.xsltc.compiler.util.ResultTreeType;
+import businesslogic.websalerbl.interfaces.CreditInfo;
 import enumData.ResultMessage;
 import po.CreditChangePO;
-import po.CreditRecordPO;
 
 import java.rmi.RemoteException;
-import java.util.ResourceBundle;
 
 /**
  * 信用值操作模块

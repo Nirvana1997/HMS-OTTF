@@ -1,6 +1,8 @@
 package businesslogic.webmanagerbl;
 
 import businesslogic.logbl.impl.AccountInfoImpl;
+import businesslogic.webmanagerbl.interfaces.AccountInfo;
+import businesslogic.webmanagerbl.interfaces.WebsalerInfoForManagement;
 import businesslogic.websalerbl.impl.WebsalerInfoImpl;
 import enumData.AccountType;
 import enumData.ResultMessage;

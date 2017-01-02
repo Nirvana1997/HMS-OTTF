@@ -1,4 +1,4 @@
-package businesslogic.websalerbl;
+package businesslogic.websalerbl.interfaces;
 
 import enumData.ResultMessage;
 import po.CreditChangePO;

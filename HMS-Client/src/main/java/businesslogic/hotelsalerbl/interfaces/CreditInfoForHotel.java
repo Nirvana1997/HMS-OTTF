@@ -1,4 +1,4 @@
-package businesslogic.hotelsalerbl;
+package businesslogic.hotelsalerbl.interfaces;
 
 import enumData.ResultMessage;
 import po.CreditChangePO;

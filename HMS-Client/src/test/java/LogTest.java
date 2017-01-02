@@ -44,6 +44,19 @@ public class LogTest {
     }
 
     /**
+     * Method: isCorrectAndLogin(AccountVO vo)
+     */
+    @Test
+    public void testIsValid() throws Exception {
+        PasswordComfirmVO vo1 = new PasswordComfirmVO("151250001","111111","1111111");
+        PasswordComfirmVO vo2 = new PasswordComfirmVO("151250011","111111","1111111");
+        PasswordComfirmVO vo3 = new PasswordComfirmVO("151250012","111111","123456");
+        Assert.assertEquals(ResultMessage.HasExist, logBlService.isValid(vo1));
+        Assert.assertEquals(ResultMessage.Correct, logBlService.isValid(vo2));
+        Assert.assertEquals(ResultMessage.InCorrect, logBlService.isValid(vo3));
+    }
+
+    /**
      * Method: accoutType(String account)
      */
     @Test

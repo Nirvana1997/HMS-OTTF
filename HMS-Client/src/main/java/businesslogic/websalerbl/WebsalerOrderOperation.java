@@ -2,6 +2,8 @@ package businesslogic.websalerbl;
 
 import businesslogic.orderbl.impl.OrderDataImpl;
 import businesslogic.userbl.impl.UserDataImpl;
+import businesslogic.websalerbl.interfaces.CreditInfo;
+import businesslogic.websalerbl.interfaces.WebOrderInfo;
 import cfg.CfgReader;
 import enumData.CreditRecoverWay;
 import enumData.OrderState;

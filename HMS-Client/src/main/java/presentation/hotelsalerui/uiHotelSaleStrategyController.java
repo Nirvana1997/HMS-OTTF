@@ -379,7 +379,7 @@ public class uiHotelSaleStrategyController implements Initializable{
         }
         else if(promotionType == PromotionType.Hotel_Company){
             labelPromotionCompanyName.setText(promotionCompany.get(n).getPromotionName());
-            labelPromotionCompanyTime.setText(UiFormatChanger.dateToString(promotionCompany.get(n).getStartDate()) + "~" + UiFormatChanger.dateToString(promotionDoubleOne.get(n).getEndDate()));
+            labelPromotionCompanyTime.setText(UiFormatChanger.dateToString(promotionCompany.get(n).getStartDate()) + "~" + UiFormatChanger.dateToString(promotionCompany.get(n).getEndDate()));
             labelPromotionCompanyContent.setText(promotionCompany.get(n).getDescription());
             try {
                 ArrayList<String> companyArrayList = hotelsalerblService.showAllCompanys();
@@ -390,7 +390,7 @@ public class uiHotelSaleStrategyController implements Initializable{
         }
         else if(promotionType == PromotionType.Hotel_Num){
             labelPromotionThreeRoomsName.setText(promotionThreeRooms.get(n).getPromotionName());
-            labelPromotionThreeRoomsTime.setText(UiFormatChanger.dateToString(promotionThreeRooms.get(n).getStartDate()) + "~" + UiFormatChanger.dateToString(promotionDoubleOne.get(n).getEndDate()));
+            labelPromotionThreeRoomsTime.setText(UiFormatChanger.dateToString(promotionThreeRooms.get(n).getStartDate()) + "~" + UiFormatChanger.dateToString(promotionThreeRooms.get(n).getEndDate()));
             labelPromotionThreeRoomsContent.setText(promotionThreeRooms.get(n).getDescription());
         }
     }
@@ -556,7 +556,7 @@ public class uiHotelSaleStrategyController implements Initializable{
         textFieldPromotionName.setText(labelPromotionThreeRoomsName.getText());
         for(int i = 0; i < lengthPromotionThreeRooms; i++){
             if(promotionThreeRooms.get(i).getPromotionName().equals(labelPromotionThreeRoomsName.getText()))
-                textFieldDiscount.setText(String.valueOf(promotionThreeRooms.get(i).getDiscountTenRate()));
+                textFieldDiscount.setText(String.valueOf(promotionThreeRooms.get(i).getDiscountTenRate()*10));
         }
         paneInfoPromotionThreeRooms.setVisible(false);
         paneEditPromotion.setVisible(true);
@@ -578,6 +578,7 @@ public class uiHotelSaleStrategyController implements Initializable{
      * 删除promotion按钮监听
      */
     public void onClickedDeletePromotion() throws IOException{
+        System.out.println("hh");
         sceneJump.jumpToDeletePromotion();
         boolean isDeletePromotion = sceneJump.getIsDeletePromotion();
         if(isDeletePromotion) {

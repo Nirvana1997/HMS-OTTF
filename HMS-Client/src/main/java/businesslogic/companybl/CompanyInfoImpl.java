@@ -1,7 +1,7 @@
 package businesslogic.companybl;
 
-import businesslogic.hotelsalerbl.HotelsalerCompanyInfo;
-import businesslogic.logbl.UserCompanyInfo;
+import businesslogic.hotelsalerbl.interfaces.HotelsalerCompanyInfo;
+import businesslogic.logbl.interfaces.UserCompanyInfo;
 import dataservice.companydataservice.CompanyDataService;
 import rmi.RemoteHelper;
 

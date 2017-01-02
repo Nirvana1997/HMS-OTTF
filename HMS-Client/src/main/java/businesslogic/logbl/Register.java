@@ -1,6 +1,8 @@
 package businesslogic.logbl;
 
 import businesslogic.companybl.CompanyInfoImpl;
+import businesslogic.logbl.interfaces.UserCompanyInfo;
+import businesslogic.logbl.interfaces.UserInfoAdder;
 import businesslogic.userbl.impl.UserDataImpl;
 import cfg.CfgReader;
 import dataservice.logdataservice.LogDataService;

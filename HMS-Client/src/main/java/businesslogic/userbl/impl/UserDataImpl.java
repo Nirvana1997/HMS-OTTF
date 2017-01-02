@@ -1,9 +1,9 @@
 package businesslogic.userbl.impl;
 
-import businesslogic.hotelsalerbl.CreditInfoForHotel;
-import businesslogic.logbl.UserInfoAdder;
-import businesslogic.webmanagerbl.UserInfoForManagement;
-import businesslogic.websalerbl.CreditInfo;
+import businesslogic.hotelsalerbl.interfaces.CreditInfoForHotel;
+import businesslogic.logbl.interfaces.UserInfoAdder;
+import businesslogic.webmanagerbl.interfaces.UserInfoForManagement;
+import businesslogic.websalerbl.interfaces.CreditInfo;
 import dataservice.userdataservice.UserDataService;
 import enumData.ResultMessage;
 import po.CreditChangePO;

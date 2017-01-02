@@ -1,5 +1,7 @@
 package businesslogic.hotelsalerbl;
 
+import businesslogic.hotelsalerbl.interfaces.CreditInfoForHotel;
+import businesslogic.hotelsalerbl.interfaces.HotelOrderInfo;
 import businesslogic.logbl.Login;
 import businesslogic.orderbl.impl.OrderDataImpl;
 import businesslogic.userbl.impl.UserDataImpl;

@@ -1,15 +1,14 @@
-package businesslogic.hotelsalerbl;
+package businesslogic.logbl.interfaces;
 
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
 /**
- * 酒店营销人员企业数据接口
- *
+ * 企业用户信息接口
  * @author qzh
- *         Created by user on 2016/12/21.
+ * Created by user on 2016/12/21.
  */
-public interface HotelsalerCompanyInfo {
+public interface UserCompanyInfo {
     /**
      * 获得所有企业
      *
@@ -21,9 +20,10 @@ public interface HotelsalerCompanyInfo {
     /**
      * 判断企业ID与企业名称是否对应
      *
+     * @param companyID   企业ID
      * @param companyName 企业名称
      * @return 是否对应
      * @throws RemoteException
      */
-    public String getCompanyID(String companyName) throws RemoteException;
+    public boolean isCompanyIDCorrect(String companyID, String companyName) throws RemoteException;
 }

@@ -1,6 +1,8 @@
 package businesslogic.hotelsalerbl;
 
 import businesslogic.companybl.CompanyInfoImpl;
+import businesslogic.hotelsalerbl.interfaces.HotelPromotionInfo;
+import businesslogic.hotelsalerbl.interfaces.HotelsalerCompanyInfo;
 import businesslogic.logbl.Login;
 import businesslogic.promotionbl.impl.PromotionInfoImpl;
 import enumData.PromotionType;

@@ -1,5 +1,6 @@
 package businesslogic.webmanagerbl;
 
+import businesslogic.webmanagerbl.interfaces.UserInfoForManagement;
 import po.UserInfoPO;
 import utility.VipInfo;
 import businesslogic.userbl.impl.UserDataImpl;

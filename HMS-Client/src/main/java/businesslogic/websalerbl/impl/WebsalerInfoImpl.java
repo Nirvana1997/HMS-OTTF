@@ -1,6 +1,6 @@
 package businesslogic.websalerbl.impl;
 
-import businesslogic.webmanagerbl.WebsalerInfoForManagement;
+import businesslogic.webmanagerbl.interfaces.WebsalerInfoForManagement;
 import dataservice.websalerdataservice.WebsalerDataService;
 import po.WebsalerInfoPO;
 import rmi.RemoteHelper;

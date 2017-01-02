@@ -1,5 +1,4 @@
 import businesslogic.logbl.LogController;
-import businesslogic.logbl.UserCompanyInfo;
 import businesslogic.userbl.UserController;
 import businesslogicservice.userblservice.HotelOrderBlService;
 import enumData.*;

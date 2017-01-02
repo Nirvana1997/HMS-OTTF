@@ -2,6 +2,8 @@ package businesslogic.webmanagerbl;
 
 import businesslogic.hotelsalerbl.impl.HotelDataImpl;
 import businesslogic.logbl.impl.AccountInfoImpl;
+import businesslogic.webmanagerbl.interfaces.AccountInfo;
+import businesslogic.webmanagerbl.interfaces.HotelInfoForManagement;
 import enumData.AccountType;
 import po.HotelinfoPO;
 import utility.HotelPVChanger;

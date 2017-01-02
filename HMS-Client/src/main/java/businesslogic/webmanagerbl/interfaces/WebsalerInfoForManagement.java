@@ -1,4 +1,4 @@
-package businesslogic.webmanagerbl;
+package businesslogic.webmanagerbl.interfaces;
 
 import vo.WebsalerInfoVO;
 

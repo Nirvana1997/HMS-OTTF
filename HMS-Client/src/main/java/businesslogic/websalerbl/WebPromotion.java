@@ -1,6 +1,7 @@
 package businesslogic.websalerbl;
 
 import businesslogic.promotionbl.impl.PromotionInfoImpl;
+import businesslogic.websalerbl.interfaces.WebPromotionInfo;
 import dataservice.websalerdataservice.WebsalerDataService;
 import enumData.PromotionType;
 import enumData.ResultMessage;

@@ -1,4 +1,4 @@
-package businesslogic.logbl;
+package businesslogic.logbl.interfaces;
 
 import vo.UserInfoVO;
 

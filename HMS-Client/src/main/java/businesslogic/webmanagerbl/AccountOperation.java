@@ -1,6 +1,7 @@
 package businesslogic.webmanagerbl;
 
 import businesslogic.logbl.impl.AccountInfoImpl;
+import businesslogic.webmanagerbl.interfaces.AccountInfo;
 
 import java.rmi.RemoteException;
 

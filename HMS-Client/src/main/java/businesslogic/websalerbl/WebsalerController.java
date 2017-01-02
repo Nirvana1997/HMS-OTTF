@@ -1,6 +1,7 @@
 package businesslogic.websalerbl;
 
 import businesslogic.userbl.impl.UserDataImpl;
+import businesslogic.websalerbl.interfaces.CreditInfo;
 import businesslogicservice.websalerblservice.WebsalerblService;
 import cfg.CfgReader;
 import enumData.CreditRecoverWay;

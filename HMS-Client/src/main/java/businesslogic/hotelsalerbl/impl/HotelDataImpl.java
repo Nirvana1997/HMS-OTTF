@@ -2,7 +2,7 @@ package businesslogic.hotelsalerbl.impl;
 
 import businesslogic.userbl.interfaces.HotelInfo;
 import businesslogic.userbl.interfaces.HotelRoom;
-import businesslogic.webmanagerbl.HotelInfoForManagement;
+import businesslogic.webmanagerbl.interfaces.HotelInfoForManagement;
 import cfg.CfgReader;
 import dataservice.hotelsalerdataservice.HotelinfoDataService;
 import dataservice.hotelsalerdataservice.HotelroomDataService;

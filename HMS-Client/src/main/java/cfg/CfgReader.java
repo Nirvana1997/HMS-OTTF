@@ -33,7 +33,7 @@ public class CfgReader {
     private CfgReader() {
         properties = new Properties();
         //获取配置文件路径
-        String configFile = CfgReader.class.getResource("/").getPath().toString().replaceAll("file:/","")+ "config.properties";
+        String configFile = System.getProperty("user.dir")+"/config.properties";
         //读取配置文件
         try {
             InputStreamReader inputStream = new InputStreamReader(new FileInputStream(configFile), "utf-8");

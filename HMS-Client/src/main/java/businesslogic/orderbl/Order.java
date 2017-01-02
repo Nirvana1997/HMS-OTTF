@@ -1,9 +1,6 @@
 package businesslogic.orderbl;
 
-import businesslogic.hotelsalerbl.HotelOrderInfo;
 import businesslogic.logbl.Login;
-import businesslogic.userbl.interfaces.UserOrderInfo;
-import businesslogic.websalerbl.WebOrderInfo;
 import dataservice.orderdataservice.OrderDataService;
 import enumData.IDType;
 import enumData.OrderState;

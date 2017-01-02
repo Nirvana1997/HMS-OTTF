@@ -1,7 +1,7 @@
 package businesslogic.logbl.impl;
 
 import businesslogic.logbl.Register;
-import businesslogic.webmanagerbl.AccountInfo;
+import businesslogic.webmanagerbl.interfaces.AccountInfo;
 import dataservice.logdataservice.LogDataService;
 import enumData.AccountType;
 import po.AccountPO;

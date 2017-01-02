@@ -1,4 +1,4 @@
-package businesslogic.webmanagerbl;
+package businesslogic.webmanagerbl.interfaces;
 
 import businesslogic.userbl.UserInfo;
 import com.sun.jmx.remote.internal.RMIExporter;
